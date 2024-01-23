@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="INFORME_FUENTESDataSet" targetNamespace="http://tempuri.org/INFORME_FUENTESDataSet.xsd" xmlns:mstns="http://tempuri.org/INFORME_FUENTESDataSet.xsd" xmlns="http://tempuri.org/INFORME_FUENTESDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="INFORME_FUENTESDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="INFORME_FUENTESDataSet" msprop:Generator_UserDSName="INFORME_FUENTESDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="_x200C_INFORME" msprop:Generator_TableClassName="__INFORMEDataTable" msprop:Generator_TableVarName="_table_INFORME" msprop:Generator_RowChangedName="__INFORMERowChanged" msprop:Generator_TablePropName="__INFORME" msprop:Generator_RowDeletingName="__INFORMERowDeleting" msprop:Generator_RowChangingName="__INFORMERowChanging" msprop:Generator_RowEvHandlerName="__INFORMERowChangeEventHandler" msprop:Generator_RowDeletedName="__INFORMERowDeleted" msprop:Generator_RowClassName="__INFORMERow" msprop:Generator_UserTableName="‌INFORME" msprop:Generator_RowEvArgName="__INFORMERowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="CODRUS_FUENTE" msprop:Generator_ColumnVarNameInTable="columnCODRUS_FUENTE" msprop:Generator_ColumnPropNameInRow="CODRUS_FUENTE" msprop:Generator_ColumnPropNameInTable="CODRUS_FUENTEColumn" msprop:Generator_UserColumnName="CODRUS_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="CALLE_FUENTE" msprop:Generator_ColumnVarNameInTable="columnCALLE_FUENTE" msprop:Generator_ColumnPropNameInRow="CALLE_FUENTE" msprop:Generator_ColumnPropNameInTable="CALLE_FUENTEColumn" msprop:Generator_UserColumnName="CALLE_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="PUERTA_FUENTE" msprop:Generator_ColumnVarNameInTable="columnPUERTA_FUENTE" msprop:Generator_ColumnPropNameInRow="PUERTA_FUENTE" msprop:Generator_ColumnPropNameInTable="PUERTA_FUENTEColumn" msprop:Generator_UserColumnName="PUERTA_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="NODO_FUENTE" msprop:Generator_ColumnVarNameInTable="columnNODO_FUENTE" msprop:Generator_ColumnPropNameInRow="NODO_FUENTE" msprop:Generator_ColumnPropNameInTable="NODO_FUENTEColumn" msprop:Generator_UserColumnName="NODO_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="ZONA_FUENTE" msprop:Generator_ColumnVarNameInTable="columnZONA_FUENTE" msprop:Generator_ColumnPropNameInRow="ZONA_FUENTE" msprop:Generator_ColumnPropNameInTable="ZONA_FUENTEColumn" msprop:Generator_UserColumnName="ZONA_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="ORDENINT_FUENTE" msprop:Generator_ColumnVarNameInTable="columnORDENINT_FUENTE" msprop:Generator_ColumnPropNameInRow="ORDENINT_FUENTE" msprop:Generator_ColumnPropNameInTable="ORDENINT_FUENTEColumn" msprop:Generator_UserColumnName="ORDENINT_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="ORDINAL_FUENTE" msprop:Generator_ColumnVarNameInTable="columnORDINAL_FUENTE" msprop:Generator_ColumnPropNameInRow="ORDINAL_FUENTE" msprop:Generator_ColumnPropNameInTable="ORDINAL_FUENTEColumn" msprop:Generator_UserColumnName="ORDINAL_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="CUADRILLA_FUENTE" msprop:Generator_ColumnVarNameInTable="columnCUADRILLA_FUENTE" msprop:Generator_ColumnPropNameInRow="CUADRILLA_FUENTE" msprop:Generator_ColumnPropNameInTable="CUADRILLA_FUENTEColumn" msprop:Generator_UserColumnName="CUADRILLA_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="FECHAINI_FUENTE" msprop:Generator_ColumnVarNameInTable="columnFECHAINI_FUENTE" msprop:Generator_ColumnPropNameInRow="FECHAINI_FUENTE" msprop:Generator_ColumnPropNameInTable="FECHAINI_FUENTEColumn" msprop:Generator_UserColumnName="FECHAINI_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="FECHAFIN_FUENTE" msprop:Generator_ColumnVarNameInTable="columnFECHAFIN_FUENTE" msprop:Generator_ColumnPropNameInRow="FECHAFIN_FUENTE" msprop:Generator_ColumnPropNameInTable="FECHAFIN_FUENTEColumn" msprop:Generator_UserColumnName="FECHAFIN_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="MOTIVOORIGEN_FUENTE" msprop:Generator_ColumnVarNameInTable="columnMOTIVOORIGEN_FUENTE" msprop:Generator_ColumnPropNameInRow="MOTIVOORIGEN_FUENTE" msprop:Generator_ColumnPropNameInTable="MOTIVOORIGEN_FUENTEColumn" msprop:Generator_UserColumnName="MOTIVOORIGEN_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="CAUSAORIGEN_FUENTE" msprop:Generator_ColumnVarNameInTable="columnCAUSAORIGEN_FUENTE" msprop:Generator_ColumnPropNameInRow="CAUSAORIGEN_FUENTE" msprop:Generator_ColumnPropNameInTable="CAUSAORIGEN_FUENTEColumn" msprop:Generator_UserColumnName="CAUSAORIGEN_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="ACTIVIDAD_FUENTE" msprop:Generator_ColumnVarNameInTable="columnACTIVIDAD_FUENTE" msprop:Generator_ColumnPropNameInRow="ACTIVIDAD_FUENTE" msprop:Generator_ColumnPropNameInTable="ACTIVIDAD_FUENTEColumn" msprop:Generator_UserColumnName="ACTIVIDAD_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="TAREADESC_FUENTE" msprop:Generator_ColumnVarNameInTable="columnTAREADESC_FUENTE" msprop:Generator_ColumnPropNameInRow="TAREADESC_FUENTE" msprop:Generator_ColumnPropNameInTable="TAREADESC_FUENTEColumn" msprop:Generator_UserColumnName="TAREADESC_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="CANT_REAL_FUENTE" msprop:Generator_ColumnVarNameInTable="columnCANT_REAL_FUENTE" msprop:Generator_ColumnPropNameInRow="CANT_REAL_FUENTE" msprop:Generator_ColumnPropNameInTable="CANT_REAL_FUENTEColumn" msprop:Generator_UserColumnName="CANT_REAL_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="CANTSTD_FUENTE" msprop:Generator_ColumnVarNameInTable="columnCANTSTD_FUENTE" msprop:Generator_ColumnPropNameInRow="CANTSTD_FUENTE" msprop:Generator_ColumnPropNameInTable="CANTSTD_FUENTEColumn" msprop:Generator_UserColumnName="CANTSTD_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="MODFUENTE_FUENTE" msprop:Generator_ColumnVarNameInTable="columnMODFUENTE_FUENTE" msprop:Generator_ColumnPropNameInRow="MODFUENTE_FUENTE" msprop:Generator_ColumnPropNameInTable="MODFUENTE_FUENTEColumn" msprop:Generator_UserColumnName="MODFUENTE_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="CANT_BATERIA_FUENTE" msprop:Generator_ColumnVarNameInTable="columnCANT_BATERIA_FUENTE" msprop:Generator_ColumnPropNameInRow="CANT_BATERIA_FUENTE" msprop:Generator_ColumnPropNameInTable="CANT_BATERIA_FUENTEColumn" msprop:Generator_UserColumnName="CANT_BATERIA_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="MOD_BATERIA_FUENTE" msprop:Generator_ColumnVarNameInTable="columnMOD_BATERIA_FUENTE" msprop:Generator_ColumnPropNameInRow="MOD_BATERIA_FUENTE" msprop:Generator_ColumnPropNameInTable="MOD_BATERIA_FUENTEColumn" msprop:Generator_UserColumnName="MOD_BATERIA_FUENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="FECHAFAB_BAT_FUENTE" msprop:Generator_ColumnVarNameInTable="columnFECHAFAB_BAT_FUENTE" msprop:Generator_ColumnPropNameInRow="FECHAFAB_BAT_FUENTE" msprop:Generator_ColumnPropNameInTable="FECHAFAB_BAT_FUENTEColumn" msprop:Generator_UserColumnName="FECHAFAB_BAT_FUENTE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

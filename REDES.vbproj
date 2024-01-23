@@ -1,0 +1,1299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{097FF2D4-8371-4E72-8F1D-83BC906996B8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>REDES.My.MyApplication</StartupObject>
+    <RootNamespace>REDES</RootNamespace>
+    <AssemblyName>REDES</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>1</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <WarningLevel>1</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+    <WarningLevel>1</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+    <WarningLevel>1</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+    <WarningLevel>1</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
+    <WarningLevel>1</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\LOGO_APP_124202.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>packages\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.1823.32, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Web.WebView2.1.0.1823.32\lib\net45\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.1823.32, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Web.WebView2.1.0.1823.32\lib\net45\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.1823.32, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Web.WebView2.1.0.1823.32\lib\net45\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebDriver, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Selenium.WebDriver.4.7.0\lib\net46\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Selenium.Support.4.7.0\lib\net46\WebDriver.Support.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Datasets\INFORME_FUENTESDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INFORME_FUENTESDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Datasets\INFORME_FUENTESDataSet.vb">
+      <DependentUpon>INFORME_FUENTESDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Datasets\MDUDataSet.vb">
+      <DependentUpon>MDUDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ESCRITORIO.Designer.vb">
+      <DependentUpon>ESCRITORIO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ESCRITORIO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\FUENTE_EDICION.Designer.vb">
+      <DependentUpon>FUENTE_EDICION.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\FUENTE_EDICION.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\F_NOTIFICACION.Designer.vb">
+      <DependentUpon>F_NOTIFICACION.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\F_NOTIFICACION.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\GEO.Designer.vb">
+      <DependentUpon>GEO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\GEO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\OC_LISTADO.Designer.vb">
+      <DependentUpon>OC_LISTADO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\OC_LISTADO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\SERVICIOS.Designer.vb">
+      <DependentUpon>SERVICIOS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\SERVICIOS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\ORDEN.Designer.vb">
+      <DependentUpon>ORDEN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\ORDEN.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS REPORTE\INFORME_SERVICIOS.Designer.vb">
+      <DependentUpon>INFORME_SERVICIOS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS REPORTE\INFORME_SERVICIOS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS REPORTE\REPORTE_OBRACIVIL.Designer.vb">
+      <DependentUpon>REPORTE_OBRACIVIL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS REPORTE\REPORTE_OBRACIVIL.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS REPORTE\VER_INFORME_FUENTES.Designer.vb">
+      <DependentUpon>VER_INFORME_FUENTES.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS REPORTE\VER_INFORME_FUENTES.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS REPORTE\VER_INFORME_INDICE.Designer.vb">
+      <DependentUpon>VER_INFORME_INDICE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS REPORTE\VER_INFORME_INDICE.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\VER_ORD_AGENDA.Designer.vb">
+      <DependentUpon>VER_ORD_AGENDA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\VER_ORD_AGENDA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\BUSQUEDA.Designer.vb">
+      <DependentUpon>BUSQUEDA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\BUSQUEDA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Datasets\INFORME_INDICEDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INFORME_INDICEDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\MATERIALES.Designer.vb">
+      <DependentUpon>MATERIALES.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\MATERIALES.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Datasets\INDICESDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>INDICESDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FORMAGE.Designer.vb">
+      <DependentUpon>FORMAGE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FORMAGE.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS REPORTE\VER_INFORME_MATERIALES.Designer.vb">
+      <DependentUpon>VER_INFORME_MATERIALES.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS REPORTE\VER_INFORME_MATERIALES.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\STANDARD_MATERIALES.Designer.vb">
+      <DependentUpon>STANDARD_MATERIALES.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\STANDARD_MATERIALES.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MODULOS\DATOS_MOD.vb" />
+    <Compile Include="MODULOS\EMAIL.vb" />
+    <Compile Include="MODULOS\EXPORTAR_EXCEL.vb" />
+    <Compile Include="FORMS APOYO\ABOUT.Designer.vb">
+      <DependentUpon>ABOUT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\ABOUT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\ORDINALES.Designer.vb">
+      <DependentUpon>ORDINALES.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\ORDINALES.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Datasets\ANALISIS_AGDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ANALISIS_AGDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Datasets\ANALISIS_AGDataSet.vb">
+      <DependentUpon>ANALISIS_AGDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Datasets\BASEFUENTESDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BASEFUENTESDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\DATOS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\DATOS.Designer.vb">
+      <DependentUpon>DATOS.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\DETALLE.Designer.vb">
+      <DependentUpon>DETALLE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\DETALLE.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FORMORDENES.Designer.vb">
+      <DependentUpon>FORMORDENES.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FORMORDENES.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\GENERADORES.Designer.vb">
+      <DependentUpon>GENERADORES.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\GENERADORES.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FUENTES.Designer.vb">
+      <DependentUpon>FUENTES.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FUENTES.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\GRAF_GESTION.Designer.vb">
+      <DependentUpon>GRAF_GESTION.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\GRAF_GESTION.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS REPORTE\INFORME_MDU_GESTIONESPROGRAMADAS.Designer.vb">
+      <DependentUpon>INFORME_MDU_GESTIONESPROGRAMADAS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS REPORTE\INFORME_MDU_GESTIONESPROGRAMADAS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS REPORTE\INFORME_MDU_PERMISORES.Designer.vb">
+      <DependentUpon>INFORME_MDU_PERMISORES.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS REPORTE\INFORME_MDU_PERMISORES.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\DASHBOARD.Designer.vb">
+      <DependentUpon>DASHBOARD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\DASHBOARD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\INGRESO_MDU.Designer.vb">
+      <DependentUpon>INGRESO_MDU.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\INGRESO_MDU.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\HISTORIALRED.Designer.vb">
+      <DependentUpon>HISTORIALRED.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\HISTORIALRED.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MODULOS\FUNCIONES_AGENDA.vb" />
+    <Compile Include="MODULOS\MODULODASHBOARD.vb" />
+    <Compile Include="MODULOS\SQL.vb" />
+    <Compile Include="MODULOS\WIDGET.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\NOTASVERS.Designer.vb">
+      <DependentUpon>NOTASVERS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\NOTASVERS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Datasets\MDUDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MDUDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\LOGIN.Designer.vb">
+      <DependentUpon>LOGIN.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\LOGIN.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\MISGESTIONES.Designer.vb">
+      <DependentUpon>MISGESTIONES.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\MISGESTIONES.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\MJE_FINALIZARTRAB.Designer.vb">
+      <DependentUpon>MJE_FINALIZARTRAB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\MJE_FINALIZARTRAB.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MODULOS\MODMENSAJES.vb" />
+    <Compile Include="MODULOS\VARIABLESGLOBALES.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\NUEVAGESTION.Designer.vb">
+      <DependentUpon>NUEVAGESTION.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\NUEVAGESTION.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\NUEVOTRABAJO.Designer.vb">
+      <DependentUpon>NUEVOTRABAJO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\NUEVOTRABAJO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Datasets\OPERACIONES_LOGDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OPERACIONES_LOGDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Datasets\ORDENESDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ORDENESDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Datasets\ORDENESDataSet.vb">
+      <DependentUpon>ORDENESDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\MENSAJERIA.Designer.vb">
+      <DependentUpon>MENSAJERIA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\MENSAJERIA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\PROCESOS.Designer.vb">
+      <DependentUpon>PROCESOS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\PROCESOS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\FOpenFileDialog.Designer.vb">
+      <DependentUpon>FOpenFileDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\FOpenFileDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\NUEVO_INDICE.Designer.vb">
+      <DependentUpon>NUEVO_INDICE.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\NUEVO_INDICE.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\RELEVAMIENTO.Designer.vb">
+      <DependentUpon>RELEVAMIENTO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\RELEVAMIENTO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\RUTEO.Designer.vb">
+      <DependentUpon>RUTEO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\RUTEO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\STANDARD.Designer.vb">
+      <DependentUpon>STANDARD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\STANDARD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\TRABAJOS.Designer.vb">
+      <DependentUpon>TRABAJOS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\TRABAJOS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\USUARIO.Designer.vb">
+      <DependentUpon>USUARIO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\USUARIO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\VISTAORDINAL.Designer.vb">
+      <DependentUpon>VISTAORDINAL.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS SECUNDARIOS\VISTAORDINAL.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS APOYO\VER_ORDINAL_BOT.Designer.vb">
+      <DependentUpon>VER_ORDINAL_BOT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS APOYO\VER_ORDINAL_BOT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OBRAS_MDUDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OBRAS_MDUDataSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ESCRITORIO.resx">
+      <DependentUpon>ESCRITORIO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\FUENTE_EDICION.resx">
+      <DependentUpon>FUENTE_EDICION.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\F_NOTIFICACION.resx">
+      <DependentUpon>F_NOTIFICACION.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\GEO.resx">
+      <DependentUpon>GEO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\OC_LISTADO.resx">
+      <DependentUpon>OC_LISTADO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\SERVICIOS.resx">
+      <DependentUpon>SERVICIOS.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\VER_ORD_AGENDA.resx">
+      <DependentUpon>VER_ORD_AGENDA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\ORDEN.resx">
+      <DependentUpon>ORDEN.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS SECUNDARIOS\STANDARD_MATERIALES.resx">
+      <DependentUpon>STANDARD_MATERIALES.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REPORTES\AVANCE_OBRAS_MDU.rdlc" />
+    <EmbeddedResource Include="FORMS REPORTE\INFORME_SERVICIOS.resx">
+      <DependentUpon>INFORME_SERVICIOS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS REPORTE\REPORTE_OBRACIVIL.resx">
+      <DependentUpon>REPORTE_OBRACIVIL.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REPORTES\REPORTE_OC.rdlc" />
+    <EmbeddedResource Include="REPORTES\INFORME_FUENTES.rdlc" />
+    <EmbeddedResource Include="FORMS REPORTE\VER_INFORME_FUENTES.resx">
+      <DependentUpon>VER_INFORME_FUENTES.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS REPORTE\VER_INFORME_INDICE.resx">
+      <DependentUpon>VER_INFORME_INDICE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\FORMAGE.resx">
+      <DependentUpon>FORMAGE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REPORTES\INFORME_INDICES.rdlc" />
+    <EmbeddedResource Include="REPORTES\INFORME_MATERIALES.rdlc" />
+    <EmbeddedResource Include="FORMS APOYO\ABOUT.resx">
+      <DependentUpon>ABOUT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\BUSQUEDA.resx">
+      <DependentUpon>BUSQUEDA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\ORDINALES.resx">
+      <DependentUpon>ORDINALES.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\DATOS.resx">
+      <DependentUpon>DATOS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\DETALLE.resx">
+      <DependentUpon>DETALLE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\FORMORDENES.resx">
+      <DependentUpon>FORMORDENES.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\GENERADORES.resx">
+      <DependentUpon>GENERADORES.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\FUENTES.resx">
+      <DependentUpon>FUENTES.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\DASHBOARD.resx">
+      <DependentUpon>DASHBOARD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\LOGIN.resx">
+      <DependentUpon>LOGIN.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\FOpenFileDialog.resx">
+      <DependentUpon>FOpenFileDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS REPORTE\VER_INFORME_MATERIALES.resx">
+      <DependentUpon>VER_INFORME_MATERIALES.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS SECUNDARIOS\NUEVO_INDICE.resx">
+      <DependentUpon>NUEVO_INDICE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\MATERIALES.resx">
+      <DependentUpon>MATERIALES.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REPORTES\GESTIONES_MDU_PROGRAMADAS.rdlc" />
+    <EmbeddedResource Include="FORMS APOYO\GRAF_GESTION.resx">
+      <DependentUpon>GRAF_GESTION.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REPORTES\INFORME_MDU_COMPLETO.rdlc" />
+    <EmbeddedResource Include="FORMS REPORTE\INFORME_MDU_GESTIONESPROGRAMADAS.resx">
+      <DependentUpon>INFORME_MDU_GESTIONESPROGRAMADAS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REPORTES\INFORME_MDU_PERMISORES.rdlc" />
+    <EmbeddedResource Include="FORMS REPORTE\INFORME_MDU_PERMISORES.resx">
+      <DependentUpon>INFORME_MDU_PERMISORES.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\INGRESO_MDU.resx">
+      <DependentUpon>INGRESO_MDU.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\HISTORIALRED.resx">
+      <DependentUpon>HISTORIALRED.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\NOTASVERS.resx">
+      <DependentUpon>NOTASVERS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\MISGESTIONES.resx">
+      <DependentUpon>MISGESTIONES.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\MJE_FINALIZARTRAB.resx">
+      <DependentUpon>MJE_FINALIZARTRAB.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS SECUNDARIOS\NUEVAGESTION.resx">
+      <DependentUpon>NUEVAGESTION.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS SECUNDARIOS\NUEVOTRABAJO.resx">
+      <DependentUpon>NUEVOTRABAJO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\MENSAJERIA.resx">
+      <DependentUpon>MENSAJERIA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\PROCESOS.resx">
+      <DependentUpon>PROCESOS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\RELEVAMIENTO.resx">
+      <DependentUpon>RELEVAMIENTO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REPORTES\REPORTE_MDU_TRABAJOSPREVISTOS.rdlc" />
+    <EmbeddedResource Include="REPORTES\REPORTE_SERVICIOS.rdlc" />
+    <EmbeddedResource Include="REPORTES\RUTEO.rdlc" />
+    <EmbeddedResource Include="FORMS APOYO\RUTEO.resx">
+      <DependentUpon>RUTEO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS SECUNDARIOS\STANDARD.resx">
+      <DependentUpon>STANDARD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS SECUNDARIOS\TRABAJOS.resx">
+      <DependentUpon>TRABAJOS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\USUARIO.resx">
+      <DependentUpon>USUARIO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS SECUNDARIOS\VISTAORDINAL.resx">
+      <DependentUpon>VISTAORDINAL.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS APOYO\VER_ORDINAL_BOT.resx">
+      <DependentUpon>VER_ORDINAL_BOT.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
+    <None Include="Datasets\ANALISIS_AGDataSet.xsc">
+      <DependentUpon>ANALISIS_AGDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\ANALISIS_AGDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ANALISIS_AGDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Datasets\ANALISIS_AGDataSet.xss">
+      <DependentUpon>ANALISIS_AGDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\BASEFUENTESDataSet.xsc">
+      <DependentUpon>BASEFUENTESDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\BASEFUENTESDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BASEFUENTESDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Datasets\BASEFUENTESDataSet.xss">
+      <DependentUpon>BASEFUENTESDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\INFORME_FUENTESDataSet.xsc">
+      <DependentUpon>INFORME_FUENTESDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\INFORME_FUENTESDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>INFORME_FUENTESDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Datasets\INFORME_FUENTESDataSet.xss">
+      <DependentUpon>INFORME_FUENTESDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\MDUDataSet.xsc">
+      <DependentUpon>MDUDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\MDUDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MDUDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Datasets\MDUDataSet.xss">
+      <DependentUpon>MDUDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\INFORME_INDICEDataSet.xsc">
+      <DependentUpon>INFORME_INDICEDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\INFORME_INDICEDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>INFORME_INDICEDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Datasets\INFORME_INDICEDataSet.xss">
+      <DependentUpon>INFORME_INDICEDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\INDICESDataSet.xsc">
+      <DependentUpon>INDICESDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\INDICESDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>INDICESDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Datasets\INDICESDataSet.xss">
+      <DependentUpon>INDICESDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="Datasets\OPERACIONES_LOGDataSet.xsc">
+      <DependentUpon>OPERACIONES_LOGDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\OPERACIONES_LOGDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OPERACIONES_LOGDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Datasets\OPERACIONES_LOGDataSet.xss">
+      <DependentUpon>OPERACIONES_LOGDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\ORDENESDataSet.xsc">
+      <DependentUpon>ORDENESDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\ORDENESDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ORDENESDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Datasets\ORDENESDataSet.xss">
+      <DependentUpon>ORDENESDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OBRAS_MDUDataSet.xsc">
+      <DependentUpon>OBRAS_MDUDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OBRAS_MDUDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OBRAS_MDUDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OBRAS_MDUDataSet.xss">
+      <DependentUpon>OBRAS_MDUDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Resources\Etiqueta180gris.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Etiqueta40gris.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Etieuta60gris.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh celeste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh blanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh amarillo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\REDONDO1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\REDONDO4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\msvcr100.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\SqlServerSpatial110.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x86\msvcr100.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x86\SqlServerSpatial110.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\pala %281%29.png" />
+    <None Include="Resources\logout_W.png" />
+    <None Include="Resources\BTN_ORDEN_W.png" />
+    <None Include="Resources\BANNER_ORDEN_NUEVA_W.png" />
+    <None Include="Resources\BANNER_ORDEN_EDITAR_W.png" />
+    <None Include="Resources\advertencia.png" />
+    <None Include="Resources\pngwing.com.png" />
+    <None Include="Resources\FIBRA_HOVER.png" />
+    <Content Include="SqlServerTypes\Loader.cs" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\calendario.png" />
+    <None Include="Resources\llamada.png" />
+    <None Include="Resources\edificio %281%29.png" />
+    <None Include="Resources\alambrado.png" />
+    <None Include="Resources\transformador %281%29.png" />
+    <None Include="Resources\P_LATERAL.png" />
+    <None Include="Resources\ad_tec.png" />
+    <None Include="Resources\ad_tec_ACTIVO.png" />
+    <None Include="Resources\FUENTE.png" />
+    <None Include="Resources\FUENTE_ACTIVO.png" />
+    <None Include="Resources\AGENDA.png" />
+    <None Include="Resources\AGENDA_ACTIVO.png" />
+    <None Include="Resources\CHAT.png" />
+    <None Include="Resources\ASIGNADO.png" />
+    <None Include="Resources\EDIFICIO.png" />
+    <None Include="Resources\menos_W.png" />
+    <None Include="Resources\PantallaCompleta_W.png" />
+    <None Include="Resources\restore_W.png" />
+    <None Include="Resources\alambrado_ACTIVO.png" />
+    <None Include="Resources\BTNCancelar.png" />
+    <None Include="Resources\BUSQUEDA.png" />
+    <None Include="Resources\BUSQUEDA_ACTIVO.png" />
+    <None Include="Resources\RED.png" />
+    <None Include="Resources\RED_ACTIVO.png" />
+    <None Include="Resources\FIBRA.png" />
+    <None Include="Resources\FIBRA_ACTIVO.png" />
+    <None Include="Resources\DESPACHO.png" />
+    <None Include="Resources\DESPACHO_ACTIVO.png" />
+    <None Include="Resources\EDIFICIO_ACTIVO.png" />
+    <None Include="Resources\MENSAJES.png" />
+    <None Include="Resources\MENSAJES_ACTIVO.png" />
+    <None Include="Resources\ASIGNADO_ACTIVO.png" />
+    <None Include="Resources\PROCESOS.png" />
+    <None Include="Resources\PROCESOS_ACTIVO.png" />
+    <None Include="Resources\P_ALTA.png" />
+    <None Include="Resources\P_BAJA.png" />
+    <None Include="Resources\P_MEDIA.png" />
+    <None Include="Resources\ad_tec_HOVER.png" />
+    <None Include="Resources\AGENDA_H OVER.png" />
+    <None Include="Resources\ASIGNADO_HOVER.png" />
+    <None Include="Resources\RED_HOVER.png" />
+    <None Include="Resources\MENSAJES_HOVER.png" />
+    <None Include="Resources\FUENTE_HOVER.png" />
+    <None Include="Resources\BUSQUEDA_HOVER.png" />
+    <None Include="Resources\EDIFICIO_HOVER.png" />
+    <None Include="Resources\ad_tec_ACTIVO1.png" />
+    <None Include="Resources\PROCESOS_HOVER.png" />
+    <None Include="Resources\DESPACHO_HOVER.png" />
+    <None Include="Resources\check-in.png" />
+    <None Include="Resources\check-out.png" />
+    <None Include="Resources\AGENDA_VER.png" />
+    <None Include="Resources\AGENDA_EDITAR.png" />
+    <None Include="Resources\LoginFondo.png" />
+    <None Include="Resources\TAP_W.png" />
+    <None Include="Resources\tap.png" />
+    <None Include="Resources\FAGENDA.png" />
+    <None Include="Resources\STICK_NOTIF.png" />
+    <None Include="Resources\BANNER_GESTION_W.png" />
+    <None Include="Resources\BANNER_TRABAJO_W.png" />
+    <None Include="Resources\BANNER_ORDEN_W.png" />
+    <None Include="Resources\FONDO_AGENDA_DIA.png" />
+    <None Include="Resources\FONDO_AGENDA_DIA_OVER.png" />
+    <None Include="Resources\FONDO_AGENDA_DIA_FECHA.png" />
+    <None Include="Resources\FONDO.png" />
+    <None Include="Resources\FAGENDA_W.png" />
+    <None Include="Resources\BTN_AGENDA_ACTIVO.png" />
+    <None Include="Resources\BTN_GestAsig.png" />
+    <None Include="Resources\BTN_OrdAsig.png" />
+    <None Include="Resources\BTN_TraAsig.png" />
+    <None Include="Resources\BANNER_GESTION.png" />
+    <None Include="Resources\PLUS.png" />
+    <None Include="Resources\BANNER_TRABAJO.png" />
+    <None Include="Resources\BANNER_ORDEN.png" />
+    <None Include="Resources\BANNER_NUEVAGESTION.png" />
+    <None Include="Resources\BANNER_NUEVAGESTION1.png" />
+    <None Include="Resources\BTNGRAL_DEFAULT.png" />
+    <None Include="Resources\BTNGRAL_OVER.png" />
+    <None Include="Resources\BTNGRAL_PRESS.png" />
+    <None Include="Resources\BASURA.png" />
+    <None Include="Resources\BANNER_FUENTE.png" />
+    <None Include="Resources\BANNER_FUENTE1.png" />
+    <None Include="Resources\LARGE\10000_clear_large%402x.png" />
+    <None Include="Resources\LARGE\10001_clear_large%402x.png" />
+    <None Include="Resources\LARGE\10010_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\11000_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\11001_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\11010_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\11011_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\11020_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\11021_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\11030_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\11031_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\20000_fog_large%402x.png" />
+    <None Include="Resources\LARGE\21000_fog_light_large%402x.png" />
+    <None Include="Resources\LARGE\21010_fog_light_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\21011_fog_light_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\21020_fog_light_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\21021_fog_light_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\21030_fog_light_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\21031_fog_light_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\21060_fog_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\21061_fog_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\21070_fog_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\21071_fog_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\21080_fog_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\21081_fog_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\40000_drizzle_large%402x.png" />
+    <None Include="Resources\LARGE\40010_rain_large%402x.png" />
+    <None Include="Resources\LARGE\42000_rain_light_large%402x.png" />
+    <None Include="Resources\LARGE\42010_rain_heavy_large%402x.png" />
+    <None Include="Resources\LARGE\42020_rain_heavy_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42030_drizzle_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\42031_drizzle_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\42040_drizzle_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42041_drizzle_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42050_drizzle_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42051_drizzle_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42080_rain_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42081_rain_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42090_rain_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\42091_rain_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\42100_rain_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42101_rain_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42110_rain_heavy_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\42111_rain_heavy_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\42120_rain_heavy_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42121_rain_heavy_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42130_rain_light_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\42131_rain_light_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\42140_rain_light_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42141_rain_light_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42150_rain_light_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\42151_rain_light_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\50000_snow_large%402x.png" />
+    <None Include="Resources\LARGE\50010_flurries_large%402x.png" />
+    <None Include="Resources\LARGE\51000_snow_light_large%402x.png" />
+    <None Include="Resources\LARGE\51010_snow_heavy_large%402x.png" />
+    <None Include="Resources\LARGE\51020_snow_light_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\51021_snow_light_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\51030_snow_light_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51031_snow_light_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51040_snow_light_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51041_snow_light_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51050_snow_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\51051_snow_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\51060_snow_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51061_snow_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51070_snow_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51071_snow_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51150_flurries_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\51151_flurries_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\51160_flurries_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51161_flurries_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51170_flurries_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51171_flurries_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51190_snow_heavy_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\51191_snow_heavy_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\51200_snow_heavy_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51201_snow_heavy_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51210_snow_heavy_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51211_snow_heavy_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\60020_freezing_rain_drizzle_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\60021_freezing_rain_drizzle_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\60030_freezing_rain_drizzle_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\60031_freezing_rain_drizzle_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\60040_freezing_rain_drizzle_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\60041_freezing_rain_drizzle_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\62000_freezing_rain_light_large%402x.png" />
+    <None Include="Resources\LARGE\62010_freezing_rain_heavy_large%402x.png" />
+    <None Include="Resources\LARGE\62020_freezing_rain_heavy_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\62021_freezing_rain_heavy_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\62030_freezing_rain_light_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\62031_freezing_rain_light_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\62050_freezing_rain_light_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\62051_freezing_rain_light_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\62070_freezing_rain_heavy_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\62071_freezing_rain_heavy_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\62080_freezing_rain_heavy_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\62081_freezing_rain_heavy_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\62090_freezing_rain_light_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\62091_freezing_rain_light_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\62130_freezing_rain_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\62131_freezing_rain_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\62140_freezing_rain_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\62141_freezing_rain_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\62150_freezing_rain_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\62151_freezing_rain_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\70000_ice_pellets_large%402x.png" />
+    <None Include="Resources\LARGE\71010_ice_pellets_heavy_large%402x.png" />
+    <None Include="Resources\LARGE\71020_ice_pellets_light_large%402x.png" />
+    <None Include="Resources\LARGE\71070_ice_pellets_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\71071_ice_pellets_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\71080_ice_pellets_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\71081_ice_pellets_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\71090_ice_pellets_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\71091_ice_pellets_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\71100_ice_pellets_light_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\71101_ice_pellets_light_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\71110_ice_pellets_light_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\71111_ice_pellets_light_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\71120_ice_pellets_light_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\71121_ice_pellets_light_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\71130_ice_pellets_heavy_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\71131_ice_pellets_heavy_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\71140_ice_pellets_heavy_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\71141_ice_pellets_heavy_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\71160_ice_pellets_heavy_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\71161_ice_pellets_heavy_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\80000_tstorm_large%402x.png" />
+    <None Include="Resources\LARGE\80010_tstorm_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\80011_tstorm_mostly_clear_large%402x.png" />
+    <None Include="Resources\LARGE\80020_tstorm_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\80021_tstorm_mostly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\80030_tstorm_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\80031_tstorm_partly_cloudy_large%402x.png" />
+    <None Include="Resources\LARGE\51080_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\51100_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\51120_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\51140_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\51220_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\62040_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\62060_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\62120_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\62200_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\62220_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\71030_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\71050_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\71060_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\71150_wintry_mix_large%402x.png" />
+    <None Include="Resources\LARGE\71170_wintry_mix_large%402x.png" />
+    <None Include="Resources\BANNER_MDU.png" />
+    <None Include="Resources\BANNER_SUPERIOR.png" />
+    <None Include="Resources\equital.png" />
+    <None Include="Resources\BANNER_ORDEN_EDITAR.png" />
+    <None Include="Resources\BANNER_ORDEN_NUEVA.png" />
+    <None Include="Resources\ExcelLogo1.png" />
+    <None Include="Resources\bot.png" />
+    <None Include="Resources\BOTON.png" />
+    <None Include="Resources\BTN_NODO.png" />
+    <None Include="Resources\BTN_NODO_overl.png" />
+    <None Include="Resources\BTN_NODO_sel.png" />
+    <None Include="Resources\BTN_GESTION.png" />
+    <None Include="Resources\BTN_GESTION_FUENTE.png" />
+    <None Include="Resources\BTN_GESTION_MDU.png" />
+    <None Include="Resources\BTN_GESTION_RED.png" />
+    <None Include="Resources\DEMORADO_BANNER.png" />
+    <None Include="Resources\FINALIZADO_BANNER.png" />
+    <None Include="Resources\INGRESADO_BANNER.png" />
+    <None Include="Resources\INICIADO_BANNER.png" />
+    <None Include="Resources\MODAL_PANEL.png" />
+    <None Include="Resources\BTN_TRABAJO.png" />
+    <None Include="Resources\BTN_TRABAJO_ACTPLANOS.png" />
+    <None Include="Resources\BTN_TRABAJO_ADMINISTRATIVO.png" />
+    <None Include="Resources\BTN_TRABAJO_APROBIMM.png" />
+    <None Include="Resources\BTN_TRABAJO_APROBPERMISOR.png" />
+    <None Include="Resources\BTN_TRABAJO_ASOCIADORED.png" />
+    <None Include="Resources\BTN_TRABAJO_AUTOCABLEADO.png" />
+    <None Include="Resources\BTN_TRABAJO_CAMBIOUBICACION.png" />
+    <None Include="Resources\BTN_TRABAJO_DISEÑO.png" />
+    <None Include="Resources\BTN_TRABAJO_EJECUCION.png" />
+    <None Include="Resources\BTN_TRABAJO_INSTFUENTEOBRA.png" />
+    <None Include="Resources\BTN_TRABAJO_OBRACIVIL.png" />
+    <None Include="Resources\BTN_TRABAJO_PREDICTIVO.png" />
+    <None Include="Resources\BTN_TRABAJO_PRESUPUESTO.png" />
+    <None Include="Resources\BTN_TRABAJO_PREVENTIVO.png" />
+    <None Include="Resources\BTN_TRABAJO_RELEVAMIENTO.png" />
+    <None Include="Resources\BTN_TRABAJO_REPARAFUENTE.png" />
+    <None Include="Resources\BTN_TRABAJO_RETFUENTEOBRA.png" />
+    <None Include="Resources\BTN_TRABAJO_TRABAJORED.png" />
+    <None Include="Resources\BTN_TRABAJO_REEMPFUENTE.png" />
+    <None Include="Resources\BTN_TRABAJO_MEDYCONTROL.png" />
+    <None Include="Resources\BTN_VERMAS.png" />
+    <None Include="Resources\MenuTrabajo.png" />
+    <None Include="Resources\Arrow-right.png" />
+    <None Include="Resources\BTNGRAL_DEFAULT_W.png" />
+    <None Include="Resources\BTNGRAL_ACTIVO_W.png" />
+    <None Include="Resources\BTNGRAL_OVER_W.png" />
+    <None Include="Resources\BTNSuperiorACTIVO_W.png" />
+    <None Include="Resources\BTNSuperiorDEFAULT_W.png" />
+    <None Include="Resources\BTNSuperiorOVER_W.png" />
+    <None Include="Resources\BTN_ORDEN.png" />
+    <None Include="Resources\klipartz.com %282%29.png" />
+    <None Include="Resources\klipartz.com.png" />
+    <None Include="Resources\klipartz.com %2821%29.png" />
+    <None Include="Resources\klipartz.com %2825%29.png" />
+    <None Include="Resources\ndc8rneTe.png" />
+    <None Include="Resources\klipartz.com %285%29.png" />
+    <None Include="Resources\klipartz.com %2823%29.png" />
+    <None Include="Resources\klipartz.com %2826%29.png" />
+    <None Include="Resources\128x128.png" />
+    <None Include="Resources\klipartz.com %2828%29.png" />
+    <None Include="Resources\klipartz.com %2830%29.png" />
+    <None Include="Resources\klipartz.com %286%29.png" />
+    <None Include="Resources\klipartz.com %2816%29.png" />
+    <None Include="Resources\Mapa de bits en Sin título-1.png" />
+    <None Include="Resources\klipartz.com %2833%29.png" />
+    <None Include="Resources\DERECHA.png" />
+    <None Include="Resources\klipartz.com %2834%29.png" />
+    <None Include="Resources\ARRIBA.png" />
+    <None Include="Resources\ABAJO.png" />
+    <None Include="Resources\document-centering-horizontally.png" />
+    <None Include="Resources\IZQUIERDA.png" />
+    <None Include="Resources\BookAdressBlack.png" />
+    <None Include="Resources\BookAdressOver.png" />
+    <None Include="Resources\BTNAsignado.png" />
+    <None Include="Resources\BTNAsignadoClick.png" />
+    <None Include="Resources\BTNAsignadoOver.png" />
+    <None Include="Resources\BTNBlack.png" />
+    <None Include="Resources\BTNCancelarBlanco.png" />
+    <None Include="Resources\BTNCancelarOver.png" />
+    <None Include="Resources\BTNMensajesClick.png" />
+    <None Include="Resources\BTNMensajesOVER.png" />
+    <None Include="Resources\BTNOver.png" />
+    <None Include="Resources\BTNSuperior.png" />
+    <None Include="Resources\correo-electronico-vacio.png" />
+    <None Include="Resources\FULLfondo.jpg" />
+    <None Include="Resources\fullscreen.png" />
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\menos.png" />
+    <None Include="Resources\PanelInferiorFondo.png" />
+    <None Include="Resources\PantallaCompleta.png" />
+    <None Include="Resources\ProcesosOver.png" />
+    <None Include="Resources\ProocesosBlack.png" />
+    <None Include="Resources\restore.png" />
+    <None Include="Resources\SettingBlack.png" />
+    <None Include="Resources\SettingOver.png" />
+    <None Include="Resources\UserBlack.png" />
+    <None Include="Resources\UserOver.png" />
+    <None Include="Resources\LoginFondo_124103.jpg" />
+    <Content Include="Resources\LOGO_APP_124202.ico" />
+    <None Include="Resources\BTNClick.png" />
+    <None Include="Resources\BTNSuperiorACTIVO.png" />
+    <None Include="Resources\BTN_OC_MENU.png" />
+    <None Include="Resources\BTN_OC_Pend.png" />
+    <None Include="Resources\ExcelLogo.png" />
+    <None Include="Resources\reporte logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="packages\Selenium.WebDriver.4.7.0\build\Selenium.WebDriver.targets" Condition="Exists('packages\Selenium.WebDriver.4.7.0\build\Selenium.WebDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Selenium.WebDriver.4.7.0\build\Selenium.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.4.7.0\build\Selenium.WebDriver.targets'))" />
+    <Error Condition="!Exists('packages\Selenium.WebDriver.ChromeDriver.108.0.5359.7100\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.ChromeDriver.108.0.5359.7100\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.Web.WebView2.1.0.1823.32\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Web.WebView2.1.0.1823.32\build\Microsoft.Web.WebView2.targets'))" />
+  </Target>
+  <Import Project="packages\Selenium.WebDriver.ChromeDriver.108.0.5359.7100\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\Selenium.WebDriver.ChromeDriver.108.0.5359.7100\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="packages\Microsoft.Web.WebView2.1.0.1823.32\build\Microsoft.Web.WebView2.targets" Condition="Exists('packages\Microsoft.Web.WebView2.1.0.1823.32\build\Microsoft.Web.WebView2.targets')" />
+</Project>

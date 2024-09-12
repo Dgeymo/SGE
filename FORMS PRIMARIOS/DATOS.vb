@@ -776,6 +776,7 @@ Public Class DATOS
                 ORD_MARCACOORDINAR_ToolStrip.Visible = False
                 ORD_ELIMINARToolStripMenuItem.Visible = False
                 ORD_REACTIVARToolStrip.Visible = False
+                ORDSeparator4.Visible = True
                 ORD_CREARORDBOTToolStrip.Visible = False
                 If DATOS_ORDENESRow.CREARORDINAL = False Then
                     If DATOS_ORDENESRow.NRO_ORDINAL = 0 Then
@@ -827,6 +828,7 @@ Public Class DATOS
                         ORD_Separator2.Visible = False
                         ORD_Separator1.Visible = False
                         ORD_Separator3.Visible = False
+                        ORDSeparator4.Visible = False
                         ORD_MARCACREAR_ToolStrip.Visible = False
                         ORD_EDITAR_ToolStrip.Text = "ORDEN Y ADJUNTOS"
                         ORD_IRAORDEN_ToolStrip.Visible = False
@@ -835,6 +837,7 @@ Public Class DATOS
                         ORD_Separator2.Visible = False
                         ORD_Separator1.Visible = False
                         ORD_Separator3.Visible = False
+                        ORDSeparator4.Visible = False
                         ORD_MARCACREAR_ToolStrip.Visible = False
                         ORD_EDITAR_ToolStrip.Text = "ORDEN Y ADJUNTOS"
                         ORD_IRAORDEN_ToolStrip.Visible = False
@@ -2303,8 +2306,8 @@ Public Class DATOS
             VARTRAB_DESCRIPCION = ""
             VARTRAB_ZONA = ""
             VARTRAB_MZNA = ""
-            VARTRAB_CALLE = DATOS_GESTIONRow("CALLE")
-            VARTRAB_NRO = DATOS_GESTIONRow("NUMERO")
+            If DATOS_GESTIONRow.IsCALLENull = False Then VARTRAB_CALLE = DATOS_GESTIONRow("CALLE")
+            If DATOS_GESTIONRow.IsNUMERONull = False Then VARTRAB_NRO = DATOS_GESTIONRow("NUMERO")
             VARTRAB_TIPODEP = "IND"
             VARTRAB_DEP = ""
             NUEVOTRABAJO.Show(Me)

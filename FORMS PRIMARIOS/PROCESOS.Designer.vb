@@ -324,6 +324,8 @@ Partial Class PROCESOS
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.BTN_TRABAJAR_ORDENES = New System.Windows.Forms.Button()
+        Me.dt_desde_repetidos = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
         Label30 = New System.Windows.Forms.Label()
         Label29 = New System.Windows.Forms.Label()
         Label26 = New System.Windows.Forms.Label()
@@ -3326,6 +3328,24 @@ Partial Class PROCESOS
         Me.BTN_TRABAJAR_ORDENES.Text = "TRABAJAR CON ORDENES"
         Me.BTN_TRABAJAR_ORDENES.UseVisualStyleBackColor = False
         '
+        'dt_desde_repetidos
+        '
+        Me.dt_desde_repetidos.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dt_desde_repetidos.Location = New System.Drawing.Point(973, 508)
+        Me.dt_desde_repetidos.Name = "dt_desde_repetidos"
+        Me.dt_desde_repetidos.Size = New System.Drawing.Size(93, 20)
+        Me.dt_desde_repetidos.TabIndex = 407
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(923, 512)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(44, 13)
+        Me.Label2.TabIndex = 408
+        Me.Label2.Text = "DESDE"
+        '
         'PROCESOS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3333,6 +3353,8 @@ Partial Class PROCESOS
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1366, 673)
+        Me.Controls.Add(Me.dt_desde_repetidos)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.BTN_TRABAJAR_ORDENES)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -3663,4 +3685,6 @@ Partial Class PROCESOS
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents BTN_TRABAJAR_ORDENES As Button
+    Friend WithEvents dt_desde_repetidos As DateTimePicker
+    Friend WithEvents Label2 As Label
 End Class

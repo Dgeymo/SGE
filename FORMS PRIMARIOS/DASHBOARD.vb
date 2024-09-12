@@ -1518,7 +1518,7 @@ Public Class DASHBOARD
         Dim FUENTE As BASEFUENTESDataSet.FUENTERow
         Dim ORDEN As ORDENESDataSet.ORDENESRow
         'Dim INSTALACION As BASEFUENTESDataSet.INSTALACIONRow
-        Dim afectacions As ORDENESDataSet.AFECTACIONRow
+        'Dim afectacions As ORDENESDataSet.AFECTACIONRow
         'ORDENESTableAdapter.FillByINSTALACION(ORDENESDataSet.ORDENES, "0")
         'ORDENESTableAdapter.FillBySTS_FINALIZADO(ORDENESDataSet.ORDENES)
         'For X = 0 To ORDENESDataSet.ORDENES.Rows.Count - 1

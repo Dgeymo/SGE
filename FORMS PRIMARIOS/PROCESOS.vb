@@ -1180,12 +1180,13 @@ Public Class PROCESOS
 
     'BUSCAR REPETIDO - CORRECCION DE BASE DE DATOS
     Private Sub BTN_BUSCAR_REPETIDOS_Click(sender As Object, e As EventArgs) Handles BTN_BUSCAR_REPETIDOS.Click
-        ORDENESTableAdapter.FillByMAYOR_ORDENINT(ORDENESDataSet.ORDENES, ORDEN_INT)
+        ORDEN_INT = 1000
+        ORDENESTableAdapter.FillByMAYOR_ORDENINT(ORDENESDataSet.ORDENES, dt_desde_repetidos.Value.ToShortDateString)
         PROCESO_BUSQUEDA()
     End Sub
     Public Sub PROCESO_BUSQUEDA()
         For Each ORDEN In ORDENESDataSet.ORDENES
-            'PROGRESS_BAR("BUSCANDO REPETIDOS", ORDENESDataSet.ORDENES.Rows.Count, VALUE)
+            PROGRESS_BAR("BUSCANDO REPETIDOS", 0, 0, 0, 0, ORDENESDataSet.ORDENES.Rows.Count, VALUE)
             VALUE += 1
             ORDEN_INT = ORDEN.NRO_ORDENINT
             If ORDEN.NRO_ORDINAL <> 0 Then
@@ -1208,8 +1209,9 @@ Public Class PROCESOS
     End Sub
 
     Private Sub BTN_SIGUIENTE_Click(sender As Object, e As EventArgs) Handles BTN_SIGUIENTE.Click
-        ORDENESTableAdapter.FillByMAYOR_ORDENINT(ORDENESDataSet.ORDENES, ORDEN_INT)
+        ORDENESTableAdapter.FillByMAYOR_ORDENINT(ORDENESDataSet.ORDENES, dt_desde_repetidos.Value.ToShortDateString)
         VALUE = 0
+
         PROCESO_BUSQUEDA()
     End Sub
 

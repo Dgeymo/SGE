@@ -30373,21 +30373,22 @@ Namespace ORDENESDataSetTableAdapters
             Me._commandCollection(36).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("INSTALACIONRUS", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "INSTALACIONRUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(37) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(37).Connection = Me.Connection
-            Me._commandCollection(37).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
-                "ALLE, CANTIDAD_SERVICIOS, CARPETA, CAUSACIERRE, CAUSARIGEN, CLASEDEP, CONTACTONO"& _ 
-                "MBRE, CONTACTOTEL, COORDINAR, CREARORDINAL, CUADRILLA, DEPENDENCIA, DESAGENDAR, "& _ 
-                "DOCUMENTO_FISICO, DUPLICADAA, DUPLICADADE, ESQU1, ESQU2, FECHAAGEND, FECHACIERRE"& _ 
-                ", FECHAFIN, FECHAINGRESO, FECHAINICESTIMADO, FECHAINICIO, FECHASOL, FECHA_ASIGNA"& _ 
-                "DA, GENERADOR, GEST_SOLICITADO, ID_CALLE, ID_GESTION, ID_TRABAJO, INSTALACION, I"& _ 
-                "NSTALACIONRUS, MANZANA, MOTIVOCIERRE, MOTIVOORIGEN, NODO, NOMBREMDU, NOTIF, NRO,"& _ 
-                " NRO_ORDENINT, NRO_ORDINAL, ORDAPOYADO, ORDENDEP, ORDEN_OC, ORDORIGEN, ORDPADRE,"& _ 
-                " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
-                "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
-                " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR FROM ORDENES WHERE (NRO_ORDENINT > ?) ORDER BY NRO_"& _ 
-                "ORDENINT"
+            Me._commandCollection(37).CommandText = "SELECT        ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRI"& _ 
+                "BUTO, CALLE, CANTIDAD_SERVICIOS, CARPETA, CAUSACIERRE, CAUSARIGEN, CLASEDEP, CON"& _ 
+                "TACTONOMBRE, CONTACTOTEL, COORDINAR, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         CREARORDINAL, CU"& _ 
+                "ADRILLA, DEPENDENCIA, DESAGENDAR, DOCUMENTO_FISICO, DUPLICADAA, DUPLICADADE, ESQ"& _ 
+                "U1, ESQU2, FECHAAGEND, FECHACIERRE, FECHAFIN, FECHAINGRESO, FECHAINICESTIMADO, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         FECHAINICIO, FECHASOL, FECHA_ASIGNADA, GENERADOR, GEST"& _ 
+                "_SOLICITADO, ID_CALLE, ID_GESTION, ID_TRABAJO, INSTALACION, INSTALACIONRUS, MANZ"& _ 
+                "ANA, MOTIVOCIERRE, MOTIVOORIGEN, NODO, NOMBREMDU, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         NOT"& _ 
+                "IF, NRO, NRO_ORDENINT, NRO_ORDINAL, ORDAPOYADO, ORDENDEP, ORDEN_OC, ORDORIGEN, O"& _ 
+                "RDPADRE, ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RE"& _ 
+                "CLAMOSTOT, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         RECURSO, SECTORDESTINO, SECTORGEN, SECTORO"& _ 
+                "PE, SOLICITANTE, STATUS, TESTIMADO, TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPR"& _ 
+                "EVISTO_UT, TREALIZADO, TURNOAGEND, ZONA, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         OBS_TRABAJO_"& _ 
+                "A_REALIZAR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ORDENES"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (FECHACIERRE > ?)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY NR"& _ 
+                "O_ORDENINT"
             Me._commandCollection(37).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(37).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(37).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHACIERRE", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHACIERRE", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(38) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(38).Connection = Me.Connection
             Me._commandCollection(38).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -32112,9 +32113,13 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByMAYOR_ORDENINT(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal NRO_ORDENINT As Integer) As Integer
+        Public Overloads Overridable Function FillByMAYOR_ORDENINT(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHACIERRE As Global.System.Nullable(Of Date)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(37)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(NRO_ORDENINT,Integer)
+            If (FECHACIERRE.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHACIERRE.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -32126,9 +32131,13 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy42(ByVal NRO_ORDENINT As Integer) As ORDENESDataSet.ORDENESDataTable
+        Public Overloads Overridable Function GetDataBy42(ByVal FECHACIERRE As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(37)
-            Me.Adapter.SelectCommand.Parameters(0).Value = CType(NRO_ORDENINT,Integer)
+            If (FECHACIERRE.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHACIERRE.Value,Date)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
             Dim dataTable As ORDENESDataSet.ORDENESDataTable = New ORDENESDataSet.ORDENESDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable

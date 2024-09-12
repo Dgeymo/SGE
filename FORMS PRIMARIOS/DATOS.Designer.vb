@@ -267,7 +267,7 @@ Partial Class DATOS
         Me.ORD_MARCACOORDINAR_ToolStrip = New System.Windows.Forms.ToolStripMenuItem()
         Me.ORD_Separator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ORD_AGENDAR_ToolStrip = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ORDSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ORD_ELIMINARToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ORD_ELIMINAR_ToolStrip = New System.Windows.Forms.ToolStripMenuItem()
         Me.ORD_REACTIVARToolStrip = New System.Windows.Forms.ToolStripMenuItem()
@@ -492,6 +492,7 @@ Partial Class DATOS
         Me.NOMARCHIVODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ETI_TRABDESCRIPCION = New System.Windows.Forms.TextBox()
         Me.PanelGESTION = New System.Windows.Forms.Panel()
+        Me.LBL_GEST_RUS = New System.Windows.Forms.Label()
         Me.BTN_VER_GOOGLE = New System.Windows.Forms.Button()
         Me.BTN_SERVICIO = New System.Windows.Forms.Button()
         Me.LBL_ATRIBUTO = New System.Windows.Forms.Label()
@@ -547,7 +548,6 @@ Partial Class DATOS
         Me.ORDENESDataSetBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TAREASBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.FUNCIONARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.LBL_GEST_RUS = New System.Windows.Forms.Label()
         Me.MENU_GESTION.SuspendLayout()
         Me.MENU_TRABAJO.SuspendLayout()
         Me.MENU_ORDEN.SuspendLayout()
@@ -2009,7 +2009,7 @@ Partial Class DATOS
         'MENU_ORDEN
         '
         Me.MENU_ORDEN.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.MENU_ORDEN.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ORD_IMPRIMIR_ToolStrip, Me.ORD_EDITAR_ToolStrip, Me.ORD_STATUS_ToolStrip, Me.ORD_Separator1, Me.ORD_CREAR_ToolStrip, Me.ORD_Separator2, Me.ORD_MARCACREAR_ToolStrip, Me.ORD_MARCACOORDINAR_ToolStrip, Me.ORD_Separator3, Me.ORD_AGENDAR_ToolStrip, Me.ToolStripSeparator1, Me.ORD_ELIMINARToolStripMenuItem, Me.ORD_REACTIVARToolStrip, Me.ORD_CREARORDBOTToolStrip})
+        Me.MENU_ORDEN.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ORD_IMPRIMIR_ToolStrip, Me.ORD_EDITAR_ToolStrip, Me.ORD_STATUS_ToolStrip, Me.ORD_Separator1, Me.ORD_CREAR_ToolStrip, Me.ORD_Separator2, Me.ORD_MARCACREAR_ToolStrip, Me.ORD_MARCACOORDINAR_ToolStrip, Me.ORD_Separator3, Me.ORD_AGENDAR_ToolStrip, Me.ORDSeparator4, Me.ORD_ELIMINARToolStripMenuItem, Me.ORD_REACTIVARToolStrip, Me.ORD_CREARORDBOTToolStrip})
         Me.MENU_ORDEN.Name = "MENU_TRABAJOS"
         Me.MENU_ORDEN.ShowImageMargin = False
         Me.MENU_ORDEN.Size = New System.Drawing.Size(275, 248)
@@ -2167,10 +2167,10 @@ Partial Class DATOS
         Me.ORD_AGENDAR_ToolStrip.Size = New System.Drawing.Size(274, 22)
         Me.ORD_AGENDAR_ToolStrip.Text = "AGENDAR"
         '
-        'ToolStripSeparator1
+        'ORDSeparator4
         '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(271, 6)
+        Me.ORDSeparator4.Name = "ORDSeparator4"
+        Me.ORDSeparator4.Size = New System.Drawing.Size(271, 6)
         '
         'ORD_ELIMINARToolStripMenuItem
         '
@@ -2301,6 +2301,7 @@ Partial Class DATOS
         Me.TableAdapterManager4.MAT_TRANSITOTableAdapter = Nothing
         Me.TableAdapterManager4.ORDINALESTableAdapter = Nothing
         Me.TableAdapterManager4.PLANOSTableAdapter = Me.PLANOSTableAdapter
+        Me.TableAdapterManager4.TecnicosTableAdapter = Nothing
         Me.TableAdapterManager4.UpdateOrder = REDES.INDICESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'OrdenesDataSet2
@@ -2416,6 +2417,7 @@ Partial Class DATOS
         Me.TableAdapterManager.MENSAJERIATableAdapter = Nothing
         Me.TableAdapterManager.OBESERVACIONESTableAdapter = Nothing
         Me.TableAdapterManager.ORDENESTableAdapter = Nothing
+        Me.TableAdapterManager.PRESUPUESTOTableAdapter = Nothing
         Me.TableAdapterManager.RELACION_FALLAACTIVIDADTableAdapter = Nothing
         Me.TableAdapterManager.REPORTEORDINALESTableAdapter = Nothing
         Me.TableAdapterManager.SECTORESTableAdapter = Nothing
@@ -4536,6 +4538,22 @@ Partial Class DATOS
         Me.PanelGESTION.Size = New System.Drawing.Size(1379, 225)
         Me.PanelGESTION.TabIndex = 277
         '
+        'LBL_GEST_RUS
+        '
+        Me.LBL_GEST_RUS.AutoSize = True
+        Me.LBL_GEST_RUS.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.LBL_GEST_RUS.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.LBL_GEST_RUS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.LBL_GEST_RUS.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LBL_GEST_RUS.ForeColor = System.Drawing.Color.White
+        Me.LBL_GEST_RUS.Location = New System.Drawing.Point(49, 197)
+        Me.LBL_GEST_RUS.Name = "LBL_GEST_RUS"
+        Me.LBL_GEST_RUS.Size = New System.Drawing.Size(22, 16)
+        Me.LBL_GEST_RUS.TabIndex = 280
+        Me.LBL_GEST_RUS.Text = "22"
+        Me.LBL_GEST_RUS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.LBL_GEST_RUS.Visible = False
+        '
         'BTN_VER_GOOGLE
         '
         Me.BTN_VER_GOOGLE.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -5235,22 +5253,6 @@ Partial Class DATOS
         '
         Me.FUNCIONARIOSBindingSource.DataMember = "FUNCIONARIOS"
         '
-        'LBL_GEST_RUS
-        '
-        Me.LBL_GEST_RUS.AutoSize = True
-        Me.LBL_GEST_RUS.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.LBL_GEST_RUS.Cursor = System.Windows.Forms.Cursors.Arrow
-        Me.LBL_GEST_RUS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.LBL_GEST_RUS.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBL_GEST_RUS.ForeColor = System.Drawing.Color.White
-        Me.LBL_GEST_RUS.Location = New System.Drawing.Point(49, 197)
-        Me.LBL_GEST_RUS.Name = "LBL_GEST_RUS"
-        Me.LBL_GEST_RUS.Size = New System.Drawing.Size(22, 16)
-        Me.LBL_GEST_RUS.TabIndex = 280
-        Me.LBL_GEST_RUS.Text = "22"
-        Me.LBL_GEST_RUS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.LBL_GEST_RUS.Visible = False
-        '
         'DATOS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -5690,7 +5692,7 @@ Partial Class DATOS
     Friend WithEvents ORD_VER_RUSToolStrip As ToolStripMenuItem
     Friend WithEvents TRAB_HABILITA_ToolStrip As ToolStripMenuItem
     Friend WithEvents ORD_ELIMINARToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ORDSeparator4 As ToolStripSeparator
     Friend WithEvents ORD_ELIMINAR_ToolStrip As ToolStripMenuItem
     Friend WithEvents BTN_VER_PLANOS As Button
     Friend WithEvents BTN_AGREGAR_ZONA As Button

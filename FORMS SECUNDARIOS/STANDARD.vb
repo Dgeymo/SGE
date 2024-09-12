@@ -239,7 +239,7 @@ Public Class STANDARD
                     TXT_AFECTACION.Text = FUENTE_AFECTACION
                 End If
                 CARGA_COMBOS()
-                TXT_ING_OBSERVACIONES.Text = DATOS.ORDENESDataSet.TRABAJOS(DATOS.TRABAJOSBindingSource.Position).Item("DESCRIPCION")
+                If IsDBNull(DATOS.ORDENESDataSet.TRABAJOS(DATOS.TRABAJOSBindingSource.Position).Item("DESCRIPCION")) = False Then TXT_ING_OBSERVACIONES.Text = DATOS.ORDENESDataSet.TRABAJOS(DATOS.TRABAJOSBindingSource.Position).Item("DESCRIPCION")
 
                 TXT_ING_FECHAINICEST.Text = DATOS.ING_FECHAINICEST
                 TXT_TIEMPO_FINAL.Text = DATOS.TIEMPO_FINAL

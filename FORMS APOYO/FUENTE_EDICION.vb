@@ -37,27 +37,28 @@
             C_ESQUINA.Text = FUENTE_MOD.ESQUINA
             C_NODO.Text = FUENTE_MOD.NODO
             C_ZONAG.Text = FUENTE_MOD.ZONA
-
-            C_ID2.Text = FUENTE_MOD.ID2
-            C_IMEI.Text = FUENTE_MOD.IMEI
-            C_IP.Text = FUENTE_MOD.IPMODEM
-            C_PIN.Text = FUENTE_MOD.PIN
-            C_PUK.Text = FUENTE_MOD.PUK
-            C_VPN1.Text = FUENTE_MOD.VPN1
-            C_VPN2.Text = FUENTE_MOD.VPN2
-
-            C_LEX.Text = FUENTE_MOD.LEX
-            C_MAC.Text = FUENTE_MOD.MAC
-            C_MB.Text = FUENTE_MOD.BR
-            C_RX.Text = FUENTE_MOD.RX
-            C_TR.Text = FUENTE_MOD.TR
-
-            If FUENTE_MOD.IsMODBATERIANull = False Then C_MODBAT.Text = FUENTE_MOD.MODBATERIA
-            If FUENTE_MOD.IsGABINETENull = False Then C_MODGAB.Text = FUENTE_MOD.GABINETE
-            If FUENTE_MOD.IsFECHA_BATNull = False Then FECHAFAB.Text = FUENTE_MOD.FECHA_BAT
-            If FUENTE_MOD.IsCARGA_REALNull = False Then TXT_CARGA_REAL.Text = FUENTE_MOD.CARGA_REAL
             INSTALACION.Text = FUENTE_MOD.INSTALACION_RUS
-        End If
+
+            If FUENTE_MOD.IsID2Null = False AndAlso FUENTE_MOD.ID2 <> "" Then C_ID2.Text = FUENTE_MOD.ID2 Else C_ID2.Text = "-"
+            If FUENTE_MOD.IsIMEINull = False AndAlso FUENTE_MOD.IMEI <> "" Then C_IMEI.Text = FUENTE_MOD.IMEI Else C_IMEI.Text = "-"
+            If FUENTE_MOD.IsIPMODEMNull = False AndAlso FUENTE_MOD.IPMODEM <> "" Then C_IP.Text = FUENTE_MOD.IPMODEM Else C_IP.Text = "-"
+            If FUENTE_MOD.IsPINNull = False AndAlso FUENTE_MOD.PIN <> "" Then C_PIN.Text = FUENTE_MOD.PIN Else C_PIN.Text = "-"
+            If FUENTE_MOD.IsPUKNull = False AndAlso FUENTE_MOD.PUK <> "" Then C_PUK.Text = FUENTE_MOD.PUK Else C_PUK.Text = "-"
+            If FUENTE_MOD.IsVPN1Null = False AndAlso FUENTE_MOD.VPN1 <> "" Then C_VPN1.Text = FUENTE_MOD.VPN1 Else C_VPN1.Text = "-"
+            If FUENTE_MOD.IsVPN2Null = False AndAlso FUENTE_MOD.VPN2 <> "" Then C_VPN2.Text = FUENTE_MOD.VPN2 Else C_VPN2.Text = "-"
+            If FUENTE_MOD.IsMACNull = False AndAlso FUENTE_MOD.MAC <> "" Then C_MAC.Text = FUENTE_MOD.MAC Else C_MAC.Text = "-"
+
+            If FUENTE_MOD.IsLEXNull = False AndAlso FUENTE_MOD.LEX <> "" Then C_LEX.Text = FUENTE_MOD.LEX Else C_LEX.Text = 0
+            If FUENTE_MOD.IsBRNull = False AndAlso FUENTE_MOD.BR <> "" Then C_MB.Text = FUENTE_MOD.BR Else C_MB.Text = 0
+            If FUENTE_MOD.IsRXNull = False AndAlso FUENTE_MOD.RX <> "" Then C_RX.Text = FUENTE_MOD.RX Else C_RX.Text = 0
+            If FUENTE_MOD.IsTRNull = False AndAlso FUENTE_MOD.TR <> "" Then C_TR.Text = FUENTE_MOD.TR Else C_TR.Text = 0
+
+            If FUENTE_MOD.IsMODBATERIANull = False Then C_MODBAT.Text = FUENTE_MOD.MODBATERIA Else C_MODBAT.Text = "N/A"
+            If FUENTE_MOD.IsGABINETENull = False Then C_MODGAB.Text = FUENTE_MOD.GABINETE Else C_MODGAB.Text = "N/A"
+            If FUENTE_MOD.IsFECHA_BATNull = False Then FECHAFAB.Text = FUENTE_MOD.FECHA_BAT Else FECHAFAB.Text = "N/A"
+            If FUENTE_MOD.IsCARGA_REALNull = False Then TXT_CARGA_REAL.Text = FUENTE_MOD.CARGA_REAL
+
+            End If
     End Sub
     Private Sub INDICE_CALLESDataGridView_KeyDown(sender As Object, e As KeyEventArgs) Handles INDICE_CALLESDataGridView.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -317,10 +318,10 @@
                 FUENTE_MOD.CARGA_REAL = TXT_CARGA_REAL.Text
             End If
 
-            If C_LEX.Text <> FUENTE_MOD.LEX Then FUENTE_MOD.LEX = C_LEX.Text
-            If C_MB.Text <> FUENTE_MOD.BR Then FUENTE_MOD.BR = C_MB.Text
-            If C_RX.Text <> FUENTE_MOD.RX Then FUENTE_MOD.RX = C_RX.Text
-            If C_TR.Text <> FUENTE_MOD.TR Then FUENTE_MOD.TR = C_TR.Text
+            If FUENTE_MOD.IsLEXNull = False AndAlso C_LEX.Text <> FUENTE_MOD.LEX Then FUENTE_MOD.LEX = C_LEX.Text
+            If FUENTE_MOD.IsBRNull = False AndAlso C_MB.Text <> FUENTE_MOD.BR Then FUENTE_MOD.BR = C_MB.Text
+            If FUENTE_MOD.IsRXNull = False AndAlso C_RX.Text <> FUENTE_MOD.RX Then FUENTE_MOD.RX = C_RX.Text
+            If FUENTE_MOD.IsTRNull = False AndAlso C_TR.Text <> FUENTE_MOD.TR Then FUENTE_MOD.TR = C_TR.Text
 
             If C_MODFUENTE.Text = "COM" Then
                 FUENTE_MOD.CANT_BAT = 0
@@ -368,10 +369,11 @@
         NewINSTALACION.NRO = FUENTE_MOD.PUERTA
         NewINSTALACION.IDFUENTE = FUENTE_MOD.ID_FUENTE
         If FUENTE_MOD.IsESQUINANull = False Then NewINSTALACION.ESQUINA = FUENTE_MOD.ESQUINA
-        NewINSTALACION.MODFUENTE = FUENTE_MOD.MODFUENTE
+        If FUENTE_MOD.IsMODFUENTENull = False Then NewINSTALACION.MODFUENTE = FUENTE_MOD.MODFUENTE
         If FUENTE_MOD.IsGABINETENull = False Then NewINSTALACION.MODGABINETE = FUENTE_MOD.GABINETE
         If FUENTE_MOD.IsMODBATERIANull = False Then NewINSTALACION.MODBATERIA = FUENTE_MOD.MODBATERIA
         If FUENTE_MOD.IsCANT_BATNull = False Then NewINSTALACION.CANTBATERIA = FUENTE_MOD.CANT_BAT
+
         If FUENTE_MOD.IsRXNull = False Then NewINSTALACION.RX = FUENTE_MOD.RX
         If FUENTE_MOD.IsTRNull = False Then NewINSTALACION.TR = FUENTE_MOD.TR
         If FUENTE_MOD.IsBRNull = False Then NewINSTALACION.BR = FUENTE_MOD.BR
@@ -395,7 +397,7 @@
         If FUENTE_MOD.IsVPN2Null = False Then NewINSTALACION.VPN2 = FUENTE_MOD.VPN2
 
         ''DETERMINA MODELO DE FUENTE
-        If FUENTE_MOD.MODFUENTE <> "" Then
+        If FUENTE_MOD.IsMODFUENTENull = False AndAlso FUENTE_MOD.MODFUENTE <> "N/A" Then
             Select Case FUENTE_MOD.MODFUENTE
                 Case "COM"
                     TIPOFUENTE = "FC"
@@ -403,22 +405,22 @@
                     TIPOFUENTE = "FS"
             End Select
         End If
-        If FUENTE_MOD.RX <> "" Then
+        If FUENTE_MOD.IsRXNull = False AndAlso FUENTE_MOD.RX <> "" Then
             RX = FUENTE_MOD.RX
         Else
             RX = 0
         End If
-        If FUENTE_MOD.TR <> "" Then
+        If FUENTE_MOD.IsTRNull = False AndAlso FUENTE_MOD.TR <> "" Then
             TR = FUENTE_MOD.TR
         Else
             TR = 0
         End If
-        If FUENTE_MOD.BR <> "" Then
+        If FUENTE_MOD.IsBRNull = False AndAlso FUENTE_MOD.BR <> "" Then
             BR = FUENTE_MOD.BR
         Else
             BR = 0
         End If
-        If FUENTE_MOD.LEX <> "" Then
+        If FUENTE_MOD.IsLEXNull = False AndAlso FUENTE_MOD.LEX <> "" Then
             LE = FUENTE_MOD.LEX
         Else
             LE = 0

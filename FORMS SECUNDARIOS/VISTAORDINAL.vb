@@ -404,11 +404,11 @@
         End If
         DUP_PRIORIDAD = ORDENRow("PRIORIDAD")
         DUP_NODO = ORDENRow("NODO")
-        DUP_IDCALLE = ORDENRow("ID_CALLE")
+        If IsDBNull(ORDENRow("ID_CALLE")) = False Then DUP_IDCALLE = ORDENRow("ID_CALLE")
         DUP_ZONA = ORDENRow("ZONA")
         DUP_CALLE = ORDENRow("CALLE")
         DUP_NRO = ORDENRow("NRO")
-        DUP_MANZANA = ORDENRow("MANZANA")
+        If IsDBNull(ORDENRow("MANZANA")) = False Then DUP_MANZANA = ORDENRow("MANZANA")
         If ORDENRow.IsGEST_SOLICITADONull = False Then DUP_GEST_SOL = ORDENRow.GEST_SOLICITADO
         DUP_DEPENDENCIA = 0
         DUP_TIPODEP = "IND"
@@ -459,7 +459,7 @@
         NewORDENRow("PRIORIDAD") = DUP_PRIORIDAD
 
         NewORDENRow("NODO") = DUP_NODO
-        NewORDENRow("ID_CALLE") = DUP_IDCALLE
+        If IsNumeric(DUP_IDCALLE) = True Then NewORDENRow("ID_CALLE") = DUP_IDCALLE
         NewORDENRow("ZONA") = DUP_ZONA
         NewORDENRow("CALLE") = DUP_CALLE
         NewORDENRow("NRO") = DUP_NRO

@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 Public Class SERVICIOS
-
+    ReadOnly emailDestino As String = "diseno@equital.com.uy"
     Dim CAMPO(7)
     Dim DATO(7)
     Dim FILTRO(7)
@@ -117,6 +117,7 @@ Public Class SERVICIOS
         End If
     End Sub
     Private Sub BTN_INGRESAR_Click(sender As Object, e As EventArgs) Handles BTN_INGRESAR.Click
+        Cursor = Cursors.WaitCursor
         If TXT_NODO.Text = "" Then
             MsgBox("COMPLETE EL NODO")
             TXT_NODO.Focus()
@@ -160,6 +161,10 @@ Public Class SERVICIOS
             End If
         End If
         NEW_ORDEN()
+
+        ORDENESTableAdapter.FillByMOT_ORIGEN(ORDENESDataSet.ORDENES, "SERVICIOS")
+        ORDENESBindingSource1.MoveLast()
+        Cursor = Cursors.Default
     End Sub
     Private Sub NEW_GESTION()
         'INGRESAMOS LA GESTION NUEVA
@@ -346,24 +351,26 @@ Public Class SERVICIOS
         'GUARDA EL HISTORICO PROCESADO
         ORDENESDataSet.HISTORICO.AddHISTORICORow(NewHISTORICORow)
         HISTORICOTableAdapter.Update(ORDENESDataSet.HISTORICO)
-        AGREGAR_ARCHIVO()
+        If DGV_ADJUNTO.Rows.Count > 0 Then
+            AGREGAR_ARCHIVO()
+        End If
+
         'ENVIA MENSAJE 
-        'MENSAJE = ""
 
-        'If ORDEN_SERVICIORow.NOTIF = True Then
-        '    SECTORESTableAdapter.FillBySECTOR(ORDENESDataSet.SECTORES, SECTOR)
-        '    Dim REMITENTE_SECTOR As String = ORDENESDataSet.SECTORES.Rows(0).Item("EMAIL")
+        If CB_CAUSAS.Text = "SOLICITADO POR TERCEROS" Or CB_PRIORIDAD.Text = "URGENTE" Or CB_PRIORIDAD.Text = "ALTA" Then
+            SECTORESTableAdapter.FillBySECTOR(ORDENESDataSet.SECTORES, SECTOR)
+            Dim REMITENTE_SECTOR As String = ORDENESDataSet.SECTORES.Rows(0).Item("EMAIL")
 
-        '    MENSAJE = "Hola, Zelmar. " & vbNewLine ' & Split(COMB_CUADRILLA.Text, " ")(0) & ". " & vbNewLine
-        '    MENSAJE += "Se genera la orden " & ORDEN_SERVICIORow.NRO_ORDENINT & " con motivo SERVICIOS, asignado."
-        '    If TXT_OBS.Text <> "" Then
-        '        MENSAJE += vbNewLine & vbNewLine & "Detalle de la orden:" & vbNewLine & "    "
-        '        MENSAJE += TXT_OBS.Text
-        '    End If
-        '    ENVIAR_EMAIL(CB_PRIORIDAD.Text, "DISENO@EQUITAL.COM.UY", "NUEVA ORDEN SERVICIO", MENSAJE, REMITENTE, REMITENTE_SECTOR) '
-        'End If
+            MENSAJE = "Se genera la orden " & ORDEN_SERVICIORow.NRO_ORDENINT & " con motivo: SERVICIOS, asignado."
+            If TXT_OBS.Text <> "" Then
+                MENSAJE += vbNewLine & vbNewLine & "Detalle de la orden:" & vbNewLine & "    "
+                MENSAJE += TXT_OBS.Text
+            End If
+            ENVIAR_EMAIL(CB_PRIORIDAD.Text, emailDestino, "NUEVA ORDEN SERVICIO", MENSAJE, REMITENTE) '
+        End If
 
         BORRAR_CAMPOS()
+
     End Sub
     Private Sub BORRAR_CAMPOS()
         TXT_NODO.Text = ""
@@ -406,6 +413,7 @@ Public Class SERVICIOS
         End If
     End Sub
     Private Sub AGREGAR_ARCHIVO()
+
         Dim PathADJUNTOS As String = "G:\\OPERACIONES\ADJUNTOS"
         Dim MSGBOX1 As MsgBoxResult
         Dim mover As Boolean = False
@@ -592,15 +600,25 @@ Public Class SERVICIOS
     End Sub
     Private Sub DGV_ORDENES_Click(sender As Object, e As EventArgs) Handles DGV_ORDENES.Click
         If DGV_ORDENES.Rows.Count > 0 Then
-            OBESERVACIONESTableAdapter.FillByNROORDENINT(ORDENESDataSet.OBESERVACIONES, DGV_ORDENES.SelectedCells.Item(0).Value)
-            If ORDENESDataSet.OBESERVACIONES.Rows.Count > 0 Then
-                OBS_ORIGEN.Text = ORDENESDataSet.OBESERVACIONES.Rows(0).Item("OBSORIGEN")
-                If IsDBNull(ORDENESDataSet.OBESERVACIONES.Rows(0).Item("OBSCIERRE")) = False Then OBS_CIERRE.Text = ORDENESDataSet.OBESERVACIONES.Rows(0).Item("OBSCIERRE")
-            Else
-                OBS_CIERRE.Text = ""
-                OBS_ORIGEN.Text = ""
+            ORDENESTableAdapter.FillByIDORDENINT(OrdenesDataSet1.ORDENES, DGV_ORDENES.SelectedCells.Item(0).Value)
+            If OrdenesDataSet1.ORDENES.Rows.Count > 0 Then
+                ORDEN_SERVICIORow = OrdenesDataSet1.ORDENES.Rows(0)
+                If ORDEN_SERVICIORow.OC_APROBADO Then
+                    BTN_APROBAR.Enabled = False
+                Else
+                    BTN_APROBAR.Enabled = True
+                End If
+                OBESERVACIONESTableAdapter.FillByNROORDENINT(ORDENESDataSet.OBESERVACIONES, ORDEN_SERVICIORow.NRO_ORDENINT)
+                If ORDENESDataSet.OBESERVACIONES.Rows.Count > 0 Then
+                    OBS_ORIGEN.Text = ORDENESDataSet.OBESERVACIONES.Rows(0).Item("OBSORIGEN")
+                    If IsDBNull(ORDENESDataSet.OBESERVACIONES.Rows(0).Item("OBSCIERRE")) = False Then OBS_CIERRE.Text = ORDENESDataSet.OBESERVACIONES.Rows(0).Item("OBSCIERRE")
+                Else
+                    OBS_CIERRE.Text = ""
+                    OBS_ORIGEN.Text = ""
+                End If
             End If
-
+        Else
+            BTN_APROBAR.Enabled = False
         End If
     End Sub
     Private Sub BTN_BUSCAR_Click(sender As Object, e As EventArgs)
@@ -669,22 +687,21 @@ Public Class SERVICIOS
     End Sub
     Private Sub DGV_ORDENES_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles DGV_ORDENES.MouseDoubleClick
         If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
-            ORDEN_SERVICIORow = ORDENESDataSet.ORDENES.Rows(ORDENESBindingSource1.Position)
+            '  ORDEN_SERVICIORow = ORDENESDataSet.ORDENES.Rows()
 
-            GESTIONTableAdapter.FillByIDGESTION(ORDENESDataSet.GESTION, ORDEN_SERVICIORow("ID_GESTION"))
+            GESTIONTableAdapter.FillByIDGESTION(ORDENESDataSet.GESTION, DGV_ORDENES.CurrentRow.Cells(2).Value)
             GESTION_SERVICIORow = ORDENESDataSet.GESTION.Rows(0)
             'TRABAJOSTableAdapter.FillByID_TRABAJO(ORDENESDataSet.TRABAJOS, ORDEN_SERVICIORow("ID_TRABAJO"))
             'BUSQUEDA_TRABAJOROW = DGV_ORDENES.TRABAJOS.Rows(0)
 
-            ACCESO_TIPO = "ORDEN"
+            ACCESO_TIPO = "TRABAJO"
             ACCESO_DESDE = "BUSCADOR"
-            ACCESO_GESTION = ORDEN_SERVICIORow("ID_GESTION")
-            ACCESO_TRABAJO = ORDEN_SERVICIORow("ID_TRABAJO")
-            NROORDENINT = ORDEN_SERVICIORow("NRO_ORDENINT")
+            ACCESO_GESTION = DGV_ORDENES.CurrentRow.Cells(2).Value
+            ACCESO_TRABAJO = DGV_ORDENES.CurrentRow.Cells(3).Value
+            NROORDENINT = DGV_ORDENES.CurrentRow.Cells(0).Value
 
             If GESTION_SERVICIORow("AREA") = "MDU" Then
                 INGRESO_AREA = "MDU"
-
             Else
                 INGRESO_AREA = GESTION_SERVICIORow("AREA")
                 If GESTION_SERVICIORow("AREA") = "RED" Then
@@ -710,4 +727,23 @@ Public Class SERVICIOS
             e.Handled = True
         End If
     End Sub
+
+    Private Sub BTN_APROBAR_Click(sender As Object, e As EventArgs) Handles BTN_APROBAR.Click
+        '   If CB_CAUSAS.Text = "SOLICITADO POR TERCEROS" Or CB_PRIORIDAD.Text = "URGENTE" Or CB_PRIORIDAD.Text = "ALTA" Then
+        SECTORESTableAdapter.FillBySECTOR(ORDENESDataSet.SECTORES, SECTOR)
+        Dim REMITENTE_SECTOR As String = ORDENESDataSet.SECTORES.Rows(0).Item("EMAIL")
+
+        MENSAJE = "Se APRUEBA la orden " & ORDEN_SERVICIORow.NRO_ORDENINT & ", habilitando poder finalizar la incidencia."
+        If TXT_OBS.Text <> "" Then
+            MENSAJE += vbNewLine & vbNewLine & "Detalle de la orden:" & vbNewLine & "    "
+            MENSAJE += OBS_ORIGEN.Text
+        End If
+        ORDEN_SERVICIORow.OC_APROBADO = True
+        ORDENESTableAdapter.Update(ORDEN_SERVICIORow)
+        NOTIFICACION("SYS", "orden APROBADA")
+        ENVIAR_EMAIL("BAJA", emailDestino, "APROBACION ORDEN SERVICIO", MENSAJE, REMITENTE) '
+        'End If
+    End Sub
+
+
 End Class

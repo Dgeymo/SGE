@@ -595,8 +595,9 @@
         If BOX_CARPETA.Text = "" Then BOT_VERHISTORIAL.Enabled = False Else BOT_VERHISTORIAL.Enabled = True
     End Sub
     Private Sub BOT_VERHISTORIAL_Click(sender As Object, e As EventArgs) Handles BOT_VERHISTORIAL.Click
-        ABRIR_DATOS()
+
         ACCESO_TIPO = "CARPETA"
+        ABRIR_DATOS()
         'HISTORIAL.Show()
     End Sub
     Private Sub ABRIR_DATOS()
@@ -1790,40 +1791,40 @@
         'Next
     End Sub
 
-    Private Sub BTN_AGREGAR_Click(sender As Object, e As EventArgs) Handles BTN_AGREGAR.Click
-        Dim CANT_X As Integer = 0
-        Dim POS_X As Integer = 10
-        Dim POS_Y As Integer = 10
+    'Private Sub BTN_AGREGAR_Click(sender As Object, e As EventArgs) Handles BTN_AGREGAR.Click
+    '    Dim CANT_X As Integer = 0
+    '    Dim POS_X As Integer = 10
+    '    Dim POS_Y As Integer = 10
 
-        GESTIONTableAdapter2.FillByGEST_XTIPO(OBRAS_MDUDataSet.GESTION, "OBRA NUEVA HFC")
+    '    GESTIONTableAdapter2.FillByGEST_XTIPO(OBRAS_MDUDataSet.GESTION, "OBRA NUEVA HFC")
 
-        For X = 0 To OBRAS_MDUDataSet.GESTION.Rows.Count - 1
-            If CANT_X = 8 Then
-                CANT_X = 0
-                POS_Y += 55
+    '    For X = 0 To OBRAS_MDUDataSet.GESTION.Rows.Count - 1
+    '        If CANT_X = 8 Then
+    '            CANT_X = 0
+    '            POS_Y += 55
 
-            End If
-            CREAR_GESTION(Me.Panel2, POS_X + (155 * CANT_X), POS_Y + 55, X, Color.Red, 150, 50)
-            CANT_X += 1
-        Next
+    '        End If
+    '        CREAR_GESTION(Me.Panel2, POS_X + (155 * CANT_X), POS_Y + 55, X, Color.Red, 150, 50)
+    '        CANT_X += 1
+    '    Next
 
 
 
-        Dim OBRA As OBRAS_MDUDataSet.GESTIONRow
-        'For X = 0 To ORDENESDataSet.GESTION.Rows.Count - 1
-        '    GESTION = ORDENESDataSet.GESTION.Rows(X)
-        '    OBRA = OBRAS_MDUDataSet.GESTION.NewGESTIONRow()
-        '    OBRA.DIRECCION = GESTION.CALLE
-        '    OBRA.PUERTA = GESTION.NUMERO
-        '    OBRA.FECHA_INGRESADO = GESTION.FECHAINGRESADA
-        '    If GESTION.IsFECHAINICIADANull = False Then OBRA.FECHA_INICIADO = GESTION.FECHAINICIADA
-        '    OBRA.STATUS = GESTION.STATUS
-        '    OBRA.OBSERVACIONES = GESTION.DESCRIPCION
-        '    OBRAS_MDUDataSet.GESTION.AddGESTIONRow(OBRA)
-        '    OBRA_LISTA.Items.Add(ORDENESDataSet.GESTION.Rows(X).Item("CALLE"))
-        'Next
-        'GESTIONTableAdapter1.Update(OBRAS_MDUDataSet.GESTION)
-    End Sub
+    '    Dim OBRA As OBRAS_MDUDataSet.GESTIONRow
+    '    'For X = 0 To ORDENESDataSet.GESTION.Rows.Count - 1
+    '    '    GESTION = ORDENESDataSet.GESTION.Rows(X)
+    '    '    OBRA = OBRAS_MDUDataSet.GESTION.NewGESTIONRow()
+    '    '    OBRA.DIRECCION = GESTION.CALLE
+    '    '    OBRA.PUERTA = GESTION.NUMERO
+    '    '    OBRA.FECHA_INGRESADO = GESTION.FECHAINGRESADA
+    '    '    If GESTION.IsFECHAINICIADANull = False Then OBRA.FECHA_INICIADO = GESTION.FECHAINICIADA
+    '    '    OBRA.STATUS = GESTION.STATUS
+    '    '    OBRA.OBSERVACIONES = GESTION.DESCRIPCION
+    '    '    OBRAS_MDUDataSet.GESTION.AddGESTIONRow(OBRA)
+    '    '    OBRA_LISTA.Items.Add(ORDENESDataSet.GESTION.Rows(X).Item("CALLE"))
+    '    'Next
+    '    'GESTIONTableAdapter1.Update(OBRAS_MDUDataSet.GESTION)
+    'End Sub
 
 
 

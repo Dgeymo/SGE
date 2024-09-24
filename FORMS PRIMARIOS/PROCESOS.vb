@@ -48,6 +48,8 @@ Public Class PROCESOS
     Dim VALUE As Integer = 1
 
     Private Sub PROCESOS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'ORDENESDataSet.OBESERVACIONES' Puede moverla o quitarla según sea necesario.
+        Me.OBESERVACIONESTableAdapter.Fill(Me.ORDENESDataSet.OBESERVACIONES)
         'INDICES_INCIAL()
         'FECHALIMITE = DateAdd(DateInterval.Day, -30, Now)
         'Me.Refresh()
@@ -147,6 +149,7 @@ Public Class PROCESOS
                         Case "DEMORADO"
                             TRABAJOSRow("STATUS") = "DEMORADO"
                             NewHISTORICORow("STATUSACTUAL") = "DEMORADO"
+
                     End Select
                     TRABAJOSTableAdapter.Update(TRABAJOSRow)
 
@@ -416,7 +419,7 @@ Public Class PROCESOS
                         PROGRESS_BAR("ANALIZANDO FINALIZAR TRABAJOS", 0, 0, ORDENESDataSet.TRABAJOS.Rows.Count, X + 1, ORDENESDataSet.ORDENES.Rows.Count, I + 1)
                         ORDENESRow = ORDENESDataSet.ORDENES.Rows(I)
                         'CUENTA LAS ORDENES EN STATUS FINALIZADO Y LAS QUE NO FIGURAN COMO REALIZADO LAS MANDA A DUPLICAR
-                        Select Case ORDENESRow("STATUS")
+                        Select Case Trim(ORDENESRow("STATUS"))
                             Case "FINALIZADO"
                                 Select Case Trim(ORDENESRow("MOTIVOCIERRE"))
                                     Case "REALIZADO"
@@ -424,7 +427,7 @@ Public Class PROCESOS
                                     Case Else
                                         'CREA_COPIAORDEN()
                                 End Select
-                            Case "ADUPLICAR", "DUPLICADO", "CANCELADO"
+                            Case "DUPLICADO", "CANCELADO"
                                 CANT_FINALIZADAS = CANT_FINALIZADAS + 1
                         End Select
 
@@ -551,16 +554,18 @@ Public Class PROCESOS
                         If GESTIONRow.IsCARPETANull = False Then
                             If GESTIONRow("AREA") = "MDU" Then
                                 EdificiosTableAdapter.FillByCARPETA(MDUDataSet.Edificios, GESTIONRow("CARPETA"), GESTIONRow("CARPETA"))
-                                EdificiosRow = MDUDataSet.Edificios.Rows(0)
-                                Select Case GESTIONRow("TIPOGESTION")
-                                    Case "Mant Preventivo", "MANT PREVENTIVO"
-                                        EdificiosRow("GESTMANT") = False
-                                    Case "Obra Nueva", "OBRA NUEVA"
-                                        EdificiosRow("GESTOBR") = False
-                                        EdificiosRow("CABLEADO") = True
-                                End Select
+                                If MDUDataSet.Edificios.Rows.Count > 0 Then
+                                    EdificiosRow = MDUDataSet.Edificios.Rows(0)
+                                    Select Case GESTIONRow("TIPOGESTION")
+                                        Case "Mant Preventivo", "MANT PREVENTIVO"
+                                            EdificiosRow("GESTMANT") = False
+                                        Case "Obra Nueva", "OBRA NUEVA"
+                                            EdificiosRow("GESTOBR") = False
+                                            EdificiosRow("CABLEADO") = True
+                                    End Select
+                                End If
                             End If
-                        End If
+                            End If
                         If GESTIONRow("REQUERIDO") = True Then
                                 GESTIONTableAdapter.GEST_QUITARREQUERIDO(GESTIONRow("ID_GESTION"))
                             End If
@@ -746,7 +751,7 @@ Public Class PROCESOS
                         ORDENESDataSet.TRABAJOS.Rows(T).Item("REQUERIDO") = False
                     End If
                 Else
-                    ORDENESDataSet.TRABAJOS.Rows(T).Item("REQUERIDO") = True
+                    ORDENESDataSet.TRABAJOS.Rows(T).Item("REQUERIDO") = False
                 End If
                 PROGRESS_BAR("ANALIZANDO TRABAJOS REQUERIDOS", 0, 0, ORDENESDataSet.TRABAJOS.Rows.Count, T + 1, 0, 0)
             Next
@@ -1274,7 +1279,7 @@ Public Class PROCESOS
                                     NEWSERVICIORow.TIPO_STATUS = HISTORICO.STATUSACTUAL
                                     NEWSERVICIORow.FECHA_INICIO = HISTORICO.FECHA
                                     FECHA_ASIGNADO = HISTORICO.FECHA.AddDays(-1).ToShortDateString
-                                    NEWSERVICIORow.EJECUTANTE = HISTORICO.EJECUTANTE
+                                    '  NEWSERVICIORow.EJECUTANTE = HISTORICO.EJECUTANTE
                                     If SERVICIO.NRO_ORDENINT <> NROORDENINT Then
                                         TOTAL_DIAS = DateDiff(DateInterval.Day, FECHA_FINALIZADO, FECHA_ASIGNADO.AddDays(1))
                                         If TOTAL_DIAS > 3 Then
@@ -1314,7 +1319,7 @@ Public Class PROCESOS
                                     End If
                                     NEWSERVICIORow.TIPO_STATUS = "REALIZADO"
                                     NEWSERVICIORow.FECHA_INICIO = HISTORICO.FECHA
-                                    NEWSERVICIORow.EJECUTANTE = HISTORICO.EJECUTANTE
+                                    'NEWSERVICIORow.EJECUTANTE = HISTORICO.EJECUTANTE
                                     If H < ORDENESDataSet.HISTORICO.Rows.Count - 1 Then
                                         HISTORICO_1 = ORDENESDataSet.HISTORICO.Rows(H + 1)
                                         If HISTORICO_1.STATUSACTUAL = "FINALIZADO" Then
@@ -1359,7 +1364,7 @@ Public Class PROCESOS
                                         End If
                                         NEWSERVICIORow.TIPO_STATUS = HISTORICO.STATUSACTUAL
                                         NEWSERVICIORow.FECHA_INICIO = HISTORICO.FECHA
-                                        NEWSERVICIORow.EJECUTANTE = HISTORICO.EJECUTANTE
+                                        'NEWSERVICIORow.EJECUTANTE = HISTORICO.EJECUTANTE
                                         FECHA_ASIGNADO = HISTORICO.FECHA.ToShortDateString
                                         If FECHA_FINALIZADO = FECHA_ASIGNADO Then
                                             NEWSERVICIORow.TIEMPO_DEMORA = 0
@@ -1417,6 +1422,11 @@ Public Class PROCESOS
             HISTORICOTableAdapter.FillBySERVICIOS_REACTIVADOS(ORDENESDataSet.HISTORICO, SERVICIO.NRO_ORDENINT)
             NEWSERVICIORow = ORDENESDataSet.INFORME_SERVICIOS.NewINFORME_SERVICIOSRow
             NEWSERVICIORow.ID_ORDEN = SERVICIO.NRO_ORDENINT
+            OBESERVACIONESTableAdapter.FillByORDENINT(ORDENESDataSet.OBESERVACIONES, SERVICIO.NRO_ORDENINT)
+            If ORDENESDataSet.OBESERVACIONES.Rows.Count > 0 Then
+                NEWSERVICIORow.OBSERVACIONES = ORDENESDataSet.OBESERVACIONES.Rows(0).Item("OBSORIGEN")
+            End If
+
             If SERVICIO.IsFECHA_ASIGNADANull = False Then NEWSERVICIORow.FECHA_INICIO = SERVICIO.FECHA_ASIGNADA.ToShortDateString Else NEWSERVICIORow.FECHA_INICIO = SERVICIO.FECHASOL.ToShortDateString
             If SERVICIO.STATUS = "FINALIZADO" Then NEWSERVICIORow.FECHA_FIN = SERVICIO.FECHAFIN.ToShortDateString
             NEWSERVICIORow.TIPO_STATUS = SERVICIO.MOTIVOORIGEN
@@ -1457,13 +1467,13 @@ Public Class PROCESOS
                     NEWOBRARow.GESTION_TIPO = TGESTION.TIPOGESTION
                     NEWOBRARow.GESTION_AREA = TGESTION.AREA
                     NEWOBRARow.SOLICITADO_X = TGESTION.SOLICITANTE
-                    NEWOBRARow.GESTION_FECHAING = TGESTION.FECHAINGRESADA
-                    NEWOBRARow.DIRECCION = TOBRARow.CALLE & " " & TOBRARow.NRO
+                    NEWOBRARow.GESTION_FECHAING = TGESTION.FECHAINGRESADA.ToShortDateString
+                    NEWOBRARow.DIRECCION = "'" & TOBRARow.CALLE & "  " & TOBRARow.NRO
                     NEWOBRARow.TRABAJO_STATUS = TOBRARow.STATUS
 
                     HISTORICOTableAdapter.FillByIDTRABAJO_ASIG_RESPONSABLE(ORDENESDataSet.HISTORICO, TOBRARow.Id_TRABAJO)
                     If ORDENESDataSet.HISTORICO.Rows.Count > 0 Then
-                        NEWOBRARow.TRABAJO_FASIGNADO = ORDENESDataSet.HISTORICO.Rows(0).Item("FECHA")
+                        NEWOBRARow.TRABAJO_FASIGNADO = CDate(ORDENESDataSet.HISTORICO.Rows(0).Item("FECHA")).ToShortDateString
                         NEWOBRARow.ASIGNADO_X = ORDENESDataSet.HISTORICO.Rows(0).Item("EJECUTANTE")
                     End If
                     ORDENESDataSet.TOBRAS.AddTOBRASRow(NEWOBRARow)

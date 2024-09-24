@@ -18,21 +18,21 @@ Module MODULODASHBOARD
 
     Public Sub SiBoton(BTNOB As Object)
         If BTNOB.Text = "AdminTEC" Then
-            DASHBOARD.BTN_ADMIN.BackgroundImage = My.Resources.BTNBlack
+            DASHBOARD.BTN_ADMIN.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
         ElseIf BTNOB.Text = "MDU" Then
-            DASHBOARD.BTN_MDU.BackgroundImage = My.Resources.BTNBlack
+            DASHBOARD.BTN_MDU.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
         ElseIf BTNOB.Text = "RED" Then
-            DASHBOARD.BTN_RED.BackgroundImage = My.Resources.BTNBlack
+            DASHBOARD.BTN_RED.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
         ElseIf BTNOB.Text = "BUSCADOR" Then
-            DASHBOARD.BTN_BUSCADOR.BackgroundImage = My.Resources.BTNBlack
+            DASHBOARD.BTN_BUSCADOR.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
         ElseIf BTNOB.Text = "ORDENES" Then
-            DASHBOARD.BTN_DESPACHO.BackgroundImage = My.Resources.BTNBlack
+            DASHBOARD.BTN_DESPACHO.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
         ElseIf BTNOB.Text = "FIBRA" Then
-            DASHBOARD.BTN_FIBRA.BackgroundImage = My.Resources.BTNBlack
+            DASHBOARD.BTN_FTTB.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
         ElseIf BTNOB.Text = "FUENTES" Then
-            DASHBOARD.BTN_FUENTES.BackgroundImage = My.Resources.BTNBlack
+            DASHBOARD.BTN_FUENTES.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
         ElseIf BTNOB.Text = "AGENDA" Then
-            DASHBOARD.BTN_AGENDA.BackgroundImage = My.Resources.BTNBlack
+            DASHBOARD.BTN_AGENDA.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
         End If
     End Sub
     Public Sub EstiloBTNCerrar(ByVal boton As Integer)

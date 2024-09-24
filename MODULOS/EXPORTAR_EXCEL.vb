@@ -48,12 +48,15 @@ Module EXPORTAR_EXCEL
                     '    Case 5
                     '        ' objHojaExcel.Cells(i, RetornaLetra(Jx + 1)).NumberFormat = "dd/mm/yyyy"
                     '        objHojaExcel.Cells(i, RetornaLetra(Jx + 1)) = CDate(DtReport.Rows(Ix).Item(Jx))
-                    '    Case Else
-                    If IsDate(DtReport.Rows(Ix).Item(Jx)) Then
-                        objHojaExcel.Cells(i, RetornaLetra(Jx + 1)) = Format(CDate(DtReport.Rows(Ix).Item(Jx)), "MM/dd/yyyy")
-                    Else
-                        objHojaExcel.Cells(i, RetornaLetra(Jx + 1)) = DtReport.Rows(Ix).Item(Jx).ToString
+                    '''    Case Else
+                    'If IsDate(DtReport.Rows(Ix).Item(Jx)) Then
+                    '    objHojaExcel.Cells(i, RetornaLetra(Jx + 1)) = Format(CDate(DtReport.Rows(Ix).Item(Jx)), "MM/dd/yyyy")
+                    'Else
+                    If IsDBNull(DtReport.Rows(Ix).Item(Jx)) = False AndAlso DtReport.Rows(Ix).Item(Jx) = "SIN AGENDAMIENTO" Then
+                        objHojaExcel.Cells(i, RetornaLetra(Jx + 1)).Font.Color = Color.Green
                     End If
+                    objHojaExcel.Cells(i, RetornaLetra(Jx + 1)) = DtReport.Rows(Ix).Item(Jx).ToString
+                    '  End If
 
                     ' End Select
                 Next
@@ -74,11 +77,12 @@ Module EXPORTAR_EXCEL
             Dim objRango As Excel.Range = objHojaExcel.Range("A1:" & RetornaLetra(DtReport.Columns.Count) & DtReport.Rows.Count + 1)
             '  objRango.Columns.Hidden(objRango.Range("A1", "A" & DtReport.Rows.Count + 1))
             objRango.Select()
-            '  objRango.Columns.AutoFit()
+            objRango.Columns.AutoFit()
             objRango.AutoFilter(1, , VisibleDropDown:=True)
             'objRango.Columns("A1:A" & DtReport.Rows.Count + 1).Width = 0
             objRango.Font.Name = "TAHOMA"
             objRango.Font.Size = 10
+            objRango.HorizontalAlignment = HorizontalAlignment.Center
             objRango.Borders.LineStyle = 0
             ' Crear un total general
             ' objHojaExcel.Cells(DtReport.Rows.Count + 2, 1) = "Total Filas: "

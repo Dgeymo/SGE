@@ -323,8 +323,8 @@ Public Class DATOS
                                     GESTIONBindingSource.MoveLast()
                                     DATOS_GESTIONRow = ORDENESDataSet.GESTION.Rows(GESTIONBindingSource.Position)
                                     ID_GESTION = DATOS_GESTIONRow("Id_GESTION")
-                                    DIRECCION_MDU = DATOS_GESTIONRow("CALLE")
-                                    NUMERO_MDU = DATOS_GESTIONRow("NUMERO")
+                                    If IsDBNull(DATOS_GESTIONRow("CALLE")) = False Then DIRECCION_MDU = DATOS_GESTIONRow("CALLE")
+                                    If IsDBNull(DATOS_GESTIONRow("NUMERO")) = False Then NUMERO_MDU = DATOS_GESTIONRow("NUMERO")
 
                                     LLENA_CAMPOSGESTION()
                                     LLENA_TRABAJOS()
@@ -355,8 +355,8 @@ Public Class DATOS
                                 Case "ORDEN"
                                     TRABAJOSTableAdapter.FillByID_TRABAJO(ORDENESDataSet.TRABAJOS, ACCESO_TRABAJO)
                                     ORDENESTableAdapter.FillByIDORDENINT(ORDENESDataSet.ORDENES, NROORDENINT)
-                                    DATOS_TRABAJORow = ORDENESDataSet.TRABAJOS.Rows.Find(ACCESO_TRABAJO)
-                                    DATOS_ORDENESRow = ORDENESDataSet.ORDENES.Rows.Find(NROORDENINT)
+                                    DATOS_TRABAJORow = ORDENESDataSet.TRABAJOS.Rows(0)
+                                    DATOS_ORDENESRow = ORDENESDataSet.ORDENES.Rows(0)
                                     CARGA_TRABAJOS()
                                     CARGA_VALORESORDENES()
                             End Select
@@ -1663,8 +1663,8 @@ Public Class DATOS
             End If
             VARTRAB_TIPO = DATOS_TRABAJORow(("TIPOTRABAJO"))
             If DATOS_TRABAJORow.IsPROYECTO_ORDINALESNull = False Then LBL_PROYECTO.Text = DATOS_TRABAJORow.PROYECTO_ORDINALES Else LBL_PROYECTO.Text = ""
-            If IsDBNull(DATOS_TRABAJORow("FECHAINICESTIMADO")) = False Then VARTRAB_INIEST = DATOS_TRABAJORow("FECHAINICESTIMADO").ToString
-                If IsDBNull(DATOS_TRABAJORow("TIEMPOESTIMADO")) = False Then VARTRAB_TIEMEST = DATOS_TRABAJORow("TIEMPOESTIMADO")
+            If IsDBNull(DATOS_TRABAJORow("FECHAINICESTIMADO")) = False Then VARTRAB_INIEST = CDate(DATOS_TRABAJORow("FECHAINICESTIMADO")).ToShortDateString.ToString
+            If IsDBNull(DATOS_TRABAJORow("TIEMPOESTIMADO")) = False Then VARTRAB_TIEMEST = DATOS_TRABAJORow("TIEMPOESTIMADO")
                 If IsDBNull(DATOS_TRABAJORow("DESCRIPCION")) = False Then VARTRAB_DESCRIPCION = DATOS_TRABAJORow("DESCRIPCION")
                 If IsDBNull(DATOS_TRABAJORow("ZONA")) = False Then VARTRAB_ZONA = DATOS_TRABAJORow("ZONA")
                 If IsDBNull(DATOS_TRABAJORow("MANZANA")) = False Then VARTRAB_MZNA = DATOS_TRABAJORow("MANZANA")
@@ -1672,17 +1672,24 @@ Public Class DATOS
                 If IsDBNull(DATOS_TRABAJORow("NRO")) = False Then VARTRAB_NRO = DATOS_TRABAJORow("NRO")
                 If IsDBNull(DATOS_TRABAJORow("TIPODEP")) = False Then VARTRAB_TIPODEP = DATOS_TRABAJORow("TIPODEP") Else VARTRAB_TIPODEP = ""
                 If IsDBNull(DATOS_TRABAJORow("DEPENDENCIA")) = False Then VARTRAB_DEP = DATOS_TRABAJORow("DEPENDENCIA") Else VARTRAB_DEP = ""
-                If IsDBNull(DATOS_TRABAJORow("ATRIBUTO")) = False Then
-                    If DATOS_TRABAJORow("ATRIBUTO") = "" Then
-                        VARTRAB_ATRIBUTO = "HFC"
-                    Else
-                        VARTRAB_ATRIBUTO = DATOS_TRABAJORow("ATRIBUTO")
-                    End If
-                Else
+            If IsDBNull(DATOS_TRABAJORow("ATRIBUTO")) = False Then
+                If DATOS_TRABAJORow("ATRIBUTO") = "" Then
                     VARTRAB_ATRIBUTO = "HFC"
+                Else
+                    VARTRAB_ATRIBUTO = DATOS_TRABAJORow("ATRIBUTO")
                 End If
-                'CARGA LAS ETIQUETAS DE LECTURA DE LA PANTALLA DATOS
-                ETI_TRABTIPO.Text = "Trabajo tipo: " & VARTRAB_TIPO
+            Else
+                VARTRAB_ATRIBUTO = "HFC"
+            End If
+            'If DATOS_TRABAJORow.GENERADOX <> DATOS_TRABAJORow.ASIGNADOA Then
+            '    HISTORICOTableAdapter.FillByIDTRABAJO(OrdenesDataSet4.HISTORICO, DATOS_TRABAJORow.Id_TRABAJO)
+            '    If OrdenesDataSet4.HISTORICO.Rows.Count > 0 Then
+
+
+            '    End If
+            'End If
+            'CARGA LAS ETIQUETAS DE LECTURA DE LA PANTALLA DATOS
+            ETI_TRABTIPO.Text = "Trabajo tipo: " & VARTRAB_TIPO
                 'If VARTRAB_ZONA = "" Then ETI_TRABZONA.Visible = False Else ETI_TRABZONA.Visible = True
                 'If VARTRAB_MZNA = "" Then ETI_TRABMZNA.Visible = False Else ETI_TRABMZNA.Visible = True
                 If VARTRAB_NODO <> "" Then
@@ -1696,14 +1703,14 @@ Public Class DATOS
                     ETI_TRABMZNA.Text = VARTRAB_MZNA
                     ETI_TRABMZNA.Visible = True
                 End If
-                '  ETI_TRABNODO.Text = "Nodo: " & VARTRAB_NODO & "   Zona: " & VARTRAB_ZONA & "   Mzna: " & VARTRAB_MZNA
-                'ETI_TRABZONA.Text =
-                'ETI_TRABMZNA.Text =
-                ETI_TRABGENERADOX.Text = "Generado por: " & VARTRAB_GENERADOPOR & "   |   Responsable: " & VARTRAB_ASIGNADOA & "   |   Inicio Estimado: " & DateValue(VARTRAB_INIEST).ToShortDateString.ToString & "   |   Tiempo estimado: " & VARTRAB_TIEMEST & " Días"
+            '  ETI_TRABNODO.Text = "Nodo: " & VARTRAB_NODO & "   Zona: " & VARTRAB_ZONA & "   Mzna: " & VARTRAB_MZNA
+            'ETI_TRABZONA.Text =
+            'ETI_TRABMZNA.Text =
+            ETI_TRABGENERADOX.Text = "Generado por: " & VARTRAB_GENERADOPOR & "   |   Responsable: " & VARTRAB_ASIGNADOA & "   |   Inicio Estimado: " & VARTRAB_INIEST & "   |   Tiempo estimado: " & VARTRAB_TIEMEST & " Días"
 
-                'ETI_TRABINIEST.Text = "Inicio Estimado: " & DateValue(VARTRAB_INIEST).ToShortDateString.ToString
-                'ETI_TRABTESTIM.Text = "Tiempo estimado: " & VARTRAB_TIEMEST & " Dias"
-                If VARTRAB_CALLE = "" And VARTRAB_NRO = "" Then ETI_TRABCALLEYNRO.Visible = False Else ETI_TRABCALLEYNRO.Visible = True
+            'ETI_TRABINIEST.Text = "Inicio Estimado: " & DateValue(VARTRAB_INIEST).ToShortDateString.ToString
+            'ETI_TRABTESTIM.Text = "Tiempo estimado: " & VARTRAB_TIEMEST & " Dias"
+            If VARTRAB_CALLE = "" And VARTRAB_NRO = "" Then ETI_TRABCALLEYNRO.Visible = False Else ETI_TRABCALLEYNRO.Visible = True
                 ETI_TRABCALLEYNRO.Text = VARTRAB_CALLE & " " & VARTRAB_NRO
                 ETI_TRABTIPODEP.Text = "Tipo Dependencia: " & VARTRAB_TIPODEP
                 ETI_TRABDEP.Text = "Dependencia " & VARTRAB_DEP
@@ -2243,14 +2250,16 @@ Public Class DATOS
                 Case "CANCELAR"
                     DATOS_GESTIONRow("STATUS") = "CANCELADO"
                     If INGRESO_AREA = "MDU" Then
-                        Select Case DATOS_GESTIONRow("TIPOGESTION")
-                            Case "Mant Preventivo", "MANT PREVENTIVO"
-                                DATOS_EDIFICIORow("GESTMANT") = False
-                            Case "Obra Nueva", "OBRA NUEVA"
-                                DATOS_EDIFICIORow("GESTOBR") = False
-                        End Select
+                        If DATOS_EDIFICIORow IsNot Nothing Then
+                            Select Case DATOS_GESTIONRow("TIPOGESTION")
+                                Case "Mant Preventivo", "MANT PREVENTIVO"
+                                    DATOS_EDIFICIORow("GESTMANT") = False
+                                Case "Obra Nueva", "OBRA NUEVA"
+                                    DATOS_EDIFICIORow("GESTOBR") = False
+                            End Select
+                        End If
                     End If
-                    DATOS_GESTIONRow("DESCRIPCION") += "  ++  GESTION CANCELADA EL " & Today & ":   "
+                        DATOS_GESTIONRow("DESCRIPCION") += "  ++  GESTION CANCELADA EL " & Today & ":   "
                     DATOS_HIS_STATUSACTUAL = "CANCELADO"
                     DATOS_HIS_CAUSA = "CANCELACION MANUAL"
                     DATOS_HIS_DETALLE = "CAMBIO DE STATUS MANUAL"
@@ -2376,8 +2385,8 @@ Public Class DATOS
         End If
         MENU_GESTION.Close()
     End Sub 'ASIGNACION DE GESTIONES
-    Private Sub YANIRE_DIAZ_Click(sender As Object, e As EventArgs) Handles YANIRE_DIAZ.Click
-        GEST_RESP_NOMBRE = YANIRE_DIAZ.Text
+    Private Sub FRANCO_QUINTANA_Click(sender As Object, e As EventArgs) Handles FRANCO_QUINTANA.Click
+        GEST_RESP_NOMBRE = FRANCO_QUINTANA.Text
         GEST_RESPONSABLE()
     End Sub
     Private Sub GABRIEL_SZUCS_Click(sender As Object, e As EventArgs) Handles GABRIEL_SZUCS.Click
@@ -2386,10 +2395,6 @@ Public Class DATOS
     End Sub
     Private Sub GERARDO_BOTTI_Click(sender As Object, e As EventArgs) Handles GERARDO_BOTTI.Click
         GEST_RESP_NOMBRE = GERARDO_BOTTI.Text
-        GEST_RESPONSABLE()
-    End Sub
-    Private Sub JUAN_VICARIO_Click(sender As Object, e As EventArgs) Handles JUAN_VICARIO.Click
-        GEST_RESP_NOMBRE = JUAN_VICARIO.Text
         GEST_RESPONSABLE()
     End Sub
     Private Sub DIEGO_BASSO_Click(sender As Object, e As EventArgs) Handles DIEGO_BASSO.Click
@@ -2427,7 +2432,7 @@ Public Class DATOS
         If AUTORIZADO = True Then
             CARGAR_DATOSORDENDEPENDIENTE()
             'CARGA FECHA DE INICIOESTIMADO DE LO ORDEN = FECHA DE INICIO DEL TRABAJO+
-            ING_FECHAINICEST = DateValue(VARTRAB_INIEST).ToShortDateString.ToString
+            ING_FECHAINICEST = VARTRAB_INIEST
             ING_DEPENDENCIA = 0
             ING_TIPODEP = "IND"
             ING_ORDENDEP = 0
@@ -2623,6 +2628,7 @@ Public Class DATOS
             DATOS_TRABAJORow("IDASIG") = IDASIG
             DATOS_TRABAJORow("ASIGNADOA") = TRAB_RESP_NOMBRE
             DATOS_TRABAJORow("SECTORASIG") = SECTORASIG
+            DATOS_TRABAJORow.FECHA_ASIGNADO = Today.ToShortDateString()
             TRABAJOSTableAdapter.Update(DATOS_TRABAJORow)
 
             'CARGA HISTORICO
@@ -2679,12 +2685,12 @@ Public Class DATOS
         TRAB_RESP_NOMBRE = TRAB_SZUCS.Text
         TRAB_RESPONSABLE()
     End Sub
-    Private Sub TRAB_VICARIO_Click(sender As Object, e As EventArgs) Handles TRAB_VICARIO.Click
-        TRAB_RESP_NOMBRE = TRAB_VICARIO.Text
+    Private Sub TRAB_MARQUEZ_Click(sender As Object, e As EventArgs) Handles TRAB_MARQUEZ.Click
+        TRAB_RESP_NOMBRE = TRAB_MARQUEZ.Text
         TRAB_RESPONSABLE()
     End Sub
-    Private Sub TRAB_YANIRE_Click(sender As Object, e As EventArgs) Handles TRAB_YANIRE.Click
-        TRAB_RESP_NOMBRE = TRAB_YANIRE.Text
+    Private Sub TRAB_FRANCO_Click(sender As Object, e As EventArgs) Handles TRAB_FRANCO.Click
+        TRAB_RESP_NOMBRE = TRAB_FRANCO.Text
         TRAB_RESPONSABLE()
     End Sub
     Private Sub CARGA_NUEVOTRABAJOFUENTES()
@@ -3892,7 +3898,7 @@ Public Class DATOS
         'EDITA UNA ORDEN DE TRABAJO
 
         'If AUTORIZADO = True Then
-        ING_FECHAINICEST = DateValue(VARTRAB_INIEST).ToShortDateString.ToString
+        ING_FECHAINICEST = VARTRAB_INIEST
         Select Case DATOS_ORDENESRow("CLASEDEP")
             Case "IND"  'LA ORDEN DE QUIEN DEPENDE ES INDEPENDIENTE
                 TIEMPO_AGENDA = CInt(DATOS_ORDENESRow("TPREVISTO") * CAPACIDAD_DIA / 100)
@@ -4013,7 +4019,12 @@ Public Class DATOS
         Else
             MENSAJE += vbNewLine & "La orden tiene marcada que la documentacion adjunta es DIGITAL."
         End If
-        ENVIAR_EMAIL(DATOS_ORDENESRow.PRIORIDAD, DESTINATARIO_SECTOR, "ORDEN REACTIVADA", MENSAJE, REMITENTE, REMITENTE_SECTOR)
+        If SECTOR = "OBRA CIVIL" Then
+            ENVIAR_EMAIL(DATOS_ORDENESRow.PRIORIDAD, DESTINATARIO_SECTOR, "ORDEN REACTIVADA", MENSAJE, REMITENTE)
+        Else
+            ENVIAR_EMAIL(DATOS_ORDENESRow.PRIORIDAD, DESTINATARIO_SECTOR, "ORDEN REACTIVADA", MENSAJE, REMITENTE, REMITENTE_SECTOR)
+        End If
+
     End Sub
     Private Sub ORD_CREARORDBOTToolStrip_Click(sender As Object, e As EventArgs) Handles ORD_CREARORDBOTToolStrip.Click
         File.WriteAllText("C:\DOCUMENTOS\USUARIO\CommandBOT.txt", "A," & NROORDENINT)

@@ -11,8 +11,8 @@ Module EMAIL
         SMTP_SERVER.Port = 25
         SMTP_SERVER.Host = "srv-mail"
 
-        E_MAIL = New MailMessage()
-        E_MAIL.From = New MailAddress(REMITE, "SGE - MENSAJE AUTOMATICO", System.Text.Encoding.UTF8)
+        E_MAIL = New MailMessage
+        E_MAIL.From = New MailAddress(REMITE, "SGE - MENSAJE AUTOMATICO", Text.Encoding.UTF8)
         E_MAIL.Subject = ASUNTO
 
         Select Case PRIORIDAD
@@ -32,7 +32,7 @@ Module EMAIL
 
 
         E_MAIL.IsBodyHtml = False
-        E_MAIL.BodyEncoding = System.Text.Encoding.UTF8
+        E_MAIL.BodyEncoding = Text.Encoding.UTF8
         E_MAIL.Body = MENSAJE
         Try
             SMTP_SERVER.Send(E_MAIL)

@@ -203,11 +203,10 @@ Partial Class DATOS
         Me.GEST_COMPLETO_TOOLSTRIP = New System.Windows.Forms.ToolStripMenuItem()
         Me.GEST_RESPONSABLE_ToolStrip = New System.Windows.Forms.ToolStripMenuItem()
         Me.GABRIEL_SZUCS = New System.Windows.Forms.ToolStripMenuItem()
-        Me.YANIRE_DIAZ = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FRANCO_QUINTANA = New System.Windows.Forms.ToolStripMenuItem()
         Me.DIEGO_BASSO = New System.Windows.Forms.ToolStripMenuItem()
         Me.PABLO_ILLIONE = New System.Windows.Forms.ToolStripMenuItem()
         Me.GERARDO_BOTTI = New System.Windows.Forms.ToolStripMenuItem()
-        Me.JUAN_VICARIO = New System.Windows.Forms.ToolStripMenuItem()
         Me.DIEGO_GEYMONAT = New System.Windows.Forms.ToolStripMenuItem()
         Me.BRIAN_GELPI = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
@@ -238,11 +237,11 @@ Partial Class DATOS
         Me.TRAB_COMPLETO_ToolStrip = New System.Windows.Forms.ToolStripMenuItem()
         Me.TRAB_RESPONSABLE_ToolStrip = New System.Windows.Forms.ToolStripMenuItem()
         Me.TRAB_SZUCS = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TRAB_YANIRE = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TRAB_FRANCO = New System.Windows.Forms.ToolStripMenuItem()
         Me.TRAB_BASSO = New System.Windows.Forms.ToolStripMenuItem()
         Me.TRAB_ILLIONE = New System.Windows.Forms.ToolStripMenuItem()
         Me.TRAB_BOTTI = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TRAB_VICARIO = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TRAB_MARQUEZ = New System.Windows.Forms.ToolStripMenuItem()
         Me.TRAB_GEYMONAT = New System.Windows.Forms.ToolStripMenuItem()
         Me.TRAB_GELPI = New System.Windows.Forms.ToolStripMenuItem()
         Me.TRAB_HABILITA_ToolStrip = New System.Windows.Forms.ToolStripMenuItem()
@@ -487,6 +486,7 @@ Partial Class DATOS
         Me.COMPLETODataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.HABILITADO = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.CK = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FECHA_ASIGNADO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ADJUNTOSDataGridView = New System.Windows.Forms.DataGridView()
         Me.RUTA_ADJUNTO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NOMARCHIVODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -1571,7 +1571,7 @@ Partial Class DATOS
         'GEST_RESPONSABLE_ToolStrip
         '
         Me.GEST_RESPONSABLE_ToolStrip.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.GEST_RESPONSABLE_ToolStrip.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GABRIEL_SZUCS, Me.YANIRE_DIAZ, Me.DIEGO_BASSO, Me.PABLO_ILLIONE, Me.GERARDO_BOTTI, Me.JUAN_VICARIO, Me.DIEGO_GEYMONAT, Me.BRIAN_GELPI})
+        Me.GEST_RESPONSABLE_ToolStrip.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GABRIEL_SZUCS, Me.FRANCO_QUINTANA, Me.DIEGO_BASSO, Me.PABLO_ILLIONE, Me.GERARDO_BOTTI, Me.DIEGO_GEYMONAT, Me.BRIAN_GELPI})
         Me.GEST_RESPONSABLE_ToolStrip.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.GEST_RESPONSABLE_ToolStrip.ForeColor = System.Drawing.Color.DarkOrange
         Me.GEST_RESPONSABLE_ToolStrip.Name = "GEST_RESPONSABLE_ToolStrip"
@@ -1584,17 +1584,17 @@ Partial Class DATOS
         Me.GABRIEL_SZUCS.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.GABRIEL_SZUCS.ForeColor = System.Drawing.Color.Orange
         Me.GABRIEL_SZUCS.Name = "GABRIEL_SZUCS"
-        Me.GABRIEL_SZUCS.Size = New System.Drawing.Size(174, 22)
+        Me.GABRIEL_SZUCS.Size = New System.Drawing.Size(183, 22)
         Me.GABRIEL_SZUCS.Text = "GABRIEL SZUCS"
         '
-        'YANIRE_DIAZ
+        'FRANCO_QUINTANA
         '
-        Me.YANIRE_DIAZ.BackColor = System.Drawing.Color.FromArgb(CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer))
-        Me.YANIRE_DIAZ.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.YANIRE_DIAZ.ForeColor = System.Drawing.Color.Orange
-        Me.YANIRE_DIAZ.Name = "YANIRE_DIAZ"
-        Me.YANIRE_DIAZ.Size = New System.Drawing.Size(174, 22)
-        Me.YANIRE_DIAZ.Text = "YANIRE DIAZ"
+        Me.FRANCO_QUINTANA.BackColor = System.Drawing.Color.FromArgb(CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer))
+        Me.FRANCO_QUINTANA.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.FRANCO_QUINTANA.ForeColor = System.Drawing.Color.Orange
+        Me.FRANCO_QUINTANA.Name = "FRANCO_QUINTANA"
+        Me.FRANCO_QUINTANA.Size = New System.Drawing.Size(183, 22)
+        Me.FRANCO_QUINTANA.Text = "FRANCO QUINTANA"
         '
         'DIEGO_BASSO
         '
@@ -1602,7 +1602,7 @@ Partial Class DATOS
         Me.DIEGO_BASSO.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.DIEGO_BASSO.ForeColor = System.Drawing.Color.Orange
         Me.DIEGO_BASSO.Name = "DIEGO_BASSO"
-        Me.DIEGO_BASSO.Size = New System.Drawing.Size(174, 22)
+        Me.DIEGO_BASSO.Size = New System.Drawing.Size(183, 22)
         Me.DIEGO_BASSO.Text = "DIEGO BASSO"
         '
         'PABLO_ILLIONE
@@ -1611,7 +1611,7 @@ Partial Class DATOS
         Me.PABLO_ILLIONE.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.PABLO_ILLIONE.ForeColor = System.Drawing.Color.Orange
         Me.PABLO_ILLIONE.Name = "PABLO_ILLIONE"
-        Me.PABLO_ILLIONE.Size = New System.Drawing.Size(174, 22)
+        Me.PABLO_ILLIONE.Size = New System.Drawing.Size(183, 22)
         Me.PABLO_ILLIONE.Text = "PABLO ILLIONE"
         '
         'GERARDO_BOTTI
@@ -1620,17 +1620,8 @@ Partial Class DATOS
         Me.GERARDO_BOTTI.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.GERARDO_BOTTI.ForeColor = System.Drawing.Color.Orange
         Me.GERARDO_BOTTI.Name = "GERARDO_BOTTI"
-        Me.GERARDO_BOTTI.Size = New System.Drawing.Size(174, 22)
+        Me.GERARDO_BOTTI.Size = New System.Drawing.Size(183, 22)
         Me.GERARDO_BOTTI.Text = "GERARDO BOTTI"
-        '
-        'JUAN_VICARIO
-        '
-        Me.JUAN_VICARIO.BackColor = System.Drawing.Color.FromArgb(CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer))
-        Me.JUAN_VICARIO.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.JUAN_VICARIO.ForeColor = System.Drawing.Color.Orange
-        Me.JUAN_VICARIO.Name = "JUAN_VICARIO"
-        Me.JUAN_VICARIO.Size = New System.Drawing.Size(174, 22)
-        Me.JUAN_VICARIO.Text = "JUAN VICARIO"
         '
         'DIEGO_GEYMONAT
         '
@@ -1638,7 +1629,7 @@ Partial Class DATOS
         Me.DIEGO_GEYMONAT.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.DIEGO_GEYMONAT.ForeColor = System.Drawing.Color.Orange
         Me.DIEGO_GEYMONAT.Name = "DIEGO_GEYMONAT"
-        Me.DIEGO_GEYMONAT.Size = New System.Drawing.Size(174, 22)
+        Me.DIEGO_GEYMONAT.Size = New System.Drawing.Size(183, 22)
         Me.DIEGO_GEYMONAT.Text = "DIEGO GEYMONAT"
         '
         'BRIAN_GELPI
@@ -1647,7 +1638,7 @@ Partial Class DATOS
         Me.BRIAN_GELPI.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.BRIAN_GELPI.ForeColor = System.Drawing.Color.Orange
         Me.BRIAN_GELPI.Name = "BRIAN_GELPI"
-        Me.BRIAN_GELPI.Size = New System.Drawing.Size(174, 22)
+        Me.BRIAN_GELPI.Size = New System.Drawing.Size(183, 22)
         Me.BRIAN_GELPI.Text = "BRIAN GELPI"
         '
         'ToolStripSeparator7
@@ -1896,7 +1887,7 @@ Partial Class DATOS
         'TRAB_RESPONSABLE_ToolStrip
         '
         Me.TRAB_RESPONSABLE_ToolStrip.BackColor = System.Drawing.Color.Transparent
-        Me.TRAB_RESPONSABLE_ToolStrip.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TRAB_SZUCS, Me.TRAB_YANIRE, Me.TRAB_BASSO, Me.TRAB_ILLIONE, Me.TRAB_BOTTI, Me.TRAB_VICARIO, Me.TRAB_GEYMONAT, Me.TRAB_GELPI})
+        Me.TRAB_RESPONSABLE_ToolStrip.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TRAB_SZUCS, Me.TRAB_FRANCO, Me.TRAB_BASSO, Me.TRAB_ILLIONE, Me.TRAB_BOTTI, Me.TRAB_MARQUEZ, Me.TRAB_GEYMONAT, Me.TRAB_GELPI})
         Me.TRAB_RESPONSABLE_ToolStrip.Font = New System.Drawing.Font("Arial", 10.0!)
         Me.TRAB_RESPONSABLE_ToolStrip.ForeColor = System.Drawing.Color.Peru
         Me.TRAB_RESPONSABLE_ToolStrip.Name = "TRAB_RESPONSABLE_ToolStrip"
@@ -1911,17 +1902,17 @@ Partial Class DATOS
         Me.TRAB_SZUCS.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TRAB_SZUCS.ForeColor = System.Drawing.Color.Orange
         Me.TRAB_SZUCS.Name = "TRAB_SZUCS"
-        Me.TRAB_SZUCS.Size = New System.Drawing.Size(175, 22)
+        Me.TRAB_SZUCS.Size = New System.Drawing.Size(199, 22)
         Me.TRAB_SZUCS.Text = "GABRIEL SZUCS"
         '
-        'TRAB_YANIRE
+        'TRAB_FRANCO
         '
-        Me.TRAB_YANIRE.BackColor = System.Drawing.Color.FromArgb(CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer))
-        Me.TRAB_YANIRE.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TRAB_YANIRE.ForeColor = System.Drawing.Color.Orange
-        Me.TRAB_YANIRE.Name = "TRAB_YANIRE"
-        Me.TRAB_YANIRE.Size = New System.Drawing.Size(175, 22)
-        Me.TRAB_YANIRE.Text = "YANIRE DIAZ"
+        Me.TRAB_FRANCO.BackColor = System.Drawing.Color.FromArgb(CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer))
+        Me.TRAB_FRANCO.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TRAB_FRANCO.ForeColor = System.Drawing.Color.Orange
+        Me.TRAB_FRANCO.Name = "TRAB_FRANCO"
+        Me.TRAB_FRANCO.Size = New System.Drawing.Size(199, 22)
+        Me.TRAB_FRANCO.Text = "FRANCO QUINTANA"
         '
         'TRAB_BASSO
         '
@@ -1929,7 +1920,7 @@ Partial Class DATOS
         Me.TRAB_BASSO.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TRAB_BASSO.ForeColor = System.Drawing.Color.Orange
         Me.TRAB_BASSO.Name = "TRAB_BASSO"
-        Me.TRAB_BASSO.Size = New System.Drawing.Size(175, 22)
+        Me.TRAB_BASSO.Size = New System.Drawing.Size(199, 22)
         Me.TRAB_BASSO.Text = "DIEGO BASSO"
         '
         'TRAB_ILLIONE
@@ -1938,7 +1929,7 @@ Partial Class DATOS
         Me.TRAB_ILLIONE.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TRAB_ILLIONE.ForeColor = System.Drawing.Color.Orange
         Me.TRAB_ILLIONE.Name = "TRAB_ILLIONE"
-        Me.TRAB_ILLIONE.Size = New System.Drawing.Size(175, 22)
+        Me.TRAB_ILLIONE.Size = New System.Drawing.Size(199, 22)
         Me.TRAB_ILLIONE.Text = "PABLO ILLIONE"
         '
         'TRAB_BOTTI
@@ -1947,17 +1938,17 @@ Partial Class DATOS
         Me.TRAB_BOTTI.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TRAB_BOTTI.ForeColor = System.Drawing.Color.Orange
         Me.TRAB_BOTTI.Name = "TRAB_BOTTI"
-        Me.TRAB_BOTTI.Size = New System.Drawing.Size(175, 22)
+        Me.TRAB_BOTTI.Size = New System.Drawing.Size(199, 22)
         Me.TRAB_BOTTI.Text = "GERARDO BOTTI"
         '
-        'TRAB_VICARIO
+        'TRAB_MARQUEZ
         '
-        Me.TRAB_VICARIO.BackColor = System.Drawing.Color.FromArgb(CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer))
-        Me.TRAB_VICARIO.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.TRAB_VICARIO.ForeColor = System.Drawing.Color.Orange
-        Me.TRAB_VICARIO.Name = "TRAB_VICARIO"
-        Me.TRAB_VICARIO.Size = New System.Drawing.Size(175, 22)
-        Me.TRAB_VICARIO.Text = "JUAN VICARIO"
+        Me.TRAB_MARQUEZ.BackColor = System.Drawing.Color.FromArgb(CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer), CType(CType(84, Byte), Integer))
+        Me.TRAB_MARQUEZ.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.TRAB_MARQUEZ.ForeColor = System.Drawing.Color.Orange
+        Me.TRAB_MARQUEZ.Name = "TRAB_MARQUEZ"
+        Me.TRAB_MARQUEZ.Size = New System.Drawing.Size(199, 22)
+        Me.TRAB_MARQUEZ.Text = "ALEJANDRO MARQUEZ"
         '
         'TRAB_GEYMONAT
         '
@@ -1965,7 +1956,7 @@ Partial Class DATOS
         Me.TRAB_GEYMONAT.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TRAB_GEYMONAT.ForeColor = System.Drawing.Color.Orange
         Me.TRAB_GEYMONAT.Name = "TRAB_GEYMONAT"
-        Me.TRAB_GEYMONAT.Size = New System.Drawing.Size(175, 22)
+        Me.TRAB_GEYMONAT.Size = New System.Drawing.Size(199, 22)
         Me.TRAB_GEYMONAT.Text = "DIEGO GEYMONAT"
         '
         'TRAB_GELPI
@@ -1974,7 +1965,7 @@ Partial Class DATOS
         Me.TRAB_GELPI.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.TRAB_GELPI.ForeColor = System.Drawing.Color.Orange
         Me.TRAB_GELPI.Name = "TRAB_GELPI"
-        Me.TRAB_GELPI.Size = New System.Drawing.Size(175, 22)
+        Me.TRAB_GELPI.Size = New System.Drawing.Size(199, 22)
         Me.TRAB_GELPI.Text = "BRIAN GELPI"
         '
         'TRAB_HABILITA_ToolStrip
@@ -4280,7 +4271,7 @@ Partial Class DATOS
         DataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.TRABAJOSDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle30
         Me.TRABAJOSDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.TRABAJOSDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDGESTIONDataGridViewTextBoxColumn, Me.IdTRABAJODataGridViewTextBoxColumn, Me.TIPOTRABAJODataGridViewTextBoxColumn, Me.ZONADataGridViewTextBoxColumn, Me.FECHAINGRESADODataGridViewTextBoxColumn, Me.FECHAINICESTIMADODataGridViewTextBoxColumn1, Me.TIEMPOESTIMADODataGridViewTextBoxColumn, Me.FECHAINICIADODataGridViewTextBoxColumn, Me.FECHAFINALIZADODataGridViewTextBoxColumn, Me.STATUSDataGridViewTextBoxColumn, Me.COMPLETODataGridViewCheckBoxColumn, Me.HABILITADO, Me.CK})
+        Me.TRABAJOSDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDGESTIONDataGridViewTextBoxColumn, Me.IdTRABAJODataGridViewTextBoxColumn, Me.TIPOTRABAJODataGridViewTextBoxColumn, Me.ZONADataGridViewTextBoxColumn, Me.FECHAINGRESADODataGridViewTextBoxColumn, Me.FECHAINICESTIMADODataGridViewTextBoxColumn1, Me.TIEMPOESTIMADODataGridViewTextBoxColumn, Me.FECHAINICIADODataGridViewTextBoxColumn, Me.FECHAFINALIZADODataGridViewTextBoxColumn, Me.STATUSDataGridViewTextBoxColumn, Me.COMPLETODataGridViewCheckBoxColumn, Me.HABILITADO, Me.CK, Me.FECHA_ASIGNADO})
         Me.TRABAJOSDataGridView.Cursor = System.Windows.Forms.Cursors.Hand
         Me.TRABAJOSDataGridView.DataSource = Me.TRABAJOSBindingSource
         DataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -4313,7 +4304,7 @@ Partial Class DATOS
         DataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(118, Byte), Integer), CType(CType(51, Byte), Integer))
         Me.TRABAJOSDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle37
         Me.TRABAJOSDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.TRABAJOSDataGridView.Size = New System.Drawing.Size(698, 193)
+        Me.TRABAJOSDataGridView.Size = New System.Drawing.Size(718, 193)
         Me.TRABAJOSDataGridView.TabIndex = 73
         Me.TRABAJOSDataGridView.Visible = False
         '
@@ -4431,6 +4422,14 @@ Partial Class DATOS
         Me.CK.ReadOnly = True
         Me.CK.Visible = False
         Me.CK.Width = 20
+        '
+        'FECHA_ASIGNADO
+        '
+        Me.FECHA_ASIGNADO.DataPropertyName = "FECHA_ASIGNADO"
+        Me.FECHA_ASIGNADO.HeaderText = "F.ASIGNADO"
+        Me.FECHA_ASIGNADO.Name = "FECHA_ASIGNADO"
+        Me.FECHA_ASIGNADO.ReadOnly = True
+        Me.FECHA_ASIGNADO.Width = 75
         '
         'ADJUNTOSDataGridView
         '
@@ -5610,11 +5609,10 @@ Partial Class DATOS
     Friend WithEvents GEST_CANCELAR_ToolStrip As ToolStripMenuItem
     Friend WithEvents GEST_REINICIAR_ToolStrip As ToolStripMenuItem
     Friend WithEvents GABRIEL_SZUCS As ToolStripMenuItem
-    Friend WithEvents YANIRE_DIAZ As ToolStripMenuItem
+    Friend WithEvents FRANCO_QUINTANA As ToolStripMenuItem
     Friend WithEvents DIEGO_BASSO As ToolStripMenuItem
     Friend WithEvents PABLO_ILLIONE As ToolStripMenuItem
     Friend WithEvents GERARDO_BOTTI As ToolStripMenuItem
-    Friend WithEvents JUAN_VICARIO As ToolStripMenuItem
     Friend WithEvents DIEGO_GEYMONAT As ToolStripMenuItem
     Friend WithEvents BRIAN_GELPI As ToolStripMenuItem
     Friend WithEvents MENU_TRABAJO As ContextMenuStrip
@@ -5636,11 +5634,11 @@ Partial Class DATOS
     Friend WithEvents TRAB_COMPLETO_ToolStrip As ToolStripMenuItem
     Friend WithEvents TRAB_RESPONSABLE_ToolStrip As ToolStripMenuItem
     Friend WithEvents TRAB_SZUCS As ToolStripMenuItem
-    Friend WithEvents TRAB_YANIRE As ToolStripMenuItem
+    Friend WithEvents TRAB_FRANCO As ToolStripMenuItem
     Friend WithEvents TRAB_BASSO As ToolStripMenuItem
     Friend WithEvents TRAB_ILLIONE As ToolStripMenuItem
     Friend WithEvents TRAB_BOTTI As ToolStripMenuItem
-    Friend WithEvents TRAB_VICARIO As ToolStripMenuItem
+    Friend WithEvents TRAB_MARQUEZ As ToolStripMenuItem
     Friend WithEvents TRAB_GEYMONAT As ToolStripMenuItem
     Friend WithEvents TRAB_GELPI As ToolStripMenuItem
     Friend WithEvents TRAB_Separator2 As ToolStripSeparator
@@ -5712,19 +5710,6 @@ Partial Class DATOS
     Friend WithEvents DataGridViewCheckBoxColumn2 As DataGridViewCheckBoxColumn
     Friend WithEvents RUTA_ADJUNTO As DataGridViewTextBoxColumn
     Friend WithEvents NOMARCHIVODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents IDGESTIONDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents IdTRABAJODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents TIPOTRABAJODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ZONADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FECHAINGRESADODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FECHAINICESTIMADODataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents TIEMPOESTIMADODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FECHAINICIADODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FECHAFINALIZADODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents STATUSDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents COMPLETODataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
-    Friend WithEvents CK As DataGridViewTextBoxColumn
-    Friend WithEvents HABILITADO As DataGridViewCheckBoxColumn
     Friend WithEvents LBL_ORDEN_DATOS As Label
     Friend WithEvents CK_DATOS_SEL_UNITARIA As CheckBox
     Friend WithEvents ORDENDEP As DataGridViewTextBoxColumn
@@ -5821,5 +5806,19 @@ Partial Class DATOS
     Friend WithEvents IGUAL_DIN_ToolStrip As ToolStripMenuItem
     Friend WithEvents LBL_PROYECTO As Label
     Friend WithEvents LBL_GEST_RUS As Label
+    Friend WithEvents IDGESTIONDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IdTRABAJODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TIPOTRABAJODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ZONADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FECHAINGRESADODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FECHAINICESTIMADODataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents TIEMPOESTIMADODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FECHAINICIADODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents FECHAFINALIZADODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents STATUSDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents COMPLETODataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
+    Friend WithEvents HABILITADO As DataGridViewCheckBoxColumn
+    Friend WithEvents CK As DataGridViewTextBoxColumn
+    Friend WithEvents FECHA_ASIGNADO As DataGridViewTextBoxColumn
     'Friend WithEvents MENU_ORDENES.ContextMenuStrip As ToolStripMenuItem
 End Class

@@ -133,7 +133,7 @@ Partial Class INGRESO_MDU
         Me.OBRAS_MDUDataSet = New REDES.OBRAS_MDUDataSet()
         Me.GESTIONBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.BTN_AGREGAR = New System.Windows.Forms.Button()
-        Me.GESTIONTableAdapter2 = New REDES.OBRAS_MDUDataSetTableAdapters.GESTIONTableAdapter()
+
         Me.TableAdapterManager5 = New REDES.OBRAS_MDUDataSetTableAdapters.TableAdapterManager()
         Me.ORDINALTableAdapter = New REDES.OBRAS_MDUDataSetTableAdapters.ORDINALTableAdapter()
         Me.PROYECTOTableAdapter = New REDES.OBRAS_MDUDataSetTableAdapters.PROYECTOTableAdapter()
@@ -1277,16 +1277,6 @@ Partial Class INGRESO_MDU
         '
         Me.REPORTETableAdapter.ClearBeforeFill = True
         '
-        'OBRAS_MDUDataSet
-        '
-        Me.OBRAS_MDUDataSet.DataSetName = "OBRAS_MDUDataSet"
-        Me.OBRAS_MDUDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'GESTIONBindingSource1
-        '
-        Me.GESTIONBindingSource1.DataMember = "GESTION"
-        Me.GESTIONBindingSource1.DataSource = Me.OBRAS_MDUDataSet
-        '
         'BTN_AGREGAR
         '
         Me.BTN_AGREGAR.BackColor = System.Drawing.Color.DimGray
@@ -1306,12 +1296,12 @@ Partial Class INGRESO_MDU
         '
         'GESTIONTableAdapter2
         '
-        Me.GESTIONTableAdapter2.ClearBeforeFill = True
+
         '
         'TableAdapterManager5
         '
         Me.TableAdapterManager5.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager5.GESTIONTableAdapter = Me.GESTIONTableAdapter2
+
         Me.TableAdapterManager5.ORDINALTableAdapter = Me.ORDINALTableAdapter
         Me.TableAdapterManager5.PROYECTOTableAdapter = Me.PROYECTOTableAdapter
         Me.TableAdapterManager5.UpdateOrder = REDES.OBRAS_MDUDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
@@ -1802,10 +1792,10 @@ Partial Class INGRESO_MDU
     Friend WithEvents Panel2 As Panel
     Friend WithEvents OBRAS_MDUDataSet As OBRAS_MDUDataSet
     Friend WithEvents GESTIONBindingSource1 As BindingSource
-    Friend WithEvents GESTIONTableAdapter1 As OBRAS_MDUDataSetTableAdapters.GESTIONTableAdapter
+
     Friend WithEvents TableAdapterManager4 As OBRAS_MDUDataSetTableAdapters.TableAdapterManager
     Friend WithEvents BTN_AGREGAR As Button
-    Friend WithEvents GESTIONTableAdapter2 As OBRAS_MDUDataSetTableAdapters.GESTIONTableAdapter
+
     Friend WithEvents TableAdapterManager5 As OBRAS_MDUDataSetTableAdapters.TableAdapterManager
     Friend WithEvents ORDINALTableAdapter As OBRAS_MDUDataSetTableAdapters.ORDINALTableAdapter
     Friend WithEvents ORDINALBindingSource As BindingSource

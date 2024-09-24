@@ -959,7 +959,11 @@ Public Class STANDARD
                         MENSAJE += vbNewLine & vbNewLine & "Detalle de la orden:" & vbNewLine & "    "
                         MENSAJE += TXT_ING_OBSERVACIONES.Text
                     End If
-                    ENVIAR_EMAIL(CB_PRIORIDAD.Text, DESTINATARIO_SECTOR, "ORDEN ASIGNADA", MENSAJE, REMITENTE, REMITENTE_SECTOR)
+                    If SECTOR = "OBRA CIVIL" Then
+                        ENVIAR_EMAIL(CB_PRIORIDAD.Text, DESTINATARIO_SECTOR, "ORDEN ASIGNADA", MENSAJE, REMITENTE)
+                    Else
+                        ENVIAR_EMAIL(CB_PRIORIDAD.Text, DESTINATARIO_SECTOR, "ORDEN ASIGNADA", MENSAJE, REMITENTE, REMITENTE_SECTOR)
+                    End If
                 End If
 
                 ESTADO.Text = "FIN PROCESO"
@@ -1221,7 +1225,11 @@ Public Class STANDARD
                         MENSAJE += vbNewLine & vbNewLine & "Detalle de la orden:" & vbNewLine & "    "
                         MENSAJE += TXT_ING_OBSERVACIONES.Text
                     End If
-                    ENVIAR_EMAIL(CB_PRIORIDAD.Text, DESTINATARIO_SECTOR, "NUEVA ORDEN ASIGNADA", MENSAJE, REMITENTE, REMITENTE_SECTOR)
+                    If SECTOR = "OBRA CIVIL" Then
+                        ENVIAR_EMAIL(CB_PRIORIDAD.Text, DESTINATARIO_SECTOR, "NUEVA ORDEN ASIGNADA", MENSAJE, REMITENTE)
+                    Else
+                        ENVIAR_EMAIL(CB_PRIORIDAD.Text, DESTINATARIO_SECTOR, "NUEVA ORDEN ASIGNADA", MENSAJE, REMITENTE, REMITENTE_SECTOR)
+                    End If
                 End If
                 ESTADO.Text = "FIN PROCESO"
                 ESTADO.Refresh()
@@ -1324,11 +1332,15 @@ Public Class STANDARD
             Else
                 MENSAJE += vbNewLine & "La orden contiene documentacion adjunta en formato DIGITAL."
             End If
-            ENVIAR_EMAIL(DATOS.DATOS_ORDENESRow.PRIORIDAD, DESTINATARIO_SECTOR, "ORDEN REACTIVADA", MENSAJE, REMITENTE, REMITENTE_SECTOR)
+            If SECTOR = "OBRA CIVIL" Then
+                ENVIAR_EMAIL(DATOS.DATOS_ORDENESRow.PRIORIDAD, DESTINATARIO_SECTOR, "ORDEN REACTIVADA", MENSAJE, REMITENTE)
+            Else
+                ENVIAR_EMAIL(DATOS.DATOS_ORDENESRow.PRIORIDAD, DESTINATARIO_SECTOR, "ORDEN REACTIVADA", MENSAJE, REMITENTE, REMITENTE_SECTOR)
+            End If
         End If
 
-        'DATOS.CONDINI_INGORDEN()
-        Cursor.Current = DefaultCursor
+            'DATOS.CONDINI_INGORDEN()
+            Cursor.Current = DefaultCursor
         DATOS.Enabled = True
         Me.Close()
     End Sub

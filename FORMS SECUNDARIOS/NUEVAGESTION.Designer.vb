@@ -562,6 +562,7 @@ Partial Class NUEVAGESTION
         Me.TableAdapterManager.MAT_TRANSITOTableAdapter = Nothing
         Me.TableAdapterManager.ORDINALESTableAdapter = Nothing
         Me.TableAdapterManager.PLANOSTableAdapter = Nothing
+        Me.TableAdapterManager.TecnicosTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = REDES.INDICESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'CKGENTRAB
@@ -786,7 +787,6 @@ Partial Class NUEVAGESTION
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CB_GEST_ATRIBUTO)
-        Me.Controls.Add(Me.CKLIST)
         Me.Controls.Add(Me.CKGENTRAB)
         Me.Controls.Add(Me.INDICE_CALLESDataGridView)
         Me.Controls.Add(Me.TXTPUERTA)
@@ -821,6 +821,7 @@ Partial Class NUEVAGESTION
         Me.Controls.Add(Me.GEST_DESCRIPCION2)
         Me.Controls.Add(Me.GEST_TIPO)
         Me.Controls.Add(Me.Label36)
+        Me.Controls.Add(Me.CKLIST)
         Me.Controls.Add(Me.PictureBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.KeyPreview = True

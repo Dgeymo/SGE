@@ -108,7 +108,22 @@
 
 
         'CARGA LOS FUNCIONARIOS DEL SECTOR OPERATIVO QUE FIGURA EN LA ORDEN
-        Me.FUNCIONARIOSTableAdapter.FillBySECTOR(ORDENESDataSet.FUNCIONARIOS, DATOS.ORDSECTOROPE)
+        FUNCIONARIOSTableAdapter.FillBySECTOR(ORDENESDataSet.FUNCIONARIOS, DATOS.ORDSECTOROPE)
+        SECTORESTableAdapter.FillByORDENADO(ORDENESDataSet.SECTORES)
+        For I = 0 To ORDENESDataSet.SECTORES.Rows.Count - 1
+            SECTORRow = ORDENESDataSet.SECTORES.Rows(I)
+
+        Next I
+
+        SECTORFALLATableAdapter.FillBySECTORCIERRE(ORDENESDataSet.SECTORFALLA, DATOS.ORDSECTOROPE)
+        If ORDENESDataSet.SECTORFALLA.Rows.Count > 0 Then
+            For I = 0 To ORDENESDataSet.SECTORFALLA.Rows.Count - 1
+                FALLARow = ORDENESDataSet.SECTORFALLA.Rows(I)
+                COMB_FALLACIERRE.Items.Add(FALLARow("FALLA"))
+            Next I
+        End If
+
+
 
         If ORDENESDataSet.FUNCIONARIOS.Rows.Count > 0 Then
             For I = 0 To ORDENESDataSet.FUNCIONARIOS.Rows.Count - 1
@@ -130,7 +145,6 @@
         COMB_CAUSACIERRE.Refresh()
 
         Select Case Trim(ORDENRow("STATUS"))
-
             Case "FINALIZADO", "CANCELADO"
                 COMB_FALLACIERRE.Text = DATOS.ORDFALLACIERRE
                 COMB_CAUSACIERRE.Text = DATOS.ORDCAUSACIERRE
@@ -150,7 +164,6 @@
                 TXTOrigenOrdinal.Visible = True
 
             Case "INGORDINAL"
-
                 COMB_FALLACIERRE.Text = DATOS.ORDFALLACIERRE
                 COMB_CAUSACIERRE.Text = DATOS.ORDCAUSACIERRE
 
@@ -174,11 +187,7 @@
                 BOT_DUPLICAR.Visible = False
                 LBL_DUPLICAR.Visible = False
 
-                Me.SECTORESTableAdapter.FillByORDENADO(ORDENESDataSet.SECTORES)
-                For I = 0 To ORDENESDataSet.SECTORES.Rows.Count - 1
-                    SECTORRow = ORDENESDataSet.SECTORES.Rows(I)
 
-                Next I
 
             Case "RUTEADO"
                 'COMB_STATUS.Items.Add("INICIADO")
@@ -191,12 +200,6 @@
 
                 BOT_DUPLICAR.Visible = False
                 LBL_DUPLICAR.Visible = False
-
-                Me.SECTORESTableAdapter.FillByORDENADO(ORDENESDataSet.SECTORES)
-                For I = 0 To ORDENESDataSet.SECTORES.Rows.Count - 1
-                    SECTORRow = ORDENESDataSet.SECTORES.Rows(I)
-
-                Next I
 
             Case "AGENDADO"
                 'COMB_STATUS.Items.Add("INICIADO")
@@ -211,20 +214,9 @@
                 BOT_DUPLICAR.Visible = False
                 LBL_DUPLICAR.Visible = False
 
-                Me.SECTORESTableAdapter.FillByORDENADO(ORDENESDataSet.SECTORES)
-                For I = 0 To ORDENESDataSet.SECTORES.Rows.Count - 1
-                    SECTORRow = ORDENESDataSet.SECTORES.Rows(I)
-                Next I
-
             Case "INICIADO"
                 'BUSCA Y AGREGA LAS FALLAS DE CIERRE CORRESPONDIENTES AL SECTOR OPERATIVO
-                Me.SECTORFALLATableAdapter.FillBySECTORCIERRE(ORDENESDataSet.SECTORFALLA, DATOS.ORDSECTOROPE)
-                If ORDENESDataSet.SECTORFALLA.Rows.Count > 0 Then
-                    For I = 0 To ORDENESDataSet.SECTORFALLA.Rows.Count - 1
-                        FALLARow = ORDENESDataSet.SECTORFALLA.Rows(I)
-                        COMB_FALLACIERRE.Items.Add(FALLARow("FALLA"))
-                    Next I
-                End If
+
 
                 COMB_STATUS.Text = "SELECCIONE"
 
@@ -495,7 +487,15 @@
             MsgBox("SELECCIONE UN STATUS PARA LA ORDEN")
             Cursor = DefaultCursor
             COMB_STATUS.Focus()
+            Cursor = Cursors.Default
             Exit Sub
+        End If
+        If ORDENRow.SECTORGEN = "OC" And COMB_STATUS.Text = "FINALIZADO" Then
+            If ORDENRow.OC_APROBADO = False Then
+                MsgBox("La orden debe estar APROBADA por OBRA CIVIL para finalizar" & vbNewLine & vbNewLine & "Presente la documentacion a OBRA CIVIL, para que sea aprobada", MsgBoxStyle.Critical, "ATENCION!")
+                Cursor = Cursors.Default
+                Exit Sub
+            End If
         End If
         DATOS.DATOS_STATUSANT = ORDENRow("STATUS")
         'GUARDA TODOS LOS CAMBIOS HECHOS EN LA ORDEN SALVO LAS ASIGNACIONES Y AGENDAMIENTOS
@@ -503,7 +503,7 @@
         ORDENRow("CREARORDINAL") = False
         ORDENRow("COORDINAR") = False
         ORDENRow("AGENDAR") = False
-         ORDENRow("COORDINAR") = False
+        ORDENRow("COORDINAR") = False
         ORDENRow("MOTIVOCIERRE") = COMB_FALLACIERRE.Text
         ORDENRow("CAUSACIERRE") = COMB_CAUSACIERRE.Text
         'CARGA LOS HISTORICOS CORRESPONDIENTES AL CAMBIO DE STATUS
@@ -531,10 +531,20 @@
                 DATOS.CARGA_HISTORICO()
         End Select
         'ACTUALIZA OBSERVACIONES 
-        OBSERVACIONESRow("OBSORIGEN") = OBS_INGRESO.Text
-        OBSERVACIONESRow("OBSCIERRE") = OBS_CIERRE.Text
-        OBESERVACIONESTableAdapter.Update(OBSERVACIONESRow)
 
+        If OBSERVACIONESRow IsNot Nothing Then
+            OBSERVACIONESRow("OBSORIGEN") = OBS_INGRESO.Text
+            OBSERVACIONESRow("OBSCIERRE") = OBS_CIERRE.Text
+            OBESERVACIONESTableAdapter.Update(OBSERVACIONESRow)
+        Else
+            NewOBSERVACIONESRow = ORDENESDataSet.OBESERVACIONES.NewOBESERVACIONESRow
+            NewOBSERVACIONESRow("NRO_ORDENINT") = ORDENRow("NRO_ORDENINT")
+            NewOBSERVACIONESRow("NROORDINAL") = 0
+            NewOBSERVACIONESRow("OBSORIGEN") = OBS_INGRESO.Text
+            NewOBSERVACIONESRow("OBSCIERRE") = OBS_CIERRE.Text
+            ORDENESDataSet.OBESERVACIONES.AddOBESERVACIONESRow(NewOBSERVACIONESRow)
+            OBESERVACIONESTableAdapter.Update(NewOBSERVACIONESRow)
+        End If
         'ACTUALIZA TABLA DE ORDENES
         ORDENESTableAdapter.Update(ORDENRow)
         'ACTUALIZA TABLA DE TAREAS
@@ -548,8 +558,6 @@
             FUNCIONARIOSTableAdapter.FillByNOMBRE(ORDENESDataSet.FUNCIONARIOS, ORDENRow.GENERADOR)
             SECTORESTableAdapter.FillBySECTOR(ORDENESDataSet.SECTORES, ORDENESDataSet.FUNCIONARIOS.Rows(0).Item("SECTOR"))
             Dim DESTINATARIO_SECTOR As String = ORDENESDataSet.SECTORES.Rows(0).Item("EMAIL")
-
-
 
             MENSAJE = "Hola, " & Split(ORDENRow.GENERADOR, " ")(0) & ". " & vbNewLine
             MENSAJE += "Se FINALIZÓ la orden " & ORDENRow.NRO_ORDENINT & " con causa " & ORDENRow.CAUSACIERRE & ", la orden tiene marcada que la documentación adjunta es en "

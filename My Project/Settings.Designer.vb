@@ -194,11 +194,11 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\OPERACIONES\BD_OBRAS\OBRAS_MDU.a"& _ 
-            "ccdb")>  _
-        Public ReadOnly Property OBRAS_MDUConnectionString() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\OPERACIONES\BD_FTTHMDU\EDIFICIO."& _ 
+            "accdb")>  _
+        Public ReadOnly Property EDIFICIOConnectionString() As String
             Get
-                Return CType(Me("OBRAS_MDUConnectionString"),String)
+                Return CType(Me("EDIFICIOConnectionString"),String)
             End Get
         End Property
     End Class

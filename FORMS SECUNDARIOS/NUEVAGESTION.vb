@@ -24,8 +24,7 @@
     Dim ORD_DEPENDENCIA As Integer
     Dim FECHAFIN As Date
     Private Sub NUEVA_GESTION_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        Me.INDICE_CALLESTableAdapter.Fill(Me.INDICESDataSet.INDICE_CALLES)
+        INDICE_CALLESTableAdapter.Fill(INDICESDataSet.INDICE_CALLES)
         'MODIFICA LA PANTALLA DE ACUERDO AL AREA SELECCIONADA
         GEST_TIPO.Items.Clear()
         Select Case INGRESO_AREA
@@ -94,6 +93,12 @@
                         TXTCALLE.Text = Trim(DIRECCION_MDU)
                         TXTPUERTA.Text = NUMERO_MDU
                         TXTZONA.Text = ZONA_MDU
+                        For CALLES = 0 To INDICESDataSet.INDICE_CALLES.Rows.Count - 1
+                            If Trim(DIRECCION_MDU) = Trim(INDICESDataSet.INDICE_CALLES.Rows(CALLES).Item("NOMBRE_CALLE")) Then
+                                LBL_ID_CALLE.Text = INDICESDataSet.INDICE_CALLES.Rows(CALLES).Item("ID_CALLE")
+                                Exit For
+                            End If
+                        Next
                 End Select
             Case "EDITAR"
                 If GEST_TIPO.Text = "RELEVAMIENTO PRE GESTION" Then
@@ -233,6 +238,7 @@
                             End If
                         End If
                     Case "MDU"
+                        NewGESTIONRow("CARPETA") = BUSCA_PRIM
                         NewGESTIONRow("AREA") = "MDU"
                         NewGESTIONRow("TIEMPOEST") = GEST_TESTIMADO.Text
                         DATOS.ORDENESDataSet.GESTION.AddGESTIONRow(NewGESTIONRow)
@@ -688,5 +694,9 @@
                 Next
             End If
         End If
+    End Sub
+
+    Private Sub CB_GEST_ATRIBUTO_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_GEST_ATRIBUTO.SelectedIndexChanged
+
     End Sub
 End Class

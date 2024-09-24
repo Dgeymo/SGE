@@ -61,8 +61,8 @@ Public Class MIS_GESTIONES
         End If
         LBL_DESCRIPCION.Text = "MIS ASIGNADOS"
 
-        '  SECTOR = "OBRA CIVIL" ' "DISEÑO" '"OBRA CIVIL" '"" 
-        ' FULLNOMBRE = "GUSTAVO ESTEVEZ" '"ZELMAR LAGOS" '"AGUSTINA MARTINEZ" '""DIEGO CAIMI" '
+        ' SECTOR = "OBRA CIVIL" '  '"OBRA CIVIL" '"" "DISEÑO" '
+        ' FULLNOMBRE = "GUSTAVO ESTEVEZ" '"ZELMAR LAGOS" '"AGUSTINA MARTINEZ" '""DIEGO CAIMI" '"ZELMAR LAGOS" '
 
         'GESTIONTableAdapter.FillByGEST_REQUERIDO(ORDENESDataSet.GESTION, FULLNOMBRE)
         'TRABAJOSTableAdapter.FillByTRABAJO_REQUERIDO(ORDENESDataSet.TRABAJOS, FULLNOMBRE)
@@ -155,7 +155,6 @@ Public Class MIS_GESTIONES
         INGRESO_AREA = Me.ORDENESDataGridView.CurrentRow.Cells.Item(13).Value
         ACCESO_DESDE = "MISGESTIONES"
         ACCESO_TIPO = "ORDEN"
-
         INGRESO_AREA = "RED"
         NROORDENINT = ORDENESDataGridView.CurrentRow.Cells.Item(3).Value
         ACCESO_TRABAJO = ORDENESDataGridView.CurrentRow.Cells.Item(1).Value
@@ -168,7 +167,6 @@ Public Class MIS_GESTIONES
         If ORDENESDataGridView.Rows.Count > 0 Then
             OBESERVACIONESTableAdapter.FillByNROORDENINT(ORDENESDataSet.OBESERVACIONES, ORDENESDataGridView.CurrentRow.Cells(3).Value)
             If ORDENESDataSet.OBESERVACIONES.Rows.Count > 0 Then
-
                 OBS_ORDEN.Text = ORDENESDataSet.OBESERVACIONES.Rows(0).Item("OBSORIGEN")
             Else
                 OBS_ORDEN.Text = "**NO TIENE OBSERVACIONES INGRESADA**"
@@ -425,7 +423,7 @@ Public Class MIS_GESTIONES
             End If
         Catch EX As Exception
             Cursor = Cursors.Default
-            MsgBox("ESTO ES VERGONZOSO, REALIZA NUEVAMENTE LA PETICION" & vbNewLine & EX.Message)
+            MsgBox("ESTO ES VERGONZOSO, REALIZA NUEVAMENTE LA PETICION..." & vbNewLine & EX.Message & vbNewLine & "Trabajo: " & TRABAJORow.Id_TRABAJO)
         End Try
 
         Cursor = Cursors.Default

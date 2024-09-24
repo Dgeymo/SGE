@@ -61,10 +61,10 @@ Partial Class PROCESOS
         Dim Label38 As System.Windows.Forms.Label
         Dim Label28 As System.Windows.Forms.Label
         Dim Label27 As System.Windows.Forms.Label
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BTN_PROCESO = New System.Windows.Forms.Button()
         Me.LBL_ESTADO = New System.Windows.Forms.Label()
         Me.LBL_INFORME_TITULO = New System.Windows.Forms.Label()
@@ -217,6 +217,34 @@ Partial Class PROCESOS
         Me.BTN_BUSCAR_REPETIDOS = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DGV_ORDENES = New System.Windows.Forms.DataGridView()
+        Me.BTN_SIGUIENTE = New System.Windows.Forms.Button()
+        Me.BTN_BORRAR = New System.Windows.Forms.Button()
+        Me.CK_INICIAR_TRABAJOS = New System.Windows.Forms.CheckBox()
+        Me.CK_FINALIZA_TRABAJO = New System.Windows.Forms.CheckBox()
+        Me.CK_MARCA_DUPLICAR = New System.Windows.Forms.CheckBox()
+        Me.CK_INICIA_GESTION = New System.Windows.Forms.CheckBox()
+        Me.CK_REQUERIDOS = New System.Windows.Forms.CheckBox()
+        Me.CK_LIMPIEZA_MENSAJES = New System.Windows.Forms.CheckBox()
+        Me.CK_FINALIZA_GESTION = New System.Windows.Forms.CheckBox()
+        Me.BTN_REPORTE_SERVICIOS = New System.Windows.Forms.Button()
+        Me.DT_SERVICIO_INICIO = New System.Windows.Forms.DateTimePicker()
+        Me.DT_SERVICIO_FIN = New System.Windows.Forms.DateTimePicker()
+        Me.LBL_DESDE_SERVICIOS = New System.Windows.Forms.Label()
+        Me.LBL_HASTA_SERVICIOS = New System.Windows.Forms.Label()
+        Me.CB_TIPO_SERVICIOS = New System.Windows.Forms.ComboBox()
+        Me.BTN_EXCEL = New System.Windows.Forms.Button()
+        Me.DGVOBRACIVIL = New System.Windows.Forms.DataGridView()
+        Me.BTN_OBRA_CIVIL_PENDIENTES = New System.Windows.Forms.Button()
+        Me.CK_DISENO_OC = New System.Windows.Forms.CheckBox()
+        Me.CK_DISENO_RED = New System.Windows.Forms.CheckBox()
+        Me.CK_ACT_PLANOS = New System.Windows.Forms.CheckBox()
+        Me.CK_SERVICIOS = New System.Windows.Forms.CheckBox()
+        Me.BTN_LISTAR_ORDENES = New System.Windows.Forms.Button()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.BTN_TRABAJAR_ORDENES = New System.Windows.Forms.Button()
+        Me.dt_desde_repetidos = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.NROORDENINTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NROORDINALDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IDGESTIONDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -285,24 +313,6 @@ Partial Class PROCESOS
         Me.DESAGENDARDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.OrdenesDataSet1 = New REDES.ORDENESDataSet()
-        Me.BTN_SIGUIENTE = New System.Windows.Forms.Button()
-        Me.BTN_BORRAR = New System.Windows.Forms.Button()
-        Me.CK_INICIAR_TRABAJOS = New System.Windows.Forms.CheckBox()
-        Me.CK_FINALIZA_TRABAJO = New System.Windows.Forms.CheckBox()
-        Me.CK_MARCA_DUPLICAR = New System.Windows.Forms.CheckBox()
-        Me.CK_INICIA_GESTION = New System.Windows.Forms.CheckBox()
-        Me.CK_REQUERIDOS = New System.Windows.Forms.CheckBox()
-        Me.CK_LIMPIEZA_MENSAJES = New System.Windows.Forms.CheckBox()
-        Me.CK_FINALIZA_GESTION = New System.Windows.Forms.CheckBox()
-        Me.BTN_REPORTE_SERVICIOS = New System.Windows.Forms.Button()
-        Me.DT_SERVICIO_INICIO = New System.Windows.Forms.DateTimePicker()
-        Me.DT_SERVICIO_FIN = New System.Windows.Forms.DateTimePicker()
-        Me.LBL_DESDE_SERVICIOS = New System.Windows.Forms.Label()
-        Me.LBL_HASTA_SERVICIOS = New System.Windows.Forms.Label()
-        Me.CB_TIPO_SERVICIOS = New System.Windows.Forms.ComboBox()
-        Me.BTN_EXCEL = New System.Windows.Forms.Button()
-        Me.DGVOBRACIVIL = New System.Windows.Forms.DataGridView()
-        Me.BTN_OBRA_CIVIL_PENDIENTES = New System.Windows.Forms.Button()
         Me.ORDENESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ORDENESDataSet = New REDES.ORDENESDataSet()
         Me.GESTIONBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -316,16 +326,9 @@ Partial Class PROCESOS
         Me.MENSAJERIA_OLDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.HISTORICOTableAdapter = New REDES.ORDENESDataSetTableAdapters.HISTORICOTableAdapter()
         Me.INFORMESERVICIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CK_DISENO_OC = New System.Windows.Forms.CheckBox()
-        Me.CK_DISENO_RED = New System.Windows.Forms.CheckBox()
-        Me.CK_ACT_PLANOS = New System.Windows.Forms.CheckBox()
-        Me.CK_SERVICIOS = New System.Windows.Forms.CheckBox()
-        Me.BTN_LISTAR_ORDENES = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.BTN_TRABAJAR_ORDENES = New System.Windows.Forms.Button()
-        Me.dt_desde_repetidos = New System.Windows.Forms.DateTimePicker()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.OBESERVACIONESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.OBESERVACIONESTableAdapter = New REDES.ORDENESDataSetTableAdapters.OBESERVACIONESTableAdapter()
+        Me.TableAdapterManager1 = New REDES.ORDENESDataSetTableAdapters.TableAdapterManager()
         Label30 = New System.Windows.Forms.Label()
         Label29 = New System.Windows.Forms.Label()
         Label26 = New System.Windows.Forms.Label()
@@ -386,9 +389,11 @@ Partial Class PROCESOS
         CType(Me.BaseCalculoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepoIndicesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV_ORDENES, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DGVOBRACIVIL, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OrdenesDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DGVOBRACIVIL, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ORDENESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GESTIONBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -396,8 +401,7 @@ Partial Class PROCESOS
         CType(Me.TRABAJOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MENSAJERIA_OLDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INFORMESERVICIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
+        CType(Me.OBESERVACIONESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label30
@@ -1182,14 +1186,14 @@ Partial Class PROCESOS
         Me.BasePermisoresDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.BasePermisoresDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical
         Me.BasePermisoresDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.BasePermisoresDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.BasePermisoresDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.BasePermisoresDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.BasePermisoresDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19, Me.DataGridViewTextBoxColumn20, Me.DataGridViewTextBoxColumn21, Me.DataGridViewTextBoxColumn22, Me.DataGridViewTextBoxColumn25})
         Me.BasePermisoresDataGridView.DataSource = Me.BasePermisoresBindingSource
@@ -1197,13 +1201,13 @@ Partial Class PROCESOS
         Me.BasePermisoresDataGridView.Location = New System.Drawing.Point(454, 14)
         Me.BasePermisoresDataGridView.Name = "BasePermisoresDataGridView"
         Me.BasePermisoresDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White
-        Me.BasePermisoresDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
+        Me.BasePermisoresDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.BasePermisoresDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.BasePermisoresDataGridView.ShowCellErrors = False
         Me.BasePermisoresDataGridView.ShowCellToolTips = False
@@ -2179,7 +2183,7 @@ Partial Class PROCESOS
         Me.PPROGRESSS.Dock = System.Windows.Forms.DockStyle.Top
         Me.PPROGRESSS.Location = New System.Drawing.Point(0, 0)
         Me.PPROGRESSS.Name = "PPROGRESSS"
-        Me.PPROGRESSS.Size = New System.Drawing.Size(1366, 60)
+        Me.PPROGRESSS.Size = New System.Drawing.Size(1381, 60)
         Me.PPROGRESSS.TabIndex = 171
         '
         'LBL_ORD
@@ -2500,12 +2504,12 @@ Partial Class PROCESOS
         Me.DGV_ORDENES.MultiSelect = False
         Me.DGV_ORDENES.Name = "DGV_ORDENES"
         Me.DGV_ORDENES.RowHeadersVisible = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
-        Me.DGV_ORDENES.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White
+        Me.DGV_ORDENES.RowsDefaultCellStyle = DataGridViewCellStyle7
         Me.DGV_ORDENES.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGV_ORDENES.ShowCellErrors = False
         Me.DGV_ORDENES.ShowCellToolTips = False
@@ -2513,6 +2517,373 @@ Partial Class PROCESOS
         Me.DGV_ORDENES.ShowRowErrors = False
         Me.DGV_ORDENES.Size = New System.Drawing.Size(1349, 101)
         Me.DGV_ORDENES.TabIndex = 222
+        '
+        'BTN_SIGUIENTE
+        '
+        Me.BTN_SIGUIENTE.BackColor = System.Drawing.Color.Black
+        Me.BTN_SIGUIENTE.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_SIGUIENTE.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.BTN_SIGUIENTE.Location = New System.Drawing.Point(1171, 528)
+        Me.BTN_SIGUIENTE.Name = "BTN_SIGUIENTE"
+        Me.BTN_SIGUIENTE.Size = New System.Drawing.Size(93, 32)
+        Me.BTN_SIGUIENTE.TabIndex = 223
+        Me.BTN_SIGUIENTE.Text = "SIGUIENTE"
+        Me.BTN_SIGUIENTE.UseVisualStyleBackColor = False
+        '
+        'BTN_BORRAR
+        '
+        Me.BTN_BORRAR.BackColor = System.Drawing.Color.Black
+        Me.BTN_BORRAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_BORRAR.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.BTN_BORRAR.Location = New System.Drawing.Point(1270, 528)
+        Me.BTN_BORRAR.Name = "BTN_BORRAR"
+        Me.BTN_BORRAR.Size = New System.Drawing.Size(80, 32)
+        Me.BTN_BORRAR.TabIndex = 224
+        Me.BTN_BORRAR.Text = "BORRAR"
+        Me.BTN_BORRAR.UseVisualStyleBackColor = False
+        '
+        'CK_INICIAR_TRABAJOS
+        '
+        Me.CK_INICIAR_TRABAJOS.AutoSize = True
+        Me.CK_INICIAR_TRABAJOS.Checked = True
+        Me.CK_INICIAR_TRABAJOS.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CK_INICIAR_TRABAJOS.Location = New System.Drawing.Point(11, 68)
+        Me.CK_INICIAR_TRABAJOS.Name = "CK_INICIAR_TRABAJOS"
+        Me.CK_INICIAR_TRABAJOS.Size = New System.Drawing.Size(124, 17)
+        Me.CK_INICIAR_TRABAJOS.TabIndex = 225
+        Me.CK_INICIAR_TRABAJOS.Text = "INICIAR TRABAJOS"
+        Me.CK_INICIAR_TRABAJOS.UseVisualStyleBackColor = True
+        '
+        'CK_FINALIZA_TRABAJO
+        '
+        Me.CK_FINALIZA_TRABAJO.AutoSize = True
+        Me.CK_FINALIZA_TRABAJO.Checked = True
+        Me.CK_FINALIZA_TRABAJO.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CK_FINALIZA_TRABAJO.Location = New System.Drawing.Point(11, 146)
+        Me.CK_FINALIZA_TRABAJO.Name = "CK_FINALIZA_TRABAJO"
+        Me.CK_FINALIZA_TRABAJO.Size = New System.Drawing.Size(140, 17)
+        Me.CK_FINALIZA_TRABAJO.TabIndex = 226
+        Me.CK_FINALIZA_TRABAJO.Text = "FINALIZAR TRABAJOS"
+        Me.CK_FINALIZA_TRABAJO.UseVisualStyleBackColor = True
+        '
+        'CK_MARCA_DUPLICAR
+        '
+        Me.CK_MARCA_DUPLICAR.AutoSize = True
+        Me.CK_MARCA_DUPLICAR.Checked = True
+        Me.CK_MARCA_DUPLICAR.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CK_MARCA_DUPLICAR.Location = New System.Drawing.Point(11, 94)
+        Me.CK_MARCA_DUPLICAR.Name = "CK_MARCA_DUPLICAR"
+        Me.CK_MARCA_DUPLICAR.Size = New System.Drawing.Size(139, 17)
+        Me.CK_MARCA_DUPLICAR.TabIndex = 227
+        Me.CK_MARCA_DUPLICAR.Text = "MARCAR A DUPLICAR"
+        Me.CK_MARCA_DUPLICAR.UseVisualStyleBackColor = True
+        '
+        'CK_INICIA_GESTION
+        '
+        Me.CK_INICIA_GESTION.AutoSize = True
+        Me.CK_INICIA_GESTION.Checked = True
+        Me.CK_INICIA_GESTION.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CK_INICIA_GESTION.Location = New System.Drawing.Point(11, 120)
+        Me.CK_INICIA_GESTION.Name = "CK_INICIA_GESTION"
+        Me.CK_INICIA_GESTION.Size = New System.Drawing.Size(130, 17)
+        Me.CK_INICIA_GESTION.TabIndex = 228
+        Me.CK_INICIA_GESTION.Text = "INICIAR GESTIONES"
+        Me.CK_INICIA_GESTION.UseVisualStyleBackColor = True
+        '
+        'CK_REQUERIDOS
+        '
+        Me.CK_REQUERIDOS.AutoSize = True
+        Me.CK_REQUERIDOS.Checked = True
+        Me.CK_REQUERIDOS.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CK_REQUERIDOS.Location = New System.Drawing.Point(11, 198)
+        Me.CK_REQUERIDOS.Name = "CK_REQUERIDOS"
+        Me.CK_REQUERIDOS.Size = New System.Drawing.Size(154, 17)
+        Me.CK_REQUERIDOS.TabIndex = 229
+        Me.CK_REQUERIDOS.Text = "ANALIZAR REQUERIDOS"
+        Me.CK_REQUERIDOS.UseVisualStyleBackColor = True
+        '
+        'CK_LIMPIEZA_MENSAJES
+        '
+        Me.CK_LIMPIEZA_MENSAJES.AutoSize = True
+        Me.CK_LIMPIEZA_MENSAJES.Checked = True
+        Me.CK_LIMPIEZA_MENSAJES.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CK_LIMPIEZA_MENSAJES.Location = New System.Drawing.Point(11, 234)
+        Me.CK_LIMPIEZA_MENSAJES.Name = "CK_LIMPIEZA_MENSAJES"
+        Me.CK_LIMPIEZA_MENSAJES.Size = New System.Drawing.Size(169, 17)
+        Me.CK_LIMPIEZA_MENSAJES.TabIndex = 230
+        Me.CK_LIMPIEZA_MENSAJES.Text = "LIMPIAR MENSAJES VIEJOS"
+        Me.CK_LIMPIEZA_MENSAJES.UseVisualStyleBackColor = True
+        '
+        'CK_FINALIZA_GESTION
+        '
+        Me.CK_FINALIZA_GESTION.AutoSize = True
+        Me.CK_FINALIZA_GESTION.Checked = True
+        Me.CK_FINALIZA_GESTION.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CK_FINALIZA_GESTION.Location = New System.Drawing.Point(11, 172)
+        Me.CK_FINALIZA_GESTION.Name = "CK_FINALIZA_GESTION"
+        Me.CK_FINALIZA_GESTION.Size = New System.Drawing.Size(146, 17)
+        Me.CK_FINALIZA_GESTION.TabIndex = 231
+        Me.CK_FINALIZA_GESTION.Text = "FINALIZAR GESTIONES"
+        Me.CK_FINALIZA_GESTION.UseVisualStyleBackColor = True
+        '
+        'BTN_REPORTE_SERVICIOS
+        '
+        Me.BTN_REPORTE_SERVICIOS.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_REPORTE_SERVICIOS.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_REPORTE_SERVICIOS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BTN_REPORTE_SERVICIOS.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_REPORTE_SERVICIOS.FlatAppearance.BorderSize = 0
+        Me.BTN_REPORTE_SERVICIOS.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_REPORTE_SERVICIOS.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_REPORTE_SERVICIOS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_REPORTE_SERVICIOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_REPORTE_SERVICIOS.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_REPORTE_SERVICIOS.ForeColor = System.Drawing.Color.White
+        Me.BTN_REPORTE_SERVICIOS.Location = New System.Drawing.Point(17, 104)
+        Me.BTN_REPORTE_SERVICIOS.Name = "BTN_REPORTE_SERVICIOS"
+        Me.BTN_REPORTE_SERVICIOS.Size = New System.Drawing.Size(188, 31)
+        Me.BTN_REPORTE_SERVICIOS.TabIndex = 391
+        Me.BTN_REPORTE_SERVICIOS.Text = "REPORTE SERVICIOS"
+        Me.BTN_REPORTE_SERVICIOS.UseVisualStyleBackColor = False
+        '
+        'DT_SERVICIO_INICIO
+        '
+        Me.DT_SERVICIO_INICIO.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DT_SERVICIO_INICIO.Location = New System.Drawing.Point(109, 52)
+        Me.DT_SERVICIO_INICIO.Name = "DT_SERVICIO_INICIO"
+        Me.DT_SERVICIO_INICIO.Size = New System.Drawing.Size(93, 20)
+        Me.DT_SERVICIO_INICIO.TabIndex = 392
+        '
+        'DT_SERVICIO_FIN
+        '
+        Me.DT_SERVICIO_FIN.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DT_SERVICIO_FIN.Location = New System.Drawing.Point(109, 78)
+        Me.DT_SERVICIO_FIN.Name = "DT_SERVICIO_FIN"
+        Me.DT_SERVICIO_FIN.Size = New System.Drawing.Size(93, 20)
+        Me.DT_SERVICIO_FIN.TabIndex = 393
+        '
+        'LBL_DESDE_SERVICIOS
+        '
+        Me.LBL_DESDE_SERVICIOS.AutoSize = True
+        Me.LBL_DESDE_SERVICIOS.ForeColor = System.Drawing.Color.White
+        Me.LBL_DESDE_SERVICIOS.Location = New System.Drawing.Point(59, 56)
+        Me.LBL_DESDE_SERVICIOS.Name = "LBL_DESDE_SERVICIOS"
+        Me.LBL_DESDE_SERVICIOS.Size = New System.Drawing.Size(44, 13)
+        Me.LBL_DESDE_SERVICIOS.TabIndex = 394
+        Me.LBL_DESDE_SERVICIOS.Text = "DESDE"
+        '
+        'LBL_HASTA_SERVICIOS
+        '
+        Me.LBL_HASTA_SERVICIOS.AutoSize = True
+        Me.LBL_HASTA_SERVICIOS.ForeColor = System.Drawing.Color.White
+        Me.LBL_HASTA_SERVICIOS.Location = New System.Drawing.Point(60, 82)
+        Me.LBL_HASTA_SERVICIOS.Name = "LBL_HASTA_SERVICIOS"
+        Me.LBL_HASTA_SERVICIOS.Size = New System.Drawing.Size(43, 13)
+        Me.LBL_HASTA_SERVICIOS.TabIndex = 395
+        Me.LBL_HASTA_SERVICIOS.Text = "HASTA"
+        '
+        'CB_TIPO_SERVICIOS
+        '
+        Me.CB_TIPO_SERVICIOS.FormattingEnabled = True
+        Me.CB_TIPO_SERVICIOS.Items.AddRange(New Object() {"INGRESADOS", "FINALIZADOS"})
+        Me.CB_TIPO_SERVICIOS.Location = New System.Drawing.Point(21, 26)
+        Me.CB_TIPO_SERVICIOS.Name = "CB_TIPO_SERVICIOS"
+        Me.CB_TIPO_SERVICIOS.Size = New System.Drawing.Size(121, 21)
+        Me.CB_TIPO_SERVICIOS.TabIndex = 396
+        Me.CB_TIPO_SERVICIOS.Text = "INGRESADOS"
+        '
+        'BTN_EXCEL
+        '
+        Me.BTN_EXCEL.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_EXCEL.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_EXCEL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BTN_EXCEL.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_EXCEL.FlatAppearance.BorderSize = 0
+        Me.BTN_EXCEL.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_EXCEL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_EXCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_EXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_EXCEL.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_EXCEL.ForeColor = System.Drawing.Color.White
+        Me.BTN_EXCEL.Location = New System.Drawing.Point(17, 176)
+        Me.BTN_EXCEL.Name = "BTN_EXCEL"
+        Me.BTN_EXCEL.Size = New System.Drawing.Size(188, 31)
+        Me.BTN_EXCEL.TabIndex = 397
+        Me.BTN_EXCEL.Text = "SERVICIOS REITERADOS"
+        Me.BTN_EXCEL.UseVisualStyleBackColor = False
+        '
+        'DGVOBRACIVIL
+        '
+        Me.DGVOBRACIVIL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGVOBRACIVIL.Location = New System.Drawing.Point(19, 441)
+        Me.DGVOBRACIVIL.Name = "DGVOBRACIVIL"
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White
+        Me.DGVOBRACIVIL.RowsDefaultCellStyle = DataGridViewCellStyle8
+        Me.DGVOBRACIVIL.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DGVOBRACIVIL.ShowCellErrors = False
+        Me.DGVOBRACIVIL.ShowCellToolTips = False
+        Me.DGVOBRACIVIL.ShowEditingIcon = False
+        Me.DGVOBRACIVIL.ShowRowErrors = False
+        Me.DGVOBRACIVIL.Size = New System.Drawing.Size(755, 101)
+        Me.DGVOBRACIVIL.TabIndex = 398
+        Me.DGVOBRACIVIL.Visible = False
+        '
+        'BTN_OBRA_CIVIL_PENDIENTES
+        '
+        Me.BTN_OBRA_CIVIL_PENDIENTES.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_OBRA_CIVIL_PENDIENTES.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_OBRA_CIVIL_PENDIENTES.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BTN_OBRA_CIVIL_PENDIENTES.FlatAppearance.BorderSize = 0
+        Me.BTN_OBRA_CIVIL_PENDIENTES.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_OBRA_CIVIL_PENDIENTES.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_OBRA_CIVIL_PENDIENTES.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.BTN_OBRA_CIVIL_PENDIENTES.Location = New System.Drawing.Point(17, 140)
+        Me.BTN_OBRA_CIVIL_PENDIENTES.Name = "BTN_OBRA_CIVIL_PENDIENTES"
+        Me.BTN_OBRA_CIVIL_PENDIENTES.Size = New System.Drawing.Size(188, 32)
+        Me.BTN_OBRA_CIVIL_PENDIENTES.TabIndex = 399
+        Me.BTN_OBRA_CIVIL_PENDIENTES.Text = "VER OBRA CIVIL - PEND"
+        Me.BTN_OBRA_CIVIL_PENDIENTES.UseVisualStyleBackColor = False
+        '
+        'CK_DISENO_OC
+        '
+        Me.CK_DISENO_OC.AutoSize = True
+        Me.CK_DISENO_OC.Checked = True
+        Me.CK_DISENO_OC.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CK_DISENO_OC.Location = New System.Drawing.Point(21, 77)
+        Me.CK_DISENO_OC.Name = "CK_DISENO_OC"
+        Me.CK_DISENO_OC.Size = New System.Drawing.Size(85, 17)
+        Me.CK_DISENO_OC.TabIndex = 403
+        Me.CK_DISENO_OC.Text = "DISEÑO OC"
+        Me.CK_DISENO_OC.UseVisualStyleBackColor = True
+        '
+        'CK_DISENO_RED
+        '
+        Me.CK_DISENO_RED.AutoSize = True
+        Me.CK_DISENO_RED.Checked = True
+        Me.CK_DISENO_RED.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CK_DISENO_RED.Location = New System.Drawing.Point(21, 51)
+        Me.CK_DISENO_RED.Name = "CK_DISENO_RED"
+        Me.CK_DISENO_RED.Size = New System.Drawing.Size(93, 17)
+        Me.CK_DISENO_RED.TabIndex = 402
+        Me.CK_DISENO_RED.Text = "DISEÑO RED"
+        Me.CK_DISENO_RED.UseVisualStyleBackColor = True
+        '
+        'CK_ACT_PLANOS
+        '
+        Me.CK_ACT_PLANOS.AutoSize = True
+        Me.CK_ACT_PLANOS.Checked = True
+        Me.CK_ACT_PLANOS.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CK_ACT_PLANOS.Location = New System.Drawing.Point(21, 103)
+        Me.CK_ACT_PLANOS.Name = "CK_ACT_PLANOS"
+        Me.CK_ACT_PLANOS.Size = New System.Drawing.Size(93, 17)
+        Me.CK_ACT_PLANOS.TabIndex = 401
+        Me.CK_ACT_PLANOS.Text = "ACT PLANOS"
+        Me.CK_ACT_PLANOS.UseVisualStyleBackColor = True
+        '
+        'CK_SERVICIOS
+        '
+        Me.CK_SERVICIOS.AutoSize = True
+        Me.CK_SERVICIOS.Checked = True
+        Me.CK_SERVICIOS.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CK_SERVICIOS.Location = New System.Drawing.Point(21, 25)
+        Me.CK_SERVICIOS.Name = "CK_SERVICIOS"
+        Me.CK_SERVICIOS.Size = New System.Drawing.Size(83, 17)
+        Me.CK_SERVICIOS.TabIndex = 400
+        Me.CK_SERVICIOS.Text = "SERVICIOS"
+        Me.CK_SERVICIOS.UseVisualStyleBackColor = True
+        '
+        'BTN_LISTAR_ORDENES
+        '
+        Me.BTN_LISTAR_ORDENES.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_LISTAR_ORDENES.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_LISTAR_ORDENES.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BTN_LISTAR_ORDENES.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_LISTAR_ORDENES.FlatAppearance.BorderSize = 0
+        Me.BTN_LISTAR_ORDENES.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_LISTAR_ORDENES.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_LISTAR_ORDENES.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_LISTAR_ORDENES.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_LISTAR_ORDENES.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_LISTAR_ORDENES.ForeColor = System.Drawing.Color.White
+        Me.BTN_LISTAR_ORDENES.Location = New System.Drawing.Point(17, 126)
+        Me.BTN_LISTAR_ORDENES.Name = "BTN_LISTAR_ORDENES"
+        Me.BTN_LISTAR_ORDENES.Size = New System.Drawing.Size(188, 31)
+        Me.BTN_LISTAR_ORDENES.TabIndex = 404
+        Me.BTN_LISTAR_ORDENES.Text = "LISTAR ORDENES"
+        Me.BTN_LISTAR_ORDENES.UseVisualStyleBackColor = False
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.BTN_OBRA_CIVIL_PENDIENTES)
+        Me.GroupBox1.Controls.Add(Me.BTN_EXCEL)
+        Me.GroupBox1.Controls.Add(Me.CB_TIPO_SERVICIOS)
+        Me.GroupBox1.Controls.Add(Me.BTN_REPORTE_SERVICIOS)
+        Me.GroupBox1.Controls.Add(Me.LBL_HASTA_SERVICIOS)
+        Me.GroupBox1.Controls.Add(Me.DT_SERVICIO_INICIO)
+        Me.GroupBox1.Controls.Add(Me.LBL_DESDE_SERVICIOS)
+        Me.GroupBox1.Controls.Add(Me.DT_SERVICIO_FIN)
+        Me.GroupBox1.Location = New System.Drawing.Point(993, 74)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(216, 222)
+        Me.GroupBox1.TabIndex = 405
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "FILTRO CON FECHA"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.BTN_LISTAR_ORDENES)
+        Me.GroupBox2.Controls.Add(Me.CK_SERVICIOS)
+        Me.GroupBox2.Controls.Add(Me.CK_ACT_PLANOS)
+        Me.GroupBox2.Controls.Add(Me.CK_DISENO_OC)
+        Me.GroupBox2.Controls.Add(Me.CK_DISENO_RED)
+        Me.GroupBox2.Location = New System.Drawing.Point(993, 302)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(216, 163)
+        Me.GroupBox2.TabIndex = 406
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "SEGUN MOTIVO "
+        '
+        'BTN_TRABAJAR_ORDENES
+        '
+        Me.BTN_TRABAJAR_ORDENES.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_TRABAJAR_ORDENES.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_TRABAJAR_ORDENES.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BTN_TRABAJAR_ORDENES.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_TRABAJAR_ORDENES.FlatAppearance.BorderSize = 0
+        Me.BTN_TRABAJAR_ORDENES.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_TRABAJAR_ORDENES.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_TRABAJAR_ORDENES.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_TRABAJAR_ORDENES.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_TRABAJAR_ORDENES.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_TRABAJAR_ORDENES.ForeColor = System.Drawing.Color.White
+        Me.BTN_TRABAJAR_ORDENES.Location = New System.Drawing.Point(11, 388)
+        Me.BTN_TRABAJAR_ORDENES.Name = "BTN_TRABAJAR_ORDENES"
+        Me.BTN_TRABAJAR_ORDENES.Size = New System.Drawing.Size(188, 31)
+        Me.BTN_TRABAJAR_ORDENES.TabIndex = 405
+        Me.BTN_TRABAJAR_ORDENES.Text = "TRABAJAR CON ORDENES"
+        Me.BTN_TRABAJAR_ORDENES.UseVisualStyleBackColor = False
+        '
+        'dt_desde_repetidos
+        '
+        Me.dt_desde_repetidos.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dt_desde_repetidos.Location = New System.Drawing.Point(973, 508)
+        Me.dt_desde_repetidos.Name = "dt_desde_repetidos"
+        Me.dt_desde_repetidos.Size = New System.Drawing.Size(93, 20)
+        Me.dt_desde_repetidos.TabIndex = 407
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(923, 512)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(44, 13)
+        Me.Label2.TabIndex = 408
+        Me.Label2.Text = "DESDE"
         '
         'NROORDENINTDataGridViewTextBoxColumn
         '
@@ -2920,236 +3291,6 @@ Partial Class PROCESOS
         Me.OrdenesDataSet1.DataSetName = "ORDENESDataSet"
         Me.OrdenesDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'BTN_SIGUIENTE
-        '
-        Me.BTN_SIGUIENTE.BackColor = System.Drawing.Color.Black
-        Me.BTN_SIGUIENTE.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_SIGUIENTE.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.BTN_SIGUIENTE.Location = New System.Drawing.Point(1171, 528)
-        Me.BTN_SIGUIENTE.Name = "BTN_SIGUIENTE"
-        Me.BTN_SIGUIENTE.Size = New System.Drawing.Size(93, 32)
-        Me.BTN_SIGUIENTE.TabIndex = 223
-        Me.BTN_SIGUIENTE.Text = "SIGUIENTE"
-        Me.BTN_SIGUIENTE.UseVisualStyleBackColor = False
-        '
-        'BTN_BORRAR
-        '
-        Me.BTN_BORRAR.BackColor = System.Drawing.Color.Black
-        Me.BTN_BORRAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_BORRAR.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.BTN_BORRAR.Location = New System.Drawing.Point(1270, 528)
-        Me.BTN_BORRAR.Name = "BTN_BORRAR"
-        Me.BTN_BORRAR.Size = New System.Drawing.Size(80, 32)
-        Me.BTN_BORRAR.TabIndex = 224
-        Me.BTN_BORRAR.Text = "BORRAR"
-        Me.BTN_BORRAR.UseVisualStyleBackColor = False
-        '
-        'CK_INICIAR_TRABAJOS
-        '
-        Me.CK_INICIAR_TRABAJOS.AutoSize = True
-        Me.CK_INICIAR_TRABAJOS.Checked = True
-        Me.CK_INICIAR_TRABAJOS.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CK_INICIAR_TRABAJOS.Location = New System.Drawing.Point(11, 68)
-        Me.CK_INICIAR_TRABAJOS.Name = "CK_INICIAR_TRABAJOS"
-        Me.CK_INICIAR_TRABAJOS.Size = New System.Drawing.Size(124, 17)
-        Me.CK_INICIAR_TRABAJOS.TabIndex = 225
-        Me.CK_INICIAR_TRABAJOS.Text = "INICIAR TRABAJOS"
-        Me.CK_INICIAR_TRABAJOS.UseVisualStyleBackColor = True
-        '
-        'CK_FINALIZA_TRABAJO
-        '
-        Me.CK_FINALIZA_TRABAJO.AutoSize = True
-        Me.CK_FINALIZA_TRABAJO.Checked = True
-        Me.CK_FINALIZA_TRABAJO.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CK_FINALIZA_TRABAJO.Location = New System.Drawing.Point(11, 146)
-        Me.CK_FINALIZA_TRABAJO.Name = "CK_FINALIZA_TRABAJO"
-        Me.CK_FINALIZA_TRABAJO.Size = New System.Drawing.Size(140, 17)
-        Me.CK_FINALIZA_TRABAJO.TabIndex = 226
-        Me.CK_FINALIZA_TRABAJO.Text = "FINALIZAR TRABAJOS"
-        Me.CK_FINALIZA_TRABAJO.UseVisualStyleBackColor = True
-        '
-        'CK_MARCA_DUPLICAR
-        '
-        Me.CK_MARCA_DUPLICAR.AutoSize = True
-        Me.CK_MARCA_DUPLICAR.Checked = True
-        Me.CK_MARCA_DUPLICAR.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CK_MARCA_DUPLICAR.Location = New System.Drawing.Point(11, 94)
-        Me.CK_MARCA_DUPLICAR.Name = "CK_MARCA_DUPLICAR"
-        Me.CK_MARCA_DUPLICAR.Size = New System.Drawing.Size(139, 17)
-        Me.CK_MARCA_DUPLICAR.TabIndex = 227
-        Me.CK_MARCA_DUPLICAR.Text = "MARCAR A DUPLICAR"
-        Me.CK_MARCA_DUPLICAR.UseVisualStyleBackColor = True
-        '
-        'CK_INICIA_GESTION
-        '
-        Me.CK_INICIA_GESTION.AutoSize = True
-        Me.CK_INICIA_GESTION.Checked = True
-        Me.CK_INICIA_GESTION.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CK_INICIA_GESTION.Location = New System.Drawing.Point(11, 120)
-        Me.CK_INICIA_GESTION.Name = "CK_INICIA_GESTION"
-        Me.CK_INICIA_GESTION.Size = New System.Drawing.Size(130, 17)
-        Me.CK_INICIA_GESTION.TabIndex = 228
-        Me.CK_INICIA_GESTION.Text = "INICIAR GESTIONES"
-        Me.CK_INICIA_GESTION.UseVisualStyleBackColor = True
-        '
-        'CK_REQUERIDOS
-        '
-        Me.CK_REQUERIDOS.AutoSize = True
-        Me.CK_REQUERIDOS.Checked = True
-        Me.CK_REQUERIDOS.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CK_REQUERIDOS.Location = New System.Drawing.Point(11, 198)
-        Me.CK_REQUERIDOS.Name = "CK_REQUERIDOS"
-        Me.CK_REQUERIDOS.Size = New System.Drawing.Size(154, 17)
-        Me.CK_REQUERIDOS.TabIndex = 229
-        Me.CK_REQUERIDOS.Text = "ANALIZAR REQUERIDOS"
-        Me.CK_REQUERIDOS.UseVisualStyleBackColor = True
-        '
-        'CK_LIMPIEZA_MENSAJES
-        '
-        Me.CK_LIMPIEZA_MENSAJES.AutoSize = True
-        Me.CK_LIMPIEZA_MENSAJES.Checked = True
-        Me.CK_LIMPIEZA_MENSAJES.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CK_LIMPIEZA_MENSAJES.Location = New System.Drawing.Point(11, 234)
-        Me.CK_LIMPIEZA_MENSAJES.Name = "CK_LIMPIEZA_MENSAJES"
-        Me.CK_LIMPIEZA_MENSAJES.Size = New System.Drawing.Size(169, 17)
-        Me.CK_LIMPIEZA_MENSAJES.TabIndex = 230
-        Me.CK_LIMPIEZA_MENSAJES.Text = "LIMPIAR MENSAJES VIEJOS"
-        Me.CK_LIMPIEZA_MENSAJES.UseVisualStyleBackColor = True
-        '
-        'CK_FINALIZA_GESTION
-        '
-        Me.CK_FINALIZA_GESTION.AutoSize = True
-        Me.CK_FINALIZA_GESTION.Checked = True
-        Me.CK_FINALIZA_GESTION.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CK_FINALIZA_GESTION.Location = New System.Drawing.Point(11, 172)
-        Me.CK_FINALIZA_GESTION.Name = "CK_FINALIZA_GESTION"
-        Me.CK_FINALIZA_GESTION.Size = New System.Drawing.Size(146, 17)
-        Me.CK_FINALIZA_GESTION.TabIndex = 231
-        Me.CK_FINALIZA_GESTION.Text = "FINALIZAR GESTIONES"
-        Me.CK_FINALIZA_GESTION.UseVisualStyleBackColor = True
-        '
-        'BTN_REPORTE_SERVICIOS
-        '
-        Me.BTN_REPORTE_SERVICIOS.BackColor = System.Drawing.Color.Transparent
-        Me.BTN_REPORTE_SERVICIOS.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
-        Me.BTN_REPORTE_SERVICIOS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.BTN_REPORTE_SERVICIOS.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_REPORTE_SERVICIOS.FlatAppearance.BorderSize = 0
-        Me.BTN_REPORTE_SERVICIOS.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_REPORTE_SERVICIOS.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_REPORTE_SERVICIOS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_REPORTE_SERVICIOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_REPORTE_SERVICIOS.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_REPORTE_SERVICIOS.ForeColor = System.Drawing.Color.White
-        Me.BTN_REPORTE_SERVICIOS.Location = New System.Drawing.Point(17, 104)
-        Me.BTN_REPORTE_SERVICIOS.Name = "BTN_REPORTE_SERVICIOS"
-        Me.BTN_REPORTE_SERVICIOS.Size = New System.Drawing.Size(188, 31)
-        Me.BTN_REPORTE_SERVICIOS.TabIndex = 391
-        Me.BTN_REPORTE_SERVICIOS.Text = "REPORTE SERVICIOS"
-        Me.BTN_REPORTE_SERVICIOS.UseVisualStyleBackColor = False
-        '
-        'DT_SERVICIO_INICIO
-        '
-        Me.DT_SERVICIO_INICIO.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DT_SERVICIO_INICIO.Location = New System.Drawing.Point(109, 52)
-        Me.DT_SERVICIO_INICIO.Name = "DT_SERVICIO_INICIO"
-        Me.DT_SERVICIO_INICIO.Size = New System.Drawing.Size(93, 20)
-        Me.DT_SERVICIO_INICIO.TabIndex = 392
-        '
-        'DT_SERVICIO_FIN
-        '
-        Me.DT_SERVICIO_FIN.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DT_SERVICIO_FIN.Location = New System.Drawing.Point(109, 78)
-        Me.DT_SERVICIO_FIN.Name = "DT_SERVICIO_FIN"
-        Me.DT_SERVICIO_FIN.Size = New System.Drawing.Size(93, 20)
-        Me.DT_SERVICIO_FIN.TabIndex = 393
-        '
-        'LBL_DESDE_SERVICIOS
-        '
-        Me.LBL_DESDE_SERVICIOS.AutoSize = True
-        Me.LBL_DESDE_SERVICIOS.ForeColor = System.Drawing.Color.White
-        Me.LBL_DESDE_SERVICIOS.Location = New System.Drawing.Point(59, 56)
-        Me.LBL_DESDE_SERVICIOS.Name = "LBL_DESDE_SERVICIOS"
-        Me.LBL_DESDE_SERVICIOS.Size = New System.Drawing.Size(44, 13)
-        Me.LBL_DESDE_SERVICIOS.TabIndex = 394
-        Me.LBL_DESDE_SERVICIOS.Text = "DESDE"
-        '
-        'LBL_HASTA_SERVICIOS
-        '
-        Me.LBL_HASTA_SERVICIOS.AutoSize = True
-        Me.LBL_HASTA_SERVICIOS.ForeColor = System.Drawing.Color.White
-        Me.LBL_HASTA_SERVICIOS.Location = New System.Drawing.Point(60, 82)
-        Me.LBL_HASTA_SERVICIOS.Name = "LBL_HASTA_SERVICIOS"
-        Me.LBL_HASTA_SERVICIOS.Size = New System.Drawing.Size(43, 13)
-        Me.LBL_HASTA_SERVICIOS.TabIndex = 395
-        Me.LBL_HASTA_SERVICIOS.Text = "HASTA"
-        '
-        'CB_TIPO_SERVICIOS
-        '
-        Me.CB_TIPO_SERVICIOS.FormattingEnabled = True
-        Me.CB_TIPO_SERVICIOS.Items.AddRange(New Object() {"INGRESADOS", "FINALIZADOS"})
-        Me.CB_TIPO_SERVICIOS.Location = New System.Drawing.Point(21, 26)
-        Me.CB_TIPO_SERVICIOS.Name = "CB_TIPO_SERVICIOS"
-        Me.CB_TIPO_SERVICIOS.Size = New System.Drawing.Size(121, 21)
-        Me.CB_TIPO_SERVICIOS.TabIndex = 396
-        Me.CB_TIPO_SERVICIOS.Text = "INGRESADOS"
-        '
-        'BTN_EXCEL
-        '
-        Me.BTN_EXCEL.BackColor = System.Drawing.Color.Transparent
-        Me.BTN_EXCEL.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
-        Me.BTN_EXCEL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.BTN_EXCEL.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_EXCEL.FlatAppearance.BorderSize = 0
-        Me.BTN_EXCEL.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_EXCEL.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_EXCEL.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_EXCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_EXCEL.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_EXCEL.ForeColor = System.Drawing.Color.White
-        Me.BTN_EXCEL.Location = New System.Drawing.Point(17, 176)
-        Me.BTN_EXCEL.Name = "BTN_EXCEL"
-        Me.BTN_EXCEL.Size = New System.Drawing.Size(188, 31)
-        Me.BTN_EXCEL.TabIndex = 397
-        Me.BTN_EXCEL.Text = "SERVICIOS REITERADOS"
-        Me.BTN_EXCEL.UseVisualStyleBackColor = False
-        '
-        'DGVOBRACIVIL
-        '
-        Me.DGVOBRACIVIL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVOBRACIVIL.Location = New System.Drawing.Point(19, 441)
-        Me.DGVOBRACIVIL.Name = "DGVOBRACIVIL"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White
-        Me.DGVOBRACIVIL.RowsDefaultCellStyle = DataGridViewCellStyle4
-        Me.DGVOBRACIVIL.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVOBRACIVIL.ShowCellErrors = False
-        Me.DGVOBRACIVIL.ShowCellToolTips = False
-        Me.DGVOBRACIVIL.ShowEditingIcon = False
-        Me.DGVOBRACIVIL.ShowRowErrors = False
-        Me.DGVOBRACIVIL.Size = New System.Drawing.Size(755, 101)
-        Me.DGVOBRACIVIL.TabIndex = 398
-        Me.DGVOBRACIVIL.Visible = False
-        '
-        'BTN_OBRA_CIVIL_PENDIENTES
-        '
-        Me.BTN_OBRA_CIVIL_PENDIENTES.BackColor = System.Drawing.Color.Transparent
-        Me.BTN_OBRA_CIVIL_PENDIENTES.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
-        Me.BTN_OBRA_CIVIL_PENDIENTES.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.BTN_OBRA_CIVIL_PENDIENTES.FlatAppearance.BorderSize = 0
-        Me.BTN_OBRA_CIVIL_PENDIENTES.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_OBRA_CIVIL_PENDIENTES.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_OBRA_CIVIL_PENDIENTES.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.BTN_OBRA_CIVIL_PENDIENTES.Location = New System.Drawing.Point(17, 140)
-        Me.BTN_OBRA_CIVIL_PENDIENTES.Name = "BTN_OBRA_CIVIL_PENDIENTES"
-        Me.BTN_OBRA_CIVIL_PENDIENTES.Size = New System.Drawing.Size(188, 32)
-        Me.BTN_OBRA_CIVIL_PENDIENTES.TabIndex = 399
-        Me.BTN_OBRA_CIVIL_PENDIENTES.Text = "VER OBRA CIVIL - PEND"
-        Me.BTN_OBRA_CIVIL_PENDIENTES.UseVisualStyleBackColor = False
-        '
         'ORDENESBindingSource
         '
         Me.ORDENESBindingSource.DataMember = "ORDENES"
@@ -3209,142 +3350,49 @@ Partial Class PROCESOS
         Me.INFORMESERVICIOSBindingSource.DataMember = "INFORME_SERVICIOS"
         Me.INFORMESERVICIOSBindingSource.DataSource = Me.ORDENESDataSet
         '
-        'CK_DISENO_OC
+        'OBESERVACIONESBindingSource
         '
-        Me.CK_DISENO_OC.AutoSize = True
-        Me.CK_DISENO_OC.Checked = True
-        Me.CK_DISENO_OC.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CK_DISENO_OC.Location = New System.Drawing.Point(21, 77)
-        Me.CK_DISENO_OC.Name = "CK_DISENO_OC"
-        Me.CK_DISENO_OC.Size = New System.Drawing.Size(85, 17)
-        Me.CK_DISENO_OC.TabIndex = 403
-        Me.CK_DISENO_OC.Text = "DISEÑO OC"
-        Me.CK_DISENO_OC.UseVisualStyleBackColor = True
+        Me.OBESERVACIONESBindingSource.DataMember = "OBESERVACIONES"
+        Me.OBESERVACIONESBindingSource.DataSource = Me.ORDENESDataSet
         '
-        'CK_DISENO_RED
+        'OBESERVACIONESTableAdapter
         '
-        Me.CK_DISENO_RED.AutoSize = True
-        Me.CK_DISENO_RED.Checked = True
-        Me.CK_DISENO_RED.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CK_DISENO_RED.Location = New System.Drawing.Point(21, 51)
-        Me.CK_DISENO_RED.Name = "CK_DISENO_RED"
-        Me.CK_DISENO_RED.Size = New System.Drawing.Size(93, 17)
-        Me.CK_DISENO_RED.TabIndex = 402
-        Me.CK_DISENO_RED.Text = "DISEÑO RED"
-        Me.CK_DISENO_RED.UseVisualStyleBackColor = True
+        Me.OBESERVACIONESTableAdapter.ClearBeforeFill = True
         '
-        'CK_ACT_PLANOS
+        'TableAdapterManager1
         '
-        Me.CK_ACT_PLANOS.AutoSize = True
-        Me.CK_ACT_PLANOS.Checked = True
-        Me.CK_ACT_PLANOS.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CK_ACT_PLANOS.Location = New System.Drawing.Point(21, 103)
-        Me.CK_ACT_PLANOS.Name = "CK_ACT_PLANOS"
-        Me.CK_ACT_PLANOS.Size = New System.Drawing.Size(93, 17)
-        Me.CK_ACT_PLANOS.TabIndex = 401
-        Me.CK_ACT_PLANOS.Text = "ACT PLANOS"
-        Me.CK_ACT_PLANOS.UseVisualStyleBackColor = True
-        '
-        'CK_SERVICIOS
-        '
-        Me.CK_SERVICIOS.AutoSize = True
-        Me.CK_SERVICIOS.Checked = True
-        Me.CK_SERVICIOS.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CK_SERVICIOS.Location = New System.Drawing.Point(21, 25)
-        Me.CK_SERVICIOS.Name = "CK_SERVICIOS"
-        Me.CK_SERVICIOS.Size = New System.Drawing.Size(83, 17)
-        Me.CK_SERVICIOS.TabIndex = 400
-        Me.CK_SERVICIOS.Text = "SERVICIOS"
-        Me.CK_SERVICIOS.UseVisualStyleBackColor = True
-        '
-        'BTN_LISTAR_ORDENES
-        '
-        Me.BTN_LISTAR_ORDENES.BackColor = System.Drawing.Color.Transparent
-        Me.BTN_LISTAR_ORDENES.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
-        Me.BTN_LISTAR_ORDENES.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.BTN_LISTAR_ORDENES.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_LISTAR_ORDENES.FlatAppearance.BorderSize = 0
-        Me.BTN_LISTAR_ORDENES.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_LISTAR_ORDENES.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_LISTAR_ORDENES.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_LISTAR_ORDENES.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_LISTAR_ORDENES.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_LISTAR_ORDENES.ForeColor = System.Drawing.Color.White
-        Me.BTN_LISTAR_ORDENES.Location = New System.Drawing.Point(17, 126)
-        Me.BTN_LISTAR_ORDENES.Name = "BTN_LISTAR_ORDENES"
-        Me.BTN_LISTAR_ORDENES.Size = New System.Drawing.Size(188, 31)
-        Me.BTN_LISTAR_ORDENES.TabIndex = 404
-        Me.BTN_LISTAR_ORDENES.Text = "LISTAR ORDENES"
-        Me.BTN_LISTAR_ORDENES.UseVisualStyleBackColor = False
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.BTN_OBRA_CIVIL_PENDIENTES)
-        Me.GroupBox1.Controls.Add(Me.BTN_EXCEL)
-        Me.GroupBox1.Controls.Add(Me.CB_TIPO_SERVICIOS)
-        Me.GroupBox1.Controls.Add(Me.BTN_REPORTE_SERVICIOS)
-        Me.GroupBox1.Controls.Add(Me.LBL_HASTA_SERVICIOS)
-        Me.GroupBox1.Controls.Add(Me.DT_SERVICIO_INICIO)
-        Me.GroupBox1.Controls.Add(Me.LBL_DESDE_SERVICIOS)
-        Me.GroupBox1.Controls.Add(Me.DT_SERVICIO_FIN)
-        Me.GroupBox1.Location = New System.Drawing.Point(993, 74)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(216, 222)
-        Me.GroupBox1.TabIndex = 405
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "FILTRO CON FECHA"
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.BTN_LISTAR_ORDENES)
-        Me.GroupBox2.Controls.Add(Me.CK_SERVICIOS)
-        Me.GroupBox2.Controls.Add(Me.CK_ACT_PLANOS)
-        Me.GroupBox2.Controls.Add(Me.CK_DISENO_OC)
-        Me.GroupBox2.Controls.Add(Me.CK_DISENO_RED)
-        Me.GroupBox2.Location = New System.Drawing.Point(993, 302)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(216, 163)
-        Me.GroupBox2.TabIndex = 406
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "SEGUN MOTIVO "
-        '
-        'BTN_TRABAJAR_ORDENES
-        '
-        Me.BTN_TRABAJAR_ORDENES.BackColor = System.Drawing.Color.Transparent
-        Me.BTN_TRABAJAR_ORDENES.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
-        Me.BTN_TRABAJAR_ORDENES.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.BTN_TRABAJAR_ORDENES.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_TRABAJAR_ORDENES.FlatAppearance.BorderSize = 0
-        Me.BTN_TRABAJAR_ORDENES.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_TRABAJAR_ORDENES.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_TRABAJAR_ORDENES.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_TRABAJAR_ORDENES.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_TRABAJAR_ORDENES.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_TRABAJAR_ORDENES.ForeColor = System.Drawing.Color.White
-        Me.BTN_TRABAJAR_ORDENES.Location = New System.Drawing.Point(11, 388)
-        Me.BTN_TRABAJAR_ORDENES.Name = "BTN_TRABAJAR_ORDENES"
-        Me.BTN_TRABAJAR_ORDENES.Size = New System.Drawing.Size(188, 31)
-        Me.BTN_TRABAJAR_ORDENES.TabIndex = 405
-        Me.BTN_TRABAJAR_ORDENES.Text = "TRABAJAR CON ORDENES"
-        Me.BTN_TRABAJAR_ORDENES.UseVisualStyleBackColor = False
-        '
-        'dt_desde_repetidos
-        '
-        Me.dt_desde_repetidos.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dt_desde_repetidos.Location = New System.Drawing.Point(973, 508)
-        Me.dt_desde_repetidos.Name = "dt_desde_repetidos"
-        Me.dt_desde_repetidos.Size = New System.Drawing.Size(93, 20)
-        Me.dt_desde_repetidos.TabIndex = 407
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(923, 512)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 13)
-        Me.Label2.TabIndex = 408
-        Me.Label2.Text = "DESDE"
+        Me.TableAdapterManager1.ACTIVIDADESSTDTableAdapter = Nothing
+        Me.TableAdapterManager1.ADJUNTOSTableAdapter = Nothing
+        Me.TableAdapterManager1.AFECTACIONTableAdapter = Nothing
+        Me.TableAdapterManager1.AREASTableAdapter = Nothing
+        Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager1.CAUSASTableAdapter = Nothing
+        Me.TableAdapterManager1.COMBOSTableAdapter = Nothing
+        Me.TableAdapterManager1.CREAR_ORDTableAdapter = Nothing
+        Me.TableAdapterManager1.FALLASTableAdapter = Nothing
+        Me.TableAdapterManager1.FUNCIONARIOSTableAdapter = Nothing
+        Me.TableAdapterManager1.GESTIONES_TIPOTableAdapter = Nothing
+        Me.TableAdapterManager1.GESTIONTableAdapter = Me.GESTIONTableAdapter
+        Me.TableAdapterManager1.GRAF_ORDINALESTableAdapter = Nothing
+        Me.TableAdapterManager1.GRAF_REDESTableAdapter = Nothing
+        Me.TableAdapterManager1.HISTORICOTableAdapter = Me.HISTORICOTableAdapter
+        Me.TableAdapterManager1.INFORMMEMDU_PERMISORTableAdapter = Nothing
+        Me.TableAdapterManager1.MENSAJERIA_OLDTableAdapter = Me.MENSAJERIA_OLDTableAdapter
+        Me.TableAdapterManager1.MENSAJERIATableAdapter = Me.MENSAJERIATableAdapter
+        Me.TableAdapterManager1.OBESERVACIONESTableAdapter = Me.OBESERVACIONESTableAdapter
+        Me.TableAdapterManager1.ORDENESTableAdapter = Me.ORDENESTableAdapter
+        Me.TableAdapterManager1.PRESUPUESTOTableAdapter = Nothing
+        Me.TableAdapterManager1.RELACION_FALLAACTIVIDADTableAdapter = Nothing
+        Me.TableAdapterManager1.REPORTEORDINALESTableAdapter = Nothing
+        Me.TableAdapterManager1.SECTORESTableAdapter = Nothing
+        Me.TableAdapterManager1.SECTORFALLATableAdapter = Nothing
+        Me.TableAdapterManager1.STANDARDTableAdapter = Nothing
+        Me.TableAdapterManager1.STATUSTableAdapter = Nothing
+        Me.TableAdapterManager1.TAREASSTDTableAdapter = Nothing
+        Me.TableAdapterManager1.TAREASTableAdapter = Nothing
+        Me.TableAdapterManager1.TIPOTableAdapter = Nothing
+        Me.TableAdapterManager1.TRABAJOSTableAdapter = Me.TRABAJOSTableAdapter
+        Me.TableAdapterManager1.UpdateOrder = REDES.ORDENESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'PROCESOS
         '
@@ -3352,7 +3400,7 @@ Partial Class PROCESOS
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1366, 673)
+        Me.ClientSize = New System.Drawing.Size(1381, 687)
         Me.Controls.Add(Me.dt_desde_repetidos)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.BTN_TRABAJAR_ORDENES)
@@ -3408,9 +3456,13 @@ Partial Class PROCESOS
         CType(Me.BaseCalculoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.RepoIndicesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGV_ORDENES, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DGVOBRACIVIL, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         CType(Me.BindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OrdenesDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DGVOBRACIVIL, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ORDENESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GESTIONBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3418,10 +3470,7 @@ Partial Class PROCESOS
         CType(Me.TRABAJOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MENSAJERIA_OLDBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INFORMESERVICIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
+        CType(Me.OBESERVACIONESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -3687,4 +3736,7 @@ Partial Class PROCESOS
     Friend WithEvents BTN_TRABAJAR_ORDENES As Button
     Friend WithEvents dt_desde_repetidos As DateTimePicker
     Friend WithEvents Label2 As Label
+    Friend WithEvents OBESERVACIONESBindingSource As BindingSource
+    Friend WithEvents OBESERVACIONESTableAdapter As ORDENESDataSetTableAdapters.OBESERVACIONESTableAdapter
+    Friend WithEvents TableAdapterManager1 As ORDENESDataSetTableAdapters.TableAdapterManager
 End Class

@@ -90,6 +90,7 @@ Partial Class MIS_GESTIONES
         Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.HABILITADO = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FECHA_ASIGNADO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TRABAJOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.LBLTRABAJOS = New System.Windows.Forms.Label()
         Me.ORDENESDataGridView = New System.Windows.Forms.DataGridView()
@@ -110,6 +111,7 @@ Partial Class MIS_GESTIONES
         Me.DataGridViewTextBoxColumn49 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SECTOROPE = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DOCUMENTO_FISICO = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.OC_APROBADO = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ORDENESBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.OrdenesDataSet1 = New REDES.ORDENESDataSet()
         Me.LBLORDENES = New System.Windows.Forms.Label()
@@ -374,7 +376,7 @@ Partial Class MIS_GESTIONES
         DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.SandyBrown
         DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.TRABAJOSDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
-        Me.TRABAJOSDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn20, Me.HABILITADO, Me.DataGridViewTextBoxColumn23})
+        Me.TRABAJOSDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn15, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn20, Me.HABILITADO, Me.DataGridViewTextBoxColumn23, Me.FECHA_ASIGNADO})
         Me.TRABAJOSDataGridView.DataSource = Me.TRABAJOSBindingSource
         Me.TRABAJOSDataGridView.EnableHeadersVisualStyles = False
         Me.TRABAJOSDataGridView.GridColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -389,7 +391,7 @@ Partial Class MIS_GESTIONES
         DataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.SandyBrown
         Me.TRABAJOSDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle21
         Me.TRABAJOSDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.TRABAJOSDataGridView.Size = New System.Drawing.Size(983, 184)
+        Me.TRABAJOSDataGridView.Size = New System.Drawing.Size(1094, 184)
         Me.TRABAJOSDataGridView.TabIndex = 2
         Me.TRABAJOSDataGridView.Visible = False
         '
@@ -531,6 +533,14 @@ Partial Class MIS_GESTIONES
         Me.DataGridViewTextBoxColumn23.ReadOnly = True
         Me.DataGridViewTextBoxColumn23.Visible = False
         '
+        'FECHA_ASIGNADO
+        '
+        Me.FECHA_ASIGNADO.DataPropertyName = "FECHA_ASIGNADO"
+        Me.FECHA_ASIGNADO.HeaderText = "F.ASIGNADO"
+        Me.FECHA_ASIGNADO.Name = "FECHA_ASIGNADO"
+        Me.FECHA_ASIGNADO.ReadOnly = True
+        Me.FECHA_ASIGNADO.Width = 75
+        '
         'TRABAJOSBindingSource
         '
         Me.TRABAJOSBindingSource.DataMember = "TRABAJOS"
@@ -564,7 +574,7 @@ Partial Class MIS_GESTIONES
         DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.ORDENESDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle22
         Me.ORDENESDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.ORDENESDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn38, Me.DataGridViewTextBoxColumn39, Me.DataGridViewTextBoxColumn37, Me.DataGridViewTextBoxColumn36, Me.MOTIVOORIGEN, Me.CAUSARIGEN, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn12, Me.CALLE, Me.NRO, Me.FECHA_ASIGNADA, Me.DataGridViewTextBoxColumn45, Me.DataGridViewTextBoxColumn42, Me.DataGridViewTextBoxColumn48, Me.DataGridViewTextBoxColumn49, Me.SECTOROPE, Me.DOCUMENTO_FISICO})
+        Me.ORDENESDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn38, Me.DataGridViewTextBoxColumn39, Me.DataGridViewTextBoxColumn37, Me.DataGridViewTextBoxColumn36, Me.MOTIVOORIGEN, Me.CAUSARIGEN, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn12, Me.CALLE, Me.NRO, Me.FECHA_ASIGNADA, Me.DataGridViewTextBoxColumn45, Me.DataGridViewTextBoxColumn42, Me.DataGridViewTextBoxColumn48, Me.DataGridViewTextBoxColumn49, Me.SECTOROPE, Me.DOCUMENTO_FISICO, Me.OC_APROBADO})
         Me.ORDENESDataGridView.DataSource = Me.ORDENESBindingSource1
         Me.ORDENESDataGridView.EnableHeadersVisualStyles = False
         Me.ORDENESDataGridView.GridColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -740,6 +750,14 @@ Partial Class MIS_GESTIONES
         Me.DOCUMENTO_FISICO.Name = "DOCUMENTO_FISICO"
         Me.DOCUMENTO_FISICO.ReadOnly = True
         Me.DOCUMENTO_FISICO.Width = 50
+        '
+        'OC_APROBADO
+        '
+        Me.OC_APROBADO.DataPropertyName = "OC_APROBADO"
+        Me.OC_APROBADO.HeaderText = "AP"
+        Me.OC_APROBADO.Name = "OC_APROBADO"
+        Me.OC_APROBADO.ReadOnly = True
+        Me.OC_APROBADO.Width = 50
         '
         'ORDENESBindingSource1
         '
@@ -938,6 +956,7 @@ Partial Class MIS_GESTIONES
         Me.TableAdapterManager.MENSAJERIATableAdapter = Nothing
         Me.TableAdapterManager.OBESERVACIONESTableAdapter = Nothing
         Me.TableAdapterManager.ORDENESTableAdapter = Nothing
+        Me.TableAdapterManager.PRESUPUESTOTableAdapter = Nothing
         Me.TableAdapterManager.RELACION_FALLAACTIVIDADTableAdapter = Nothing
         Me.TableAdapterManager.REPORTEORDINALESTableAdapter = Nothing
         Me.TableAdapterManager.SECTORESTableAdapter = Nothing
@@ -1192,6 +1211,24 @@ Partial Class MIS_GESTIONES
     Friend WithEvents ZONA As DataGridViewTextBoxColumn
     Friend WithEvents CARPETA As DataGridViewTextBoxColumn
     Friend WithEvents DESCRIPCION As DataGridViewTextBoxColumn
+    Friend WithEvents OBESERVACIONESBindingSource As BindingSource
+    Friend WithEvents OBESERVACIONESTableAdapter As ORDENESDataSetTableAdapters.OBESERVACIONESTableAdapter
+    Friend WithEvents REPORTE_OC As Button
+    Friend WithEvents REPORTE_OCBindingSource As BindingSource
+    Friend WithEvents OrdenesDataSet3 As ORDENESDataSet
+    Friend WithEvents HISTORICOBindingSource As BindingSource
+    Friend WithEvents HISTORICOTableAdapter As ORDENESDataSetTableAdapters.HISTORICOTableAdapter
+    Friend WithEvents F_MOTIVO As TextBox
+    Friend WithEvents F_CAUSA As TextBox
+    Friend WithEvents F_CALLE As TextBox
+    Friend WithEvents F_PRIORIDAD As TextBox
+    Friend WithEvents F_STATUS As TextBox
+    Friend WithEvents F_ORDEN As TextBox
+    Friend WithEvents F_ORDINAL As TextBox
+    Friend WithEvents F_NODO As TextBox
+    Friend WithEvents F_ZONA As TextBox
+    Friend WithEvents F_NRO As TextBox
+    Friend WithEvents F_AREA As TextBox
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
@@ -1207,13 +1244,7 @@ Partial Class MIS_GESTIONES
     Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
     Friend WithEvents HABILITADO As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn23 As DataGridViewTextBoxColumn
-    Friend WithEvents OBESERVACIONESBindingSource As BindingSource
-    Friend WithEvents OBESERVACIONESTableAdapter As ORDENESDataSetTableAdapters.OBESERVACIONESTableAdapter
-    Friend WithEvents REPORTE_OC As Button
-    Friend WithEvents REPORTE_OCBindingSource As BindingSource
-    Friend WithEvents OrdenesDataSet3 As ORDENESDataSet
-    Friend WithEvents HISTORICOBindingSource As BindingSource
-    Friend WithEvents HISTORICOTableAdapter As ORDENESDataSetTableAdapters.HISTORICOTableAdapter
+    Friend WithEvents FECHA_ASIGNADO As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn38 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn39 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn37 As DataGridViewTextBoxColumn
@@ -1231,15 +1262,5 @@ Partial Class MIS_GESTIONES
     Friend WithEvents DataGridViewTextBoxColumn49 As DataGridViewTextBoxColumn
     Friend WithEvents SECTOROPE As DataGridViewTextBoxColumn
     Friend WithEvents DOCUMENTO_FISICO As DataGridViewCheckBoxColumn
-    Friend WithEvents F_MOTIVO As TextBox
-    Friend WithEvents F_CAUSA As TextBox
-    Friend WithEvents F_CALLE As TextBox
-    Friend WithEvents F_PRIORIDAD As TextBox
-    Friend WithEvents F_STATUS As TextBox
-    Friend WithEvents F_ORDEN As TextBox
-    Friend WithEvents F_ORDINAL As TextBox
-    Friend WithEvents F_NODO As TextBox
-    Friend WithEvents F_ZONA As TextBox
-    Friend WithEvents F_NRO As TextBox
-    Friend WithEvents F_AREA As TextBox
+    Friend WithEvents OC_APROBADO As DataGridViewCheckBoxColumn
 End Class

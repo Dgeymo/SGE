@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports Microsoft.Office.Interop
 Public Class DASHBOARD
     Dim TIEMPO As Integer
     Dim CUENTA_CLIMA As Integer
@@ -20,6 +21,7 @@ Public Class DASHBOARD
     End Sub
     Private Sub INGRESO_Load(sender As Object, e As EventArgs) Handles Me.Load
 
+
         Try
             USUARIO_ARRAY = Split(Trim(File.ReadAllText("C:\DOCUMENTOS\USUARIO\LOGVBNET.TXT")), ",")
         Catch ex As Exception
@@ -39,7 +41,7 @@ Public Class DASHBOARD
                     End
                 Else
                     WindowState = FormWindowState.Minimized
-                    INICIO()
+                    INICIO_DASH()
                 End If
             Else
                 If File.Exists("C:\DOCUMENTOS\USUARIO\VERSION.TXT") = False Then
@@ -56,7 +58,7 @@ Public Class DASHBOARD
                     Dispose()
                     Close()
                 Else
-                    INICIO()
+                    INICIO_DASH()
                 End If
             End If
         Catch EX As Exception
@@ -72,7 +74,7 @@ Public Class DASHBOARD
             BtnFull.FlatAppearance.MouseOverBackColor = Color.White
             BtnMinimizar.BackgroundImage = My.Resources.menos
             BtnMinimizar.FlatAppearance.MouseOverBackColor = Color.White
-            LBL_TEMP.ForeColor = FORE_COLOR_W
+
             ForeColor = FORE_COLOR_W
             BackColor = Color.White
             PanelTrabajo.BackColor = Color.White
@@ -81,10 +83,10 @@ Public Class DASHBOARD
 
             PanelSuperior.BackColor = Color.White
             PanelSuperior.BackgroundImage = My.Resources.BANNER_SUPERIOR
-            PanelSuperior.BackgroundImageLayout = ImageLayout.None
-
+            '  PanelSuperior.BackgroundImageLayout = ImageLayout.None
+            PanelSUPInterior.Width = 1100
             PanelInferior.Height = 0
-
+            Dim centrado As Integer = 420
             BTNMensajeria.Location = New Point(1, 0)
             BTNMensajeria.ForeColor = FORE_COLOR_W
             BTNMensajeria.Size = New Size(50, 50)
@@ -101,20 +103,20 @@ Public Class DASHBOARD
             BTNAsignado.TextAlign = ContentAlignment.MiddleCenter
             BTNAsignado.BackgroundImage = My.Resources.ASIGNADO
             BTNCerrarAsignado.FlatAppearance.MouseOverBackColor = Color.White
-            BTNCerrarAsignado.BackColor = Color.White
+            BTNCerrarAsignado.BackColor = Color.Transparent
             BTNCerrarAsignado.BackgroundImage = My.Resources.BTNCancelar
             BTNCerrarAsignado.Location = New Point(111, 1)
 
             MISTrabajos.Parent = PanelSUPInterior
             MISTrabajos.AutoSize = True
-            MISTrabajos.Location = New Point(59 * 2, 7)
+            MISTrabajos.Location = New Point(62 * 2, 4)
             MISTrabajos.ForeColor = Color.White
-            MISTrabajos.BackColor = Color.White
+            MISTrabajos.BackColor = Color.Transparent
             MISTrabajos.BackgroundImage = My.Resources.DEMORADO_BANNER
 
             BTN_MISGestiones.Parent = PanelSUPInterior
             BTN_MISGestiones.AutoSize = True
-            BTN_MISGestiones.Location = New Point(59 * 2, 27)
+            BTN_MISGestiones.Location = New Point(62 * 2, 21)
             BTN_MISGestiones.BackColor = Color.White
             BTN_MISGestiones.ForeColor = Color.White
             BTN_MISGestiones.BackgroundImage = My.Resources.DEMORADO_BANNER
@@ -122,7 +124,7 @@ Public Class DASHBOARD
 
 
             BTN_AGENDA.Parent = PanelSUPInterior
-            BTN_AGENDA.Location = New Point(200, 0)
+            BTN_AGENDA.Location = New Point(centrado, 0)
 
             BTN_AGENDA.BackgroundImage = My.Resources.AGENDA
             BTN_AGENDA.Size = New Size(50, 50)
@@ -131,91 +133,105 @@ Public Class DASHBOARD
             BTN_AGENDA.BringToFront()
 
             BTN_ADMIN.Parent = PanelSUPInterior
-            BTN_ADMIN.Location = New Point(200 + 60, 0)
+            BTN_ADMIN.Location = New Point(centrado + 60, 0)
             BTN_ADMIN.BackgroundImage = My.Resources.AD_TEC
             BTN_ADMIN.Size = New Size(50, 50)
             BTN_ADMIN.Text = ""
             BTN_ADMIN.BringToFront()
 
             BTN_MDU.Parent = PanelSUPInterior
-            BTN_MDU.Location = New Point(200 + 60 * 2, 0)
+            BTN_MDU.Location = New Point(centrado + 60 * 2, 0)
             BTN_MDU.BackgroundImage = My.Resources.EDIFICIO
             BTN_MDU.Size = New Size(50, 50)
             BTN_MDU.Text = ""
             BTN_MDU.BringToFront()
 
             BTN_RED.Parent = PanelSUPInterior
-            BTN_RED.Location = New Point(200 + 60 * 3, 0)
+            BTN_RED.Location = New Point(centrado + 60 * 3, 0)
             BTN_RED.BackgroundImage = My.Resources.RED
             BTN_RED.Size = New Size(50, 50)
             BTN_RED.Text = ""
             BTN_RED.BringToFront()
 
             BTN_FUENTES.Parent = PanelSUPInterior
-            BTN_FUENTES.Location = New Point(200 + 60 * 4, 0)
+            BTN_FUENTES.Location = New Point(centrado + 60 * 4, 0)
             BTN_FUENTES.BackgroundImage = My.Resources.FUENTE
             BTN_FUENTES.Size = New Size(50, 50)
             BTN_FUENTES.Text = ""
             BTN_FUENTES.BringToFront()
 
-            BTN_FIBRA.Parent = PanelSUPInterior
-            BTN_FIBRA.Location = New Point(200 + 60 * 5, 0)
-            BTN_FIBRA.BackgroundImage = My.Resources.FIBRA
-            BTN_FIBRA.Size = New Size(50, 50)
-            BTN_FIBRA.Text = ""
-            BTN_FIBRA.Visible = True
-            BTN_FIBRA.BringToFront()
+            BTN_FTTB.Parent = PanelSUPInterior
+            BTN_FTTB.Location = New Point(centrado + 60 * 5, 0)
+            BTN_FTTB.BackgroundImage = My.Resources.FIBRA
+            BTN_FTTB.Size = New Size(50, 50)
+            BTN_FTTB.Text = ""
+            BTN_FTTB.Visible = True
+            BTN_FTTB.BringToFront()
 
             BTN_DESPACHO.Parent = PanelSUPInterior
-            BTN_DESPACHO.Location = New Point(200 + 60 * 6, 0)
+            BTN_DESPACHO.Location = New Point(centrado + 60 * 6, 0)
             BTN_DESPACHO.BackgroundImage = My.Resources.DESPACHO
             BTN_DESPACHO.Size = New Size(50, 50)
             BTN_DESPACHO.Text = ""
             BTN_DESPACHO.BringToFront()
 
             BTN_BUSCADOR.Parent = PanelSUPInterior
-            BTN_BUSCADOR.Location = New Point(200 + 60 * 7, 0)
+            BTN_BUSCADOR.Location = New Point(centrado + 60 * 7, 0)
             BTN_BUSCADOR.BackgroundImage = My.Resources.BUSQUEDA
             BTN_BUSCADOR.Size = New Size(50, 50)
             BTN_BUSCADOR.Text = ""
+            BTN_BUSCADOR.Visible = True
             BTN_BUSCADOR.BringToFront()
 
             BTN_Proceso.Parent = PanelSUPInterior
-            BTN_Proceso.Location = New Point(200 + 60 * 8, 0)
+            BTN_Proceso.Location = New Point(centrado + 60 * 8, 0)
             BTN_Proceso.BackgroundImage = My.Resources.PROCESOS
             BTN_Proceso.Size = New Size(50, 50)
             BTN_Proceso.Text = ""
             BTN_Proceso.BringToFront()
 
+            'BTN_FTTB.Parent = PanelSUPInterior
+            'BTN_FTTB.Location = New Point(200 + 60 * 9, 0)
+            'BTN_FTTB.Size = New Size(50, 50)
+            'BTN_FTTB.Text = ""
+            'BTN_FTTB.BringToFront()
+
             BTN_Usuario.Parent = PanelSuperior
             BTN_Usuario.BackgroundImage = My.Resources.UserBlack
             BTN_Usuario.Size = New Size(15, 15)
-            BTN_Usuario.Location = New Point(PanelSuperior.Width - BTN_Usuario.Width - 10, PanelSuperior.Height - BTN_Usuario.Height - 10)
+            BTN_Usuario.Location = New Point(PanelSuperior.Width - BTN_Usuario.Width + 670, PanelSuperior.Height - BTN_Usuario.Height - 10)
             BTN_Usuario.BringToFront()
 
             BTN_BOT.Parent = PanelSuperior
             BTN_BOT.BackgroundImage = My.Resources.bot
             BTN_BOT.Size = New Size(15, 15)
-            BTN_BOT.Location = New Point(PanelSuperior.Width - BTN_Usuario.Width - 40, PanelSuperior.Height - BTN_Usuario.Height - 10)
+            BTN_BOT.Location = New Point(PanelSuperior.Width - BTN_BOT.Width + 650, PanelSuperior.Height - BTN_BOT.Height - 10)
             BTN_BOT.BringToFront()
 
+            PIC_CLIMA.Visible = True
             PIC_CLIMA.Parent = PanelSuperior
-            PIC_CLIMA.Location = New Point(925, 12)
+            PIC_CLIMA.Location = New Point(1003, 2)
             PIC_CLIMA.Size = New Size(25, 25)
             PIC_CLIMA.BackgroundImageLayout = ImageLayout.Zoom
             PIC_CLIMA.BringToFront()
 
-            HoraAhora.ForeColor = Color.White
-            FechaAhora.Parent = PanelSuperior
-            FechaAhora.ForeColor = Color.White
-            FechaAhora.Location = New Point(1130, 4)
-            FechaAhora.BringToFront()
-            HoraAhora.Font = New Font("Calibri", 22, FontStyle.Bold)
-            HoraAhora.Size = New Size(100, 30)
-            HoraAhora.Location = New Point(1130, 12)
-            LBL_TEMP.TextAlign = ContentAlignment.MiddleLeft
-            LBL_TEMP.Location = New Point(PIC_CLIMA.Location.X + 40, 17)
-
+            HoraAhora.ForeColor = Color.Black
+            'FechaAhora.Parent = PanelSuperior
+            FechaAhora.ForeColor = Color.Black
+            'FechaAhora.Location = New Point(PanelSuperior.Width + 500, PanelSuperior.Height - 14)
+            'FechaAhora.BringToFront()
+            'HoraAhora.Visible = True
+            'HoraAhora.Font = New Font("Calibri", 22, FontStyle.Bold)
+            'HoraAhora.Size = New Size(100, 30)
+            'HoraAhora.Location = New Point(PanelSuperior.Width + 500, PanelSuperior.Height - 12)
+            'LBL_TEMP.TextAlign = ContentAlignment.MiddleLeft
+            'LBL_TEMP.ForeColor = Color.Red
+            'FechaAhora.Visible = True
+            'LBL_TEMP.Text = "esto es el texto temp"
+            'LBL_TEMP.Parent = PanelSuperior
+            'LBL_TEMP.Location = New Point(PanelSuperior.Width + 500, PanelSuperior.Height - 17)
+            'LBL_TEMP.BringToFront()
+            'HoraAhora.BringToFront()
 
             BTN1Close.FlatAppearance.MouseOverBackColor = Color.White
             BTN1Close.FlatAppearance.MouseDownBackColor = Color.White
@@ -250,13 +266,13 @@ Public Class DASHBOARD
             BTN_HAND.FlatAppearance.MouseOverBackColor = Color.White
             BTN_HAND.FlatAppearance.MouseDownBackColor = Color.Gray
 
-
-            'BTN8Close.FlatAppearance.MouseOverBackColor = Color.White
-            'BTN8Close.BackColor = Color.White
-            'BTN8Close.BackgroundImage = My.Resources.BTNCancelar
+            BTN8Close.FlatAppearance.MouseDownBackColor = Color.White
+            BTN8Close.FlatAppearance.MouseOverBackColor = Color.White
+            BTN8Close.BackColor = Color.White
+            BTN8Close.BackgroundImage = My.Resources.BTNCancelar
         End If
     End Sub
-    Private Sub INICIO()
+    Private Sub INICIO_DASH()
         HoraAhora.Text = Date.Now.ToString("HH:mm")
         FechaAhora.Text = Date.Now.ToString("dd/MM/yy")
         RELOJ.Enabled = True
@@ -304,7 +320,7 @@ Public Class DASHBOARD
             LBL_TEMP.Visible = False
             PIC_CLIMA.Visible = False
             BTN_HAND.Visible = True
-
+            PanelSUPInterior.Width = 700
             If PANTALLA_PRIMARIA = False Then
                 If PANTALLA_NEGATIVA Then
                     Location = New Point(((ANCHOP - 1000) / 2) - 1366, (ALTOP - 600) / 2)
@@ -783,7 +799,7 @@ Public Class DASHBOARD
     Private Sub BTN_ADMIN_MouseLeave(sender As Object, e As EventArgs) Handles BTN_ADMIN.MouseLeave
         If ORDINALES.Visible = False Then
             If THEME_BLACK Then
-                BTN_ADMIN.BackgroundImage = My.Resources.BTNBlack
+                BTN_ADMIN.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
             Else
                 BTN_ADMIN.BackgroundImage = My.Resources.AD_TEC
             End If
@@ -836,7 +852,7 @@ Public Class DASHBOARD
     Private Sub BTN_MDU_MouseLeave(sender As Object, e As EventArgs) Handles BTN_MDU.MouseLeave
         If INGRESO_MDU.Visible = False Then
             If THEME_BLACK Then
-                BTN_MDU.BackgroundImage = My.Resources.BTNBlack
+                BTN_MDU.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
             Else
                 BTN_MDU.BackgroundImage = My.Resources.EDIFICIO
             End If
@@ -896,7 +912,7 @@ Public Class DASHBOARD
     Private Sub BTN_RED_MouseLeave(sender As Object, e As EventArgs) Handles BTN_RED.MouseLeave
         If DATOS.Visible = False Then
             If THEME_BLACK Then
-                BTN_RED.BackgroundImage = My.Resources.BTNBlack
+                BTN_RED.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
             Else
                 BTN_RED.BackgroundImage = My.Resources.RED
             End If
@@ -945,7 +961,7 @@ Public Class DASHBOARD
     Private Sub BTN_BUSCADOR_MouseLeave(sender As Object, e As EventArgs) Handles BTN_BUSCADOR.MouseLeave
         If BUSQUEDA.Visible = False Then
             If THEME_BLACK Then
-                BTN_BUSCADOR.BackgroundImage = My.Resources.BTNBlack
+                BTN_BUSCADOR.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
             Else
                 BTN_BUSCADOR.BackgroundImage = My.Resources.BUSQUEDA
             End If
@@ -969,7 +985,7 @@ Public Class DASHBOARD
     End Sub
     Private Sub BTN_DESPACHO_MouseLeave(sender As Object, e As EventArgs) Handles BTN_DESPACHO.MouseLeave
         If THEME_BLACK Then
-            BTN_DESPACHO.BackgroundImage = My.Resources.BTNBlack
+            BTN_DESPACHO.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
         Else
             BTN_DESPACHO.BackgroundImage = My.Resources.DESPACHO
         End If
@@ -1017,39 +1033,41 @@ Public Class DASHBOARD
     Private Sub BTN_FUENTES_MouseLeave(sender As Object, e As EventArgs) Handles BTN_FUENTES.MouseLeave
         If FUENTES.Visible = False Then
             If THEME_BLACK Then
-                BTN_FUENTES.BackgroundImage = My.Resources.BTNBlack
+                BTN_FUENTES.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
             Else
                 BTN_FUENTES.BackgroundImage = My.Resources.FUENTE
             End If
         End If
     End Sub
     'BOTON FIBRA
-    Private Sub BTN_FIBRA_Click(sender As Object, e As EventArgs) Handles BTN_FIBRA.Click
+    Private Sub BTN_FIBRA_Click(sender As Object, e As EventArgs) Handles BTN_FTTB.Click
         'BotonesInferiores("FIBRA", Fibra)
-        If File.Exists("G:\OPERACIONES\PROGRAMAS\FIBRA\" & VERSION & "\REDFIBRAMONTEVIDEO.exe") Then
-            MsgBox("SALDRA A UNA APLICACION EXTERNA")
-            Shell("G:\OPERACIONES\PROGRAMAS\FIBRA\" & VERSION & "\REDFIBRAMONTEVIDEO.exe")
-        Else
-            MsgBox("OOOPS! Solicite ayuda tecnica")
-        End If
+        'If File.Exists("G:\OPERACIONES\PROGRAMAS\FIBRA\" & VERSION & "\REDFIBRAMONTEVIDEO.exe") Then
+        '    MsgBox("SALDRA A UNA APLICACION EXTERNA")
+        '    Shell("G:\OPERACIONES\PROGRAMAS\FIBRA\" & VERSION & "\REDFIBRAMONTEVIDEO.exe")
+        'Else
+        '    MsgBox("OOOPS! Solicite ayuda tecnica")
+        'End If
+        If INICIO.Visible Then INICIO.Close()
+        INICIO.Show()
         If THEME_BLACK Then
-            BTN_FIBRA.BackgroundImage = My.Resources.BTNClick
+            BTN_FTTB.BackgroundImage = My.Resources.BTNClick
         End If
 
 
     End Sub
-    Private Sub BTN_FIBRA_MouseHover(sender As Object, e As EventArgs) Handles BTN_FIBRA.MouseHover
+    Private Sub BTN_FIBRA_MouseHover(sender As Object, e As EventArgs) Handles BTN_FTTB.MouseHover
         If THEME_BLACK Then
-            BTN_FIBRA.BackgroundImage = My.Resources.BTNOver
+            BTN_FTTB.BackgroundImage = My.Resources.BTNOver
         Else
-            BTN_FIBRA.BackgroundImage = My.Resources.FIBRA_HOVER
+            BTN_FTTB.BackgroundImage = My.Resources.FIBRA_HOVER
         End If
     End Sub
-    Private Sub BTN_FIBRA_MouseLeave(sender As Object, e As EventArgs) Handles BTN_FIBRA.MouseLeave
+    Private Sub BTN_FIBRA_MouseLeave(sender As Object, e As EventArgs) Handles BTN_FTTB.MouseLeave
         If THEME_BLACK Then
-            BTN_FIBRA.BackgroundImage = My.Resources.BTNBlack
+            BTN_FTTB.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
         Else
-            BTN_FIBRA.BackgroundImage = My.Resources.FIBRA
+            BTN_FTTB.BackgroundImage = My.Resources.FIBRA
         End If
     End Sub
     'BOTON AGENDA
@@ -1094,7 +1112,7 @@ Public Class DASHBOARD
     Private Sub BTN_AGENDA_MouseLeave(sender As Object, e As EventArgs) Handles BTN_AGENDA.MouseLeave
         If FORMAGE.Visible = False Then
             If THEME_BLACK Then
-                BTN_AGENDA.BackgroundImage = My.Resources.BTNBlack
+                BTN_AGENDA.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
             Else
                 BTN_AGENDA.BackgroundImage = My.Resources.AGENDA
             End If
@@ -1346,7 +1364,7 @@ Public Class DASHBOARD
         End If
     End Sub
 
-    Private Sub BTN_MISGestiones_Click(sender As Object, e As EventArgs) Handles BTN_MISGestiones.Click
+    Private Sub BTN_MISGestiones_Click(sender As Object, e As EventArgs)
         If MIS_GESTIONES.Visible = False Then
             If THEME_BLACK Then BTNAsignado.BackgroundImage = My.Resources.BTNAsignadoClick Else BTNAsignado.BackgroundImage = My.Resources.ASIGNADO_ACTIVO
             BTNCerrarAsignado.Visible = True
@@ -1403,29 +1421,26 @@ Public Class DASHBOARD
         'ESCRITORIO.BringToFront()
 
     End Sub
-    Private Sub BTN_MAS_Click(sender As Object, e As EventArgs) Handles BTN_MAS.Click
-        'If AGENDA.Visible = False Then
-        '    BTN_MAS.BackgroundImage = My.Resources.BTNBlack
-        '    MATERIALES.TopLevel = False
-        '    MATERIALES.Parent = PanelTrabajo
-        '    MATERIALES.Dock = DockStyle.Fill
-        '    'ABRE FORMULARIO Y LLEVA AL FRENTE
-        '    MATERIALES.Show()
-        '    MATERIALES.BringToFront()
-        'End If
-    End Sub
-    Private Sub BTN_MAS_MouseHover(sender As Object, e As EventArgs) Handles BTN_MAS.MouseHover
-        If BTN_MAS.Visible = False Then
-            BTN_MAS.BackgroundImage = My.Resources.BTNOver
+    'Private Sub BTN_MAS_Click(sender As Object, e As EventArgs) Handles mas
+    '    'If AGENDA.Visible = False Then
+    '    '    BTN_MAS.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
+    '    '    MATERIALES.TopLevel = False
+    '    '    MATERIALES.Parent = PanelTrabajo
+    '    '    MATERIALES.Dock = DockStyle.Fill
+    '    '    'ABRE FORMULARIO Y LLEVA AL FRENTE
+    '    '    MATERIALES.Show()
+    '    '    MATERIALES.BringToFront()
+    '    'End If
+    'End Sub
+    Private Sub BTN_MAS_MouseHover(sender As Object, e As EventArgs) Handles BTN_BUSCADOR.Click
+        If BTN_BUSCADOR.Visible = False Then
+            BTN_BUSCADOR.BackgroundImage = My.Resources.BTNOver
         End If
     End Sub
-    Private Sub BTN_MAS_MouseLeave(sender As Object, e As EventArgs) Handles BTN_MAS.MouseLeave
-        If BTN_MAS.Visible = False Then
-            BTN_MAS.BackgroundImage = My.Resources.BTNBlack
+    Private Sub BTN_MAS_MouseLeave(sender As Object, e As EventArgs) Handles BTN_BUSCADOR.MouseLeave
+        If BTN_BUSCADOR.Visible = False Then
+            BTN_BUSCADOR.BackgroundImage = My.Resources.BTNGRAL_DEFAULT
         End If
-    End Sub
-    Private Sub AG_AGENDA_Click(sender As Object, e As EventArgs) Handles AG_AGENDA.Click
-        CURSOR_WAIT(True, Me)
     End Sub
     Private Sub PanelSuperior_MouseMove(sender As Object, e As MouseEventArgs) Handles BTN_HAND.MouseMove
         BTN_Directorio.Text = MousePosition.X & " - " & MousePosition.Y
@@ -1464,7 +1479,7 @@ Public Class DASHBOARD
                 Size = New Size(1000, 600)
                 HoraAhora.Visible = False
                 FechaAhora.Visible = False
-                PanelSuperior.BackgroundImage = Nothing
+                ' PanelSuperior.BackgroundImage = Nothing
                 LBL_TEMP.Visible = False
                 PIC_CLIMA.Visible = False
                 BTN_HAND.Visible = True
@@ -1480,25 +1495,34 @@ Public Class DASHBOARD
                 Else
                     Location = New Point((ANCHOP - 1000) / 2, (ALTOP - 600) / 2)
                 End If
-                If THEME_BLACK Then BtnFull.BackgroundImage = My.Resources.PantallaCompleta_W Else BtnFull.BackgroundImage = My.Resources.PantallaCompleta
+                If THEME_BLACK Then
+                    BtnFull.BackgroundImage = My.Resources.PantallaCompleta_W
+                Else
+                    BtnFull.BackgroundImage = My.Resources.PantallaCompleta
+                End If
             Else
                 Me.Size = New Size(ANCHOP, ALTOP)
-                PanelSuperior.BackgroundImage = My.Resources.BANNER_SUPERIOR
+                'PanelSuperior.BackgroundImage = My.Resources.BANNER_SUPERIOR
                 LBL_TEMP.Visible = True
                 PIC_CLIMA.Visible = True
                 BTN_HAND.Visible = False
+                PanelSUPInterior.Width = 1004
                 If PANTALLA_PRIMARIA = False Then
                     If PANTALLA_NEGATIVA Then
                         Location = New Point(Screen.AllScreens(0).WorkingArea.X, Screen.AllScreens(0).WorkingArea.Y)
                     Else
-                        Location = New Point(Screen.AllScreens(1).WorkingArea.X + 1366, Screen.AllScreens(1).WorkingArea.Y)
+                        Location = New Point(Screen.AllScreens(0).WorkingArea.X + 1366, Screen.AllScreens(1).WorkingArea.Y)
                     End If
                 Else
                     Location = Screen.PrimaryScreen.WorkingArea.Location
                 End If
                 HoraAhora.Visible = True
                 FechaAhora.Visible = True
-                If THEME_BLACK Then BtnFull.BackgroundImage = My.Resources.restore_W Else BtnFull.BackgroundImage = My.Resources.restore
+                If THEME_BLACK Then
+                    BtnFull.BackgroundImage = My.Resources.restore_W
+                Else
+                    BtnFull.BackgroundImage = My.Resources.restore
+                End If
             End If
         End If
     End Sub
@@ -1514,9 +1538,32 @@ Public Class DASHBOARD
     End Sub
 
     Private Sub BTN_PASAR_Click(sender As Object, e As EventArgs) Handles BTN_PASAR.Click
-        FUENTETableAdapter.FillByFUENTES(BASEFUENTESDataSet.FUENTE)
-        Dim FUENTE As BASEFUENTESDataSet.FUENTERow
-        Dim ORDEN As ORDENESDataSet.ORDENESRow
+        Cursor = Cursors.WaitCursor
+        'TRABAJOSTableAdapter.Fill(ORDENESDataSet.TRABAJOS)
+        'Dim CUENTA As Integer = 0
+        'For Each TRABAJOS In ORDENESDataSet.TRABAJOS
+        '    CUENTA += 1
+        '    lblcuentas.Text = "CHEQUEANDO " & CUENTA & " DE " & ORDENESDataSet.TRABAJOS.Rows.Count
+        '    lblcuentas.Refresh()
+        '    If TRABAJOS.GENERADOX <> TRABAJOS.ASIGNADOA Then
+        '        HISTORICOTableAdapter.FillByIDTRABAJO(ORDENESDataSet.HISTORICO, TRABAJOS.Id_TRABAJO)
+        '    If ORDENESDataSet.HISTORICO.Rows.Count > 0 Then
+        '        For Each HISTORICO In ORDENESDataSet.HISTORICO
+        '                If HISTORICO.IsCAUSANull = False AndAlso HISTORICO.CAUSA = "ASIGNAR RESPONSABLE" Then
+        '                    TRABAJOS.FECHA_ASIGNADO = HISTORICO.FECHA.ToShortDateString()
+        '                End If
+        '            Next
+
+        '    End If
+        '    End If
+
+
+        'Next
+        'TRABAJOSTableAdapter.Update(ORDENESDataSet.TRABAJOS)
+
+        'FUENTETableAdapter.FillByFUENTES(BASEFUENTESDataSet.FUENTE)
+        'Dim FUENTE As BASEFUENTESDataSet.FUENTERow
+        'Dim ORDEN As ORDENESDataSet.ORDENESRow
         'Dim INSTALACION As BASEFUENTESDataSet.INSTALACIONRow
         'Dim afectacions As ORDENESDataSet.AFECTACIONRow
         'ORDENESTableAdapter.FillByINSTALACION(ORDENESDataSet.ORDENES, "0")
@@ -1540,31 +1587,31 @@ Public Class DASHBOARD
 
         'Next
         ' ORDENESTableAdapter.Update(ORDENESDataSet.ORDENES)
-        For X = 0 To BASEFUENTESDataSet.FUENTE.Rows.Count - 1
-            FUENTE = BASEFUENTESDataSet.FUENTE.Rows(X)
-            BTN_Directorio.Text = "UPDATEANDO ORDEN DE FUENTE " & X + 1 & " DE " & BASEFUENTESDataSet.FUENTE.Rows.Count
-            BTN_Directorio.Refresh()
-            ORDENESTableAdapter.FillByINSTALACION(ORDENESDataSet.ORDENES, Trim(FUENTE.INSTALACION))
-            If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
-                For Y = 0 To ORDENESDataSet.ORDENES.Rows.Count - 1
-                    ORDEN = ORDENESDataSet.ORDENES.Rows(Y)
-                    ORDEN.INSTALACION = FUENTE.ID_FUENTE
-                    ORDEN.INSTALACIONRUS = FUENTE.INSTALACION_RUS
-                    ORDENESTableAdapter.Update(ORDEN)
-                Next
-            End If
-            '    AFECTACIONTableAdapter.FillByINSTALACION(ORDENESDataSet.AFECTACION, FUENTE.INSTALACION)
-            '    If ORDENESDataSet.AFECTACION.Rows.Count > 0 Then
-            '        For a = 0 To ORDENESDataSet.AFECTACION.Rows.Count - 1
-            '            afectacions = ORDENESDataSet.AFECTACION.Rows(a)
-            '            If afectacions.INSTALACION.ToString <> FUENTE.ID_FUENTE.ToString Then
-            '                afectacions.INSTALACION = FUENTE.ID_FUENTE
-            '                AFECTACIONTableAdapter.Update(afectacions)
-            '            End If
-            '        Next
+        'For X = 0 To BASEFUENTESDataSet.FUENTE.Rows.Count - 1
+        '    FUENTE = BASEFUENTESDataSet.FUENTE.Rows(X)
+        '    BTN_Directorio.Text = "UPDATEANDO ORDEN DE FUENTE " & X + 1 & " DE " & BASEFUENTESDataSet.FUENTE.Rows.Count
+        '    BTN_Directorio.Refresh()
+        '    ORDENESTableAdapter.FillByINSTALACION(ORDENESDataSet.ORDENES, Trim(FUENTE.INSTALACION))
+        '    If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
+        '        For Y = 0 To ORDENESDataSet.ORDENES.Rows.Count - 1
+        '            ORDEN = ORDENESDataSet.ORDENES.Rows(Y)
+        '            ORDEN.INSTALACION = FUENTE.ID_FUENTE
+        '            ORDEN.INSTALACIONRUS = FUENTE.INSTALACION_RUS
+        '            ORDENESTableAdapter.Update(ORDEN)
+        '        Next
+        '    End If
+        '    AFECTACIONTableAdapter.FillByINSTALACION(ORDENESDataSet.AFECTACION, FUENTE.INSTALACION)
+        '    If ORDENESDataSet.AFECTACION.Rows.Count > 0 Then
+        '        For a = 0 To ORDENESDataSet.AFECTACION.Rows.Count - 1
+        '            afectacions = ORDENESDataSet.AFECTACION.Rows(a)
+        '            If afectacions.INSTALACION.ToString <> FUENTE.ID_FUENTE.ToString Then
+        '                afectacions.INSTALACION = FUENTE.ID_FUENTE
+        '                AFECTACIONTableAdapter.Update(afectacions)
+        '            End If
+        '        Next
 
-            '    End If
-        Next
+        '    End If
+        'Next
         'If FUENTE.INSTALACION.ToString = "" Or FUENTE.INSTALACION.ToString = "0" Then
         '    MsgBox("LA FUENTE " & FUENTE.INSTALACION & " NO TIENE INSTALACION_RUS ASOCIADO")
         'Else
@@ -1677,11 +1724,250 @@ Public Class DASHBOARD
 
 
         'Next
+        'BTN_Directorio.Visible = True
+        'BTN_Directorio.Refresh()
+        'Dim FILA As Integer
+        'Dim oExcel As New Excel.Application
+        'Dim oLibro As Excel.Workbook
+        'Dim oHoja As Excel.Worksheet
+        'oExcel.Application.AskToUpdateLinks = False
+        'oExcel.Application.DisplayAlerts = False
+
+        'Cursor = Cursors.WaitCursor
+        'oLibro = oExcel.Workbooks.Open("C:\Users\dgeymonat\Downloads\EDIFICIOS.xlsx", UpdateLinks:=0)
+        'oHoja = oLibro.Sheets("hoja1")
 
 
+        'FILA = 5
+        'Dim TOTAL_REGISTROS As Integer
+        'Dim CONTENIDO As String = oHoja.Cells(FILA, 3).VALUE
 
+        'While CONTENIDO <> ""
+        '    TOTAL_REGISTROS += 1
+        '    INICIO.VER_EDIFICIO = EDIFICIODataSet.EDIF_VISTA.NewEDIF_VISTARow()
+        '    INICIO.VER_EDIFICIO.ID_EDIFICIO = TOTAL_REGISTROS
+        '    INICIO.VER_EDIFICIO.NODO = oHoja.Cells(FILA, 1).value
+        '    INICIO.VER_EDIFICIO.ZONA = oHoja.Cells(FILA, 2).value
+        '    INICIO.VER_EDIFICIO.ID_CALLE = oHoja.Cells(FILA, 3).value
+        '    INICIO.VER_EDIFICIO.INGRESO = Trim(oHoja.Cells(FILA, 4).value)
+        '    INICIO.VER_EDIFICIO.TORRE = Trim(oHoja.Cells(FILA, 5).value)
+        '    INICIO.VER_EDIFICIO.CALLE = oHoja.Cells(FILA, 6).value
+        '    INICIO.VER_EDIFICIO.PUERTA = oHoja.Cells(FILA, 7).value
+        '    INICIO.VER_EDIFICIO.APTOS = oHoja.Cells(FILA, 8).value
+        '    INICIO.VER_EDIFICIO.PISOS = oHoja.Cells(FILA, 9).value
+
+        '    INICIO.VER_EDIFICIO.TIPO_CAJA = oHoja.Cells(FILA, 14).value
+        '    INICIO.VER_EDIFICIO.NUMERO_CAJA = oHoja.Cells(FILA, 15).value
+        '    INICIO.VER_EDIFICIO.TUBO_CAJA = oHoja.Cells(FILA, 16).value
+        '    INICIO.VER_EDIFICIO.PELO_CAJA = oHoja.Cells(FILA, 17).value
+
+        '    INICIO.VER_EDIFICIO.NAP_TUBO = oHoja.Cells(FILA, 19).value
+        '    INICIO.VER_EDIFICIO.NAP_PELO = oHoja.Cells(FILA, 20).value
+        '    INICIO.VER_EDIFICIO.NAP_NUMERO = oHoja.Cells(FILA, 21).value
+        '    INICIO.VER_EDIFICIO.NAP_TIPO = oHoja.Cells(FILA, 22).value
+        '    INICIO.VER_EDIFICIO.ACOMETIDA = oHoja.Cells(FILA, 23).value
+        '    INICIO.VER_EDIFICIO.OBS = oHoja.Cells(FILA, 29).value
+
+        '    EDIFICIODataSet.EDIF_VISTA.AddEDIF_VISTARow(INICIO.VER_EDIFICIO)
+        '    FILA += 1
+        '    CONTENIDO = oHoja.Cells(FILA, 3).value
+        'End While
+        ' Dim MDUROW As EDIFICIODataSet.MDURow
+        'Dim FTTHRow As EDIFICIODataSet.FTTBRow
+        '  Dim CUENTA As Integer
+        'Dim CUENTA_INGRES As Integer
+        ''Dim CUENTA_TORRES As Integer
+        'For Each EDIFICIO In EDIFICIODataSet.EDIF_VISTA
+        '    '    'CARGAR EDIFICIOS
+        '    CUENTA += 1
+        '    INICIO.MDUTableAdapter.FillByCALLEYPUERTA(INICIO.EDIFICIODataSet.MDU, EDIFICIO.ID_CALLE, EDIFICIO.PUERTA)
+        '    If INICIO.EDIFICIODataSet.MDU.Rows.Count > 0 Then
+        '        '  MDUROW = INICIO.EDIFICIODataSet.MDU.Rows(0)
+        '        '  MDUROW.ACOMETIDA = EDIFICIO.ACOMETIDA
+        '        '   INICIO.MDUTableAdapter.Update(MDUROW)
+        '        '    MDUROW = EDIFICIODataSet.MDU.NewMDURow()
+        '        '    MDUROW.NODO = EDIFICIO.NODO
+        '        '    MDUROW.ZONA = CInt(EDIFICIO.ZONA)
+        '        '    MDUROW.ID_STATUS = 1
+        '        '    MDUROW.ID_CALLE = CInt(EDIFICIO.ID_CALLE)
+        '        '    If EDIFICIO.IsINGRESONull = False Then
+        '        '        Select Case EDIFICIO.INGRESO
+        '        '            Case "SI"
+        '        '                MDUROW.INGRESO = "SUBTERRANEO"
+        '        '            Case "O"
+        '        '                MDUROW.INGRESO = "DUCTO"
+        '        '            Case Else
+        '        '                MDUROW.INGRESO = "AEREO"
+        '        '        End Select
+        '        '    End If
+        '        '    If EDIFICIO.IsTORRENull = False AndAlso EDIFICIO.TORRE <> "" Then MDUROW.TORRE = CInt(EDIFICIO.TORRE) Else MDUROW.TORRE = 0
+        '        '    CUENTA_TORRES += MDUROW.TORRE
+        '        '    MDUROW.CALLE = EDIFICIO.CALLE
+        '        '    MDUROW.PUERTA = EDIFICIO.PUERTA
+
+        '        '    If EDIFICIO.IsAPTOSNull = False Then MDUROW.APTOS = EDIFICIO.APTOS
+        '        '    If EDIFICIO.IsPISOSNull = False Then MDUROW.PISOS = EDIFICIO.PISOS
+        '        '    EDIFICIODataSet.MDU.AddMDURow(MDUROW)
+        '        CUENTA_INGRES += 1
+
+
+        '        '    MDUTableAdapter1.Update(MDUROW)
+
+        '        '    'PARA INFORMACION TECNICA DEL EDIFICIO
+        '        '    'INICIO.MDUTableAdapter.FillByCALLEyPUERTA(INICIO.EDIFICIODataSet.MDU, EDIFICIO.CALLE, EDIFICIO.PUERTA)
+        '        '    'If INICIO.EDIFICIODataSet.MDU.Rows.Count = 1 Then
+        '        MDUROW = INICIO.EDIFICIODataSet.MDU.Rows(0)
+        '        FTTHRow = INICIO.EDIFICIODataSet.FTTB.NewFTTBRow()
+        '        FTTHRow.ID_EDIFICIO = MDUROW.ID_MDU
+        '        If EDIFICIO.IsNUMERO_CAJANull = False Then FTTHRow.CONEXION_DESDE = EDIFICIO.NUMERO_CAJA
+        '        FTTHRow.TIPO_CONEXION_DESDE = EDIFICIO.TIPO_CAJA
+        '        FTTHRow.CABLE = "Acometida (12 fibras 1 tubo)"
+        '        If EDIFICIO.IsNAP_TIPONull OrElse EDIFICIO.NAP_TIPO = "" Then
+        '            FTTHRow.NAP = 16
+        '        Else
+        '            FTTHRow.NAP = EDIFICIO.NAP_TIPO
+        '        End If
+        '        FTTHRow.NAP_NRO = EDIFICIO.NAP_NUMERO
+        '        FTTHRow.TUBO = EDIFICIO.NAP_TUBO
+        '        FTTHRow.PELO = EDIFICIO.NAP_PELO
+        '        If EDIFICIO.IsNAP_TIPONull Then
+        '            FTTHRow.SPL_NRO = 2
+        '        Else
+        '            FTTHRow.SPL_NRO = 1
+        '        End If
+        '        If EDIFICIO.IsOBSNull = False Then FTTHRow.OBS_TEC = EDIFICIO.OBS
+        '        INICIO.EDIFICIODataSet.FTTB.AddFTTBRow(FTTHRow)
+        '        INICIO.FTTBTableAdapter.Update(FTTHRow)
+        '    End If
+
+        '    BTN_Directorio.Text = CUENTA & "  modificados: " & CUENTA_INGRES
+        '    BTN_Directorio.Refresh()
+
+        'Next
+        'FTTBTableAdapter.Fill(EDIFICIODataSet.FTTB)
+
+        'For Each fttb In EDIFICIODataSet.FTTB
+        '    CUENTA += 1
+        '    lblcuentas.Text = "actualizando " & CUENTA & "  de   " & EDIFICIODataSet.FTTB.Rows.Count
+        '    lblcuentas.Refresh()
+        '    If fttb.IsACOMETIDANull Then
+
+        '        MDUTableAdapter.FillByID(EDIFICIODataSet.MDU, fttb.ID_EDIFICIO)
+        '        MDUROW = EDIFICIODataSet.MDU.Rows(0)
+        '        fttb.ACOMETIDA = MDUROW.ACOMETIDA
+        '        FTTBTableAdapter.Update(fttb)
+
+        '    End If
+
+        'Next
+
+        'MDUTableAdapter.Fill(EDIFICIODataSet.MDU)
+
+        'For Each mdu In EDIFICIODataSet.MDU
+        '    lblcuentas.Text = "actualizando " & mdu.CALLE & "  " & mdu.PUERTA
+        '    lblcuentas.Refresh()
+        '    'InsertMDU(mdu.ID_MDU, mdu.ID_STATUS, mdu.ID_CALLE, mdu.CALLE, mdu.PUERTA, mdu.APTOS, mdu.PISOS, mdu.NODO, mdu.ZONA, mdu.INGRESO, mdu.TORRE)
+
+        '    '  Await getMDU(mdu.ID_MDU)
+        'Next
+
+
+        'CORRIGE EL PROBLEMA DE LOS EMITIDOS
+        Dim trabajoRow As ORDENESDataSet.TRABAJOSRow
+        TRABAJOSTableAdapter.Fill(ORDENESDataSet.TRABAJOS)
+        If ORDENESDataSet.TRABAJOS.Rows.Count > 0 Then
+            For i = 0 To ORDENESDataSet.TRABAJOS.Rows.Count - 1
+                trabajoRow = ORDENESDataSet.TRABAJOS.Rows(i)
+                lblcuentas.Text = "actualizando " & trabajoRow.Id_TRABAJO & " DE " & ORDENESDataSet.TRABAJOS.Rows.Count
+                lblcuentas.Refresh()
+
+                If trabajoRow.IsFECHAINICIADONull = False AndAlso trabajoRow.FECHAINICIADO = "1/3/2024" AndAlso trabajoRow.STATUS = "INGRESADO" Then
+                    trabajoRow("FECHAINICESTIMADO") = Now.ToShortDateString
+                    trabajoRow("FECHAINICIADO") = DBNull.Value
+                    TRABAJOSTableAdapter.Update(trabajoRow)
+                End If
+                'If trabajoRow.STATUS = "INICIADO" Then
+                '    ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, trabajoRow.Id_TRABAJO)
+                '    If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
+                '        Dim hayIniciado = False
+                '        Dim OrdenRow As ORDENESDataSet.ORDENESRow
+                '        For j = 0 To ORDENESDataSet.ORDENES.Rows.Count - 1
+                '            OrdenRow = ORDENESDataSet.ORDENES.Rows(j)
+                '            Select Case OrdenRow.STATUS
+                '                Case "INICIADO", "DUPLICADO", "ADUPLICAR", "FINALIZADO"
+                '                    hayIniciado = True
+                '                    Exit For
+                '            End Select
+                '        Next
+
+                '        If hayIniciado = False Then
+                '            trabajoRow.STATUS = "INGRESADO"
+                '            trabajoRow.FECHAINICESTIMADO = Nothing
+                '            TRABAJOSTableAdapter.Update(trabajoRow)
+                '        End If
+                '    Else
+                '        trabajoRow.STATUS = "INGRESADO"
+                '        trabajoRow.FECHAINICESTIMADO = Nothing
+                '        TRABAJOSTableAdapter.Update(trabajoRow)
+                '    End If
+
+
+                'End If
+            Next
+        End If
+
+        'Dim GROW As ORDENESDataSet.GESTIONRow
+
+        'GESTIONTableAdapter.Fill(ORDENESDataSet.GESTION)
+        'If ORDENESDataSet.GESTION.Rows.Count > 0 Then
+        '    For I = 0 To ORDENESDataSet.GESTION.Rows.Count - 1
+        '        GROW = ORDENESDataSet.GESTION.Rows(I)
+        '        lblcuentas.Text = "actualizando " & GROW.Id_GESTION & " DE " & ORDENESDataSet.GESTION.Rows.Count
+        'lblcuentas.Refresh()
+        'Dim hayIniciado = False
+        ' If GROW.IsFECHAINICIADANull = False AndAlso GROW.FECHAINICIADA = "30/12/1899" Then
+
+        'TRABAJOSTableAdapter.FillByIDGESTION(ORDENESDataSet.TRABAJOS, GROW.Id_GESTION)
+        'If ORDENESDataSet.TRABAJOS.Rows.Count > 0 Then
+        '    Dim trabajoRow As ORDENESDataSet.TRABAJOSRow
+        '   
+        '    For J = 0 To ORDENESDataSet.TRABAJOS.Rows.Count - 1
+        '        trabajoRow = ORDENESDataSet.TRABAJOS.Rows(J)
+        '        If trabajoRow.STATUS = "INICIADO" Then
+        '            hayIniciado = True
+        '            Exit For
+        '        End If
+        '    Next
+        'If hayIniciado = False Then
+        'GROW("FECHAINICIADA") = DBNull.Value
+        'GESTIONTableAdapter.Update(GROW)
+        'End If
+        'Else
+        '    GROW.FECHAINICIADA = Nothing
+        '    GROW.STATUS = "INGRESADO"
+        '    GESTIONTableAdapter.Update(GROW)
+        '        End If
+
+        '    Next
+        'End If
+
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub BTN_FTTB_Click(sender As Object, e As EventArgs)
+        If INICIO.Visible Then INICIO.Close()
+        INICIO.Show()
+    End Sub
+
+    Private Sub BTN_HAND_Click(sender As Object, e As EventArgs) Handles BTN_HAND.Click
 
     End Sub
+
+    Private Sub Lblcuentas_Click(sender As Object, e As EventArgs) Handles lblcuentas.Click
+
+    End Sub
+
+
 
     'Private Sub DASHBOARD_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
     '    BTN_Directorio.Text = MousePosition.X.ToString

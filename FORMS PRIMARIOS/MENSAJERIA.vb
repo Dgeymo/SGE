@@ -120,7 +120,6 @@
                     BOT_MARCARNOLEIDO.Enabled = False
             End Select
 
-
             BOT_NUEVO.Enabled = True
             BOT_ENVIAR.Enabled = False
             BOT_CANCELAR.Enabled = True

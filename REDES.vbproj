@@ -174,8 +174,11 @@
     <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.1823.32, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Web.WebView2.1.0.1823.32\lib\net45\Microsoft.Web.WebView2.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\SIGO\bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -220,6 +223,11 @@
     <Compile Include="Datasets\MDUDataSet.vb">
       <DependentUpon>MDUDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Datasets\EDIFICIODataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EDIFICIODataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ESCRITORIO.Designer.vb">
       <DependentUpon>ESCRITORIO.vb</DependentUpon>
     </Compile>
@@ -260,6 +268,31 @@
       <DependentUpon>ORDEN.vb</DependentUpon>
     </Compile>
     <Compile Include="FORMS APOYO\ORDEN.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FTTB\AGENDA.Designer.vb">
+      <DependentUpon>AGENDA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FTTB\AGENDA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FTTB\DETALLE_MDU.Designer.vb">
+      <DependentUpon>DETALLE_MDU.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FTTB\DETALLE_MDU.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FTTB\FUNCIONES.vb" />
+    <Compile Include="FORMS PRIMARIOS\FTTB\INICIO.Designer.vb">
+      <DependentUpon>INICIO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FTTB\INICIO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FTTB\MDU.Designer.vb">
+      <DependentUpon>MDU.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FTTB\MDU.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FORMS REPORTE\INFORME_SERVICIOS.Designer.vb">
@@ -429,6 +462,7 @@
     </Compile>
     <Compile Include="MODULOS\FUNCIONES_AGENDA.vb" />
     <Compile Include="MODULOS\MODULODASHBOARD.vb" />
+    <Compile Include="MODULOS\MYSQL.vb" />
     <Compile Include="MODULOS\SQL.vb" />
     <Compile Include="MODULOS\WIDGET.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
@@ -569,7 +603,7 @@
     <Compile Include="FORMS APOYO\VER_ORDINAL_BOT.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OBRAS_MDUDataSet.Designer.vb">
+    <Compile Include="Datasets\OBRAS_MDUDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>OBRAS_MDUDataSet.xsd</DependentUpon>
@@ -600,6 +634,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS APOYO\ORDEN.resx">
       <DependentUpon>ORDEN.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\FTTB\AGENDA.resx">
+      <DependentUpon>AGENDA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\FTTB\DETALLE_MDU.resx">
+      <DependentUpon>DETALLE_MDU.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\FTTB\INICIO.resx">
+      <DependentUpon>INICIO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\FTTB\MDU.resx">
+      <DependentUpon>MDU.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS SECUNDARIOS\STANDARD_MATERIALES.resx">
       <DependentUpon>STANDARD_MATERIALES.vb</DependentUpon>
@@ -804,6 +850,17 @@
     <None Include="Datasets\INDICESDataSet.xss">
       <DependentUpon>INDICESDataSet.xsd</DependentUpon>
     </None>
+    <None Include="Datasets\EDIFICIODataSet.xsc">
+      <DependentUpon>EDIFICIODataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\EDIFICIODataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EDIFICIODataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Datasets\EDIFICIODataSet.xss">
+      <DependentUpon>EDIFICIODataSet.xsd</DependentUpon>
+    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -839,15 +896,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="OBRAS_MDUDataSet.xsc">
+    <None Include="Datasets\OBRAS_MDUDataSet.xsc">
       <DependentUpon>OBRAS_MDUDataSet.xsd</DependentUpon>
     </None>
-    <None Include="OBRAS_MDUDataSet.xsd">
+    <None Include="Datasets\OBRAS_MDUDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>OBRAS_MDUDataSet.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="OBRAS_MDUDataSet.xss">
+    <None Include="Datasets\OBRAS_MDUDataSet.xss">
       <DependentUpon>OBRAS_MDUDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />

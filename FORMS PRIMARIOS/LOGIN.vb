@@ -92,8 +92,8 @@ Public Class Login
                 If IsDBNull(DASHBOARD.OPERACIONES_LOGDataSet.USUARIOS.Rows(0).Item("ID_SELECTOR")) = False Then SELECTOR = DASHBOARD.OPERACIONES_LOGDataSet.USUARIOS.Rows(0).Item("ID_SELECTOR")
                 If IsDBNull(DASHBOARD.OPERACIONES_LOGDataSet.USUARIOS.Rows(0).Item("EMAIL")) = False Then REMITENTE = DASHBOARD.OPERACIONES_LOGDataSet.USUARIOS.Rows(0).Item("EMAIL")
 
-                DASHBOARD.GESTIONTableAdapter.FillByGEST_REQUERIDO(DASHBOARD.ORDENESDataSet.GESTION, FULLNOMBRE)
-                DASHBOARD.TRABAJOSTableAdapter.FillByTRABAJO_REQUERIDO(DASHBOARD.ORDENESDataSet.TRABAJOS, FULLNOMBRE)
+                ' DASHBOARD.GESTIONTableAdapter.FillByGEST_REQUERIDO(DASHBOARD.ORDENESDataSet.GESTION, FULLNOMBRE)
+                '  DASHBOARD.TRABAJOSTableAdapter.FillByTRABAJO_REQUERIDO(DASHBOARD.ORDENESDataSet.TRABAJOS, FULLNOMBRE)
                 If DASHBOARD.ORDENESDataSet.GESTION.Rows.Count > 0 Then
                     DASHBOARD.BTN_MISGestiones.Text = DASHBOARD.ORDENESDataSet.GESTION.Rows.Count & " GEST"
                     DASHBOARD.BTN_MISGestiones.Visible = True
@@ -108,13 +108,7 @@ Public Class Login
                     DASHBOARD.BtnPropiedades.Visible = False
                 End If
 
-                'CUENTA MENSAJES RECIBIDOS
-                DASHBOARD.MENSAJERIATableAdapter.FillByRECIBIDOSNOLEIDOS(DASHBOARD.ORDENESDataSet.MENSAJERIA, FULLNOMBRE, SECTOR)
-                DASHBOARD.BTNMensajeria.Text = DASHBOARD.ORDENESDataSet.MENSAJERIA.Count
-                DASHBOARD.ORDENESTableAdapter.FillByASIGNADOA(DASHBOARD.ORDENESDataSet.ORDENES, FULLNOMBRE)
-                DASHBOARD.TRABAJOSTableAdapter.FillByASIGNADOA(DASHBOARD.ORDENESDataSet.TRABAJOS, FULLNOMBRE)
-                DASHBOARD.GESTIONTableAdapter.FillByASIGNADOA(DASHBOARD.ORDENESDataSet.GESTION, FULLNOMBRE)
-                DASHBOARD.BTNAsignado.Text = DASHBOARD.ORDENESDataSet.ORDENES.Count + DASHBOARD.ORDENESDataSet.TRABAJOS.Count + DASHBOARD.ORDENESDataSet.GESTION.Count
+
 
                 DASHBOARD.CLIMATableAdapter.FillByCLIMA_INGRESO(DASHBOARD.INDICESDataSet.CLIMA, Today.ToShortDateString)
 
@@ -199,10 +193,11 @@ Public Class Login
                         NOTIFICACION("SYS", "AGUARDE... realizando respado de BBDD-ORDENES")
                         Directory.CreateDirectory("R:\OPERACIONES\PROGRAMAS\BBDD\" & FECHA)
                         File.Copy("G:\OPERACIONES\BD_ORDENES\ORDENES.accdb", "R:\OPERACIONES\PROGRAMAS\BBDD\" & FECHA & "\ORDENES.accdb")
+                        File.Copy("G:\OPERACIONES\BD_ORDENES\ORDENES.accdb", "R:\OPERACIONES\PROGRAMAS\BBDD\" & FECHA & "\ORDENES_be.accdb")
                         NOTIFICACION("SYS", "Respado de BBDD-ORDENES, correcto")
                     End If
                 End If
-
+                DASHBOARD.ContarRegistros()
                 Close()
                 Else
                     LBLError.Visible = True

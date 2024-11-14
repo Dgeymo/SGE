@@ -50,28 +50,11 @@ Partial Class SERVICIOS
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.ORDENESBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ORDENESDataSet = New REDES.ORDENESDataSet()
         Me.INDICESDataSet = New REDES.INDICESDataSet()
         Me.INDICE_CALLESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.INDICE_CALLESTableAdapter = New REDES.INDICESDataSetTableAdapters.INDICE_CALLESTableAdapter()
         Me.TableAdapterManager = New REDES.INDICESDataSetTableAdapters.TableAdapterManager()
         Me.DGV_ORDENES = New System.Windows.Forms.DataGridView()
-        Me.NROORDENINTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ORDENOCDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IDGESTIONDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IDTRABAJODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FECHAINGRESODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FECHAASIGNADADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PRIORIDADDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.STATUSDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NODODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ZONADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CALLEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NRODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MANZANADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ATRIBUTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DOCUMENTOFISICODataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.OC_APROBADO = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.TXT_CANT_OBRAC = New System.Windows.Forms.TextBox()
@@ -99,8 +82,6 @@ Partial Class SERVICIOS
         Me.Label22 = New System.Windows.Forms.Label()
         Me.TXT_CANT_OC = New System.Windows.Forms.TextBox()
         Me.DGV_ADJUNTO = New System.Windows.Forms.DataGridView()
-        Me.NOMARCHIVODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ADJUNTOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label21 = New System.Windows.Forms.Label()
         Me.CB_CAUSAS = New System.Windows.Forms.ComboBox()
         Me.INDICE_CALLESDataGridView = New System.Windows.Forms.DataGridView()
@@ -162,6 +143,34 @@ Partial Class SERVICIOS
         Me.OBS_CIERRE = New System.Windows.Forms.TextBox()
         Me.OBS_ORIGEN = New System.Windows.Forms.TextBox()
         Me.CALLESBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BTN_NUEVO = New System.Windows.Forms.Button()
+        Me.GESTIONBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TRABAJOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.OBESERVACIONESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FUNCIONARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.SECTORESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.HISTORICOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BTN_APROBAR = New System.Windows.Forms.Button()
+        Me.BTN_REFRESCAR = New System.Windows.Forms.Button()
+        Me.NROORDENINTDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ORDENOCDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDGESTIONDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDTRABAJODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FECHAINGRESODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FECHAASIGNADADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PRIORIDADDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.STATUSDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NODODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ZONADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CALLEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NRODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MANZANADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ATRIBUTODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DOCUMENTOFISICODataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ORDENESBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ORDENESDataSet = New REDES.ORDENESDataSet()
+        Me.NOMARCHIVODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ADJUNTOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.INFORMESERVICIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableAdapterManager1 = New REDES.ORDENESDataSetTableAdapters.TableAdapterManager()
         Me.GESTIONTableAdapter = New REDES.ORDENESDataSetTableAdapters.GESTIONTableAdapter()
@@ -173,15 +182,8 @@ Partial Class SERVICIOS
         Me.ADJUNTOSTableAdapter = New REDES.ORDENESDataSetTableAdapters.ADJUNTOSTableAdapter()
         Me.ORDENESTableAdapter = New REDES.ORDENESDataSetTableAdapters.ORDENESTableAdapter()
         Me.HISTORICOBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BTN_NUEVO = New System.Windows.Forms.Button()
-        Me.GESTIONBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TRABAJOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OBESERVACIONESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.FUNCIONARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.SECTORESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.HISTORICOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BTN_APROBAR = New System.Windows.Forms.Button()
         Me.OrdenesDataSet1 = New REDES.ORDENESDataSet()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         TIPOLabel = New System.Windows.Forms.Label()
         SECTOROPELabel = New System.Windows.Forms.Label()
         FECHASOLLabel = New System.Windows.Forms.Label()
@@ -204,28 +206,29 @@ Partial Class SERVICIOS
         ID_TRABAJOLabel = New System.Windows.Forms.Label()
         ORDEN_OCLabel = New System.Windows.Forms.Label()
         Label23 = New System.Windows.Forms.Label()
-        CType(Me.ORDENESBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INDICESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INDICE_CALLESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGV_ORDENES, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.GB_NUEVO.SuspendLayout()
         CType(Me.DGV_ADJUNTO, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ADJUNTOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INDICE_CALLESDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INDICE_CAUSASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         CType(Me.CALLESBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.INFORMESERVICIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.HISTORICOBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GESTIONBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TRABAJOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OBESERVACIONESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FUNCIONARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SECTORESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.HISTORICOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ORDENESBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ADJUNTOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.INFORMESERVICIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.HISTORICOBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OrdenesDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'TIPOLabel
@@ -449,16 +452,6 @@ Partial Class SERVICIOS
         Label23.TabIndex = 60
         Label23.Text = "CANT:"
         '
-        'ORDENESBindingSource1
-        '
-        Me.ORDENESBindingSource1.DataMember = "ORDENES"
-        Me.ORDENESBindingSource1.DataSource = Me.ORDENESDataSet
-        '
-        'ORDENESDataSet
-        '
-        Me.ORDENESDataSet.DataSetName = "ORDENESDataSet"
-        Me.ORDENESDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'INDICESDataSet
         '
         Me.INDICESDataSet.DataSetName = "INDICESDataSet"
@@ -518,10 +511,10 @@ Partial Class SERVICIOS
         Me.DGV_ORDENES.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGV_ORDENES.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NROORDENINTDataGridViewTextBoxColumn, Me.ORDENOCDataGridViewTextBoxColumn, Me.IDGESTIONDataGridViewTextBoxColumn, Me.IDTRABAJODataGridViewTextBoxColumn, Me.FECHAINGRESODataGridViewTextBoxColumn, Me.FECHAASIGNADADataGridViewTextBoxColumn, Me.PRIORIDADDataGridViewTextBoxColumn, Me.STATUSDataGridViewTextBoxColumn, Me.NODODataGridViewTextBoxColumn, Me.ZONADataGridViewTextBoxColumn, Me.CALLEDataGridViewTextBoxColumn, Me.NRODataGridViewTextBoxColumn, Me.MANZANADataGridViewTextBoxColumn, Me.ATRIBUTODataGridViewTextBoxColumn, Me.DOCUMENTOFISICODataGridViewCheckBoxColumn, Me.OC_APROBADO})
         Me.DGV_ORDENES.DataSource = Me.ORDENESBindingSource1
-        Me.DGV_ORDENES.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.DGV_ORDENES.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DGV_ORDENES.EnableHeadersVisualStyles = False
         Me.DGV_ORDENES.GridColor = System.Drawing.Color.LightGray
-        Me.DGV_ORDENES.Location = New System.Drawing.Point(0, 51)
+        Me.DGV_ORDENES.Location = New System.Drawing.Point(0, 69)
         Me.DGV_ORDENES.Name = "DGV_ORDENES"
         Me.DGV_ORDENES.ReadOnly = True
         Me.DGV_ORDENES.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
@@ -537,127 +530,8 @@ Partial Class SERVICIOS
         Me.DGV_ORDENES.ShowCellToolTips = False
         Me.DGV_ORDENES.ShowEditingIcon = False
         Me.DGV_ORDENES.ShowRowErrors = False
-        Me.DGV_ORDENES.Size = New System.Drawing.Size(1072, 324)
+        Me.DGV_ORDENES.Size = New System.Drawing.Size(1142, 275)
         Me.DGV_ORDENES.TabIndex = 333
-        '
-        'NROORDENINTDataGridViewTextBoxColumn
-        '
-        Me.NROORDENINTDataGridViewTextBoxColumn.DataPropertyName = "NRO_ORDENINT"
-        Me.NROORDENINTDataGridViewTextBoxColumn.HeaderText = "ORDEN"
-        Me.NROORDENINTDataGridViewTextBoxColumn.Name = "NROORDENINTDataGridViewTextBoxColumn"
-        Me.NROORDENINTDataGridViewTextBoxColumn.ReadOnly = True
-        Me.NROORDENINTDataGridViewTextBoxColumn.Width = 60
-        '
-        'ORDENOCDataGridViewTextBoxColumn
-        '
-        Me.ORDENOCDataGridViewTextBoxColumn.DataPropertyName = "ORDEN_OC"
-        Me.ORDENOCDataGridViewTextBoxColumn.HeaderText = "OC"
-        Me.ORDENOCDataGridViewTextBoxColumn.Name = "ORDENOCDataGridViewTextBoxColumn"
-        Me.ORDENOCDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ORDENOCDataGridViewTextBoxColumn.Width = 65
-        '
-        'IDGESTIONDataGridViewTextBoxColumn
-        '
-        Me.IDGESTIONDataGridViewTextBoxColumn.DataPropertyName = "ID_GESTION"
-        Me.IDGESTIONDataGridViewTextBoxColumn.HeaderText = "GEST"
-        Me.IDGESTIONDataGridViewTextBoxColumn.Name = "IDGESTIONDataGridViewTextBoxColumn"
-        Me.IDGESTIONDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IDGESTIONDataGridViewTextBoxColumn.Width = 40
-        '
-        'IDTRABAJODataGridViewTextBoxColumn
-        '
-        Me.IDTRABAJODataGridViewTextBoxColumn.DataPropertyName = "ID_TRABAJO"
-        Me.IDTRABAJODataGridViewTextBoxColumn.HeaderText = "TRAB"
-        Me.IDTRABAJODataGridViewTextBoxColumn.Name = "IDTRABAJODataGridViewTextBoxColumn"
-        Me.IDTRABAJODataGridViewTextBoxColumn.ReadOnly = True
-        Me.IDTRABAJODataGridViewTextBoxColumn.Width = 40
-        '
-        'FECHAINGRESODataGridViewTextBoxColumn
-        '
-        Me.FECHAINGRESODataGridViewTextBoxColumn.DataPropertyName = "FECHAINGRESO"
-        Me.FECHAINGRESODataGridViewTextBoxColumn.HeaderText = "INGRESO"
-        Me.FECHAINGRESODataGridViewTextBoxColumn.Name = "FECHAINGRESODataGridViewTextBoxColumn"
-        Me.FECHAINGRESODataGridViewTextBoxColumn.ReadOnly = True
-        Me.FECHAINGRESODataGridViewTextBoxColumn.Width = 75
-        '
-        'FECHAASIGNADADataGridViewTextBoxColumn
-        '
-        Me.FECHAASIGNADADataGridViewTextBoxColumn.DataPropertyName = "FECHA_ASIGNADA"
-        Me.FECHAASIGNADADataGridViewTextBoxColumn.HeaderText = "ASIGNADO"
-        Me.FECHAASIGNADADataGridViewTextBoxColumn.Name = "FECHAASIGNADADataGridViewTextBoxColumn"
-        Me.FECHAASIGNADADataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'PRIORIDADDataGridViewTextBoxColumn
-        '
-        Me.PRIORIDADDataGridViewTextBoxColumn.DataPropertyName = "PRIORIDAD"
-        Me.PRIORIDADDataGridViewTextBoxColumn.HeaderText = "PRIO"
-        Me.PRIORIDADDataGridViewTextBoxColumn.Name = "PRIORIDADDataGridViewTextBoxColumn"
-        Me.PRIORIDADDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PRIORIDADDataGridViewTextBoxColumn.Width = 50
-        '
-        'STATUSDataGridViewTextBoxColumn
-        '
-        Me.STATUSDataGridViewTextBoxColumn.DataPropertyName = "STATUS"
-        Me.STATUSDataGridViewTextBoxColumn.HeaderText = "STATUS"
-        Me.STATUSDataGridViewTextBoxColumn.Name = "STATUSDataGridViewTextBoxColumn"
-        Me.STATUSDataGridViewTextBoxColumn.ReadOnly = True
-        Me.STATUSDataGridViewTextBoxColumn.Width = 80
-        '
-        'NODODataGridViewTextBoxColumn
-        '
-        Me.NODODataGridViewTextBoxColumn.DataPropertyName = "NODO"
-        Me.NODODataGridViewTextBoxColumn.HeaderText = "NODO"
-        Me.NODODataGridViewTextBoxColumn.Name = "NODODataGridViewTextBoxColumn"
-        Me.NODODataGridViewTextBoxColumn.ReadOnly = True
-        Me.NODODataGridViewTextBoxColumn.Width = 45
-        '
-        'ZONADataGridViewTextBoxColumn
-        '
-        Me.ZONADataGridViewTextBoxColumn.DataPropertyName = "ZONA"
-        Me.ZONADataGridViewTextBoxColumn.HeaderText = "ZONA"
-        Me.ZONADataGridViewTextBoxColumn.Name = "ZONADataGridViewTextBoxColumn"
-        Me.ZONADataGridViewTextBoxColumn.ReadOnly = True
-        Me.ZONADataGridViewTextBoxColumn.Width = 45
-        '
-        'CALLEDataGridViewTextBoxColumn
-        '
-        Me.CALLEDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CALLEDataGridViewTextBoxColumn.DataPropertyName = "CALLE"
-        Me.CALLEDataGridViewTextBoxColumn.HeaderText = "CALLE"
-        Me.CALLEDataGridViewTextBoxColumn.Name = "CALLEDataGridViewTextBoxColumn"
-        Me.CALLEDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NRODataGridViewTextBoxColumn
-        '
-        Me.NRODataGridViewTextBoxColumn.DataPropertyName = "NRO"
-        Me.NRODataGridViewTextBoxColumn.HeaderText = "NRO"
-        Me.NRODataGridViewTextBoxColumn.Name = "NRODataGridViewTextBoxColumn"
-        Me.NRODataGridViewTextBoxColumn.ReadOnly = True
-        Me.NRODataGridViewTextBoxColumn.Width = 50
-        '
-        'MANZANADataGridViewTextBoxColumn
-        '
-        Me.MANZANADataGridViewTextBoxColumn.DataPropertyName = "MANZANA"
-        Me.MANZANADataGridViewTextBoxColumn.HeaderText = "MANZ"
-        Me.MANZANADataGridViewTextBoxColumn.Name = "MANZANADataGridViewTextBoxColumn"
-        Me.MANZANADataGridViewTextBoxColumn.ReadOnly = True
-        Me.MANZANADataGridViewTextBoxColumn.Width = 70
-        '
-        'ATRIBUTODataGridViewTextBoxColumn
-        '
-        Me.ATRIBUTODataGridViewTextBoxColumn.DataPropertyName = "ATRIBUTO"
-        Me.ATRIBUTODataGridViewTextBoxColumn.HeaderText = "RED"
-        Me.ATRIBUTODataGridViewTextBoxColumn.Name = "ATRIBUTODataGridViewTextBoxColumn"
-        Me.ATRIBUTODataGridViewTextBoxColumn.ReadOnly = True
-        Me.ATRIBUTODataGridViewTextBoxColumn.Width = 50
-        '
-        'DOCUMENTOFISICODataGridViewCheckBoxColumn
-        '
-        Me.DOCUMENTOFISICODataGridViewCheckBoxColumn.DataPropertyName = "DOCUMENTO_FISICO"
-        Me.DOCUMENTOFISICODataGridViewCheckBoxColumn.HeaderText = "DF"
-        Me.DOCUMENTOFISICODataGridViewCheckBoxColumn.Name = "DOCUMENTOFISICODataGridViewCheckBoxColumn"
-        Me.DOCUMENTOFISICODataGridViewCheckBoxColumn.ReadOnly = True
-        Me.DOCUMENTOFISICODataGridViewCheckBoxColumn.Width = 25
         '
         'OC_APROBADO
         '
@@ -712,9 +586,9 @@ Partial Class SERVICIOS
         Me.Panel1.Controls.Add(TIPOLabel)
         Me.Panel1.Controls.Add(Me.TIPOTextBox)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 375)
+        Me.Panel1.Location = New System.Drawing.Point(0, 344)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1072, 98)
+        Me.Panel1.Size = New System.Drawing.Size(1142, 98)
         Me.Panel1.TabIndex = 334
         '
         'TXT_CANT_OBRAC
@@ -1004,9 +878,9 @@ Partial Class SERVICIOS
         Me.GB_NUEVO.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.GB_NUEVO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GB_NUEVO.ForeColor = System.Drawing.Color.White
-        Me.GB_NUEVO.Location = New System.Drawing.Point(0, 563)
+        Me.GB_NUEVO.Location = New System.Drawing.Point(0, 532)
         Me.GB_NUEVO.Name = "GB_NUEVO"
-        Me.GB_NUEVO.Size = New System.Drawing.Size(1072, 185)
+        Me.GB_NUEVO.Size = New System.Drawing.Size(1142, 185)
         Me.GB_NUEVO.TabIndex = 335
         Me.GB_NUEVO.TabStop = False
         Me.GB_NUEVO.Text = "NUEVO SERVICIO"
@@ -1050,7 +924,7 @@ Partial Class SERVICIOS
         Me.DGV_ADJUNTO.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NOMARCHIVODataGridViewTextBoxColumn})
         Me.DGV_ADJUNTO.DataSource = Me.ADJUNTOSBindingSource
         Me.DGV_ADJUNTO.GridColor = System.Drawing.Color.Gray
-        Me.DGV_ADJUNTO.Location = New System.Drawing.Point(849, 29)
+        Me.DGV_ADJUNTO.Location = New System.Drawing.Point(919, 29)
         Me.DGV_ADJUNTO.Name = "DGV_ADJUNTO"
         Me.DGV_ADJUNTO.ReadOnly = True
         Me.DGV_ADJUNTO.RowHeadersVisible = False
@@ -1062,19 +936,6 @@ Partial Class SERVICIOS
         Me.DGV_ADJUNTO.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGV_ADJUNTO.Size = New System.Drawing.Size(212, 70)
         Me.DGV_ADJUNTO.TabIndex = 397
-        '
-        'NOMARCHIVODataGridViewTextBoxColumn
-        '
-        Me.NOMARCHIVODataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.NOMARCHIVODataGridViewTextBoxColumn.DataPropertyName = "NOM_ARCHIVO"
-        Me.NOMARCHIVODataGridViewTextBoxColumn.HeaderText = "NOM_ARCHIVO"
-        Me.NOMARCHIVODataGridViewTextBoxColumn.Name = "NOMARCHIVODataGridViewTextBoxColumn"
-        Me.NOMARCHIVODataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ADJUNTOSBindingSource
-        '
-        Me.ADJUNTOSBindingSource.DataMember = "ADJUNTOS"
-        Me.ADJUNTOSBindingSource.DataSource = Me.ORDENESDataSet
         '
         'Label21
         '
@@ -1323,7 +1184,7 @@ Partial Class SERVICIOS
         Me.CK_DOCUMENTO_FISICO.AutoSize = True
         Me.CK_DOCUMENTO_FISICO.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.CK_DOCUMENTO_FISICO.ForeColor = System.Drawing.Color.White
-        Me.CK_DOCUMENTO_FISICO.Location = New System.Drawing.Point(861, 10)
+        Me.CK_DOCUMENTO_FISICO.Location = New System.Drawing.Point(931, 10)
         Me.CK_DOCUMENTO_FISICO.Name = "CK_DOCUMENTO_FISICO"
         Me.CK_DOCUMENTO_FISICO.Size = New System.Drawing.Size(180, 17)
         Me.CK_DOCUMENTO_FISICO.TabIndex = 383
@@ -1579,7 +1440,7 @@ Partial Class SERVICIOS
         Me.Label6.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label6.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label6.Location = New System.Drawing.Point(663, 10)
+        Me.Label6.Location = New System.Drawing.Point(670, 17)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(91, 17)
         Me.Label6.TabIndex = 359
@@ -1591,7 +1452,7 @@ Partial Class SERVICIOS
         Me.TXT_OC.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TXT_OC.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXT_OC.ForeColor = System.Drawing.Color.White
-        Me.TXT_OC.Location = New System.Drawing.Point(664, 28)
+        Me.TXT_OC.Location = New System.Drawing.Point(671, 35)
         Me.TXT_OC.Name = "TXT_OC"
         Me.TXT_OC.Size = New System.Drawing.Size(89, 21)
         Me.TXT_OC.TabIndex = 358
@@ -1603,7 +1464,7 @@ Partial Class SERVICIOS
         Me.Label5.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label5.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label5.Location = New System.Drawing.Point(564, 10)
+        Me.Label5.Location = New System.Drawing.Point(571, 17)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(97, 17)
         Me.Label5.TabIndex = 357
@@ -1616,7 +1477,7 @@ Partial Class SERVICIOS
         Me.TXT_ORDENINT.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TXT_ORDENINT.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXT_ORDENINT.ForeColor = System.Drawing.Color.White
-        Me.TXT_ORDENINT.Location = New System.Drawing.Point(568, 28)
+        Me.TXT_ORDENINT.Location = New System.Drawing.Point(575, 35)
         Me.TXT_ORDENINT.Name = "TXT_ORDENINT"
         Me.TXT_ORDENINT.Size = New System.Drawing.Size(89, 21)
         Me.TXT_ORDENINT.TabIndex = 356
@@ -1628,7 +1489,7 @@ Partial Class SERVICIOS
         Me.Label4.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label4.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label4.Location = New System.Drawing.Point(427, 10)
+        Me.Label4.Location = New System.Drawing.Point(434, 17)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(70, 17)
         Me.Label4.TabIndex = 355
@@ -1641,7 +1502,7 @@ Partial Class SERVICIOS
         Me.CK_STATUS.ForeColor = System.Drawing.Color.White
         Me.CK_STATUS.FormattingEnabled = True
         Me.CK_STATUS.Items.AddRange(New Object() {"INGRESADO", "ASIGNADO", "FINALIZADO", "CANCELADO", "EMITIDO", "TODOS"})
-        Me.CK_STATUS.Location = New System.Drawing.Point(430, 28)
+        Me.CK_STATUS.Location = New System.Drawing.Point(437, 35)
         Me.CK_STATUS.Name = "CK_STATUS"
         Me.CK_STATUS.Size = New System.Drawing.Size(121, 21)
         Me.CK_STATUS.TabIndex = 354
@@ -1653,7 +1514,7 @@ Partial Class SERVICIOS
         Me.Label3.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label3.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label3.Location = New System.Drawing.Point(367, 10)
+        Me.Label3.Location = New System.Drawing.Point(374, 17)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(42, 17)
         Me.Label3.TabIndex = 353
@@ -1665,7 +1526,7 @@ Partial Class SERVICIOS
         Me.Label2.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label2.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label2.Location = New System.Drawing.Point(140, 10)
+        Me.Label2.Location = New System.Drawing.Point(147, 17)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(58, 17)
         Me.Label2.TabIndex = 352
@@ -1676,7 +1537,7 @@ Partial Class SERVICIOS
         Me.TXT_ING_NRO.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.TXT_ING_NRO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXT_ING_NRO.ForeColor = System.Drawing.Color.White
-        Me.TXT_ING_NRO.Location = New System.Drawing.Point(367, 28)
+        Me.TXT_ING_NRO.Location = New System.Drawing.Point(374, 35)
         Me.TXT_ING_NRO.Name = "TXT_ING_NRO"
         Me.TXT_ING_NRO.Size = New System.Drawing.Size(43, 21)
         Me.TXT_ING_NRO.TabIndex = 348
@@ -1687,7 +1548,7 @@ Partial Class SERVICIOS
         Me.TXT_ING_CALLE.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.TXT_ING_CALLE.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TXT_ING_CALLE.ForeColor = System.Drawing.Color.White
-        Me.TXT_ING_CALLE.Location = New System.Drawing.Point(139, 28)
+        Me.TXT_ING_CALLE.Location = New System.Drawing.Point(146, 35)
         Me.TXT_ING_CALLE.Name = "TXT_ING_CALLE"
         Me.TXT_ING_CALLE.Size = New System.Drawing.Size(226, 21)
         Me.TXT_ING_CALLE.TabIndex = 347
@@ -1698,7 +1559,7 @@ Partial Class SERVICIOS
         Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label1.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.Label1.Location = New System.Drawing.Point(77, 10)
+        Me.Label1.Location = New System.Drawing.Point(84, 17)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(52, 17)
         Me.Label1.TabIndex = 346
@@ -1710,7 +1571,7 @@ Partial Class SERVICIOS
         Me.FILTRO_ZONA.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.FILTRO_ZONA.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FILTRO_ZONA.ForeColor = System.Drawing.Color.White
-        Me.FILTRO_ZONA.Location = New System.Drawing.Point(79, 28)
+        Me.FILTRO_ZONA.Location = New System.Drawing.Point(86, 35)
         Me.FILTRO_ZONA.Name = "FILTRO_ZONA"
         Me.FILTRO_ZONA.Size = New System.Drawing.Size(49, 21)
         Me.FILTRO_ZONA.TabIndex = 345
@@ -1728,7 +1589,7 @@ Partial Class SERVICIOS
         Me.BUSCA_NODO.FormattingEnabled = True
         Me.BUSCA_NODO.ItemHeight = 15
         Me.BUSCA_NODO.Items.AddRange(New Object() {"A", "B", "C", "CAB", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "ZB"})
-        Me.BUSCA_NODO.Location = New System.Drawing.Point(9, 28)
+        Me.BUSCA_NODO.Location = New System.Drawing.Point(16, 35)
         Me.BUSCA_NODO.MaxDropDownItems = 50
         Me.BUSCA_NODO.Name = "BUSCA_NODO"
         Me.BUSCA_NODO.Size = New System.Drawing.Size(65, 23)
@@ -1740,7 +1601,7 @@ Partial Class SERVICIOS
         Me.LBLNODO.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.LBLNODO.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBLNODO.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.LBLNODO.Location = New System.Drawing.Point(9, 10)
+        Me.LBLNODO.Location = New System.Drawing.Point(16, 17)
         Me.LBLNODO.Name = "LBLNODO"
         Me.LBLNODO.Size = New System.Drawing.Size(54, 17)
         Me.LBLNODO.TabIndex = 344
@@ -1767,9 +1628,9 @@ Partial Class SERVICIOS
         Me.Panel2.Controls.Add(Label9)
         Me.Panel2.Controls.Add(Me.OBS_ORIGEN)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel2.Location = New System.Drawing.Point(0, 473)
+        Me.Panel2.Location = New System.Drawing.Point(0, 442)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1072, 90)
+        Me.Panel2.Size = New System.Drawing.Size(1142, 90)
         Me.Panel2.TabIndex = 389
         '
         'OBS_CIERRE
@@ -1798,6 +1659,212 @@ Partial Class SERVICIOS
         '
         Me.CALLESBindingSource1.DataMember = "INDICE_CALLES"
         Me.CALLESBindingSource1.DataSource = Me.INDICESDataSet
+        '
+        'BTN_NUEVO
+        '
+        Me.BTN_NUEVO.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTN_NUEVO.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_NUEVO.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_NUEVO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BTN_NUEVO.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_NUEVO.FlatAppearance.BorderSize = 0
+        Me.BTN_NUEVO.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_NUEVO.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_NUEVO.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_NUEVO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_NUEVO.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_NUEVO.ForeColor = System.Drawing.Color.White
+        Me.BTN_NUEVO.Location = New System.Drawing.Point(904, 24)
+        Me.BTN_NUEVO.Name = "BTN_NUEVO"
+        Me.BTN_NUEVO.Size = New System.Drawing.Size(103, 32)
+        Me.BTN_NUEVO.TabIndex = 388
+        Me.BTN_NUEVO.Text = "NUEVO"
+        Me.BTN_NUEVO.UseVisualStyleBackColor = False
+        '
+        'BTN_APROBAR
+        '
+        Me.BTN_APROBAR.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTN_APROBAR.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_APROBAR.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_APROBAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BTN_APROBAR.Enabled = False
+        Me.BTN_APROBAR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_APROBAR.FlatAppearance.BorderSize = 0
+        Me.BTN_APROBAR.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_APROBAR.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_APROBAR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_APROBAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_APROBAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_APROBAR.ForeColor = System.Drawing.Color.Red
+        Me.BTN_APROBAR.Location = New System.Drawing.Point(1023, 24)
+        Me.BTN_APROBAR.Name = "BTN_APROBAR"
+        Me.BTN_APROBAR.Size = New System.Drawing.Size(103, 32)
+        Me.BTN_APROBAR.TabIndex = 390
+        Me.BTN_APROBAR.Text = "APROBAR"
+        Me.BTN_APROBAR.UseVisualStyleBackColor = False
+        '
+        'BTN_REFRESCAR
+        '
+        Me.BTN_REFRESCAR.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.BTN_REFRESCAR.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_REFRESCAR.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_REFRESCAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BTN_REFRESCAR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_REFRESCAR.FlatAppearance.BorderSize = 0
+        Me.BTN_REFRESCAR.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_REFRESCAR.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_REFRESCAR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
+        Me.BTN_REFRESCAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_REFRESCAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_REFRESCAR.ForeColor = System.Drawing.Color.White
+        Me.BTN_REFRESCAR.Location = New System.Drawing.Point(801, 24)
+        Me.BTN_REFRESCAR.Name = "BTN_REFRESCAR"
+        Me.BTN_REFRESCAR.Size = New System.Drawing.Size(89, 32)
+        Me.BTN_REFRESCAR.TabIndex = 389
+        Me.BTN_REFRESCAR.Text = "REFRESCAR"
+        Me.BTN_REFRESCAR.UseVisualStyleBackColor = False
+        '
+        'NROORDENINTDataGridViewTextBoxColumn
+        '
+        Me.NROORDENINTDataGridViewTextBoxColumn.DataPropertyName = "NRO_ORDENINT"
+        Me.NROORDENINTDataGridViewTextBoxColumn.HeaderText = "ORDEN"
+        Me.NROORDENINTDataGridViewTextBoxColumn.Name = "NROORDENINTDataGridViewTextBoxColumn"
+        Me.NROORDENINTDataGridViewTextBoxColumn.ReadOnly = True
+        Me.NROORDENINTDataGridViewTextBoxColumn.Width = 60
+        '
+        'ORDENOCDataGridViewTextBoxColumn
+        '
+        Me.ORDENOCDataGridViewTextBoxColumn.DataPropertyName = "ORDEN_OC"
+        Me.ORDENOCDataGridViewTextBoxColumn.HeaderText = "OC"
+        Me.ORDENOCDataGridViewTextBoxColumn.Name = "ORDENOCDataGridViewTextBoxColumn"
+        Me.ORDENOCDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ORDENOCDataGridViewTextBoxColumn.Width = 65
+        '
+        'IDGESTIONDataGridViewTextBoxColumn
+        '
+        Me.IDGESTIONDataGridViewTextBoxColumn.DataPropertyName = "ID_GESTION"
+        Me.IDGESTIONDataGridViewTextBoxColumn.HeaderText = "GEST"
+        Me.IDGESTIONDataGridViewTextBoxColumn.Name = "IDGESTIONDataGridViewTextBoxColumn"
+        Me.IDGESTIONDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IDGESTIONDataGridViewTextBoxColumn.Width = 40
+        '
+        'IDTRABAJODataGridViewTextBoxColumn
+        '
+        Me.IDTRABAJODataGridViewTextBoxColumn.DataPropertyName = "ID_TRABAJO"
+        Me.IDTRABAJODataGridViewTextBoxColumn.HeaderText = "TRAB"
+        Me.IDTRABAJODataGridViewTextBoxColumn.Name = "IDTRABAJODataGridViewTextBoxColumn"
+        Me.IDTRABAJODataGridViewTextBoxColumn.ReadOnly = True
+        Me.IDTRABAJODataGridViewTextBoxColumn.Width = 40
+        '
+        'FECHAINGRESODataGridViewTextBoxColumn
+        '
+        Me.FECHAINGRESODataGridViewTextBoxColumn.DataPropertyName = "FECHAINGRESO"
+        Me.FECHAINGRESODataGridViewTextBoxColumn.HeaderText = "INGRESO"
+        Me.FECHAINGRESODataGridViewTextBoxColumn.Name = "FECHAINGRESODataGridViewTextBoxColumn"
+        Me.FECHAINGRESODataGridViewTextBoxColumn.ReadOnly = True
+        Me.FECHAINGRESODataGridViewTextBoxColumn.Width = 75
+        '
+        'FECHAASIGNADADataGridViewTextBoxColumn
+        '
+        Me.FECHAASIGNADADataGridViewTextBoxColumn.DataPropertyName = "FECHA_ASIGNADA"
+        Me.FECHAASIGNADADataGridViewTextBoxColumn.HeaderText = "ASIGNADO"
+        Me.FECHAASIGNADADataGridViewTextBoxColumn.Name = "FECHAASIGNADADataGridViewTextBoxColumn"
+        Me.FECHAASIGNADADataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PRIORIDADDataGridViewTextBoxColumn
+        '
+        Me.PRIORIDADDataGridViewTextBoxColumn.DataPropertyName = "PRIORIDAD"
+        Me.PRIORIDADDataGridViewTextBoxColumn.HeaderText = "PRIO"
+        Me.PRIORIDADDataGridViewTextBoxColumn.Name = "PRIORIDADDataGridViewTextBoxColumn"
+        Me.PRIORIDADDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PRIORIDADDataGridViewTextBoxColumn.Width = 50
+        '
+        'STATUSDataGridViewTextBoxColumn
+        '
+        Me.STATUSDataGridViewTextBoxColumn.DataPropertyName = "STATUS"
+        Me.STATUSDataGridViewTextBoxColumn.HeaderText = "STATUS"
+        Me.STATUSDataGridViewTextBoxColumn.Name = "STATUSDataGridViewTextBoxColumn"
+        Me.STATUSDataGridViewTextBoxColumn.ReadOnly = True
+        Me.STATUSDataGridViewTextBoxColumn.Width = 80
+        '
+        'NODODataGridViewTextBoxColumn
+        '
+        Me.NODODataGridViewTextBoxColumn.DataPropertyName = "NODO"
+        Me.NODODataGridViewTextBoxColumn.HeaderText = "NODO"
+        Me.NODODataGridViewTextBoxColumn.Name = "NODODataGridViewTextBoxColumn"
+        Me.NODODataGridViewTextBoxColumn.ReadOnly = True
+        Me.NODODataGridViewTextBoxColumn.Width = 45
+        '
+        'ZONADataGridViewTextBoxColumn
+        '
+        Me.ZONADataGridViewTextBoxColumn.DataPropertyName = "ZONA"
+        Me.ZONADataGridViewTextBoxColumn.HeaderText = "ZONA"
+        Me.ZONADataGridViewTextBoxColumn.Name = "ZONADataGridViewTextBoxColumn"
+        Me.ZONADataGridViewTextBoxColumn.ReadOnly = True
+        Me.ZONADataGridViewTextBoxColumn.Width = 45
+        '
+        'CALLEDataGridViewTextBoxColumn
+        '
+        Me.CALLEDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CALLEDataGridViewTextBoxColumn.DataPropertyName = "CALLE"
+        Me.CALLEDataGridViewTextBoxColumn.HeaderText = "CALLE"
+        Me.CALLEDataGridViewTextBoxColumn.Name = "CALLEDataGridViewTextBoxColumn"
+        Me.CALLEDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NRODataGridViewTextBoxColumn
+        '
+        Me.NRODataGridViewTextBoxColumn.DataPropertyName = "NRO"
+        Me.NRODataGridViewTextBoxColumn.HeaderText = "NRO"
+        Me.NRODataGridViewTextBoxColumn.Name = "NRODataGridViewTextBoxColumn"
+        Me.NRODataGridViewTextBoxColumn.ReadOnly = True
+        Me.NRODataGridViewTextBoxColumn.Width = 50
+        '
+        'MANZANADataGridViewTextBoxColumn
+        '
+        Me.MANZANADataGridViewTextBoxColumn.DataPropertyName = "MANZANA"
+        Me.MANZANADataGridViewTextBoxColumn.HeaderText = "MANZ"
+        Me.MANZANADataGridViewTextBoxColumn.Name = "MANZANADataGridViewTextBoxColumn"
+        Me.MANZANADataGridViewTextBoxColumn.ReadOnly = True
+        Me.MANZANADataGridViewTextBoxColumn.Width = 70
+        '
+        'ATRIBUTODataGridViewTextBoxColumn
+        '
+        Me.ATRIBUTODataGridViewTextBoxColumn.DataPropertyName = "ATRIBUTO"
+        Me.ATRIBUTODataGridViewTextBoxColumn.HeaderText = "RED"
+        Me.ATRIBUTODataGridViewTextBoxColumn.Name = "ATRIBUTODataGridViewTextBoxColumn"
+        Me.ATRIBUTODataGridViewTextBoxColumn.ReadOnly = True
+        Me.ATRIBUTODataGridViewTextBoxColumn.Width = 50
+        '
+        'DOCUMENTOFISICODataGridViewCheckBoxColumn
+        '
+        Me.DOCUMENTOFISICODataGridViewCheckBoxColumn.DataPropertyName = "DOCUMENTO_FISICO"
+        Me.DOCUMENTOFISICODataGridViewCheckBoxColumn.HeaderText = "DF"
+        Me.DOCUMENTOFISICODataGridViewCheckBoxColumn.Name = "DOCUMENTOFISICODataGridViewCheckBoxColumn"
+        Me.DOCUMENTOFISICODataGridViewCheckBoxColumn.ReadOnly = True
+        Me.DOCUMENTOFISICODataGridViewCheckBoxColumn.Width = 25
+        '
+        'ORDENESBindingSource1
+        '
+        Me.ORDENESBindingSource1.DataMember = "ORDENES"
+        Me.ORDENESBindingSource1.DataSource = Me.ORDENESDataSet
+        '
+        'ORDENESDataSet
+        '
+        Me.ORDENESDataSet.DataSetName = "ORDENESDataSet"
+        Me.ORDENESDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'NOMARCHIVODataGridViewTextBoxColumn
+        '
+        Me.NOMARCHIVODataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.NOMARCHIVODataGridViewTextBoxColumn.DataPropertyName = "NOM_ARCHIVO"
+        Me.NOMARCHIVODataGridViewTextBoxColumn.HeaderText = "NOM_ARCHIVO"
+        Me.NOMARCHIVODataGridViewTextBoxColumn.Name = "NOMARCHIVODataGridViewTextBoxColumn"
+        Me.NOMARCHIVODataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ADJUNTOSBindingSource
+        '
+        Me.ADJUNTOSBindingSource.DataMember = "ADJUNTOS"
+        Me.ADJUNTOSBindingSource.DataSource = Me.ORDENESDataSet
         '
         'INFORMESERVICIOSBindingSource
         '
@@ -1877,51 +1944,35 @@ Partial Class SERVICIOS
         Me.HISTORICOBindingSource1.DataMember = "HISTORICO"
         Me.HISTORICOBindingSource1.DataSource = Me.ORDENESDataSet
         '
-        'BTN_NUEVO
-        '
-        Me.BTN_NUEVO.BackColor = System.Drawing.Color.Transparent
-        Me.BTN_NUEVO.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
-        Me.BTN_NUEVO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.BTN_NUEVO.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_NUEVO.FlatAppearance.BorderSize = 0
-        Me.BTN_NUEVO.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_NUEVO.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_NUEVO.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_NUEVO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_NUEVO.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_NUEVO.ForeColor = System.Drawing.Color.White
-        Me.BTN_NUEVO.Location = New System.Drawing.Point(783, 17)
-        Me.BTN_NUEVO.Name = "BTN_NUEVO"
-        Me.BTN_NUEVO.Size = New System.Drawing.Size(103, 32)
-        Me.BTN_NUEVO.TabIndex = 388
-        Me.BTN_NUEVO.Text = "NUEVO"
-        Me.BTN_NUEVO.UseVisualStyleBackColor = False
-        '
-        'BTN_APROBAR
-        '
-        Me.BTN_APROBAR.BackColor = System.Drawing.Color.Transparent
-        Me.BTN_APROBAR.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
-        Me.BTN_APROBAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.BTN_APROBAR.Enabled = False
-        Me.BTN_APROBAR.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_APROBAR.FlatAppearance.BorderSize = 0
-        Me.BTN_APROBAR.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_APROBAR.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_APROBAR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer), CType(CType(80, Byte), Integer))
-        Me.BTN_APROBAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_APROBAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_APROBAR.ForeColor = System.Drawing.Color.Red
-        Me.BTN_APROBAR.Location = New System.Drawing.Point(917, 17)
-        Me.BTN_APROBAR.Name = "BTN_APROBAR"
-        Me.BTN_APROBAR.Size = New System.Drawing.Size(103, 32)
-        Me.BTN_APROBAR.TabIndex = 390
-        Me.BTN_APROBAR.Text = "APROBAR"
-        Me.BTN_APROBAR.UseVisualStyleBackColor = False
-        '
         'OrdenesDataSet1
         '
         Me.OrdenesDataSet1.DataSetName = "ORDENESDataSet"
         Me.OrdenesDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.LBLNODO)
+        Me.Panel3.Controls.Add(Me.BTN_REFRESCAR)
+        Me.Panel3.Controls.Add(Me.BUSCA_NODO)
+        Me.Panel3.Controls.Add(Me.BTN_APROBAR)
+        Me.Panel3.Controls.Add(Me.FILTRO_ZONA)
+        Me.Panel3.Controls.Add(Me.BTN_NUEVO)
+        Me.Panel3.Controls.Add(Me.Label1)
+        Me.Panel3.Controls.Add(Me.Label6)
+        Me.Panel3.Controls.Add(Me.TXT_ING_CALLE)
+        Me.Panel3.Controls.Add(Me.TXT_OC)
+        Me.Panel3.Controls.Add(Me.TXT_ING_NRO)
+        Me.Panel3.Controls.Add(Me.Label5)
+        Me.Panel3.Controls.Add(Me.Label2)
+        Me.Panel3.Controls.Add(Me.TXT_ORDENINT)
+        Me.Panel3.Controls.Add(Me.Label3)
+        Me.Panel3.Controls.Add(Me.Label4)
+        Me.Panel3.Controls.Add(Me.CK_STATUS)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(1142, 69)
+        Me.Panel3.TabIndex = 391
         '
         'SERVICIOS
         '
@@ -1929,24 +1980,9 @@ Partial Class SERVICIOS
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1089, 565)
-        Me.Controls.Add(Me.BTN_APROBAR)
-        Me.Controls.Add(Me.BTN_NUEVO)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.TXT_OC)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.TXT_ORDENINT)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.CK_STATUS)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.TXT_ING_NRO)
-        Me.Controls.Add(Me.TXT_ING_CALLE)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.FILTRO_ZONA)
-        Me.Controls.Add(Me.BUSCA_NODO)
-        Me.Controls.Add(Me.LBLNODO)
+        Me.ClientSize = New System.Drawing.Size(1142, 717)
         Me.Controls.Add(Me.DGV_ORDENES)
+        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.GB_NUEVO)
@@ -1956,8 +1992,6 @@ Partial Class SERVICIOS
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "SERVICIOS"
-        CType(Me.ORDENESBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INDICESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INDICE_CALLESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGV_ORDENES, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1966,23 +2000,26 @@ Partial Class SERVICIOS
         Me.GB_NUEVO.ResumeLayout(False)
         Me.GB_NUEVO.PerformLayout()
         CType(Me.DGV_ADJUNTO, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ADJUNTOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INDICE_CALLESDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INDICE_CAUSASBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.CALLESBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.INFORMESERVICIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.HISTORICOBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GESTIONBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TRABAJOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OBESERVACIONESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FUNCIONARIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SECTORESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.HISTORICOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ORDENESBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ADJUNTOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.INFORMESERVICIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.HISTORICOBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OrdenesDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -2118,4 +2155,6 @@ Partial Class SERVICIOS
     Friend WithEvents ATRIBUTODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DOCUMENTOFISICODataGridViewCheckBoxColumn As DataGridViewCheckBoxColumn
     Friend WithEvents OC_APROBADO As DataGridViewCheckBoxColumn
+    Friend WithEvents BTN_REFRESCAR As Button
+    Friend WithEvents Panel3 As Panel
 End Class

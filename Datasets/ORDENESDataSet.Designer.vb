@@ -5815,6 +5815,7 @@ Partial Public Class ORDENESDataSet
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Overloads Function AddTRABAJOSRow( _
+                    ByVal Id_TRABAJO As Integer,  _
                     ByVal ID_GESTION As Integer,  _
                     ByVal TIPOTRABAJO As String,  _
                     ByVal FECHAINGRESADO As Date,  _
@@ -5847,7 +5848,7 @@ Partial Public Class ORDENESDataSet
                     ByVal PROYECTO_ORDINALES As Integer,  _
                     ByVal FECHA_ASIGNADO As Date) As TRABAJOSRow
             Dim rowTRABAJOSRow As TRABAJOSRow = CType(Me.NewRow,TRABAJOSRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, ID_GESTION, TIPOTRABAJO, FECHAINGRESADO, GENERADOX, FECHAINICIADO, FECHAFINALIZADO, TIEMPOESTIMADO, TIEMPOREAL, DEMORA, STATUS, AREA, FECHAINICESTIMADO, NODO, ZONA, MANZANA, CALLE, NRO, ASIGNADOA, SECTORASIG, IDASIG, DESCRIPCION, COMPLETO, DEPENDENCIA, TIPODEP, INSTALACION, INSTALACIONRUS, REQUERIDO, HABILITADO, ATRIBUTO, PROYECTO_ORDINALES, FECHA_ASIGNADO}
+            Dim columnValuesArray() As Object = New Object() {Id_TRABAJO, ID_GESTION, TIPOTRABAJO, FECHAINGRESADO, GENERADOX, FECHAINICIADO, FECHAFINALIZADO, TIEMPOESTIMADO, TIEMPOREAL, DEMORA, STATUS, AREA, FECHAINICESTIMADO, NODO, ZONA, MANZANA, CALLE, NRO, ASIGNADOA, SECTORASIG, IDASIG, DESCRIPCION, COMPLETO, DEPENDENCIA, TIPODEP, INSTALACION, INSTALACIONRUS, REQUERIDO, HABILITADO, ATRIBUTO, PROYECTO_ORDINALES, FECHA_ASIGNADO}
             rowTRABAJOSRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTRABAJOSRow)
             Return rowTRABAJOSRow
@@ -5978,7 +5979,6 @@ Partial Public Class ORDENESDataSet
             Me.columnFECHA_ASIGNADO = New Global.System.Data.DataColumn("FECHA_ASIGNADO", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFECHA_ASIGNADO)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnId_TRABAJO}, true))
-            Me.columnId_TRABAJO.AutoIncrement = true
             Me.columnId_TRABAJO.AutoIncrementSeed = -1
             Me.columnId_TRABAJO.AutoIncrementStep = -1
             Me.columnId_TRABAJO.AllowDBNull = false
@@ -8556,8 +8556,6 @@ Partial Public Class ORDENESDataSet
         
         Private columnNRO_AGENDAMIENTO As Global.System.Data.DataColumn
         
-        Private columnSTATUS As Global.System.Data.DataColumn
-        
         Private columnACTIVIDADDESC As Global.System.Data.DataColumn
         
         Private columnTAREADESC As Global.System.Data.DataColumn
@@ -8638,14 +8636,6 @@ Partial Public Class ORDENESDataSet
         Public ReadOnly Property NRO_AGENDAMIENTOColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnNRO_AGENDAMIENTO
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property STATUSColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnSTATUS
             End Get
         End Property
         
@@ -8750,9 +8740,9 @@ Partial Public Class ORDENESDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddTAREASRow(ByVal ORDINAL As Integer, ByVal NRO_ORDENINT As Integer, ByVal NRO_AGENDAMIENTO As Integer, ByVal STATUS As String, ByVal ACTIVIDADDESC As String, ByVal TAREADESC As String, ByVal CANTSTD As Integer, ByVal CANTREAL As Integer, ByVal TIEMPOSTD As Integer, ByVal TIEMPOPREV As Integer, ByVal TIEMPOREAL As Integer, ByVal UNIDAD As String) As TAREASRow
+        Public Overloads Function AddTAREASRow(ByVal ORDINAL As Integer, ByVal NRO_ORDENINT As Integer, ByVal NRO_AGENDAMIENTO As Integer, ByVal ACTIVIDADDESC As String, ByVal TAREADESC As String, ByVal CANTSTD As Integer, ByVal CANTREAL As Integer, ByVal TIEMPOSTD As Integer, ByVal TIEMPOPREV As Integer, ByVal TIEMPOREAL As Integer, ByVal UNIDAD As String) As TAREASRow
             Dim rowTAREASRow As TAREASRow = CType(Me.NewRow,TAREASRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, STATUS, ACTIVIDADDESC, TAREADESC, CANTSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD}
+            Dim columnValuesArray() As Object = New Object() {Nothing, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, ACTIVIDADDESC, TAREADESC, CANTSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD}
             rowTAREASRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTAREASRow)
             Return rowTAREASRow
@@ -8785,7 +8775,6 @@ Partial Public Class ORDENESDataSet
             Me.columnORDINAL = MyBase.Columns("ORDINAL")
             Me.columnNRO_ORDENINT = MyBase.Columns("NRO_ORDENINT")
             Me.columnNRO_AGENDAMIENTO = MyBase.Columns("NRO_AGENDAMIENTO")
-            Me.columnSTATUS = MyBase.Columns("STATUS")
             Me.columnACTIVIDADDESC = MyBase.Columns("ACTIVIDADDESC")
             Me.columnTAREADESC = MyBase.Columns("TAREADESC")
             Me.columnCANTSTD = MyBase.Columns("CANTSTD")
@@ -8807,8 +8796,6 @@ Partial Public Class ORDENESDataSet
             MyBase.Columns.Add(Me.columnNRO_ORDENINT)
             Me.columnNRO_AGENDAMIENTO = New Global.System.Data.DataColumn("NRO_AGENDAMIENTO", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNRO_AGENDAMIENTO)
-            Me.columnSTATUS = New Global.System.Data.DataColumn("STATUS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSTATUS)
             Me.columnACTIVIDADDESC = New Global.System.Data.DataColumn("ACTIVIDADDESC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnACTIVIDADDESC)
             Me.columnTAREADESC = New Global.System.Data.DataColumn("TAREADESC", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -8831,7 +8818,6 @@ Partial Public Class ORDENESDataSet
             Me.columnId.AutoIncrementStep = -1
             Me.columnId.AllowDBNull = false
             Me.columnId.Unique = true
-            Me.columnSTATUS.MaxLength = 255
             Me.columnACTIVIDADDESC.MaxLength = 255
             Me.columnTAREADESC.MaxLength = 255
             Me.columnUNIDAD.MaxLength = 255
@@ -23247,21 +23233,6 @@ Partial Public Class ORDENESDataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property STATUS() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTAREAS.STATUSColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'STATUS' de la tabla 'TAREAS' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTAREAS.STATUSColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property ACTIVIDADDESC() As String
             Get
                 Try 
@@ -23414,18 +23385,6 @@ Partial Public Class ORDENESDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetNRO_AGENDAMIENTONull()
             Me(Me.tableTAREAS.NRO_AGENDAMIENTOColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsSTATUSNull() As Boolean
-            Return Me.IsNull(Me.tableTAREAS.STATUSColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetSTATUSNull()
-            Me(Me.tableTAREAS.STATUSColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -29876,7 +29835,7 @@ Namespace ORDENESDataSetTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.OleDb.OleDbCommand(60) {}
+            Me._commandCollection = New Global.System.Data.OleDb.OleDbCommand(63) {}
             Me._commandCollection(0) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT FECHAAGEND, NRO_ORDENINT, NRO_ORDINAL, ID_GESTION, ID_TRABAJO, TIPO, SECTO"& _ 
@@ -29902,27 +29861,8 @@ Namespace ORDENESDataSetTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._commandCollection(2) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
-                "ALLE, CANTIDAD_SERVICIOS, CARPETA, CAUSACIERRE, CAUSARIGEN, CLASEDEP, CONTACTONO"& _ 
-                "MBRE, CONTACTOTEL, COORDINAR, CREARORDINAL, CUADRILLA, DEPENDENCIA, DESAGENDAR, "& _ 
-                "DOCUMENTO_FISICO, DUPLICADAA, DUPLICADADE, ESQU1, ESQU2, FECHAAGEND, FECHACIERRE"& _ 
-                ", FECHAFIN, FECHAINGRESO, FECHAINICESTIMADO, FECHAINICIO, FECHASOL, FECHA_ASIGNA"& _ 
-                "DA, GENERADOR, GEST_SOLICITADO, ID_CALLE, ID_GESTION, ID_TRABAJO, INSTALACION, I"& _ 
-                "NSTALACIONRUS, MANZANA, MOTIVOCIERRE, MOTIVOORIGEN, NODO, NOMBREMDU, NOTIF, NRO,"& _ 
-                " NRO_ORDENINT, NRO_ORDINAL, ORDAPOYADO, ORDENDEP, ORDEN_OC, ORDORIGEN, ORDPADRE,"& _ 
-                " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
-                "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
-                " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (TIPO = ?) AND (NOD"& _ 
-                "O = ?) AND (ZONA = ?) AND (FECHAINGRESO > ?) AND (FECHAINGRESO <= ?) AND (SECTOR"& _ 
-                "DESTINO = ?) ORDER BY NODO, ZONA"
+            Me._commandCollection(2).CommandText = "SELECT * FROM ORDENES"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("TIPO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TIPO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINGRESO", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINGRESO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINGRESO1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINGRESO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(2).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SECTORDESTINO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SECTORDESTINO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(3) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(3).Connection = Me.Connection
             Me._commandCollection(3).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30213,19 +30153,9 @@ Namespace ORDENESDataSetTableAdapters
             Me._commandCollection(19).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("STATUS", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(20) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(20).Connection = Me.Connection
-            Me._commandCollection(20).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
-                "ALLE, CANTIDAD_SERVICIOS, CARPETA, CAUSACIERRE, CAUSARIGEN, CLASEDEP, CONTACTONO"& _ 
-                "MBRE, CONTACTOTEL, COORDINAR, CREARORDINAL, CUADRILLA, DEPENDENCIA, DESAGENDAR, "& _ 
-                "DOCUMENTO_FISICO, DUPLICADAA, DUPLICADADE, ESQU1, ESQU2, FECHAAGEND, FECHACIERRE"& _ 
-                ", FECHAFIN, FECHAINGRESO, FECHAINICESTIMADO, FECHAINICIO, FECHASOL, FECHA_ASIGNA"& _ 
-                "DA, GENERADOR, GEST_SOLICITADO, ID_CALLE, ID_GESTION, ID_TRABAJO, INSTALACION, I"& _ 
-                "NSTALACIONRUS, MANZANA, MOTIVOCIERRE, MOTIVOORIGEN, NODO, NOMBREMDU, NOTIF, NRO,"& _ 
-                " NRO_ORDENINT, NRO_ORDINAL, ORDAPOYADO, ORDENDEP, ORDEN_OC, ORDORIGEN, ORDPADRE,"& _ 
-                " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
-                "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
-                " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (STATUS <> 'CANCELA"& _ 
-                "DO') AND (MOTIVOORIGEN = 'DISEÑO O. CIVIL') ORDER BY FECHASOL"
+            Me._commandCollection(20).CommandText = "SELECT        *"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ORDENES"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE  (CUADRILLA = 'ZELMAR LAGOS')  AN"& _ 
+                "D   (STATUS <> 'CANCELADO') AND (GENERADOR IN(SELECT NOMBRE FROM FUNCIONARIOS WH"& _ 
+                "ERE SECTOR = 'OBRA CIVIL'))"
             Me._commandCollection(20).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(21) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(21).Connection = Me.Connection
@@ -30241,7 +30171,7 @@ Namespace ORDENESDataSetTableAdapters
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
                 "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (STATUS <> 'CANCELA"& _ 
-                "DO') AND (MOTIVOORIGEN = 'DISEÑO RED') ORDER BY FECHASOL"
+                "DO') AND (MOTIVOORIGEN = 'DISEÑO O. CIVIL') ORDER BY FECHASOL"
             Me._commandCollection(21).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(22) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(22).Connection = Me.Connection
@@ -30256,12 +30186,9 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (TIPO = 'CORRECTIVO"& _ 
-                "') AND (FECHAFIN > ?) AND (FECHAFIN < ?) AND (MOTIVOORIGEN <> 'SIN SEÑAL TOTAL')"& _ 
-                " AND (LEN(ZONA) < 6) AND (LEN(ZONA) > 2) ORDER BY NODO, ZONA"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (STATUS <> 'CANCELA"& _ 
+                "DO') AND (MOTIVOORIGEN = 'DISEÑO RED') ORDER BY FECHASOL"
             Me._commandCollection(22).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(22).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(22).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(23) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(23).Connection = Me.Connection
             Me._commandCollection(23).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30275,11 +30202,12 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHAAGEND = ?) OR"& _ 
-                "DER BY STATUS, PRIORIDAD, SECTORDESTINO, SECTOROPE, CLASEDEP, ORDORIGEN, ORDENDE"& _ 
-                "P, NODO, ZONA"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (TIPO = 'CORRECTIVO"& _ 
+                "') AND (FECHAFIN > ?) AND (FECHAFIN < ?) AND (MOTIVOORIGEN <> 'SIN SEÑAL TOTAL')"& _ 
+                " AND (LEN(ZONA) < 6) AND (LEN(ZONA) > 2) ORDER BY NODO, ZONA"
             Me._commandCollection(23).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(23).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAAGEND", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAAGEND", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(23).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(23).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(24) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(24).Connection = Me.Connection
             Me._commandCollection(24).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30294,7 +30222,8 @@ Namespace ORDENESDataSetTableAdapters
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
                 "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHAAGEND = ?) OR"& _ 
-                "DER BY SECTORDESTINO, SECTOROPE, SECTORDESTINO, PRIORIDAD, ORDORIGEN, ORDENDEP"
+                "DER BY STATUS, PRIORIDAD, SECTORDESTINO, SECTOROPE, CLASEDEP, ORDORIGEN, ORDENDE"& _ 
+                "P, NODO, ZONA"
             Me._commandCollection(24).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(24).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAAGEND", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAAGEND", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(25) = New Global.System.Data.OleDb.OleDbCommand()
@@ -30310,12 +30239,10 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHAAGEND = ?) AN"& _ 
-                "D (PRIORIDAD = ?) ORDER BY SECTORDESTINO, SECTOROPE, CLASEDEP, ORDORIGEN, ORDEND"& _ 
-                "EP"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHAAGEND = ?) OR"& _ 
+                "DER BY SECTORDESTINO, SECTOROPE, SECTORDESTINO, PRIORIDAD, ORDORIGEN, ORDENDEP"
             Me._commandCollection(25).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(25).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAAGEND", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAAGEND", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(25).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("PRIORIDAD", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PRIORIDAD", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(26) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(26).Connection = Me.Connection
             Me._commandCollection(26).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30329,12 +30256,12 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHAFIN > ?) AND "& _ 
-                "(FECHAFIN < ?) AND (STATUS = ?)"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHAAGEND = ?) AN"& _ 
+                "D (PRIORIDAD = ?) ORDER BY SECTORDESTINO, SECTOROPE, CLASEDEP, ORDORIGEN, ORDEND"& _ 
+                "EP"
             Me._commandCollection(26).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(26).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(26).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(26).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("STATUS", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(26).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAAGEND", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAAGEND", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(26).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("PRIORIDAD", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PRIORIDAD", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(27) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(27).Connection = Me.Connection
             Me._commandCollection(27).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30348,10 +30275,12 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_TRABAJO = ?) OR"& _ 
-                "DER BY FECHAFIN"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHAFIN > ?) AND "& _ 
+                "(FECHAFIN < ?) AND (STATUS = ?)"
             Me._commandCollection(27).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(27).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_TRABAJO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_TRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(27).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(27).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(27).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("STATUS", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(28) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(28).Connection = Me.Connection
             Me._commandCollection(28).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30365,11 +30294,10 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (LEN(ZONA) < 6) AND"& _ 
-                " (LEN(ZONA) > 2) AND (FECHAFIN > ?) AND (FECHAFIN < ?) ORDER BY NODO, ZONA"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_TRABAJO = ?) OR"& _ 
+                "DER BY FECHAFIN"
             Me._commandCollection(28).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(28).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(28).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(28).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_TRABAJO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_TRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(29) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(29).Connection = Me.Connection
             Me._commandCollection(29).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30383,27 +30311,17 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHAINGRESO = ?) "& _ 
-                "ORDER BY NODO, ZONA"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (LEN(ZONA) < 6) AND"& _ 
+                " (LEN(ZONA) > 2) AND (FECHAFIN > ?) AND (FECHAFIN < ?) ORDER BY NODO, ZONA"
             Me._commandCollection(29).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(29).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINGRESO", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINGRESO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(29).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(29).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(30) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(30).Connection = Me.Connection
-            Me._commandCollection(30).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
-                "ALLE, CANTIDAD_SERVICIOS, CARPETA, CAUSACIERRE, CAUSARIGEN, CLASEDEP, CONTACTONO"& _ 
-                "MBRE, CONTACTOTEL, COORDINAR, CREARORDINAL, CUADRILLA, DEPENDENCIA, DESAGENDAR, "& _ 
-                "DOCUMENTO_FISICO, DUPLICADAA, DUPLICADADE, ESQU1, ESQU2, FECHAAGEND, FECHACIERRE"& _ 
-                ", FECHAFIN, FECHAINGRESO, FECHAINICESTIMADO, FECHAINICIO, FECHASOL, FECHA_ASIGNA"& _ 
-                "DA, GENERADOR, GEST_SOLICITADO, ID_CALLE, ID_GESTION, ID_TRABAJO, INSTALACION, I"& _ 
-                "NSTALACIONRUS, MANZANA, MOTIVOCIERRE, MOTIVOORIGEN, NODO, NOMBREMDU, NOTIF, NRO,"& _ 
-                " NRO_ORDENINT, NRO_ORDINAL, ORDAPOYADO, ORDENDEP, ORDEN_OC, ORDORIGEN, ORDPADRE,"& _ 
-                " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
-                "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
-                " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_GESTION = ?) OR"& _ 
-                "DER BY NODO, ZONA"
+            Me._commandCollection(30).CommandText = "SELECT     *"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ORDENES"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (GENERADOR = ?) AND STATUS <>"& _ 
+                " 'FINALIZADO' AND  STATUS <> 'CANCELADO' AND STATUS <> 'DUPLICADO'"
             Me._commandCollection(30).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(30).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_GESTION", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_GESTION", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(30).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("GENERADOR", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "GENERADOR", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(31) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(31).Connection = Me.Connection
             Me._commandCollection(31).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30417,10 +30335,10 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (NRO_ORDENINT = ?) "& _ 
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHAINGRESO = ?) "& _ 
                 "ORDER BY NODO, ZONA"
             Me._commandCollection(31).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(31).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(31).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINGRESO", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINGRESO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(32) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(32).Connection = Me.Connection
             Me._commandCollection(32).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30434,10 +30352,10 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (NRO_ORDINAL = ?) O"& _ 
-                "RDER BY NODO, ZONA"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_GESTION = ?) OR"& _ 
+                "DER BY NODO, ZONA"
             Me._commandCollection(32).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(32).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDINAL", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDINAL", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(32).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_GESTION", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_GESTION", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(33) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(33).Connection = Me.Connection
             Me._commandCollection(33).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30451,10 +30369,10 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_TRABAJO = ?) OR"& _ 
-                "DER BY NRO_ORDENINT, NODO, ZONA"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (NRO_ORDENINT = ?) "& _ 
+                "ORDER BY NODO, ZONA"
             Me._commandCollection(33).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(33).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_TRABAJO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_TRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(33).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(34) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(34).Connection = Me.Connection
             Me._commandCollection(34).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30468,10 +30386,10 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_TRABAJO = ?) OR"& _ 
-                "DER BY FECHAFIN"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (NRO_ORDINAL = ?) O"& _ 
+                "RDER BY NODO, ZONA"
             Me._commandCollection(34).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(34).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_TRABAJO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_TRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(34).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDINAL", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDINAL", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(35) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(35).Connection = Me.Connection
             Me._commandCollection(35).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30485,10 +30403,10 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (INSTALACION = ?) O"& _ 
-                "RDER BY FECHAINGRESO, NODO, ZONA"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_TRABAJO = ?) OR"& _ 
+                "DER BY NRO_ORDENINT, NODO, ZONA"
             Me._commandCollection(35).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(35).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("INSTALACION", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "INSTALACION", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(35).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_TRABAJO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_TRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(36) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(36).Connection = Me.Connection
             Me._commandCollection(36).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30502,10 +30420,10 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (INSTALACIONRUS = ?"& _ 
-                ") AND (STATUS = 'FINALIZADO')"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_TRABAJO = ?) OR"& _ 
+                "DER BY FECHAFIN"
             Me._commandCollection(36).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(36).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("INSTALACIONRUS", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "INSTALACIONRUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(36).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_TRABAJO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_TRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(37) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(37).Connection = Me.Connection
             Me._commandCollection(37).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30519,10 +30437,10 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHACIERRE > ?) O"& _ 
-                "RDER BY NRO_ORDENINT"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (INSTALACION = ?) O"& _ 
+                "RDER BY FECHAINGRESO, NODO, ZONA"
             Me._commandCollection(37).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(37).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHACIERRE", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHACIERRE", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(37).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("INSTALACION", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "INSTALACION", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(38) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(38).Connection = Me.Connection
             Me._commandCollection(38).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30536,27 +30454,27 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (MOTIVOORIGEN = ?) "& _ 
-                "ORDER BY FECHAINGRESO"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (INSTALACIONRUS = ?"& _ 
+                ") AND (STATUS = 'FINALIZADO')"
             Me._commandCollection(38).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(38).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MOTIVOORIGEN", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MOTIVOORIGEN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(38).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("INSTALACIONRUS", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "INSTALACIONRUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(39) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(39).Connection = Me.Connection
-            Me._commandCollection(39).CommandText = "SELECT FECHAAGEND, NRO_ORDENINT, NRO_ORDINAL, ID_GESTION, ID_TRABAJO, TIPO, SECTO"& _ 
-                "ROPE, SECTORDESTINO, RECURSO, FECHASOL, FECHAINGRESO, FECHAINICIO, FECHAINICESTI"& _ 
-                "MADO, TESTIMADO, FECHAFIN, FECHACIERRE, TURNOAGEND, PRIORIDAD, STATUS, GENERADOR"& _ 
-                ", SOLICITANTE, CUADRILLA, NODO, ZONA, CALLE, ID_CALLE, NRO, MANZANA, ESQU1, ESQU"& _ 
-                "2, AFECTCLIENTES, AFECTPORCIENTO, CONTACTONOMBRE, CONTACTOTEL, MOTIVOORIGEN, CAU"& _ 
-                "SARIGEN, MOTIVOCIERRE, ACTIVIDAD, CAUSACIERRE, INSTALACIONRUS, INSTALACION, CARP"& _ 
-                "ETA, NOMBREMDU, ORDPRINCIPAL, ORDAPOYADO, ORDPADRE, RECLAMOSRED, RECLAMOSMDU, RE"& _ 
-                "CLAMOSTOT, TPREVISTO, TPREVISTO_UT, TREALIZADO, TIEMPOTRABAJO, CREARORDINAL, COO"& _ 
-                "RDINAR, AGENDAR, DEPENDENCIA, TIPODEP, ORDENDEP, DUPLICADADE, DUPLICADAA, CLASED"& _ 
-                "EP, ORDORIGEN, SECTORGEN, AFECTACION, DESAGENDAR, ATRIBUTO, NOTIF, ORDEN_OC, DOC"& _ 
-                "UMENTO_FISICO, FECHA_ASIGNADA, CANTIDAD_SERVICIOS, GEST_SOLICITADO, PROYECTO_ORD"& _ 
-                "INAL, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (MOTIVOORIGEN LIKE "& _ 
-                "'%' & ? & '%')"
+            Me._commandCollection(39).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
+                "ALLE, CANTIDAD_SERVICIOS, CARPETA, CAUSACIERRE, CAUSARIGEN, CLASEDEP, CONTACTONO"& _ 
+                "MBRE, CONTACTOTEL, COORDINAR, CREARORDINAL, CUADRILLA, DEPENDENCIA, DESAGENDAR, "& _ 
+                "DOCUMENTO_FISICO, DUPLICADAA, DUPLICADADE, ESQU1, ESQU2, FECHAAGEND, FECHACIERRE"& _ 
+                ", FECHAFIN, FECHAINGRESO, FECHAINICESTIMADO, FECHAINICIO, FECHASOL, FECHA_ASIGNA"& _ 
+                "DA, GENERADOR, GEST_SOLICITADO, ID_CALLE, ID_GESTION, ID_TRABAJO, INSTALACION, I"& _ 
+                "NSTALACIONRUS, MANZANA, MOTIVOCIERRE, MOTIVOORIGEN, NODO, NOMBREMDU, NOTIF, NRO,"& _ 
+                " NRO_ORDENINT, NRO_ORDINAL, ORDAPOYADO, ORDENDEP, ORDEN_OC, ORDORIGEN, ORDPADRE,"& _ 
+                " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
+                "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
+                " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHACIERRE > ?) O"& _ 
+                "RDER BY NRO_ORDENINT"
             Me._commandCollection(39).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(39).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MOTIVOORIGEN", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MOTIVOORIGEN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(39).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHACIERRE", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHACIERRE", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(40) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(40).Connection = Me.Connection
             Me._commandCollection(40).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30570,34 +30488,27 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (NODO = ?) AND (ZON"& _ 
-                "A = ?) ORDER BY FECHAINGRESO"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (MOTIVOORIGEN = ?) "& _ 
+                "ORDER BY FECHAINGRESO"
             Me._commandCollection(40).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(40).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(40).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(40).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MOTIVOORIGEN", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MOTIVOORIGEN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(41) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(41).Connection = Me.Connection
-            Me._commandCollection(41).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
-                "ALLE, CANTIDAD_SERVICIOS, CARPETA, CAUSACIERRE, CAUSARIGEN, CLASEDEP, CONTACTONO"& _ 
-                "MBRE, CONTACTOTEL, COORDINAR, CREARORDINAL, CUADRILLA, DEPENDENCIA, DESAGENDAR, "& _ 
-                "DOCUMENTO_FISICO, DUPLICADAA, DUPLICADADE, ESQU1, ESQU2, FECHAAGEND, FECHACIERRE"& _ 
-                ", FECHAFIN, FECHAINGRESO, FECHAINICESTIMADO, FECHAINICIO, FECHASOL, FECHA_ASIGNA"& _ 
-                "DA, GENERADOR, GEST_SOLICITADO, ID_CALLE, ID_GESTION, ID_TRABAJO, INSTALACION, I"& _ 
-                "NSTALACIONRUS, MANZANA, MOTIVOCIERRE, MOTIVOORIGEN, NODO, NOMBREMDU, NOTIF, NRO,"& _ 
-                " NRO_ORDENINT, NRO_ORDINAL, ORDAPOYADO, ORDENDEP, ORDEN_OC, ORDORIGEN, ORDPADRE,"& _ 
-                " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
-                "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
-                " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (SECTOROPE = ?) AND"& _ 
-                " (SECTORDESTINO = ?) AND (NODO = ?) AND (ZONA = ?) AND (FECHAINGRESO > ?) AND (F"& _ 
-                "ECHAINGRESO <= ?) ORDER BY NODO, ZONA"
+            Me._commandCollection(41).CommandText = "SELECT FECHAAGEND, NRO_ORDENINT, NRO_ORDINAL, ID_GESTION, ID_TRABAJO, TIPO, SECTO"& _ 
+                "ROPE, SECTORDESTINO, RECURSO, FECHASOL, FECHAINGRESO, FECHAINICIO, FECHAINICESTI"& _ 
+                "MADO, TESTIMADO, FECHAFIN, FECHACIERRE, TURNOAGEND, PRIORIDAD, STATUS, GENERADOR"& _ 
+                ", SOLICITANTE, CUADRILLA, NODO, ZONA, CALLE, ID_CALLE, NRO, MANZANA, ESQU1, ESQU"& _ 
+                "2, AFECTCLIENTES, AFECTPORCIENTO, CONTACTONOMBRE, CONTACTOTEL, MOTIVOORIGEN, CAU"& _ 
+                "SARIGEN, MOTIVOCIERRE, ACTIVIDAD, CAUSACIERRE, INSTALACIONRUS, INSTALACION, CARP"& _ 
+                "ETA, NOMBREMDU, ORDPRINCIPAL, ORDAPOYADO, ORDPADRE, RECLAMOSRED, RECLAMOSMDU, RE"& _ 
+                "CLAMOSTOT, TPREVISTO, TPREVISTO_UT, TREALIZADO, TIEMPOTRABAJO, CREARORDINAL, COO"& _ 
+                "RDINAR, AGENDAR, DEPENDENCIA, TIPODEP, ORDENDEP, DUPLICADADE, DUPLICADAA, CLASED"& _ 
+                "EP, ORDORIGEN, SECTORGEN, AFECTACION, DESAGENDAR, ATRIBUTO, NOTIF, ORDEN_OC, DOC"& _ 
+                "UMENTO_FISICO, FECHA_ASIGNADA, CANTIDAD_SERVICIOS, GEST_SOLICITADO, PROYECTO_ORD"& _ 
+                "INAL, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (MOTIVOORIGEN LIKE "& _ 
+                "'%' & ? & '%')"
             Me._commandCollection(41).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(41).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SECTOROPE", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SECTOROPE", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(41).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SECTORDESTINO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SECTORDESTINO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(41).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(41).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(41).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINGRESO", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINGRESO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(41).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINGRESO1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINGRESO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(41).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MOTIVOORIGEN", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MOTIVOORIGEN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(42) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(42).Connection = Me.Connection
             Me._commandCollection(42).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30611,27 +30522,18 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES ORDER BY NRO_ORDENINT DES"& _ 
-                "C"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (NODO = ?) AND (ZON"& _ 
+                "A = ?) ORDER BY FECHAINGRESO"
             Me._commandCollection(42).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(42).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(42).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(43) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(43).Connection = Me.Connection
-            Me._commandCollection(43).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
-                "ALLE, CANTIDAD_SERVICIOS, CARPETA, CAUSACIERRE, CAUSARIGEN, CLASEDEP, CONTACTONO"& _ 
-                "MBRE, CONTACTOTEL, COORDINAR, CREARORDINAL, CUADRILLA, DEPENDENCIA, DESAGENDAR, "& _ 
-                "DOCUMENTO_FISICO, DUPLICADAA, DUPLICADADE, ESQU1, ESQU2, FECHAAGEND, FECHACIERRE"& _ 
-                ", FECHAFIN, FECHAINGRESO, FECHAINICESTIMADO, FECHAINICIO, FECHASOL, FECHA_ASIGNA"& _ 
-                "DA, GENERADOR, GEST_SOLICITADO, ID_CALLE, ID_GESTION, ID_TRABAJO, INSTALACION, I"& _ 
-                "NSTALACIONRUS, MANZANA, MOTIVOCIERRE, MOTIVOORIGEN, NODO, NOMBREMDU, NOTIF, NRO,"& _ 
-                " NRO_ORDENINT, NRO_ORDINAL, ORDAPOYADO, ORDENDEP, ORDEN_OC, ORDORIGEN, ORDPADRE,"& _ 
-                " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
-                "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
-                " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_TRABAJO = ?) AN"& _ 
-                "D (STATUS = 'FINALIZADO' OR STATUS = 'INICIADO' OR STATUS = 'ADUPLICAR' OR STATU"& _ 
-                "S = 'COORDINADO') OR (STATUS = 'DEMORADO') ORDER BY FECHAINICIO"
+            Me._commandCollection(43).CommandText = "SELECT        *"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            ORDENES"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (STATUS = 'FINALIZADO') AN"& _ 
+                "D (ID_TRABAJO <> 0) AND (MOTIVOCIERRE = 'NO REALIZADO') OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
+                "     (STATUS = 'FINALIZADO') AND (ID_TRABAJO <> 0) AND (MOTIVOCIERRE = 'PARCIALM"& _ 
+                "ENTE REALIZADO')"
             Me._commandCollection(43).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(43).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_TRABAJO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_TRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(44) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(44).Connection = Me.Connection
             Me._commandCollection(44).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30645,10 +30547,16 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (SECTOROPE = 'OBRA "& _ 
-                "CIVIL') AND (ID_TRABAJO = ?)"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (SECTOROPE = ?) AND"& _ 
+                " (SECTORDESTINO = ?) AND (NODO = ?) AND (ZONA = ?) AND (FECHAINGRESO > ?) AND (F"& _ 
+                "ECHAINGRESO <= ?) ORDER BY NODO, ZONA"
             Me._commandCollection(44).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(44).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_TRABAJO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_TRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(44).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SECTOROPE", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SECTOROPE", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(44).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SECTORDESTINO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SECTORDESTINO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(44).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(44).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(44).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINGRESO", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINGRESO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(44).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINGRESO1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINGRESO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(45) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(45).Connection = Me.Connection
             Me._commandCollection(45).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30662,11 +30570,9 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ORDORIGEN = ?) OR "& _ 
-                "(NRO_ORDENINT = ?)"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES ORDER BY NRO_ORDENINT DES"& _ 
+                "C"
             Me._commandCollection(45).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(45).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ORDORIGEN", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ORDORIGEN", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(45).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(46) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(46).Connection = Me.Connection
             Me._commandCollection(46).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30680,10 +30586,11 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ORDORIGEN = ?) ORD"& _ 
-                "ER BY SECTORDESTINO, SECTOROPE, CLASEDEP, ORDORIGEN, ORDENDEP"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_TRABAJO = ?) AN"& _ 
+                "D (STATUS = 'FINALIZADO' OR STATUS = 'INICIADO' OR STATUS = 'ADUPLICAR' OR STATU"& _ 
+                "S = 'COORDINADO') OR (STATUS = 'DEMORADO') ORDER BY FECHAINICIO"
             Me._commandCollection(46).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(46).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ORDORIGEN", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ORDORIGEN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(46).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_TRABAJO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_TRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(47) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(47).Connection = Me.Connection
             Me._commandCollection(47).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30697,8 +30604,8 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_TRABAJO = ?) AN"& _ 
-                "D (STATUS <> 'DUPLICADO' OR STATUS <> 'CANCELADO' OR STATUS <> 'ANULADO')"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (SECTOROPE = 'OBRA "& _ 
+                "CIVIL') AND (ID_TRABAJO = ?)"
             Me._commandCollection(47).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(47).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_TRABAJO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_TRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(48) = New Global.System.Data.OleDb.OleDbCommand()
@@ -30714,12 +30621,11 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (TIPO = 'TAREA') AN"& _ 
-                "D (FECHAFIN > ?) AND (FECHAFIN < ?) AND (CAUSARIGEN = 'MANTENIMIENTO PREDICTIVO'"& _ 
-                ") AND (LEN(ZONA) < 6) AND (LEN(ZONA) > 2) ORDER BY NODO, ZONA"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ORDORIGEN = ?) OR "& _ 
+                "(NRO_ORDENINT = ?)"
             Me._commandCollection(48).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(48).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(48).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(48).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ORDORIGEN", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ORDORIGEN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(48).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(49) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(49).Connection = Me.Connection
             Me._commandCollection(49).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30733,12 +30639,10 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (TIPO = 'TAREA') AN"& _ 
-                "D (FECHAFIN > ?) AND (FECHAFIN < ?) AND (CAUSARIGEN = 'MANTENIMIENTO PREVENTIVO'"& _ 
-                ") AND (LEN(ZONA) < 6) AND (LEN(ZONA) > 2) ORDER BY NODO, ZONA"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ORDORIGEN = ?) ORD"& _ 
+                "ER BY SECTORDESTINO, SECTOROPE, CLASEDEP, ORDORIGEN, ORDENDEP"
             Me._commandCollection(49).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(49).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(49).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(49).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ORDORIGEN", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ORDORIGEN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(50) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(50).Connection = Me.Connection
             Me._commandCollection(50).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30752,14 +30656,10 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (NRO = ?) AND (CALL"& _ 
-                "E = ?) AND (ZONA = ?) AND (NODO = ?) AND (STATUS = ?)"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_TRABAJO = ?) AN"& _ 
+                "D (STATUS <> 'DUPLICADO' OR STATUS <> 'CANCELADO' OR STATUS <> 'ANULADO')"
             Me._commandCollection(50).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(50).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(50).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CALLE", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CALLE", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(50).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(50).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(50).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("STATUS", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(50).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_TRABAJO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_TRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(51) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(51).Connection = Me.Connection
             Me._commandCollection(51).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30773,9 +30673,12 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (STATUS <> 'CANCELA"& _ 
-                "DO') AND (MOTIVOORIGEN = 'SERVICIOS') ORDER BY FECHASOL"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (TIPO = 'TAREA') AN"& _ 
+                "D (FECHAFIN > ?) AND (FECHAFIN < ?) AND (CAUSARIGEN = 'MANTENIMIENTO PREDICTIVO'"& _ 
+                ") AND (LEN(ZONA) < 6) AND (LEN(ZONA) > 2) ORDER BY NODO, ZONA"
             Me._commandCollection(51).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(51).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(51).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(52) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(52).Connection = Me.Connection
             Me._commandCollection(52).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30789,10 +30692,10 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (MOTIVOORIGEN = ?) "& _ 
-                "AND (FECHAFIN >= ?) AND (FECHAFIN <= ?) ORDER BY FECHAFIN"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (TIPO = 'TAREA') AN"& _ 
+                "D (FECHAFIN > ?) AND (FECHAFIN < ?) AND (CAUSARIGEN = 'MANTENIMIENTO PREVENTIVO'"& _ 
+                ") AND (LEN(ZONA) < 6) AND (LEN(ZONA) > 2) ORDER BY NODO, ZONA"
             Me._commandCollection(52).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(52).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MOTIVOORIGEN", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MOTIVOORIGEN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(52).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(52).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(53) = New Global.System.Data.OleDb.OleDbCommand()
@@ -30808,12 +30711,14 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (MOTIVOORIGEN = ?) "& _ 
-                "AND (FECHAINGRESO >= ?) AND (FECHAINGRESO <= ?) ORDER BY FECHAINGRESO"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (NRO = ?) AND (CALL"& _ 
+                "E = ?) AND (ZONA = ?) AND (NODO = ?) AND (STATUS = ?)"
             Me._commandCollection(53).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(53).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MOTIVOORIGEN", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MOTIVOORIGEN", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(53).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINGRESO", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINGRESO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(53).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINGRESO1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINGRESO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(53).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(53).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CALLE", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CALLE", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(53).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(53).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(53).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("STATUS", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(54) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(54).Connection = Me.Connection
             Me._commandCollection(54).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30827,17 +30732,9 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (TIPO = 'SERVICIOS'"& _ 
-                ") AND (NRO_ORDENINT = ?) AND (STATUS = ?) AND (NODO = ?) AND (ZONA = ?) AND (CAL"& _ 
-                "LE = ?) AND (NRO = ?) AND (ORDEN_OC = ?) ORDER BY NODO, ZONA"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (STATUS <> 'CANCELA"& _ 
+                "DO') AND (MOTIVOORIGEN = 'SERVICIOS') ORDER BY FECHASOL"
             Me._commandCollection(54).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(54).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(54).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("STATUS", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(54).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(54).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(54).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CALLE", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CALLE", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(54).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(54).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ORDEN_OC", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ORDEN_OC", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(55) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(55).Connection = Me.Connection
             Me._commandCollection(55).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30851,11 +30748,10 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHAFIN > DATEVAL"& _ 
-                "UE(?)) AND (FECHAFIN < DATEVALUE(?)) AND (TIPO = 'CORRECTIVO') AND (MOTIVOORIGEN"& _ 
-                " = 'SIN SEÑAL TOTAL') AND (LEN(ZONA) < 6) AND (LEN(ZONA) > 2) ORDER BY NODO, ZON"& _ 
-                "A"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (MOTIVOORIGEN = ?) "& _ 
+                "AND (FECHAFIN >= ?) AND (FECHAFIN <= ?) ORDER BY FECHAFIN"
             Me._commandCollection(55).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(55).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MOTIVOORIGEN", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MOTIVOORIGEN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(55).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(55).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(56) = New Global.System.Data.OleDb.OleDbCommand()
@@ -30871,9 +30767,12 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (STATUS = 'FINALIZA"& _ 
-                "DO') ORDER BY NODO, ZONA"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (MOTIVOORIGEN = ?) "& _ 
+                "AND (FECHAINGRESO >= ?) AND (FECHAINGRESO <= ?) ORDER BY FECHAINGRESO"
             Me._commandCollection(56).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(56).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MOTIVOORIGEN", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MOTIVOORIGEN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(56).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINGRESO", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINGRESO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(56).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINGRESO1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINGRESO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(57) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(57).Connection = Me.Connection
             Me._commandCollection(57).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30887,11 +30786,17 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (STATUS <> ?) AND ("& _ 
-                "NRO_ORDINAL <> 0) AND (STATUS <> 'ADUPLICAR') AND (STATUS <> 'CANCELADO') AND (S"& _ 
-                "TATUS <> 'INGRESADOINT') AND (STATUS <> 'DUPLICADO')"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (TIPO = 'SERVICIOS'"& _ 
+                ") AND (NRO_ORDENINT = ?) AND (STATUS = ?) AND (NODO = ?) AND (ZONA = ?) AND (CAL"& _ 
+                "LE = ?) AND (NRO = ?) AND (ORDEN_OC = ?) ORDER BY NODO, ZONA"
             Me._commandCollection(57).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(57).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(57).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("STATUS", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(57).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(57).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(57).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CALLE", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CALLE", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(57).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(57).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ORDEN_OC", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ORDEN_OC", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(58) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(58).Connection = Me.Connection
             Me._commandCollection(58).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30905,9 +30810,13 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_GESTION <> 0) O"& _ 
-                "RDER BY NRO_ORDENINT DESC"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHAFIN > DATEVAL"& _ 
+                "UE(?)) AND (FECHAFIN < DATEVALUE(?)) AND (TIPO = 'CORRECTIVO') AND (MOTIVOORIGEN"& _ 
+                " = 'SIN SEÑAL TOTAL') AND (LEN(ZONA) < 6) AND (LEN(ZONA) > 2) ORDER BY NODO, ZON"& _ 
+                "A"
             Me._commandCollection(58).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(58).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(58).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(59) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(59).Connection = Me.Connection
             Me._commandCollection(59).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30921,12 +30830,9 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
-                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHAFIN > DATEVAL"& _ 
-                "UE(?)) AND (FECHAFIN < DATEVALUE(?)) AND (TIPO = 'CORRECTIVO') AND (LEN(ZONA) < "& _ 
-                "6) AND (LEN(ZONA) > 2) ORDER BY NODO, ZONA"
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (STATUS = 'FINALIZA"& _ 
+                "DO') ORDER BY NODO, ZONA"
             Me._commandCollection(59).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(59).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(59).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(60) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(60).Connection = Me.Connection
             Me._commandCollection(60).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
@@ -30940,12 +30846,65 @@ Namespace ORDENESDataSetTableAdapters
                 " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
                 "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
                 " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (STATUS <> ?) AND ("& _ 
+                "NRO_ORDINAL <> 0) AND (STATUS <> 'ADUPLICAR') AND (STATUS <> 'CANCELADO') AND (S"& _ 
+                "TATUS <> 'INGRESADOINT') AND (STATUS <> 'DUPLICADO')"
+            Me._commandCollection(60).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(60).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("STATUS", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(61) = New Global.System.Data.OleDb.OleDbCommand()
+            Me._commandCollection(61).Connection = Me.Connection
+            Me._commandCollection(61).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
+                "ALLE, CANTIDAD_SERVICIOS, CARPETA, CAUSACIERRE, CAUSARIGEN, CLASEDEP, CONTACTONO"& _ 
+                "MBRE, CONTACTOTEL, COORDINAR, CREARORDINAL, CUADRILLA, DEPENDENCIA, DESAGENDAR, "& _ 
+                "DOCUMENTO_FISICO, DUPLICADAA, DUPLICADADE, ESQU1, ESQU2, FECHAAGEND, FECHACIERRE"& _ 
+                ", FECHAFIN, FECHAINGRESO, FECHAINICESTIMADO, FECHAINICIO, FECHASOL, FECHA_ASIGNA"& _ 
+                "DA, GENERADOR, GEST_SOLICITADO, ID_CALLE, ID_GESTION, ID_TRABAJO, INSTALACION, I"& _ 
+                "NSTALACIONRUS, MANZANA, MOTIVOCIERRE, MOTIVOORIGEN, NODO, NOMBREMDU, NOTIF, NRO,"& _ 
+                " NRO_ORDENINT, NRO_ORDINAL, ORDAPOYADO, ORDENDEP, ORDEN_OC, ORDORIGEN, ORDPADRE,"& _ 
+                " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
+                "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
+                " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (ID_GESTION <> 0) O"& _ 
+                "RDER BY NRO_ORDENINT DESC"
+            Me._commandCollection(61).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(62) = New Global.System.Data.OleDb.OleDbCommand()
+            Me._commandCollection(62).Connection = Me.Connection
+            Me._commandCollection(62).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
+                "ALLE, CANTIDAD_SERVICIOS, CARPETA, CAUSACIERRE, CAUSARIGEN, CLASEDEP, CONTACTONO"& _ 
+                "MBRE, CONTACTOTEL, COORDINAR, CREARORDINAL, CUADRILLA, DEPENDENCIA, DESAGENDAR, "& _ 
+                "DOCUMENTO_FISICO, DUPLICADAA, DUPLICADADE, ESQU1, ESQU2, FECHAAGEND, FECHACIERRE"& _ 
+                ", FECHAFIN, FECHAINGRESO, FECHAINICESTIMADO, FECHAINICIO, FECHASOL, FECHA_ASIGNA"& _ 
+                "DA, GENERADOR, GEST_SOLICITADO, ID_CALLE, ID_GESTION, ID_TRABAJO, INSTALACION, I"& _ 
+                "NSTALACIONRUS, MANZANA, MOTIVOCIERRE, MOTIVOORIGEN, NODO, NOMBREMDU, NOTIF, NRO,"& _ 
+                " NRO_ORDENINT, NRO_ORDINAL, ORDAPOYADO, ORDENDEP, ORDEN_OC, ORDORIGEN, ORDPADRE,"& _ 
+                " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
+                "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
+                " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
+                "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (FECHAFIN > DATEVAL"& _ 
+                "UE(?)) AND (FECHAFIN < DATEVALUE(?)) AND (TIPO = 'CORRECTIVO') AND (LEN(ZONA) < "& _ 
+                "6) AND (LEN(ZONA) > 2) ORDER BY NODO, ZONA"
+            Me._commandCollection(62).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(62).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(62).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(63) = New Global.System.Data.OleDb.OleDbCommand()
+            Me._commandCollection(63).Connection = Me.Connection
+            Me._commandCollection(63).CommandText = "SELECT ACTIVIDAD, AFECTACION, AFECTCLIENTES, AFECTPORCIENTO, AGENDAR, ATRIBUTO, C"& _ 
+                "ALLE, CANTIDAD_SERVICIOS, CARPETA, CAUSACIERRE, CAUSARIGEN, CLASEDEP, CONTACTONO"& _ 
+                "MBRE, CONTACTOTEL, COORDINAR, CREARORDINAL, CUADRILLA, DEPENDENCIA, DESAGENDAR, "& _ 
+                "DOCUMENTO_FISICO, DUPLICADAA, DUPLICADADE, ESQU1, ESQU2, FECHAAGEND, FECHACIERRE"& _ 
+                ", FECHAFIN, FECHAINGRESO, FECHAINICESTIMADO, FECHAINICIO, FECHASOL, FECHA_ASIGNA"& _ 
+                "DA, GENERADOR, GEST_SOLICITADO, ID_CALLE, ID_GESTION, ID_TRABAJO, INSTALACION, I"& _ 
+                "NSTALACIONRUS, MANZANA, MOTIVOCIERRE, MOTIVOORIGEN, NODO, NOMBREMDU, NOTIF, NRO,"& _ 
+                " NRO_ORDENINT, NRO_ORDINAL, ORDAPOYADO, ORDENDEP, ORDEN_OC, ORDORIGEN, ORDPADRE,"& _ 
+                " ORDPRINCIPAL, PRIORIDAD, PROYECTO_ORDINAL, RECLAMOSMDU, RECLAMOSRED, RECLAMOSTO"& _ 
+                "T, RECURSO, SECTORDESTINO, SECTORGEN, SECTOROPE, SOLICITANTE, STATUS, TESTIMADO,"& _ 
+                " TIEMPOTRABAJO, TIPO, TIPODEP, TPREVISTO, TPREVISTO_UT, TREALIZADO, TURNOAGEND, "& _ 
                 "ZONA, OBS_TRABAJO_A_REALIZAR, OC_APROBADO FROM ORDENES WHERE (TIPO = 'CORRECTIVO"& _ 
                 "') AND (FECHAFIN > ?) AND (FECHAFIN < ?) AND (CAUSACIERRE = 'UTE') AND (LEN(ZONA"& _ 
                 ") > 2) AND (LEN(ZONA) < 6) ORDER BY NODO, ZONA"
-            Me._commandCollection(60).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(60).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(60).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(63).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(63).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(63).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFIN1", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFIN", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -30975,38 +30934,8 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillBy(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal TIPO As String, ByVal NODO As String, ByVal ZONA As String, ByVal FECHAINGRESO As Global.System.Nullable(Of Date), ByVal FECHAINGRESO1 As Global.System.Nullable(Of Date), ByVal SECTORDESTINO As String) As Integer
+        Public Overloads Overridable Function FillBy(ByVal dataTable As ORDENESDataSet.ORDENESDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
-            If (TIPO Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(TIPO,String)
-            End If
-            If (NODO Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(NODO,String)
-            End If
-            If (ZONA Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(ZONA,String)
-            End If
-            If (FECHAINGRESO.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(3).Value = CType(FECHAINGRESO.Value,Date)
-            Else
-                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (FECHAINGRESO1.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(4).Value = CType(FECHAINGRESO1.Value,Date)
-            Else
-                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (SECTORDESTINO Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(5).Value = CType(SECTORDESTINO,String)
-            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -31018,38 +30947,8 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy28(ByVal TIPO As String, ByVal NODO As String, ByVal ZONA As String, ByVal FECHAINGRESO As Global.System.Nullable(Of Date), ByVal FECHAINGRESO1 As Global.System.Nullable(Of Date), ByVal SECTORDESTINO As String) As ORDENESDataSet.ORDENESDataTable
+        Public Overloads Overridable Function GetDataBy28() As ORDENESDataSet.ORDENESDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(2)
-            If (TIPO Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(0).Value = CType(TIPO,String)
-            End If
-            If (NODO Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(NODO,String)
-            End If
-            If (ZONA Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(2).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(2).Value = CType(ZONA,String)
-            End If
-            If (FECHAINGRESO.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(3).Value = CType(FECHAINGRESO.Value,Date)
-            Else
-                Me.Adapter.SelectCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (FECHAINGRESO1.HasValue = true) Then
-                Me.Adapter.SelectCommand.Parameters(4).Value = CType(FECHAINGRESO1.Value,Date)
-            Else
-                Me.Adapter.SelectCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (SECTORDESTINO Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(5).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(5).Value = CType(SECTORDESTINO,String)
-            End If
             Dim dataTable As ORDENESDataSet.ORDENESDataTable = New ORDENESDataSet.ORDENESDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -31649,8 +31548,32 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillByDISEÑO_OC(ByVal dataTable As ORDENESDataSet.ORDENESDataTable) As Integer
+        Public Overloads Overridable Function FillByDISENO(ByVal dataTable As ORDENESDataSet.ORDENESDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(20)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy61() As ORDENESDataSet.ORDENESDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(20)
+            Dim dataTable As ORDENESDataSet.ORDENESDataTable = New ORDENESDataSet.ORDENESDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByDISEÑO_OC(ByVal dataTable As ORDENESDataSet.ORDENESDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(21)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -31663,7 +31586,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy55() As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(20)
+            Me.Adapter.SelectCommand = Me.CommandCollection(21)
             Dim dataTable As ORDENESDataSet.ORDENESDataTable = New ORDENESDataSet.ORDENESDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -31674,7 +31597,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByDISEÑORED(ByVal dataTable As ORDENESDataSet.ORDENESDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(21)
+            Me.Adapter.SelectCommand = Me.CommandCollection(22)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -31687,7 +31610,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy54() As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(21)
+            Me.Adapter.SelectCommand = Me.CommandCollection(22)
             Dim dataTable As ORDENESDataSet.ORDENESDataTable = New ORDENESDataSet.ORDENESDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -31698,7 +31621,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByDISTSS(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(22)
+            Me.Adapter.SelectCommand = Me.CommandCollection(23)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -31721,7 +31644,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy2(ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(22)
+            Me.Adapter.SelectCommand = Me.CommandCollection(23)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -31742,7 +31665,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByFECHA_RUTEO(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHAAGEND As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(23)
+            Me.Adapter.SelectCommand = Me.CommandCollection(24)
             If (FECHAAGEND.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAAGEND.Value,Date)
             Else
@@ -31760,7 +31683,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy22(ByVal FECHAAGEND As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(23)
+            Me.Adapter.SelectCommand = Me.CommandCollection(24)
             If (FECHAAGEND.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAAGEND.Value,Date)
             Else
@@ -31776,7 +31699,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByFECHAAGENDA(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHAAGEND As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(24)
+            Me.Adapter.SelectCommand = Me.CommandCollection(25)
             If (FECHAAGEND.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAAGEND.Value,Date)
             Else
@@ -31794,7 +31717,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy19(ByVal FECHAAGEND As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(24)
+            Me.Adapter.SelectCommand = Me.CommandCollection(25)
             If (FECHAAGEND.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAAGEND.Value,Date)
             Else
@@ -31810,7 +31733,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByFECHAGEND_PRIORIDAD(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHAAGEND As Global.System.Nullable(Of Date), ByVal PRIORIDAD As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(25)
+            Me.Adapter.SelectCommand = Me.CommandCollection(26)
             If (FECHAAGEND.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAAGEND.Value,Date)
             Else
@@ -31833,7 +31756,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy20(ByVal FECHAAGEND As Global.System.Nullable(Of Date), ByVal PRIORIDAD As String) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(25)
+            Me.Adapter.SelectCommand = Me.CommandCollection(26)
             If (FECHAAGEND.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAAGEND.Value,Date)
             Else
@@ -31854,7 +31777,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByFECHAYSTATUS(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date), ByVal STATUS As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(26)
+            Me.Adapter.SelectCommand = Me.CommandCollection(27)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -31882,7 +31805,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy41(ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date), ByVal STATUS As String) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(26)
+            Me.Adapter.SelectCommand = Me.CommandCollection(27)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -31908,7 +31831,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByFINALIZADAS(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal ID_TRABAJO As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(27)
+            Me.Adapter.SelectCommand = Me.CommandCollection(28)
             If (ID_TRABAJO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_TRABAJO.Value,Integer)
             Else
@@ -31926,7 +31849,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy13(ByVal ID_TRABAJO As Global.System.Nullable(Of Integer)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(27)
+            Me.Adapter.SelectCommand = Me.CommandCollection(28)
             If (ID_TRABAJO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_TRABAJO.Value,Integer)
             Else
@@ -31942,7 +31865,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByFULL(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(28)
+            Me.Adapter.SelectCommand = Me.CommandCollection(29)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -31965,7 +31888,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy9(ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(28)
+            Me.Adapter.SelectCommand = Me.CommandCollection(29)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -31985,8 +31908,42 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByGENERADOX(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal GENERADOR As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(30)
+            If (GENERADOR Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(GENERADOR,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy62(ByVal GENERADOR As String) As ORDENESDataSet.ORDENESDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(30)
+            If (GENERADOR Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(GENERADOR,String)
+            End If
+            Dim dataTable As ORDENESDataSet.ORDENESDataTable = New ORDENESDataSet.ORDENESDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByHORA(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHAINGRESO As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(29)
+            Me.Adapter.SelectCommand = Me.CommandCollection(31)
             If (FECHAINGRESO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAINGRESO.Value,Date)
             Else
@@ -32004,7 +31961,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy10(ByVal FECHAINGRESO As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(29)
+            Me.Adapter.SelectCommand = Me.CommandCollection(31)
             If (FECHAINGRESO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAINGRESO.Value,Date)
             Else
@@ -32020,7 +31977,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByIDGESTION(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal ID_GESTION As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(30)
+            Me.Adapter.SelectCommand = Me.CommandCollection(32)
             If (ID_GESTION.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_GESTION.Value,Integer)
             Else
@@ -32038,7 +31995,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy36(ByVal ID_GESTION As Global.System.Nullable(Of Integer)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(30)
+            Me.Adapter.SelectCommand = Me.CommandCollection(32)
             If (ID_GESTION.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_GESTION.Value,Integer)
             Else
@@ -32054,7 +32011,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByIDORDENINT(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal NRO_ORDENINT As Integer) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(31)
+            Me.Adapter.SelectCommand = Me.CommandCollection(33)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(NRO_ORDENINT,Integer)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -32068,7 +32025,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy14(ByVal NRO_ORDENINT As Integer) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(31)
+            Me.Adapter.SelectCommand = Me.CommandCollection(33)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(NRO_ORDENINT,Integer)
             Dim dataTable As ORDENESDataSet.ORDENESDataTable = New ORDENESDataSet.ORDENESDataTable()
             Me.Adapter.Fill(dataTable)
@@ -32080,7 +32037,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByIDORDINAL(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal NRO_ORDINAL As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(32)
+            Me.Adapter.SelectCommand = Me.CommandCollection(34)
             If (NRO_ORDINAL.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(NRO_ORDINAL.Value,Integer)
             Else
@@ -32098,7 +32055,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy27(ByVal NRO_ORDINAL As Global.System.Nullable(Of Integer)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(32)
+            Me.Adapter.SelectCommand = Me.CommandCollection(34)
             If (NRO_ORDINAL.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(NRO_ORDINAL.Value,Integer)
             Else
@@ -32114,7 +32071,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByIDTRABAJO(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal ID_TRABAJO As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(33)
+            Me.Adapter.SelectCommand = Me.CommandCollection(35)
             If (ID_TRABAJO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_TRABAJO.Value,Integer)
             Else
@@ -32132,7 +32089,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy12(ByVal ID_TRABAJO As Global.System.Nullable(Of Integer)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(33)
+            Me.Adapter.SelectCommand = Me.CommandCollection(35)
             If (ID_TRABAJO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_TRABAJO.Value,Integer)
             Else
@@ -32148,7 +32105,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByIDTRABAJO_FINTRA(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal ID_TRABAJO As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(34)
+            Me.Adapter.SelectCommand = Me.CommandCollection(36)
             If (ID_TRABAJO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_TRABAJO.Value,Integer)
             Else
@@ -32166,7 +32123,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy24(ByVal ID_TRABAJO As Global.System.Nullable(Of Integer)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(34)
+            Me.Adapter.SelectCommand = Me.CommandCollection(36)
             If (ID_TRABAJO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_TRABAJO.Value,Integer)
             Else
@@ -32182,7 +32139,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByINSTALACION(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal INSTALACION As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(35)
+            Me.Adapter.SelectCommand = Me.CommandCollection(37)
             If (INSTALACION Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32200,7 +32157,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy23(ByVal INSTALACION As String) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(35)
+            Me.Adapter.SelectCommand = Me.CommandCollection(37)
             If (INSTALACION Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32216,7 +32173,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByINSTALACIONRUS(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal INSTALACIONRUS As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(36)
+            Me.Adapter.SelectCommand = Me.CommandCollection(38)
             If (INSTALACIONRUS Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32234,7 +32191,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy38(ByVal INSTALACIONRUS As String) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(36)
+            Me.Adapter.SelectCommand = Me.CommandCollection(38)
             If (INSTALACIONRUS Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32250,7 +32207,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByMAYOR_ORDENINT(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHACIERRE As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(37)
+            Me.Adapter.SelectCommand = Me.CommandCollection(39)
             If (FECHACIERRE.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHACIERRE.Value,Date)
             Else
@@ -32268,7 +32225,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy42(ByVal FECHACIERRE As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(37)
+            Me.Adapter.SelectCommand = Me.CommandCollection(39)
             If (FECHACIERRE.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHACIERRE.Value,Date)
             Else
@@ -32284,7 +32241,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByMOT_ORIGEN(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal MOTIVOORIGEN As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(38)
+            Me.Adapter.SelectCommand = Me.CommandCollection(40)
             If (MOTIVOORIGEN Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32302,7 +32259,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy46(ByVal MOTIVOORIGEN As String) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(38)
+            Me.Adapter.SelectCommand = Me.CommandCollection(40)
             If (MOTIVOORIGEN Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32318,7 +32275,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByMOTIVOORIGEN_LIKE(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal MOTIVOORIGEN As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(39)
+            Me.Adapter.SelectCommand = Me.CommandCollection(41)
             If (MOTIVOORIGEN Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32336,7 +32293,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy59(ByVal MOTIVOORIGEN As String) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(39)
+            Me.Adapter.SelectCommand = Me.CommandCollection(41)
             If (MOTIVOORIGEN Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32352,7 +32309,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByNODOZONA(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal NODO As String, ByVal ZONA As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(40)
+            Me.Adapter.SelectCommand = Me.CommandCollection(42)
             If (NODO Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32375,7 +32332,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy11(ByVal NODO As String, ByVal ZONA As String) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(40)
+            Me.Adapter.SelectCommand = Me.CommandCollection(42)
             If (NODO Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32395,8 +32352,32 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillByNOFINPARCIAL(ByVal dataTable As ORDENESDataSet.ORDENESDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(43)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy60() As ORDENESDataSet.ORDENESDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(43)
+            Dim dataTable As ORDENESDataSet.ORDENESDataTable = New ORDENESDataSet.ORDENESDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByORDBUSQUEDA(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal SECTOROPE As String, ByVal SECTORDESTINO As String, ByVal NODO As String, ByVal ZONA As String, ByVal FECHAINGRESO As Global.System.Nullable(Of Date), ByVal FECHAINGRESO1 As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(41)
+            Me.Adapter.SelectCommand = Me.CommandCollection(44)
             If (SECTOROPE Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32439,7 +32420,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy29(ByVal SECTOROPE As String, ByVal SECTORDESTINO As String, ByVal NODO As String, ByVal ZONA As String, ByVal FECHAINGRESO As Global.System.Nullable(Of Date), ByVal FECHAINGRESO1 As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(41)
+            Me.Adapter.SelectCommand = Me.CommandCollection(44)
             If (SECTOROPE Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32480,7 +32461,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByORDEN(ByVal dataTable As ORDENESDataSet.ORDENESDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(42)
+            Me.Adapter.SelectCommand = Me.CommandCollection(45)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -32493,7 +32474,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy26() As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(42)
+            Me.Adapter.SelectCommand = Me.CommandCollection(45)
             Dim dataTable As ORDENESDataSet.ORDENESDataTable = New ORDENESDataSet.ORDENESDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -32504,7 +32485,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByORDEN_ACTIVA(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal ID_TRABAJO As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(43)
+            Me.Adapter.SelectCommand = Me.CommandCollection(46)
             If (ID_TRABAJO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_TRABAJO.Value,Integer)
             Else
@@ -32522,7 +32503,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy37(ByVal ID_TRABAJO As Global.System.Nullable(Of Integer)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(43)
+            Me.Adapter.SelectCommand = Me.CommandCollection(46)
             If (ID_TRABAJO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_TRABAJO.Value,Integer)
             Else
@@ -32538,7 +32519,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByORDENES_OC(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal ID_TRABAJO As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(44)
+            Me.Adapter.SelectCommand = Me.CommandCollection(47)
             If (ID_TRABAJO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_TRABAJO.Value,Integer)
             Else
@@ -32556,7 +32537,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy43(ByVal ID_TRABAJO As Global.System.Nullable(Of Integer)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(44)
+            Me.Adapter.SelectCommand = Me.CommandCollection(47)
             If (ID_TRABAJO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_TRABAJO.Value,Integer)
             Else
@@ -32572,7 +32553,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByORDORIGEN(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal ORDORIGEN As Global.System.Nullable(Of Integer), ByVal NRO_ORDENINT As Integer) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(45)
+            Me.Adapter.SelectCommand = Me.CommandCollection(48)
             If (ORDORIGEN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ORDORIGEN.Value,Integer)
             Else
@@ -32591,7 +32572,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy18(ByVal ORDORIGEN As Global.System.Nullable(Of Integer), ByVal NRO_ORDENINT As Integer) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(45)
+            Me.Adapter.SelectCommand = Me.CommandCollection(48)
             If (ORDORIGEN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ORDORIGEN.Value,Integer)
             Else
@@ -32608,7 +32589,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByORDPRINCIPAL(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal ORDORIGEN As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(46)
+            Me.Adapter.SelectCommand = Me.CommandCollection(49)
             If (ORDORIGEN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ORDORIGEN.Value,Integer)
             Else
@@ -32626,7 +32607,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy21(ByVal ORDORIGEN As Global.System.Nullable(Of Integer)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(46)
+            Me.Adapter.SelectCommand = Me.CommandCollection(49)
             If (ORDORIGEN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ORDORIGEN.Value,Integer)
             Else
@@ -32642,7 +32623,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByORDXTAB_REQUERIDO(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal ID_TRABAJO As Global.System.Nullable(Of Integer)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(47)
+            Me.Adapter.SelectCommand = Me.CommandCollection(50)
             If (ID_TRABAJO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_TRABAJO.Value,Integer)
             Else
@@ -32660,7 +32641,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy30(ByVal ID_TRABAJO As Global.System.Nullable(Of Integer)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(47)
+            Me.Adapter.SelectCommand = Me.CommandCollection(50)
             If (ID_TRABAJO.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(ID_TRABAJO.Value,Integer)
             Else
@@ -32676,7 +32657,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByPREDICTIVO(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(48)
+            Me.Adapter.SelectCommand = Me.CommandCollection(51)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -32699,7 +32680,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy7(ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(48)
+            Me.Adapter.SelectCommand = Me.CommandCollection(51)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -32720,7 +32701,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByPREVENTIVO(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(49)
+            Me.Adapter.SelectCommand = Me.CommandCollection(52)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -32743,7 +32724,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy8(ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(49)
+            Me.Adapter.SelectCommand = Me.CommandCollection(52)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -32764,7 +32745,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillBySERV_NODOZONACALLE(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal NRO As String, ByVal CALLE As String, ByVal ZONA As String, ByVal NODO As String, ByVal STATUS As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(50)
+            Me.Adapter.SelectCommand = Me.CommandCollection(53)
             If (NRO Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32802,7 +32783,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy47(ByVal NRO As String, ByVal CALLE As String, ByVal ZONA As String, ByVal NODO As String, ByVal STATUS As String) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(50)
+            Me.Adapter.SelectCommand = Me.CommandCollection(53)
             If (NRO Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32838,7 +32819,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillBySERVICIOS(ByVal dataTable As ORDENESDataSet.ORDENESDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(51)
+            Me.Adapter.SelectCommand = Me.CommandCollection(54)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -32851,7 +32832,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy53() As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(51)
+            Me.Adapter.SelectCommand = Me.CommandCollection(54)
             Dim dataTable As ORDENESDataSet.ORDENESDataTable = New ORDENESDataSet.ORDENESDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -32862,7 +32843,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillBySERVICIOS_FIN_ENTRE_FECHAS(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal MOTIVOORIGEN As String, ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(52)
+            Me.Adapter.SelectCommand = Me.CommandCollection(55)
             If (MOTIVOORIGEN Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32890,7 +32871,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy51(ByVal MOTIVOORIGEN As String, ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(52)
+            Me.Adapter.SelectCommand = Me.CommandCollection(55)
             If (MOTIVOORIGEN Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32916,7 +32897,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillBySERVICIOS_INGRESO_ENTRE_FECHAS(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal MOTIVOORIGEN As String, ByVal FECHAINGRESO As Global.System.Nullable(Of Date), ByVal FECHAINGRESO1 As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(53)
+            Me.Adapter.SelectCommand = Me.CommandCollection(56)
             If (MOTIVOORIGEN Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32944,7 +32925,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy50(ByVal MOTIVOORIGEN As String, ByVal FECHAINGRESO As Global.System.Nullable(Of Date), ByVal FECHAINGRESO1 As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(53)
+            Me.Adapter.SelectCommand = Me.CommandCollection(56)
             If (MOTIVOORIGEN Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -32970,7 +32951,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillBySERVICIOS_TODOS(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal NRO_ORDENINT As Integer, ByVal STATUS As String, ByVal NODO As String, ByVal ZONA As String, ByVal CALLE As String, ByVal NRO As String, ByVal ORDEN_OC As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(54)
+            Me.Adapter.SelectCommand = Me.CommandCollection(57)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(NRO_ORDENINT,Integer)
             If (STATUS Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -33014,7 +32995,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy48(ByVal NRO_ORDENINT As Integer, ByVal STATUS As String, ByVal NODO As String, ByVal ZONA As String, ByVal CALLE As String, ByVal NRO As String, ByVal ORDEN_OC As String) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(54)
+            Me.Adapter.SelectCommand = Me.CommandCollection(57)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(NRO_ORDENINT,Integer)
             If (STATUS Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
@@ -33056,7 +33037,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillBySINSEÑAL(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(55)
+            Me.Adapter.SelectCommand = Me.CommandCollection(58)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -33079,7 +33060,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy1(ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(55)
+            Me.Adapter.SelectCommand = Me.CommandCollection(58)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -33100,7 +33081,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillBySTS_FINALIZADO(ByVal dataTable As ORDENESDataSet.ORDENESDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(56)
+            Me.Adapter.SelectCommand = Me.CommandCollection(59)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -33113,7 +33094,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy57() As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(56)
+            Me.Adapter.SelectCommand = Me.CommandCollection(59)
             Dim dataTable As ORDENESDataSet.ORDENESDataTable = New ORDENESDataSet.ORDENESDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -33124,7 +33105,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillBySTSDIF(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal STATUS As String) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(57)
+            Me.Adapter.SelectCommand = Me.CommandCollection(60)
             If (STATUS Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -33142,7 +33123,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy40(ByVal STATUS As String) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(57)
+            Me.Adapter.SelectCommand = Me.CommandCollection(60)
             If (STATUS Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -33158,7 +33139,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByTO(ByVal dataTable As ORDENESDataSet.ORDENESDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(58)
+            Me.Adapter.SelectCommand = Me.CommandCollection(61)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -33171,7 +33152,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy52() As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(58)
+            Me.Adapter.SelectCommand = Me.CommandCollection(61)
             Dim dataTable As ORDENESDataSet.ORDENESDataTable = New ORDENESDataSet.ORDENESDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -33182,7 +33163,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByTODOS(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(59)
+            Me.Adapter.SelectCommand = Me.CommandCollection(62)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -33205,7 +33186,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy3(ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(59)
+            Me.Adapter.SelectCommand = Me.CommandCollection(62)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -33226,7 +33207,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
         Public Overloads Overridable Function FillByUTE(ByVal dataTable As ORDENESDataSet.ORDENESDataTable, ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(60)
+            Me.Adapter.SelectCommand = Me.CommandCollection(63)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -33249,7 +33230,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy31(ByVal FECHAFIN As Global.System.Nullable(Of Date), ByVal FECHAFIN1 As Global.System.Nullable(Of Date)) As ORDENESDataSet.ORDENESDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(60)
+            Me.Adapter.SelectCommand = Me.CommandCollection(63)
             If (FECHAFIN.HasValue = true) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = CType(FECHAFIN.Value,Date)
             Else
@@ -40134,43 +40115,44 @@ Namespace ORDENESDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_FECHA_ASIGNADO", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHA_ASIGNADO", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.InsertCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `TRABAJOS` (`ID_GESTION`, `TIPOTRABAJO`, `FECHAINGRESADO`, `GENERADOX"& _ 
-                "`, `FECHAINICIADO`, `FECHAFINALIZADO`, `TIEMPOESTIMADO`, `TIEMPOREAL`, `DEMORA`,"& _ 
-                " `STATUS`, `AREA`, `FECHAINICESTIMADO`, `NODO`, `ZONA`, `ASIGNADOA`, `CALLE`, `M"& _ 
-                "ANZANA`, `NRO`, `SECTORASIG`, `IDASIG`, `DESCRIPCION`, `COMPLETO`, `DEPENDENCIA`"& _ 
-                ", `TIPODEP`, `INSTALACION`, `INSTALACIONRUS`, `REQUERIDO`, `HABILITADO`, `ATRIBU"& _ 
-                "TO`, `PROYECTO_ORDINALES`, `FECHA_ASIGNADO`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, "& _ 
-                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO TRABAJOS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Id_TRABAJO, ID_GESTION, TIPOTRABA"& _ 
+                "JO, FECHAINGRESADO, GENERADOX, FECHAINICIADO, FECHAFINALIZADO, TIEMPOESTIMADO, T"& _ 
+                "IEMPOREAL, DEMORA, STATUS, AREA, FECHAINICESTIMADO, NODO, ZONA, ASIGNADOA, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
+                "                      CALLE, MANZANA, NRO, SECTORASIG, IDASIG, DESCRIPCION, COMP"& _ 
+                "LETO, DEPENDENCIA, TIPODEP, INSTALACION, INSTALACIONRUS, REQUERIDO, HABILITADO, "& _ 
+                "ATRIBUTO, PROYECTO_ORDINALES, FECHA_ASIGNADO)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"VALUES        (?, ?, ?, ?, ?, ?, "& _ 
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Id_TRABAJO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Id_TRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_GESTION", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_GESTION", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("TIPOTRABAJO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TIPOTRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("TIPOTRABAJO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TIPOTRABAJO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINGRESADO", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINGRESADO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("GENERADOX", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "GENERADOX", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("GENERADOX", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "GENERADOX", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINICIADO", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINICIADO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAFINALIZADO", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAFINALIZADO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("TIEMPOESTIMADO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TIEMPOESTIMADO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("TIEMPOREAL", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TIEMPOREAL", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("DEMORA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DEMORA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("STATUS", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("AREA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "AREA", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("TIEMPOESTIMADO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TIEMPOESTIMADO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("TIEMPOREAL", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TIEMPOREAL", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("DEMORA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DEMORA", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("STATUS", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("AREA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "AREA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHAINICESTIMADO", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHAINICESTIMADO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ASIGNADOA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ASIGNADOA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CALLE", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CALLE", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MANZANA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MANZANA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SECTORASIG", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SECTORASIG", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ASIGNADOA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ASIGNADOA", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CALLE", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CALLE", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MANZANA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MANZANA", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SECTORASIG", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SECTORASIG", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IDASIG", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "IDASIG", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("DESCRIPCION", Global.System.Data.OleDb.OleDbType.LongVarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DESCRIPCION", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("COMPLETO", Global.System.Data.OleDb.OleDbType.[Boolean], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "COMPLETO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("DESCRIPCION", Global.System.Data.OleDb.OleDbType.WChar, 1024, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DESCRIPCION", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("COMPLETO", Global.System.Data.OleDb.OleDbType.[Boolean], 2, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "COMPLETO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("DEPENDENCIA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "DEPENDENCIA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("TIPODEP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TIPODEP", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("INSTALACION", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "INSTALACION", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("INSTALACIONRUS", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "INSTALACIONRUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("REQUERIDO", Global.System.Data.OleDb.OleDbType.[Boolean], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "REQUERIDO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("HABILITADO", Global.System.Data.OleDb.OleDbType.[Boolean], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HABILITADO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ATRIBUTO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ATRIBUTO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("TIPODEP", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TIPODEP", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("INSTALACION", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "INSTALACION", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("INSTALACIONRUS", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "INSTALACIONRUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("REQUERIDO", Global.System.Data.OleDb.OleDbType.[Boolean], 2, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "REQUERIDO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("HABILITADO", Global.System.Data.OleDb.OleDbType.[Boolean], 2, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "HABILITADO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ATRIBUTO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ATRIBUTO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("PROYECTO_ORDINALES", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PROYECTO_ORDINALES", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("FECHA_ASIGNADO", Global.System.Data.OleDb.OleDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "FECHA_ASIGNADO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand = New Global.System.Data.OleDb.OleDbCommand()
@@ -41930,6 +41912,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
         Public Overloads Overridable Function Insert( _
+                    ByVal Id_TRABAJO As Integer,  _
                     ByVal ID_GESTION As Global.System.Nullable(Of Integer),  _
                     ByVal TIPOTRABAJO As String,  _
                     ByVal FECHAINGRESADO As Global.System.Nullable(Of Date),  _
@@ -41961,148 +41944,149 @@ Namespace ORDENESDataSetTableAdapters
                     ByVal ATRIBUTO As String,  _
                     ByVal PROYECTO_ORDINALES As Global.System.Nullable(Of Integer),  _
                     ByVal FECHA_ASIGNADO As Global.System.Nullable(Of Date)) As Integer
+            Me.Adapter.InsertCommand.Parameters(0).Value = CType(Id_TRABAJO,Integer)
             If (ID_GESTION.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(ID_GESTION.Value,Integer)
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(ID_GESTION.Value,Integer)
             Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
             End If
             If (TIPOTRABAJO Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(TIPOTRABAJO,String)
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(TIPOTRABAJO,String)
             End If
             If (FECHAINGRESADO.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(FECHAINGRESADO.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(FECHAINGRESADO.Value,Date)
             Else
-                Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
             If (GENERADOX Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(GENERADOX,String)
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(GENERADOX,String)
             End If
             If (FECHAINICIADO.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(FECHAINICIADO.Value,Date)
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
-            End If
-            If (FECHAFINALIZADO.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(FECHAFINALIZADO.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(FECHAINICIADO.Value,Date)
             Else
                 Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (TIEMPOESTIMADO Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            If (FECHAFINALIZADO.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(FECHAFINALIZADO.Value,Date)
             Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(TIEMPOESTIMADO,String)
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            If (TIEMPOREAL Is Nothing) Then
+            If (TIEMPOESTIMADO Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(TIEMPOREAL,String)
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(TIEMPOESTIMADO,String)
             End If
-            If (DEMORA Is Nothing) Then
+            If (TIEMPOREAL Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(DEMORA,String)
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(TIEMPOREAL,String)
             End If
-            If (STATUS Is Nothing) Then
+            If (DEMORA Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(STATUS,String)
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(DEMORA,String)
             End If
-            If (AREA Is Nothing) Then
+            If (STATUS Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(AREA,String)
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(STATUS,String)
+            End If
+            If (AREA Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(AREA,String)
             End If
             If (FECHAINICESTIMADO.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(FECHAINICESTIMADO.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(FECHAINICESTIMADO.Value,Date)
             Else
-                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
             End If
             If (NODO Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(NODO,String)
-            End If
-            If (ZONA Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(13).Value = CType(ZONA,String)
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(NODO,String)
             End If
-            If (ASIGNADOA Is Nothing) Then
+            If (ZONA Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(14).Value = CType(ASIGNADOA,String)
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(ZONA,String)
             End If
-            If (CALLE Is Nothing) Then
+            If (ASIGNADOA Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(15).Value = CType(CALLE,String)
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(ASIGNADOA,String)
             End If
-            If (MANZANA Is Nothing) Then
+            If (CALLE Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(16).Value = CType(MANZANA,String)
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(CALLE,String)
             End If
-            If (NRO Is Nothing) Then
+            If (MANZANA Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(17).Value = CType(NRO,String)
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(MANZANA,String)
             End If
-            If (SECTORASIG Is Nothing) Then
+            If (NRO Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(18).Value = CType(SECTORASIG,String)
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(NRO,String)
+            End If
+            If (SECTORASIG Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(SECTORASIG,String)
             End If
             If (IDASIG.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(19).Value = CType(IDASIG.Value,Integer)
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(IDASIG.Value,Integer)
             Else
-                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
             End If
             If (DESCRIPCION Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(20).Value = CType(DESCRIPCION,String)
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(DESCRIPCION,String)
             End If
-            Me.Adapter.InsertCommand.Parameters(21).Value = CType(COMPLETO,Boolean)
+            Me.Adapter.InsertCommand.Parameters(22).Value = CType(COMPLETO,Boolean)
             If (DEPENDENCIA.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(22).Value = CType(DEPENDENCIA.Value,Integer)
+                Me.Adapter.InsertCommand.Parameters(23).Value = CType(DEPENDENCIA.Value,Integer)
             Else
-                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
             End If
             If (TIPODEP Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(23).Value = CType(TIPODEP,String)
-            End If
-            If (INSTALACION Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(24).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(24).Value = CType(INSTALACION,String)
+                Me.Adapter.InsertCommand.Parameters(24).Value = CType(TIPODEP,String)
             End If
-            If (INSTALACIONRUS Is Nothing) Then
+            If (INSTALACION Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(25).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(25).Value = CType(INSTALACIONRUS,String)
+                Me.Adapter.InsertCommand.Parameters(25).Value = CType(INSTALACION,String)
             End If
-            Me.Adapter.InsertCommand.Parameters(26).Value = CType(REQUERIDO,Boolean)
-            Me.Adapter.InsertCommand.Parameters(27).Value = CType(HABILITADO,Boolean)
-            If (ATRIBUTO Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(28).Value = Global.System.DBNull.Value
+            If (INSTALACIONRUS Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(26).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(28).Value = CType(ATRIBUTO,String)
+                Me.Adapter.InsertCommand.Parameters(26).Value = CType(INSTALACIONRUS,String)
+            End If
+            Me.Adapter.InsertCommand.Parameters(27).Value = CType(REQUERIDO,Boolean)
+            Me.Adapter.InsertCommand.Parameters(28).Value = CType(HABILITADO,Boolean)
+            If (ATRIBUTO Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(29).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(29).Value = CType(ATRIBUTO,String)
             End If
             If (PROYECTO_ORDINALES.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(29).Value = CType(PROYECTO_ORDINALES.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(29).Value = Global.System.DBNull.Value
-            End If
-            If (FECHA_ASIGNADO.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(30).Value = CType(FECHA_ASIGNADO.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(30).Value = CType(PROYECTO_ORDINALES.Value,Integer)
             Else
                 Me.Adapter.InsertCommand.Parameters(30).Value = Global.System.DBNull.Value
+            End If
+            If (FECHA_ASIGNADO.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(31).Value = CType(FECHA_ASIGNADO.Value,Date)
+            Else
+                Me.Adapter.InsertCommand.Parameters(31).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -46934,7 +46918,6 @@ Namespace ORDENESDataSetTableAdapters
             tableMapping.ColumnMappings.Add("ORDINAL", "ORDINAL")
             tableMapping.ColumnMappings.Add("NRO_ORDENINT", "NRO_ORDENINT")
             tableMapping.ColumnMappings.Add("NRO_AGENDAMIENTO", "NRO_AGENDAMIENTO")
-            tableMapping.ColumnMappings.Add("STATUS", "STATUS")
             tableMapping.ColumnMappings.Add("ACTIVIDADDESC", "ACTIVIDADDESC")
             tableMapping.ColumnMappings.Add("TAREADESC", "TAREADESC")
             tableMapping.ColumnMappings.Add("CANTSTD", "CANTSTD")
@@ -46949,13 +46932,12 @@ Namespace ORDENESDataSetTableAdapters
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `TAREAS` WHERE ((`Id` = ?) AND ((? = 1 AND `ORDINAL` IS NULL) OR (`OR"& _ 
                 "DINAL` = ?)) AND ((? = 1 AND `NRO_ORDENINT` IS NULL) OR (`NRO_ORDENINT` = ?)) AN"& _ 
                 "D ((? = 1 AND `NRO_AGENDAMIENTO` IS NULL) OR (`NRO_AGENDAMIENTO` = ?)) AND ((? ="& _ 
-                " 1 AND `STATUS` IS NULL) OR (`STATUS` = ?)) AND ((? = 1 AND `ACTIVIDADDESC` IS N"& _ 
-                "ULL) OR (`ACTIVIDADDESC` = ?)) AND ((? = 1 AND `TAREADESC` IS NULL) OR (`TAREADE"& _ 
-                "SC` = ?)) AND ((? = 1 AND `CANTSTD` IS NULL) OR (`CANTSTD` = ?)) AND ((? = 1 AND"& _ 
-                " `CANTREAL` IS NULL) OR (`CANTREAL` = ?)) AND ((? = 1 AND `TIEMPOSTD` IS NULL) O"& _ 
-                "R (`TIEMPOSTD` = ?)) AND ((? = 1 AND `TIEMPOPREV` IS NULL) OR (`TIEMPOPREV` = ?)"& _ 
-                ") AND ((? = 1 AND `TIEMPOREAL` IS NULL) OR (`TIEMPOREAL` = ?)) AND ((? = 1 AND `"& _ 
-                "UNIDAD` IS NULL) OR (`UNIDAD` = ?)))"
+                " 1 AND `ACTIVIDADDESC` IS NULL) OR (`ACTIVIDADDESC` = ?)) AND ((? = 1 AND `TAREA"& _ 
+                "DESC` IS NULL) OR (`TAREADESC` = ?)) AND ((? = 1 AND `CANTSTD` IS NULL) OR (`CAN"& _ 
+                "TSTD` = ?)) AND ((? = 1 AND `CANTREAL` IS NULL) OR (`CANTREAL` = ?)) AND ((? = 1"& _ 
+                " AND `TIEMPOSTD` IS NULL) OR (`TIEMPOSTD` = ?)) AND ((? = 1 AND `TIEMPOPREV` IS "& _ 
+                "NULL) OR (`TIEMPOPREV` = ?)) AND ((? = 1 AND `TIEMPOREAL` IS NULL) OR (`TIEMPORE"& _ 
+                "AL` = ?)) AND ((? = 1 AND `UNIDAD` IS NULL) OR (`UNIDAD` = ?)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Id", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Id", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ORDINAL", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ORDINAL", Global.System.Data.DataRowVersion.Original, true, Nothing))
@@ -46964,8 +46946,6 @@ Namespace ORDENESDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_NRO_AGENDAMIENTO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_AGENDAMIENTO", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_NRO_AGENDAMIENTO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_AGENDAMIENTO", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_STATUS", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_STATUS", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ACTIVIDADDESC", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ACTIVIDADDESC", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ACTIVIDADDESC", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ACTIVIDADDESC", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_TAREADESC", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TAREADESC", Global.System.Data.DataRowVersion.Original, true, Nothing))
@@ -46984,14 +46964,13 @@ Namespace ORDENESDataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_UNIDAD", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "UNIDAD", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.InsertCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `TAREAS` (`ORDINAL`, `NRO_ORDENINT`, `NRO_AGENDAMIENTO`, `STATUS`, `A"& _ 
-                "CTIVIDADDESC`, `TAREADESC`, `CANTSTD`, `CANTREAL`, `TIEMPOSTD`, `TIEMPOPREV`, `T"& _ 
-                "IEMPOREAL`, `UNIDAD`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `TAREAS` (`ORDINAL`, `NRO_ORDENINT`, `NRO_AGENDAMIENTO`, `ACTIVIDADDE"& _ 
+                "SC`, `TAREADESC`, `CANTSTD`, `CANTREAL`, `TIEMPOSTD`, `TIEMPOPREV`, `TIEMPOREAL`"& _ 
+                ", `UNIDAD`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ORDINAL", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ORDINAL", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_AGENDAMIENTO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_AGENDAMIENTO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("STATUS", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ACTIVIDADDESC", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ACTIVIDADDESC", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("TAREADESC", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TAREADESC", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CANTSTD", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CANTSTD", Global.System.Data.DataRowVersion.Current, false, Nothing))
@@ -47002,24 +46981,22 @@ Namespace ORDENESDataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("UNIDAD", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "UNIDAD", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE `TAREAS` SET `ORDINAL` = ?, `NRO_ORDENINT` = ?, `NRO_AGENDAMIENTO` = ?, `S"& _ 
-                "TATUS` = ?, `ACTIVIDADDESC` = ?, `TAREADESC` = ?, `CANTSTD` = ?, `CANTREAL` = ?,"& _ 
-                " `TIEMPOSTD` = ?, `TIEMPOPREV` = ?, `TIEMPOREAL` = ?, `UNIDAD` = ? WHERE ((`Id` "& _ 
-                "= ?) AND ((? = 1 AND `ORDINAL` IS NULL) OR (`ORDINAL` = ?)) AND ((? = 1 AND `NRO"& _ 
-                "_ORDENINT` IS NULL) OR (`NRO_ORDENINT` = ?)) AND ((? = 1 AND `NRO_AGENDAMIENTO` "& _ 
-                "IS NULL) OR (`NRO_AGENDAMIENTO` = ?)) AND ((? = 1 AND `STATUS` IS NULL) OR (`STA"& _ 
-                "TUS` = ?)) AND ((? = 1 AND `ACTIVIDADDESC` IS NULL) OR (`ACTIVIDADDESC` = ?)) AN"& _ 
-                "D ((? = 1 AND `TAREADESC` IS NULL) OR (`TAREADESC` = ?)) AND ((? = 1 AND `CANTST"& _ 
-                "D` IS NULL) OR (`CANTSTD` = ?)) AND ((? = 1 AND `CANTREAL` IS NULL) OR (`CANTREA"& _ 
-                "L` = ?)) AND ((? = 1 AND `TIEMPOSTD` IS NULL) OR (`TIEMPOSTD` = ?)) AND ((? = 1 "& _ 
-                "AND `TIEMPOPREV` IS NULL) OR (`TIEMPOPREV` = ?)) AND ((? = 1 AND `TIEMPOREAL` IS"& _ 
-                " NULL) OR (`TIEMPOREAL` = ?)) AND ((? = 1 AND `UNIDAD` IS NULL) OR (`UNIDAD` = ?"& _ 
-                ")))"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE `TAREAS` SET `ORDINAL` = ?, `NRO_ORDENINT` = ?, `NRO_AGENDAMIENTO` = ?, `A"& _ 
+                "CTIVIDADDESC` = ?, `TAREADESC` = ?, `CANTSTD` = ?, `CANTREAL` = ?, `TIEMPOSTD` ="& _ 
+                " ?, `TIEMPOPREV` = ?, `TIEMPOREAL` = ?, `UNIDAD` = ? WHERE ((`Id` = ?) AND ((? ="& _ 
+                " 1 AND `ORDINAL` IS NULL) OR (`ORDINAL` = ?)) AND ((? = 1 AND `NRO_ORDENINT` IS "& _ 
+                "NULL) OR (`NRO_ORDENINT` = ?)) AND ((? = 1 AND `NRO_AGENDAMIENTO` IS NULL) OR (`"& _ 
+                "NRO_AGENDAMIENTO` = ?)) AND ((? = 1 AND `ACTIVIDADDESC` IS NULL) OR (`ACTIVIDADD"& _ 
+                "ESC` = ?)) AND ((? = 1 AND `TAREADESC` IS NULL) OR (`TAREADESC` = ?)) AND ((? = "& _ 
+                "1 AND `CANTSTD` IS NULL) OR (`CANTSTD` = ?)) AND ((? = 1 AND `CANTREAL` IS NULL)"& _ 
+                " OR (`CANTREAL` = ?)) AND ((? = 1 AND `TIEMPOSTD` IS NULL) OR (`TIEMPOSTD` = ?))"& _ 
+                " AND ((? = 1 AND `TIEMPOPREV` IS NULL) OR (`TIEMPOPREV` = ?)) AND ((? = 1 AND `T"& _ 
+                "IEMPOREAL` IS NULL) OR (`TIEMPOREAL` = ?)) AND ((? = 1 AND `UNIDAD` IS NULL) OR "& _ 
+                "(`UNIDAD` = ?)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ORDINAL", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ORDINAL", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_AGENDAMIENTO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_AGENDAMIENTO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("STATUS", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ACTIVIDADDESC", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ACTIVIDADDESC", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("TAREADESC", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TAREADESC", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CANTSTD", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CANTSTD", Global.System.Data.DataRowVersion.Current, false, Nothing))
@@ -47035,8 +47012,6 @@ Namespace ORDENESDataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_NRO_AGENDAMIENTO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_AGENDAMIENTO", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_NRO_AGENDAMIENTO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_AGENDAMIENTO", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_STATUS", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_STATUS", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "STATUS", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ACTIVIDADDESC", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ACTIVIDADDESC", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ACTIVIDADDESC", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ACTIVIDADDESC", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_TAREADESC", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TAREADESC", Global.System.Data.DataRowVersion.Original, true, Nothing))
@@ -47068,8 +47043,8 @@ Namespace ORDENESDataSetTableAdapters
             Me._commandCollection = New Global.System.Data.OleDb.OleDbCommand(9) {}
             Me._commandCollection(0) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, STATUS, ACTIVIDADDESC, TAREAD"& _ 
-                "ESC, CANTSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD FROM TAREAS"
+            Me._commandCollection(0).CommandText = "SELECT Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, ACTIVIDADDESC, TAREADESC, CAN"& _ 
+                "TSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD FROM TAREAS"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(1).Connection = Me.Connection
@@ -47078,59 +47053,59 @@ Namespace ORDENESDataSetTableAdapters
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._commandCollection(2) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT        Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, STATUS, ACTIVIDADDESC,"& _ 
-                " TAREADESC, CANTSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM  "& _ 
-                "          TAREAS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (ORDINAL = 0) AND (NRO_ORDENINT = ?)"
+            Me._commandCollection(2).CommandText = "SELECT Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, ACTIVIDADDESC, TAREADESC, CAN"& _ 
+                "TSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD FROM TAREAS WHERE (ORD"& _ 
+                "INAL = 0) AND (NRO_ORDENINT = ?)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(3) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, STATUS, ACTIVIDADDESC, TAREAD"& _ 
-                "ESC, CANTSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD FROM TAREAS WH"& _ 
-                "ERE (NRO_ORDENINT = ?)"
+            Me._commandCollection(3).CommandText = "SELECT Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, ACTIVIDADDESC, TAREADESC, CAN"& _ 
+                "TSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD FROM TAREAS WHERE (NRO"& _ 
+                "_ORDENINT = ?)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(4) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "SELECT Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, STATUS, ACTIVIDADDESC, TAREAD"& _ 
-                "ESC, CANTSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD FROM TAREAS WH"& _ 
-                "ERE (ORDINAL = ?)"
+            Me._commandCollection(4).CommandText = "SELECT Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, ACTIVIDADDESC, TAREADESC, CAN"& _ 
+                "TSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD FROM TAREAS WHERE (ORD"& _ 
+                "INAL = ?)"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ORDINAL", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ORDINAL", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(5) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(5).Connection = Me.Connection
-            Me._commandCollection(5).CommandText = "SELECT        Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, STATUS, ACTIVIDADDESC,"& _ 
-                " TAREADESC, CANTSTD, UNIDAD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM  "& _ 
-                "          TAREAS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (NRO_ORDENINT = ?) AND (CANTSTD > 0)"
+            Me._commandCollection(5).CommandText = "SELECT Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, ACTIVIDADDESC, TAREADESC, CAN"& _ 
+                "TSTD, UNIDAD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL FROM TAREAS WHERE (NRO"& _ 
+                "_ORDENINT = ?) AND (CANTSTD > 0)"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(6) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(6).Connection = Me.Connection
-            Me._commandCollection(6).CommandText = "SELECT        Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, STATUS, ACTIVIDADDESC,"& _ 
-                " TAREADESC, CANTSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM  "& _ 
-                "          TAREAS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (NRO_ORDENINT = ?) AND (TAREADESC = ?)"
+            Me._commandCollection(6).CommandText = "SELECT Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, ACTIVIDADDESC, TAREADESC, CAN"& _ 
+                "TSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD FROM TAREAS WHERE (NRO"& _ 
+                "_ORDENINT = ?) AND (TAREADESC = ?)"
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(6).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("TAREADESC", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "TAREADESC", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(7) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(7).Connection = Me.Connection
-            Me._commandCollection(7).CommandText = "SELECT        Id, ORDINAL, STATUS, ACTIVIDADDESC, TAREADESC, CANTSTD, CANTREAL, T"& _ 
-                "IEMPOSTD, TIEMPOPREV, TIEMPOREAL, NRO_ORDENINT, NRO_AGENDAMIENTO"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM          "& _ 
-                "  TAREAS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (ORDINAL = ?)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY TAREADESC"
+            Me._commandCollection(7).CommandText = "SELECT Id, ORDINAL, ACTIVIDADDESC, TAREADESC, CANTSTD, CANTREAL, TIEMPOSTD, TIEMP"& _ 
+                "OPREV, TIEMPOREAL, NRO_ORDENINT, NRO_AGENDAMIENTO FROM TAREAS WHERE (ORDINAL = ?"& _ 
+                ") ORDER BY TAREADESC"
             Me._commandCollection(7).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(7).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ORDINAL", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ORDINAL", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(8) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(8).Connection = Me.Connection
-            Me._commandCollection(8).CommandText = "SELECT        Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, STATUS, ACTIVIDADDESC,"& _ 
-                " TAREADESC, CANTSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM  "& _ 
-                "          TAREAS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (ORDINAL = 0) AND (NRO_ORDENINT = ?)"
+            Me._commandCollection(8).CommandText = "SELECT Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, ACTIVIDADDESC, TAREADESC, CAN"& _ 
+                "TSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD FROM TAREAS WHERE (ORD"& _ 
+                "INAL = 0) AND (NRO_ORDENINT = ?)"
             Me._commandCollection(8).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(8).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(9) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(9).Connection = Me.Connection
-            Me._commandCollection(9).CommandText = "SELECT        Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, STATUS, ACTIVIDADDESC,"& _ 
-                " TAREADESC, CANTSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM  "& _ 
-                "          TAREAS"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (ORDINAL > 0) AND (NRO_ORDENINT = ?)"
+            Me._commandCollection(9).CommandText = "SELECT Id, ORDINAL, NRO_ORDENINT, NRO_AGENDAMIENTO, ACTIVIDADDESC, TAREADESC, CAN"& _ 
+                "TSTD, CANTREAL, TIEMPOSTD, TIEMPOPREV, TIEMPOREAL, UNIDAD FROM TAREAS WHERE (ORD"& _ 
+                "INAL > 0) AND (NRO_ORDENINT = ?)"
             Me._commandCollection(9).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(9).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NRO_ORDENINT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NRO_ORDENINT", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
@@ -47457,7 +47432,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_Id As Integer, ByVal Original_ORDINAL As Global.System.Nullable(Of Integer), ByVal Original_NRO_ORDENINT As Global.System.Nullable(Of Integer), ByVal Original_NRO_AGENDAMIENTO As Global.System.Nullable(Of Integer), ByVal Original_STATUS As String, ByVal Original_ACTIVIDADDESC As String, ByVal Original_TAREADESC As String, ByVal Original_CANTSTD As Global.System.Nullable(Of Integer), ByVal Original_CANTREAL As Global.System.Nullable(Of Integer), ByVal Original_TIEMPOSTD As Global.System.Nullable(Of Double), ByVal Original_TIEMPOPREV As Global.System.Nullable(Of Double), ByVal Original_TIEMPOREAL As Global.System.Nullable(Of Double), ByVal Original_UNIDAD As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_Id As Integer, ByVal Original_ORDINAL As Global.System.Nullable(Of Integer), ByVal Original_NRO_ORDENINT As Global.System.Nullable(Of Integer), ByVal Original_NRO_AGENDAMIENTO As Global.System.Nullable(Of Integer), ByVal Original_ACTIVIDADDESC As String, ByVal Original_TAREADESC As String, ByVal Original_CANTSTD As Global.System.Nullable(Of Integer), ByVal Original_CANTREAL As Global.System.Nullable(Of Integer), ByVal Original_TIEMPOSTD As Global.System.Nullable(Of Double), ByVal Original_TIEMPOPREV As Global.System.Nullable(Of Double), ByVal Original_TIEMPOREAL As Global.System.Nullable(Of Double), ByVal Original_UNIDAD As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_Id,Integer)
             If (Original_ORDINAL.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
@@ -47480,68 +47455,61 @@ Namespace ORDENESDataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            If (Original_STATUS Is Nothing) Then
+            If (Original_ACTIVIDADDESC Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_STATUS,String)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_ACTIVIDADDESC,String)
             End If
-            If (Original_ACTIVIDADDESC Is Nothing) Then
+            If (Original_TAREADESC Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_ACTIVIDADDESC,String)
-            End If
-            If (Original_TAREADESC Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_TAREADESC,String)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_TAREADESC,String)
             End If
             If (Original_CANTSTD.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_CANTSTD.Value,Integer)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            If (Original_CANTREAL.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_CANTSTD.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_CANTREAL.Value,Integer)
             Else
                 Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
             End If
-            If (Original_CANTREAL.HasValue = true) Then
+            If (Original_TIEMPOSTD.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_CANTREAL.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_TIEMPOSTD.Value,Double)
             Else
                 Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
             End If
-            If (Original_TIEMPOSTD.HasValue = true) Then
+            If (Original_TIEMPOPREV.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_TIEMPOSTD.Value,Double)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_TIEMPOPREV.Value,Double)
             Else
                 Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
             End If
-            If (Original_TIEMPOPREV.HasValue = true) Then
+            If (Original_TIEMPOREAL.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_TIEMPOPREV.Value,Double)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_TIEMPOREAL.Value,Double)
             Else
                 Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
             End If
-            If (Original_TIEMPOREAL.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_TIEMPOREAL.Value,Double)
-            Else
+            If (Original_UNIDAD Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
-            End If
-            If (Original_UNIDAD Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_UNIDAD,String)
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_UNIDAD,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -47562,7 +47530,7 @@ Namespace ORDENESDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal ORDINAL As Global.System.Nullable(Of Integer), ByVal NRO_ORDENINT As Global.System.Nullable(Of Integer), ByVal NRO_AGENDAMIENTO As Global.System.Nullable(Of Integer), ByVal STATUS As String, ByVal ACTIVIDADDESC As String, ByVal TAREADESC As String, ByVal CANTSTD As Global.System.Nullable(Of Integer), ByVal CANTREAL As Global.System.Nullable(Of Integer), ByVal TIEMPOSTD As Global.System.Nullable(Of Double), ByVal TIEMPOPREV As Global.System.Nullable(Of Double), ByVal TIEMPOREAL As Global.System.Nullable(Of Double), ByVal UNIDAD As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal ORDINAL As Global.System.Nullable(Of Integer), ByVal NRO_ORDENINT As Global.System.Nullable(Of Integer), ByVal NRO_AGENDAMIENTO As Global.System.Nullable(Of Integer), ByVal ACTIVIDADDESC As String, ByVal TAREADESC As String, ByVal CANTSTD As Global.System.Nullable(Of Integer), ByVal CANTREAL As Global.System.Nullable(Of Integer), ByVal TIEMPOSTD As Global.System.Nullable(Of Double), ByVal TIEMPOPREV As Global.System.Nullable(Of Double), ByVal TIEMPOREAL As Global.System.Nullable(Of Double), ByVal UNIDAD As String) As Integer
             If (ORDINAL.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(ORDINAL.Value,Integer)
             Else
@@ -47578,50 +47546,45 @@ Namespace ORDENESDataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (STATUS Is Nothing) Then
+            If (ACTIVIDADDESC Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(STATUS,String)
-            End If
-            If (ACTIVIDADDESC Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(ACTIVIDADDESC,String)
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(ACTIVIDADDESC,String)
             End If
             If (TAREADESC Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(TAREADESC,String)
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(TAREADESC,String)
             End If
             If (CANTSTD.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(CANTSTD.Value,Integer)
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(CANTSTD.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (CANTREAL.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(CANTREAL.Value,Integer)
             Else
                 Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            If (CANTREAL.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(CANTREAL.Value,Integer)
+            If (TIEMPOSTD.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(TIEMPOSTD.Value,Double)
             Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
-            If (TIEMPOSTD.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(TIEMPOSTD.Value,Double)
+            If (TIEMPOPREV.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(TIEMPOPREV.Value,Double)
             Else
                 Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
-            If (TIEMPOPREV.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(TIEMPOPREV.Value,Double)
+            If (TIEMPOREAL.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(TIEMPOREAL.Value,Double)
             Else
                 Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
-            If (TIEMPOREAL.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(TIEMPOREAL.Value,Double)
-            Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
-            End If
             If (UNIDAD Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(UNIDAD,String)
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(UNIDAD,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -47646,7 +47609,6 @@ Namespace ORDENESDataSetTableAdapters
                     ByVal ORDINAL As Global.System.Nullable(Of Integer),  _
                     ByVal NRO_ORDENINT As Global.System.Nullable(Of Integer),  _
                     ByVal NRO_AGENDAMIENTO As Global.System.Nullable(Of Integer),  _
-                    ByVal STATUS As String,  _
                     ByVal ACTIVIDADDESC As String,  _
                     ByVal TAREADESC As String,  _
                     ByVal CANTSTD As Global.System.Nullable(Of Integer),  _
@@ -47659,7 +47621,6 @@ Namespace ORDENESDataSetTableAdapters
                     ByVal Original_ORDINAL As Global.System.Nullable(Of Integer),  _
                     ByVal Original_NRO_ORDENINT As Global.System.Nullable(Of Integer),  _
                     ByVal Original_NRO_AGENDAMIENTO As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_STATUS As String,  _
                     ByVal Original_ACTIVIDADDESC As String,  _
                     ByVal Original_TAREADESC As String,  _
                     ByVal Original_CANTSTD As Global.System.Nullable(Of Integer),  _
@@ -47683,135 +47644,123 @@ Namespace ORDENESDataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (STATUS Is Nothing) Then
+            If (ACTIVIDADDESC Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(STATUS,String)
-            End If
-            If (ACTIVIDADDESC Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(ACTIVIDADDESC,String)
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(ACTIVIDADDESC,String)
             End If
             If (TAREADESC Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(TAREADESC,String)
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(TAREADESC,String)
             End If
             If (CANTSTD.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(CANTSTD.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(CANTSTD.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (CANTREAL.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(CANTREAL.Value,Integer)
             Else
                 Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            If (CANTREAL.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(CANTREAL.Value,Integer)
+            If (TIEMPOSTD.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(TIEMPOSTD.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
             End If
-            If (TIEMPOSTD.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(TIEMPOSTD.Value,Double)
+            If (TIEMPOPREV.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(TIEMPOPREV.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
-            If (TIEMPOPREV.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(TIEMPOPREV.Value,Double)
+            If (TIEMPOREAL.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(TIEMPOREAL.Value,Double)
             Else
                 Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
-            If (TIEMPOREAL.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(TIEMPOREAL.Value,Double)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
-            End If
             If (UNIDAD Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(UNIDAD,String)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(UNIDAD,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_Id,Integer)
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_Id,Integer)
             If (Original_ORDINAL.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_ORDINAL.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_ORDINAL.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
             If (Original_NRO_ORDENINT.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_NRO_ORDENINT.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_NRO_ORDENINT.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
             If (Original_NRO_AGENDAMIENTO.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_NRO_AGENDAMIENTO.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_NRO_AGENDAMIENTO.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            End If
-            If (Original_STATUS Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_STATUS,String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
             End If
             If (Original_ACTIVIDADDESC Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_ACTIVIDADDESC,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_ACTIVIDADDESC,String)
             End If
             If (Original_TAREADESC Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_TAREADESC,String)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_TAREADESC,String)
             End If
             If (Original_CANTSTD.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_CANTSTD.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_CANTSTD.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
             End If
             If (Original_CANTREAL.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_CANTREAL.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_CANTREAL.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
             End If
             If (Original_TIEMPOSTD.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_TIEMPOSTD.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_TIEMPOSTD.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             End If
             If (Original_TIEMPOPREV.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_TIEMPOPREV.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_TIEMPOPREV.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
             End If
             If (Original_TIEMPOREAL.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_TIEMPOREAL.Value,Double)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_TIEMPOREAL.Value,Double)
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
             End If
             If (Original_UNIDAD Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_UNIDAD,String)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_UNIDAD,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _

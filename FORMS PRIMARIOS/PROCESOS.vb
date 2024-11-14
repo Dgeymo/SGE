@@ -49,7 +49,7 @@ Public Class PROCESOS
 
     Private Sub PROCESOS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'ORDENESDataSet.OBESERVACIONES' Puede moverla o quitarla según sea necesario.
-        Me.OBESERVACIONESTableAdapter.Fill(Me.ORDENESDataSet.OBESERVACIONES)
+        '   Me.OBESERVACIONESTableAdapter.Fill(Me.ORDENESDataSet.OBESERVACIONES)
         'INDICES_INCIAL()
         'FECHALIMITE = DateAdd(DateInterval.Day, -30, Now)
         'Me.Refresh()
@@ -207,97 +207,103 @@ Public Class PROCESOS
         Next
 
         'CARGA LOS TRABAJOS EN STATUS INICIADO O DEMORADO 
-        TRABAJOSTableAdapter.FillByAFINALIZAR(ORDENESDataSet.TRABAJOS)
+        '  TRABAJOSTableAdapter.FillByAFINALIZAR(ORDENESDataSet.TRABAJOS)
+        '   CARGAMOS LA CONSULTADE ORDENES EN STATUS - FINALIZADO Y CON FALLA CIERRE - NO REALIZADO o PARCIALMENTE REALIZADO
+
+        ORDENESTableAdapter.FillByNOFINPARCIAL(ORDENESDataSet.ORDENES)
+
+
         'CONTROLA QUE HAYA TRABAJOS SIN FINALIZAR
-        If ORDENESDataSet.TRABAJOS.Rows.Count > 0 Then
-            'RECORRE LA TABLA DE TRABAJOS
-            For X = 0 To ORDENESDataSet.TRABAJOS.Rows.Count - 1
+        '  If ORDENESDataSet.TRABAJOS.Rows.Count > 0 Then
+        'RECORRE LA TABLA DE TRABAJOS
+        'For X = 0 To ORDENESDataSet.TRABAJOS.Rows.Count - 1
 
-                TRABAJOSRow = ORDENESDataSet.TRABAJOS.Rows(X)
+        '    TRABAJOSRow = ORDENESDataSet.TRABAJOS.Rows(X)
 
-                HIS_STATUSANT = TRABAJOSRow("STATUS")
+        '    HIS_STATUSANT = TRABAJOSRow("STATUS")
 
-                'BUSCA LAS ORDENES DENTRO DEL TRABAJO SELECCIONADO
-                ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, TRABAJOSRow("Id_TRABAJO"))
-                CANT_ORDENES = ORDENESDataSet.ORDENES.Rows.Count
-                CANT_FINALIZADAS = 0
+        'BUSCA LAS ORDENES DENTRO DEL TRABAJO SELECCIONADO
+        'ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, TRABAJOSRow("Id_TRABAJO"))
+        CANT_ORDENES = ORDENESDataSet.ORDENES.Rows.Count
+        CANT_FINALIZADAS = 0
 
-                'VERIFICA QUE HAYA ORDENES DENTRO DEL TRABAJO
-                If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
-                    'ORDENESBindingSource.MoveFirst()
-                    'RECORRE LAS ORDENES DEFINIDAS DENTRO DEL TRABAJO
-                    For I = 0 To ORDENESDataSet.ORDENES.Rows.Count - 1
-                        ORDENESRow = ORDENESDataSet.ORDENES.Rows(I)
-                        PROGRESS_BAR("ANALIZANDO ORDENES A DUPLICAR", 0, 0, ORDENESDataSet.TRABAJOS.Rows.Count, X + 1, ORDENESDataSet.ORDENES.Rows.Count, I + 1)
+        'VERIFICA QUE HAYA ORDENES DENTRO DEL TRABAJO
+        If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
+            'ORDENESBindingSource.MoveFirst()
+            'RECORRE LAS ORDENES DEFINIDAS DENTRO DEL TRABAJO
+            For I = 0 To ORDENESDataSet.ORDENES.Rows.Count - 1
+                ORDENESRow = ORDENESDataSet.ORDENES.Rows(I)
+                PROGRESS_BAR("ANALIZANDO ORDENES A DUPLICAR", 0, 0, 0, 0, ORDENESDataSet.ORDENES.Rows.Count, I + 1)
 
-                        'CUENTA LAS ORDENES EN STATUS FINALIZADO Y LAS QUE NO FIGURAN COMO REALIZADO LAS MANDA A DUPLICAR
-                        Select Case ORDENESRow("STATUS")
-                            Case "FINALIZADO"
-                                If IsDBNull(ORDENESRow("MOTIVOCIERRE")) = False Then
-                                    Select Case Trim(ORDENESRow("MOTIVOCIERRE"))
-                                        Case "REALIZADO"
-                                            CANT_FINALIZADAS = CANT_FINALIZADAS + 1
-                                        Case Else
-                                            'MARCA LA ORDEN EN STATUS ADUPLICAR
-                                            'RUTINA QUE CREA UNA COPIA DE LA ORDEN  SITUADO EN ORDENROW()
-                                            'CAMBIA EL STATUS DE LA ORDEN
-                                            TOTAL_DUPLI = TOTAL_DUPLI + 1
-                                            ORDENESRow("STATUS") = "ADUPLICAR"
-                                            MENSAJE_DUPLI(TOTAL_DUPLI) = "Orden Nro " & ORDENESRow("NRO_ORDENINT") & "  -- NODO  " & ORDENESRow("NODO") & " ZONA  " & ORDENESRow("ZONA") & " CALLE  " & ORDENESRow("CALLE") & " NRO " & ORDENESRow("NRO") & " -- Ordinal Correspondiente NRO " & ORDENESRow("NRO_ORDINAL") & " Con Motivo de Origen " & ORDENESRow("MOTIVOORIGEN")
-                                            Try
-                                                ORDENESTableAdapter.Update(ORDENESRow)
-                                                If ORDENESRow.IsGENERADORNull = False And ORDENESRow.GENERADOR <> "Manual" Then
-                                                    MJE_ASUNTO = "ORDENES A DUPLICAR"
-                                                    MJE_DESTINONOMBRE = ORDENESRow.GENERADOR
-                                                    MJE_DESTINOSECTOR = ""
-                                                    MJE_MENSAJE = "La orden " & ORDENESRow.NRO_ORDENINT & " se ha marcado ADUPLICAR"
-                                                    MJE_NROORDENASOC = 0
-                                                    ENVIA_MENSAJE()
-                                                    NOTIFICACION("SYS", "ORDEN " & ORDENESRow.NRO_ORDENINT & " DUPLICADA")
-                                                End If
-                                            Catch ex As Exception
-                                                MsgBox("Ha ocurrido un error en la carga del status de la orden ADUPLICAR: " & TRABAJOSRow("Id_TRABAJO") & "  " & ex.ToString)
-                                            End Try
-                                    End Select
-                                Else
-                                    MsgBox("La orden " & ORDENESRow("NRO_ORDENINT") & " No tiene falla de cierre")
-                                End If
+                'CUENTA LAS ORDENES EN STATUS FINALIZADO Y LAS QUE NO FIGURAN COMO REALIZADO LAS MANDA A DUPLICAR
+                'Select Case ORDENESRow("STATUS")
+                '    Case "FINALIZADO"
+                If IsDBNull(ORDENESRow("MOTIVOCIERRE")) = False Then
+                    'Select Case Trim(ORDENESRow("MOTIVOCIERRE"))
+                    '    Case "REALIZADO"
+                    '        CANT_FINALIZADAS = CANT_FINALIZADAS + 1
+                    '    Case Else
+                    'MARCA LA ORDEN EN STATUS ADUPLICAR
+                    'RUTINA QUE CREA UNA COPIA DE LA ORDEN  SITUADO EN ORDENROW()
+                    'CAMBIA EL STATUS DE LA ORDEN
 
-                            Case "ADUPLICAR", "DUPLICADO", "CANCELADO"
-                                CANT_FINALIZADAS = CANT_FINALIZADAS + 1
-                        End Select
-                    Next I
+                    TOTAL_DUPLI = TOTAL_DUPLI + 1
+                        ORDENESRow("STATUS") = "ADUPLICAR"
+                        MENSAJE_DUPLI(TOTAL_DUPLI) = "Orden Nro " & ORDENESRow("NRO_ORDENINT") & "  -- NODO  " & ORDENESRow("NODO") & " ZONA  " & ORDENESRow("ZONA") & " CALLE  " & ORDENESRow("CALLE") & " NRO " & ORDENESRow("NRO") & " -- Ordinal Correspondiente NRO " & ORDENESRow("NRO_ORDINAL") & " Con Motivo de Origen " & ORDENESRow("MOTIVOORIGEN")
+                        Try
+                            ORDENESTableAdapter.Update(ORDENESRow)
+                            If ORDENESRow.IsGENERADORNull = False And ORDENESRow.GENERADOR <> "Manual" Then
+                                MJE_ASUNTO = "ORDENES A DUPLICAR"
+                                MJE_DESTINONOMBRE = ORDENESRow.GENERADOR
+                                MJE_DESTINOSECTOR = ""
+                                MJE_MENSAJE = "La orden " & ORDENESRow.NRO_ORDENINT & " se ha marcado ADUPLICAR"
+                                MJE_NROORDENASOC = 0
+                                ENVIA_MENSAJE()
+                                NOTIFICACION("SYS", "ORDEN " & ORDENESRow.NRO_ORDENINT & " DUPLICADA")
+                            End If
+                        Catch ex As Exception
+                            MsgBox("Ha ocurrido un error en la carga del status de la orden ADUPLICAR: " & TRABAJOSRow("Id_TRABAJO") & "  " & ex.ToString)
+                        End Try
+
+                    'End Select
+                Else
+                    MsgBox("La orden " & ORDENESRow("NRO_ORDENINT") & " No tiene falla de cierre")
                 End If
-            Next X
-            'ARMA MENSAJE A QUIEN EJECUTO EL PROCESO
-            TOTAL_MJE = ""
-            For X = 1 To TOTAL_CAMBIOS
-                TOTAL_MJE = TOTAL_MJE & MENSAJE_GEST(X) & vbNewLine
-            Next X
-            'ENVIA MESAJES DE ORDENES A DUPLICAR
-            TOTAL_MJE = ""
-            For X = 1 To TOTAL_DUPLI
-                TOTAL_MJE = TOTAL_MJE & MENSAJE_DUPLI(X) & vbNewLine
-            Next X
 
-            If TOTAL_DUPLI > 0 Then
-                'ENVIA MENSAJE A RESPONSABLE GESTION
-                MJE_ASUNTO = "ORDENES A DUPLICAR"
-                MJE_DESTINONOMBRE = NOMBRE & " " & APELLIDO
-                MJE_DESTINOSECTOR = ""
-                MJE_MENSAJE = "En el proceso se han MARCADO para duplicar las siguientes ORDENES " & vbNewLine & TOTAL_MJE
-                MJE_NROORDENASOC = 0
-                ENVIA_MENSAJE()
-            Else
-
-                MJE_ASUNTO = "ORDENES A DUPLICAR"
-                MJE_DESTINONOMBRE = NOMBRE & " " & APELLIDO
-                MJE_DESTINOSECTOR = ""
-                MJE_MENSAJE = "No se han encontrado Ordenes NO REALIZADAS en TRABAJOS analizadas"
-                MJE_NROORDENASOC = 0
-                ENVIA_MENSAJE()
-            End If
+                '    Case "ADUPLICAR", "DUPLICADO", "CANCELADO"
+                '        CANT_FINALIZADAS = CANT_FINALIZADAS + 1
+                'End Select
+            Next I
         End If
+        ' Next X
+        'ARMA MENSAJE A QUIEN EJECUTO EL PROCESO
+        TOTAL_MJE = ""
+        For X = 1 To TOTAL_CAMBIOS
+            TOTAL_MJE = TOTAL_MJE & MENSAJE_GEST(X) & vbNewLine
+        Next X
+        'ENVIA MESAJES DE ORDENES A DUPLICAR
+        TOTAL_MJE = ""
+        For X = 1 To TOTAL_DUPLI
+            TOTAL_MJE = TOTAL_MJE & MENSAJE_DUPLI(X) & vbNewLine
+        Next X
+
+        If TOTAL_DUPLI > 0 Then
+            'ENVIA MENSAJE A RESPONSABLE GESTION
+            MJE_ASUNTO = "ORDENES A DUPLICAR"
+            MJE_DESTINONOMBRE = NOMBRE & " " & APELLIDO
+            MJE_DESTINOSECTOR = ""
+            MJE_MENSAJE = "En el proceso se han MARCADO para duplicar las siguientes ORDENES " & vbNewLine & TOTAL_MJE
+            MJE_NROORDENASOC = 0
+            ENVIA_MENSAJE()
+        Else
+            MJE_ASUNTO = "ORDENES A DUPLICAR"
+            MJE_DESTINONOMBRE = NOMBRE & " " & APELLIDO
+            MJE_DESTINOSECTOR = ""
+            MJE_MENSAJE = "No se han encontrado Ordenes NO REALIZADAS en TRABAJOS analizadas"
+            MJE_NROORDENASOC = 0
+            ENVIA_MENSAJE()
+        End If
+        ' End If
         PROGRESS_BAR("FINALIZADO ORDENES A DUPLICAR", 0, 0, 0, 0, 0, 0)
         CK_MARCA_DUPLICAR.ForeColor = Color.Green
         CK_MARCA_DUPLICAR.Refresh()
@@ -565,37 +571,37 @@ Public Class PROCESOS
                                     End Select
                                 End If
                             End If
-                            End If
-                        If GESTIONRow("REQUERIDO") = True Then
-                                GESTIONTableAdapter.GEST_QUITARREQUERIDO(GESTIONRow("ID_GESTION"))
-                            End If
-                            GESTIONTableAdapter.Update(GESTIONRow)
-                            EdificiosTableAdapter.Update(EdificiosRow)
-                            NOTIFICACION("SYS", "GESTION " & GESTIONRow.Id_GESTION & " DE " & GESTIONRow.TIPOGESTION & " - FINALIZADA")
-                            'CUENTA EL CAMBIO
-                            TOTAL_CAMBIOS = TOTAL_CAMBIOS + 1
-                            'ARMA EL TEXTO DEL MENSAJE A COMUNICAR AL RESPONSABLLE DE LA GESTION
-                            MENSAJE_GEST(TOTAL_CAMBIOS) = "GESTION NRO: " & GESTIONRow("Id_GESTION") & ",  TIPO " & GESTIONRow("TIPOGESTION") & ",  AREA: " & GESTIONRow("AREA") & ",  CARPETA: " & GESTIONRow("CARPETA") & vbNewLine &
-                            "UBICACION: NODO: " & TRABAJOSRow("NODO") & ",  ZONA: " & TRABAJOSRow("ZONA") & ",  CALLE: " & TRABAJOSRow("CALLE") & " NRO: " & TRABAJOSRow("NRO") & vbNewLine
-                            'CARGA EL HISTORICO DE LA GESTION PROCESADA
-                            'CARGA HISTORICO
-                            NewHISTORICORow = ORDENESDataSet.HISTORICO.NewHISTORICORow
-                            NewHISTORICORow("ID_GESTION") = TRABAJOSRow("ID_GESTION")
-                            NewHISTORICORow("ID_TRABAJO") = 0
-                            NewHISTORICORow("ID_ORDENINT") = 0
-                            NewHISTORICORow("FECHA") = Now
-                            NewHISTORICORow("STATUSANTERIOR") = HIS_STATUSANT
-                            NewHISTORICORow("STATUSACTUAL") = "FINALIZADO"
-                            NewHISTORICORow("CAUSA") = "TRABAJOS RELACIONADOS FINALIZADOS EN GESTION MARCADA COMO COMPLETA"
-                            NewHISTORICORow("DETALLE") = "PROCESO AUTOMATICO"
-                            NewHISTORICORow("EJECUTANTE") = NOMBRE & " " & APELLIDO
-
-                            'GUARDA EL HISTORICO PROCESADO
-                            ORDENESDataSet.HISTORICO.AddHISTORICORow(NewHISTORICORow)
-                            Me.HISTORICOTableAdapter.Update(NewHISTORICORow)
-
                         End If
+                        If GESTIONRow("REQUERIDO") = True Then
+                            GESTIONTableAdapter.GEST_QUITARREQUERIDO(GESTIONRow("ID_GESTION"))
+                        End If
+                        GESTIONTableAdapter.Update(GESTIONRow)
+                        EdificiosTableAdapter.Update(EdificiosRow)
+                        NOTIFICACION("SYS", "GESTION " & GESTIONRow.Id_GESTION & " DE " & GESTIONRow.TIPOGESTION & " - FINALIZADA")
+                        'CUENTA EL CAMBIO
+                        TOTAL_CAMBIOS = TOTAL_CAMBIOS + 1
+                        'ARMA EL TEXTO DEL MENSAJE A COMUNICAR AL RESPONSABLLE DE LA GESTION
+                        MENSAJE_GEST(TOTAL_CAMBIOS) = "GESTION NRO: " & GESTIONRow("Id_GESTION") & ",  TIPO " & GESTIONRow("TIPOGESTION") & ",  AREA: " & GESTIONRow("AREA") & ",  CARPETA: " & GESTIONRow("CARPETA") & vbNewLine &
+                        "UBICACION: NODO: " & TRABAJOSRow("NODO") & ",  ZONA: " & TRABAJOSRow("ZONA") & ",  CALLE: " & TRABAJOSRow("CALLE") & " NRO: " & TRABAJOSRow("NRO") & vbNewLine
+                        'CARGA EL HISTORICO DE LA GESTION PROCESADA
+                        'CARGA HISTORICO
+                        NewHISTORICORow = ORDENESDataSet.HISTORICO.NewHISTORICORow
+                        NewHISTORICORow("ID_GESTION") = TRABAJOSRow("ID_GESTION")
+                        NewHISTORICORow("ID_TRABAJO") = 0
+                        NewHISTORICORow("ID_ORDENINT") = 0
+                        NewHISTORICORow("FECHA") = Now
+                        NewHISTORICORow("STATUSANTERIOR") = HIS_STATUSANT
+                        NewHISTORICORow("STATUSACTUAL") = "FINALIZADO"
+                        NewHISTORICORow("CAUSA") = "TRABAJOS RELACIONADOS FINALIZADOS EN GESTION MARCADA COMO COMPLETA"
+                        NewHISTORICORow("DETALLE") = "PROCESO AUTOMATICO"
+                        NewHISTORICORow("EJECUTANTE") = NOMBRE & " " & APELLIDO
+
+                        'GUARDA EL HISTORICO PROCESADO
+                        ORDENESDataSet.HISTORICO.AddHISTORICORow(NewHISTORICORow)
+                        Me.HISTORICOTableAdapter.Update(NewHISTORICORow)
+
                     End If
+                End If
             Next I
 
             TOTAL_MJE = ""
@@ -971,14 +977,14 @@ Public Class PROCESOS
                 If BASECALCULORow IsNot Nothing Then
                     'If BASECALCULORow.FechaCierreCalculo.ToString <> "" Then
                     newRecPermRow("FechaCumpREC") = CDate(BASECALCULORow.FechaCierreCalculo).ToShortDateString
-                        newRecPermRow("HoraCumpREC") = CDate(BASECALCULORow.FechaCierreCalculo).ToShortTimeString
+                    newRecPermRow("HoraCumpREC") = CDate(BASECALCULORow.FechaCierreCalculo).ToShortTimeString
                     'Else
                     '    newRecPermRow("FechaCumpREC") = ""
                     '    newRecPermRow("HoraCumpREC") = ""
                     'End If
                     'If IsDate(BASECALCULORow.FechaCierreCalculo) Then
                     newRecPermRow("FechaFinOrdinal") = DateValue(BASECALCULORow.FechaCierreCalculo).ToShortDateString
-                        newRecPermRow("HoraFinOrdinal") = TimeValue(BASECALCULORow.FechaCierreCalculo).ToShortTimeString
+                    newRecPermRow("HoraFinOrdinal") = TimeValue(BASECALCULORow.FechaCierreCalculo).ToShortTimeString
                     'Else
                     '    newRecPermRow("FechaFinOrdinal") = ""
                     '    newRecPermRow("HoraFinOrdinal") = ""

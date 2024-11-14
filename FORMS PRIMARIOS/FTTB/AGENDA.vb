@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿
+Imports System.IO
 Imports System.Net
 Imports System.Text
 
@@ -44,7 +45,7 @@ Public Class AGENDA
     Public Sub ACCION_AG(ByVal ACCION As String)
         If ACCION = "VER AGENDAMIENTO" Then
             AGENDATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.AGENDA, EDI_ID_AGENDAR)
-            DIA_INI = EDIFICIODataSet.AGENDA.Rows(0).Item("DIA_AGENDA")
+            DIA_INI = EDIFICIODataSet.AGENDA.Rows(EDIFICIODataSet.AGENDA.Rows.Count - 1).Item("DIA_AGENDA")
         Else
             DIA_INI = Today
         End If
@@ -53,7 +54,14 @@ Public Class AGENDA
         CARGAR_DATOS(DIA_INI)
     End Sub
     Private Sub CARGAR_DATOS(ByVal FECHA_INI As Date)
-        TURNOSTableAdapter.FillByACTIVO(EDIFICIODataSet.TURNOS)
+        Select Case ACCION_AGENDA
+            Case "AGENDAR", "VISTA", "VER AGENDAMIENTO"
+                TURNOSTableAdapter.FillByAGENDA(EDIFICIODataSet.TURNOS)
+            Case "AGENDAR CERTIFICADO", "VISTA CERTIFICADOS"
+                TURNOSTableAdapter.FillByCERTIFICADO(EDIFICIODataSet.TURNOS)
+        End Select
+
+
         ANCHO_GRAL = 250
         ALTO_GRAL = 21 * EDIFICIODataSet.TURNOS.Rows.Count + 28
         BORRAR()
@@ -71,17 +79,18 @@ Public Class AGENDA
             DIA_AGENDA = FECHA_INI.AddDays(DIA)
 
             LBL_DIA(DIA) = New Label
-                LBL_DIA(DIA).AutoSize = True
-                LBL_DIA(DIA).Text = DIA_AGENDA.ToString("dddd").ToUpper
-                LBL_FECHA(DIA) = New Label
-                LBL_FECHA(DIA).Text = DIA_AGENDA.ToShortDateString
-                LBL_DIA(DIA).Location = New Point(POSX_DIA, 25)
-                LBL_FECHA(DIA).Location = New Point(POSX_DIA + LBL_DIA(DIA).Width - 20, 25)
-                Controls.Add(LBL_FECHA(DIA))
-                Controls.Add(LBL_DIA(DIA))
+            LBL_DIA(DIA).AutoSize = True
+            LBL_DIA(DIA).Text = DIA_AGENDA.ToString("dddd").ToUpper
+            LBL_FECHA(DIA) = New Label
+            LBL_FECHA(DIA).Text = DIA_AGENDA.ToShortDateString
+            LBL_DIA(DIA).Location = New Point(POSX_DIA, 25)
+            LBL_FECHA(DIA).Location = New Point(POSX_DIA + LBL_DIA(DIA).Width - 20, 25)
+            Controls.Add(LBL_FECHA(DIA))
+            Controls.Add(LBL_DIA(DIA))
 
-                POSX_DIA += ANCHO_GRAL + 5
+            POSX_DIA += ANCHO_GRAL + 5
             POSY = 48
+
             TECNICOSTableAdapter.FillByDISPONIBILIDAD_DIA(EDIFICIODataSet.TECNICOS, DIA_AGENDA.ToString("dddd").ToUpper) ' HAY QUE VER SI TODOS LOS TECNICOS 
             If EDIFICIODataSet.TECNICOS.Rows.Count > 0 Then
                 For TEC = 0 To EDIFICIODataSet.TECNICOS.Rows.Count - 1
@@ -106,16 +115,17 @@ Public Class AGENDA
                                 POS_ACT_Y += 11
                             End If
                             TURNO += 1
-                            POS_ACT_Y += 22
+                            POS_ACT_Y += 21
                             BTN_ACTIVIDAD(TURNO & TEC) = New Button
-                            BTN_ACTIVIDAD(TURNO & TEC).BackColor = Color.Green
+                            BTN_ACTIVIDAD(TURNO & TEC).BackgroundImage = My.Resources.INGRESADO_BANNER
+                            BTN_ACTIVIDAD(TURNO & TEC).BackgroundImageLayout = ImageLayout.Stretch
                             BTN_ACTIVIDAD(TURNO & TEC).Text = TURNOS.HORARIO & " - " & TURNOS.TIEMPO
                             If TURNOS.HORARIO = "EXTRA" Then
                                 BTN_ACTIVIDAD(TURNO & TEC).Text = "CAPACIDAD EXTRA - FUERA AGENDA"
-                                BTN_ACTIVIDAD(TURNO & TEC).BackColor = Color.Gray
+                                ' BTN_ACTIVIDAD(TURNO & TEC).BackColor = Color.Gray
                             End If
                             BTN_ACTIVIDAD(TURNO & TEC).Name = DIA_AGENDA & "-" & TURNOS.ID_TURNO & "-" & TECNICORow.ID_TECNICO
-                            BTN_ACTIVIDAD(TURNO & TEC).Size = New Size(ANCHO_GRAL - 4, 21)
+                            BTN_ACTIVIDAD(TURNO & TEC).Size = New Size(ANCHO_GRAL - 4, 23)
                             BTN_ACTIVIDAD(TURNO & TEC).ForeColor = Color.White
                             BTN_ACTIVIDAD(TURNO & TEC).Location = New Point(2, POS_ACT_Y)
                             BTN_ACTIVIDAD(TURNO & TEC).FlatStyle = FlatStyle.Flat
@@ -126,7 +136,8 @@ Public Class AGENDA
                                     If TURNOS.ID_TURNO = AGENDARow.ID_TURNO Then
                                         MDUTableAdapter.FillByID(EDIFICIODataSet.MDU, AGENDARow.ID_EDIFICIO)
                                         MDURow = EDIFICIODataSet.MDU.Rows(0)
-                                        BTN_ACTIVIDAD(TURNO & TEC).BackColor = Color.Red
+                                        BTN_ACTIVIDAD(TURNO & TEC).BackgroundImage = My.Resources.DEMORADO_BANNER
+                                        BTN_ACTIVIDAD(TURNO & TEC).BackgroundImageLayout = ImageLayout.Stretch
                                         BTN_ACTIVIDAD(TURNO & TEC).Text = Mid(TURNOS.HORARIO, 1, 3) & " || " & MDURow.NODO & " " & MDURow.ZONA & " - " & MDURow.CALLE & " " & MDURow.PUERTA
                                         BTN_ACTIVIDAD(TURNO & TEC).Name += "-" & AGENDARow.ID_EDIFICIO
                                     End If
@@ -292,12 +303,12 @@ Public Class AGENDA
     Public Sub EDITAR_EDIFICIO(ByVal CODIGO_STATUS As Integer)
         MDURow.ID_STATUS = CODIGO_STATUS
         MDURow.MODIFICADO = Today.ToShortDateString
-        MDUTableAdapter.Update(MDURow)
+        'MDUTableAdapter.Update(MDURow)
         NOTIFICACION("SYS", "EDIFICIO MODIFICADO")
         '  CARGAR_DATOS(DIA_INI)
         P_MENU.Visible = False
     End Sub
-    
+
     Private Sub BTN_CERRAR_Click(sender As Object, e As EventArgs) Handles BTN_CERRAR.Click
 
         If DETALLE_MDU.Visible Then DETALLE_MDU.DETALLE_MDU_Load(Nothing, Nothing)

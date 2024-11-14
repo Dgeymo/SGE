@@ -23,18 +23,20 @@ Partial Class DETALLE_MDU
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TXT_NOMBRE = New System.Windows.Forms.TextBox()
         Me.BITACORABindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EDIFICIODataSet = New REDES.EDIFICIODataSet()
         Me.CB_STATUS = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.BTN_ELIMINAR_CTTO = New System.Windows.Forms.Button()
+        Me.LBL_CANTIDAD_AGENDAMIENTOS = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TXT_APTO = New System.Windows.Forms.TextBox()
         Me.LBL_FECHA_AGENDA = New System.Windows.Forms.Label()
@@ -58,6 +60,8 @@ Partial Class DETALLE_MDU
         Me.OBSERVACIONESDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FECHAINGDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.L_FTTB = New System.Windows.Forms.ListBox()
+        Me.BTN_CONFORME_OBRA = New System.Windows.Forms.Button()
         Me.BTN_ACTUALIZAR_sTATUS = New System.Windows.Forms.Button()
         Me.BTN_IMPRIMIR_ORDTEC = New System.Windows.Forms.Button()
         Me.TXT_CANT_4 = New System.Windows.Forms.TextBox()
@@ -97,21 +101,21 @@ Partial Class DETALLE_MDU
         Me.ACOMETIDA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MDUBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EdificioDataSetBACKUP = New REDES.EDIFICIODataSet()
+        Me.MDUBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.FTTBTableAdapter = New REDES.EDIFICIODataSetTableAdapters.FTTBTableAdapter()
         Me.BITACORATableAdapter = New REDES.EDIFICIODataSetTableAdapters.BITACORATableAdapter()
-        Me.MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.MDUTableAdapter()
         Me.STATUSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.STATUSTableAdapter()
         Me.TableAdapterManager = New REDES.EDIFICIODataSetTableAdapters.TableAdapterManager()
-        Me.STATUSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EdificioDataSetACTUALIZAR = New REDES.EDIFICIODataSet()
-        Me.AGENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AGENDATableAdapter = New REDES.EDIFICIODataSetTableAdapters.AGENDATableAdapter()
-        Me.TECNICOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TECNICOSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.TECNICOSTableAdapter()
-        Me.TURNOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TURNOSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.TURNOSTableAdapter()
-        Me.LBL_CANTIDAD_AGENDAMIENTOS = New System.Windows.Forms.Label()
-        Me.BTN_ELIMINAR_CTTO = New System.Windows.Forms.Button()
+        Me.STATUSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AGENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TECNICOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TURNOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.STATUSBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.MDUTableAdapter()
         CType(Me.BITACORABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -122,11 +126,13 @@ Partial Class DETALLE_MDU
         CType(Me.MDUDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EdificioDataSetBACKUP, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MDUBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EdificioDataSetACTUALIZAR, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TECNICOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TURNOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.STATUSBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TXT_NOMBRE
@@ -185,12 +191,30 @@ Partial Class DETALLE_MDU
         Me.GroupBox1.Controls.Add(Me.TXT_NOMBRE)
         Me.GroupBox1.Controls.Add(Me.BITACORADataGridView)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 358)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 326)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(672, 328)
+        Me.GroupBox1.Size = New System.Drawing.Size(760, 339)
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "CONTROL"
+        '
+        'BTN_ELIMINAR_CTTO
+        '
+        Me.BTN_ELIMINAR_CTTO.Location = New System.Drawing.Point(591, 46)
+        Me.BTN_ELIMINAR_CTTO.Name = "BTN_ELIMINAR_CTTO"
+        Me.BTN_ELIMINAR_CTTO.Size = New System.Drawing.Size(75, 24)
+        Me.BTN_ELIMINAR_CTTO.TabIndex = 18
+        Me.BTN_ELIMINAR_CTTO.Text = "ELIMINAR"
+        Me.BTN_ELIMINAR_CTTO.UseVisualStyleBackColor = True
+        '
+        'LBL_CANTIDAD_AGENDAMIENTOS
+        '
+        Me.LBL_CANTIDAD_AGENDAMIENTOS.AutoSize = True
+        Me.LBL_CANTIDAD_AGENDAMIENTOS.Location = New System.Drawing.Point(329, 33)
+        Me.LBL_CANTIDAD_AGENDAMIENTOS.Name = "LBL_CANTIDAD_AGENDAMIENTOS"
+        Me.LBL_CANTIDAD_AGENDAMIENTOS.Size = New System.Drawing.Size(59, 13)
+        Me.LBL_CANTIDAD_AGENDAMIENTOS.TabIndex = 17
+        Me.LBL_CANTIDAD_AGENDAMIENTOS.Text = "Agendado:"
         '
         'Label2
         '
@@ -238,10 +262,10 @@ Partial Class DETALLE_MDU
         Me.BTN_AGENDAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_AGENDAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTN_AGENDAR.ForeColor = System.Drawing.Color.White
-        Me.BTN_AGENDAR.Location = New System.Drawing.Point(3, 75)
+        Me.BTN_AGENDAR.Location = New System.Drawing.Point(3, 86)
         Me.BTN_AGENDAR.Margin = New System.Windows.Forms.Padding(2)
         Me.BTN_AGENDAR.Name = "BTN_AGENDAR"
-        Me.BTN_AGENDAR.Size = New System.Drawing.Size(666, 36)
+        Me.BTN_AGENDAR.Size = New System.Drawing.Size(754, 36)
         Me.BTN_AGENDAR.TabIndex = 12
         Me.BTN_AGENDAR.Text = "AGENDAR EDIFICIO"
         Me.BTN_AGENDAR.UseVisualStyleBackColor = False
@@ -260,10 +284,10 @@ Partial Class DETALLE_MDU
         Me.TXT_OBS.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TXT_OBS.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BITACORABindingSource, "OBSERVACIONES", True))
         Me.TXT_OBS.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.TXT_OBS.Location = New System.Drawing.Point(3, 111)
+        Me.TXT_OBS.Location = New System.Drawing.Point(3, 122)
         Me.TXT_OBS.Multiline = True
         Me.TXT_OBS.Name = "TXT_OBS"
-        Me.TXT_OBS.Size = New System.Drawing.Size(666, 116)
+        Me.TXT_OBS.Size = New System.Drawing.Size(754, 116)
         Me.TXT_OBS.TabIndex = 3
         '
         'BTN_GUARDAR
@@ -330,14 +354,14 @@ Partial Class DETALLE_MDU
         Me.BITACORADataGridView.BackgroundColor = System.Drawing.Color.White
         Me.BITACORADataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.BITACORADataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.Navy
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Navy
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.BITACORADataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Navy
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Navy
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.BITACORADataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.BITACORADataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.BITACORADataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.VALIDO, Me.IDBITACORADataGridViewTextBoxColumn, Me.IDEDIFICIODataGridViewTextBoxColumn1, Me.NOMBRECTTODataGridViewTextBoxColumn, Me.TELEFONOCTTODataGridViewTextBoxColumn, Me.EMAILCTTODataGridViewTextBoxColumn, Me.OBSERVACIONESDataGridViewTextBoxColumn, Me.FECHAINGDataGridViewTextBoxColumn})
         Me.BITACORADataGridView.Cursor = System.Windows.Forms.Cursors.Default
@@ -345,7 +369,7 @@ Partial Class DETALLE_MDU
         Me.BITACORADataGridView.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.BITACORADataGridView.EnableHeadersVisualStyles = False
         Me.BITACORADataGridView.GridColor = System.Drawing.Color.LightGray
-        Me.BITACORADataGridView.Location = New System.Drawing.Point(3, 227)
+        Me.BITACORADataGridView.Location = New System.Drawing.Point(3, 238)
         Me.BITACORADataGridView.Name = "BITACORADataGridView"
         Me.BITACORADataGridView.RowHeadersVisible = False
         Me.BITACORADataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -353,7 +377,7 @@ Partial Class DETALLE_MDU
         Me.BITACORADataGridView.ShowCellToolTips = False
         Me.BITACORADataGridView.ShowEditingIcon = False
         Me.BITACORADataGridView.ShowRowErrors = False
-        Me.BITACORADataGridView.Size = New System.Drawing.Size(666, 98)
+        Me.BITACORADataGridView.Size = New System.Drawing.Size(754, 98)
         Me.BITACORADataGridView.TabIndex = 2
         '
         'VALIDO
@@ -388,8 +412,8 @@ Partial Class DETALLE_MDU
         '
         Me.TELEFONOCTTODataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.TELEFONOCTTODataGridViewTextBoxColumn.DataPropertyName = "TELEFONO_CTTO"
-        DataGridViewCellStyle8.NullValue = Nothing
-        Me.TELEFONOCTTODataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.TELEFONOCTTODataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.TELEFONOCTTODataGridViewTextBoxColumn.HeaderText = "TELEFONO CTTO"
         Me.TELEFONOCTTODataGridViewTextBoxColumn.Name = "TELEFONOCTTODataGridViewTextBoxColumn"
         '
@@ -410,13 +434,15 @@ Partial Class DETALLE_MDU
         'FECHAINGDataGridViewTextBoxColumn
         '
         Me.FECHAINGDataGridViewTextBoxColumn.DataPropertyName = "FECHA_ING"
-        DataGridViewCellStyle9.Format = "d"
-        Me.FECHAINGDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Format = "d"
+        Me.FECHAINGDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
         Me.FECHAINGDataGridViewTextBoxColumn.HeaderText = "FECHA CTTO"
         Me.FECHAINGDataGridViewTextBoxColumn.Name = "FECHAINGDataGridViewTextBoxColumn"
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.L_FTTB)
+        Me.GroupBox2.Controls.Add(Me.BTN_CONFORME_OBRA)
         Me.GroupBox2.Controls.Add(Me.BTN_ACTUALIZAR_sTATUS)
         Me.GroupBox2.Controls.Add(Me.BTN_IMPRIMIR_ORDTEC)
         Me.GroupBox2.Controls.Add(Me.TXT_CANT_4)
@@ -430,12 +456,32 @@ Partial Class DETALLE_MDU
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.CB_STATUS)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 105)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 72)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(672, 253)
+        Me.GroupBox2.Size = New System.Drawing.Size(760, 254)
         Me.GroupBox2.TabIndex = 8
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "TECNICA"
+        '
+        'L_FTTB
+        '
+        Me.L_FTTB.Dock = System.Windows.Forms.DockStyle.Top
+        Me.L_FTTB.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_FTTB.FormattingEnabled = True
+        Me.L_FTTB.ItemHeight = 16
+        Me.L_FTTB.Location = New System.Drawing.Point(3, 16)
+        Me.L_FTTB.Name = "L_FTTB"
+        Me.L_FTTB.Size = New System.Drawing.Size(754, 116)
+        Me.L_FTTB.TabIndex = 17
+        '
+        'BTN_CONFORME_OBRA
+        '
+        Me.BTN_CONFORME_OBRA.Location = New System.Drawing.Point(672, 153)
+        Me.BTN_CONFORME_OBRA.Name = "BTN_CONFORME_OBRA"
+        Me.BTN_CONFORME_OBRA.Size = New System.Drawing.Size(81, 57)
+        Me.BTN_CONFORME_OBRA.TabIndex = 16
+        Me.BTN_CONFORME_OBRA.Text = "CONFORME A OBRA"
+        Me.BTN_CONFORME_OBRA.UseVisualStyleBackColor = True
         '
         'BTN_ACTUALIZAR_sTATUS
         '
@@ -448,6 +494,7 @@ Partial Class DETALLE_MDU
         '
         'BTN_IMPRIMIR_ORDTEC
         '
+        Me.BTN_IMPRIMIR_ORDTEC.Enabled = False
         Me.BTN_IMPRIMIR_ORDTEC.Location = New System.Drawing.Point(552, 153)
         Me.BTN_IMPRIMIR_ORDTEC.Name = "BTN_IMPRIMIR_ORDTEC"
         Me.BTN_IMPRIMIR_ORDTEC.Size = New System.Drawing.Size(114, 57)
@@ -529,24 +576,23 @@ Partial Class DETALLE_MDU
         Me.FTTBDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.FTTBDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDFTTBDataGridViewTextBoxColumn, Me.IDEDIFICIODataGridViewTextBoxColumn, Me.CONEXIONDESDEDataGridViewTextBoxColumn, Me.TIPOCONEXIONDESDEDataGridViewTextBoxColumn, Me.CABLEDataGridViewTextBoxColumn, Me.NAPDataGridViewTextBoxColumn, Me.NAPNRODataGridViewTextBoxColumn, Me.TUBODataGridViewTextBoxColumn, Me.PELODataGridViewTextBoxColumn, Me.SPLNRODataGridViewTextBoxColumn, Me.OBSTECDataGridViewTextBoxColumn, Me.ACOMETIDADataGridViewTextBoxColumn})
         Me.FTTBDataGridView.DataSource = Me.FTTBBindingSource
-        Me.FTTBDataGridView.Dock = System.Windows.Forms.DockStyle.Top
-        Me.FTTBDataGridView.Location = New System.Drawing.Point(3, 16)
+        Me.FTTBDataGridView.Location = New System.Drawing.Point(627, 29)
         Me.FTTBDataGridView.MultiSelect = False
         Me.FTTBDataGridView.Name = "FTTBDataGridView"
         Me.FTTBDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.FTTBDataGridView.RowHeadersVisible = False
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Green
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White
-        Me.FTTBDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Green
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White
+        Me.FTTBDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.FTTBDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.FTTBDataGridView.ShowCellErrors = False
         Me.FTTBDataGridView.ShowCellToolTips = False
         Me.FTTBDataGridView.ShowEditingIcon = False
         Me.FTTBDataGridView.ShowRowErrors = False
-        Me.FTTBDataGridView.Size = New System.Drawing.Size(666, 131)
+        Me.FTTBDataGridView.Size = New System.Drawing.Size(842, 79)
         Me.FTTBDataGridView.TabIndex = 10
         '
         'IDFTTBDataGridViewTextBoxColumn
@@ -660,25 +706,25 @@ Partial Class DETALLE_MDU
         Me.MDUDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.MDUDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19, Me.DataGridViewTextBoxColumn20, Me.DataGridViewTextBoxColumn21, Me.DataGridViewTextBoxColumn23, Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn25, Me.DataGridViewTextBoxColumn26, Me.DataGridViewTextBoxColumn27, Me.DataGridViewTextBoxColumn28, Me.DataGridViewTextBoxColumn22, Me.ACOMETIDA})
         Me.MDUDataGridView.DataSource = Me.MDUBindingSource
-        Me.MDUDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.MDUDataGridView.Dock = System.Windows.Forms.DockStyle.Fill
         Me.MDUDataGridView.GridColor = System.Drawing.Color.White
-        Me.MDUDataGridView.Location = New System.Drawing.Point(0, -5)
+        Me.MDUDataGridView.Location = New System.Drawing.Point(0, 0)
         Me.MDUDataGridView.MultiSelect = False
         Me.MDUDataGridView.Name = "MDUDataGridView"
         Me.MDUDataGridView.ReadOnly = True
         Me.MDUDataGridView.RowHeadersVisible = False
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White
-        Me.MDUDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
+        Me.MDUDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.MDUDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.MDUDataGridView.ShowCellErrors = False
         Me.MDUDataGridView.ShowCellToolTips = False
         Me.MDUDataGridView.ShowEditingIcon = False
         Me.MDUDataGridView.ShowRowErrors = False
-        Me.MDUDataGridView.Size = New System.Drawing.Size(672, 110)
+        Me.MDUDataGridView.Size = New System.Drawing.Size(760, 72)
         Me.MDUDataGridView.TabIndex = 9
         '
         'DataGridViewTextBoxColumn8
@@ -748,8 +794,8 @@ Partial Class DETALLE_MDU
         'DataGridViewTextBoxColumn26
         '
         Me.DataGridViewTextBoxColumn26.DataPropertyName = "MODIFICADO"
-        DataGridViewCellStyle11.Format = "d"
-        Me.DataGridViewTextBoxColumn26.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle5.Format = "d"
+        Me.DataGridViewTextBoxColumn26.DefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridViewTextBoxColumn26.HeaderText = "MODIFICADO"
         Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
         Me.DataGridViewTextBoxColumn26.ReadOnly = True
@@ -797,6 +843,11 @@ Partial Class DETALLE_MDU
         Me.EdificioDataSetBACKUP.DataSetName = "EDIFICIODataSet"
         Me.EdificioDataSetBACKUP.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'MDUBindingSource1
+        '
+        Me.MDUBindingSource1.DataMember = "MDU"
+        Me.MDUBindingSource1.DataSource = Me.EDIFICIODataSet
+        '
         'FTTBTableAdapter
         '
         Me.FTTBTableAdapter.ClearBeforeFill = True
@@ -804,10 +855,6 @@ Partial Class DETALLE_MDU
         'BITACORATableAdapter
         '
         Me.BITACORATableAdapter.ClearBeforeFill = True
-        '
-        'MDUTableAdapter
-        '
-        Me.MDUTableAdapter.ClearBeforeFill = True
         '
         'STATUSTableAdapter
         '
@@ -819,6 +866,8 @@ Partial Class DETALLE_MDU
         Me.TableAdapterManager.AVANCETableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BITACORATableAdapter = Nothing
+        Me.TableAdapterManager.CALLESTableAdapter = Nothing
+        Me.TableAdapterManager.CERTIFICACIONESTableAdapter = Nothing
         Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.FTTBTableAdapter = Nothing
         Me.TableAdapterManager.MDUTableAdapter = Nothing
@@ -827,60 +876,51 @@ Partial Class DETALLE_MDU
         Me.TableAdapterManager.TURNOSTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'STATUSBindingSource
-        '
-        Me.STATUSBindingSource.DataMember = "STATUS"
-        Me.STATUSBindingSource.DataSource = Me.EDIFICIODataSet
-        '
         'EdificioDataSetACTUALIZAR
         '
         Me.EdificioDataSetACTUALIZAR.DataSetName = "EDIFICIODataSet"
         Me.EdificioDataSetACTUALIZAR.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'AGENDATableAdapter
+        '
+        Me.AGENDATableAdapter.ClearBeforeFill = True
+        '
+        'TECNICOSTableAdapter
+        '
+        Me.TECNICOSTableAdapter.ClearBeforeFill = True
+        '
+        'TURNOSTableAdapter
+        '
+        Me.TURNOSTableAdapter.ClearBeforeFill = True
+        '
+        'STATUSBindingSource
+        '
+        Me.STATUSBindingSource.DataMember = "STATUS"
+        Me.STATUSBindingSource.DataSource = Me.EDIFICIODataSet
         '
         'AGENDABindingSource
         '
         Me.AGENDABindingSource.DataMember = "AGENDA"
         Me.AGENDABindingSource.DataSource = Me.EDIFICIODataSet
         '
-        'AGENDATableAdapter
-        '
-        Me.AGENDATableAdapter.ClearBeforeFill = True
-        '
         'TECNICOSBindingSource
         '
         Me.TECNICOSBindingSource.DataMember = "TECNICOS"
         Me.TECNICOSBindingSource.DataSource = Me.EDIFICIODataSet
-        '
-        'TECNICOSTableAdapter
-        '
-        Me.TECNICOSTableAdapter.ClearBeforeFill = True
         '
         'TURNOSBindingSource
         '
         Me.TURNOSBindingSource.DataMember = "TURNOS"
         Me.TURNOSBindingSource.DataSource = Me.EDIFICIODataSet
         '
-        'TURNOSTableAdapter
+        'STATUSBindingSource1
         '
-        Me.TURNOSTableAdapter.ClearBeforeFill = True
+        Me.STATUSBindingSource1.DataMember = "STATUS"
+        Me.STATUSBindingSource1.DataSource = Me.EdificioDataSetACTUALIZAR
         '
-        'LBL_CANTIDAD_AGENDAMIENTOS
+        'MDUTableAdapter
         '
-        Me.LBL_CANTIDAD_AGENDAMIENTOS.AutoSize = True
-        Me.LBL_CANTIDAD_AGENDAMIENTOS.Location = New System.Drawing.Point(329, 33)
-        Me.LBL_CANTIDAD_AGENDAMIENTOS.Name = "LBL_CANTIDAD_AGENDAMIENTOS"
-        Me.LBL_CANTIDAD_AGENDAMIENTOS.Size = New System.Drawing.Size(59, 13)
-        Me.LBL_CANTIDAD_AGENDAMIENTOS.TabIndex = 17
-        Me.LBL_CANTIDAD_AGENDAMIENTOS.Text = "Agendado:"
-        '
-        'BTN_ELIMINAR_CTTO
-        '
-        Me.BTN_ELIMINAR_CTTO.Location = New System.Drawing.Point(591, 46)
-        Me.BTN_ELIMINAR_CTTO.Name = "BTN_ELIMINAR_CTTO"
-        Me.BTN_ELIMINAR_CTTO.Size = New System.Drawing.Size(75, 24)
-        Me.BTN_ELIMINAR_CTTO.TabIndex = 18
-        Me.BTN_ELIMINAR_CTTO.Text = "ELIMINAR"
-        Me.BTN_ELIMINAR_CTTO.UseVisualStyleBackColor = True
+        Me.MDUTableAdapter.ClearBeforeFill = True
         '
         'DETALLE_MDU
         '
@@ -889,7 +929,7 @@ Partial Class DETALLE_MDU
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(672, 686)
+        Me.ClientSize = New System.Drawing.Size(760, 665)
         Me.Controls.Add(Me.MDUDataGridView)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -911,11 +951,13 @@ Partial Class DETALLE_MDU
         CType(Me.MDUDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EdificioDataSetBACKUP, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MDUBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EdificioDataSetACTUALIZAR, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TECNICOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TURNOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.STATUSBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -965,7 +1007,6 @@ Partial Class DETALLE_MDU
     Friend WithEvents TableAdapterManager As EDIFICIODataSetTableAdapters.TableAdapterManager
     Friend WithEvents BITACORATableAdapter As EDIFICIODataSetTableAdapters.BITACORATableAdapter
     Friend WithEvents BITACORABindingSource As BindingSource
-    Friend WithEvents MDUTableAdapter As EDIFICIODataSetTableAdapters.MDUTableAdapter
     Friend WithEvents MDUBindingSource As BindingSource
     Friend WithEvents MDUDataGridView As DataGridView
     Friend WithEvents STATUSBindingSource As BindingSource
@@ -1019,4 +1060,9 @@ Partial Class DETALLE_MDU
     Friend WithEvents FECHAINGDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents LBL_CANTIDAD_AGENDAMIENTOS As Label
     Friend WithEvents BTN_ELIMINAR_CTTO As Button
+    Friend WithEvents MDUBindingSource1 As BindingSource
+    Friend WithEvents STATUSBindingSource1 As BindingSource
+    Friend WithEvents BTN_CONFORME_OBRA As Button
+    Friend WithEvents MDUTableAdapter As EDIFICIODataSetTableAdapters.MDUTableAdapter
+    Friend WithEvents L_FTTB As ListBox
 End Class

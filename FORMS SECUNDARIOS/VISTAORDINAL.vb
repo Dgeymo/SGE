@@ -100,6 +100,7 @@
         PROCESOS.Text = "BUSCANDO GESTION Y TRABAJO"
         PROCESOS.Refresh()
 
+
         'CARGA LOS DATOS DE GESTION Y TRABAJO DE LA ORDEN SELECCIONADA EN EL FORM ANTERIOR
         Me.GESTIONTableAdapter.FillByIDGESTION(ORDENESDataSet.GESTION, ORDENRow("ID_GESTION"))
         Me.TRABAJOSTableAdapter.FillByID_TRABAJO(ORDENESDataSet.TRABAJOS, ORDENRow("Id_TRABAJO"))
@@ -108,14 +109,14 @@
 
 
         'CARGA LOS FUNCIONARIOS DEL SECTOR OPERATIVO QUE FIGURA EN LA ORDEN
-        FUNCIONARIOSTableAdapter.FillBySECTOR(ORDENESDataSet.FUNCIONARIOS, DATOS.ORDSECTOROPE)
+        FUNCIONARIOSTableAdapter.FillBySECTOR(ORDENESDataSet.FUNCIONARIOS, ORDENRow.SECTOROPE)
         SECTORESTableAdapter.FillByORDENADO(ORDENESDataSet.SECTORES)
         For I = 0 To ORDENESDataSet.SECTORES.Rows.Count - 1
             SECTORRow = ORDENESDataSet.SECTORES.Rows(I)
 
         Next I
 
-        SECTORFALLATableAdapter.FillBySECTORCIERRE(ORDENESDataSet.SECTORFALLA, DATOS.ORDSECTOROPE)
+        SECTORFALLATableAdapter.FillBySECTORCIERRE(ORDENESDataSet.SECTORFALLA, ORDENRow.SECTOROPE)
         If ORDENESDataSet.SECTORFALLA.Rows.Count > 0 Then
             For I = 0 To ORDENESDataSet.SECTORFALLA.Rows.Count - 1
                 FALLARow = ORDENESDataSet.SECTORFALLA.Rows(I)
@@ -136,13 +137,13 @@
 
         'FIJA LAS INICIALIZACIONES DE ACUERDO AL STATUS DE LA ORDEN A VISUALIZAR
 
-        COMB_STATUS.Items.Clear()
-        COMB_FALLACIERRE.Items.Clear()
-        COMB_CAUSACIERRE.Items.Clear()
+        'COMB_STATUS.Items.Clear()
+        'COMB_FALLACIERRE.Items.Clear()
+        'COMB_CAUSACIERRE.Items.Clear()
 
-        COMB_STATUS.Refresh()
-        COMB_FALLACIERRE.Refresh()
-        COMB_CAUSACIERRE.Refresh()
+        'COMB_STATUS.Refresh()
+        'COMB_FALLACIERRE.Refresh()
+        'COMB_CAUSACIERRE.Refresh()
 
         Select Case Trim(ORDENRow("STATUS"))
             Case "FINALIZADO", "CANCELADO"
@@ -363,12 +364,12 @@
     'End Sub
     Private Sub COMB_STATUS_SelectedIndexChanged(sender As Object, e As EventArgs) Handles COMB_STATUS.SelectedIndexChanged
         If COMB_STATUS.Text = "FINALIZADO" Then
+            'SECTORFALLATableAdapter.FillBySECTORCIERRE(ORDENESDataSet.SECTORFALLA, ORDENRow.SECTOROPE)
             If ORDENESDataSet.SECTORFALLA.Rows.Count > 0 Then
                 COMB_FALLACIERRE.Items.Clear()
-                For I = 0 To ORDENESDataSet.SECTORFALLA.Rows.Count - 1
-                    FALLARow = ORDENESDataSet.SECTORFALLA.Rows(I)
-                    COMB_FALLACIERRE.Items.Add(FALLARow("FALLA"))
-                Next I
+                For Each SECTFALLA In ORDENESDataSet.SECTORFALLA
+                    COMB_FALLACIERRE.Items.Add(SECTFALLA.FALLA)
+                Next
             End If
         End If
     End Sub
@@ -490,7 +491,7 @@
             Cursor = Cursors.Default
             Exit Sub
         End If
-        If ORDENRow.SECTORGEN = "OC" And COMB_STATUS.Text = "FINALIZADO" Then
+        If ORDENRow.SECTORGEN = "OC" And COMB_STATUS.Text = "FINALIZADO" And ORDENRow.CUADRILLA = "ZELMAR LAGOS" Then
             If ORDENRow.OC_APROBADO = False Then
                 MsgBox("La orden debe estar APROBADA por OBRA CIVIL para finalizar" & vbNewLine & vbNewLine & "Presente la documentacion a OBRA CIVIL, para que sea aprobada", MsgBoxStyle.Critical, "ATENCION!")
                 Cursor = Cursors.Default

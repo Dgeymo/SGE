@@ -52,9 +52,13 @@ Module EXPORTAR_EXCEL
                     'If IsDate(DtReport.Rows(Ix).Item(Jx)) Then
                     '    objHojaExcel.Cells(i, RetornaLetra(Jx + 1)) = Format(CDate(DtReport.Rows(Ix).Item(Jx)), "MM/dd/yyyy")
                     'Else
-                    If IsDBNull(DtReport.Rows(Ix).Item(Jx)) = False AndAlso DtReport.Rows(Ix).Item(Jx) = "SIN AGENDAMIENTO" Then
-                        objHojaExcel.Cells(i, RetornaLetra(Jx + 1)).Font.Color = Color.Green
-                    End If
+                    Try
+                        If IsDBNull(DtReport.Rows(Ix).Item(Jx)) = False AndAlso DtReport.Rows(Ix).Item(Jx) = "SIN AGENDAMIENTO" Then
+                            objHojaExcel.Cells(i, RetornaLetra(Jx + 1)).Font.Color = Color.Green
+                        End If
+                    Catch ex As Exception
+
+                    End Try
                     objHojaExcel.Cells(i, RetornaLetra(Jx + 1)) = DtReport.Rows(Ix).Item(Jx).ToString
                     '  End If
 

@@ -25,6 +25,9 @@ Partial Class DASHBOARD
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DASHBOARD))
         Me.PanelTrabajo = New System.Windows.Forms.Panel()
+        Me.DGVRESULT = New System.Windows.Forms.DataGridView()
+        Me.BTN_MODIFICA = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.lblcuentas = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BTN_PASAR = New System.Windows.Forms.Button()
@@ -47,16 +50,6 @@ Partial Class DASHBOARD
         Me.BTN_MDU = New System.Windows.Forms.Button()
         Me.BTN_Directorio = New System.Windows.Forms.Button()
         Me.RELOJ = New System.Windows.Forms.Timer(Me.components)
-        Me.ORDENESDataSet = New REDES.ORDENESDataSet()
-        Me.MENSAJERIATableAdapter = New REDES.ORDENESDataSetTableAdapters.MENSAJERIATableAdapter()
-        Me.TRABAJOSTableAdapter = New REDES.ORDENESDataSetTableAdapters.TRABAJOSTableAdapter()
-        Me.ORDENESTableAdapter = New REDES.ORDENESDataSetTableAdapters.ORDENESTableAdapter()
-        Me.GESTIONTableAdapter = New REDES.ORDENESDataSetTableAdapters.GESTIONTableAdapter()
-        Me.MENSAJERIABindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TableAdapterManager1 = New REDES.ORDENESDataSetTableAdapters.TableAdapterManager()
-        Me.TRABAJOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ORDENESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GESTIONBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FolderBrowserDialogINGRESO = New System.Windows.Forms.FolderBrowserDialog()
         Me.OpenFileDialogINGRESO = New System.Windows.Forms.OpenFileDialog()
         Me.PanelSuperior = New System.Windows.Forms.Panel()
@@ -99,21 +92,26 @@ Partial Class DASHBOARD
         Me.RELOJ_SEG = New System.Windows.Forms.Timer(Me.components)
         Me.USUARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EDIFICIODataSet = New REDES.EDIFICIODataSet()
-        Me.FTTBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.FTTBTableAdapter = New REDES.EDIFICIODataSetTableAdapters.FTTBTableAdapter()
+        Me.FTTBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableAdapterManager3 = New REDES.EDIFICIODataSetTableAdapters.TableAdapterManager()
-        Me.MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.MDUTableAdapter()
         Me.MDUBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.HISTORICOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ORDENESDataSet = New REDES.ORDENESDataSet()
+        Me.MENSAJERIATableAdapter = New REDES.ORDENESDataSetTableAdapters.MENSAJERIATableAdapter()
+        Me.TRABAJOSTableAdapter = New REDES.ORDENESDataSetTableAdapters.TRABAJOSTableAdapter()
+        Me.ORDENESTableAdapter = New REDES.ORDENESDataSetTableAdapters.ORDENESTableAdapter()
+        Me.GESTIONTableAdapter = New REDES.ORDENESDataSetTableAdapters.GESTIONTableAdapter()
+        Me.TableAdapterManager1 = New REDES.ORDENESDataSetTableAdapters.TableAdapterManager()
         Me.HISTORICOTableAdapter = New REDES.ORDENESDataSetTableAdapters.HISTORICOTableAdapter()
         Me.OrdenesDataSet1 = New REDES.ORDENESDataSet()
+        Me.MENSAJERIABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TRABAJOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ORDENESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GESTIONBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.HISTORICOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.PanelTrabajo.SuspendLayout()
+        CType(Me.DGVRESULT, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelInferior.SuspendLayout()
-        CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MENSAJERIABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TRABAJOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ORDENESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GESTIONBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelSUPInterior.SuspendLayout()
         CType(Me.PIC_CLIMA, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -124,14 +122,22 @@ Partial Class DASHBOARD
         CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.HISTORICOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OrdenesDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MENSAJERIABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TRABAJOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ORDENESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GESTIONBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.HISTORICOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelTrabajo
         '
         Me.PanelTrabajo.BackColor = System.Drawing.Color.Transparent
         Me.PanelTrabajo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.PanelTrabajo.Controls.Add(Me.DGVRESULT)
+        Me.PanelTrabajo.Controls.Add(Me.BTN_MODIFICA)
+        Me.PanelTrabajo.Controls.Add(Me.Label2)
         Me.PanelTrabajo.Controls.Add(Me.lblcuentas)
         Me.PanelTrabajo.Controls.Add(Me.Label1)
         Me.PanelTrabajo.Controls.Add(Me.BTN_PASAR)
@@ -143,11 +149,49 @@ Partial Class DASHBOARD
         Me.PanelTrabajo.Size = New System.Drawing.Size(1423, 694)
         Me.PanelTrabajo.TabIndex = 4
         '
+        'DGVRESULT
+        '
+        Me.DGVRESULT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGVRESULT.Location = New System.Drawing.Point(183, 223)
+        Me.DGVRESULT.Name = "DGVRESULT"
+        Me.DGVRESULT.Size = New System.Drawing.Size(740, 150)
+        Me.DGVRESULT.TabIndex = 20
+        Me.DGVRESULT.Visible = False
+        '
+        'BTN_MODIFICA
+        '
+        Me.BTN_MODIFICA.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.BTN_MODIFICA.BackColor = System.Drawing.Color.DarkRed
+        Me.BTN_MODIFICA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BTN_MODIFICA.FlatAppearance.BorderSize = 0
+        Me.BTN_MODIFICA.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.BTN_MODIFICA.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.BTN_MODIFICA.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_MODIFICA.ForeColor = System.Drawing.Color.White
+        Me.BTN_MODIFICA.Location = New System.Drawing.Point(647, 501)
+        Me.BTN_MODIFICA.Name = "BTN_MODIFICA"
+        Me.BTN_MODIFICA.Size = New System.Drawing.Size(118, 46)
+        Me.BTN_MODIFICA.TabIndex = 19
+        Me.BTN_MODIFICA.Text = "GEST"
+        Me.BTN_MODIFICA.UseVisualStyleBackColor = False
+        Me.BTN_MODIFICA.Visible = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.ForeColor = System.Drawing.Color.DarkGray
+        Me.Label2.Location = New System.Drawing.Point(519, 396)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(39, 13)
+        Me.Label2.TabIndex = 18
+        Me.Label2.Text = "Label2"
+        Me.Label2.Visible = False
+        '
         'lblcuentas
         '
         Me.lblcuentas.AutoSize = True
         Me.lblcuentas.ForeColor = System.Drawing.Color.DarkGray
-        Me.lblcuentas.Location = New System.Drawing.Point(520, 425)
+        Me.lblcuentas.Location = New System.Drawing.Point(519, 425)
         Me.lblcuentas.Name = "lblcuentas"
         Me.lblcuentas.Size = New System.Drawing.Size(39, 13)
         Me.lblcuentas.TabIndex = 17
@@ -163,9 +207,9 @@ Partial Class DASHBOARD
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(1297, 628)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(59, 13)
+        Me.Label1.Size = New System.Drawing.Size(65, 13)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "VER: 3.7.5"
+        Me.Label1.Text = "VER: 3.7.14"
         '
         'BTN_PASAR
         '
@@ -520,83 +564,6 @@ Partial Class DASHBOARD
         'RELOJ
         '
         Me.RELOJ.Interval = 60000
-        '
-        'ORDENESDataSet
-        '
-        Me.ORDENESDataSet.DataSetName = "ORDENESDataSet"
-        Me.ORDENESDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'MENSAJERIATableAdapter
-        '
-        Me.MENSAJERIATableAdapter.ClearBeforeFill = True
-        '
-        'TRABAJOSTableAdapter
-        '
-        Me.TRABAJOSTableAdapter.ClearBeforeFill = True
-        '
-        'ORDENESTableAdapter
-        '
-        Me.ORDENESTableAdapter.ClearBeforeFill = True
-        '
-        'GESTIONTableAdapter
-        '
-        Me.GESTIONTableAdapter.ClearBeforeFill = True
-        '
-        'MENSAJERIABindingSource
-        '
-        Me.MENSAJERIABindingSource.DataMember = "MENSAJERIA"
-        Me.MENSAJERIABindingSource.DataSource = Me.ORDENESDataSet
-        '
-        'TableAdapterManager1
-        '
-        Me.TableAdapterManager1.ACTIVIDADESSTDTableAdapter = Nothing
-        Me.TableAdapterManager1.ADJUNTOSTableAdapter = Nothing
-        Me.TableAdapterManager1.AFECTACIONTableAdapter = Nothing
-        Me.TableAdapterManager1.AREASTableAdapter = Nothing
-        Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager1.CAUSASTableAdapter = Nothing
-        Me.TableAdapterManager1.COMBOSTableAdapter = Nothing
-        Me.TableAdapterManager1.Connection = Nothing
-        Me.TableAdapterManager1.CREAR_ORDTableAdapter = Nothing
-        Me.TableAdapterManager1.FALLASTableAdapter = Nothing
-        Me.TableAdapterManager1.FUNCIONARIOSTableAdapter = Nothing
-        Me.TableAdapterManager1.GESTIONES_TIPOTableAdapter = Nothing
-        Me.TableAdapterManager1.GESTIONTableAdapter = Nothing
-        Me.TableAdapterManager1.GRAF_ORDINALESTableAdapter = Nothing
-        Me.TableAdapterManager1.GRAF_REDESTableAdapter = Nothing
-        Me.TableAdapterManager1.HISTORICOTableAdapter = Nothing
-        Me.TableAdapterManager1.INFORMMEMDU_PERMISORTableAdapter = Nothing
-        Me.TableAdapterManager1.MENSAJERIA_OLDTableAdapter = Nothing
-        Me.TableAdapterManager1.MENSAJERIATableAdapter = Nothing
-        Me.TableAdapterManager1.OBESERVACIONESTableAdapter = Nothing
-        Me.TableAdapterManager1.ORDENESTableAdapter = Nothing
-        Me.TableAdapterManager1.PRESUPUESTOTableAdapter = Nothing
-        Me.TableAdapterManager1.RELACION_FALLAACTIVIDADTableAdapter = Nothing
-        Me.TableAdapterManager1.REPORTEORDINALESTableAdapter = Nothing
-        Me.TableAdapterManager1.SECTORESTableAdapter = Nothing
-        Me.TableAdapterManager1.SECTORFALLATableAdapter = Nothing
-        Me.TableAdapterManager1.STANDARDTableAdapter = Nothing
-        Me.TableAdapterManager1.STATUSTableAdapter = Nothing
-        Me.TableAdapterManager1.TAREASSTDTableAdapter = Nothing
-        Me.TableAdapterManager1.TAREASTableAdapter = Nothing
-        Me.TableAdapterManager1.TIPOTableAdapter = Nothing
-        Me.TableAdapterManager1.TRABAJOSTableAdapter = Nothing
-        Me.TableAdapterManager1.UpdateOrder = REDES.ORDENESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'TRABAJOSBindingSource
-        '
-        Me.TRABAJOSBindingSource.DataMember = "TRABAJOS"
-        Me.TRABAJOSBindingSource.DataSource = Me.ORDENESDataSet
-        '
-        'ORDENESBindingSource
-        '
-        Me.ORDENESBindingSource.DataMember = "ORDENES"
-        Me.ORDENESBindingSource.DataSource = Me.ORDENESDataSet
-        '
-        'GESTIONBindingSource
-        '
-        Me.GESTIONBindingSource.DataMember = "GESTION"
-        Me.GESTIONBindingSource.DataSource = Me.ORDENESDataSet
         '
         'OpenFileDialogINGRESO
         '
@@ -1249,14 +1216,14 @@ Partial Class DASHBOARD
         Me.EDIFICIODataSet.DataSetName = "EDIFICIODataSet"
         Me.EDIFICIODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'FTTBTableAdapter
+        '
+        Me.FTTBTableAdapter.ClearBeforeFill = True
+        '
         'FTTBBindingSource
         '
         Me.FTTBBindingSource.DataMember = "FTTB"
         Me.FTTBBindingSource.DataSource = Me.EDIFICIODataSet
-        '
-        'FTTBTableAdapter
-        '
-        Me.FTTBTableAdapter.ClearBeforeFill = True
         '
         'TableAdapterManager3
         '
@@ -1264,26 +1231,78 @@ Partial Class DASHBOARD
         Me.TableAdapterManager3.AVANCETableAdapter = Nothing
         Me.TableAdapterManager3.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager3.BITACORATableAdapter = Nothing
-        Me.TableAdapterManager3.FTTBTableAdapter = Me.FTTBTableAdapter
-        Me.TableAdapterManager3.MDUTableAdapter = Me.MDUTableAdapter
+        Me.TableAdapterManager3.CALLESTableAdapter = Nothing
+        Me.TableAdapterManager3.CERTIFICACIONESTableAdapter = Nothing
+        Me.TableAdapterManager3.Connection = Nothing
+        Me.TableAdapterManager3.FTTBTableAdapter = Nothing
+        Me.TableAdapterManager3.MDUTableAdapter = Nothing
+        Me.TableAdapterManager3.OBS_MDUTableAdapter = Nothing
         Me.TableAdapterManager3.STATUSTableAdapter = Nothing
         Me.TableAdapterManager3.TECNICOSTableAdapter = Nothing
         Me.TableAdapterManager3.TURNOSTableAdapter = Nothing
         Me.TableAdapterManager3.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'MDUTableAdapter
-        '
-        Me.MDUTableAdapter.ClearBeforeFill = True
         '
         'MDUBindingSource
         '
         Me.MDUBindingSource.DataMember = "MDU"
         Me.MDUBindingSource.DataSource = Me.EDIFICIODataSet
         '
-        'HISTORICOBindingSource
+        'ORDENESDataSet
         '
-        Me.HISTORICOBindingSource.DataMember = "HISTORICO"
-        Me.HISTORICOBindingSource.DataSource = Me.ORDENESDataSet
+        Me.ORDENESDataSet.DataSetName = "ORDENESDataSet"
+        Me.ORDENESDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'MENSAJERIATableAdapter
+        '
+        Me.MENSAJERIATableAdapter.ClearBeforeFill = True
+        '
+        'TRABAJOSTableAdapter
+        '
+        Me.TRABAJOSTableAdapter.ClearBeforeFill = True
+        '
+        'ORDENESTableAdapter
+        '
+        Me.ORDENESTableAdapter.ClearBeforeFill = True
+        '
+        'GESTIONTableAdapter
+        '
+        Me.GESTIONTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager1
+        '
+        Me.TableAdapterManager1.ACTIVIDADESSTDTableAdapter = Nothing
+        Me.TableAdapterManager1.ADJUNTOSTableAdapter = Nothing
+        Me.TableAdapterManager1.AFECTACIONTableAdapter = Nothing
+        Me.TableAdapterManager1.AREASTableAdapter = Nothing
+        Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager1.CAUSASTableAdapter = Nothing
+        Me.TableAdapterManager1.COMBOSTableAdapter = Nothing
+        Me.TableAdapterManager1.Connection = Nothing
+        Me.TableAdapterManager1.CREAR_ORDTableAdapter = Nothing
+        Me.TableAdapterManager1.FALLASTableAdapter = Nothing
+        Me.TableAdapterManager1.FUNCIONARIOSTableAdapter = Nothing
+        Me.TableAdapterManager1.GESTIONES_TIPOTableAdapter = Nothing
+        Me.TableAdapterManager1.GESTIONTableAdapter = Nothing
+        Me.TableAdapterManager1.GRAF_ORDINALESTableAdapter = Nothing
+        Me.TableAdapterManager1.GRAF_REDESTableAdapter = Nothing
+        Me.TableAdapterManager1.HISTORICOTableAdapter = Nothing
+        Me.TableAdapterManager1.INFORMMEMDU_PERMISORTableAdapter = Nothing
+        Me.TableAdapterManager1.MENSAJERIA_OLDTableAdapter = Nothing
+        Me.TableAdapterManager1.MENSAJERIATableAdapter = Nothing
+        Me.TableAdapterManager1.OBESERVACIONESTableAdapter = Nothing
+        Me.TableAdapterManager1.ORDENESTableAdapter = Nothing
+        Me.TableAdapterManager1.PRESUPUESTOTableAdapter = Nothing
+        Me.TableAdapterManager1.RELACION_FALLAACTIVIDADTableAdapter = Nothing
+        Me.TableAdapterManager1.REPORTEORDINALESTableAdapter = Nothing
+        Me.TableAdapterManager1.SECTORESTableAdapter = Nothing
+        Me.TableAdapterManager1.SECTORFALLATableAdapter = Nothing
+        Me.TableAdapterManager1.STANDARDTableAdapter = Nothing
+        Me.TableAdapterManager1.STATUSTableAdapter = Nothing
+        Me.TableAdapterManager1.TAREASSTDTableAdapter = Nothing
+        Me.TableAdapterManager1.TAREASTableAdapter = Nothing
+        Me.TableAdapterManager1.TIPOTableAdapter = Nothing
+        Me.TableAdapterManager1.TRABAJOSTableAdapter = Nothing
+        Me.TableAdapterManager1.UpdateOrder = REDES.ORDENESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'HISTORICOTableAdapter
         '
@@ -1293,6 +1312,31 @@ Partial Class DASHBOARD
         '
         Me.OrdenesDataSet1.DataSetName = "ORDENESDataSet"
         Me.OrdenesDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'MENSAJERIABindingSource
+        '
+        Me.MENSAJERIABindingSource.DataMember = "MENSAJERIA"
+        Me.MENSAJERIABindingSource.DataSource = Me.ORDENESDataSet
+        '
+        'TRABAJOSBindingSource
+        '
+        Me.TRABAJOSBindingSource.DataMember = "TRABAJOS"
+        Me.TRABAJOSBindingSource.DataSource = Me.ORDENESDataSet
+        '
+        'ORDENESBindingSource
+        '
+        Me.ORDENESBindingSource.DataMember = "ORDENES"
+        Me.ORDENESBindingSource.DataSource = Me.ORDENESDataSet
+        '
+        'GESTIONBindingSource
+        '
+        Me.GESTIONBindingSource.DataMember = "GESTION"
+        Me.GESTIONBindingSource.DataSource = Me.ORDENESDataSet
+        '
+        'HISTORICOBindingSource
+        '
+        Me.HISTORICOBindingSource.DataMember = "HISTORICO"
+        Me.HISTORICOBindingSource.DataSource = Me.ORDENESDataSet
         '
         'DASHBOARD
         '
@@ -1313,12 +1357,8 @@ Partial Class DASHBOARD
         Me.Text = "SGE"
         Me.PanelTrabajo.ResumeLayout(False)
         Me.PanelTrabajo.PerformLayout()
+        CType(Me.DGVRESULT, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelInferior.ResumeLayout(False)
-        CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MENSAJERIABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TRABAJOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ORDENESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GESTIONBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelSuperior.ResumeLayout(False)
         Me.PanelSuperior.PerformLayout()
         Me.PanelSUPInterior.ResumeLayout(False)
@@ -1330,8 +1370,13 @@ Partial Class DASHBOARD
         CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.HISTORICOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OrdenesDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MENSAJERIABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TRABAJOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ORDENESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GESTIONBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.HISTORICOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1413,10 +1458,12 @@ Partial Class DASHBOARD
     Friend WithEvents FTTBBindingSource As BindingSource
     Friend WithEvents FTTBTableAdapter As EDIFICIODataSetTableAdapters.FTTBTableAdapter
     Friend WithEvents TableAdapterManager3 As EDIFICIODataSetTableAdapters.TableAdapterManager
-    Friend WithEvents MDUTableAdapter As EDIFICIODataSetTableAdapters.MDUTableAdapter
     Friend WithEvents MDUBindingSource As BindingSource
     Friend WithEvents lblcuentas As Label
     Friend WithEvents HISTORICOBindingSource As BindingSource
     Friend WithEvents HISTORICOTableAdapter As ORDENESDataSetTableAdapters.HISTORICOTableAdapter
     Friend WithEvents OrdenesDataSet1 As ORDENESDataSet
+    Friend WithEvents Label2 As Label
+    Friend WithEvents BTN_MODIFICA As Button
+    Friend WithEvents DGVRESULT As DataGridView
 End Class

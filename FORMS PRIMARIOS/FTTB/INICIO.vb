@@ -1,4 +1,5 @@
-﻿Public Class INICIO
+﻿
+Public Class INICIO
     Public VER_EDIFICIO As EDIFICIODataSet.EDIF_VISTARow
     Public VER_MDU As EDIFICIODataSet.MDURow
     Dim CAMPO(5) As String
@@ -8,12 +9,22 @@
     Dim AVANCERow As EDIFICIODataSet.AVANCERow
 
     Private Sub INICIO_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'EDIFICIODataSet.OBS_MDU' Puede moverla o quitarla según sea necesario.
+        Me.OBS_MDUTableAdapter.Fill(Me.EDIFICIODataSet.OBS_MDU)
+
+        MDUTableAdapter.FillByDISCT_NODO(EDIFICIODataSet.MDU)
+        CBNODO.Items.Clear()
+        For Each MDU In EDIFICIODataSet.MDU
+            CBNODO.Items.Add(MDU.NODO)
+        Next
+
 
         If FULLNOMBRE = "FRANCO QUINTANA" Or FULLNOMBRE = "DIEGO GEYMONAT" Then
             CB_INGRESO.Visible = True
             BTN_HABILITAR.Visible = True
         End If
-        ACTUALIZAR_INFO_MDU()
+        ACTUALIZAR_INFO_MDU(My.Settings.VALOR_NODO)
+        CBNODO.Text = My.Settings.VALOR_NODO
         CB_STATUS.Items.Clear()
         STATUSTableAdapter.Fill(EDIFICIODataSet.STATUS)
         CB_STATUS.Items.Add("SIN FILTRO")
@@ -21,13 +32,11 @@
             CB_STATUS.Items.Add(STATUS.NOMBRE)
         Next
     End Sub
-    Private Sub TXT_NODO_TextChanged(sender As Object, e As EventArgs) Handles TXT_NODO.TextChanged
-        BUSCA_TIPO()
-    End Sub
+
     Private Sub BUSCA_TIPO()
         VISTAEDIFICIO = EDIFICIODataSet.EDIF_VISTA.AsDataView
         CAMPO(0) = "NODO"
-        DATO(0) = TXT_NODO.Text
+        DATO(0) = CBNODO.Text
         FILTRO(0) = "[" & CAMPO(0) & "] like '*" & DATO(0) & "*'"
 
         CAMPO(1) = "ZONA"
@@ -66,6 +75,12 @@
         LBL_CANT_ROWS.Text = "MOSTRANDO: " & EDIF_VISTABindingSource.Count & " EDIFICIOS"
         marcarVencidos()
     End Sub
+    Private Sub TXT_NODO_TextChanged(sender As Object, e As EventArgs)
+        ACTUALIZAR_INFO_MDU(CBNODO.Text)
+
+    End Sub
+
+
     Private Sub TXT_ZONA_TextChanged(sender As Object, e As EventArgs) Handles TXT_ZONA.TextChanged
         BUSCA_TIPO()
     End Sub
@@ -81,18 +96,18 @@
         End If
     End Sub
     Private Sub BTN_REFRESCAR_Click(sender As Object, e As EventArgs) Handles BTN_REFRESCAR.Click
-        ACTUALIZAR_INFO_MDU()
+        ACTUALIZAR_INFO_MDU(CBNODO.Text)
     End Sub
     Private Sub BTN_VER_AGENDA_Click(sender As Object, e As EventArgs) Handles BTN_VER_AGENDA.Click
         If AGENDA.Visible Then AGENDA.Close()
-        Select Case CBAGENDA.Text
-            Case "AGENDA CABLEADO"
-                ACCION_AGENDA = "VISTA"
-            Case "AGENDA CERTIFICADO"
-                ACCION_AGENDA = "VISTA CERTIFICADOS"
-        End Select
-
-        AGENDA.EDI_ID_AGENDAR = VER_MDU.ID_MDU
+        ACCION_AGENDA = "VISTA"
+        ' AGENDA.EDI_ID_AGENDAR = VER_MDU.ID_MDU
+        AGENDA.Show(Me)
+    End Sub
+    Private Sub BTN_VER_AGENDA_CERTIFICADO_Click(sender As Object, e As EventArgs) Handles BTN_VER_AGENDA_CERTIFICADO.Click
+        If AGENDA.Visible Then AGENDA.Close()
+        ACCION_AGENDA = "VISTA CERTIFICADOS"
+        '  AGENDA.EDI_ID_AGENDAR = VER_MDU.ID_MDU
         AGENDA.Show(Me)
     End Sub
     Private Sub DGV_EDIFICIOS_DoubleClick(sender As Object, e As EventArgs) Handles DGV_EDIFICIOS.DoubleClick
@@ -117,13 +132,12 @@
         If DGV_EDIFICIOS.CurrentRow.Cells(0).Value Then
             AGENDATableAdapter.FillByIDMDU_DIAAGENDA(EDIFICIODataSet.AGENDA, CInt(DGV_EDIFICIOS.CurrentRow.Cells(0).Value), DGV_EDIFICIOS.CurrentRow.Cells(7).Value)
         End If
-
         EDIFICIODataSet.AGENDA.Rows(0).Delete()
         AGENDATableAdapter.Update(EDIFICIODataSet.AGENDA)
         VER_MDU.ID_STATUS = 1
         VER_MDU.MODIFICADO = Today.ToShortDateString
-        MDUTableAdapter.Update(VER_MDU)
-        ACTUALIZAR_INFO_MDU()
+        'MDUTableAdapter.Update(VER_MDU)
+        ACTUALIZAR_INFO_MDU(CBNODO.Text)
         NOTIFICACION("SYS", "EDIFICIO DESAGENDADO")
     End Sub
 
@@ -156,7 +170,7 @@
         AVANCETableAdapter.Update(AVANCERow)
         AVANCETableAdapter.Fill(EDIFICIODataSet.AVANCE)
     End Sub
-    Private Sub BTN_ACTUALIZAR_MDU_Click(sender As Object, e As EventArgs) Handles BTN_ACTUALIZAR_MDU.Click
+    Private Sub BTN_ACTUALIZAR_MDU_Click(sender As Object, e As EventArgs)
         MDU.MDUTableAdapter.FillByID(MDU.EDIFICIODataSet.MDU, DGV_EDIFICIOS.CurrentRow.Cells(0).Value)
         If MDU.Visible Then MDU.Close()
         MDU.Show(Me)
@@ -165,7 +179,7 @@
         marcarVencidos()
     End Sub
 
-    Private Sub BTN_REPO_Click(sender As Object, e As EventArgs) Handles BTN_REPO.Click
+    Private Sub REPORTE_AGENDA()
         'AGENDATableAdapter.FillByDESDE(EdificioDataSetBackUp.AGENDA, Today)
 
         Dim EDIFICIO As EDIFICIODataSet.MDURow
@@ -195,12 +209,12 @@
         TURNOSTableAdapter.Fill(EDIFICIODataSet.TURNOS)
         For dias = 0 To 7
             For tec = 1 To 3
-                Select Case CBAGENDA.Text
-                    Case "AGENDA CABLEADO"
-                        AGENDATableAdapter.FILLBYDIA_TEC(EdificioDataSetBackUp.AGENDA, Today.AddDays(dias), tec, False)
-                    Case "AGENDA CERTIFICADO"
-                        AGENDATableAdapter.FILLBYDIA_TEC(EdificioDataSetBackUp.AGENDA, Today.AddDays(dias), tec, True)
-                End Select
+                'Select Case CBAGENDA.Text
+                '    Case "AGENDA CABLEADO"
+                '        AGENDATableAdapter.FILLBYDIA_TEC(EdificioDataSetBackUp.AGENDA, Today.AddDays(dias), tec, False)
+                '    Case "AGENDA CERTIFICADO"
+                '        AGENDATableAdapter.FILLBYDIA_TEC(EdificioDataSetBackUp.AGENDA, Today.AddDays(dias), tec, True)
+                'End Select
 
                 If Today.AddDays(dias).ToString("dddd").ToUpper = "SÁBADO" Or Today.AddDays(dias).ToString("dddd").ToUpper = "DOMINGO" Then
                     Continue For
@@ -297,6 +311,76 @@
     End Sub
 
     Private Sub BTN_VER_TODOS_Click(sender As Object, e As EventArgs) Handles BTN_VER_TODOS.Click
-        ACTUALIZAR_INFO_MDU("TODOS")
+        ACTUALIZAR_INFO_MDU(CBNODO.Text, "TODOS")
     End Sub
+
+    Private Sub SalirSubMenuItem_Click(sender As Object, e As EventArgs) Handles SalirSubMenuItem.Click
+        Close()
+    End Sub
+    Private Sub AgendaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgendaToolStripMenuItem.Click
+        REPORTE_AGENDA()
+    End Sub
+
+    Private Sub BTN_IRNODO_Click(sender As Object, e As EventArgs) Handles BTN_IRNODO.Click
+        Cursor = Cursors.WaitCursor
+        ACTUALIZAR_INFO_MDU(CBNODO.Text)
+        My.Settings.VALOR_NODO = CBNODO.Text
+        My.Settings.Save()
+        Cursor = Cursors.Default
+    End Sub
+
+
+
+    Private Sub AdministrarSubMenuItem_Click(sender As Object, e As EventArgs) Handles AdministrarSubMenuItem.Click
+        If MDU.Visible Then
+            MDU.BringToFront()
+        End If
+        MDU.Show()
+    End Sub
+
+    Private Sub AgregarPorExcelCertEdificioSubMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarPorExcelCertEdificioSubMenuItem.Click
+        Dim ruta = New OpenFileDialog()
+        ruta.Multiselect = False
+        If ruta.ShowDialog = DialogResult.OK Then
+            CargarCertExcel(ruta.FileName)
+        End If
+    End Sub
+
+
+    Private Sub ExportarSubMenuItem_Click(sender As Object, e As EventArgs) Handles ExportarSubMenuItem.Click
+        Cursor = Cursors.WaitCursor
+        TRONCALESTableAdapter.FillByNODO(FIBRADataSet.TRONCALES, CBNODO.Text)
+        ExportarExcel(FIBRADataSet.TRONCALES, "TRONCALES")
+        Cursor = Cursors.Default
+        NOTIFICACION("SYS", "EXCEL FINALIZADA")
+    End Sub
+
+    Private Sub CrearSubMenuItem_Click(sender As Object, e As EventArgs) Handles CrearSubMenuItem.Click
+        Dim ruta = New OpenFileDialog()
+        ruta.Multiselect = False
+        If ruta.ShowDialog = DialogResult.OK Then
+            REFRESCAR_TRONCALES(ruta.FileName)
+        End If
+        NOTIFICACION("SYS", "CARGA FINALIZADA")
+    End Sub
+    Private Sub AsignarNAPEdificioSubMenuItem_Click(sender As Object, e As EventArgs) Handles AsignarNAPEdificioSubMenuItem.Click
+        VINCULAR_EDIFICIOS()
+    End Sub
+    Private Sub AgregarPorExcelSubMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarPorExcelSubMenuItem.Click
+        Dim ruta = New OpenFileDialog()
+        ruta.Multiselect = False
+        If ruta.ShowDialog = DialogResult.OK Then
+            CARGARDESDEEXCEL(ruta.FileName)
+        End If
+    End Sub
+
+    Private Sub ExcelDeRelevamientoMenuItem_Click(sender As Object, e As EventArgs) Handles ExcelDeRelevamientoMenuItem.Click
+        Dim ruta = New OpenFileDialog()
+        ruta.Multiselect = False
+        If ruta.ShowDialog = DialogResult.OK Then
+            CARGARDESDEEXCELRELEVAMIENTO(ruta.FileName)
+        End If
+    End Sub
+
+
 End Class

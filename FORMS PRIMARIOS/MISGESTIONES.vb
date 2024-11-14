@@ -5,6 +5,7 @@ Public Class MIS_GESTIONES
     Dim TRABAJORow As ORDENESDataSet.TRABAJOSRow
     Dim ORDENRow As ORDENESDataSet.ORDENESRow
     Dim HISTORICORow As ORDENESDataSet.HISTORICORow
+    Dim SONGENERADOSX As Boolean
     Private Sub MIS_GESTIONES_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         If THEME_BLACK = False Then
@@ -61,30 +62,13 @@ Public Class MIS_GESTIONES
         End If
         LBL_DESCRIPCION.Text = "MIS ASIGNADOS"
 
-        ' SECTOR = "OBRA CIVIL" '  '"OBRA CIVIL" '"" "DISEÑO" '
-        ' FULLNOMBRE = "GUSTAVO ESTEVEZ" '"ZELMAR LAGOS" '"AGUSTINA MARTINEZ" '""DIEGO CAIMI" '"ZELMAR LAGOS" '
+        ' SECTOR = "OBRA CIVIL" '"DISEÑO" ' "OBRA CIVIL" '  '"OBRA CIVIL" '""  '
+        ' FULLNOMBRE = "GUSTAVO ESTEVEZ" '"ZELMAR LAGOS" '"AGUSTINA MARTINEZ" '""DIEGO CAIMI" '"ZELMAR LAGOS" ' "PILAR LIMA" '
 
-        'GESTIONTableAdapter.FillByGEST_REQUERIDO(ORDENESDataSet.GESTION, FULLNOMBRE)
-        'TRABAJOSTableAdapter.FillByTRABAJO_REQUERIDO(ORDENESDataSet.TRABAJOS, FULLNOMBRE)
 
-        ORDENESTableAdapter.FillByASIGNADOA(OrdenesDataSet1.ORDENES, FULLNOMBRE)
-        If OrdenesDataSet1.ORDENES.Rows.Count > 0 Then
-            LBLORDENES.Visible = True
-            ORDENESDataGridView.Visible = True
-            OBS_ORDEN.Visible = True
-        End If
-        TRABAJOSTableAdapter.FillByASIGNADOA(ORDENESDataSet.TRABAJOS, FULLNOMBRE)
-        If ORDENESDataSet.TRABAJOS.Rows.Count > 0 Then
-            LBLTRABAJOS.Visible = True
-            TRABAJOSDataGridView.Visible = True
-            OBS_TRABAJO.Visible = True
-        End If
-        GESTIONTableAdapter.FillByASIGNADOA(ORDENESDataSet.GESTION, FULLNOMBRE)
-        If ORDENESDataSet.GESTION.Rows.Count > 0 Then
-            LBLGESTIONES.Visible = True
-            GESTIONDataGridView.Visible = True
-            OBS_GESTION.Visible = True
-        End If
+
+
+
 
         If SECTOR = "OBRA CIVIL" Or FULLNOMBRE = "YANIRE DIAZ" Or FULLNOMBRE = "DIEGO GEYMONAT" Then
             REPORTE_OC.Visible = True
@@ -96,14 +80,14 @@ Public Class MIS_GESTIONES
             '    ORDENESDataGridView.Size = New Size(1161, 295)
         End If
         If SECTOR = "DISEÑO" Then
-            If FULLNOMBRE <> "ZELMAR LAGOS" Then
-                ORDENESTableAdapter.FillByASIGNADOSECTOR(OrdenesDataSet1.ORDENES, "DISEÑO")
-            End If
+            LBL_DESCRIPCION.Text = "PENDIENTES"
+            ORDENESTableAdapter.FillByASIGNADOA(OrdenesDataSet1.ORDENES, "ZELMAR LAGOS")
             LBLORDENES.Visible = False
             ORDENESDataGridView.Location = New Point(5, 25)
             BTN_REQUERIDOS.Visible = False
             BTN_REQUERIDOSETOR.Visible = False
-            ' BTN_ASIGNADOSSECTOR.Visible = False
+            BTN_ASIGNADOSSECTOR.Visible = False
+            BTN_MISASIGNADOS.Visible = False
             '    TRABAJOSDataGridView.Size = New Size(983, 299)
             LBLORDENES.Location = New Point(12, 332)
             '  ORDENESDataGridView.Location = New Point(12, 340)
@@ -117,6 +101,25 @@ Public Class MIS_GESTIONES
             F_ZONA.Visible = True
             LBLTRABAJOS.Visible = False
             ORDENESDataGridView.Visible = True
+        Else
+            ORDENESTableAdapter.FillByASIGNADOA(OrdenesDataSet1.ORDENES, FULLNOMBRE)
+            If OrdenesDataSet1.ORDENES.Rows.Count > 0 Then
+                LBLORDENES.Visible = True
+                ORDENESDataGridView.Visible = True
+                OBS_ORDEN.Visible = True
+            End If
+            TRABAJOSTableAdapter.FillByASIGNADOA(ORDENESDataSet.TRABAJOS, FULLNOMBRE)
+            If ORDENESDataSet.TRABAJOS.Rows.Count > 0 Then
+                LBLTRABAJOS.Visible = True
+                TRABAJOSDataGridView.Visible = True
+                OBS_TRABAJO.Visible = True
+            End If
+            GESTIONTableAdapter.FillByASIGNADOA(ORDENESDataSet.GESTION, FULLNOMBRE)
+            If ORDENESDataSet.GESTION.Rows.Count > 0 Then
+                LBLGESTIONES.Visible = True
+                GESTIONDataGridView.Visible = True
+                OBS_GESTION.Visible = True
+            End If
         End If
 
     End Sub
@@ -286,6 +289,7 @@ Public Class MIS_GESTIONES
     End Sub
     Private Sub BTN_ASIGNADOSSECTOR_Click(sender As Object, e As EventArgs) Handles BTN_ASIGNADOSSECTOR.Click
         LBL_DESCRIPCION.Text = "ASIGNADOS DEL SECTOR"
+        SONGENERADOSX = False
         FUNCIONARIOSTableAdapter.FillBySECTOR(ORDENESDataSet.FUNCIONARIOS, SECTOR)
         CB_FUNCIONARIOS.Items.Clear()
         For F = 0 To ORDENESDataSet.FUNCIONARIOS.Rows.Count - 1
@@ -307,7 +311,12 @@ Public Class MIS_GESTIONES
         ' PINTA_oc()
     End Sub
     Private Sub CB_FUNCIONARIOS_SelectedValueChanged(sender As Object, e As EventArgs) Handles CB_FUNCIONARIOS.SelectedValueChanged
-        Me.ORDENESTableAdapter.FillByASIGNADOA(Me.OrdenesDataSet1.ORDENES, CB_FUNCIONARIOS.SelectedItem)
+        If SONGENERADOSX Then
+            ORDENESTableAdapter.FillByGENERADOX(OrdenesDataSet1.ORDENES, CB_FUNCIONARIOS.SelectedItem)
+        Else
+            ORDENESTableAdapter.FillByASIGNADOA(OrdenesDataSet1.ORDENES, CB_FUNCIONARIOS.SelectedItem)
+        End If
+
         If OrdenesDataSet1.ORDENES.Rows.Count > 0 Then
             LBLORDENES.Visible = True
             ORDENESDataGridView.Visible = True
@@ -432,6 +441,18 @@ Public Class MIS_GESTIONES
 
     Private Sub MIS_GESTIONES_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         PINTA_ROWS()
+    End Sub
+
+    Private Sub BTN_GENERADOSX_Click(sender As Object, e As EventArgs) Handles BTN_GENERADOSX.Click
+        SONGENERADOSX = True
+        FUNCIONARIOSTableAdapter.FillBySECTOR(ORDENESDataSet.FUNCIONARIOS, SECTOR)
+        CB_FUNCIONARIOS.Items.Clear()
+        For F = 0 To ORDENESDataSet.FUNCIONARIOS.Rows.Count - 1
+            CB_FUNCIONARIOS.Items.Add(ORDENESDataSet.FUNCIONARIOS.Rows(F).Item("NOMBRE"))
+        Next
+        CB_FUNCIONARIOS.Text = FULLNOMBRE
+        CB_FUNCIONARIOS.Visible = True
+        ORDENESTableAdapter.FillByGENERADOX(OrdenesDataSet1.ORDENES, CB_FUNCIONARIOS.SelectedItem)
     End Sub
 
 

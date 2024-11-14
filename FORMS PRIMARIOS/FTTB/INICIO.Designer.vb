@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class INICIO
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,20 +20,25 @@ Partial Class INICIO
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.CBAGENDA = New System.Windows.Forms.ComboBox()
+        Me.BTN_VER_AGENDA_CERTIFICADO = New System.Windows.Forms.Button()
+        Me.BTN_VER_TODOS = New System.Windows.Forms.Button()
         Me.BTN_DESAGENDAR = New System.Windows.Forms.Button()
         Me.BTN_VER_AGENDA = New System.Windows.Forms.Button()
         Me.BTN_REFRESCAR = New System.Windows.Forms.Button()
-        Me.BTN_AGENDAR = New System.Windows.Forms.Button()
         Me.BTN_VER_EDIFICIO = New System.Windows.Forms.Button()
+        Me.BTN_AGENDAR = New System.Windows.Forms.Button()
         Me.DGV_EDIFICIOS = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -46,7 +51,6 @@ Partial Class INICIO
         Me.ACOMETIDA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EDIF_VISTABindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EDIFICIODataSet = New REDES.EDIFICIODataSet()
-        Me.TXT_NODO = New System.Windows.Forms.TextBox()
         Me.TXT_NRO = New System.Windows.Forms.TextBox()
         Me.CB_STATUS = New System.Windows.Forms.ComboBox()
         Me.TXT_CALLE = New System.Windows.Forms.TextBox()
@@ -64,12 +68,42 @@ Partial Class INICIO
         Me.BTN_HABILITAR = New System.Windows.Forms.Button()
         Me.CB_INGRESO = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.BTN_ACTUALIZAR_MDU = New System.Windows.Forms.Button()
-        Me.BTN_REPO = New System.Windows.Forms.Button()
+        Me.menuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.ArchivoMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SalirSubMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EdificioMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AdministrarSubMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ImportarMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AgregarPorExcelSubMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExcelDeRelevamientoMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConformeAObraToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CablesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TorresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CertificacionMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.REDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EDIFICIOSubMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AgregarPorExcelCertEdificioSubMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.REPORTEToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ENTREGABLEToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.INSTALACIONESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HABILITADOSToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AgendaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OperacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TRONCALESsubStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CrearSubMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExportarSubMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.AsignarNAPEdificioSubMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lbl_nodo = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.CBNODO = New System.Windows.Forms.ComboBox()
+        Me.BTN_IRNODO = New System.Windows.Forms.Button()
         Me.AVANCETableAdapter = New REDES.EDIFICIODataSetTableAdapters.AVANCETableAdapter()
         Me.TableAdapterManager1 = New REDES.EDIFICIODataSetTableAdapters.TableAdapterManager()
-        Me.MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.MDUTableAdapter()
         Me.STATUSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.STATUSTableAdapter()
+        Me.MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.MDUTableAdapter()
         Me.MDUBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.STATUSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AGENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -79,64 +113,111 @@ Partial Class INICIO
         Me.FTTBTableAdapter = New REDES.EDIFICIODataSetTableAdapters.FTTBTableAdapter()
         Me.TURNOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TURNOSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.TURNOSTableAdapter()
-        Me.BTN_VER_TODOS = New System.Windows.Forms.Button()
+        Me.CERTIFICACIONESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CERTIFICACIONESTableAdapter = New REDES.EDIFICIODataSetTableAdapters.CERTIFICACIONESTableAdapter()
+        Me.FTTBBindingSourceFIBRA = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FIBRADataSet = New REDES.FIBRADataSet()
+        Me.TRONCALESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TRONCALESTableAdapter = New REDES.FIBRADataSetTableAdapters.TRONCALESTableAdapter()
+        Me.TableAdapterManager2 = New REDES.FIBRADataSetTableAdapters.TableAdapterManager()
+        Me.FTTBTableAdapterFIBRA = New REDES.FIBRADataSetTableAdapters.FTTBTableAdapter()
+        Me.OBS_MDUBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.OBS_MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.OBS_MDUTableAdapter()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DGV_EDIFICIOS, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EDIF_VISTABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AVANCEDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AVANCEBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.menuStrip1.SuspendLayout()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EdificioDataSetBackUp, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TURNOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CERTIFICACIONESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FTTBBindingSourceFIBRA, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FIBRADataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TRONCALESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OBS_MDUBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.BTN_VER_AGENDA_CERTIFICADO)
         Me.GroupBox1.Controls.Add(Me.BTN_VER_TODOS)
-        Me.GroupBox1.Controls.Add(Me.CBAGENDA)
         Me.GroupBox1.Controls.Add(Me.BTN_DESAGENDAR)
         Me.GroupBox1.Controls.Add(Me.BTN_VER_AGENDA)
         Me.GroupBox1.Controls.Add(Me.BTN_REFRESCAR)
-        Me.GroupBox1.Controls.Add(Me.BTN_AGENDAR)
         Me.GroupBox1.Controls.Add(Me.BTN_VER_EDIFICIO)
+        Me.GroupBox1.Controls.Add(Me.BTN_AGENDAR)
         Me.GroupBox1.Controls.Add(Me.DGV_EDIFICIOS)
-        Me.GroupBox1.Controls.Add(Me.TXT_NODO)
         Me.GroupBox1.Controls.Add(Me.TXT_NRO)
         Me.GroupBox1.Controls.Add(Me.CB_STATUS)
         Me.GroupBox1.Controls.Add(Me.TXT_CALLE)
         Me.GroupBox1.Controls.Add(Me.TXT_ZONA)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 24)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2)
-        Me.GroupBox1.Size = New System.Drawing.Size(874, 698)
+        Me.GroupBox1.Size = New System.Drawing.Size(874, 677)
         Me.GroupBox1.TabIndex = 6
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "ADMINISTRACION DE EDIFICIOS"
         '
-        'CBAGENDA
+        'BTN_VER_AGENDA_CERTIFICADO
         '
-        Me.CBAGENDA.FormattingEnabled = True
-        Me.CBAGENDA.Items.AddRange(New Object() {"AGENDA CABLEADO", "AGENDA CERTIFICADO"})
-        Me.CBAGENDA.Location = New System.Drawing.Point(674, 626)
-        Me.CBAGENDA.Name = "CBAGENDA"
-        Me.CBAGENDA.Size = New System.Drawing.Size(165, 21)
-        Me.CBAGENDA.TabIndex = 11
-        Me.CBAGENDA.Text = "AGENDA CABLEADO"
+        Me.BTN_VER_AGENDA_CERTIFICADO.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.BTN_VER_AGENDA_CERTIFICADO.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_VER_AGENDA_CERTIFICADO.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_VER_AGENDA_CERTIFICADO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BTN_VER_AGENDA_CERTIFICADO.FlatAppearance.BorderSize = 0
+        Me.BTN_VER_AGENDA_CERTIFICADO.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.BTN_VER_AGENDA_CERTIFICADO.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.BTN_VER_AGENDA_CERTIFICADO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_VER_AGENDA_CERTIFICADO.ForeColor = System.Drawing.Color.White
+        Me.BTN_VER_AGENDA_CERTIFICADO.Location = New System.Drawing.Point(663, 636)
+        Me.BTN_VER_AGENDA_CERTIFICADO.Margin = New System.Windows.Forms.Padding(2)
+        Me.BTN_VER_AGENDA_CERTIFICADO.Name = "BTN_VER_AGENDA_CERTIFICADO"
+        Me.BTN_VER_AGENDA_CERTIFICADO.Size = New System.Drawing.Size(113, 41)
+        Me.BTN_VER_AGENDA_CERTIFICADO.TabIndex = 13
+        Me.BTN_VER_AGENDA_CERTIFICADO.Text = "VER AGENDA CERTIFICADO"
+        Me.BTN_VER_AGENDA_CERTIFICADO.UseVisualStyleBackColor = False
+        '
+        'BTN_VER_TODOS
+        '
+        Me.BTN_VER_TODOS.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.BTN_VER_TODOS.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_VER_TODOS.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_VER_TODOS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BTN_VER_TODOS.FlatAppearance.BorderSize = 0
+        Me.BTN_VER_TODOS.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.BTN_VER_TODOS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.BTN_VER_TODOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_VER_TODOS.ForeColor = System.Drawing.Color.White
+        Me.BTN_VER_TODOS.Location = New System.Drawing.Point(196, 636)
+        Me.BTN_VER_TODOS.Margin = New System.Windows.Forms.Padding(2)
+        Me.BTN_VER_TODOS.Name = "BTN_VER_TODOS"
+        Me.BTN_VER_TODOS.Size = New System.Drawing.Size(97, 31)
+        Me.BTN_VER_TODOS.TabIndex = 12
+        Me.BTN_VER_TODOS.Text = "VER TODOS"
+        Me.BTN_VER_TODOS.UseVisualStyleBackColor = False
         '
         'BTN_DESAGENDAR
         '
-        Me.BTN_DESAGENDAR.BackColor = System.Drawing.Color.Gray
+        Me.BTN_DESAGENDAR.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.BTN_DESAGENDAR.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_DESAGENDAR.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_DESAGENDAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.BTN_DESAGENDAR.Enabled = False
-        Me.BTN_DESAGENDAR.FlatAppearance.BorderColor = System.Drawing.Color.Gray
+        Me.BTN_DESAGENDAR.FlatAppearance.BorderSize = 0
+        Me.BTN_DESAGENDAR.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.BTN_DESAGENDAR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_DESAGENDAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_DESAGENDAR.ForeColor = System.Drawing.Color.White
-        Me.BTN_DESAGENDAR.Location = New System.Drawing.Point(460, 625)
+        Me.BTN_DESAGENDAR.Location = New System.Drawing.Point(383, 636)
         Me.BTN_DESAGENDAR.Margin = New System.Windows.Forms.Padding(2)
         Me.BTN_DESAGENDAR.Name = "BTN_DESAGENDAR"
         Me.BTN_DESAGENDAR.Size = New System.Drawing.Size(93, 31)
@@ -146,32 +227,61 @@ Partial Class INICIO
         '
         'BTN_VER_AGENDA
         '
-        Me.BTN_VER_AGENDA.BackColor = System.Drawing.Color.Gray
-        Me.BTN_VER_AGENDA.Enabled = False
-        Me.BTN_VER_AGENDA.FlatAppearance.BorderColor = System.Drawing.Color.Gray
+        Me.BTN_VER_AGENDA.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.BTN_VER_AGENDA.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_VER_AGENDA.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_VER_AGENDA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BTN_VER_AGENDA.FlatAppearance.BorderSize = 0
+        Me.BTN_VER_AGENDA.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.BTN_VER_AGENDA.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_VER_AGENDA.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_VER_AGENDA.ForeColor = System.Drawing.Color.White
-        Me.BTN_VER_AGENDA.Location = New System.Drawing.Point(557, 625)
+        Me.BTN_VER_AGENDA.Location = New System.Drawing.Point(540, 636)
         Me.BTN_VER_AGENDA.Margin = New System.Windows.Forms.Padding(2)
         Me.BTN_VER_AGENDA.Name = "BTN_VER_AGENDA"
-        Me.BTN_VER_AGENDA.Size = New System.Drawing.Size(112, 31)
+        Me.BTN_VER_AGENDA.Size = New System.Drawing.Size(119, 41)
         Me.BTN_VER_AGENDA.TabIndex = 9
-        Me.BTN_VER_AGENDA.Text = "VER AGENDA"
+        Me.BTN_VER_AGENDA.Text = "VER AGENDA CABLEADO"
         Me.BTN_VER_AGENDA.UseVisualStyleBackColor = False
         '
         'BTN_REFRESCAR
         '
-        Me.BTN_REFRESCAR.BackColor = System.Drawing.Color.Gray
-        Me.BTN_REFRESCAR.FlatAppearance.BorderColor = System.Drawing.Color.Gray
+        Me.BTN_REFRESCAR.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.BTN_REFRESCAR.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_REFRESCAR.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_REFRESCAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BTN_REFRESCAR.FlatAppearance.BorderSize = 0
+        Me.BTN_REFRESCAR.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.BTN_REFRESCAR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_REFRESCAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_REFRESCAR.ForeColor = System.Drawing.Color.White
-        Me.BTN_REFRESCAR.Location = New System.Drawing.Point(6, 625)
+        Me.BTN_REFRESCAR.Location = New System.Drawing.Point(6, 636)
         Me.BTN_REFRESCAR.Margin = New System.Windows.Forms.Padding(2)
         Me.BTN_REFRESCAR.Name = "BTN_REFRESCAR"
-        Me.BTN_REFRESCAR.Size = New System.Drawing.Size(112, 31)
+        Me.BTN_REFRESCAR.Size = New System.Drawing.Size(92, 31)
         Me.BTN_REFRESCAR.TabIndex = 6
         Me.BTN_REFRESCAR.Text = "REFRESCAR"
         Me.BTN_REFRESCAR.UseVisualStyleBackColor = False
+        '
+        'BTN_VER_EDIFICIO
+        '
+        Me.BTN_VER_EDIFICIO.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.BTN_VER_EDIFICIO.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_VER_EDIFICIO.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_VER_EDIFICIO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BTN_VER_EDIFICIO.Enabled = False
+        Me.BTN_VER_EDIFICIO.FlatAppearance.BorderSize = 0
+        Me.BTN_VER_EDIFICIO.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.BTN_VER_EDIFICIO.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.BTN_VER_EDIFICIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_VER_EDIFICIO.ForeColor = System.Drawing.Color.White
+        Me.BTN_VER_EDIFICIO.Location = New System.Drawing.Point(102, 636)
+        Me.BTN_VER_EDIFICIO.Margin = New System.Windows.Forms.Padding(2)
+        Me.BTN_VER_EDIFICIO.Name = "BTN_VER_EDIFICIO"
+        Me.BTN_VER_EDIFICIO.Size = New System.Drawing.Size(90, 31)
+        Me.BTN_VER_EDIFICIO.TabIndex = 7
+        Me.BTN_VER_EDIFICIO.Text = "VER EDIFICIO"
+        Me.BTN_VER_EDIFICIO.UseVisualStyleBackColor = False
         '
         'BTN_AGENDAR
         '
@@ -181,7 +291,7 @@ Partial Class INICIO
         Me.BTN_AGENDAR.FlatAppearance.BorderColor = System.Drawing.Color.Gray
         Me.BTN_AGENDAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_AGENDAR.ForeColor = System.Drawing.Color.White
-        Me.BTN_AGENDAR.Location = New System.Drawing.Point(2, 673)
+        Me.BTN_AGENDAR.Location = New System.Drawing.Point(2, 652)
         Me.BTN_AGENDAR.Margin = New System.Windows.Forms.Padding(2)
         Me.BTN_AGENDAR.Name = "BTN_AGENDAR"
         Me.BTN_AGENDAR.Size = New System.Drawing.Size(870, 23)
@@ -189,21 +299,6 @@ Partial Class INICIO
         Me.BTN_AGENDAR.Text = "AGENDAR EDIFICIO"
         Me.BTN_AGENDAR.UseVisualStyleBackColor = False
         Me.BTN_AGENDAR.Visible = False
-        '
-        'BTN_VER_EDIFICIO
-        '
-        Me.BTN_VER_EDIFICIO.BackColor = System.Drawing.Color.Gray
-        Me.BTN_VER_EDIFICIO.Enabled = False
-        Me.BTN_VER_EDIFICIO.FlatAppearance.BorderColor = System.Drawing.Color.Gray
-        Me.BTN_VER_EDIFICIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_VER_EDIFICIO.ForeColor = System.Drawing.Color.White
-        Me.BTN_VER_EDIFICIO.Location = New System.Drawing.Point(122, 625)
-        Me.BTN_VER_EDIFICIO.Margin = New System.Windows.Forms.Padding(2)
-        Me.BTN_VER_EDIFICIO.Name = "BTN_VER_EDIFICIO"
-        Me.BTN_VER_EDIFICIO.Size = New System.Drawing.Size(112, 31)
-        Me.BTN_VER_EDIFICIO.TabIndex = 7
-        Me.BTN_VER_EDIFICIO.Text = "VER EDIFICIO"
-        Me.BTN_VER_EDIFICIO.UseVisualStyleBackColor = False
         '
         'DGV_EDIFICIOS
         '
@@ -216,17 +311,25 @@ Partial Class INICIO
         Me.DGV_EDIFICIOS.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.DGV_EDIFICIOS.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.DGV_EDIFICIOS.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGV_EDIFICIOS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_EDIFICIOS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
         Me.DGV_EDIFICIOS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGV_EDIFICIOS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.AGENDADO, Me.ACOMETIDA})
         Me.DGV_EDIFICIOS.DataSource = Me.EDIF_VISTABindingSource
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGV_EDIFICIOS.DefaultCellStyle = DataGridViewCellStyle10
         Me.DGV_EDIFICIOS.EnableHeadersVisualStyles = False
         Me.DGV_EDIFICIOS.GridColor = System.Drawing.Color.Silver
         Me.DGV_EDIFICIOS.Location = New System.Drawing.Point(6, 41)
@@ -234,14 +337,22 @@ Partial Class INICIO
         Me.DGV_EDIFICIOS.Name = "DGV_EDIFICIOS"
         Me.DGV_EDIFICIOS.ReadOnly = True
         Me.DGV_EDIFICIOS.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_EDIFICIOS.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
         Me.DGV_EDIFICIOS.RowHeadersVisible = False
         Me.DGV_EDIFICIOS.RowHeadersWidth = 51
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Olive
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White
-        Me.DGV_EDIFICIOS.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
+        Me.DGV_EDIFICIOS.RowsDefaultCellStyle = DataGridViewCellStyle12
         Me.DGV_EDIFICIOS.RowTemplate.Height = 24
         Me.DGV_EDIFICIOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGV_EDIFICIOS.ShowCellErrors = False
@@ -333,16 +444,6 @@ Partial Class INICIO
         Me.EDIFICIODataSet.DataSetName = "EDIFICIODataSet"
         Me.EDIFICIODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'TXT_NODO
-        '
-        Me.TXT_NODO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TXT_NODO.Location = New System.Drawing.Point(9, 17)
-        Me.TXT_NODO.Margin = New System.Windows.Forms.Padding(2)
-        Me.TXT_NODO.Name = "TXT_NODO"
-        Me.TXT_NODO.Size = New System.Drawing.Size(37, 20)
-        Me.TXT_NODO.TabIndex = 1
-        Me.TXT_NODO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'TXT_NRO
         '
         Me.TXT_NRO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -386,9 +487,10 @@ Partial Class INICIO
         'LBL_CANT_ROWS
         '
         Me.LBL_CANT_ROWS.AutoSize = True
+        Me.LBL_CANT_ROWS.BackColor = System.Drawing.Color.Silver
         Me.LBL_CANT_ROWS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.LBL_CANT_ROWS.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LBL_CANT_ROWS.Location = New System.Drawing.Point(989, 11)
+        Me.LBL_CANT_ROWS.Location = New System.Drawing.Point(971, 5)
         Me.LBL_CANT_ROWS.Name = "LBL_CANT_ROWS"
         Me.LBL_CANT_ROWS.Size = New System.Drawing.Size(94, 13)
         Me.LBL_CANT_ROWS.TabIndex = 7
@@ -405,29 +507,45 @@ Partial Class INICIO
         Me.AVANCEDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.AVANCEDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.AVANCEDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.Black
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Black
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.AVANCEDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.Black
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Black
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AVANCEDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
         Me.AVANCEDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.AVANCEDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewCheckBoxColumn4, Me.VER_DUCTOS_FECHADA, Me.DataGridViewCheckBoxColumn2})
         Me.AVANCEDataGridView.DataSource = Me.AVANCEBindingSource
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.AVANCEDataGridView.DefaultCellStyle = DataGridViewCellStyle14
         Me.AVANCEDataGridView.EnableHeadersVisualStyles = False
         Me.AVANCEDataGridView.GridColor = System.Drawing.Color.Silver
-        Me.AVANCEDataGridView.Location = New System.Drawing.Point(983, 69)
+        Me.AVANCEDataGridView.Location = New System.Drawing.Point(1042, 65)
         Me.AVANCEDataGridView.Name = "AVANCEDataGridView"
         Me.AVANCEDataGridView.ReadOnly = True
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AVANCEDataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
         Me.AVANCEDataGridView.RowHeadersVisible = False
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White
-        Me.AVANCEDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle16.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White
+        Me.AVANCEDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle16
         Me.AVANCEDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.AVANCEDataGridView.ShowCellErrors = False
         Me.AVANCEDataGridView.ShowCellToolTips = False
@@ -494,7 +612,7 @@ Partial Class INICIO
         Me.Label1.AutoSize = True
         Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(989, 53)
+        Me.Label1.Location = New System.Drawing.Point(1048, 49)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(249, 13)
         Me.Label1.TabIndex = 8
@@ -532,33 +650,230 @@ Partial Class INICIO
         Me.Button1.UseVisualStyleBackColor = True
         Me.Button1.Visible = False
         '
-        'BTN_ACTUALIZAR_MDU
+        'menuStrip1
         '
-        Me.BTN_ACTUALIZAR_MDU.BackColor = System.Drawing.Color.Gray
-        Me.BTN_ACTUALIZAR_MDU.FlatAppearance.BorderColor = System.Drawing.Color.Gray
-        Me.BTN_ACTUALIZAR_MDU.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_ACTUALIZAR_MDU.ForeColor = System.Drawing.Color.White
-        Me.BTN_ACTUALIZAR_MDU.Location = New System.Drawing.Point(1168, 634)
-        Me.BTN_ACTUALIZAR_MDU.Margin = New System.Windows.Forms.Padding(2)
-        Me.BTN_ACTUALIZAR_MDU.Name = "BTN_ACTUALIZAR_MDU"
-        Me.BTN_ACTUALIZAR_MDU.Size = New System.Drawing.Size(180, 22)
-        Me.BTN_ACTUALIZAR_MDU.TabIndex = 13
-        Me.BTN_ACTUALIZAR_MDU.Text = "ACTUALIZAR EDIFICIO"
-        Me.BTN_ACTUALIZAR_MDU.UseVisualStyleBackColor = False
+        Me.menuStrip1.BackColor = System.Drawing.Color.Silver
+        Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoMenuItem, Me.EdificioMenuItem, Me.CertificacionMenuItem, Me.REPORTEToolStripMenuItem, Me.OperacionesToolStripMenuItem})
+        Me.menuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.menuStrip1.Name = "menuStrip1"
+        Me.menuStrip1.Size = New System.Drawing.Size(1368, 24)
+        Me.menuStrip1.TabIndex = 16
+        Me.menuStrip1.Text = "menuStrip1"
         '
-        'BTN_REPO
+        'ArchivoMenuItem
         '
-        Me.BTN_REPO.BackColor = System.Drawing.Color.Gray
-        Me.BTN_REPO.FlatAppearance.BorderColor = System.Drawing.Color.Gray
-        Me.BTN_REPO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_REPO.ForeColor = System.Drawing.Color.White
-        Me.BTN_REPO.Location = New System.Drawing.Point(878, 673)
-        Me.BTN_REPO.Margin = New System.Windows.Forms.Padding(2)
-        Me.BTN_REPO.Name = "BTN_REPO"
-        Me.BTN_REPO.Size = New System.Drawing.Size(291, 23)
-        Me.BTN_REPO.TabIndex = 14
-        Me.BTN_REPO.Text = "REPORTE AGENDA"
-        Me.BTN_REPO.UseVisualStyleBackColor = False
+        Me.ArchivoMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalirSubMenuItem})
+        Me.ArchivoMenuItem.Name = "ArchivoMenuItem"
+        Me.ArchivoMenuItem.Size = New System.Drawing.Size(60, 20)
+        Me.ArchivoMenuItem.Text = "Archivo"
+        '
+        'SalirSubMenuItem
+        '
+        Me.SalirSubMenuItem.Name = "SalirSubMenuItem"
+        Me.SalirSubMenuItem.Size = New System.Drawing.Size(96, 22)
+        Me.SalirSubMenuItem.Text = "Salir"
+        '
+        'EdificioMenuItem
+        '
+        Me.EdificioMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AdministrarSubMenuItem, Me.ToolStripSeparator1, Me.ImportarMenuItem, Me.ConformeAObraToolStripMenuItem})
+        Me.EdificioMenuItem.Name = "EdificioMenuItem"
+        Me.EdificioMenuItem.Size = New System.Drawing.Size(58, 20)
+        Me.EdificioMenuItem.Text = "Edificio"
+        '
+        'AdministrarSubMenuItem
+        '
+        Me.AdministrarSubMenuItem.Name = "AdministrarSubMenuItem"
+        Me.AdministrarSubMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AdministrarSubMenuItem.Text = "Administrar"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        '
+        'ImportarMenuItem
+        '
+        Me.ImportarMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgregarPorExcelSubMenuItem, Me.ExcelDeRelevamientoMenuItem})
+        Me.ImportarMenuItem.Name = "ImportarMenuItem"
+        Me.ImportarMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ImportarMenuItem.Text = "Importar"
+        '
+        'AgregarPorExcelSubMenuItem
+        '
+        Me.AgregarPorExcelSubMenuItem.Name = "AgregarPorExcelSubMenuItem"
+        Me.AgregarPorExcelSubMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.AgregarPorExcelSubMenuItem.Text = "Excel de nodo"
+        '
+        'ExcelDeRelevamientoMenuItem
+        '
+        Me.ExcelDeRelevamientoMenuItem.Name = "ExcelDeRelevamientoMenuItem"
+        Me.ExcelDeRelevamientoMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.ExcelDeRelevamientoMenuItem.Text = "Excel de relevamiento"
+        '
+        'ConformeAObraToolStripMenuItem
+        '
+        Me.ConformeAObraToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CablesToolStripMenuItem, Me.TorresToolStripMenuItem})
+        Me.ConformeAObraToolStripMenuItem.Name = "ConformeAObraToolStripMenuItem"
+        Me.ConformeAObraToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ConformeAObraToolStripMenuItem.Text = "Conforme a obra"
+        '
+        'CablesToolStripMenuItem
+        '
+        Me.CablesToolStripMenuItem.Name = "CablesToolStripMenuItem"
+        Me.CablesToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
+        Me.CablesToolStripMenuItem.Text = "Cables"
+        '
+        'TorresToolStripMenuItem
+        '
+        Me.TorresToolStripMenuItem.Name = "TorresToolStripMenuItem"
+        Me.TorresToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
+        Me.TorresToolStripMenuItem.Text = "Torres"
+        '
+        'CertificacionMenuItem
+        '
+        Me.CertificacionMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.REDToolStripMenuItem, Me.EDIFICIOSubMenuItem})
+        Me.CertificacionMenuItem.Name = "CertificacionMenuItem"
+        Me.CertificacionMenuItem.Size = New System.Drawing.Size(86, 20)
+        Me.CertificacionMenuItem.Text = "Certificacion"
+        '
+        'REDToolStripMenuItem
+        '
+        Me.REDToolStripMenuItem.Name = "REDToolStripMenuItem"
+        Me.REDToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.REDToolStripMenuItem.Text = "RED"
+        '
+        'EDIFICIOSubMenuItem
+        '
+        Me.EDIFICIOSubMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgregarPorExcelCertEdificioSubMenuItem})
+        Me.EDIFICIOSubMenuItem.Name = "EDIFICIOSubMenuItem"
+        Me.EDIFICIOSubMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.EDIFICIOSubMenuItem.Text = "EDIFICIO"
+        '
+        'AgregarPorExcelCertEdificioSubMenuItem
+        '
+        Me.AgregarPorExcelCertEdificioSubMenuItem.Name = "AgregarPorExcelCertEdificioSubMenuItem"
+        Me.AgregarPorExcelCertEdificioSubMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.AgregarPorExcelCertEdificioSubMenuItem.Text = "Importar de Excel"
+        '
+        'REPORTEToolStripMenuItem
+        '
+        Me.REPORTEToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ENTREGABLEToolStripMenuItem, Me.INSTALACIONESToolStripMenuItem, Me.HABILITADOSToolStripMenuItem, Me.AgendaToolStripMenuItem})
+        Me.REPORTEToolStripMenuItem.Name = "REPORTEToolStripMenuItem"
+        Me.REPORTEToolStripMenuItem.Size = New System.Drawing.Size(60, 20)
+        Me.REPORTEToolStripMenuItem.Text = "Reporte"
+        '
+        'ENTREGABLEToolStripMenuItem
+        '
+        Me.ENTREGABLEToolStripMenuItem.Name = "ENTREGABLEToolStripMenuItem"
+        Me.ENTREGABLEToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.ENTREGABLEToolStripMenuItem.Text = "Entregable"
+        '
+        'INSTALACIONESToolStripMenuItem
+        '
+        Me.INSTALACIONESToolStripMenuItem.Name = "INSTALACIONESToolStripMenuItem"
+        Me.INSTALACIONESToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.INSTALACIONESToolStripMenuItem.Text = "Instalaciones"
+        '
+        'HABILITADOSToolStripMenuItem
+        '
+        Me.HABILITADOSToolStripMenuItem.Name = "HABILITADOSToolStripMenuItem"
+        Me.HABILITADOSToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.HABILITADOSToolStripMenuItem.Text = "Edif Habilitados"
+        '
+        'AgendaToolStripMenuItem
+        '
+        Me.AgendaToolStripMenuItem.Name = "AgendaToolStripMenuItem"
+        Me.AgendaToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.AgendaToolStripMenuItem.Text = "Agenda"
+        '
+        'OperacionesToolStripMenuItem
+        '
+        Me.OperacionesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TRONCALESsubStripMenuItem, Me.ToolStripSeparator2, Me.AsignarNAPEdificioSubMenuItem})
+        Me.OperacionesToolStripMenuItem.Name = "OperacionesToolStripMenuItem"
+        Me.OperacionesToolStripMenuItem.Size = New System.Drawing.Size(85, 20)
+        Me.OperacionesToolStripMenuItem.Text = "Operaciones"
+        '
+        'TRONCALESsubStripMenuItem
+        '
+        Me.TRONCALESsubStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CrearSubMenuItem, Me.ExportarSubMenuItem})
+        Me.TRONCALESsubStripMenuItem.Name = "TRONCALESsubStripMenuItem"
+        Me.TRONCALESsubStripMenuItem.Size = New System.Drawing.Size(260, 22)
+        Me.TRONCALESsubStripMenuItem.Text = "Excel TRONCALES"
+        '
+        'CrearSubMenuItem
+        '
+        Me.CrearSubMenuItem.Name = "CrearSubMenuItem"
+        Me.CrearSubMenuItem.Size = New System.Drawing.Size(230, 22)
+        Me.CrearSubMenuItem.Text = "Carga/Mod dsd OZ-relatorios"
+        '
+        'ExportarSubMenuItem
+        '
+        Me.ExportarSubMenuItem.Name = "ExportarSubMenuItem"
+        Me.ExportarSubMenuItem.Size = New System.Drawing.Size(230, 22)
+        Me.ExportarSubMenuItem.Text = "Exportar"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(257, 6)
+        '
+        'AsignarNAPEdificioSubMenuItem
+        '
+        Me.AsignarNAPEdificioSubMenuItem.Name = "AsignarNAPEdificioSubMenuItem"
+        Me.AsignarNAPEdificioSubMenuItem.Size = New System.Drawing.Size(260, 22)
+        Me.AsignarNAPEdificioSubMenuItem.Text = "Asignar EDIF a NAP en TRONCALES"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(879, 65)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(33, 13)
+        Me.Label2.TabIndex = 17
+        Me.Label2.Text = "Nodo"
+        '
+        'lbl_nodo
+        '
+        Me.lbl_nodo.AutoSize = True
+        Me.lbl_nodo.Font = New System.Drawing.Font("Gill Sans Ultra Bold", 45.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_nodo.Location = New System.Drawing.Point(868, 65)
+        Me.lbl_nodo.Name = "lbl_nodo"
+        Me.lbl_nodo.Size = New System.Drawing.Size(80, 85)
+        Me.lbl_nodo.TabIndex = 18
+        Me.lbl_nodo.Text = "*"
+        Me.lbl_nodo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(893, 29)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(63, 13)
+        Me.Label3.TabIndex = 19
+        Me.Label3.Text = "Seleccione:"
+        '
+        'CBNODO
+        '
+        Me.CBNODO.FormattingEnabled = True
+        Me.CBNODO.Location = New System.Drawing.Point(955, 25)
+        Me.CBNODO.Name = "CBNODO"
+        Me.CBNODO.Size = New System.Drawing.Size(55, 21)
+        Me.CBNODO.TabIndex = 21
+        '
+        'BTN_IRNODO
+        '
+        Me.BTN_IRNODO.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_IRNODO.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_DEFAULT
+        Me.BTN_IRNODO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BTN_IRNODO.FlatAppearance.BorderSize = 0
+        Me.BTN_IRNODO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_IRNODO.ForeColor = System.Drawing.Color.White
+        Me.BTN_IRNODO.Location = New System.Drawing.Point(933, 46)
+        Me.BTN_IRNODO.Name = "BTN_IRNODO"
+        Me.BTN_IRNODO.Size = New System.Drawing.Size(77, 27)
+        Me.BTN_IRNODO.TabIndex = 20
+        Me.BTN_IRNODO.Text = "IR"
+        Me.BTN_IRNODO.UseVisualStyleBackColor = False
         '
         'AVANCETableAdapter
         '
@@ -570,20 +885,23 @@ Partial Class INICIO
         Me.TableAdapterManager1.AVANCETableAdapter = Me.AVANCETableAdapter
         Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager1.BITACORATableAdapter = Nothing
+        Me.TableAdapterManager1.CALLESTableAdapter = Nothing
+        Me.TableAdapterManager1.CERTIFICACIONESTableAdapter = Nothing
         Me.TableAdapterManager1.FTTBTableAdapter = Nothing
-        Me.TableAdapterManager1.MDUTableAdapter = Me.MDUTableAdapter
+        Me.TableAdapterManager1.MDUTableAdapter = Nothing
+        Me.TableAdapterManager1.OBS_MDUTableAdapter = Nothing
         Me.TableAdapterManager1.STATUSTableAdapter = Me.STATUSTableAdapter
         Me.TableAdapterManager1.TECNICOSTableAdapter = Nothing
         Me.TableAdapterManager1.TURNOSTableAdapter = Nothing
         Me.TableAdapterManager1.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'MDUTableAdapter
-        '
-        Me.MDUTableAdapter.ClearBeforeFill = True
-        '
         'STATUSTableAdapter
         '
         Me.STATUSTableAdapter.ClearBeforeFill = True
+        '
+        'MDUTableAdapter
+        '
+        Me.MDUTableAdapter.ClearBeforeFill = True
         '
         'MDUBindingSource
         '
@@ -627,35 +945,77 @@ Partial Class INICIO
         '
         Me.TURNOSTableAdapter.ClearBeforeFill = True
         '
-        'BTN_VER_TODOS
+        'CERTIFICACIONESBindingSource
         '
-        Me.BTN_VER_TODOS.BackColor = System.Drawing.Color.Gray
-        Me.BTN_VER_TODOS.FlatAppearance.BorderColor = System.Drawing.Color.Gray
-        Me.BTN_VER_TODOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_VER_TODOS.ForeColor = System.Drawing.Color.White
-        Me.BTN_VER_TODOS.Location = New System.Drawing.Point(280, 626)
-        Me.BTN_VER_TODOS.Margin = New System.Windows.Forms.Padding(2)
-        Me.BTN_VER_TODOS.Name = "BTN_VER_TODOS"
-        Me.BTN_VER_TODOS.Size = New System.Drawing.Size(112, 31)
-        Me.BTN_VER_TODOS.TabIndex = 12
-        Me.BTN_VER_TODOS.Text = "VER TODOS"
-        Me.BTN_VER_TODOS.UseVisualStyleBackColor = False
+        Me.CERTIFICACIONESBindingSource.DataMember = "CERTIFICACIONES"
+        Me.CERTIFICACIONESBindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'CERTIFICACIONESTableAdapter
+        '
+        Me.CERTIFICACIONESTableAdapter.ClearBeforeFill = True
+        '
+        'FTTBBindingSourceFIBRA
+        '
+        Me.FTTBBindingSourceFIBRA.DataMember = "FTTB"
+        Me.FTTBBindingSourceFIBRA.DataSource = Me.FIBRADataSet
+        '
+        'FIBRADataSet
+        '
+        Me.FIBRADataSet.DataSetName = "FIBRADataSet"
+        Me.FIBRADataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'TRONCALESBindingSource
+        '
+        Me.TRONCALESBindingSource.DataMember = "TRONCALES"
+        Me.TRONCALESBindingSource.DataSource = Me.FIBRADataSet
+        '
+        'TRONCALESTableAdapter
+        '
+        Me.TRONCALESTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager2
+        '
+        Me.TableAdapterManager2.ARTICULOTableAdapter = Nothing
+        Me.TableAdapterManager2.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager2.CABLESTableAdapter = Nothing
+        Me.TableAdapterManager2.COLORESTableAdapter = Nothing
+        Me.TableAdapterManager2.FTTBTableAdapter = Nothing
+        Me.TableAdapterManager2.MDUTableAdapter = Nothing
+        Me.TableAdapterManager2.TRONCALESTableAdapter = Me.TRONCALESTableAdapter
+        Me.TableAdapterManager2.UpdateOrder = REDES.FIBRADataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'FTTBTableAdapterFIBRA
+        '
+        Me.FTTBTableAdapterFIBRA.ClearBeforeFill = True
+        '
+        'OBS_MDUBindingSource
+        '
+        Me.OBS_MDUBindingSource.DataMember = "OBS_MDU"
+        Me.OBS_MDUBindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'OBS_MDUTableAdapter
+        '
+        Me.OBS_MDUTableAdapter.ClearBeforeFill = True
         '
         'INICIO
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1359, 698)
-        Me.Controls.Add(Me.BTN_REPO)
-        Me.Controls.Add(Me.BTN_ACTUALIZAR_MDU)
+        Me.ClientSize = New System.Drawing.Size(1368, 701)
+        Me.Controls.Add(Me.LBL_CANT_ROWS)
+        Me.Controls.Add(Me.CBNODO)
+        Me.Controls.Add(Me.BTN_IRNODO)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.menuStrip1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.CB_INGRESO)
         Me.Controls.Add(Me.BTN_HABILITAR)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.AVANCEDataGridView)
-        Me.Controls.Add(Me.LBL_CANT_ROWS)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.lbl_nodo)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "INICIO"
         Me.Text = "INICIO"
@@ -667,12 +1027,19 @@ Partial Class INICIO
         CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AVANCEDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AVANCEBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.menuStrip1.ResumeLayout(False)
+        Me.menuStrip1.PerformLayout()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EdificioDataSetBackUp, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TURNOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CERTIFICACIONESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FTTBBindingSourceFIBRA, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FIBRADataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TRONCALESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OBS_MDUBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -684,7 +1051,6 @@ Partial Class INICIO
     Friend WithEvents BTN_AGENDAR As Button
     Friend WithEvents BTN_VER_EDIFICIO As Button
     Friend WithEvents DGV_EDIFICIOS As DataGridView
-    Friend WithEvents TXT_NODO As TextBox
     Friend WithEvents TXT_NRO As TextBox
     Friend WithEvents CB_STATUS As ComboBox
     Friend WithEvents TXT_CALLE As TextBox
@@ -731,10 +1097,8 @@ Partial Class INICIO
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents FTTBBindingSource As BindingSource
     Friend WithEvents FTTBTableAdapter As EDIFICIODataSetTableAdapters.FTTBTableAdapter
-    Friend WithEvents BTN_ACTUALIZAR_MDU As Button
     Friend WithEvents AGENDADO As DataGridViewTextBoxColumn
     Friend WithEvents ACOMETIDA As DataGridViewTextBoxColumn
-    Friend WithEvents BTN_REPO As Button
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
@@ -744,6 +1108,48 @@ Partial Class INICIO
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
     Friend WithEvents TURNOSBindingSource As BindingSource
     Friend WithEvents TURNOSTableAdapter As EDIFICIODataSetTableAdapters.TURNOSTableAdapter
-    Friend WithEvents CBAGENDA As ComboBox
     Friend WithEvents BTN_VER_TODOS As Button
+    Private WithEvents menuStrip1 As MenuStrip
+    Private WithEvents ArchivoMenuItem As ToolStripMenuItem
+    Private WithEvents SalirSubMenuItem As ToolStripMenuItem
+    Private WithEvents EdificioMenuItem As ToolStripMenuItem
+    Private WithEvents AdministrarSubMenuItem As ToolStripMenuItem
+    Private WithEvents CertificacionMenuItem As ToolStripMenuItem
+    Private WithEvents REDToolStripMenuItem As ToolStripMenuItem
+    Private WithEvents EDIFICIOSubMenuItem As ToolStripMenuItem
+    Private WithEvents REPORTEToolStripMenuItem As ToolStripMenuItem
+    Private WithEvents ENTREGABLEToolStripMenuItem As ToolStripMenuItem
+    Private WithEvents INSTALACIONESToolStripMenuItem As ToolStripMenuItem
+    Private WithEvents HABILITADOSToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lbl_nodo As Label
+    Friend WithEvents AgendaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Label3 As Label
+    Friend WithEvents BTN_IRNODO As Button
+    Friend WithEvents CBNODO As ComboBox
+    Friend WithEvents ImportarMenuItem As ToolStripMenuItem
+    Friend WithEvents BTN_VER_AGENDA_CERTIFICADO As Button
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents AgregarPorExcelCertEdificioSubMenuItem As ToolStripMenuItem
+    Friend WithEvents CERTIFICACIONESBindingSource As BindingSource
+    Friend WithEvents CERTIFICACIONESTableAdapter As EDIFICIODataSetTableAdapters.CERTIFICACIONESTableAdapter
+    Friend WithEvents FIBRADataSet As FIBRADataSet
+    Friend WithEvents TRONCALESBindingSource As BindingSource
+    Friend WithEvents TRONCALESTableAdapter As FIBRADataSetTableAdapters.TRONCALESTableAdapter
+    Friend WithEvents TableAdapterManager2 As FIBRADataSetTableAdapters.TableAdapterManager
+    Friend WithEvents ConformeAObraToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CablesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TorresToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OperacionesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents TRONCALESsubStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CrearSubMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents ExportarSubMenuItem As ToolStripMenuItem
+    Friend WithEvents FTTBBindingSourceFIBRA As BindingSource
+    Friend WithEvents FTTBTableAdapterFIBRA As FIBRADataSetTableAdapters.FTTBTableAdapter
+    Friend WithEvents AsignarNAPEdificioSubMenuItem As ToolStripMenuItem
+    Friend WithEvents AgregarPorExcelSubMenuItem As ToolStripMenuItem
+    Friend WithEvents ExcelDeRelevamientoMenuItem As ToolStripMenuItem
+    Friend WithEvents OBS_MDUBindingSource As BindingSource
+    Friend WithEvents OBS_MDUTableAdapter As EDIFICIODataSetTableAdapters.OBS_MDUTableAdapter
 End Class

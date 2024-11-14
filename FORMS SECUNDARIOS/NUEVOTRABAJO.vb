@@ -112,9 +112,9 @@
         End If
         Select Case TIPOACCION
             Case "NUEVO"
-
                 'ACTUALIZA EL ESTADO DE DEPENDENCIA DEL TRABAJO SELECCIONADO
                 NewTRABAJORow = DATOS.ORDENESDataSet.TRABAJOS.NewTRABAJOSRow
+                NewTRABAJORow.Id_TRABAJO = ObtenerUltimo("ORDENES", "TRABAJOS") + 1
                 NewTRABAJORow("ID_GESTION") = DATOS.DATOS_GESTIONRow("Id_GESTION")
                 NewTRABAJORow("TIPOTRABAJO") = TRAB_TIPO.Text
                 NewTRABAJORow("FECHAINICESTIMADO") = TRAB_INIESTIMADO.Value.ToShortDateString
@@ -209,9 +209,9 @@
                 'ENVIA MENSAJE 
                 DATOS.DATOS_MJE_ASUNTO = "NUEVO TRABAJO"
                 DATOS.DATOS_MJE_DESTINONOMBRE = ""
-                DATOS.DATOS_MJE_DESTINOSECTOR = DATOS.ORDENESDataSet.GESTION.Rows(DATOS.GESTIONBindingSource.Position).Item("SECTORASIG")
+                DATOS.DATOS_MJE_DESTINOSECTOR = SECTOR
                 DATOS.DATOS_MJE_MENSAJE = "SE HA CREADO UN TRABAJO DE " & TRAB_TIPO.Text & " CON EL SIGUIENTE DETALLE: " & TRAB_DESCRIPCION.Text & " CORRESPONDIENTE A LA GESTION DE " _
-                       & DATOS.ORDENESDataSet.GESTION.Rows(DATOS.GESTIONBindingSource.Position).Item("TIPOGESTION") & " - " & DATOS.ORDENESDataSet.GESTION.Rows(DATOS.GESTIONBindingSource.Position).Item("DESCRIPCION") & "- "
+                       & DATOS.ORDENESDataSet.GESTION.Rows(DATOS.GESTIONBindingSource.Position).Item("TIPOGESTION") & " - " & DATOS.ORDENESDataSet.GESTION.Rows(DATOS.GESTIONBindingSource.Position).Item("DESCRIPCION") & " - NUMERO: " & DATOS.DATOS_TRABAJORow("ID_TRABAJO")
                 DATOS.DATOS_MJE_NROORDENASOC = 0
                 DATOS.ENVIA_MENSAJE()
 

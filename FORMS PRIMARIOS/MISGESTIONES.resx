@@ -312,6 +312,28 @@
         AElFTkSuQmCC
 </value>
   </data>
+  <data name="BTN_GENERADOSX.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAASwAAABkCAYAAAA8AQ3AAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAX
+        EQAAFxEByibzPwAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAN/SURBVHhe
+        7dq9apRbFMfh8SMGTMa8gYCNpLBLmzJFIDZ2YmFjI6iF2Nho48FjbyPaKaiIHI7X4R1oLd6CtxD/y48m
+        vHPgYBLfBc/A02xm7/LH2ntmtr+/D9DC6CLAFI0uAkzR6CLAFI0uAkzR6OIv6+vrV+Nj7AMcsU/DMFyb
+        zWZnYilOx6k4UapJo6Eq2fz2wGEARy7Rep9ADXEuzkYFrOJ1clGsarIaPQzgqM3n8zsJ1IU4HxWvCtfS
+        omC5BgJ/TKaszwnUdmzFZmzEyqJgjR4CcFwSqCuxFxWui7EhWMAkJVB343pcjorWpmABk5RAPY57UdGq
+        SWtLsIBJSqCeRkWrJq26Hm4LFjBJCdSLeBL3o6asHcECJimBehU1ZT2MG7ErWMAkJVCv41k8ipuxJ1jA
+        JB0I1i3BAiYrgXoTz+PvuB2XBAuYJMEC2hAsoA3BAtoQLKANwQLaECygDcEC2hAsoA3BAtoQLKANwQLa
+        ECygDcEC2hAsoA3BAtoQLKANwQLaECygDcEC2hAsoA3BAtoQLKANwQLaECygDcEC2hAsoA3BAtoQLKAN
+        wQLaECygDcEC2hAsoA3BAtoQLKANwQLaECygDcEC2hAsoA3BAtoQLKANwQLaECygDcEC2hAsoA3BAtoQ
+        LKANwQLaECygDcEC2hAsoA3BAtoQLKANwQLaECygDcEC2hAsoA3BAtoQLKANwQLaECygDcEC2hAsoA3B
+        AtoQLKANwQLaECygDcEC2hAsoA3BAtoQLKANwQLaECygjf8TrE8HNwMcl7W1ta8J1Ot4Fo/iVuyNBmsY
+        hmtjhwAch+Xl5Q8HgnVzYbDyWUq0/h07COAora6ufkmD/olX8TQexo3YXRisGObz+Z2E6/PYoQCHqa6B
+        PyeritW7eBFP4n5cj51FwTod87gQ23El7sbjqOK9jKpfjWz1MAZwGKop1ZZqTLWmmlPtqQZtLwrWqTgb
+        52Mr9qIKdy/qgKpeHVb3y3rFBzgM1ZRqSzWmWlPNqfZUg7YWBetEnIkhNqOmrMtRG6t2D+KvqMew+skR
+        4DBUU6ot1ZhqTTWn2lMN2vyvYNW1sKasjbgYtaEqV6NZHVKPYPVyXz831n8kAH5HtaSaUm2pxlRrqjnV
+        nmrQxmiwSj4nox7fV75/8cekVdfD2rwTu1GHlUsAv+lXT6ot1ZhqTTWn2pMGzVa+AZFHTm7YJ29XAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
   <metadata name="GESTIONTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>345, 17</value>
   </metadata>

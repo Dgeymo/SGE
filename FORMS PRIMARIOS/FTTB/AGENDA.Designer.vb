@@ -31,16 +31,16 @@ Partial Class AGENDA
         Me.BTN_MENU_REAGENDAR = New System.Windows.Forms.Button()
         Me.BTN_MENU_DESAGENDAR = New System.Windows.Forms.Button()
         Me.EDIFICIODataSet = New REDES.EDIFICIODataSet()
-        Me.AGENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AGENDATableAdapter = New REDES.EDIFICIODataSetTableAdapters.AGENDATableAdapter()
-        Me.TableAdapterManager1 = New REDES.EDIFICIODataSetTableAdapters.TableAdapterManager()
         Me.TECNICOSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.TECNICOSTableAdapter()
         Me.TURNOSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.TURNOSTableAdapter()
+        Me.BTN_CERRAR = New System.Windows.Forms.Button()
+        Me.AGENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TableAdapterManager1 = New REDES.EDIFICIODataSetTableAdapters.TableAdapterManager()
         Me.TECNICOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TURNOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MDUBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.MDUTableAdapter()
-        Me.BTN_CERRAR = New System.Windows.Forms.Button()
         Me.P_MENU.SuspendLayout()
         CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -59,7 +59,7 @@ Partial Class AGENDA
         Me.BTN_NEXT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_NEXT.Font = New System.Drawing.Font("Arial Black", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTN_NEXT.ForeColor = System.Drawing.Color.White
-        Me.BTN_NEXT.Location = New System.Drawing.Point(1320, 0)
+        Me.BTN_NEXT.Location = New System.Drawing.Point(1331, 0)
         Me.BTN_NEXT.Name = "BTN_NEXT"
         Me.BTN_NEXT.Size = New System.Drawing.Size(30, 749)
         Me.BTN_NEXT.TabIndex = 0
@@ -138,27 +138,9 @@ Partial Class AGENDA
         Me.EDIFICIODataSet.DataSetName = "EDIFICIODataSet"
         Me.EDIFICIODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'AGENDABindingSource
-        '
-        Me.AGENDABindingSource.DataMember = "AGENDA"
-        Me.AGENDABindingSource.DataSource = Me.EDIFICIODataSet
-        '
         'AGENDATableAdapter
         '
         Me.AGENDATableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager1
-        '
-        Me.TableAdapterManager1.AGENDATableAdapter = Me.AGENDATableAdapter
-        Me.TableAdapterManager1.AVANCETableAdapter = Nothing
-        Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager1.BITACORATableAdapter = Nothing
-        Me.TableAdapterManager1.FTTBTableAdapter = Nothing
-        Me.TableAdapterManager1.MDUTableAdapter = Nothing
-        Me.TableAdapterManager1.STATUSTableAdapter = Nothing
-        Me.TableAdapterManager1.TECNICOSTableAdapter = Me.TECNICOSTableAdapter
-        Me.TableAdapterManager1.TURNOSTableAdapter = Me.TURNOSTableAdapter
-        Me.TableAdapterManager1.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'TECNICOSTableAdapter
         '
@@ -167,6 +149,40 @@ Partial Class AGENDA
         'TURNOSTableAdapter
         '
         Me.TURNOSTableAdapter.ClearBeforeFill = True
+        '
+        'BTN_CERRAR
+        '
+        Me.BTN_CERRAR.BackColor = System.Drawing.Color.Red
+        Me.BTN_CERRAR.FlatAppearance.BorderSize = 0
+        Me.BTN_CERRAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_CERRAR.Font = New System.Drawing.Font("Marlett", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BTN_CERRAR.ForeColor = System.Drawing.Color.White
+        Me.BTN_CERRAR.Location = New System.Drawing.Point(1242, 0)
+        Me.BTN_CERRAR.Name = "BTN_CERRAR"
+        Me.BTN_CERRAR.Size = New System.Drawing.Size(69, 23)
+        Me.BTN_CERRAR.TabIndex = 3
+        Me.BTN_CERRAR.Text = "CERRAR"
+        Me.BTN_CERRAR.UseVisualStyleBackColor = False
+        '
+        'AGENDABindingSource
+        '
+        Me.AGENDABindingSource.DataMember = "AGENDA"
+        Me.AGENDABindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'TableAdapterManager1
+        '
+        Me.TableAdapterManager1.AGENDATableAdapter = Nothing
+        Me.TableAdapterManager1.AVANCETableAdapter = Nothing
+        Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager1.BITACORATableAdapter = Nothing
+        Me.TableAdapterManager1.CALLESTableAdapter = Nothing
+        Me.TableAdapterManager1.Connection = Nothing
+        Me.TableAdapterManager1.FTTBTableAdapter = Nothing
+        Me.TableAdapterManager1.MDUTableAdapter = Nothing
+        Me.TableAdapterManager1.STATUSTableAdapter = Nothing
+        Me.TableAdapterManager1.TECNICOSTableAdapter = Nothing
+        Me.TableAdapterManager1.TURNOSTableAdapter = Nothing
+        Me.TableAdapterManager1.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'TECNICOSBindingSource
         '
@@ -187,25 +203,11 @@ Partial Class AGENDA
         '
         Me.MDUTableAdapter.ClearBeforeFill = True
         '
-        'BTN_CERRAR
-        '
-        Me.BTN_CERRAR.BackColor = System.Drawing.Color.Red
-        Me.BTN_CERRAR.FlatAppearance.BorderSize = 0
-        Me.BTN_CERRAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_CERRAR.Font = New System.Drawing.Font("Marlett", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BTN_CERRAR.ForeColor = System.Drawing.Color.White
-        Me.BTN_CERRAR.Location = New System.Drawing.Point(1242, 0)
-        Me.BTN_CERRAR.Name = "BTN_CERRAR"
-        Me.BTN_CERRAR.Size = New System.Drawing.Size(69, 23)
-        Me.BTN_CERRAR.TabIndex = 3
-        Me.BTN_CERRAR.Text = "CERRAR"
-        Me.BTN_CERRAR.UseVisualStyleBackColor = False
-        '
         'AGENDA
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1350, 749)
+        Me.ClientSize = New System.Drawing.Size(1361, 749)
         Me.Controls.Add(Me.BTN_CERRAR)
         Me.Controls.Add(Me.P_MENU)
         Me.Controls.Add(Me.LBL_ACCESO)
@@ -253,6 +255,6 @@ Partial Class AGENDA
     Friend WithEvents TURNOSTableAdapter As EDIFICIODataSetTableAdapters.TURNOSTableAdapter
     Friend WithEvents TURNOSBindingSource As BindingSource
     Friend WithEvents MDUBindingSource As BindingSource
-    Friend WithEvents MDUTableAdapter As EDIFICIODataSetTableAdapters.MDUTableAdapter
     Friend WithEvents BTN_CERRAR As Button
+    Friend WithEvents MDUTableAdapter As EDIFICIODataSetTableAdapters.MDUTableAdapter
 End Class

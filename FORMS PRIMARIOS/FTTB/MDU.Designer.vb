@@ -23,8 +23,6 @@ Partial Class MDU
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ID_MDULabel As System.Windows.Forms.Label
-        Dim ID_STATUSLabel As System.Windows.Forms.Label
         Dim ID_CALLELabel As System.Windows.Forms.Label
         Dim CALLELabel As System.Windows.Forms.Label
         Dim PUERTALabel As System.Windows.Forms.Label
@@ -57,39 +55,36 @@ Partial Class MDU
         Dim ID_TECNICOLabel As System.Windows.Forms.Label
         Dim ID_EDIFICIOLabel As System.Windows.Forms.Label
         Dim ID_TURNOLabel As System.Windows.Forms.Label
-        Me.EDIFICIODataSet = New REDES.EDIFICIODataSet()
-        Me.AGENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.AGENDATableAdapter = New REDES.EDIFICIODataSetTableAdapters.AGENDATableAdapter()
-        Me.TableAdapterManager = New REDES.EDIFICIODataSetTableAdapters.TableAdapterManager()
-        Me.BITACORATableAdapter = New REDES.EDIFICIODataSetTableAdapters.BITACORATableAdapter()
-        Me.FTTBTableAdapter = New REDES.EDIFICIODataSetTableAdapters.FTTBTableAdapter()
-        Me.MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.MDUTableAdapter()
-        Me.STATUSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.STATUSTableAdapter()
-        Me.TECNICOSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.TECNICOSTableAdapter()
-        Me.TURNOSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.TURNOSTableAdapter()
-        Me.BITACORABindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MDUBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.STATUSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TECNICOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TURNOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Dim Label1 As System.Windows.Forms.Label
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.TXT_NRO = New System.Windows.Forms.TextBox()
+        Me.TXT_CALLE = New System.Windows.Forms.TextBox()
+        Me.BTN_AGREGAR_MDU = New System.Windows.Forms.Button()
+        Me.CB_INGRESO = New System.Windows.Forms.ComboBox()
+        Me.DGV_MDU = New System.Windows.Forms.DataGridView()
+        Me.CARPETADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CALLEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PUERTADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ACOMETIDADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ID_MDU = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MDUBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.EDIFICIODataSet = New REDES.EDIFICIODataSet()
         Me.btnGuardarEdificio = New System.Windows.Forms.Button()
         Me.ACOMETIDATextBox = New System.Windows.Forms.TextBox()
         Me.PISOSTextBox = New System.Windows.Forms.TextBox()
         Me.TORRETextBox = New System.Windows.Forms.TextBox()
         Me.MODIFICADODateTimePicker = New System.Windows.Forms.DateTimePicker()
-        Me.INGRESOTextBox = New System.Windows.Forms.TextBox()
         Me.ZONATextBox = New System.Windows.Forms.TextBox()
         Me.NODOTextBox = New System.Windows.Forms.TextBox()
         Me.APTOSTextBox = New System.Windows.Forms.TextBox()
         Me.PUERTATextBox = New System.Windows.Forms.TextBox()
         Me.CALLETextBox = New System.Windows.Forms.TextBox()
         Me.ID_CALLETextBox = New System.Windows.Forms.TextBox()
-        Me.ID_STATUSTextBox = New System.Windows.Forms.TextBox()
-        Me.ID_MDUTextBox = New System.Windows.Forms.TextBox()
+        Me.EdificioDataSetBACK = New REDES.EDIFICIODataSet()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.btnGuardarCtto = New System.Windows.Forms.Button()
         Me.APTO_CTTOTextBox = New System.Windows.Forms.TextBox()
+        Me.BITACORABindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.VALIDOCheckBox = New System.Windows.Forms.CheckBox()
         Me.OBSERVACIONESTextBox = New System.Windows.Forms.TextBox()
         Me.EMAIL_CTTOTextBox = New System.Windows.Forms.TextBox()
@@ -106,23 +101,48 @@ Partial Class MDU
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.btnGuardarFttb = New System.Windows.Forms.Button()
-        Me.CAJA_DISTRIBUCIONTextBox = New System.Windows.Forms.TextBox()
-        Me.FTTBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ACOMETIDATextBox1 = New System.Windows.Forms.TextBox()
-        Me.OBS_TECTextBox = New System.Windows.Forms.TextBox()
-        Me.SPL_NROTextBox = New System.Windows.Forms.TextBox()
-        Me.PELOTextBox = New System.Windows.Forms.TextBox()
-        Me.TUBOTextBox = New System.Windows.Forms.TextBox()
-        Me.NAP_NROTextBox = New System.Windows.Forms.TextBox()
-        Me.NAPTextBox = New System.Windows.Forms.TextBox()
-        Me.CABLETextBox = New System.Windows.Forms.TextBox()
-        Me.TIPO_CONEXION_DESDETextBox = New System.Windows.Forms.TextBox()
-        Me.CONEXION_DESDETextBox = New System.Windows.Forms.TextBox()
         Me.FTTBDataGridView = New System.Windows.Forms.DataGridView()
+        Me.ID_FTTB = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NAPDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NAPNRODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TIPOCONEXIONDESDEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CONEXIONDESDEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CAJADISTRIBUCIONDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TUBODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PELODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SPLNRODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FTTBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BTN_AGREGAR_FTTB = New System.Windows.Forms.Button()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.CB_TIPO_NAP = New System.Windows.Forms.ComboBox()
+        Me.NAP_SPL = New System.Windows.Forms.ComboBox()
+        Me.NAP_PELO = New System.Windows.Forms.ComboBox()
+        Me.NAP_TUBO = New System.Windows.Forms.ComboBox()
+        Me.NAP_NROTextBox = New System.Windows.Forms.TextBox()
+        Me.OBS_TECTextBox = New System.Windows.Forms.TextBox()
+        Me.TXT_ACOMETIDA = New System.Windows.Forms.TextBox()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.CB_CABLE = New System.Windows.Forms.ComboBox()
+        Me.TXT_CONEXION_DESDE = New System.Windows.Forms.TextBox()
+        Me.CB_TIPO = New System.Windows.Forms.ComboBox()
+        Me.CAJA_DISTRIBUCIONTextBox = New System.Windows.Forms.TextBox()
+        Me.btnGuardarFttb = New System.Windows.Forms.Button()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.btnGuardarAgenda = New System.Windows.Forms.Button()
+        Me.ID_TURNOTextBox = New System.Windows.Forms.TextBox()
+        Me.AGENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ID_EDIFICIOTextBox = New System.Windows.Forms.TextBox()
+        Me.ID_TECNICOTextBox = New System.Windows.Forms.TextBox()
+        Me.DIA_AGENDADateTimePicker = New System.Windows.Forms.DateTimePicker()
+        Me.AGENDADataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -133,20 +153,19 @@ Partial Class MDU
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.btnGuardarAgenda = New System.Windows.Forms.Button()
-        Me.ID_TURNOTextBox = New System.Windows.Forms.TextBox()
-        Me.ID_EDIFICIOTextBox = New System.Windows.Forms.TextBox()
-        Me.ID_TECNICOTextBox = New System.Windows.Forms.TextBox()
-        Me.DIA_AGENDADateTimePicker = New System.Windows.Forms.DateTimePicker()
-        Me.AGENDADataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn25 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        ID_MDULabel = New System.Windows.Forms.Label()
-        ID_STATUSLabel = New System.Windows.Forms.Label()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AGENDATableAdapter = New REDES.EDIFICIODataSetTableAdapters.AGENDATableAdapter()
+        Me.TableAdapterManager = New REDES.EDIFICIODataSetTableAdapters.TableAdapterManager()
+        Me.BITACORATableAdapter = New REDES.EDIFICIODataSetTableAdapters.BITACORATableAdapter()
+        Me.FTTBTableAdapter = New REDES.EDIFICIODataSetTableAdapters.FTTBTableAdapter()
+        Me.STATUSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.STATUSTableAdapter()
+        Me.TECNICOSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.TECNICOSTableAdapter()
+        Me.TURNOSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.TURNOSTableAdapter()
+        Me.MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.MDUTableAdapter()
+        Me.STATUSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TECNICOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TURNOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CARPETATextBox = New System.Windows.Forms.TextBox()
         ID_CALLELabel = New System.Windows.Forms.Label()
         CALLELabel = New System.Windows.Forms.Label()
         PUERTALabel = New System.Windows.Forms.Label()
@@ -179,45 +198,33 @@ Partial Class MDU
         ID_TECNICOLabel = New System.Windows.Forms.Label()
         ID_EDIFICIOLabel = New System.Windows.Forms.Label()
         ID_TURNOLabel = New System.Windows.Forms.Label()
-        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BITACORABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox1.SuspendLayout()
+        CType(Me.DGV_MDU, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EdificioDataSetBACK, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox2.SuspendLayout()
+        CType(Me.BITACORABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BITACORADataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.FTTBDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox6.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AGENDADataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox7.SuspendLayout()
         CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TECNICOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TURNOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
-        CType(Me.BITACORADataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox3.SuspendLayout()
-        CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FTTBDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox4.SuspendLayout()
-        CType(Me.AGENDADataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'ID_MDULabel
-        '
-        ID_MDULabel.AutoSize = True
-        ID_MDULabel.Location = New System.Drawing.Point(30, 16)
-        ID_MDULabel.Name = "ID_MDULabel"
-        ID_MDULabel.Size = New System.Drawing.Size(49, 13)
-        ID_MDULabel.TabIndex = 0
-        ID_MDULabel.Text = "ID MDU:"
-        '
-        'ID_STATUSLabel
-        '
-        ID_STATUSLabel.AutoSize = True
-        ID_STATUSLabel.Location = New System.Drawing.Point(12, 39)
-        ID_STATUSLabel.Name = "ID_STATUSLabel"
-        ID_STATUSLabel.Size = New System.Drawing.Size(67, 13)
-        ID_STATUSLabel.TabIndex = 2
-        ID_STATUSLabel.Text = "ID STATUS:"
         '
         'ID_CALLELabel
         '
         ID_CALLELabel.AutoSize = True
-        ID_CALLELabel.Location = New System.Drawing.Point(208, 16)
+        ID_CALLELabel.Location = New System.Drawing.Point(481, 19)
         ID_CALLELabel.Name = "ID_CALLELabel"
         ID_CALLELabel.Size = New System.Drawing.Size(57, 13)
         ID_CALLELabel.TabIndex = 4
@@ -226,7 +233,7 @@ Partial Class MDU
         'CALLELabel
         '
         CALLELabel.AutoSize = True
-        CALLELabel.Location = New System.Drawing.Point(348, 16)
+        CALLELabel.Location = New System.Drawing.Point(384, 31)
         CALLELabel.Name = "CALLELabel"
         CALLELabel.Size = New System.Drawing.Size(43, 13)
         CALLELabel.TabIndex = 6
@@ -235,7 +242,7 @@ Partial Class MDU
         'PUERTALabel
         '
         PUERTALabel.AutoSize = True
-        PUERTALabel.Location = New System.Drawing.Point(640, 16)
+        PUERTALabel.Location = New System.Drawing.Point(377, 77)
         PUERTALabel.Name = "PUERTALabel"
         PUERTALabel.Size = New System.Drawing.Size(54, 13)
         PUERTALabel.TabIndex = 8
@@ -244,7 +251,7 @@ Partial Class MDU
         'APTOSLabel
         '
         APTOSLabel.AutoSize = True
-        APTOSLabel.Location = New System.Drawing.Point(834, 16)
+        APTOSLabel.Location = New System.Drawing.Point(456, 117)
         APTOSLabel.Name = "APTOSLabel"
         APTOSLabel.Size = New System.Drawing.Size(46, 13)
         APTOSLabel.TabIndex = 10
@@ -253,7 +260,7 @@ Partial Class MDU
         'NODOLabel
         '
         NODOLabel.AutoSize = True
-        NODOLabel.Location = New System.Drawing.Point(992, 16)
+        NODOLabel.Location = New System.Drawing.Point(355, 139)
         NODOLabel.Name = "NODOLabel"
         NODOLabel.Size = New System.Drawing.Size(42, 13)
         NODOLabel.TabIndex = 12
@@ -262,7 +269,7 @@ Partial Class MDU
         'ZONALabel
         '
         ZONALabel.AutoSize = True
-        ZONALabel.Location = New System.Drawing.Point(1102, 16)
+        ZONALabel.Location = New System.Drawing.Point(357, 161)
         ZONALabel.Name = "ZONALabel"
         ZONALabel.Size = New System.Drawing.Size(40, 13)
         ZONALabel.TabIndex = 14
@@ -271,7 +278,7 @@ Partial Class MDU
         'INGRESOLabel
         '
         INGRESOLabel.AutoSize = True
-        INGRESOLabel.Location = New System.Drawing.Point(206, 39)
+        INGRESOLabel.Location = New System.Drawing.Point(444, 183)
         INGRESOLabel.Name = "INGRESOLabel"
         INGRESOLabel.Size = New System.Drawing.Size(59, 13)
         INGRESOLabel.TabIndex = 16
@@ -280,7 +287,7 @@ Partial Class MDU
         'MODIFICADOLabel
         '
         MODIFICADOLabel.AutoSize = True
-        MODIFICADOLabel.Location = New System.Drawing.Point(511, 39)
+        MODIFICADOLabel.Location = New System.Drawing.Point(424, 227)
         MODIFICADOLabel.Name = "MODIFICADOLabel"
         MODIFICADOLabel.RightToLeft = System.Windows.Forms.RightToLeft.No
         MODIFICADOLabel.Size = New System.Drawing.Size(77, 13)
@@ -290,7 +297,7 @@ Partial Class MDU
         'TORRELabel
         '
         TORRELabel.AutoSize = True
-        TORRELabel.Location = New System.Drawing.Point(1094, 41)
+        TORRELabel.Location = New System.Drawing.Point(453, 161)
         TORRELabel.Name = "TORRELabel"
         TORRELabel.Size = New System.Drawing.Size(48, 13)
         TORRELabel.TabIndex = 20
@@ -299,7 +306,7 @@ Partial Class MDU
         'PISOSLabel
         '
         PISOSLabel.AutoSize = True
-        PISOSLabel.Location = New System.Drawing.Point(992, 41)
+        PISOSLabel.Location = New System.Drawing.Point(459, 139)
         PISOSLabel.Name = "PISOSLabel"
         PISOSLabel.Size = New System.Drawing.Size(42, 13)
         PISOSLabel.TabIndex = 22
@@ -308,7 +315,7 @@ Partial Class MDU
         'ACOMETIDALabel
         '
         ACOMETIDALabel.AutoSize = True
-        ACOMETIDALabel.Location = New System.Drawing.Point(722, 39)
+        ACOMETIDALabel.Location = New System.Drawing.Point(428, 205)
         ACOMETIDALabel.Name = "ACOMETIDALabel"
         ACOMETIDALabel.Size = New System.Drawing.Size(73, 13)
         ACOMETIDALabel.TabIndex = 24
@@ -317,25 +324,25 @@ Partial Class MDU
         'CONEXION_DESDELabel
         '
         CONEXION_DESDELabel.AutoSize = True
-        CONEXION_DESDELabel.Location = New System.Drawing.Point(6, 132)
+        CONEXION_DESDELabel.Location = New System.Drawing.Point(97, 21)
         CONEXION_DESDELabel.Name = "CONEXION_DESDELabel"
-        CONEXION_DESDELabel.Size = New System.Drawing.Size(63, 13)
+        CONEXION_DESDELabel.Size = New System.Drawing.Size(55, 13)
         CONEXION_DESDELabel.TabIndex = 1
-        CONEXION_DESDELabel.Text = "NRO CAJA:"
+        CONEXION_DESDELabel.Text = "NUMERO"
         '
         'TIPO_CONEXION_DESDELabel
         '
         TIPO_CONEXION_DESDELabel.AutoSize = True
-        TIPO_CONEXION_DESDELabel.Location = New System.Drawing.Point(206, 132)
+        TIPO_CONEXION_DESDELabel.Location = New System.Drawing.Point(120, 52)
         TIPO_CONEXION_DESDELabel.Name = "TIPO_CONEXION_DESDELabel"
-        TIPO_CONEXION_DESDELabel.Size = New System.Drawing.Size(64, 13)
+        TIPO_CONEXION_DESDELabel.Size = New System.Drawing.Size(32, 13)
         TIPO_CONEXION_DESDELabel.TabIndex = 3
-        TIPO_CONEXION_DESDELabel.Text = "TIPO CAJA:"
+        TIPO_CONEXION_DESDELabel.Text = "TIPO"
         '
         'CABLELabel
         '
         CABLELabel.AutoSize = True
-        CABLELabel.Location = New System.Drawing.Point(18, 188)
+        CABLELabel.Location = New System.Drawing.Point(0, 108)
         CABLELabel.Name = "CABLELabel"
         CABLELabel.Size = New System.Drawing.Size(44, 13)
         CABLELabel.TabIndex = 5
@@ -344,16 +351,16 @@ Partial Class MDU
         'NAPLabel
         '
         NAPLabel.AutoSize = True
-        NAPLabel.Location = New System.Drawing.Point(483, 132)
+        NAPLabel.Location = New System.Drawing.Point(23, 24)
         NAPLabel.Name = "NAPLabel"
-        NAPLabel.Size = New System.Drawing.Size(32, 13)
+        NAPLabel.Size = New System.Drawing.Size(60, 13)
         NAPLabel.TabIndex = 7
-        NAPLabel.Text = "NAP:"
+        NAPLabel.Text = "TIPO NAP:"
         '
         'NAP_NROLabel
         '
         NAP_NROLabel.AutoSize = True
-        NAP_NROLabel.Location = New System.Drawing.Point(456, 160)
+        NAP_NROLabel.Location = New System.Drawing.Point(24, 47)
         NAP_NROLabel.Name = "NAP_NROLabel"
         NAP_NROLabel.Size = New System.Drawing.Size(59, 13)
         NAP_NROLabel.TabIndex = 9
@@ -362,7 +369,7 @@ Partial Class MDU
         'TUBOLabel
         '
         TUBOLabel.AutoSize = True
-        TUBOLabel.Location = New System.Drawing.Point(627, 132)
+        TUBOLabel.Location = New System.Drawing.Point(190, 24)
         TUBOLabel.Name = "TUBOLabel"
         TUBOLabel.Size = New System.Drawing.Size(40, 13)
         TUBOLabel.TabIndex = 11
@@ -371,7 +378,7 @@ Partial Class MDU
         'PELOLabel
         '
         PELOLabel.AutoSize = True
-        PELOLabel.Location = New System.Drawing.Point(790, 132)
+        PELOLabel.Location = New System.Drawing.Point(192, 47)
         PELOLabel.Name = "PELOLabel"
         PELOLabel.Size = New System.Drawing.Size(38, 13)
         PELOLabel.TabIndex = 13
@@ -380,7 +387,7 @@ Partial Class MDU
         'SPL_NROLabel
         '
         SPL_NROLabel.AutoSize = True
-        SPL_NROLabel.Location = New System.Drawing.Point(952, 132)
+        SPL_NROLabel.Location = New System.Drawing.Point(173, 70)
         SPL_NROLabel.Name = "SPL_NROLabel"
         SPL_NROLabel.Size = New System.Drawing.Size(57, 13)
         SPL_NROLabel.TabIndex = 15
@@ -389,7 +396,7 @@ Partial Class MDU
         'OBS_TECLabel
         '
         OBS_TECLabel.AutoSize = True
-        OBS_TECLabel.Location = New System.Drawing.Point(640, 160)
+        OBS_TECLabel.Location = New System.Drawing.Point(6, 94)
         OBS_TECLabel.Name = "OBS_TECLabel"
         OBS_TECLabel.Size = New System.Drawing.Size(56, 13)
         OBS_TECLabel.TabIndex = 17
@@ -398,7 +405,7 @@ Partial Class MDU
         'ACOMETIDALabel1
         '
         ACOMETIDALabel1.AutoSize = True
-        ACOMETIDALabel1.Location = New System.Drawing.Point(442, 188)
+        ACOMETIDALabel1.Location = New System.Drawing.Point(10, 70)
         ACOMETIDALabel1.Name = "ACOMETIDALabel1"
         ACOMETIDALabel1.Size = New System.Drawing.Size(73, 13)
         ACOMETIDALabel1.TabIndex = 19
@@ -407,11 +414,11 @@ Partial Class MDU
         'CAJA_DISTRIBUCIONLabel
         '
         CAJA_DISTRIBUCIONLabel.AutoSize = True
-        CAJA_DISTRIBUCIONLabel.Location = New System.Drawing.Point(150, 161)
+        CAJA_DISTRIBUCIONLabel.Location = New System.Drawing.Point(65, 81)
         CAJA_DISTRIBUCIONLabel.Name = "CAJA_DISTRIBUCIONLabel"
-        CAJA_DISTRIBUCIONLabel.Size = New System.Drawing.Size(116, 13)
+        CAJA_DISTRIBUCIONLabel.Size = New System.Drawing.Size(87, 13)
         CAJA_DISTRIBUCIONLabel.TabIndex = 21
-        CAJA_DISTRIBUCIONLabel.Text = "DISTRIBUCION CAJA:"
+        CAJA_DISTRIBUCIONLabel.Text = "DISTRIBUCION "
         '
         'NOMBRE_CTTOLabel
         '
@@ -488,7 +495,7 @@ Partial Class MDU
         'ID_EDIFICIOLabel
         '
         ID_EDIFICIOLabel.AutoSize = True
-        ID_EDIFICIOLabel.Location = New System.Drawing.Point(474, 98)
+        ID_EDIFICIOLabel.Location = New System.Drawing.Point(9, 124)
         ID_EDIFICIOLabel.Name = "ID_EDIFICIOLabel"
         ID_EDIFICIOLabel.Size = New System.Drawing.Size(69, 13)
         ID_EDIFICIOLabel.TabIndex = 5
@@ -497,90 +504,21 @@ Partial Class MDU
         'ID_TURNOLabel
         '
         ID_TURNOLabel.AutoSize = True
-        ID_TURNOLabel.Location = New System.Drawing.Point(670, 98)
+        ID_TURNOLabel.Location = New System.Drawing.Point(205, 124)
         ID_TURNOLabel.Name = "ID_TURNOLabel"
         ID_TURNOLabel.Size = New System.Drawing.Size(63, 13)
         ID_TURNOLabel.TabIndex = 7
         ID_TURNOLabel.Text = "ID TURNO:"
         '
-        'EDIFICIODataSet
-        '
-        Me.EDIFICIODataSet.DataSetName = "EDIFICIODataSet"
-        Me.EDIFICIODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'AGENDABindingSource
-        '
-        Me.AGENDABindingSource.DataMember = "AGENDA"
-        Me.AGENDABindingSource.DataSource = Me.EDIFICIODataSet
-        '
-        'AGENDATableAdapter
-        '
-        Me.AGENDATableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.AGENDATableAdapter = Me.AGENDATableAdapter
-        Me.TableAdapterManager.AVANCETableAdapter = Nothing
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.BITACORATableAdapter = Me.BITACORATableAdapter
-        Me.TableAdapterManager.FTTBTableAdapter = Me.FTTBTableAdapter
-        Me.TableAdapterManager.MDUTableAdapter = Me.MDUTableAdapter
-        Me.TableAdapterManager.STATUSTableAdapter = Me.STATUSTableAdapter
-        Me.TableAdapterManager.TECNICOSTableAdapter = Me.TECNICOSTableAdapter
-        Me.TableAdapterManager.TURNOSTableAdapter = Me.TURNOSTableAdapter
-        Me.TableAdapterManager.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'BITACORATableAdapter
-        '
-        Me.BITACORATableAdapter.ClearBeforeFill = True
-        '
-        'FTTBTableAdapter
-        '
-        Me.FTTBTableAdapter.ClearBeforeFill = True
-        '
-        'MDUTableAdapter
-        '
-        Me.MDUTableAdapter.ClearBeforeFill = True
-        '
-        'STATUSTableAdapter
-        '
-        Me.STATUSTableAdapter.ClearBeforeFill = True
-        '
-        'TECNICOSTableAdapter
-        '
-        Me.TECNICOSTableAdapter.ClearBeforeFill = True
-        '
-        'TURNOSTableAdapter
-        '
-        Me.TURNOSTableAdapter.ClearBeforeFill = True
-        '
-        'BITACORABindingSource
-        '
-        Me.BITACORABindingSource.DataMember = "BITACORA"
-        Me.BITACORABindingSource.DataSource = Me.EDIFICIODataSet
-        '
-        'MDUBindingSource
-        '
-        Me.MDUBindingSource.DataMember = "MDU"
-        Me.MDUBindingSource.DataSource = Me.EDIFICIODataSet
-        '
-        'STATUSBindingSource
-        '
-        Me.STATUSBindingSource.DataMember = "STATUS"
-        Me.STATUSBindingSource.DataSource = Me.EDIFICIODataSet
-        '
-        'TECNICOSBindingSource
-        '
-        Me.TECNICOSBindingSource.DataMember = "TECNICOS"
-        Me.TECNICOSBindingSource.DataSource = Me.EDIFICIODataSet
-        '
-        'TURNOSBindingSource
-        '
-        Me.TURNOSBindingSource.DataMember = "TURNOS"
-        Me.TURNOSBindingSource.DataSource = Me.EDIFICIODataSet
-        '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Label1)
+        Me.GroupBox1.Controls.Add(Me.CARPETATextBox)
+        Me.GroupBox1.Controls.Add(Me.TXT_NRO)
+        Me.GroupBox1.Controls.Add(Me.TXT_CALLE)
+        Me.GroupBox1.Controls.Add(Me.BTN_AGREGAR_MDU)
+        Me.GroupBox1.Controls.Add(Me.CB_INGRESO)
+        Me.GroupBox1.Controls.Add(Me.DGV_MDU)
         Me.GroupBox1.Controls.Add(Me.btnGuardarEdificio)
         Me.GroupBox1.Controls.Add(ACOMETIDALabel)
         Me.GroupBox1.Controls.Add(Me.ACOMETIDATextBox)
@@ -591,7 +529,6 @@ Partial Class MDU
         Me.GroupBox1.Controls.Add(MODIFICADOLabel)
         Me.GroupBox1.Controls.Add(Me.MODIFICADODateTimePicker)
         Me.GroupBox1.Controls.Add(INGRESOLabel)
-        Me.GroupBox1.Controls.Add(Me.INGRESOTextBox)
         Me.GroupBox1.Controls.Add(ZONALabel)
         Me.GroupBox1.Controls.Add(Me.ZONATextBox)
         Me.GroupBox1.Controls.Add(NODOLabel)
@@ -604,133 +541,223 @@ Partial Class MDU
         Me.GroupBox1.Controls.Add(Me.CALLETextBox)
         Me.GroupBox1.Controls.Add(ID_CALLELabel)
         Me.GroupBox1.Controls.Add(Me.ID_CALLETextBox)
-        Me.GroupBox1.Controls.Add(ID_STATUSLabel)
-        Me.GroupBox1.Controls.Add(Me.ID_STATUSTextBox)
-        Me.GroupBox1.Controls.Add(ID_MDULabel)
-        Me.GroupBox1.Controls.Add(Me.ID_MDUTextBox)
-        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Left
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox1.Location = New System.Drawing.Point(3, 16)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1350, 66)
+        Me.GroupBox1.Size = New System.Drawing.Size(623, 306)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "EDIFICIO"
         '
+        'TXT_NRO
+        '
+        Me.TXT_NRO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TXT_NRO.Location = New System.Drawing.Point(267, 12)
+        Me.TXT_NRO.Margin = New System.Windows.Forms.Padding(2)
+        Me.TXT_NRO.Name = "TXT_NRO"
+        Me.TXT_NRO.Size = New System.Drawing.Size(62, 20)
+        Me.TXT_NRO.TabIndex = 35
+        Me.TXT_NRO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TXT_CALLE
+        '
+        Me.TXT_CALLE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TXT_CALLE.Location = New System.Drawing.Point(40, 12)
+        Me.TXT_CALLE.Margin = New System.Windows.Forms.Padding(2)
+        Me.TXT_CALLE.Name = "TXT_CALLE"
+        Me.TXT_CALLE.Size = New System.Drawing.Size(223, 20)
+        Me.TXT_CALLE.TabIndex = 34
+        '
+        'BTN_AGREGAR_MDU
+        '
+        Me.BTN_AGREGAR_MDU.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_AGREGAR_MDU.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_PRESS
+        Me.BTN_AGREGAR_MDU.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BTN_AGREGAR_MDU.FlatAppearance.BorderSize = 0
+        Me.BTN_AGREGAR_MDU.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent
+        Me.BTN_AGREGAR_MDU.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.BTN_AGREGAR_MDU.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.BTN_AGREGAR_MDU.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_AGREGAR_MDU.ForeColor = System.Drawing.Color.White
+        Me.BTN_AGREGAR_MDU.Location = New System.Drawing.Point(331, 250)
+        Me.BTN_AGREGAR_MDU.Name = "BTN_AGREGAR_MDU"
+        Me.BTN_AGREGAR_MDU.Size = New System.Drawing.Size(113, 45)
+        Me.BTN_AGREGAR_MDU.TabIndex = 33
+        Me.BTN_AGREGAR_MDU.Text = "AGREGAR"
+        Me.BTN_AGREGAR_MDU.UseVisualStyleBackColor = False
+        '
+        'CB_INGRESO
+        '
+        Me.CB_INGRESO.FormattingEnabled = True
+        Me.CB_INGRESO.Items.AddRange(New Object() {"AEREO", "SUBTERRANEO", "DUCTO"})
+        Me.CB_INGRESO.Location = New System.Drawing.Point(507, 179)
+        Me.CB_INGRESO.Name = "CB_INGRESO"
+        Me.CB_INGRESO.Size = New System.Drawing.Size(102, 21)
+        Me.CB_INGRESO.TabIndex = 30
+        Me.CB_INGRESO.Text = "AEREO"
+        '
+        'DGV_MDU
+        '
+        Me.DGV_MDU.AllowUserToAddRows = False
+        Me.DGV_MDU.AllowUserToDeleteRows = False
+        Me.DGV_MDU.AutoGenerateColumns = False
+        Me.DGV_MDU.BackgroundColor = System.Drawing.Color.White
+        Me.DGV_MDU.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGV_MDU.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CARPETADataGridViewTextBoxColumn, Me.CALLEDataGridViewTextBoxColumn, Me.PUERTADataGridViewTextBoxColumn, Me.ACOMETIDADataGridViewTextBoxColumn, Me.ID_MDU})
+        Me.DGV_MDU.DataSource = Me.MDUBindingSource
+        Me.DGV_MDU.GridColor = System.Drawing.Color.Green
+        Me.DGV_MDU.Location = New System.Drawing.Point(3, 37)
+        Me.DGV_MDU.MultiSelect = False
+        Me.DGV_MDU.Name = "DGV_MDU"
+        Me.DGV_MDU.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DGV_MDU.RowHeadersVisible = False
+        Me.DGV_MDU.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DGV_MDU.ShowCellErrors = False
+        Me.DGV_MDU.ShowCellToolTips = False
+        Me.DGV_MDU.ShowEditingIcon = False
+        Me.DGV_MDU.ShowRowErrors = False
+        Me.DGV_MDU.Size = New System.Drawing.Size(322, 266)
+        Me.DGV_MDU.TabIndex = 27
+        '
+        'CARPETADataGridViewTextBoxColumn
+        '
+        Me.CARPETADataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CARPETADataGridViewTextBoxColumn.DataPropertyName = "CARPETA"
+        Me.CARPETADataGridViewTextBoxColumn.HeaderText = "CARPETA"
+        Me.CARPETADataGridViewTextBoxColumn.Name = "CARPETADataGridViewTextBoxColumn"
+        '
+        'CALLEDataGridViewTextBoxColumn
+        '
+        Me.CALLEDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CALLEDataGridViewTextBoxColumn.DataPropertyName = "CALLE"
+        Me.CALLEDataGridViewTextBoxColumn.HeaderText = "CALLE"
+        Me.CALLEDataGridViewTextBoxColumn.Name = "CALLEDataGridViewTextBoxColumn"
+        '
+        'PUERTADataGridViewTextBoxColumn
+        '
+        Me.PUERTADataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PUERTADataGridViewTextBoxColumn.DataPropertyName = "PUERTA"
+        Me.PUERTADataGridViewTextBoxColumn.HeaderText = "PUERTA"
+        Me.PUERTADataGridViewTextBoxColumn.Name = "PUERTADataGridViewTextBoxColumn"
+        '
+        'ACOMETIDADataGridViewTextBoxColumn
+        '
+        Me.ACOMETIDADataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ACOMETIDADataGridViewTextBoxColumn.DataPropertyName = "ACOMETIDA"
+        Me.ACOMETIDADataGridViewTextBoxColumn.HeaderText = "ACOMETIDA"
+        Me.ACOMETIDADataGridViewTextBoxColumn.Name = "ACOMETIDADataGridViewTextBoxColumn"
+        '
+        'ID_MDU
+        '
+        Me.ID_MDU.DataPropertyName = "ID_MDU"
+        Me.ID_MDU.HeaderText = "ID_MDU"
+        Me.ID_MDU.Name = "ID_MDU"
+        Me.ID_MDU.Visible = False
+        '
+        'MDUBindingSource
+        '
+        Me.MDUBindingSource.DataMember = "MDU"
+        Me.MDUBindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'EDIFICIODataSet
+        '
+        Me.EDIFICIODataSet.DataSetName = "EDIFICIODataSet"
+        Me.EDIFICIODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'btnGuardarEdificio
         '
-        Me.btnGuardarEdificio.Location = New System.Drawing.Point(1209, 12)
+        Me.btnGuardarEdificio.BackColor = System.Drawing.Color.Transparent
+        Me.btnGuardarEdificio.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_OVER
+        Me.btnGuardarEdificio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnGuardarEdificio.FlatAppearance.BorderSize = 0
+        Me.btnGuardarEdificio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.btnGuardarEdificio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.btnGuardarEdificio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnGuardarEdificio.ForeColor = System.Drawing.Color.White
+        Me.btnGuardarEdificio.Location = New System.Drawing.Point(478, 249)
         Me.btnGuardarEdificio.Name = "btnGuardarEdificio"
         Me.btnGuardarEdificio.Size = New System.Drawing.Size(129, 45)
         Me.btnGuardarEdificio.TabIndex = 26
         Me.btnGuardarEdificio.Text = "GUARDAR CAMBIOS"
-        Me.btnGuardarEdificio.UseVisualStyleBackColor = True
+        Me.btnGuardarEdificio.UseVisualStyleBackColor = False
         '
         'ACOMETIDATextBox
         '
-        Me.ACOMETIDATextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MDUBindingSource, "ACOMETIDA", True))
-        Me.ACOMETIDATextBox.Location = New System.Drawing.Point(801, 36)
+        Me.ACOMETIDATextBox.Location = New System.Drawing.Point(507, 202)
         Me.ACOMETIDATextBox.Name = "ACOMETIDATextBox"
         Me.ACOMETIDATextBox.Size = New System.Drawing.Size(59, 20)
         Me.ACOMETIDATextBox.TabIndex = 25
         '
         'PISOSTextBox
         '
-        Me.PISOSTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MDUBindingSource, "PISOS", True))
-        Me.PISOSTextBox.Location = New System.Drawing.Point(1040, 37)
+        Me.PISOSTextBox.Location = New System.Drawing.Point(507, 135)
         Me.PISOSTextBox.Name = "PISOSTextBox"
         Me.PISOSTextBox.Size = New System.Drawing.Size(48, 20)
         Me.PISOSTextBox.TabIndex = 23
         '
         'TORRETextBox
         '
-        Me.TORRETextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MDUBindingSource, "TORRE", True))
-        Me.TORRETextBox.Location = New System.Drawing.Point(1148, 37)
+        Me.TORRETextBox.Location = New System.Drawing.Point(507, 157)
         Me.TORRETextBox.Name = "TORRETextBox"
-        Me.TORRETextBox.Size = New System.Drawing.Size(42, 20)
+        Me.TORRETextBox.Size = New System.Drawing.Size(48, 20)
         Me.TORRETextBox.TabIndex = 21
         '
         'MODIFICADODateTimePicker
         '
-        Me.MODIFICADODateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.MDUBindingSource, "MODIFICADO", True))
         Me.MODIFICADODateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.MODIFICADODateTimePicker.Location = New System.Drawing.Point(594, 35)
+        Me.MODIFICADODateTimePicker.Location = New System.Drawing.Point(507, 223)
         Me.MODIFICADODateTimePicker.Name = "MODIFICADODateTimePicker"
         Me.MODIFICADODateTimePicker.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.MODIFICADODateTimePicker.Size = New System.Drawing.Size(100, 20)
         Me.MODIFICADODateTimePicker.TabIndex = 19
         '
-        'INGRESOTextBox
-        '
-        Me.INGRESOTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MDUBindingSource, "INGRESO", True))
-        Me.INGRESOTextBox.Location = New System.Drawing.Point(271, 36)
-        Me.INGRESOTextBox.Name = "INGRESOTextBox"
-        Me.INGRESOTextBox.Size = New System.Drawing.Size(215, 20)
-        Me.INGRESOTextBox.TabIndex = 17
-        '
         'ZONATextBox
         '
-        Me.ZONATextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MDUBindingSource, "ZONA", True))
-        Me.ZONATextBox.Location = New System.Drawing.Point(1148, 12)
+        Me.ZONATextBox.Location = New System.Drawing.Point(403, 157)
         Me.ZONATextBox.Name = "ZONATextBox"
-        Me.ZONATextBox.Size = New System.Drawing.Size(42, 20)
+        Me.ZONATextBox.Size = New System.Drawing.Size(48, 20)
         Me.ZONATextBox.TabIndex = 15
         '
         'NODOTextBox
         '
-        Me.NODOTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MDUBindingSource, "NODO", True))
-        Me.NODOTextBox.Location = New System.Drawing.Point(1040, 12)
+        Me.NODOTextBox.Location = New System.Drawing.Point(403, 135)
         Me.NODOTextBox.Name = "NODOTextBox"
         Me.NODOTextBox.Size = New System.Drawing.Size(48, 20)
         Me.NODOTextBox.TabIndex = 13
         '
         'APTOSTextBox
         '
-        Me.APTOSTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MDUBindingSource, "APTOS", True))
-        Me.APTOSTextBox.Location = New System.Drawing.Point(886, 13)
+        Me.APTOSTextBox.Location = New System.Drawing.Point(507, 113)
         Me.APTOSTextBox.Name = "APTOSTextBox"
-        Me.APTOSTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.APTOSTextBox.Size = New System.Drawing.Size(48, 20)
         Me.APTOSTextBox.TabIndex = 11
         '
         'PUERTATextBox
         '
-        Me.PUERTATextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MDUBindingSource, "PUERTA", True))
-        Me.PUERTATextBox.Location = New System.Drawing.Point(700, 13)
+        Me.PUERTATextBox.Location = New System.Drawing.Point(437, 74)
         Me.PUERTATextBox.Name = "PUERTATextBox"
-        Me.PUERTATextBox.Size = New System.Drawing.Size(128, 20)
+        Me.PUERTATextBox.Size = New System.Drawing.Size(79, 20)
         Me.PUERTATextBox.TabIndex = 9
         '
         'CALLETextBox
         '
-        Me.CALLETextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MDUBindingSource, "CALLE", True))
-        Me.CALLETextBox.Location = New System.Drawing.Point(397, 13)
+        Me.CALLETextBox.Location = New System.Drawing.Point(378, 47)
         Me.CALLETextBox.Name = "CALLETextBox"
         Me.CALLETextBox.Size = New System.Drawing.Size(237, 20)
         Me.CALLETextBox.TabIndex = 7
         '
         'ID_CALLETextBox
         '
-        Me.ID_CALLETextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MDUBindingSource, "ID_CALLE", True))
-        Me.ID_CALLETextBox.Location = New System.Drawing.Point(271, 13)
+        Me.ID_CALLETextBox.Location = New System.Drawing.Point(544, 16)
         Me.ID_CALLETextBox.Name = "ID_CALLETextBox"
         Me.ID_CALLETextBox.Size = New System.Drawing.Size(71, 20)
         Me.ID_CALLETextBox.TabIndex = 5
         '
-        'ID_STATUSTextBox
+        'EdificioDataSetBACK
         '
-        Me.ID_STATUSTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MDUBindingSource, "ID_STATUS", True))
-        Me.ID_STATUSTextBox.Location = New System.Drawing.Point(85, 36)
-        Me.ID_STATUSTextBox.Name = "ID_STATUSTextBox"
-        Me.ID_STATUSTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.ID_STATUSTextBox.TabIndex = 3
-        '
-        'ID_MDUTextBox
-        '
-        Me.ID_MDUTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MDUBindingSource, "ID_MDU", True))
-        Me.ID_MDUTextBox.Location = New System.Drawing.Point(85, 13)
-        Me.ID_MDUTextBox.Name = "ID_MDUTextBox"
-        Me.ID_MDUTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.ID_MDUTextBox.TabIndex = 1
+        Me.EdificioDataSetBACK.DataSetName = "EDIFICIODataSet"
+        Me.EdificioDataSetBACK.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'GroupBox2
         '
@@ -748,11 +775,10 @@ Partial Class MDU
         Me.GroupBox2.Controls.Add(NOMBRE_CTTOLabel)
         Me.GroupBox2.Controls.Add(Me.NOMBRE_CTTOTextBox)
         Me.GroupBox2.Controls.Add(Me.BITACORADataGridView)
-        Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 284)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 328)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1350, 270)
+        Me.GroupBox2.Size = New System.Drawing.Size(766, 347)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "CONTACTOS"
@@ -774,6 +800,11 @@ Partial Class MDU
         Me.APTO_CTTOTextBox.Size = New System.Drawing.Size(100, 20)
         Me.APTO_CTTOTextBox.TabIndex = 12
         '
+        'BITACORABindingSource
+        '
+        Me.BITACORABindingSource.DataMember = "BITACORA"
+        Me.BITACORABindingSource.DataSource = Me.EDIFICIODataSet
+        '
         'VALIDOCheckBox
         '
         Me.VALIDOCheckBox.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.BITACORABindingSource, "VALIDO", True))
@@ -789,7 +820,7 @@ Partial Class MDU
         Me.OBSERVACIONESTextBox.Location = New System.Drawing.Point(465, 160)
         Me.OBSERVACIONESTextBox.Multiline = True
         Me.OBSERVACIONESTextBox.Name = "OBSERVACIONESTextBox"
-        Me.OBSERVACIONESTextBox.Size = New System.Drawing.Size(587, 92)
+        Me.OBSERVACIONESTextBox.Size = New System.Drawing.Size(168, 160)
         Me.OBSERVACIONESTextBox.TabIndex = 8
         '
         'EMAIL_CTTOTextBox
@@ -834,7 +865,7 @@ Partial Class MDU
         Me.BITACORADataGridView.ShowCellToolTips = False
         Me.BITACORADataGridView.ShowEditingIcon = False
         Me.BITACORADataGridView.ShowRowErrors = False
-        Me.BITACORADataGridView.Size = New System.Drawing.Size(1344, 131)
+        Me.BITACORADataGridView.Size = New System.Drawing.Size(760, 131)
         Me.BITACORADataGridView.TabIndex = 0
         '
         'DataGridViewTextBoxColumn14
@@ -902,252 +933,299 @@ Partial Class MDU
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.btnGuardarFttb)
-        Me.GroupBox3.Controls.Add(CAJA_DISTRIBUCIONLabel)
-        Me.GroupBox3.Controls.Add(Me.CAJA_DISTRIBUCIONTextBox)
-        Me.GroupBox3.Controls.Add(ACOMETIDALabel1)
-        Me.GroupBox3.Controls.Add(Me.ACOMETIDATextBox1)
-        Me.GroupBox3.Controls.Add(OBS_TECLabel)
-        Me.GroupBox3.Controls.Add(Me.OBS_TECTextBox)
-        Me.GroupBox3.Controls.Add(SPL_NROLabel)
-        Me.GroupBox3.Controls.Add(Me.SPL_NROTextBox)
-        Me.GroupBox3.Controls.Add(PELOLabel)
-        Me.GroupBox3.Controls.Add(Me.PELOTextBox)
-        Me.GroupBox3.Controls.Add(TUBOLabel)
-        Me.GroupBox3.Controls.Add(Me.TUBOTextBox)
-        Me.GroupBox3.Controls.Add(NAP_NROLabel)
-        Me.GroupBox3.Controls.Add(Me.NAP_NROTextBox)
-        Me.GroupBox3.Controls.Add(NAPLabel)
-        Me.GroupBox3.Controls.Add(Me.NAPTextBox)
-        Me.GroupBox3.Controls.Add(CABLELabel)
-        Me.GroupBox3.Controls.Add(Me.CABLETextBox)
-        Me.GroupBox3.Controls.Add(TIPO_CONEXION_DESDELabel)
-        Me.GroupBox3.Controls.Add(Me.TIPO_CONEXION_DESDETextBox)
-        Me.GroupBox3.Controls.Add(CONEXION_DESDELabel)
-        Me.GroupBox3.Controls.Add(Me.CONEXION_DESDETextBox)
+        Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox3.Controls.Add(Me.FTTBDataGridView)
-        Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox3.Location = New System.Drawing.Point(0, 66)
+        Me.GroupBox3.Controls.Add(Me.BTN_AGREGAR_FTTB)
+        Me.GroupBox3.Controls.Add(Me.GroupBox6)
+        Me.GroupBox3.Controls.Add(Me.GroupBox5)
+        Me.GroupBox3.Controls.Add(Me.btnGuardarFttb)
+        Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox3.Location = New System.Drawing.Point(626, 16)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(1350, 218)
+        Me.GroupBox3.Size = New System.Drawing.Size(721, 306)
         Me.GroupBox3.TabIndex = 1
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "CONEXIONADO"
         '
-        'btnGuardarFttb
+        'FTTBDataGridView
         '
-        Me.btnGuardarFttb.Location = New System.Drawing.Point(1209, 128)
-        Me.btnGuardarFttb.Name = "btnGuardarFttb"
-        Me.btnGuardarFttb.Size = New System.Drawing.Size(129, 45)
-        Me.btnGuardarFttb.TabIndex = 27
-        Me.btnGuardarFttb.Text = "GUARDAR CAMBIOS"
-        Me.btnGuardarFttb.UseVisualStyleBackColor = True
+        Me.FTTBDataGridView.AllowUserToAddRows = False
+        Me.FTTBDataGridView.AllowUserToDeleteRows = False
+        Me.FTTBDataGridView.AllowUserToResizeColumns = False
+        Me.FTTBDataGridView.AllowUserToResizeRows = False
+        Me.FTTBDataGridView.AutoGenerateColumns = False
+        Me.FTTBDataGridView.BackgroundColor = System.Drawing.Color.White
+        Me.FTTBDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.FTTBDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID_FTTB, Me.NAPDataGridViewTextBoxColumn, Me.NAPNRODataGridViewTextBoxColumn, Me.TIPOCONEXIONDESDEDataGridViewTextBoxColumn, Me.CONEXIONDESDEDataGridViewTextBoxColumn, Me.CAJADISTRIBUCIONDataGridViewTextBoxColumn, Me.TUBODataGridViewTextBoxColumn, Me.PELODataGridViewTextBoxColumn, Me.SPLNRODataGridViewTextBoxColumn})
+        Me.FTTBDataGridView.DataSource = Me.FTTBBindingSource
+        Me.FTTBDataGridView.GridColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.FTTBDataGridView.Location = New System.Drawing.Point(355, 16)
+        Me.FTTBDataGridView.MultiSelect = False
+        Me.FTTBDataGridView.Name = "FTTBDataGridView"
+        Me.FTTBDataGridView.ReadOnly = True
+        Me.FTTBDataGridView.RowHeadersVisible = False
+        Me.FTTBDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.FTTBDataGridView.ShowCellErrors = False
+        Me.FTTBDataGridView.ShowCellToolTips = False
+        Me.FTTBDataGridView.ShowEditingIcon = False
+        Me.FTTBDataGridView.ShowRowErrors = False
+        Me.FTTBDataGridView.Size = New System.Drawing.Size(353, 279)
+        Me.FTTBDataGridView.TabIndex = 32
         '
-        'CAJA_DISTRIBUCIONTextBox
+        'ID_FTTB
         '
-        Me.CAJA_DISTRIBUCIONTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FTTBBindingSource, "CAJA_DISTRIBUCION", True))
-        Me.CAJA_DISTRIBUCIONTextBox.Location = New System.Drawing.Point(274, 157)
-        Me.CAJA_DISTRIBUCIONTextBox.Name = "CAJA_DISTRIBUCIONTextBox"
-        Me.CAJA_DISTRIBUCIONTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.CAJA_DISTRIBUCIONTextBox.TabIndex = 22
+        Me.ID_FTTB.DataPropertyName = "ID_FTTB"
+        Me.ID_FTTB.HeaderText = "ID_FTTB"
+        Me.ID_FTTB.Name = "ID_FTTB"
+        Me.ID_FTTB.ReadOnly = True
+        Me.ID_FTTB.Visible = False
+        '
+        'NAPDataGridViewTextBoxColumn
+        '
+        Me.NAPDataGridViewTextBoxColumn.DataPropertyName = "NAP"
+        Me.NAPDataGridViewTextBoxColumn.HeaderText = "TIPO"
+        Me.NAPDataGridViewTextBoxColumn.Name = "NAPDataGridViewTextBoxColumn"
+        Me.NAPDataGridViewTextBoxColumn.ReadOnly = True
+        Me.NAPDataGridViewTextBoxColumn.Width = 40
+        '
+        'NAPNRODataGridViewTextBoxColumn
+        '
+        Me.NAPNRODataGridViewTextBoxColumn.DataPropertyName = "NAP_NRO"
+        Me.NAPNRODataGridViewTextBoxColumn.HeaderText = "NRO"
+        Me.NAPNRODataGridViewTextBoxColumn.Name = "NAPNRODataGridViewTextBoxColumn"
+        Me.NAPNRODataGridViewTextBoxColumn.ReadOnly = True
+        Me.NAPNRODataGridViewTextBoxColumn.Width = 30
+        '
+        'TIPOCONEXIONDESDEDataGridViewTextBoxColumn
+        '
+        Me.TIPOCONEXIONDESDEDataGridViewTextBoxColumn.DataPropertyName = "TIPO_CONEXION_DESDE"
+        Me.TIPOCONEXIONDESDEDataGridViewTextBoxColumn.HeaderText = "CAJ"
+        Me.TIPOCONEXIONDESDEDataGridViewTextBoxColumn.Name = "TIPOCONEXIONDESDEDataGridViewTextBoxColumn"
+        Me.TIPOCONEXIONDESDEDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TIPOCONEXIONDESDEDataGridViewTextBoxColumn.Width = 40
+        '
+        'CONEXIONDESDEDataGridViewTextBoxColumn
+        '
+        Me.CONEXIONDESDEDataGridViewTextBoxColumn.DataPropertyName = "CONEXION_DESDE"
+        Me.CONEXIONDESDEDataGridViewTextBoxColumn.HeaderText = "CNRO"
+        Me.CONEXIONDESDEDataGridViewTextBoxColumn.Name = "CONEXIONDESDEDataGridViewTextBoxColumn"
+        Me.CONEXIONDESDEDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CONEXIONDESDEDataGridViewTextBoxColumn.Width = 40
+        '
+        'CAJADISTRIBUCIONDataGridViewTextBoxColumn
+        '
+        Me.CAJADISTRIBUCIONDataGridViewTextBoxColumn.DataPropertyName = "CAJA_DISTRIBUCION"
+        Me.CAJADISTRIBUCIONDataGridViewTextBoxColumn.HeaderText = "DIST"
+        Me.CAJADISTRIBUCIONDataGridViewTextBoxColumn.Name = "CAJADISTRIBUCIONDataGridViewTextBoxColumn"
+        Me.CAJADISTRIBUCIONDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CAJADISTRIBUCIONDataGridViewTextBoxColumn.Width = 40
+        '
+        'TUBODataGridViewTextBoxColumn
+        '
+        Me.TUBODataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.TUBODataGridViewTextBoxColumn.DataPropertyName = "TUBO"
+        Me.TUBODataGridViewTextBoxColumn.HeaderText = "TUBO"
+        Me.TUBODataGridViewTextBoxColumn.Name = "TUBODataGridViewTextBoxColumn"
+        Me.TUBODataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'PELODataGridViewTextBoxColumn
+        '
+        Me.PELODataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PELODataGridViewTextBoxColumn.DataPropertyName = "PELO"
+        Me.PELODataGridViewTextBoxColumn.HeaderText = "PELO"
+        Me.PELODataGridViewTextBoxColumn.Name = "PELODataGridViewTextBoxColumn"
+        Me.PELODataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'SPLNRODataGridViewTextBoxColumn
+        '
+        Me.SPLNRODataGridViewTextBoxColumn.DataPropertyName = "SPL_NRO"
+        Me.SPLNRODataGridViewTextBoxColumn.HeaderText = "SPL"
+        Me.SPLNRODataGridViewTextBoxColumn.Name = "SPLNRODataGridViewTextBoxColumn"
+        Me.SPLNRODataGridViewTextBoxColumn.ReadOnly = True
+        Me.SPLNRODataGridViewTextBoxColumn.Width = 35
         '
         'FTTBBindingSource
         '
         Me.FTTBBindingSource.DataMember = "FTTB"
         Me.FTTBBindingSource.DataSource = Me.EDIFICIODataSet
         '
-        'ACOMETIDATextBox1
+        'BTN_AGREGAR_FTTB
         '
-        Me.ACOMETIDATextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FTTBBindingSource, "ACOMETIDA", True))
-        Me.ACOMETIDATextBox1.Location = New System.Drawing.Point(521, 185)
-        Me.ACOMETIDATextBox1.Name = "ACOMETIDATextBox1"
-        Me.ACOMETIDATextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.ACOMETIDATextBox1.TabIndex = 20
+        Me.BTN_AGREGAR_FTTB.BackColor = System.Drawing.Color.Transparent
+        Me.BTN_AGREGAR_FTTB.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_PRESS
+        Me.BTN_AGREGAR_FTTB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BTN_AGREGAR_FTTB.FlatAppearance.BorderSize = 0
+        Me.BTN_AGREGAR_FTTB.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent
+        Me.BTN_AGREGAR_FTTB.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.BTN_AGREGAR_FTTB.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.BTN_AGREGAR_FTTB.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BTN_AGREGAR_FTTB.ForeColor = System.Drawing.Color.White
+        Me.BTN_AGREGAR_FTTB.Location = New System.Drawing.Point(236, 109)
+        Me.BTN_AGREGAR_FTTB.Name = "BTN_AGREGAR_FTTB"
+        Me.BTN_AGREGAR_FTTB.Size = New System.Drawing.Size(113, 45)
+        Me.BTN_AGREGAR_FTTB.TabIndex = 32
+        Me.BTN_AGREGAR_FTTB.Text = "AGREGAR"
+        Me.BTN_AGREGAR_FTTB.UseVisualStyleBackColor = False
         '
-        'OBS_TECTextBox
+        'GroupBox6
         '
-        Me.OBS_TECTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FTTBBindingSource, "OBS_TEC", True))
-        Me.OBS_TECTextBox.Location = New System.Drawing.Point(702, 157)
-        Me.OBS_TECTextBox.Name = "OBS_TECTextBox"
-        Me.OBS_TECTextBox.Size = New System.Drawing.Size(413, 20)
-        Me.OBS_TECTextBox.TabIndex = 18
+        Me.GroupBox6.Controls.Add(Me.CB_TIPO_NAP)
+        Me.GroupBox6.Controls.Add(Me.NAP_SPL)
+        Me.GroupBox6.Controls.Add(Me.NAP_PELO)
+        Me.GroupBox6.Controls.Add(Me.NAP_TUBO)
+        Me.GroupBox6.Controls.Add(NAPLabel)
+        Me.GroupBox6.Controls.Add(Me.NAP_NROTextBox)
+        Me.GroupBox6.Controls.Add(SPL_NROLabel)
+        Me.GroupBox6.Controls.Add(OBS_TECLabel)
+        Me.GroupBox6.Controls.Add(ACOMETIDALabel1)
+        Me.GroupBox6.Controls.Add(PELOLabel)
+        Me.GroupBox6.Controls.Add(Me.OBS_TECTextBox)
+        Me.GroupBox6.Controls.Add(NAP_NROLabel)
+        Me.GroupBox6.Controls.Add(TUBOLabel)
+        Me.GroupBox6.Controls.Add(Me.TXT_ACOMETIDA)
+        Me.GroupBox6.Location = New System.Drawing.Point(3, 160)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(346, 135)
+        Me.GroupBox6.TabIndex = 31
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "CONEXION INTERIOR"
         '
-        'SPL_NROTextBox
+        'CB_TIPO_NAP
         '
-        Me.SPL_NROTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FTTBBindingSource, "SPL_NRO", True))
-        Me.SPL_NROTextBox.Location = New System.Drawing.Point(1015, 129)
-        Me.SPL_NROTextBox.Name = "SPL_NROTextBox"
-        Me.SPL_NROTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.SPL_NROTextBox.TabIndex = 16
+        Me.CB_TIPO_NAP.FormattingEnabled = True
+        Me.CB_TIPO_NAP.Items.AddRange(New Object() {"4", "8", "16"})
+        Me.CB_TIPO_NAP.Location = New System.Drawing.Point(89, 19)
+        Me.CB_TIPO_NAP.Name = "CB_TIPO_NAP"
+        Me.CB_TIPO_NAP.Size = New System.Drawing.Size(48, 21)
+        Me.CB_TIPO_NAP.TabIndex = 24
+        Me.CB_TIPO_NAP.Text = "8"
         '
-        'PELOTextBox
+        'NAP_SPL
         '
-        Me.PELOTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FTTBBindingSource, "PELO", True))
-        Me.PELOTextBox.Location = New System.Drawing.Point(834, 129)
-        Me.PELOTextBox.Name = "PELOTextBox"
-        Me.PELOTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.PELOTextBox.TabIndex = 14
+        Me.NAP_SPL.FormattingEnabled = True
+        Me.NAP_SPL.Items.AddRange(New Object() {"1", "2"})
+        Me.NAP_SPL.Location = New System.Drawing.Point(235, 66)
+        Me.NAP_SPL.Name = "NAP_SPL"
+        Me.NAP_SPL.Size = New System.Drawing.Size(99, 21)
+        Me.NAP_SPL.TabIndex = 23
+        Me.NAP_SPL.Text = "1"
         '
-        'TUBOTextBox
+        'NAP_PELO
         '
-        Me.TUBOTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FTTBBindingSource, "TUBO", True))
-        Me.TUBOTextBox.Location = New System.Drawing.Point(673, 129)
-        Me.TUBOTextBox.Name = "TUBOTextBox"
-        Me.TUBOTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.TUBOTextBox.TabIndex = 12
+        Me.NAP_PELO.FormattingEnabled = True
+        Me.NAP_PELO.Items.AddRange(New Object() {"AZUL", "NARANJA", "VERDE", "MARRON", "GRIS", "BLANCO", "ROJO", "NEGRO", "AMARILLO", "VIOLETA", "ROSADO", "CELESTE"})
+        Me.NAP_PELO.Location = New System.Drawing.Point(235, 43)
+        Me.NAP_PELO.Name = "NAP_PELO"
+        Me.NAP_PELO.Size = New System.Drawing.Size(99, 21)
+        Me.NAP_PELO.TabIndex = 22
+        Me.NAP_PELO.Text = "AZUL"
+        '
+        'NAP_TUBO
+        '
+        Me.NAP_TUBO.FormattingEnabled = True
+        Me.NAP_TUBO.Items.AddRange(New Object() {"AZUL", "NARANJA", "VERDE", "MARRON", "GRIS", "BLANCO", "ROJO", "NEGRO", "AMARILLO", "VIOLETA", "ROSADO", "CELESTE"})
+        Me.NAP_TUBO.Location = New System.Drawing.Point(235, 20)
+        Me.NAP_TUBO.Name = "NAP_TUBO"
+        Me.NAP_TUBO.Size = New System.Drawing.Size(99, 21)
+        Me.NAP_TUBO.TabIndex = 21
+        Me.NAP_TUBO.Text = "AZUL"
         '
         'NAP_NROTextBox
         '
-        Me.NAP_NROTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FTTBBindingSource, "NAP_NRO", True))
-        Me.NAP_NROTextBox.Location = New System.Drawing.Point(521, 157)
+        Me.NAP_NROTextBox.Location = New System.Drawing.Point(89, 43)
         Me.NAP_NROTextBox.Name = "NAP_NROTextBox"
-        Me.NAP_NROTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.NAP_NROTextBox.Size = New System.Drawing.Size(48, 20)
         Me.NAP_NROTextBox.TabIndex = 10
+        Me.NAP_NROTextBox.Text = "1"
+        Me.NAP_NROTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'NAPTextBox
+        'OBS_TECTextBox
         '
-        Me.NAPTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FTTBBindingSource, "NAP", True))
-        Me.NAPTextBox.Location = New System.Drawing.Point(521, 129)
-        Me.NAPTextBox.Name = "NAPTextBox"
-        Me.NAPTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.NAPTextBox.TabIndex = 8
+        Me.OBS_TECTextBox.Location = New System.Drawing.Point(71, 90)
+        Me.OBS_TECTextBox.Multiline = True
+        Me.OBS_TECTextBox.Name = "OBS_TECTextBox"
+        Me.OBS_TECTextBox.Size = New System.Drawing.Size(263, 39)
+        Me.OBS_TECTextBox.TabIndex = 18
         '
-        'CABLETextBox
+        'TXT_ACOMETIDA
         '
-        Me.CABLETextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FTTBBindingSource, "CABLE", True))
-        Me.CABLETextBox.Location = New System.Drawing.Point(68, 185)
-        Me.CABLETextBox.Name = "CABLETextBox"
-        Me.CABLETextBox.Size = New System.Drawing.Size(306, 20)
-        Me.CABLETextBox.TabIndex = 6
+        Me.TXT_ACOMETIDA.Location = New System.Drawing.Point(89, 66)
+        Me.TXT_ACOMETIDA.Name = "TXT_ACOMETIDA"
+        Me.TXT_ACOMETIDA.Size = New System.Drawing.Size(48, 20)
+        Me.TXT_ACOMETIDA.TabIndex = 20
+        Me.TXT_ACOMETIDA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TIPO_CONEXION_DESDETextBox
+        'GroupBox5
         '
-        Me.TIPO_CONEXION_DESDETextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FTTBBindingSource, "TIPO_CONEXION_DESDE", True))
-        Me.TIPO_CONEXION_DESDETextBox.Location = New System.Drawing.Point(274, 129)
-        Me.TIPO_CONEXION_DESDETextBox.Name = "TIPO_CONEXION_DESDETextBox"
-        Me.TIPO_CONEXION_DESDETextBox.Size = New System.Drawing.Size(100, 20)
-        Me.TIPO_CONEXION_DESDETextBox.TabIndex = 4
+        Me.GroupBox5.Controls.Add(Me.CB_CABLE)
+        Me.GroupBox5.Controls.Add(Me.TXT_CONEXION_DESDE)
+        Me.GroupBox5.Controls.Add(Me.CB_TIPO)
+        Me.GroupBox5.Controls.Add(CONEXION_DESDELabel)
+        Me.GroupBox5.Controls.Add(TIPO_CONEXION_DESDELabel)
+        Me.GroupBox5.Controls.Add(CAJA_DISTRIBUCIONLabel)
+        Me.GroupBox5.Controls.Add(CABLELabel)
+        Me.GroupBox5.Controls.Add(Me.CAJA_DISTRIBUCIONTextBox)
+        Me.GroupBox5.Location = New System.Drawing.Point(3, 19)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(227, 135)
+        Me.GroupBox5.TabIndex = 30
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "CONEXION EXTERIOR"
         '
-        'CONEXION_DESDETextBox
+        'CB_CABLE
         '
-        Me.CONEXION_DESDETextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.FTTBBindingSource, "CONEXION_DESDE", True))
-        Me.CONEXION_DESDETextBox.Location = New System.Drawing.Point(70, 129)
-        Me.CONEXION_DESDETextBox.Name = "CONEXION_DESDETextBox"
-        Me.CONEXION_DESDETextBox.Size = New System.Drawing.Size(100, 20)
-        Me.CONEXION_DESDETextBox.TabIndex = 2
+        Me.CB_CABLE.FormattingEnabled = True
+        Me.CB_CABLE.Items.AddRange(New Object() {"Acometida (12 fibras 1 tubo)", "Acometida (12 fibras 2 tubos)", "Distribución (24 fibras 4 tubos)"})
+        Me.CB_CABLE.Location = New System.Drawing.Point(50, 105)
+        Me.CB_CABLE.Name = "CB_CABLE"
+        Me.CB_CABLE.Size = New System.Drawing.Size(166, 21)
+        Me.CB_CABLE.TabIndex = 29
+        Me.CB_CABLE.Text = "Acometida (12 fibras 1 tubo)"
         '
-        'FTTBDataGridView
+        'TXT_CONEXION_DESDE
         '
-        Me.FTTBDataGridView.AutoGenerateColumns = False
-        Me.FTTBDataGridView.BackgroundColor = System.Drawing.Color.White
-        Me.FTTBDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.FTTBDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn13, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12})
-        Me.FTTBDataGridView.DataSource = Me.FTTBBindingSource
-        Me.FTTBDataGridView.Dock = System.Windows.Forms.DockStyle.Top
-        Me.FTTBDataGridView.GridColor = System.Drawing.Color.Green
-        Me.FTTBDataGridView.Location = New System.Drawing.Point(3, 16)
-        Me.FTTBDataGridView.MultiSelect = False
-        Me.FTTBDataGridView.Name = "FTTBDataGridView"
-        Me.FTTBDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.FTTBDataGridView.RowHeadersVisible = False
-        Me.FTTBDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.FTTBDataGridView.ShowCellErrors = False
-        Me.FTTBDataGridView.ShowCellToolTips = False
-        Me.FTTBDataGridView.ShowEditingIcon = False
-        Me.FTTBDataGridView.ShowRowErrors = False
-        Me.FTTBDataGridView.Size = New System.Drawing.Size(1344, 104)
-        Me.FTTBDataGridView.TabIndex = 0
+        Me.TXT_CONEXION_DESDE.Location = New System.Drawing.Point(154, 18)
+        Me.TXT_CONEXION_DESDE.Name = "TXT_CONEXION_DESDE"
+        Me.TXT_CONEXION_DESDE.Size = New System.Drawing.Size(62, 20)
+        Me.TXT_CONEXION_DESDE.TabIndex = 2
+        Me.TXT_CONEXION_DESDE.Text = "1"
+        Me.TXT_CONEXION_DESDE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'DataGridViewTextBoxColumn1
+        'CB_TIPO
         '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_FTTB"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.Width = 30
+        Me.CB_TIPO.FormattingEnabled = True
+        Me.CB_TIPO.Items.AddRange(New Object() {"CED", "FDH", "NAP"})
+        Me.CB_TIPO.Location = New System.Drawing.Point(153, 47)
+        Me.CB_TIPO.Name = "CB_TIPO"
+        Me.CB_TIPO.Size = New System.Drawing.Size(63, 21)
+        Me.CB_TIPO.TabIndex = 28
+        Me.CB_TIPO.Text = "CED"
         '
-        'DataGridViewTextBoxColumn2
+        'CAJA_DISTRIBUCIONTextBox
         '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "ID_EDIFICIO"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "IdEDI"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Width = 40
+        Me.CAJA_DISTRIBUCIONTextBox.Location = New System.Drawing.Point(153, 77)
+        Me.CAJA_DISTRIBUCIONTextBox.Name = "CAJA_DISTRIBUCIONTextBox"
+        Me.CAJA_DISTRIBUCIONTextBox.Size = New System.Drawing.Size(63, 20)
+        Me.CAJA_DISTRIBUCIONTextBox.TabIndex = 22
+        Me.CAJA_DISTRIBUCIONTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'DataGridViewTextBoxColumn13
+        'btnGuardarFttb
         '
-        Me.DataGridViewTextBoxColumn13.DataPropertyName = "CAJA_DISTRIBUCION"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "TipoCAJA"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        Me.DataGridViewTextBoxColumn13.Width = 60
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "CONEXION_DESDE"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "NºCaja"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Width = 50
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "TIPO_CONEXION_DESDE"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "NºDistC"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.Width = 50
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "CABLE"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "CABLE"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "NAP"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "T.NAP"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.Width = 50
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "NAP_NRO"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "NºNap"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.Width = 40
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "TUBO"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "TUBO"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "PELO"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "PELO"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "SPL_NRO"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "NapSPL"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.Width = 50
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "OBS_TEC"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "OBS_TEC"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.DataPropertyName = "ACOMETIDA"
-        Me.DataGridViewTextBoxColumn12.HeaderText = "ACOM"
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        Me.DataGridViewTextBoxColumn12.Width = 40
+        Me.btnGuardarFttb.BackColor = System.Drawing.Color.Transparent
+        Me.btnGuardarFttb.BackgroundImage = Global.REDES.My.Resources.Resources.BTNGRAL_OVER
+        Me.btnGuardarFttb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnGuardarFttb.FlatAppearance.BorderSize = 0
+        Me.btnGuardarFttb.FlatAppearance.CheckedBackColor = System.Drawing.Color.Transparent
+        Me.btnGuardarFttb.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.btnGuardarFttb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.btnGuardarFttb.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnGuardarFttb.ForeColor = System.Drawing.Color.White
+        Me.btnGuardarFttb.Location = New System.Drawing.Point(236, 58)
+        Me.btnGuardarFttb.Name = "btnGuardarFttb"
+        Me.btnGuardarFttb.Size = New System.Drawing.Size(113, 45)
+        Me.btnGuardarFttb.TabIndex = 27
+        Me.btnGuardarFttb.Text = "GUARDAR CAMBIOS"
+        Me.btnGuardarFttb.UseVisualStyleBackColor = False
         '
         'GroupBox4
         '
@@ -1161,20 +1239,19 @@ Partial Class MDU
         Me.GroupBox4.Controls.Add(DIA_AGENDALabel)
         Me.GroupBox4.Controls.Add(Me.DIA_AGENDADateTimePicker)
         Me.GroupBox4.Controls.Add(Me.AGENDADataGridView)
-        Me.GroupBox4.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox4.Location = New System.Drawing.Point(0, 554)
+        Me.GroupBox4.Location = New System.Drawing.Point(824, 359)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(1350, 176)
+        Me.GroupBox4.Size = New System.Drawing.Size(512, 170)
         Me.GroupBox4.TabIndex = 2
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "AGENDA"
         '
         'btnGuardarAgenda
         '
-        Me.btnGuardarAgenda.Location = New System.Drawing.Point(1209, 98)
+        Me.btnGuardarAgenda.Location = New System.Drawing.Point(380, 119)
         Me.btnGuardarAgenda.Name = "btnGuardarAgenda"
-        Me.btnGuardarAgenda.Size = New System.Drawing.Size(129, 45)
+        Me.btnGuardarAgenda.Size = New System.Drawing.Size(79, 45)
         Me.btnGuardarAgenda.TabIndex = 29
         Me.btnGuardarAgenda.Text = "GUARDAR CAMBIOS"
         Me.btnGuardarAgenda.UseVisualStyleBackColor = True
@@ -1182,15 +1259,20 @@ Partial Class MDU
         'ID_TURNOTextBox
         '
         Me.ID_TURNOTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AGENDABindingSource, "ID_TURNO", True))
-        Me.ID_TURNOTextBox.Location = New System.Drawing.Point(739, 94)
+        Me.ID_TURNOTextBox.Location = New System.Drawing.Point(274, 120)
         Me.ID_TURNOTextBox.Name = "ID_TURNOTextBox"
         Me.ID_TURNOTextBox.Size = New System.Drawing.Size(100, 20)
         Me.ID_TURNOTextBox.TabIndex = 8
         '
+        'AGENDABindingSource
+        '
+        Me.AGENDABindingSource.DataMember = "AGENDA"
+        Me.AGENDABindingSource.DataSource = Me.EDIFICIODataSet
+        '
         'ID_EDIFICIOTextBox
         '
         Me.ID_EDIFICIOTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AGENDABindingSource, "ID_EDIFICIO", True))
-        Me.ID_EDIFICIOTextBox.Location = New System.Drawing.Point(549, 94)
+        Me.ID_EDIFICIOTextBox.Location = New System.Drawing.Point(84, 120)
         Me.ID_EDIFICIOTextBox.Name = "ID_EDIFICIOTextBox"
         Me.ID_EDIFICIOTextBox.Size = New System.Drawing.Size(100, 20)
         Me.ID_EDIFICIOTextBox.TabIndex = 6
@@ -1232,7 +1314,7 @@ Partial Class MDU
         Me.AGENDADataGridView.ShowCellToolTips = False
         Me.AGENDADataGridView.ShowEditingIcon = False
         Me.AGENDADataGridView.ShowRowErrors = False
-        Me.AGENDADataGridView.Size = New System.Drawing.Size(1344, 71)
+        Me.AGENDADataGridView.Size = New System.Drawing.Size(506, 71)
         Me.AGENDADataGridView.TabIndex = 0
         '
         'DataGridViewTextBoxColumn22
@@ -1265,40 +1347,210 @@ Partial Class MDU
         Me.DataGridViewTextBoxColumn26.HeaderText = "DIA_AGENDA"
         Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
         '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.GroupBox3)
+        Me.GroupBox7.Controls.Add(Me.GroupBox1)
+        Me.GroupBox7.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupBox7.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(1350, 325)
+        Me.GroupBox7.TabIndex = 29
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "CONTROL TECNICO"
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_FTTB"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID_FTTB"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "ID_EDIFICIO"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "ID_EDIFICIO"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "CONEXION_DESDE"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "CONEXION_DESDE"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "TIPO_CONEXION_DESDE"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "TIPO_CONEXION_DESDE"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "CABLE"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "CABLE"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "NAP"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "NAP"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "NAP_NRO"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "NAP_NRO"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "TUBO"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "TUBO"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "PELO"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "PELO"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "SPL_NRO"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "SPL_NRO"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "OBS_TEC"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "OBS_TEC"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.DataPropertyName = "ACOMETIDA"
+        Me.DataGridViewTextBoxColumn12.HeaderText = "ACOMETIDA"
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "CAJA_DISTRIBUCION"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "CAJA_DISTRIBUCION"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        '
+        'AGENDATableAdapter
+        '
+        Me.AGENDATableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.AGENDATableAdapter = Me.AGENDATableAdapter
+        Me.TableAdapterManager.AVANCETableAdapter = Nothing
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.BITACORATableAdapter = Me.BITACORATableAdapter
+        Me.TableAdapterManager.CALLESTableAdapter = Nothing
+        Me.TableAdapterManager.CERTIFICACIONESTableAdapter = Nothing
+        Me.TableAdapterManager.FTTBTableAdapter = Me.FTTBTableAdapter
+        Me.TableAdapterManager.MDUTableAdapter = Nothing
+        Me.TableAdapterManager.STATUSTableAdapter = Me.STATUSTableAdapter
+        Me.TableAdapterManager.TECNICOSTableAdapter = Me.TECNICOSTableAdapter
+        Me.TableAdapterManager.TURNOSTableAdapter = Me.TURNOSTableAdapter
+        Me.TableAdapterManager.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'BITACORATableAdapter
+        '
+        Me.BITACORATableAdapter.ClearBeforeFill = True
+        '
+        'FTTBTableAdapter
+        '
+        Me.FTTBTableAdapter.ClearBeforeFill = True
+        '
+        'STATUSTableAdapter
+        '
+        Me.STATUSTableAdapter.ClearBeforeFill = True
+        '
+        'TECNICOSTableAdapter
+        '
+        Me.TECNICOSTableAdapter.ClearBeforeFill = True
+        '
+        'TURNOSTableAdapter
+        '
+        Me.TURNOSTableAdapter.ClearBeforeFill = True
+        '
+        'MDUTableAdapter
+        '
+        Me.MDUTableAdapter.ClearBeforeFill = True
+        '
+        'STATUSBindingSource
+        '
+        Me.STATUSBindingSource.DataMember = "STATUS"
+        Me.STATUSBindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'TECNICOSBindingSource
+        '
+        Me.TECNICOSBindingSource.DataMember = "TECNICOS"
+        Me.TECNICOSBindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'TURNOSBindingSource
+        '
+        Me.TURNOSBindingSource.DataMember = "TURNOS"
+        Me.TURNOSBindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'Label1
+        '
+        Label1.AutoSize = True
+        Label1.Location = New System.Drawing.Point(337, 117)
+        Label1.Name = "Label1"
+        Label1.Size = New System.Drawing.Size(60, 13)
+        Label1.TabIndex = 36
+        Label1.Text = "CARPETA:"
+        '
+        'CARPETATextBox
+        '
+        Me.CARPETATextBox.Location = New System.Drawing.Point(403, 113)
+        Me.CARPETATextBox.Name = "CARPETATextBox"
+        Me.CARPETATextBox.Size = New System.Drawing.Size(48, 20)
+        Me.CARPETATextBox.TabIndex = 37
+        '
         'MDU
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1350, 729)
+        Me.Controls.Add(Me.GroupBox7)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox3)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Name = "MDU"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MDU"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BITACORABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        CType(Me.DGV_MDU, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EdificioDataSetBACK, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        CType(Me.BITACORABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BITACORADataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox3.ResumeLayout(False)
+        CType(Me.FTTBDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
+        CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AGENDADataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox7.ResumeLayout(False)
         CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TECNICOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TURNOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        CType(Me.BITACORADataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
-        CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FTTBDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
-        CType(Me.AGENDADataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1324,15 +1576,12 @@ Partial Class MDU
     Friend WithEvents PISOSTextBox As TextBox
     Friend WithEvents TORRETextBox As TextBox
     Friend WithEvents MODIFICADODateTimePicker As DateTimePicker
-    Friend WithEvents INGRESOTextBox As TextBox
     Friend WithEvents ZONATextBox As TextBox
     Friend WithEvents NODOTextBox As TextBox
     Friend WithEvents APTOSTextBox As TextBox
     Friend WithEvents PUERTATextBox As TextBox
     Friend WithEvents CALLETextBox As TextBox
     Friend WithEvents ID_CALLETextBox As TextBox
-    Friend WithEvents ID_STATUSTextBox As TextBox
-    Friend WithEvents ID_MDUTextBox As TextBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents GroupBox4 As GroupBox
@@ -1356,30 +1605,10 @@ Partial Class MDU
     Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
     Friend WithEvents btnGuardarFttb As Button
     Friend WithEvents CAJA_DISTRIBUCIONTextBox As TextBox
-    Friend WithEvents ACOMETIDATextBox1 As TextBox
+    Friend WithEvents TXT_ACOMETIDA As TextBox
     Friend WithEvents OBS_TECTextBox As TextBox
-    Friend WithEvents SPL_NROTextBox As TextBox
-    Friend WithEvents PELOTextBox As TextBox
-    Friend WithEvents TUBOTextBox As TextBox
     Friend WithEvents NAP_NROTextBox As TextBox
-    Friend WithEvents NAPTextBox As TextBox
-    Friend WithEvents CABLETextBox As TextBox
-    Friend WithEvents TIPO_CONEXION_DESDETextBox As TextBox
-    Friend WithEvents CONEXION_DESDETextBox As TextBox
-    Friend WithEvents FTTBDataGridView As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
+    Friend WithEvents TXT_CONEXION_DESDE As TextBox
     Friend WithEvents btnGuardarAgenda As Button
     Friend WithEvents ID_TURNOTextBox As TextBox
     Friend WithEvents ID_EDIFICIOTextBox As TextBox
@@ -1391,4 +1620,49 @@ Partial Class MDU
     Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn25 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn26 As DataGridViewTextBoxColumn
+    Friend WithEvents GroupBox5 As GroupBox
+    Friend WithEvents CB_CABLE As ComboBox
+    Friend WithEvents CB_TIPO As ComboBox
+    Friend WithEvents BTN_AGREGAR_FTTB As Button
+    Friend WithEvents GroupBox6 As GroupBox
+    Friend WithEvents NAP_SPL As ComboBox
+    Friend WithEvents NAP_PELO As ComboBox
+    Friend WithEvents NAP_TUBO As ComboBox
+    Friend WithEvents CB_INGRESO As ComboBox
+    Friend WithEvents DGV_MDU As DataGridView
+    Friend WithEvents GroupBox7 As GroupBox
+    Friend WithEvents BTN_AGREGAR_MDU As Button
+    Friend WithEvents FTTBDataGridView As DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
+    Friend WithEvents TXT_NRO As TextBox
+    Friend WithEvents TXT_CALLE As TextBox
+    Friend WithEvents CB_TIPO_NAP As ComboBox
+    Friend WithEvents EdificioDataSetBACK As EDIFICIODataSet
+    Friend WithEvents CARPETADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CALLEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PUERTADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ACOMETIDADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ID_MDU As DataGridViewTextBoxColumn
+    Friend WithEvents ID_FTTB As DataGridViewTextBoxColumn
+    Friend WithEvents NAPDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents NAPNRODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TIPOCONEXIONDESDEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CONEXIONDESDEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CAJADISTRIBUCIONDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TUBODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PELODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents SPLNRODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CARPETATextBox As TextBox
 End Class

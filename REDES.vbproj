@@ -212,6 +212,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Datasets\EDIFICIODataSet.vb">
+      <DependentUpon>EDIFICIODataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Datasets\INFORME_FUENTESDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -233,6 +236,14 @@
     </Compile>
     <Compile Include="ESCRITORIO.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FIBRADataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FIBRADataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FIBRADataSet.vb">
+      <DependentUpon>FIBRADataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="FORMS APOYO\FUENTE_EDICION.Designer.vb">
       <DependentUpon>FUENTE_EDICION.vb</DependentUpon>
@@ -274,6 +285,12 @@
       <DependentUpon>AGENDA.vb</DependentUpon>
     </Compile>
     <Compile Include="FORMS PRIMARIOS\FTTB\AGENDA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FTTB\APOYO\TORRES.Designer.vb">
+      <DependentUpon>TORRES.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FORMS PRIMARIOS\FTTB\APOYO\TORRES.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FORMS PRIMARIOS\FTTB\DETALLE_MDU.Designer.vb">
@@ -365,6 +382,7 @@
     <Compile Include="FORMS SECUNDARIOS\STANDARD_MATERIALES.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MODULOS\CONEXION.vb" />
     <Compile Include="MODULOS\DATOS_MOD.vb" />
     <Compile Include="MODULOS\EMAIL.vb" />
     <Compile Include="MODULOS\EXPORTAR_EXCEL.vb" />
@@ -638,6 +656,9 @@
     <EmbeddedResource Include="FORMS PRIMARIOS\FTTB\AGENDA.resx">
       <DependentUpon>AGENDA.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FORMS PRIMARIOS\FTTB\APOYO\TORRES.resx">
+      <DependentUpon>TORRES.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FORMS PRIMARIOS\FTTB\DETALLE_MDU.resx">
       <DependentUpon>DETALLE_MDU.vb</DependentUpon>
     </EmbeddedResource>
@@ -861,13 +882,24 @@
     <None Include="Datasets\EDIFICIODataSet.xss">
       <DependentUpon>EDIFICIODataSet.xsd</DependentUpon>
     </None>
+    <None Include="FIBRADataSet.xsc">
+      <DependentUpon>FIBRADataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FIBRADataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FIBRADataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FIBRADataSet.xss">
+      <DependentUpon>FIBRADataSet.xsd</DependentUpon>
+    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
     <None Include="My Project\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>

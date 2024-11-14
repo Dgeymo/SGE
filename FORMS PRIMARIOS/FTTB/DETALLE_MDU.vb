@@ -4,7 +4,8 @@ Imports System.IO
 Public Class DETALLE_MDU
     Dim ENCABEZADO As PdfPTable
     Dim BITACORARow As EDIFICIODataSet.BITACORARow
-    Dim ACT_MDURow As EDIFICIODataSet.MDURow
+    Public ACT_MDURow As EDIFICIODataSet.MDURow
+    Public FTTB_Row As EDIFICIODataSet.FTTBRow
     Dim AGENDARow As EDIFICIODataSet.AGENDARow
     Dim TECNICORow As EDIFICIODataSet.TECNICOSRow
     Dim TURNORow As EDIFICIODataSet.TURNOSRow
@@ -14,9 +15,10 @@ Public Class DETALLE_MDU
     Dim CUENTA4 As Integer = 0
     Dim CUENTA8 As Integer = 0
     Dim CUENTA16 As Integer = 0
+
     Public Sub DETALLE_MDU_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If AGENDA.Visible = False Then
-            VAR_ACOMETIDA = INICIO.VER_MDU.ACOMETIDA
+            If INICIO.VER_MDU.IsACOMETIDANull Then VAR_ACOMETIDA = 0 Else VAR_ACOMETIDA = INICIO.VER_MDU.ACOMETIDA
             VAR_NODO = INICIO.VER_MDU.NODO
             VAR_ZONA = INICIO.VER_MDU.ZONA
         Else
@@ -26,31 +28,64 @@ Public Class DETALLE_MDU
                 VAR_ZONA = AGENDA.MDURow.ZONA
             End If
         End If
+
+    End Sub
+    Private Sub DETALLE_MDU_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         'BUSCAMOS TODOS LOS EDIFICIOS CON LA MISMA ACOMETIDA
-        MDUTableAdapter.FillByACOMETIDA(EdificioDataSetBACKUP.MDU, VAR_ACOMETIDA, VAR_NODO, VAR_ZONA)
-        MDUBindingSource.MoveFirst()
-        FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, MDUDataGridView.CurrentRow.Cells(0).Value)
-        BTN_AGENDAR.Enabled = True
+        ACT_MDURow = INICIO.VER_MDU
+        MDUTableAdapter.FillByID(EdificioDataSetBACKUP.MDU, ACT_MDURow.ID_MDU)
+        If VAR_ACOMETIDA <> 0 Then
+            'si hay mas de 1 edificio en la acometida
+            MDUTableAdapter.FillByACOMETIDA(EdificioDataSetBACKUP.MDU, VAR_ACOMETIDA, VAR_NODO, VAR_ZONA)
+            MDUBindingSource.MoveFirst()
+            ACT_MDURow = EdificioDataSetBACKUP.MDU.Rows(MDUBindingSource.Position)
+
+            FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, ACT_MDURow.ID_MDU)
+            CARGARFTTB()
+            BTN_IMPRIMIR_ORDTEC.Enabled = True
+            BTN_AGENDAR.Enabled = True
+            If MDUDataGridView.CurrentRow.Cells(1).Value = 1 Then
+                BTN_AGENDAR.Text = "AGENDAR EDIFICIO"
+            ElseIf MDUDataGridView.CurrentRow.Cells(1).Value = 4 Then
+                BTN_AGENDAR.Text = "AGENDAR EDIF CERTIFICADO"
+            ElseIf MDUDataGridView.CurrentRow.Cells(1).Value = 2 Then
+                BTN_AGENDAR.Text = "VER EN AGENDA"
+            Else
+                BTN_AGENDAR.Enabled = False
+            End If
+
+            'datos de fibra
+            FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, MDUDataGridView.CurrentRow.Cells(0).Value)
+            For Each FTTBS In EDIFICIODataSet.FTTB
+                If FTTBS.SPL_NRO = 1 Then
+                    Select Case FTTBS.NAP
+                        Case 4
+                            CUENTA4 += 1
+                        Case 8
+                            CUENTA8 += 1
+                        Case 16
+                            CUENTA16 += 1
+                    End Select
+                End If
+            Next
+            TXT_CANT16.Text = CUENTA16
+            TXT_CANT_8.Text = CUENTA8
+            TXT_CANT_4.Text = CUENTA4
+        End If
         STATUSTableAdapter.Fill(EDIFICIODataSet.STATUS)
         CB_STATUS.Items.Clear()
         For Each STATUS In EDIFICIODataSet.STATUS
             CB_STATUS.Items.Add(STATUS.NOMBRE)
         Next
 
-        If MDUDataGridView.CurrentRow.Cells(1).Value = 1 Then
-            BTN_AGENDAR.Text = "AGENDAR EDIFICIO"
-        ElseIf MDUDataGridView.CurrentRow.Cells(1).Value = 4 Then
-            BTN_AGENDAR.Text = "AGENDAR EDIF CERTIFICADO"
-        ElseIf MDUDataGridView.CurrentRow.Cells(1).Value = 2 Then
-            BTN_AGENDAR.Text = "VER EN AGENDA"
-        Else
-            BTN_AGENDAR.Enabled = False
-        End If
 
-        MDUTableAdapter.FillByID(EdificioDataSetACTUALIZAR.MDU, MDUDataGridView.CurrentRow.Cells(0).Value)
-        CB_STATUS.Text = CB_STATUS.Items.Item(EdificioDataSetACTUALIZAR.MDU.Rows(0).Item("ID_STATUS") - 1)
-        '  If EdificioDataSetACTUALIZAR.MDU.Rows(0).Item("ID_STATUS") = 2 Then
-        AGENDATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.AGENDA, CInt(EdificioDataSetACTUALIZAR.MDU.Rows(0).Item("ID_MDU")))
+        'BITACORA
+        BITACORATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.BITACORA, CInt(MDUDataGridView.CurrentRow.Cells(0).Value))
+        BITACORABindingSource.MoveLast()
+
+        'AGENAMIENTO 
+        CB_STATUS.Text = ACT_MDURow("STATUS") 'CB_STATUS.Items.Item(EdificioDataSetACTUALIZAR.MDU.Rows(0).Item("ID_STATUS") - 1)
+        AGENDATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.AGENDA, CInt(ACT_MDURow.ID_MDU))
         If EDIFICIODataSet.AGENDA.Rows.Count > 0 Then
             LBL_FECHA_AGENDA.Text = "AGENDADO PARA EL: " & CDate(EDIFICIODataSet.AGENDA.Rows(EDIFICIODataSet.AGENDA.Rows.Count - 1).Item("DIA_AGENDA")).ToShortDateString
             LBL_CANTIDAD_AGENDAMIENTOS.Text = "CANT.AGENDAMIENTOS: " & EDIFICIODataSet.AGENDA.Rows.Count
@@ -58,28 +93,61 @@ Public Class DETALLE_MDU
             LBL_FECHA_AGENDA.Text = "Sin agendamientos"
             LBL_CANTIDAD_AGENDAMIENTOS.Text = ""
         End If
+    End Sub
+    Private Sub CARGARFTTB()
+        L_FTTB.Items.Clear()
+        Dim ACOMETIDA As String
+        Dim DISTRO As String
+        Dim CAJA As String
+        Dim NAP As String
+        Dim ZONA As String
+        Dim CANT_BOCAS As String
+        Dim STR As String = String.Empty
+        For Each ITEMS In EDIFICIODataSet.FTTB
+            If ITEMS.IsOBS_TECNull = False Then
+                If ITEMS.SPL_NRO = 1 Then
+                    If ITEMS.IsNAP_NRONull Then
+                        NAP = "s/d"
+                    Else
+                        NAP = ITEMS.NAP_NRO
+                        If NAP < 10 Then NAP = "0" & NAP
+                    End If
 
+                    If ITEMS.IsACOMETIDANull Then
+                        ACOMETIDA = "s/d"
+                    Else
+                        ACOMETIDA = ITEMS.ACOMETIDA
+                        If ACOMETIDA < 10 Then ACOMETIDA = "0" & ACOMETIDA
+                    End If
 
-        BITACORATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.BITACORA, CInt(MDUDataGridView.CurrentRow.Cells(0).Value))
-        BITACORABindingSource.MoveLast()
+                    ZONA = ACT_MDURow.ZONA
+                    If ZONA < 10 Then ZONA = "0" & ZONA
+                    If ITEMS.IsCAJA_DISTRIBUCIONNull Then
+                        DISTRO = ""
+                    Else
+                        DISTRO = ITEMS.CAJA_DISTRIBUCION
+                        If DISTRO < 10 Then DISTRO = "0" & DISTRO
+                    End If
 
-        'datos de fibra
-        FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, MDUDataGridView.CurrentRow.Cells(0).Value)
-        For Each FTTBS In EDIFICIODataSet.FTTB
-            If FTTBS.SPL_NRO = 1 Then
-                Select Case FTTBS.NAP
-                    Case 4
-                        CUENTA4 += 1
-                    Case 8
-                        CUENTA8 += 1
-                    Case 16
-                        CUENTA16 += 1
-                End Select
+                    If ITEMS.IsCONEXION_DESDENull Then
+                        CAJA = "s/d"
+                    Else
+                        CAJA = ITEMS.CONEXION_DESDE
+                        If CAJA < 10 Then CAJA = "0" & CAJA
+                    End If
+
+                    CANT_BOCAS = ITEMS.NAP
+                    If CANT_BOCAS < 10 Then CANT_BOCAS = "0" & CANT_BOCAS
+
+                    If ITEMS.TIPO_CONEXION_DESDE = "FDH" Then
+                        STR = "NAP" & NAP & "-A" & ACOMETIDA & "-" & ACT_MDURow.NODO & ZONA & vbTab & "DESDE: " & ITEMS.TIPO_CONEXION_DESDE & CAJA & "-" & ACT_MDURow.NODO & ZONA & vbTab & "BOCAS: " & CANT_BOCAS & vbTab & "UBICACION: " & ITEMS.OBS_TEC
+                    Else
+                        STR = "NAP" & NAP & "-A" & ACOMETIDA & "-" & ACT_MDURow.NODO & ZONA & vbTab & "DESDE: " & ITEMS.TIPO_CONEXION_DESDE & CAJA & "-D" & DISTRO & "-" & ACT_MDURow.NODO & ZONA & vbTab & "BOCAS: " & CANT_BOCAS & vbTab & "UBICACION: " & ITEMS.OBS_TEC
+                    End If
+                    L_FTTB.Items.Add(STR)
+                End If
             End If
         Next
-        TXT_CANT16.Text = CUENTA16
-        TXT_CANT_8.Text = CUENTA8
-        TXT_CANT_4.Text = CUENTA4
     End Sub
     Private Sub BTN_GUARDAR_Click(sender As Object, e As EventArgs) Handles BTN_GUARDAR.Click
         BITACORARow = EDIFICIODataSet.BITACORA.NewBITACORARow()
@@ -113,10 +181,13 @@ Public Class DETALLE_MDU
         End If
     End Sub
     Private Sub FTTBDataGridView_SelectionChanged(sender As Object, e As EventArgs) Handles FTTBDataGridView.SelectionChanged
-        If FTTBDataGridView.Rows.Count > 0 AndAlso IsDBNull(EDIFICIODataSet.FTTB.Rows(FTTBBindingSource.Position).Item("OBS_TEC")) = False Then
-            TXT_OBS_TEC.Text = EDIFICIODataSet.FTTB.Rows(FTTBBindingSource.Position).Item("OBS_TEC")
-        Else
-            TXT_OBS_TEC.Text = ""
+        If FTTBDataGridView.Rows.Count > 0 Then
+            FTTB_Row = EDIFICIODataSet.FTTB.Rows(FTTBBindingSource.Position)
+            If IsDBNull(FTTB_Row.OBS_TEC) = False Then
+                TXT_OBS_TEC.Text = FTTB_Row.OBS_TEC
+            Else
+                TXT_OBS_TEC.Text = ""
+            End If
         End If
     End Sub
     Private Sub BTN_AGENDAR_Click(sender As Object, e As EventArgs) Handles BTN_AGENDAR.Click
@@ -139,7 +210,10 @@ Public Class DETALLE_MDU
         CUENTA16 = 0
         CUENTA8 = 0
         CUENTA4 = 0
-        FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, CInt(MDUDataGridView.CurrentRow.Cells(0).Value))
+        MDUTableAdapter.FillByID(EdificioDataSetACTUALIZAR.MDU, MDUDataGridView.CurrentRow.Cells(0).Value)
+        ACT_MDURow = EdificioDataSetACTUALIZAR.MDU.Rows(0)
+        FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, CInt(ACT_MDURow.ID_MDU))
+        FTTB_Row = EDIFICIODataSet.FTTB.Rows(0)
         For Each FTTBS In EDIFICIODataSet.FTTB
             If FTTBS.SPL_NRO = 1 Then
                 Select Case FTTBS.NAP
@@ -169,10 +243,10 @@ Public Class DETALLE_MDU
             BTN_AGENDAR.Enabled = False
         End If
 
-        MDUTableAdapter.FillByID(EdificioDataSetACTUALIZAR.MDU, MDUDataGridView.CurrentRow.Cells(0).Value)
-        CB_STATUS.Text = CB_STATUS.Items.Item(EdificioDataSetACTUALIZAR.MDU.Rows(0).Item("ID_STATUS") - 1)
 
-        AGENDATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.AGENDA, CInt(EdificioDataSetACTUALIZAR.MDU.Rows(0).Item("ID_MDU")))
+        CB_STATUS.Text = ACT_MDURow("STATUS")
+
+        AGENDATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.AGENDA, CInt(ACT_MDURow.ID_MDU))
         If EDIFICIODataSet.AGENDA.Rows.Count > 0 Then
             LBL_FECHA_AGENDA.Text = "AGENDADO PARA EL: " & CDate(EDIFICIODataSet.AGENDA.Rows(EDIFICIODataSet.AGENDA.Rows.Count - 1).Item("DIA_AGENDA")).ToShortDateString
             LBL_CANTIDAD_AGENDAMIENTOS.Text = "CANT.AGENDAMIENTOS: " & EDIFICIODataSet.AGENDA.Rows.Count
@@ -1250,12 +1324,10 @@ Public Class DETALLE_MDU
         'IMPRIMIR_ORDEN.Show()
     End Sub
     Private Sub BTN_ACTUALIZAR_sTATUS_Click(sender As Object, e As EventArgs) Handles BTN_ACTUALIZAR_sTATUS.Click
-        'BUSCAMOS EL EDFICIO A MODIFICAR
-        MDUTableAdapter.FillByID(EdificioDataSetACTUALIZAR.MDU, MDUDataGridView.CurrentRow.Cells(0).Value)
-        ACT_MDURow = EdificioDataSetACTUALIZAR.MDU.Rows(0)
-        ACT_MDURow.ID_STATUS = CB_STATUS.SelectedIndex + 1
-        ACT_MDURow.MODIFICADO = Today.ToShortDateString
-        MDUTableAdapter.Update(ACT_MDURow)
+        STATUSTableAdapter.FillByNOMBRE(EdificioDataSetACTUALIZAR.STATUS, CB_STATUS.Text)
+
+        Dim query As String = "UPDATE MDU SET ID_STATUS = " & EdificioDataSetACTUALIZAR.STATUS.Rows(0).Item("Id_STATUS") & ", MODIFICADO = '" & Today.ToShortDateString & "' WHERE ID_MDU = " & ACT_MDURow.ID_MDU & ";"
+        ExecuteNonQuery("edificio", query)
         DETALLE_MDU_Load(Nothing, Nothing)
         NOTIFICACION("SYS", "EDIFICIO ACTUALIZADO")
     End Sub
@@ -1267,5 +1339,15 @@ Public Class DETALLE_MDU
         BITACORATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.BITACORA, CInt(MDUDataGridView.CurrentRow.Cells(0).Value))
         NOTIFICACION("SYS", "CONTACTO ELIMINADO")
     End Sub
+
+    Private Sub BTN_CONFORME_OBRA_Click(sender As Object, e As EventArgs) Handles BTN_CONFORME_OBRA.Click
+        If TORRES.Visible Then
+            TORRES.Close()
+            TORRES.Show()
+        Else
+            TORRES.Show()
+        End If
+    End Sub
+
 
 End Class

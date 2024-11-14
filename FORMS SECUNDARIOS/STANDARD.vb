@@ -816,6 +816,8 @@ Public Class STANDARD
                         DATOS.DATOS_ORDENESRow("SECTORGEN") = "SU"
                     Case "DESPACHO"
                         DATOS.DATOS_ORDENESRow("SECTORGEN") = "CO"
+                    Case "OBRA CIVIL"
+                        DATOS.DATOS_ORDENESRow("SECTORGEN") = "OC"
                     Case Else
                         DATOS.DATOS_ORDENESRow("SECTORGEN") = "SC"
                 End Select
@@ -884,7 +886,6 @@ Public Class STANDARD
                         NewTAREARow("ORDINAL") = 0
                         NewTAREARow("NRO_ORDENINT") = DATOS.ORDENESDataSet.ORDENES.Rows(DATOS.ORDENESBindingSource.Position).Item("NRO_ORDENINT")
                         NewTAREARow("NRO_AGENDAMIENTO") = 0
-                        NewTAREARow("STATUS") = "INGRESADO"
                         NewTAREARow("ACTIVIDADDESC") = ACTIVIDAD(x)
                         NewTAREARow("TAREADESC") = TAREA(x)
                         NewTAREARow("CANTSTD") = CANTORDEN(x)
@@ -1176,7 +1177,6 @@ Public Class STANDARD
                         NewTAREARow("ORDINAL") = 0
                         NewTAREARow("NRO_ORDENINT") = DATOS.ORDENESDataSet.ORDENES.Rows(DATOS.ORDENESBindingSource.Position).Item("NRO_ORDENINT")
                         NewTAREARow("NRO_AGENDAMIENTO") = 0
-                        NewTAREARow("STATUS") = "INGRESADO"
                         NewTAREARow("ACTIVIDADDESC") = ACTIVIDAD(x)
                         NewTAREARow("TAREADESC") = TAREA(x)
                         NewTAREARow("CANTSTD") = CANTORDEN(x)

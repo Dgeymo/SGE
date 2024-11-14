@@ -13,7 +13,7 @@ Public Class FORMAGE
     Public ACCION_AGENDA As String
     Dim BTN_DIA_MOD(45) As Button
     Dim BTN_DIA_ADD(45) As Button
-    Public BTN_CALENDARIO_DIA(42) As Button
+    Public BTN_CALENDARIO_DIA(120) As Button
     Dim MES_INI As Integer
     Dim AÑO_INI As Integer
     Dim FIJA_DIA As Boolean
@@ -601,6 +601,7 @@ Public Class FORMAGE
                                                 BTN_CALENDARIO_DIA(X).ForeColor = Color.White
                                             End If
                                         Catch ex As Exception
+
                                         End Try
                                     Next
                                     MOSTRAR_AGENDA(FECHAINI, CRTL_BTN.Name)

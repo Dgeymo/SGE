@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.Data.OleDb
+Imports System.IO
 Imports Microsoft.Office.Interop
 Public Class DASHBOARD
     Dim TIEMPO As Integer
@@ -18,6 +19,7 @@ Public Class DASHBOARD
     Private Sub DASHBOARD_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         'OBTENER_HORA()
         RELOJ_SEG.Enabled = True
+
     End Sub
     Private Sub INGRESO_Load(sender As Object, e As EventArgs) Handles Me.Load
 
@@ -42,6 +44,7 @@ Public Class DASHBOARD
                 Else
                     WindowState = FormWindowState.Minimized
                     INICIO_DASH()
+
                 End If
             Else
                 If File.Exists("C:\DOCUMENTOS\USUARIO\VERSION.TXT") = False Then
@@ -59,11 +62,22 @@ Public Class DASHBOARD
                     Close()
                 Else
                     INICIO_DASH()
+
                 End If
             End If
+
         Catch EX As Exception
             MsgBox("OOOps!!! Parece que algo anda mal -> " & EX.Message)
         End Try
+    End Sub
+    Public Sub ContarRegistros()
+        'CUENTA MENSAJES RECIBIDOS
+        MENSAJERIATableAdapter.FillByRECIBIDOSNOLEIDOS(ORDENESDataSet.MENSAJERIA, FULLNOMBRE, SECTOR)
+        BTNMensajeria.Text = ORDENESDataSet.MENSAJERIA.Count
+        ORDENESTableAdapter.FillByASIGNADOA(ORDENESDataSet.ORDENES, FULLNOMBRE)
+        TRABAJOSTableAdapter.FillByASIGNADOA(ORDENESDataSet.TRABAJOS, FULLNOMBRE)
+        GESTIONTableAdapter.FillByASIGNADOA(ORDENESDataSet.GESTION, FULLNOMBRE)
+        BTNAsignado.Text = ORDENESDataSet.ORDENES.Count + ORDENESDataSet.TRABAJOS.Count + ORDENESDataSet.GESTION.Count
     End Sub
     Public Sub APLICAR_THEME_WHITE()
         '___________________UI__________________________________________________________________
@@ -113,6 +127,7 @@ Public Class DASHBOARD
             MISTrabajos.ForeColor = Color.White
             MISTrabajos.BackColor = Color.Transparent
             MISTrabajos.BackgroundImage = My.Resources.DEMORADO_BANNER
+            MISTrabajos.BackgroundImageLayout = ImageLayout.Stretch
 
             BTN_MISGestiones.Parent = PanelSUPInterior
             BTN_MISGestiones.AutoSize = True
@@ -120,7 +135,7 @@ Public Class DASHBOARD
             BTN_MISGestiones.BackColor = Color.White
             BTN_MISGestiones.ForeColor = Color.White
             BTN_MISGestiones.BackgroundImage = My.Resources.DEMORADO_BANNER
-            BTN_MISGestiones.BackgroundImageLayout = ImageLayout.Zoom
+            BTN_MISGestiones.BackgroundImageLayout = ImageLayout.Stretch
 
 
             BTN_AGENDA.Parent = PanelSUPInterior
@@ -1359,7 +1374,6 @@ Public Class DASHBOARD
                 GESTIONTableAdapter.FillByASIGNADOA(MIS_GESTIONES.ORDENESDataSet.GESTION, FULLNOMBRE)
                 TRABAJOSTableAdapter.FillByASIGNADOA(MIS_GESTIONES.ORDENESDataSet.TRABAJOS, FULLNOMBRE)
                 GESTIONTableAdapter.FillByASIGNADOA(MIS_GESTIONES.ORDENESDataSet.GESTION, FULLNOMBRE)
-
             End If
         End If
     End Sub
@@ -1373,7 +1387,6 @@ Public Class DASHBOARD
             MIS_GESTIONES.Dock = DockStyle.Fill
             MIS_GESTIONES.Show()
             MIS_GESTIONES.BringToFront()
-
         Else
             MIS_GESTIONES.BringToFront()
         End If
@@ -1387,7 +1400,6 @@ Public Class DASHBOARD
             MIS_GESTIONES.Dock = DockStyle.Fill
             MIS_GESTIONES.Show()
             MIS_GESTIONES.BringToFront()
-
         Else
             MIS_GESTIONES.BringToFront()
         End If
@@ -1397,14 +1409,11 @@ Public Class DASHBOARD
         If My.Computer.Info.OSFullName.Contains(10) Or My.Computer.Info.OSFullName.Contains(11) Then
             Try
                 Dim ruta As String = "G:\OPERACIONES\PROGRAMAS\BOTServer\W10\" & VERSION & "\BOTSverver.exe"
-                MsgBox(ruta)
-
                 Shell(ruta)
             Catch ex As Exception
                 MsgBox("OOOPS! Solicite ayuda tecnica, NO HAY CONECCION A ARCHIVO")
             End Try
         Else
-            MsgBox("TAMBIEN ENTRO ACA")
             Try
                 Shell("G:\OPERACIONES\PROGRAMAS\BOTServer\" & VERSION & "\BOTSverver.exe")
             Catch ex As Exception
@@ -1539,6 +1548,26 @@ Public Class DASHBOARD
 
     Private Sub BTN_PASAR_Click(sender As Object, e As EventArgs) Handles BTN_PASAR.Click
         Cursor = Cursors.WaitCursor
+        'Dim CONTADOR As Integer = 1
+        'Dim REPARADOS As Integer = 0
+        'ORDENESTableAdapter.FillBy(OrdenesDataSet1.ORDENES)
+        'Dim TOTAL As Integer = OrdenesDataSet1.ORDENES.Rows.Count
+        'For Each ORDEN In OrdenesDataSet1.ORDENES
+
+        '    If ORDEN.IsSTATUSNull = False AndAlso ORDEN.IsMOTIVOCIERRENull = False Then
+        '        If Trim(ORDEN.MOTIVOCIERRE) = "REALIZADO" And ORDEN.STATUS <> "ADUPLICAR" And ORDEN.STATUS <> "DUPLICADO" And ORDEN.STATUS <> "FINALIZADO" Then
+        '            REPARADOS += 1
+        '            lblcuentas.Text = "SE HAN REPARADO " & REPARADOS & " ORDENES"
+        '            lblcuentas.Refresh()
+        '            ORDEN.STATUS = "FINALIZADO"
+        '            ORDENESTableAdapter.Update(ORDEN)
+        '        End If
+        '    End If
+        '    Label2.Text = "CONTANDO " & CONTADOR & " De " & TOTAL
+        '    Label2.Refresh()
+        '    CONTADOR += 1
+        'Next
+
         'TRABAJOSTableAdapter.Fill(ORDENESDataSet.TRABAJOS)
         'Dim CUENTA As Integer = 0
         'For Each TRABAJOS In ORDENESDataSet.TRABAJOS
@@ -1873,48 +1902,48 @@ Public Class DASHBOARD
 
 
         'CORRIGE EL PROBLEMA DE LOS EMITIDOS
-        Dim trabajoRow As ORDENESDataSet.TRABAJOSRow
-        TRABAJOSTableAdapter.Fill(ORDENESDataSet.TRABAJOS)
-        If ORDENESDataSet.TRABAJOS.Rows.Count > 0 Then
-            For i = 0 To ORDENESDataSet.TRABAJOS.Rows.Count - 1
-                trabajoRow = ORDENESDataSet.TRABAJOS.Rows(i)
-                lblcuentas.Text = "actualizando " & trabajoRow.Id_TRABAJO & " DE " & ORDENESDataSet.TRABAJOS.Rows.Count
-                lblcuentas.Refresh()
+        '  Dim trabajoRow As ORDENESDataSet.TRABAJOSRow
+        'TRABAJOSTableAdapter.Fill(ORDENESDataSet.TRABAJOS)
+        'If ORDENESDataSet.TRABAJOS.Rows.Count > 0 Then
+        '    For i = 0 To ORDENESDataSet.TRABAJOS.Rows.Count - 1
+        '        trabajoRow = ORDENESDataSet.TRABAJOS.Rows(i)
+        '        lblcuentas.Text = "actualizando " & trabajoRow.Id_TRABAJO & " DE " & ORDENESDataSet.TRABAJOS.Rows.Count
+        '        lblcuentas.Refresh()
 
-                If trabajoRow.IsFECHAINICIADONull = False AndAlso trabajoRow.FECHAINICIADO = "1/3/2024" AndAlso trabajoRow.STATUS = "INGRESADO" Then
-                    trabajoRow("FECHAINICESTIMADO") = Now.ToShortDateString
-                    trabajoRow("FECHAINICIADO") = DBNull.Value
-                    TRABAJOSTableAdapter.Update(trabajoRow)
-                End If
-                'If trabajoRow.STATUS = "INICIADO" Then
-                '    ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, trabajoRow.Id_TRABAJO)
-                '    If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
-                '        Dim hayIniciado = False
-                '        Dim OrdenRow As ORDENESDataSet.ORDENESRow
-                '        For j = 0 To ORDENESDataSet.ORDENES.Rows.Count - 1
-                '            OrdenRow = ORDENESDataSet.ORDENES.Rows(j)
-                '            Select Case OrdenRow.STATUS
-                '                Case "INICIADO", "DUPLICADO", "ADUPLICAR", "FINALIZADO"
-                '                    hayIniciado = True
-                '                    Exit For
-                '            End Select
-                '        Next
+        '        If trabajoRow.IsFECHAINICIADONull = False AndAlso trabajoRow.FECHAINICIADO = "1/3/2024" AndAlso trabajoRow.STATUS = "INGRESADO" Then
+        '            trabajoRow("FECHAINICESTIMADO") = Now.ToShortDateString
+        '            trabajoRow("FECHAINICIADO") = DBNull.Value
+        '            TRABAJOSTableAdapter.Update(trabajoRow)
+        '        End If
+        'If trabajoRow.STATUS = "INICIADO" Then
+        '    ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, trabajoRow.Id_TRABAJO)
+        '    If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
+        '        Dim hayIniciado = False
+        '        Dim OrdenRow As ORDENESDataSet.ORDENESRow
+        '        For j = 0 To ORDENESDataSet.ORDENES.Rows.Count - 1
+        '            OrdenRow = ORDENESDataSet.ORDENES.Rows(j)
+        '            Select Case OrdenRow.STATUS
+        '                Case "INICIADO", "DUPLICADO", "ADUPLICAR", "FINALIZADO"
+        '                    hayIniciado = True
+        '                    Exit For
+        '            End Select
+        '        Next
 
-                '        If hayIniciado = False Then
-                '            trabajoRow.STATUS = "INGRESADO"
-                '            trabajoRow.FECHAINICESTIMADO = Nothing
-                '            TRABAJOSTableAdapter.Update(trabajoRow)
-                '        End If
-                '    Else
-                '        trabajoRow.STATUS = "INGRESADO"
-                '        trabajoRow.FECHAINICESTIMADO = Nothing
-                '        TRABAJOSTableAdapter.Update(trabajoRow)
-                '    End If
+        '        If hayIniciado = False Then
+        '            trabajoRow.STATUS = "INGRESADO"
+        '            trabajoRow.FECHAINICESTIMADO = Nothing
+        '            TRABAJOSTableAdapter.Update(trabajoRow)
+        '        End If
+        '    Else
+        '        trabajoRow.STATUS = "INGRESADO"
+        '        trabajoRow.FECHAINICESTIMADO = Nothing
+        '        TRABAJOSTableAdapter.Update(trabajoRow)
+        '    End If
 
 
-                'End If
-            Next
-        End If
+        'End If
+        'Next
+        'End If
 
         'Dim GROW As ORDENESDataSet.GESTIONRow
 
@@ -1959,12 +1988,22 @@ Public Class DASHBOARD
         INICIO.Show()
     End Sub
 
-    Private Sub BTN_HAND_Click(sender As Object, e As EventArgs) Handles BTN_HAND.Click
+    Private Sub BTN_MODIFICA_Click(sender As Object, e As EventArgs) Handles BTN_MODIFICA.Click
+        Cursor = Cursors.WaitCursor
+        Dim SQL = "SELECT T.id_TRABAJO, T.ID_GESTION FROM TRABAJOS T WHERE T.ID_GESTION  NOT IN ( SELECT G.ID_GESTION FROM GESTION G WHERE T.id_TRABAJO = G.id_GESTION );"
+        SQL = "SELECT O.* FROM ORDENES O LEFT JOIN TRABAJOS T ON O.ID_TRABAJO = T.ID_TRABAJO WHERE T.ID_TRABAJO IS NULL"
+        Dim RESULTADO = ExecuteQuery("ordenes", SQL)
+        NOTIFICACION("SYS", RESULTADO.FieldCount.ToString)
+        Dim DT As New DataTable()
+        DT.Load(RESULTADO)
+            DGVRESULT.DataSource = DT
 
-    End Sub
+        'For I = 0 To DT.Rows.Count - 1
+        '    SQL = "DELETE FROM TRABAJOS WHERE ID_TRABAJO = " & DT.Rows(I).Item("id_TRABAJO")
+        '    ExecuteNonQuery("ORDENES", SQL)
+        'Next
 
-    Private Sub Lblcuentas_Click(sender As Object, e As EventArgs) Handles lblcuentas.Click
-
+        Cursor = Cursors.Default
     End Sub
 
 

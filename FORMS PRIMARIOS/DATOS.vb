@@ -2643,7 +2643,7 @@ Public Class DATOS
             DATOS_MJE_ASUNTO = "ASIGNACION DE TRABAJO"
             DATOS_MJE_DESTINONOMBRE = TRAB_RESP_NOMBRE
             DATOS_MJE_DESTINOSECTOR = ""
-            DATOS_MJE_MENSAJE = "SE LE HA ASIGNADO EL TRABAJO EN EL NODO: " & DATOS_TRABAJORow("NODO") & " ZONA: " & DATOS_TRABAJORow("ZONA") & "    DE " & DATOS_TRABAJORow("TIPOTRABAJO") & " PERTENECIENTE A: " & DATOS_TRABAJORow("AREA") _
+            DATOS_MJE_MENSAJE = "SE LE HA ASIGNADO EL TRABAJO Numero: " & DATOS_TRABAJORow.ID_GESTION & " - " & DATOS_TRABAJORow.Id_TRABAJO & ", EN EL NODO: " & DATOS_TRABAJORow("NODO") & "ZONA: " & DATOS_TRABAJORow("ZONA") & "    DE " & DATOS_TRABAJORow("TIPOTRABAJO") & " PERTENECIENTE A: " & DATOS_TRABAJORow("AREA") _
                & vbNewLine & "SITUADO EN: " & DATOS_TRABAJORow("CALLE") & "NRO: " & DATOS_TRABAJORow("NRO") & vbNewLine & " USTED DEBERA CREAR LAS ORDENES DE TRABAJO NECESARIAS PARA DICHO TRABAJO SE EJECUTE Y ACTUALIZAR LOS DISTINTOS ESTADOS DEL MISMO"
             DATOS_MJE_NROORDENASOC = ""
             ENVIA_MENSAJE()
@@ -4314,12 +4314,11 @@ Public Class DATOS
     Private Sub BTN_SERVICIO_Click(sender As Object, e As EventArgs) Handles BTN_SERVICIO.Click
         Cursor = Cursors.WaitCursor
         If SERVICIOS.Visible Then
-            SERVICIOS.ORDENESTableAdapter.FillByMOT_ORIGEN(SERVICIOS.ORDENESDataSet.ORDENES, "SERVICIOS")
             SERVICIOS.ORDENESBindingSource1.MoveLast()
-            SERVICIOS.BringToFront()
         Else
             SERVICIOS.Show()
         End If
+        SERVICIOS.BringToFront()
         Cursor = Cursors.Default
     End Sub
     Private Sub TRABAJOSDataGridView_Click(sender As Object, e As EventArgs) Handles TRABAJOSDataGridView.Click

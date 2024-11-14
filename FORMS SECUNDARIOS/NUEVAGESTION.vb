@@ -637,6 +637,7 @@
                     End If
 
                     NewTRABAJORow = DATOS.ORDENESDataSet.TRABAJOS.NewTRABAJOSRow
+                    NewTRABAJORow.Id_TRABAJO = ObtenerUltimo("ORDENES", "TRABAJOS") + 1
                     NewTRABAJORow("ID_GESTION") = DATOS.DATOS_GESTIONRow("Id_GESTION")
                     NewTRABAJORow("TIPOTRABAJO") = TIPO_TRABAJO
                     NewTRABAJORow("FECHAINICESTIMADO") = FECHA_INIEST

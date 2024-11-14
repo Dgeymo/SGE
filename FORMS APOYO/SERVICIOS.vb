@@ -25,7 +25,7 @@ Public Class SERVICIOS
     Dim GESTION_SERVICIORow As ORDENESDataSet.GESTIONRow
     Dim NewHISTORICORow As ORDENESDataSet.HISTORICORow
     Private Sub SERVICIOS_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ORDENESTableAdapter.FillByMOT_ORIGEN(ORDENESDataSet.ORDENES, "SERVICIOS")
+        ORDENESTableAdapter.FillByDISENO(ORDENESDataSet.ORDENES)
         ORDENESBindingSource1.MoveLast()
     End Sub
     Private Sub BUSCA_TIPO()
@@ -162,7 +162,7 @@ Public Class SERVICIOS
         End If
         NEW_ORDEN()
 
-        ORDENESTableAdapter.FillByMOT_ORIGEN(ORDENESDataSet.ORDENES, "SERVICIOS")
+        ORDENESTableAdapter.FillByDISENO(ORDENESDataSet.ORDENES)
         ORDENESBindingSource1.MoveLast()
         Cursor = Cursors.Default
     End Sub
@@ -256,18 +256,7 @@ Public Class SERVICIOS
         NewORDENESRow("TIPO") = CB_TIPO.Text
         NewORDENESRow.SECTOROPE = "DISEÑO"
         NewORDENESRow.RECURSO = "DISEÑO"
-        Select Case SECTOR
-            Case "PLANIFICACION TECNICA", "GERENCIA"
-                NewORDENESRow("SECTORGEN") = "PT"
-            Case "SUPERVISION", "JEFATURA"
-                NewORDENESRow("SECTORGEN") = "SU"
-            Case "DESPACHO"
-                NewORDENESRow("SECTORGEN") = "CO"
-            Case "OBRA CIVIL"
-                NewORDENESRow("SECTORGEN") = "OC"
-            Case Else
-                NewORDENESRow("SECTORGEN") = "SC"
-        End Select
+        NewORDENESRow("SECTORGEN") = "OC"
         NewORDENESRow("PRIORIDAD") = CB_PRIORIDAD.Text
         NewORDENESRow("CARPETA") = ""
         NewORDENESRow("SECTORDESTINO") = "RED"
@@ -599,6 +588,7 @@ Public Class SERVICIOS
         End If
     End Sub
     Private Sub DGV_ORDENES_Click(sender As Object, e As EventArgs) Handles DGV_ORDENES.Click
+        Cursor = Cursors.WaitCursor
         If DGV_ORDENES.Rows.Count > 0 Then
             ORDENESTableAdapter.FillByIDORDENINT(OrdenesDataSet1.ORDENES, DGV_ORDENES.SelectedCells.Item(0).Value)
             If OrdenesDataSet1.ORDENES.Rows.Count > 0 Then
@@ -620,6 +610,7 @@ Public Class SERVICIOS
         Else
             BTN_APROBAR.Enabled = False
         End If
+        Cursor = Cursors.Default
     End Sub
     Private Sub BTN_BUSCAR_Click(sender As Object, e As EventArgs)
         Dim STATUS As String
@@ -686,6 +677,7 @@ Public Class SERVICIOS
         DATOS.GEST_NODO.Visible = True
     End Sub
     Private Sub DGV_ORDENES_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles DGV_ORDENES.MouseDoubleClick
+        Cursor = Cursors.WaitCursor
         If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
             '  ORDEN_SERVICIORow = ORDENESDataSet.ORDENES.Rows()
 
@@ -710,6 +702,7 @@ Public Class SERVICIOS
             End If
         End If
         abrirDatos()
+        Cursor = Cursors.Default
     End Sub
     Private Sub CK_STATUS_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CK_STATUS.SelectedIndexChanged
         If CK_STATUS.Text = "TODOS" Then
@@ -730,6 +723,7 @@ Public Class SERVICIOS
 
     Private Sub BTN_APROBAR_Click(sender As Object, e As EventArgs) Handles BTN_APROBAR.Click
         '   If CB_CAUSAS.Text = "SOLICITADO POR TERCEROS" Or CB_PRIORIDAD.Text = "URGENTE" Or CB_PRIORIDAD.Text = "ALTA" Then
+        Cursor = Cursors.WaitCursor
         SECTORESTableAdapter.FillBySECTOR(ORDENESDataSet.SECTORES, SECTOR)
         Dim REMITENTE_SECTOR As String = ORDENESDataSet.SECTORES.Rows(0).Item("EMAIL")
 
@@ -742,8 +736,14 @@ Public Class SERVICIOS
         ORDENESTableAdapter.Update(ORDEN_SERVICIORow)
         NOTIFICACION("SYS", "orden APROBADA")
         ENVIAR_EMAIL("BAJA", emailDestino, "APROBACION ORDEN SERVICIO", MENSAJE, REMITENTE) '
+        Cursor = Cursors.Default
         'End If
     End Sub
 
-
+    Private Sub BTN_REFRESCAR_Click(sender As Object, e As EventArgs) Handles BTN_REFRESCAR.Click
+        Cursor = Cursors.WaitCursor
+        ORDENESTableAdapter.FillByDISENO(ORDENESDataSet.ORDENES)
+        ORDENESBindingSource1.MoveLast()
+        Cursor = Cursors.Default
+    End Sub
 End Class

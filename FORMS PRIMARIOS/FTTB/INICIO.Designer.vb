@@ -40,30 +40,15 @@ Partial Class INICIO
         Me.BTN_VER_EDIFICIO = New System.Windows.Forms.Button()
         Me.BTN_AGENDAR = New System.Windows.Forms.Button()
         Me.DGV_EDIFICIOS = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AGENDADO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ACOMETIDA = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EDIF_VISTABindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EDIFICIODataSet = New REDES.EDIFICIODataSet()
         Me.TXT_NRO = New System.Windows.Forms.TextBox()
         Me.CB_STATUS = New System.Windows.Forms.ComboBox()
         Me.TXT_CALLE = New System.Windows.Forms.TextBox()
         Me.TXT_ZONA = New System.Windows.Forms.TextBox()
         Me.LBL_CANT_ROWS = New System.Windows.Forms.Label()
         Me.AVANCEDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.VER_DUCTOS_FECHADA = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.AVANCEBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BTN_HABILITAR = New System.Windows.Forms.Button()
         Me.CB_INGRESO = New System.Windows.Forms.ComboBox()
@@ -100,6 +85,25 @@ Partial Class INICIO
         Me.Label3 = New System.Windows.Forms.Label()
         Me.CBNODO = New System.Windows.Forms.ComboBox()
         Me.BTN_IRNODO = New System.Windows.Forms.Button()
+        Me.FIBRADataSet = New REDES.FIBRADataSet()
+        Me.TRONCALESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TRONCALESTableAdapter = New REDES.FIBRADataSetTableAdapters.TRONCALESTableAdapter()
+        Me.TableAdapterManager2 = New REDES.FIBRADataSetTableAdapters.TableAdapterManager()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EDIF_VISTABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.EDIFICIODataSet = New REDES.EDIFICIODataSet()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.AVANCEBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AVANCETableAdapter = New REDES.EDIFICIODataSetTableAdapters.AVANCETableAdapter()
         Me.TableAdapterManager1 = New REDES.EDIFICIODataSetTableAdapters.TableAdapterManager()
         Me.STATUSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.STATUSTableAdapter()
@@ -109,38 +113,37 @@ Partial Class INICIO
         Me.AGENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AGENDATableAdapter = New REDES.EDIFICIODataSetTableAdapters.AGENDATableAdapter()
         Me.EdificioDataSetBackUp = New REDES.EDIFICIODataSet()
-        Me.FTTBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.FTTBTableAdapter = New REDES.EDIFICIODataSetTableAdapters.FTTBTableAdapter()
         Me.TURNOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TURNOSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.TURNOSTableAdapter()
         Me.CERTIFICACIONESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CERTIFICACIONESTableAdapter = New REDES.EDIFICIODataSetTableAdapters.CERTIFICACIONESTableAdapter()
-        Me.FTTBBindingSourceFIBRA = New System.Windows.Forms.BindingSource(Me.components)
-        Me.FIBRADataSet = New REDES.FIBRADataSet()
-        Me.TRONCALESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TRONCALESTableAdapter = New REDES.FIBRADataSetTableAdapters.TRONCALESTableAdapter()
-        Me.TableAdapterManager2 = New REDES.FIBRADataSetTableAdapters.TableAdapterManager()
-        Me.FTTBTableAdapterFIBRA = New REDES.FIBRADataSetTableAdapters.FTTBTableAdapter()
         Me.OBS_MDUBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OBS_MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.OBS_MDUTableAdapter()
+        Me.FTTBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FTTBTableAdapter = New REDES.EDIFICIODataSetTableAdapters.FTTBTableAdapter()
+        Me.COLORESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.COLORESTableAdapter = New REDES.EDIFICIODataSetTableAdapters.COLORESTableAdapter()
+        Me.ARTICULOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ARTICULOTableAdapter = New REDES.EDIFICIODataSetTableAdapters.ARTICULOTableAdapter()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DGV_EDIFICIOS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AVANCEDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.menuStrip1.SuspendLayout()
+        CType(Me.FIBRADataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TRONCALESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EDIF_VISTABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AVANCEDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AVANCEBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.menuStrip1.SuspendLayout()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EdificioDataSetBackUp, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TURNOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CERTIFICACIONESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FTTBBindingSourceFIBRA, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FIBRADataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TRONCALESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OBS_MDUBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.COLORESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ARTICULOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -362,62 +365,6 @@ Partial Class INICIO
         Me.DGV_EDIFICIOS.Size = New System.Drawing.Size(862, 580)
         Me.DGV_EDIFICIOS.TabIndex = 5
         '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_EDIFICIO"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID_EDIFICIO"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Visible = False
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "NODO"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "NODO"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 40
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ZONA"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "ZONA"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 40
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "CALLE"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "CALLE"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "PUERTA"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "PUERTA"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "INGRESO"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "INGRESO"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "STATUS"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "STATUS"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        '
         'AGENDADO
         '
         Me.AGENDADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
@@ -433,16 +380,6 @@ Partial Class INICIO
         Me.ACOMETIDA.Name = "ACOMETIDA"
         Me.ACOMETIDA.ReadOnly = True
         Me.ACOMETIDA.Width = 45
-        '
-        'EDIF_VISTABindingSource
-        '
-        Me.EDIF_VISTABindingSource.DataMember = "EDIF_VISTA"
-        Me.EDIF_VISTABindingSource.DataSource = Me.EDIFICIODataSet
-        '
-        'EDIFICIODataSet
-        '
-        Me.EDIFICIODataSet.DataSetName = "EDIFICIODataSet"
-        Me.EDIFICIODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TXT_NRO
         '
@@ -554,38 +491,6 @@ Partial Class INICIO
         Me.AVANCEDataGridView.Size = New System.Drawing.Size(306, 578)
         Me.AVANCEDataGridView.TabIndex = 7
         '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "ID_AVANCE"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "ID_AVANCE"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.ReadOnly = True
-        Me.DataGridViewTextBoxColumn9.Visible = False
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "NODO"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "NODO"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.ReadOnly = True
-        Me.DataGridViewTextBoxColumn10.Width = 50
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "ZONA"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "ZONA"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.ReadOnly = True
-        Me.DataGridViewTextBoxColumn11.Width = 50
-        '
-        'DataGridViewCheckBoxColumn4
-        '
-        Me.DataGridViewCheckBoxColumn4.DataPropertyName = "VER_AEREOS"
-        Me.DataGridViewCheckBoxColumn4.HeaderText = "AEREOS"
-        Me.DataGridViewCheckBoxColumn4.Name = "DataGridViewCheckBoxColumn4"
-        Me.DataGridViewCheckBoxColumn4.ReadOnly = True
-        Me.DataGridViewCheckBoxColumn4.Width = 60
-        '
         'VER_DUCTOS_FECHADA
         '
         Me.VER_DUCTOS_FECHADA.DataPropertyName = "VER_DUCTOS_FECHADA"
@@ -593,19 +498,6 @@ Partial Class INICIO
         Me.VER_DUCTOS_FECHADA.Name = "VER_DUCTOS_FECHADA"
         Me.VER_DUCTOS_FECHADA.ReadOnly = True
         Me.VER_DUCTOS_FECHADA.Width = 50
-        '
-        'DataGridViewCheckBoxColumn2
-        '
-        Me.DataGridViewCheckBoxColumn2.DataPropertyName = "VER_SUBTERRANEO"
-        Me.DataGridViewCheckBoxColumn2.HeaderText = "SUBTER"
-        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
-        Me.DataGridViewCheckBoxColumn2.ReadOnly = True
-        Me.DataGridViewCheckBoxColumn2.Width = 60
-        '
-        'AVANCEBindingSource
-        '
-        Me.AVANCEBindingSource.DataMember = "AVANCE"
-        Me.AVANCEBindingSource.DataSource = Me.EDIFICIODataSet
         '
         'Label1
         '
@@ -683,19 +575,19 @@ Partial Class INICIO
         'AdministrarSubMenuItem
         '
         Me.AdministrarSubMenuItem.Name = "AdministrarSubMenuItem"
-        Me.AdministrarSubMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AdministrarSubMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.AdministrarSubMenuItem.Text = "Administrar"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(161, 6)
         '
         'ImportarMenuItem
         '
         Me.ImportarMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgregarPorExcelSubMenuItem, Me.ExcelDeRelevamientoMenuItem})
         Me.ImportarMenuItem.Name = "ImportarMenuItem"
-        Me.ImportarMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ImportarMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.ImportarMenuItem.Text = "Importar"
         '
         'AgregarPorExcelSubMenuItem
@@ -714,7 +606,7 @@ Partial Class INICIO
         '
         Me.ConformeAObraToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CablesToolStripMenuItem, Me.TorresToolStripMenuItem})
         Me.ConformeAObraToolStripMenuItem.Name = "ConformeAObraToolStripMenuItem"
-        Me.ConformeAObraToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ConformeAObraToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.ConformeAObraToolStripMenuItem.Text = "Conforme a obra"
         '
         'CablesToolStripMenuItem
@@ -875,6 +767,140 @@ Partial Class INICIO
         Me.BTN_IRNODO.Text = "IR"
         Me.BTN_IRNODO.UseVisualStyleBackColor = False
         '
+        'FIBRADataSet
+        '
+        Me.FIBRADataSet.DataSetName = "FIBRADataSet"
+        Me.FIBRADataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'TRONCALESBindingSource
+        '
+        Me.TRONCALESBindingSource.DataMember = "TRONCALES"
+        Me.TRONCALESBindingSource.DataSource = Me.FIBRADataSet
+        '
+        'TRONCALESTableAdapter
+        '
+        Me.TRONCALESTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager2
+        '
+        Me.TableAdapterManager2.ARTICULOTableAdapter = Nothing
+        Me.TableAdapterManager2.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager2.CABLESTableAdapter = Nothing
+        Me.TableAdapterManager2.COLORESTableAdapter = Nothing
+        Me.TableAdapterManager2.TRONCALESTableAdapter = Me.TRONCALESTableAdapter
+        Me.TableAdapterManager2.UpdateOrder = REDES.FIBRADataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_EDIFICIO"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID_EDIFICIO"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Visible = False
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "NODO"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "NODO"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 40
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ZONA"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "ZONA"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 40
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "CALLE"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "CALLE"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "PUERTA"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "PUERTA"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "INGRESO"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "INGRESO"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "STATUS"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "STATUS"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        '
+        'EDIF_VISTABindingSource
+        '
+        Me.EDIF_VISTABindingSource.DataMember = "EDIF_VISTA"
+        Me.EDIF_VISTABindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'EDIFICIODataSet
+        '
+        Me.EDIFICIODataSet.DataSetName = "EDIFICIODataSet"
+        Me.EDIFICIODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "ID_AVANCE"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "ID_AVANCE"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        Me.DataGridViewTextBoxColumn9.Visible = False
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "NODO"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "NODO"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.ReadOnly = True
+        Me.DataGridViewTextBoxColumn10.Width = 50
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "ZONA"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "ZONA"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.ReadOnly = True
+        Me.DataGridViewTextBoxColumn11.Width = 50
+        '
+        'DataGridViewCheckBoxColumn4
+        '
+        Me.DataGridViewCheckBoxColumn4.DataPropertyName = "VER_AEREOS"
+        Me.DataGridViewCheckBoxColumn4.HeaderText = "AEREOS"
+        Me.DataGridViewCheckBoxColumn4.Name = "DataGridViewCheckBoxColumn4"
+        Me.DataGridViewCheckBoxColumn4.ReadOnly = True
+        Me.DataGridViewCheckBoxColumn4.Width = 60
+        '
+        'DataGridViewCheckBoxColumn2
+        '
+        Me.DataGridViewCheckBoxColumn2.DataPropertyName = "VER_SUBTERRANEO"
+        Me.DataGridViewCheckBoxColumn2.HeaderText = "SUBTER"
+        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
+        Me.DataGridViewCheckBoxColumn2.ReadOnly = True
+        Me.DataGridViewCheckBoxColumn2.Width = 60
+        '
+        'AVANCEBindingSource
+        '
+        Me.AVANCEBindingSource.DataMember = "AVANCE"
+        Me.AVANCEBindingSource.DataSource = Me.EDIFICIODataSet
+        '
         'AVANCETableAdapter
         '
         Me.AVANCETableAdapter.ClearBeforeFill = True
@@ -882,16 +908,21 @@ Partial Class INICIO
         'TableAdapterManager1
         '
         Me.TableAdapterManager1.AGENDATableAdapter = Nothing
+        Me.TableAdapterManager1.ARTICULOTableAdapter = Nothing
         Me.TableAdapterManager1.AVANCETableAdapter = Me.AVANCETableAdapter
         Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager1.BITACORATableAdapter = Nothing
+        Me.TableAdapterManager1.CABLESTableAdapter = Nothing
         Me.TableAdapterManager1.CALLESTableAdapter = Nothing
         Me.TableAdapterManager1.CERTIFICACIONESTableAdapter = Nothing
+        Me.TableAdapterManager1.COLORESTableAdapter = Nothing
         Me.TableAdapterManager1.FTTBTableAdapter = Nothing
+        Me.TableAdapterManager1.INGRESOTableAdapter = Nothing
         Me.TableAdapterManager1.MDUTableAdapter = Nothing
         Me.TableAdapterManager1.OBS_MDUTableAdapter = Nothing
         Me.TableAdapterManager1.STATUSTableAdapter = Me.STATUSTableAdapter
         Me.TableAdapterManager1.TECNICOSTableAdapter = Nothing
+        Me.TableAdapterManager1.TRONCALESTableAdapter = Nothing
         Me.TableAdapterManager1.TURNOSTableAdapter = Nothing
         Me.TableAdapterManager1.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
@@ -927,15 +958,6 @@ Partial Class INICIO
         Me.EdificioDataSetBackUp.DataSetName = "EDIFICIODataSet"
         Me.EdificioDataSetBackUp.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'FTTBBindingSource
-        '
-        Me.FTTBBindingSource.DataMember = "FTTB"
-        Me.FTTBBindingSource.DataSource = Me.EDIFICIODataSet
-        '
-        'FTTBTableAdapter
-        '
-        Me.FTTBTableAdapter.ClearBeforeFill = True
-        '
         'TURNOSBindingSource
         '
         Me.TURNOSBindingSource.DataMember = "TURNOS"
@@ -954,40 +976,6 @@ Partial Class INICIO
         '
         Me.CERTIFICACIONESTableAdapter.ClearBeforeFill = True
         '
-        'FTTBBindingSourceFIBRA
-        '
-        Me.FTTBBindingSourceFIBRA.DataMember = "FTTB"
-        Me.FTTBBindingSourceFIBRA.DataSource = Me.FIBRADataSet
-        '
-        'FIBRADataSet
-        '
-        Me.FIBRADataSet.DataSetName = "FIBRADataSet"
-        Me.FIBRADataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'TRONCALESBindingSource
-        '
-        Me.TRONCALESBindingSource.DataMember = "TRONCALES"
-        Me.TRONCALESBindingSource.DataSource = Me.FIBRADataSet
-        '
-        'TRONCALESTableAdapter
-        '
-        Me.TRONCALESTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager2
-        '
-        Me.TableAdapterManager2.ARTICULOTableAdapter = Nothing
-        Me.TableAdapterManager2.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager2.CABLESTableAdapter = Nothing
-        Me.TableAdapterManager2.COLORESTableAdapter = Nothing
-        Me.TableAdapterManager2.FTTBTableAdapter = Nothing
-        Me.TableAdapterManager2.MDUTableAdapter = Nothing
-        Me.TableAdapterManager2.TRONCALESTableAdapter = Me.TRONCALESTableAdapter
-        Me.TableAdapterManager2.UpdateOrder = REDES.FIBRADataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'FTTBTableAdapterFIBRA
-        '
-        Me.FTTBTableAdapterFIBRA.ClearBeforeFill = True
-        '
         'OBS_MDUBindingSource
         '
         Me.OBS_MDUBindingSource.DataMember = "OBS_MDU"
@@ -996,6 +984,33 @@ Partial Class INICIO
         'OBS_MDUTableAdapter
         '
         Me.OBS_MDUTableAdapter.ClearBeforeFill = True
+        '
+        'FTTBBindingSource
+        '
+        Me.FTTBBindingSource.DataMember = "FTTB"
+        Me.FTTBBindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'FTTBTableAdapter
+        '
+        Me.FTTBTableAdapter.ClearBeforeFill = True
+        '
+        'COLORESBindingSource
+        '
+        Me.COLORESBindingSource.DataMember = "COLORES"
+        Me.COLORESBindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'COLORESTableAdapter
+        '
+        Me.COLORESTableAdapter.ClearBeforeFill = True
+        '
+        'ARTICULOBindingSource
+        '
+        Me.ARTICULOBindingSource.DataMember = "ARTICULO"
+        Me.ARTICULOBindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'ARTICULOTableAdapter
+        '
+        Me.ARTICULOTableAdapter.ClearBeforeFill = True
         '
         'INICIO
         '
@@ -1023,23 +1038,24 @@ Partial Class INICIO
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DGV_EDIFICIOS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EDIF_VISTABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AVANCEDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AVANCEBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.menuStrip1.ResumeLayout(False)
         Me.menuStrip1.PerformLayout()
+        CType(Me.FIBRADataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TRONCALESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EDIF_VISTABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AVANCEBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EdificioDataSetBackUp, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TURNOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CERTIFICACIONESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FTTBBindingSourceFIBRA, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FIBRADataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TRONCALESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OBS_MDUBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.COLORESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ARTICULOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1095,8 +1111,6 @@ Partial Class INICIO
     Friend WithEvents VER_DUCTOS_FECHADA As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewCheckBoxColumn2 As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
-    Friend WithEvents FTTBBindingSource As BindingSource
-    Friend WithEvents FTTBTableAdapter As EDIFICIODataSetTableAdapters.FTTBTableAdapter
     Friend WithEvents AGENDADO As DataGridViewTextBoxColumn
     Friend WithEvents ACOMETIDA As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
@@ -1133,10 +1147,6 @@ Partial Class INICIO
     Friend WithEvents AgregarPorExcelCertEdificioSubMenuItem As ToolStripMenuItem
     Friend WithEvents CERTIFICACIONESBindingSource As BindingSource
     Friend WithEvents CERTIFICACIONESTableAdapter As EDIFICIODataSetTableAdapters.CERTIFICACIONESTableAdapter
-    Friend WithEvents FIBRADataSet As FIBRADataSet
-    Friend WithEvents TRONCALESBindingSource As BindingSource
-    Friend WithEvents TRONCALESTableAdapter As FIBRADataSetTableAdapters.TRONCALESTableAdapter
-    Friend WithEvents TableAdapterManager2 As FIBRADataSetTableAdapters.TableAdapterManager
     Friend WithEvents ConformeAObraToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CablesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TorresToolStripMenuItem As ToolStripMenuItem
@@ -1145,11 +1155,19 @@ Partial Class INICIO
     Friend WithEvents CrearSubMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ExportarSubMenuItem As ToolStripMenuItem
-    Friend WithEvents FTTBBindingSourceFIBRA As BindingSource
-    Friend WithEvents FTTBTableAdapterFIBRA As FIBRADataSetTableAdapters.FTTBTableAdapter
     Friend WithEvents AsignarNAPEdificioSubMenuItem As ToolStripMenuItem
     Friend WithEvents AgregarPorExcelSubMenuItem As ToolStripMenuItem
     Friend WithEvents ExcelDeRelevamientoMenuItem As ToolStripMenuItem
     Friend WithEvents OBS_MDUBindingSource As BindingSource
     Friend WithEvents OBS_MDUTableAdapter As EDIFICIODataSetTableAdapters.OBS_MDUTableAdapter
+    Friend WithEvents FTTBBindingSource As BindingSource
+    Friend WithEvents FTTBTableAdapter As EDIFICIODataSetTableAdapters.FTTBTableAdapter
+    Friend WithEvents FIBRADataSet As FIBRADataSet
+    Friend WithEvents TRONCALESBindingSource As BindingSource
+    Friend WithEvents TRONCALESTableAdapter As FIBRADataSetTableAdapters.TRONCALESTableAdapter
+    Friend WithEvents TableAdapterManager2 As FIBRADataSetTableAdapters.TableAdapterManager
+    Friend WithEvents COLORESBindingSource As BindingSource
+    Friend WithEvents COLORESTableAdapter As EDIFICIODataSetTableAdapters.COLORESTableAdapter
+    Friend WithEvents ARTICULOBindingSource As BindingSource
+    Friend WithEvents ARTICULOTableAdapter As EDIFICIODataSetTableAdapters.ARTICULOTableAdapter
 End Class

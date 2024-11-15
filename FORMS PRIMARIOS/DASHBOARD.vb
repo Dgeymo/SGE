@@ -1787,10 +1787,10 @@ Public Class DASHBOARD
 
         '    INICIO.VER_EDIFICIO.TIPO_CAJA = oHoja.Cells(FILA, 14).value
         '    INICIO.VER_EDIFICIO.NUMERO_CAJA = oHoja.Cells(FILA, 15).value
-        '    INICIO.VER_EDIFICIO.TUBO_CAJA = oHoja.Cells(FILA, 16).value
+        '    INICIO.VER_EDIFICIO.PELO_CAJA = oHoja.Cells(FILA, 16).value
         '    INICIO.VER_EDIFICIO.PELO_CAJA = oHoja.Cells(FILA, 17).value
 
-        '    INICIO.VER_EDIFICIO.NAP_TUBO = oHoja.Cells(FILA, 19).value
+        '    INICIO.VER_EDIFICIO.NAP_PELO = oHoja.Cells(FILA, 19).value
         '    INICIO.VER_EDIFICIO.NAP_PELO = oHoja.Cells(FILA, 20).value
         '    INICIO.VER_EDIFICIO.NAP_NUMERO = oHoja.Cells(FILA, 21).value
         '    INICIO.VER_EDIFICIO.NAP_TIPO = oHoja.Cells(FILA, 22).value
@@ -1850,14 +1850,14 @@ Public Class DASHBOARD
         '        FTTHRow.ID_EDIFICIO = MDUROW.ID_MDU
         '        If EDIFICIO.IsNUMERO_CAJANull = False Then FTTHRow.CONEXION_DESDE = EDIFICIO.NUMERO_CAJA
         '        FTTHRow.TIPO_CONEXION_DESDE = EDIFICIO.TIPO_CAJA
-        '        FTTHRow.CABLE = "Acometida (12 fibras 1 tubo)"
+        '        FTTHRow.CABLE = "Acometida (12 fibras 1 PELO)"
         '        If EDIFICIO.IsNAP_TIPONull OrElse EDIFICIO.NAP_TIPO = "" Then
         '            FTTHRow.NAP = 16
         '        Else
         '            FTTHRow.NAP = EDIFICIO.NAP_TIPO
         '        End If
         '        FTTHRow.NAP_NRO = EDIFICIO.NAP_NUMERO
-        '        FTTHRow.TUBO = EDIFICIO.NAP_TUBO
+        '        FTTHRow.PELO = EDIFICIO.NAP_PELO
         '        FTTHRow.PELO = EDIFICIO.NAP_PELO
         '        If EDIFICIO.IsNAP_TIPONull Then
         '            FTTHRow.SPL_NRO = 2
@@ -1990,13 +1990,80 @@ Public Class DASHBOARD
 
     Private Sub BTN_MODIFICA_Click(sender As Object, e As EventArgs) Handles BTN_MODIFICA.Click
         Cursor = Cursors.WaitCursor
-        Dim SQL = "SELECT T.id_TRABAJO, T.ID_GESTION FROM TRABAJOS T WHERE T.ID_GESTION  NOT IN ( SELECT G.ID_GESTION FROM GESTION G WHERE T.id_TRABAJO = G.id_GESTION );"
-        SQL = "SELECT O.* FROM ORDENES O LEFT JOIN TRABAJOS T ON O.ID_TRABAJO = T.ID_TRABAJO WHERE T.ID_TRABAJO IS NULL"
-        Dim RESULTADO = ExecuteQuery("ordenes", SQL)
-        NOTIFICACION("SYS", RESULTADO.FieldCount.ToString)
-        Dim DT As New DataTable()
-        DT.Load(RESULTADO)
-            DGVRESULT.DataSource = DT
+        'Dim SQL = "SELECT T.id_TRABAJO, T.ID_GESTION FROM TRABAJOS T WHERE T.ID_GESTION  NOT IN ( SELECT G.ID_GESTION FROM GESTION G WHERE T.id_TRABAJO = G.id_GESTION );"
+        'SQL = "SELECT O.* FROM ORDENES O LEFT JOIN TRABAJOS T ON O.ID_TRABAJO = T.ID_TRABAJO WHERE T.ID_TRABAJO IS NULL"
+        'Dim RESULTADO = ExecuteQuery("ordenes", SQL)
+        'NOTIFICACION("SYS", RESULTADO.FieldCount.ToString)
+        'Dim DT As New DataTable()
+        'DT.Load(RESULTADO)
+        '    DGVRESULT.DataSource = DT
+        'MDUTableAdapter.FillBynodo(EDIFICIODataSet.MDU, "R")
+        'Dim SQL = "SELECT 
+        '            f.ID_FTTB, 
+        '            f.ID_EDIFICIO,
+        '            a.NOMBRE AS CAJA,
+        '            f.CONEXION_DESDE, 
+        '            f.CAJA_DISTRIBUCION, 
+        '            b.NOMBRE AS NAP,
+        '            f.NAP_NRO, 
+        '            f.SPL_NRO,
+        '            c1.COLOR AS TUBO,
+        '            c2.COLOR AS PELO,
+        '            f.OBS_TEC, 
+        '            f.ACOMETIDA,
+        '            c.MODELO AS CABLE
+        '            FROM (((((FTTB f  
+        '            INNER JOIN CABLES c ON f.CABLE = c.ID_CABLE)
+        '            INNER JOIN ARTICULO a ON f.TIPO_CONEXION_DESDE = a.ID_ARTICULO)
+        '            INNER JOIN ARTICULO b ON f.NAP = b.ID_ARTICULO)
+        '            INNER JOIN COLORES c1 ON f.TUBO = c1.ID_COLOR)
+        '            INNER JOIN COLORES c2 ON f.PELO = c2.ID_COLOR)
+        '            WHERE f.ID_EDIFICIO =" & EDIFICIODataSet.MDU.Rows(0).Item("ID_MDU")
+
+        'Dim RESPUESTA = ExecuteQuery("EDIFICIO", SQL)
+        'Dim DT As New DataTable()
+        'DT.Load(RESPUESTA)
+        'DGVRESULT.DataSource = DT
+        'FTTBTableAdapter.Fill(EDIFICIODataSet.FTTB)
+        'For Each MDU In EDIFICIODataSet.FTTB
+        '    '    Label2.Text = MDU.ID_EDIFICIO
+        '    '    Label2.Refresh()
+        '    '    'If MDU.CABLE = "Acometida (12 fibras 1 tubo)" Then MDU.CABLE = 2
+        '    If MDU.NAP = 4 Then MDU.NAP = 5
+        '    If MDU.NAP = 8 Then MDU.NAP = 4
+        '    If MDU.NAP = 16 Then MDU.NAP = 3
+
+        'If MDU.TIPO_CONEXION_DESDE = "CED" Then
+        '    MDU.TIPO_CONEXION_DESDE = 6
+        'ElseIf MDU.TIPO_CONEXION_DESDE = "FDH" Then
+        '    MDU.TIPO_CONEXION_DESDE = 2
+        'ElseIf MDU.TIPO_CONEXION_DESDE = "NAP" Then
+        '    MDU.TIPO_CONEXION_DESDE = 7
+        'End If
+        'MDU.TUBO = 1
+        'If MDU.PELO = "AZUL" Then
+        '    MDU.PELO = 1
+        'ElseIf MDU.PELO = "NARANJA" Then
+        '    MDU.PELO = 2
+        'ElseIf MDU.PELO = "VERDE" Then
+        '    MDU.PELO = 3
+        'ElseIf MDU.PELO = "MARRON" Then
+        '    MDU.PELO = 4
+        'ElseIf MDU.PELO = "GRIS" Then
+        '    MDU.PELO = 5
+        'ElseIf MDU.PELO = "BLANCO" Then
+        '    MDU.PELO = 6
+        'ElseIf MDU.PELO = "ROJO" Then
+        '    MDU.PELO = 7
+        'ElseIf MDU.PELO = "NEGRO" Then
+        '    MDU.PELO = 8
+        'ElseIf MDU.PELO = "AMARILLO" Then
+        ''    MDU.PELO = 9
+        ''End If
+        'FTTBTableAdapter.Update(MDU)
+
+
+        'Next
 
         'For I = 0 To DT.Rows.Count - 1
         '    SQL = "DELETE FROM TRABAJOS WHERE ID_TRABAJO = " & DT.Rows(I).Item("id_TRABAJO")

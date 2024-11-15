@@ -110,6 +110,8 @@ Module FUNCIONES
     End Sub
 
     Public Sub CARGARDESDEEXCEL(path As String)
+        INICIO.COLORESTableAdapter.Fill(INICIO.EDIFICIODataSet.COLORES)
+        INICIO.ARTICULOTableAdapter.Fill(INICIO.EDIFICIODataSet.ARTICULO)
         INICIO.EDIFICIODataSet.MDU.Clear()
         INICIO.Cursor = Cursors.WaitCursor
         Dim oExcel As New Excel.Application
@@ -125,74 +127,126 @@ Module FUNCIONES
         Dim PELO As String
         Dim PUERTA As String
         Dim TORRE As Integer
+        Dim APTOS As String
+        Dim PISOS As String
+        Dim CARPETA As Integer
+        Dim NAP As String
         Dim MDURow As EDIFICIODataSet.MDURow
         Dim ACOMETIDA As Integer
         Dim NEWFTTBRow As EDIFICIODataSet.FTTBRow
         While CALLE <> ""
             REGISTRO += 1
-            ZONA = oHoja.Cells(REGISTRO, 17).Value
+            ZONA = oHoja.Cells(REGISTRO, 3).value
             If ZONA < 15 Then
-                CALLE = oHoja.Cells(REGISTRO, 5).Value
-                PUERTA = oHoja.Cells(REGISTRO, 5).Value
-                INICIO.MDUTableAdapter.FillByCARPETA(INICIO.EDIFICIODataSet.MDU, CInt(oHoja.Cells(REGISTRO, 1).Value))
-                If INICIO.EDIFICIODataSet.MDU.Rows.Count = 0 Then INICIO.MDUTableAdapter.FillByNOMBRECALLEyPUERTA(INICIO.EDIFICIODataSet.MDU, CALLE, PUERTA)
+                CALLE = oHoja.Cells(REGISTRO, 5).value
+                PUERTA = oHoja.Cells(REGISTRO, 6).value
+                CARPETA = oHoja.Cells(REGISTRO, 1).value
+                INICIO.MDUTableAdapter.FillByCARPETA(INICIO.EDIFICIODataSet.MDU, CARPETA)
+
+                If INICIO.EDIFICIODataSet.MDU.Rows.Count = 0 Then
+                    INICIO.MDUTableAdapter.FillByNOMBRECALLEyPUERTA(INICIO.EDIFICIODataSet.MDU, CALLE, PUERTA)
+                End If
                 If INICIO.EDIFICIODataSet.MDU.Rows.Count = 0 Then
                     Try
-                        CALLE = Split(oHoja.Cells(REGISTRO, 5).Value, " ")(0)
-                        PUERTA = Split(oHoja.Cells(REGISTRO, 5).Value, " ")(1)
+                        CALLE = CALLE(0)
+                        PUERTA = CALLE(1)
                         INICIO.MDUTableAdapter.FillByNOMBRECALLEyPUERTA(INICIO.EDIFICIODataSet.MDU, CALLE, PUERTA)
                     Catch ex As Exception
                     End Try
                 End If
-                ACOMETIDA = oHoja.Cells(REGISTRO, 25).Value
+                ACOMETIDA = CInt(oHoja.Cells(REGISTRO, 26).value)
                 If INICIO.EDIFICIODataSet.MDU.Rows.Count > 0 And ACOMETIDA <> 0 Then
                     MDURow = INICIO.EDIFICIODataSet.MDU.Rows(0)
-                    If oHoja.Cells(REGISTRO, 13).Value = "SI" Then INGRESO = "AEREO"
-                    If oHoja.Cells(REGISTRO, 14).Value = "SI" Then INGRESO = "SUBTERRANEO"
+                    APTOS = oHoja.Cells(REGISTRO, 8).value
+                    PISOS = oHoja.Cells(REGISTRO, 9).value
+                    If oHoja.Cells(REGISTRO, 13).value = "SI" Then INGRESO = "AEREO"
+                    If oHoja.Cells(REGISTRO, 14).value = "SI" Then INGRESO = "SUBTERRANEO"
+                    If oHoja.Cells(REGISTRO, 15).value = "SI" Then INGRESO = "DUCTO"
                     Try
-                        TORRE = oHoja.Cells(REGISTRO, 10).Value
+                        TORRE = oHoja.Cells(REGISTRO, 10).value
                         If TORRE = 0 Then TORRE = 1
                     Catch ex As Exception
                         TORRE = 1
                     End Try
-                    TUBO = oHoja.Cells(REGISTRO, 21).Value
-                    PELO = oHoja.Cells(REGISTRO, 22).Value
+                    TUBO = Trim(oHoja.Cells(REGISTRO, 22).value)
+                    PELO = Trim(oHoja.Cells(REGISTRO, 23).value)
+                    For Each TUBOS In INICIO.EDIFICIODataSet.COLORES
+                        If TUBOS.COLOR = TUBO Then
+                            TUBO = TUBOS.ID_COLOR
+                            Exit For
+                        End If
+                    Next
+                    For Each PELOS In INICIO.EDIFICIODataSet.COLORES
+                        If PELOS.COLOR = PELO Then
+                            PELO = PELOS.ID_COLOR
+                            Exit For
+                        End If
+                    Next
                     INICIO.FTTBTableAdapter.FillByEDIFICIO_TUBO_PELO(INICIO.EDIFICIODataSet.FTTB, MDURow.ID_MDU, TUBO, PELO)
                     If INICIO.EDIFICIODataSet.FTTB.Rows.Count = 0 Then
                         NEWFTTBRow = INICIO.EDIFICIODataSet.FTTB.NewFTTBRow
                         NEWFTTBRow.ID_EDIFICIO = MDURow.ID_MDU
                         NEWFTTBRow.ACOMETIDA = ACOMETIDA
-                        NEWFTTBRow.CABLE = "Acometida (12 fibras 1 tubo)"
-                        NEWFTTBRow.TIPO_CONEXION_DESDE = Trim(oHoja.Cells(REGISTRO, 15).Value)
-                        NEWFTTBRow.CONEXION_DESDE = oHoja.Cells(REGISTRO, 16).Value
-                        If NEWFTTBRow.TIPO_CONEXION_DESDE <> "FDH" Then NEWFTTBRow.CAJA_DISTRIBUCION = oHoja.Cells(REGISTRO, 19).Value
+                        NEWFTTBRow.CABLE = 1
+                        For Each CAJAS In INICIO.EDIFICIODataSet.ARTICULO
+                            If CAJAS.NOMBRE = Trim(oHoja.Cells(REGISTRO, 16).value) Then
+                                NEWFTTBRow.TIPO_CONEXION_DESDE = CAJAS.ID_ARTICULO
+                                Exit For
+                            End If
+                        Next
+
+                        NEWFTTBRow.CONEXION_DESDE = oHoja.Cells(REGISTRO, 17).value
+
+                        If NEWFTTBRow.TIPO_CONEXION_DESDE <> 2 Then
+                            If oHoja.Cells(REGISTRO, 19).value Is Nothing Then Continue While
+                            NEWFTTBRow.CAJA_DISTRIBUCION = oHoja.Cells(REGISTRO, 19).value
+                        End If
+
                         NEWFTTBRow.TUBO = TUBO
                         NEWFTTBRow.PELO = PELO
                         NEWFTTBRow.SPL_NRO = 1
-                        NEWFTTBRow.NAP_NRO = oHoja.Cells(REGISTRO, 23).Value
-                        NEWFTTBRow.NAP = oHoja.Cells(REGISTRO, 24).Value
-                        NEWFTTBRow.OBS_TEC = oHoja.Cells(REGISTRO, 31).Value
-                        If TUBO = "AZUL" And PELO = "NARANJA" Then
+                        NEWFTTBRow.NAP_NRO = oHoja.Cells(REGISTRO, 24).value
+                        NAP = oHoja.Cells(REGISTRO, 25).value
+                        Select Case NAP
+                            Case 8
+                                NEWFTTBRow.NAP = 4
+                            Case 16
+                                NEWFTTBRow.NAP = 3
+                            Case 4
+                                NEWFTTBRow.NAP = 5
+                        End Select
+                        NEWFTTBRow.OBS_TEC = oHoja.Cells(REGISTRO, 32).value
+                        If TUBO = 1 And PELO = 2 Then
                             If NEWFTTBRow.NAP_NRO = 2 Then
                                 NEWFTTBRow.SPL_NRO = 1
                             Else
                                 NEWFTTBRow.SPL_NRO = 2
                             End If
                         End If
-                        INICIO.EDIFICIODataSet.FTTB.AddFTTBRow(NEWFTTBRow)
-                        INICIO.FTTBTableAdapter.Update(NEWFTTBRow)
+                        Try
+                            INICIO.EDIFICIODataSet.FTTB.AddFTTBRow(NEWFTTBRow)
+                            INICIO.FTTBTableAdapter.Update(NEWFTTBRow)
+                            MsgBox("AGREGUE FTTB " & MDURow.CALLE & " " & MDURow.PUERTA)
+                        Catch ex As Exception
+                            MsgBox(ex.Message)
+                        End Try
+
                     End If
-                    Dim SQL As String = "UPDATE MDU SET 
-APTOS = " & oHoja.Cells(REGISTRO, 8).Value & ",
-PISOS = " & oHoja.Cells(REGISTRO, 9).Value & ",
-TORRE = " & TORRE & ",
-INGRESO = '" & INGRESO & "',
-ACOMETIDA = " & ACOMETIDA & " 
-WHERE ID_MDU = " & MDURow.ID_MDU
-                    MsgBox(SQL)
-                    ExecuteNonQuery("edificio", SQL)
+                    If APTOS <> Nothing And PISOS <> Nothing Then
+
+                        Dim SQL As String = "UPDATE MDU SET 
+                                            APTOS = " & APTOS & ",
+                                            PISOS = " & PISOS & ",
+                                            TORRE = " & TORRE & ",
+                                            INGRESO = '" & INGRESO & "',
+                                            ACOMETIDA = " & ACOMETIDA & " 
+                                            WHERE ID_MDU = " & MDURow.ID_MDU
+                        ExecuteNonQuery("EDIFICIO", SQL)
+                    Else
+                        ' MsgBox("NO ACTUALICE EL MDU APTOS: " & APTOS & " PISOS: " & PISOS & ", APTOS: " & APTOS & " ES IGUAL A " & MDURow.APTOS & " PISOS: " & PISOS & " ES IGUAL A " & MDURow.PISOS & " TORRES: " & TORRE & " ES IGUAL A " & MDURow.TORRE)
+                    End If
                 Else
-                    MsgBox("NO SE ECONTRO: " & CALLE & " " & PUERTA)
+                    '    MsgBox("NO SE ECONTRO: " & CALLE & " " & PUERTA)
                 End If
             End If
         End While
@@ -521,24 +575,24 @@ WHERE ID_MDU = " & MDURow.ID_MDU
         INICIO.Cursor = Cursors.Default
     End Sub
 
-    Public Sub VINCULAR_EDIFICIOS()
-        INICIO.Cursor = Cursors.WaitCursor
-        INICIO.FTTBTableAdapterFIBRA.FillByFTTEDIFICIO(INICIO.FIBRADataSet.FTTB, INICIO.CBNODO.Text)
-        INICIO.TRONCALESTableAdapter.FillByNODO(INICIO.FIBRADataSet.TRONCALES, INICIO.CBNODO.Text)
-        For Each FTTB In INICIO.FIBRADataSet.FTTB
-            Dim CAJA_ORIGEN = ARMAR_NAP(FTTB("NAP_NRO"), "A", FTTB("ACOMETIDA"), INICIO.CBNODO.Text, FTTB("ZONA"))
-            For Each TRONC In INICIO.FIBRADataSet.TRONCALES
-                If CAJA_ORIGEN = TRONC.CAJA_SEGUNDA Then
-                    If IsDBNull(FTTB("CARPETA")) = False Then TRONC.CARPETA_MDU = FTTB("CARPETA")
-                    TRONC.ID_MDU = FTTB("ID_MDU")
-                    INICIO.TRONCALESTableAdapter.Update(TRONC)
-                End If
-            Next
-            INICIO.LBL_CANT_ROWS.Text = "LEYENDO EL EDIFICIO " & FTTB("ID_MDU")
-            INICIO.LBL_CANT_ROWS.Refresh()
-        Next
-        INICIO.Cursor = Cursors.Default
-    End Sub
+    'Public Sub VINCULAR_EDIFICIOS()
+    '    INICIO.Cursor = Cursors.WaitCursor
+    '    INICIO.FTTBTableAdapter.FillByFTTEDIFICIO(INICIO.FIBRADataSet.FTTB, INICIO.CBNODO.Text)
+    '    INICIO.TRONCALESTableAdapter.FillByNODO(INICIO.FIBRADataSet.TRONCALES, INICIO.CBNODO.Text)
+    '    For Each FTTB In INICIO.FIBRADataSet.FTTB
+    '        Dim CAJA_ORIGEN = ARMAR_NAP(FTTB("NAP_NRO"), "A", FTTB("ACOMETIDA"), INICIO.CBNODO.Text, FTTB("ZONA"))
+    '        For Each TRONC In INICIO.FIBRADataSet.TRONCALES
+    '            If CAJA_ORIGEN = TRONC.CAJA_SEGUNDA Then
+    '                If IsDBNull(FTTB("CARPETA")) = False Then TRONC.CARPETA_MDU = FTTB("CARPETA")
+    '                TRONC.ID_MDU = FTTB("ID_MDU")
+    '                INICIO.TRONCALESTableAdapter.Update(TRONC)
+    '            End If
+    '        Next
+    '        INICIO.LBL_CANT_ROWS.Text = "LEYENDO EL EDIFICIO " & FTTB("ID_MDU")
+    '        INICIO.LBL_CANT_ROWS.Refresh()
+    '    Next
+    '    INICIO.Cursor = Cursors.Default
+    'End Sub
 
     Public Sub CARGARDESDEEXCELRELEVAMIENTO(fileName As String)
         INICIO.Cursor = Cursors.WaitCursor

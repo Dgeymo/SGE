@@ -9,8 +9,8 @@ Public Class INICIO
     Dim AVANCERow As EDIFICIODataSet.AVANCERow
 
     Private Sub INICIO_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'EDIFICIODataSet.OBS_MDU' Puede moverla o quitarla según sea necesario.
-        Me.OBS_MDUTableAdapter.Fill(Me.EDIFICIODataSet.OBS_MDU)
+
+
 
         MDUTableAdapter.FillByDISCT_NODO(EDIFICIODataSet.MDU)
         CBNODO.Items.Clear()
@@ -364,7 +364,7 @@ Public Class INICIO
         NOTIFICACION("SYS", "CARGA FINALIZADA")
     End Sub
     Private Sub AsignarNAPEdificioSubMenuItem_Click(sender As Object, e As EventArgs) Handles AsignarNAPEdificioSubMenuItem.Click
-        VINCULAR_EDIFICIOS()
+        ' VINCULAR_EDIFICIOS()
     End Sub
     Private Sub AgregarPorExcelSubMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarPorExcelSubMenuItem.Click
         Dim ruta = New OpenFileDialog()

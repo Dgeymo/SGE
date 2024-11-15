@@ -12,11 +12,16 @@ Public Class DETALLE_MDU
     Dim VAR_ACOMETIDA As Integer
     Dim VAR_NODO As String
     Dim VAR_ZONA As Integer
-    Dim CUENTA4 As Integer = 0
-    Dim CUENTA8 As Integer = 0
-    Dim CUENTA16 As Integer = 0
+    Dim CUENTA4 As Integer
+    Dim CUENTA8 As Integer
+    Dim CUENTA16 As Integer
 
     Public Sub DETALLE_MDU_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        STATUSTableAdapter.Fill(EDIFICIODataSet.STATUS)
+        CB_STATUS.Items.Clear()
+        For Each STATUS In EDIFICIODataSet.STATUS
+            CB_STATUS.Items.Add(STATUS.NOMBRE)
+        Next
         If AGENDA.Visible = False Then
             If INICIO.VER_MDU.IsACOMETIDANull Then VAR_ACOMETIDA = 0 Else VAR_ACOMETIDA = INICIO.VER_MDU.ACOMETIDA
             VAR_NODO = INICIO.VER_MDU.NODO
@@ -33,15 +38,55 @@ Public Class DETALLE_MDU
     Private Sub DETALLE_MDU_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         'BUSCAMOS TODOS LOS EDIFICIOS CON LA MISMA ACOMETIDA
         ACT_MDURow = INICIO.VER_MDU
-        MDUTableAdapter.FillByID(EdificioDataSetBACKUP.MDU, ACT_MDURow.ID_MDU)
+
         If VAR_ACOMETIDA <> 0 Then
-            'si hay mas de 1 edificio en la acometida
             MDUTableAdapter.FillByACOMETIDA(EdificioDataSetBACKUP.MDU, VAR_ACOMETIDA, VAR_NODO, VAR_ZONA)
             MDUBindingSource.MoveFirst()
-            ACT_MDURow = EdificioDataSetBACKUP.MDU.Rows(MDUBindingSource.Position)
+        Else
+            MDUTableAdapter.FillByID(EdificioDataSetBACKUP.MDU, ACT_MDURow.ID_MDU)
+        End If
+        ACT_MDURow = EdificioDataSetBACKUP.MDU.Rows(MDUBindingSource.Position)
+        CARGARFTTB()
+        CargarDATOS()
+    End Sub
+    Private Sub CargarDATOS()
+
+        'BITACORA
+        BITACORATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.BITACORA, CInt(MDUDataGridView.CurrentRow.Cells(0).Value))
+        BTN_AGENDAR.Enabled = True
+        If MDUDataGridView.CurrentRow.Cells(1).Value = 1 Then
+            BTN_AGENDAR.Text = "AGENDAR EDIFICIO"
+        ElseIf MDUDataGridView.CurrentRow.Cells(1).Value = 2 Then
+            BTN_AGENDAR.Text = "VER EN AGENDA"
+        ElseIf MDUDataGridView.CurrentRow.Cells(1).Value = 5 Then
+            BTN_AGENDAR.Text = "VER EN AGENDA CERTIFICACION"
+        ElseIf MDUDataGridView.CurrentRow.Cells(1).Value = 4 Then
+            BTN_AGENDAR.Text = "AGENDAR EDIF CERTIFICADO"
+        Else
+            BTN_AGENDAR.Enabled = False
+        End If
+
+        CB_STATUS.Text = ACT_MDURow("STATUS")
+        'AGENAMIENTO 
+        AGENDATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.AGENDA, CInt(ACT_MDURow.ID_MDU))
+        If EDIFICIODataSet.AGENDA.Rows.Count > 0 Then
+            LBL_FECHA_AGENDA.Text = "AGENDADO PARA EL: " & CDate(EDIFICIODataSet.AGENDA.Rows(EDIFICIODataSet.AGENDA.Rows.Count - 1).Item("DIA_AGENDA")).ToShortDateString
+            LBL_CANTIDAD_AGENDAMIENTOS.Text = "CANT.AGENDAMIENTOS: " & EDIFICIODataSet.AGENDA.Rows.Count
+        Else
+            LBL_FECHA_AGENDA.Text = "Sin agendamientos"
+            LBL_CANTIDAD_AGENDAMIENTOS.Text = ""
+        End If
+    End Sub
+
+    Private Sub CARGARFTTB()
+        CUENTA16 = 0
+        CUENTA8 = 0
+        CUENTA4 = 0
+        If VAR_ACOMETIDA <> 0 Then
+            'si hay mas de 1 edificio en la acometida
 
             FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, ACT_MDURow.ID_MDU)
-            CARGARFTTB()
+
             BTN_IMPRIMIR_ORDTEC.Enabled = True
             BTN_AGENDAR.Enabled = True
             If MDUDataGridView.CurrentRow.Cells(1).Value = 1 Then
@@ -54,11 +99,65 @@ Public Class DETALLE_MDU
                 BTN_AGENDAR.Enabled = False
             End If
 
+
+            L_FTTB.Items.Clear()
+            Dim ACOMETIDA As String
+            Dim DISTRO As String
+            Dim CAJA As String
+            Dim NAP As String
+            Dim ZONA As String
+            Dim CANT_BOCAS As String
+            Dim STR As String = String.Empty
+            For Each ITEMS In EDIFICIODataSet.FTTB
+                If ITEMS.IsOBS_TECNull = False Then
+                    If ITEMS.SPL_NRO = 1 Then
+                        If ITEMS.IsNAP_NRONull Then
+                            NAP = "s/d"
+                        Else
+                            NAP = ITEMS.NAP_NRO
+                            If NAP < 10 Then NAP = "0" & NAP
+                        End If
+
+                        If ITEMS.IsACOMETIDANull Then
+                            ACOMETIDA = "s/d"
+                        Else
+                            ACOMETIDA = ITEMS.ACOMETIDA
+                            If ACOMETIDA < 10 Then ACOMETIDA = "0" & ACOMETIDA
+                        End If
+
+                        ZONA = ACT_MDURow.ZONA
+                        If ZONA < 10 Then ZONA = "0" & ZONA
+                        If ITEMS.IsCAJA_DISTRIBUCIONNull Then
+                            DISTRO = ""
+                        Else
+                            DISTRO = ITEMS.CAJA_DISTRIBUCION
+                            If DISTRO < 10 Then DISTRO = "0" & DISTRO
+                        End If
+
+                        If ITEMS.IsCONEXION_DESDENull Then
+                            CAJA = "s/d"
+                        Else
+                            CAJA = ITEMS.CONEXION_DESDE
+                            If CAJA < 10 Then CAJA = "0" & CAJA
+                        End If
+
+                        CANT_BOCAS = Mid(ITEMS.NAP, 4)
+                        If CANT_BOCAS < 10 Then CANT_BOCAS = "0" & CANT_BOCAS
+
+                        If ITEMS.TIPO_CONEXION_DESDE = "FDH" Then
+                            STR = "NAP" & NAP & "-A" & ACOMETIDA & "-" & ACT_MDURow.NODO & ZONA & vbTab & "DESDE: " & ITEMS.TIPO_CONEXION_DESDE & CAJA & "-" & ACT_MDURow.NODO & ZONA & vbTab & "BOCAS: " & CANT_BOCAS & vbTab & "UBICACION: " & ITEMS.OBS_TEC
+                        Else
+                            STR = "NAP" & NAP & "-A" & ACOMETIDA & "-" & ACT_MDURow.NODO & ZONA & vbTab & "DESDE: " & ITEMS.TIPO_CONEXION_DESDE & CAJA & "-D" & DISTRO & "-" & ACT_MDURow.NODO & ZONA & vbTab & "BOCAS: " & CANT_BOCAS & vbTab & "UBICACION: " & ITEMS.OBS_TEC
+                        End If
+                        L_FTTB.Items.Add(STR)
+                    End If
+                End If
+            Next
             'datos de fibra
-            FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, MDUDataGridView.CurrentRow.Cells(0).Value)
+            'FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, MDUDataGridView.CurrentRow.Cells(0).Value)
             For Each FTTBS In EDIFICIODataSet.FTTB
                 If FTTBS.SPL_NRO = 1 Then
-                    Select Case FTTBS.NAP
+                    Select Case Mid(FTTBS.NAP, 4)
                         Case 4
                             CUENTA4 += 1
                         Case 8
@@ -72,82 +171,7 @@ Public Class DETALLE_MDU
             TXT_CANT_8.Text = CUENTA8
             TXT_CANT_4.Text = CUENTA4
         End If
-        STATUSTableAdapter.Fill(EDIFICIODataSet.STATUS)
-        CB_STATUS.Items.Clear()
-        For Each STATUS In EDIFICIODataSet.STATUS
-            CB_STATUS.Items.Add(STATUS.NOMBRE)
-        Next
 
-
-        'BITACORA
-        BITACORATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.BITACORA, CInt(MDUDataGridView.CurrentRow.Cells(0).Value))
-        BITACORABindingSource.MoveLast()
-
-        'AGENAMIENTO 
-        CB_STATUS.Text = ACT_MDURow("STATUS") 'CB_STATUS.Items.Item(EdificioDataSetACTUALIZAR.MDU.Rows(0).Item("ID_STATUS") - 1)
-        AGENDATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.AGENDA, CInt(ACT_MDURow.ID_MDU))
-        If EDIFICIODataSet.AGENDA.Rows.Count > 0 Then
-            LBL_FECHA_AGENDA.Text = "AGENDADO PARA EL: " & CDate(EDIFICIODataSet.AGENDA.Rows(EDIFICIODataSet.AGENDA.Rows.Count - 1).Item("DIA_AGENDA")).ToShortDateString
-            LBL_CANTIDAD_AGENDAMIENTOS.Text = "CANT.AGENDAMIENTOS: " & EDIFICIODataSet.AGENDA.Rows.Count
-        Else
-            LBL_FECHA_AGENDA.Text = "Sin agendamientos"
-            LBL_CANTIDAD_AGENDAMIENTOS.Text = ""
-        End If
-    End Sub
-    Private Sub CARGARFTTB()
-        L_FTTB.Items.Clear()
-        Dim ACOMETIDA As String
-        Dim DISTRO As String
-        Dim CAJA As String
-        Dim NAP As String
-        Dim ZONA As String
-        Dim CANT_BOCAS As String
-        Dim STR As String = String.Empty
-        For Each ITEMS In EDIFICIODataSet.FTTB
-            If ITEMS.IsOBS_TECNull = False Then
-                If ITEMS.SPL_NRO = 1 Then
-                    If ITEMS.IsNAP_NRONull Then
-                        NAP = "s/d"
-                    Else
-                        NAP = ITEMS.NAP_NRO
-                        If NAP < 10 Then NAP = "0" & NAP
-                    End If
-
-                    If ITEMS.IsACOMETIDANull Then
-                        ACOMETIDA = "s/d"
-                    Else
-                        ACOMETIDA = ITEMS.ACOMETIDA
-                        If ACOMETIDA < 10 Then ACOMETIDA = "0" & ACOMETIDA
-                    End If
-
-                    ZONA = ACT_MDURow.ZONA
-                    If ZONA < 10 Then ZONA = "0" & ZONA
-                    If ITEMS.IsCAJA_DISTRIBUCIONNull Then
-                        DISTRO = ""
-                    Else
-                        DISTRO = ITEMS.CAJA_DISTRIBUCION
-                        If DISTRO < 10 Then DISTRO = "0" & DISTRO
-                    End If
-
-                    If ITEMS.IsCONEXION_DESDENull Then
-                        CAJA = "s/d"
-                    Else
-                        CAJA = ITEMS.CONEXION_DESDE
-                        If CAJA < 10 Then CAJA = "0" & CAJA
-                    End If
-
-                    CANT_BOCAS = ITEMS.NAP
-                    If CANT_BOCAS < 10 Then CANT_BOCAS = "0" & CANT_BOCAS
-
-                    If ITEMS.TIPO_CONEXION_DESDE = "FDH" Then
-                        STR = "NAP" & NAP & "-A" & ACOMETIDA & "-" & ACT_MDURow.NODO & ZONA & vbTab & "DESDE: " & ITEMS.TIPO_CONEXION_DESDE & CAJA & "-" & ACT_MDURow.NODO & ZONA & vbTab & "BOCAS: " & CANT_BOCAS & vbTab & "UBICACION: " & ITEMS.OBS_TEC
-                    Else
-                        STR = "NAP" & NAP & "-A" & ACOMETIDA & "-" & ACT_MDURow.NODO & ZONA & vbTab & "DESDE: " & ITEMS.TIPO_CONEXION_DESDE & CAJA & "-D" & DISTRO & "-" & ACT_MDURow.NODO & ZONA & vbTab & "BOCAS: " & CANT_BOCAS & vbTab & "UBICACION: " & ITEMS.OBS_TEC
-                    End If
-                    L_FTTB.Items.Add(STR)
-                End If
-            End If
-        Next
     End Sub
     Private Sub BTN_GUARDAR_Click(sender As Object, e As EventArgs) Handles BTN_GUARDAR.Click
         BITACORARow = EDIFICIODataSet.BITACORA.NewBITACORARow()
@@ -207,53 +231,13 @@ Public Class DETALLE_MDU
         AGENDA.Show(Me)
     End Sub
     Private Sub MDUDataGridView_Click(sender As Object, e As EventArgs) Handles MDUDataGridView.Click
-        CUENTA16 = 0
-        CUENTA8 = 0
-        CUENTA4 = 0
+
         MDUTableAdapter.FillByID(EdificioDataSetACTUALIZAR.MDU, MDUDataGridView.CurrentRow.Cells(0).Value)
         ACT_MDURow = EdificioDataSetACTUALIZAR.MDU.Rows(0)
-        FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, CInt(ACT_MDURow.ID_MDU))
-        FTTB_Row = EDIFICIODataSet.FTTB.Rows(0)
-        For Each FTTBS In EDIFICIODataSet.FTTB
-            If FTTBS.SPL_NRO = 1 Then
-                Select Case FTTBS.NAP
-                    Case 4
-                        CUENTA4 += 1
-                    Case 8
-                        CUENTA8 += 1
-                    Case 16
-                        CUENTA16 += 1
-                End Select
-            End If
-        Next
-        TXT_CANT16.Text = CUENTA16
-        TXT_CANT_8.Text = CUENTA8
-        TXT_CANT_4.Text = CUENTA4
-        BITACORATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.BITACORA, CInt(MDUDataGridView.CurrentRow.Cells(0).Value))
-        BTN_AGENDAR.Enabled = True
-        If MDUDataGridView.CurrentRow.Cells(1).Value = 1 Then
-            BTN_AGENDAR.Text = "AGENDAR EDIFICIO"
-        ElseIf MDUDataGridView.CurrentRow.Cells(1).Value = 2 Then
-            BTN_AGENDAR.Text = "VER EN AGENDA"
-        ElseIf MDUDataGridView.CurrentRow.Cells(1).Value = 5 Then
-            BTN_AGENDAR.Text = "VER EN AGENDA CERTIFICACION"
-        ElseIf MDUDataGridView.CurrentRow.Cells(1).Value = 4 Then
-            BTN_AGENDAR.Text = "AGENDAR EDIF CERTIFICADO"
-        Else
-            BTN_AGENDAR.Enabled = False
-        End If
+        CARGARFTTB()
+        CargarDATOS()
 
 
-        CB_STATUS.Text = ACT_MDURow("STATUS")
-
-        AGENDATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.AGENDA, CInt(ACT_MDURow.ID_MDU))
-        If EDIFICIODataSet.AGENDA.Rows.Count > 0 Then
-            LBL_FECHA_AGENDA.Text = "AGENDADO PARA EL: " & CDate(EDIFICIODataSet.AGENDA.Rows(EDIFICIODataSet.AGENDA.Rows.Count - 1).Item("DIA_AGENDA")).ToShortDateString
-            LBL_CANTIDAD_AGENDAMIENTOS.Text = "CANT.AGENDAMIENTOS: " & EDIFICIODataSet.AGENDA.Rows.Count
-        Else
-            LBL_FECHA_AGENDA.Text = "Sin agendamientos"
-            LBL_CANTIDAD_AGENDAMIENTOS.Text = ""
-        End If
     End Sub
     Private Sub DETALLE_MDU_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
         If e.Handled = Keys.Escape Then
@@ -390,7 +374,7 @@ Public Class DETALLE_MDU
             cantTorres += MDU.TORRE
             FTTBTableAdapter.FillByID_EDIFICIO(EdificioDataSetBACKUP.FTTB, MDU.ID_MDU)
             For Each FTTBS In EdificioDataSetBACKUP.FTTB
-                Select Case FTTBS.NAP
+                Select Case Mid(FTTBS.NAP, 4)
                     Case 16
                         CUENTA16 += 1
                     Case 8
@@ -470,7 +454,7 @@ Public Class DETALLE_MDU
             FTTBTableAdapter.FillByID_EDIFICIO(EdificioDataSetBACKUP.FTTB, MDU.ID_MDU)
             For Each FTTBS In EdificioDataSetBACKUP.FTTB
                 If FTTBS.SPL_NRO = 1 Then
-                    Select Case FTTBS.NAP
+                    Select Case Mid(FTTBS.NAP, 4)
                         Case 4
                             CUENTA4 += 1
                         Case 8
@@ -594,11 +578,10 @@ Public Class DETALLE_MDU
              .VerticalAlignment = Element.ALIGN_BOTTOM
         }
             ENCABEZADO.AddCell(CeldaZONA)
-            If MDU.ZONA < 10 Then
-                STR_ZONA = "0" & MDU.ZONA
-            Else
-                STR_ZONA = MDU.ZONA
-            End If
+
+            STR_ZONA = MDU.ZONA
+            If MDU.ZONA < 10 Then STR_ZONA = "0" & MDU.ZONA
+
             Dim CeldaZONAValor As New PdfPCell(New Phrase(STR_ZONA, FontFactory.GetFont("Arial", 12, 1))) With {
             .BorderWidth = 0,
             .BorderWidthBottom = 1,
@@ -978,7 +961,7 @@ Public Class DETALLE_MDU
                 Else 'CUANDO NO ES LA PRIMERA LINEA
 
                     If CANT_NAP <= 2 Then '<=
-                        If VALOR.NAP = 16 Then
+                        If Mid(VALOR.NAP, 4) = 16 Then
                             If VALOR.IsCONEXION_DESDENull Then
                                 CAJA_NUMERO = "(S/D)"
                             Else

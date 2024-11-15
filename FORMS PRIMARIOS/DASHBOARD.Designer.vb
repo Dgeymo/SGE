@@ -93,9 +93,7 @@ Partial Class DASHBOARD
         Me.USUARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EDIFICIODataSet = New REDES.EDIFICIODataSet()
         Me.FTTBTableAdapter = New REDES.EDIFICIODataSetTableAdapters.FTTBTableAdapter()
-        Me.FTTBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TableAdapterManager3 = New REDES.EDIFICIODataSetTableAdapters.TableAdapterManager()
-        Me.MDUBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ORDENESDataSet = New REDES.ORDENESDataSet()
         Me.MENSAJERIATableAdapter = New REDES.ORDENESDataSetTableAdapters.MENSAJERIATableAdapter()
         Me.TRABAJOSTableAdapter = New REDES.ORDENESDataSetTableAdapters.TRABAJOSTableAdapter()
@@ -109,6 +107,9 @@ Partial Class DASHBOARD
         Me.ORDENESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GESTIONBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.HISTORICOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FTTBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MDUBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.MDUTableAdapter()
         Me.PanelTrabajo.SuspendLayout()
         CType(Me.DGVRESULT, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelInferior.SuspendLayout()
@@ -120,8 +121,6 @@ Partial Class DASHBOARD
         CType(Me.CLIMABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.USUARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OrdenesDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MENSAJERIABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -129,6 +128,8 @@ Partial Class DASHBOARD
         CType(Me.ORDENESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GESTIONBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.HISTORICOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelTrabajo
@@ -180,7 +181,7 @@ Partial Class DASHBOARD
         '
         Me.Label2.AutoSize = True
         Me.Label2.ForeColor = System.Drawing.Color.DarkGray
-        Me.Label2.Location = New System.Drawing.Point(519, 396)
+        Me.Label2.Location = New System.Drawing.Point(660, 441)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(39, 13)
         Me.Label2.TabIndex = 18
@@ -209,7 +210,7 @@ Partial Class DASHBOARD
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(65, 13)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "VER: 3.7.14"
+        Me.Label1.Text = "VER: 3.7.15"
         '
         'BTN_PASAR
         '
@@ -1220,32 +1221,27 @@ Partial Class DASHBOARD
         '
         Me.FTTBTableAdapter.ClearBeforeFill = True
         '
-        'FTTBBindingSource
-        '
-        Me.FTTBBindingSource.DataMember = "FTTB"
-        Me.FTTBBindingSource.DataSource = Me.EDIFICIODataSet
-        '
         'TableAdapterManager3
         '
         Me.TableAdapterManager3.AGENDATableAdapter = Nothing
+        Me.TableAdapterManager3.ARTICULOTableAdapter = Nothing
         Me.TableAdapterManager3.AVANCETableAdapter = Nothing
         Me.TableAdapterManager3.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager3.BITACORATableAdapter = Nothing
+        Me.TableAdapterManager3.CABLESTableAdapter = Nothing
         Me.TableAdapterManager3.CALLESTableAdapter = Nothing
         Me.TableAdapterManager3.CERTIFICACIONESTableAdapter = Nothing
+        Me.TableAdapterManager3.COLORESTableAdapter = Nothing
         Me.TableAdapterManager3.Connection = Nothing
         Me.TableAdapterManager3.FTTBTableAdapter = Nothing
+        Me.TableAdapterManager3.INGRESOTableAdapter = Nothing
         Me.TableAdapterManager3.MDUTableAdapter = Nothing
         Me.TableAdapterManager3.OBS_MDUTableAdapter = Nothing
         Me.TableAdapterManager3.STATUSTableAdapter = Nothing
         Me.TableAdapterManager3.TECNICOSTableAdapter = Nothing
+        Me.TableAdapterManager3.TRONCALESTableAdapter = Nothing
         Me.TableAdapterManager3.TURNOSTableAdapter = Nothing
         Me.TableAdapterManager3.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'MDUBindingSource
-        '
-        Me.MDUBindingSource.DataMember = "MDU"
-        Me.MDUBindingSource.DataSource = Me.EDIFICIODataSet
         '
         'ORDENESDataSet
         '
@@ -1338,6 +1334,20 @@ Partial Class DASHBOARD
         Me.HISTORICOBindingSource.DataMember = "HISTORICO"
         Me.HISTORICOBindingSource.DataSource = Me.ORDENESDataSet
         '
+        'FTTBBindingSource
+        '
+        Me.FTTBBindingSource.DataMember = "FTTB"
+        Me.FTTBBindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'MDUBindingSource
+        '
+        Me.MDUBindingSource.DataMember = "MDU"
+        Me.MDUBindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'MDUTableAdapter
+        '
+        Me.MDUTableAdapter.ClearBeforeFill = True
+        '
         'DASHBOARD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1368,8 +1378,6 @@ Partial Class DASHBOARD
         CType(Me.CLIMABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.USUARIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OrdenesDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MENSAJERIABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1377,6 +1385,8 @@ Partial Class DASHBOARD
         CType(Me.ORDENESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GESTIONBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.HISTORICOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1466,4 +1476,5 @@ Partial Class DASHBOARD
     Friend WithEvents Label2 As Label
     Friend WithEvents BTN_MODIFICA As Button
     Friend WithEvents DGVRESULT As DataGridView
+    Friend WithEvents MDUTableAdapter As EDIFICIODataSetTableAdapters.MDUTableAdapter
 End Class

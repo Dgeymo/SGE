@@ -5,7 +5,7 @@ Public Class MDU
     Dim NAP As String
     Dim ZONA As String
     Dim DISTRO As String
-    Dim CAJA As String
+    Dim CAJAS As String
     Dim CAJANRO As String
     Dim SPLITTER As Integer
     Dim ACO As String
@@ -14,22 +14,82 @@ Public Class MDU
     Dim FILTRO(5) As String
     Dim VISTAEDIFICIO As DataView
     Private Sub MDU_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'EDIFICIODataSet.CABLES' Puede moverla o quitarla según sea necesario.
+        Me.CABLESTableAdapter.Fill(Me.EDIFICIODataSet.CABLES)
+        CB_CABLE.Items.Clear()
+        For Each CABLES In EDIFICIODataSet.CABLES
+            CB_CABLE.Items.Add(CABLES.MODELO)
+        Next
+
+        'TODO: esta línea de código carga datos en la tabla 'EDIFICIODataSet.ARTICULO' Puede moverla o quitarla según sea necesario.
+        Me.ARTICULOTableAdapter.Fill(Me.EDIFICIODataSet.ARTICULO)
+        CB_TIPO_NAP.Items.Clear()
+        For Each naps In EDIFICIODataSet.ARTICULO
+            Select Case naps.NOMBRE
+                Case "NAP4", "NAP8", "NAP16"
+                    CB_TIPO_NAP.Items.Add(naps.NOMBRE)
+
+            End Select
+        Next
+        CB_TIPO.Items.Clear()
+        For Each UNACAJA In EDIFICIODataSet.ARTICULO
+            Select Case UNACAJA.NOMBRE
+                Case "CED", "FDH", "NAP"
+                    CB_TIPO.Items.Add(UNACAJA.NOMBRE)
+            End Select
+        Next
+
+        'TODO: esta línea de código carga datos en la tabla 'EDIFICIODataSet.COLORES' Puede moverla o quitarla según sea necesario.
+        Me.COLORESTableAdapter.Fill(Me.EDIFICIODataSet.COLORES)
+        NAP_TUBO.Items.Clear()
+        NAP_PELO.Items.Clear()
+        For Each COLORES In EDIFICIODataSet.COLORES
+            NAP_TUBO.Items.Add(COLORES.COLOR)
+            NAP_PELO.Items.Add(COLORES.COLOR)
+        Next
+
+
         MDUTableAdapter.FillBynodo(EDIFICIODataSet.MDU, INICIO.CBNODO.Text)
         FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, EDIFICIODataSet.MDU.Rows(0).Item("ID_MDU"))
-        ' DGV_MDU.DataSource = EDIFICIODataSet.MDU
-        'BITACORATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.BITACORA, CInt(EDIFICIODataSet.MDU.Rows(0).Item("ID_MDU")))
-        'AGENDATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.AGENDA, CInt(EDIFICIODataSet.MDU.Rows(0).Item("ID_MDU")))
+        ACTUALIZAR_FTTB()
+
     End Sub
 
     Private Sub BtnGuardarFttb_Click(sender As Object, e As EventArgs) Handles btnGuardarFttb.Click
         FTTBRow.CONEXION_DESDE = TXT_CONEXION_DESDE.Text
-        FTTBRow.TIPO_CONEXION_DESDE = CB_TIPO.Text
+
         If CAJA_DISTRIBUCIONTextBox.Text <> "" Then FTTBRow.CAJA_DISTRIBUCION = CAJA_DISTRIBUCIONTextBox.Text
-        FTTBRow.CABLE = CB_CABLE.Text
-        FTTBRow.NAP = CB_TIPO_NAP.Text
+        For Each cable In EDIFICIODataSet.CABLES
+            If cable.MODELO = CB_CABLE.Text Then
+                FTTBRow.CABLE = cable.ID_CABLE
+                Exit For
+            End If
+        Next
+        For Each Naps In EDIFICIODataSet.ARTICULO
+            If Naps.NOMBRE = CB_TIPO_NAP.Text Then
+                FTTBRow.NAP = Naps.ID_ARTICULO
+                Exit For
+            End If
+        Next
+        For Each UNACAJA In EDIFICIODataSet.ARTICULO
+            If UNACAJA.NOMBRE = CB_TIPO.Text Then
+                FTTBRow.TIPO_CONEXION_DESDE = UNACAJA.NOMBRE
+            End If
+        Next
         FTTBRow.NAP_NRO = NAP_NROTextBox.Text
-        FTTBRow.TUBO = NAP_TUBO.Text
-        FTTBRow.PELO = NAP_PELO.Text
+
+        For Each TUBO In EDIFICIODataSet.ARTICULO
+            If TUBO.NOMBRE = NAP_TUBO.Text Then
+                FTTBRow.TUBO = TUBO.NOMBRE
+                Exit For
+            End If
+        Next
+        For Each PELOS In EDIFICIODataSet.ARTICULO
+            If PELOS.NOMBRE = NAP_PELO.Text Then
+                FTTBRow.PELO = PELOS.NOMBRE
+                Exit For
+            End If
+        Next
         FTTBRow.OBS_TEC = OBS_TECTextBox.Text
         FTTBRow.ACOMETIDA = TXT_ACOMETIDA.Text
         FTTBRow.SPL_NRO = NAP_SPL.Text
@@ -42,7 +102,7 @@ Public Class MDU
         Cursor = Cursors.WaitCursor
 
         MDURow = EDIFICIODataSet.MDU.FindByID_MDU(DGV_MDU.CurrentRow.Cells(4).Value)
-        FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, CInt(MDURow.ID_MDU))
+        FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, MDURow.ID_MDU)
 
         If MDURow.IsID_CALLENull Then ID_CALLETextBox.Text = "" Else ID_CALLETextBox.Text = MDURow("ID_CALLE")
         CALLETextBox.Text = MDURow.CALLE
@@ -57,9 +117,9 @@ Public Class MDU
         If MDURow.IsACOMETIDANull Then
             ACOMETIDATextBox.Text = ""
         Else
-            TXT_ACOMETIDA.Text = MDURow.ACOMETIDA
+            ACOMETIDATextBox.Text = MDURow.ACOMETIDA
         End If
-        CB_INGRESO.Text = MDURow.INGRESO
+        If MDURow.IsINGRESONull Then CB_INGRESO.Text = "" Else CB_INGRESO.Text = MDURow.INGRESO
         ACTUALIZAR_FTTB()
         Cursor = Cursors.Default
     End Sub
@@ -69,7 +129,7 @@ Public Class MDU
         If EDIFICIODataSet.FTTB.Rows.Count > 0 Then
             For i = 0 To EDIFICIODataSet.FTTB.Rows.Count - 1
                 FTTBRow = EDIFICIODataSet.FTTB.Rows(i)
-                CAJA = FTTBRow.TIPO_CONEXION_DESDE
+                CAJAS = FTTBRow.TIPO_CONEXION_DESDE
                 SPLITTER = FTTBRow.SPL_NRO
                 NAP = FTTBRow.NAP_NRO
                 If NAP < 10 Then NAP = "0" & FTTBRow.NAP
@@ -289,13 +349,13 @@ Public Class MDU
             FTTBRow = EdificioDataSetBACK.FTTB.Rows(0)
             If FTTBRow.IsCONEXION_DESDENull Then TXT_CONEXION_DESDE.Text = "N/A" Else TXT_CONEXION_DESDE.Text = FTTBRow.CONEXION_DESDE
             CB_TIPO.Text = FTTBRow.TIPO_CONEXION_DESDE
-            CAJA_DISTRIBUCIONTextBox.Text = FTTBRow.CAJA_DISTRIBUCION
+            If FTTBRow.IsCAJA_DISTRIBUCIONNull Then CAJA_DISTRIBUCIONTextBox.Text = "" Else CAJA_DISTRIBUCIONTextBox.Text = FTTBRow.CAJA_DISTRIBUCION
             CB_CABLE.Text = FTTBRow.CABLE
             CB_TIPO_NAP.Text = FTTBRow.NAP
             NAP_NROTextBox.Text = FTTBRow.NAP_NRO
             NAP_TUBO.Text = FTTBRow.TUBO
             NAP_PELO.Text = FTTBRow.PELO
-            OBS_TECTextBox.Text = FTTBRow.OBS_TEC
+            If FTTBRow.IsOBS_TECNull Then OBS_TECTextBox.Text = "" Else OBS_TECTextBox.Text = FTTBRow.OBS_TEC
             NAP_SPL.Text = FTTBRow.SPL_NRO
             PINTAR_FTTB(6)
             PINTAR_FTTB(7)

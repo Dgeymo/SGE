@@ -57,6 +57,7 @@ Partial Class MDU
         Dim ID_TURNOLabel As System.Windows.Forms.Label
         Dim Label1 As System.Windows.Forms.Label
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.CARPETATextBox = New System.Windows.Forms.TextBox()
         Me.TXT_NRO = New System.Windows.Forms.TextBox()
         Me.TXT_CALLE = New System.Windows.Forms.TextBox()
         Me.BTN_AGREGAR_MDU = New System.Windows.Forms.Button()
@@ -165,7 +166,12 @@ Partial Class MDU
         Me.STATUSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TECNICOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TURNOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CARPETATextBox = New System.Windows.Forms.TextBox()
+        Me.COLORESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.COLORESTableAdapter = New REDES.EDIFICIODataSetTableAdapters.COLORESTableAdapter()
+        Me.ARTICULOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ARTICULOTableAdapter = New REDES.EDIFICIODataSetTableAdapters.ARTICULOTableAdapter()
+        Me.CABLESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CABLESTableAdapter = New REDES.EDIFICIODataSetTableAdapters.CABLESTableAdapter()
         ID_CALLELabel = New System.Windows.Forms.Label()
         CALLELabel = New System.Windows.Forms.Label()
         PUERTALabel = New System.Windows.Forms.Label()
@@ -219,6 +225,9 @@ Partial Class MDU
         CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TECNICOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TURNOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.COLORESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ARTICULOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CABLESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ID_CALLELabel
@@ -510,6 +519,15 @@ Partial Class MDU
         ID_TURNOLabel.TabIndex = 7
         ID_TURNOLabel.Text = "ID TURNO:"
         '
+        'Label1
+        '
+        Label1.AutoSize = True
+        Label1.Location = New System.Drawing.Point(337, 117)
+        Label1.Name = "Label1"
+        Label1.Size = New System.Drawing.Size(60, 13)
+        Label1.TabIndex = 36
+        Label1.Text = "CARPETA:"
+        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Label1)
@@ -545,10 +563,17 @@ Partial Class MDU
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GroupBox1.Location = New System.Drawing.Point(3, 16)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(623, 306)
+        Me.GroupBox1.Size = New System.Drawing.Size(667, 306)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "EDIFICIO"
+        '
+        'CARPETATextBox
+        '
+        Me.CARPETATextBox.Location = New System.Drawing.Point(403, 113)
+        Me.CARPETATextBox.Name = "CARPETATextBox"
+        Me.CARPETATextBox.Size = New System.Drawing.Size(48, 20)
+        Me.CARPETATextBox.TabIndex = 37
         '
         'TXT_NRO
         '
@@ -940,9 +965,9 @@ Partial Class MDU
         Me.GroupBox3.Controls.Add(Me.GroupBox5)
         Me.GroupBox3.Controls.Add(Me.btnGuardarFttb)
         Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox3.Location = New System.Drawing.Point(626, 16)
+        Me.GroupBox3.Location = New System.Drawing.Point(670, 16)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(721, 306)
+        Me.GroupBox3.Size = New System.Drawing.Size(677, 306)
         Me.GroupBox3.TabIndex = 1
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "CONEXIONADO"
@@ -1444,15 +1469,21 @@ Partial Class MDU
         'TableAdapterManager
         '
         Me.TableAdapterManager.AGENDATableAdapter = Me.AGENDATableAdapter
+        Me.TableAdapterManager.ARTICULOTableAdapter = Nothing
         Me.TableAdapterManager.AVANCETableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BITACORATableAdapter = Me.BITACORATableAdapter
+        Me.TableAdapterManager.CABLESTableAdapter = Nothing
         Me.TableAdapterManager.CALLESTableAdapter = Nothing
         Me.TableAdapterManager.CERTIFICACIONESTableAdapter = Nothing
+        Me.TableAdapterManager.COLORESTableAdapter = Nothing
         Me.TableAdapterManager.FTTBTableAdapter = Me.FTTBTableAdapter
+        Me.TableAdapterManager.INGRESOTableAdapter = Nothing
         Me.TableAdapterManager.MDUTableAdapter = Nothing
+        Me.TableAdapterManager.OBS_MDUTableAdapter = Nothing
         Me.TableAdapterManager.STATUSTableAdapter = Me.STATUSTableAdapter
         Me.TableAdapterManager.TECNICOSTableAdapter = Me.TECNICOSTableAdapter
+        Me.TableAdapterManager.TRONCALESTableAdapter = Nothing
         Me.TableAdapterManager.TURNOSTableAdapter = Me.TURNOSTableAdapter
         Me.TableAdapterManager.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
@@ -1495,21 +1526,32 @@ Partial Class MDU
         Me.TURNOSBindingSource.DataMember = "TURNOS"
         Me.TURNOSBindingSource.DataSource = Me.EDIFICIODataSet
         '
-        'Label1
+        'COLORESBindingSource
         '
-        Label1.AutoSize = True
-        Label1.Location = New System.Drawing.Point(337, 117)
-        Label1.Name = "Label1"
-        Label1.Size = New System.Drawing.Size(60, 13)
-        Label1.TabIndex = 36
-        Label1.Text = "CARPETA:"
+        Me.COLORESBindingSource.DataMember = "COLORES"
+        Me.COLORESBindingSource.DataSource = Me.EDIFICIODataSet
         '
-        'CARPETATextBox
+        'COLORESTableAdapter
         '
-        Me.CARPETATextBox.Location = New System.Drawing.Point(403, 113)
-        Me.CARPETATextBox.Name = "CARPETATextBox"
-        Me.CARPETATextBox.Size = New System.Drawing.Size(48, 20)
-        Me.CARPETATextBox.TabIndex = 37
+        Me.COLORESTableAdapter.ClearBeforeFill = True
+        '
+        'ARTICULOBindingSource
+        '
+        Me.ARTICULOBindingSource.DataMember = "ARTICULO"
+        Me.ARTICULOBindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'ARTICULOTableAdapter
+        '
+        Me.ARTICULOTableAdapter.ClearBeforeFill = True
+        '
+        'CABLESBindingSource
+        '
+        Me.CABLESBindingSource.DataMember = "CABLES"
+        Me.CABLESBindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'CABLESTableAdapter
+        '
+        Me.CABLESTableAdapter.ClearBeforeFill = True
         '
         'MDU
         '
@@ -1551,6 +1593,9 @@ Partial Class MDU
         CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TECNICOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TURNOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.COLORESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ARTICULOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CABLESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1665,4 +1710,10 @@ Partial Class MDU
     Friend WithEvents PELODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents SPLNRODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CARPETATextBox As TextBox
+    Friend WithEvents COLORESBindingSource As BindingSource
+    Friend WithEvents COLORESTableAdapter As EDIFICIODataSetTableAdapters.COLORESTableAdapter
+    Friend WithEvents ARTICULOBindingSource As BindingSource
+    Friend WithEvents ARTICULOTableAdapter As EDIFICIODataSetTableAdapters.ARTICULOTableAdapter
+    Friend WithEvents CABLESBindingSource As BindingSource
+    Friend WithEvents CABLESTableAdapter As EDIFICIODataSetTableAdapters.CABLESTableAdapter
 End Class

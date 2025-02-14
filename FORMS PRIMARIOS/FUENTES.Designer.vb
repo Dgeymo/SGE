@@ -25,23 +25,22 @@ Partial Class FUENTES
         Me.components = New System.ComponentModel.Container()
         Dim Label38 As System.Windows.Forms.Label
         Dim Label39 As System.Windows.Forms.Label
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FUENTES))
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.BOT_CARGARTRABAJOS = New System.Windows.Forms.Button()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.NRONODOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BASEFUENTESDataSet = New REDES.BASEFUENTESDataSet()
         Me.BOT_EDITAR = New System.Windows.Forms.Button()
         Me.BOT_NUEVO = New System.Windows.Forms.Button()
         Me.ETI_FUENTE = New System.Windows.Forms.Label()
@@ -54,6 +53,7 @@ Partial Class FUENTES
         Me.BUSC_NODO = New System.Windows.Forms.TextBox()
         Me.INSTALACIONDataGridView = New System.Windows.Forms.DataGridView()
         Me.FUENTEBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BASEFUENTESDataSet = New REDES.BASEFUENTESDataSet()
         Me.INSTALACIONBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AFECTACIONBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ORDENESDataSet = New REDES.ORDENESDataSet()
@@ -104,29 +104,18 @@ Partial Class FUENTES
         Me.ADJUNTOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.LBL_ADJUNTOS = New System.Windows.Forms.Label()
         Me.INDICE_CALLESTableAdapter = New REDES.INDICESDataSetTableAdapters.INDICE_CALLESTableAdapter()
-        Me.TableAdapterManager2 = New REDES.INDICESDataSetTableAdapters.TableAdapterManager()
         Me.HISTORICOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TRABAJOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ANTIGUEDADBATBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ANTIGUEDADBATTableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.ANTIGUEDADBATTableAdapter()
-        Me.TableAdapterManager = New REDES.BASEFUENTESDataSetTableAdapters.TableAdapterManager()
-        Me.BaseTableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.baseTableAdapter()
-        Me.HISTORICOTableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.HISTORICOTableAdapter()
-        Me.INSTALACIONTableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.INSTALACIONTableAdapter()
-        Me.NRONODOSTableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.NRONODOSTableAdapter()
-        Me.TRABAJOSTableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.TRABAJOSTableAdapter()
         Me.BaseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BasefuentesDataSet1 = New REDES.BASEFUENTESDataSet()
         Me.BTN_REPORTE = New System.Windows.Forms.Button()
         Me.AFECTACIONTableAdapter = New REDES.ORDENESDataSetTableAdapters.AFECTACIONTableAdapter()
-        Me.TableAdapterManager1 = New REDES.ORDENESDataSetTableAdapters.TableAdapterManager()
         Me.ORDENESTableAdapter = New REDES.ORDENESDataSetTableAdapters.ORDENESTableAdapter()
         Me.OBESERVACIONESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OBESERVACIONESTableAdapter = New REDES.ORDENESDataSetTableAdapters.OBESERVACIONESTableAdapter()
         Me.ADJUNTOSTableAdapter = New REDES.ORDENESDataSetTableAdapters.ADJUNTOSTableAdapter()
         Me.TAREASBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TAREASTableAdapter = New REDES.ORDENESDataSetTableAdapters.TAREASTableAdapter()
-        Me.FUENTETableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.FUENTETableAdapter()
         Me.BUSCA_INST = New System.Windows.Forms.TextBox()
         Me.BOT_CANCELAR = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -149,42 +138,31 @@ Partial Class FUENTES
         Me.TOTAL_BATERIAS = New System.Windows.Forms.Label()
         Me.BUSCA_FECHA_BAT = New System.Windows.Forms.TextBox()
         Me.BUSCA_CANT_BAT = New System.Windows.Forms.TextBox()
-        Me.IDFUENTEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.INSTALACIONRUSDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FUENTETableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.FUENTETableAdapter()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.INSTALACIONDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NODODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ZONADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CALLEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PUERTADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ESQUINADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MODFUENTEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MODBATERIADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CANTBATDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn22 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn23 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FECHABATDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RXDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TRDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BRDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LEXDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AUTONOMIADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ITOTALDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn24 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn26 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn27 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CARGAREALDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IPMODEMDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MAPEODataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ID2DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MACDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IMEIDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PINDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PUKDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VPN1DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VPN2DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GABINETEDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FECHADataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Label38 = New System.Windows.Forms.Label()
         Label39 = New System.Windows.Forms.Label()
         CType(Me.NRONODOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BASEFUENTESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INSTALACIONDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FUENTEBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BASEFUENTESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INSTALACIONBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AFECTACIONBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -200,7 +178,6 @@ Partial Class FUENTES
         CType(Me.TRABAJOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ANTIGUEDADBATBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BaseBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BasefuentesDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OBESERVACIONESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TAREASBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -229,30 +206,6 @@ Partial Class FUENTES
         Label39.Size = New System.Drawing.Size(123, 13)
         Label39.TabIndex = 255
         Label39.Text = "Observaciones de Cierre"
-        '
-        'BOT_CARGARTRABAJOS
-        '
-        Me.BOT_CARGARTRABAJOS.BackColor = System.Drawing.Color.Black
-        Me.BOT_CARGARTRABAJOS.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.BOT_CARGARTRABAJOS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White
-        Me.BOT_CARGARTRABAJOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BOT_CARGARTRABAJOS.Location = New System.Drawing.Point(1166, 437)
-        Me.BOT_CARGARTRABAJOS.Name = "BOT_CARGARTRABAJOS"
-        Me.BOT_CARGARTRABAJOS.Size = New System.Drawing.Size(188, 26)
-        Me.BOT_CARGARTRABAJOS.TabIndex = 232
-        Me.BOT_CARGARTRABAJOS.Text = "Cargar Trabajos"
-        Me.BOT_CARGARTRABAJOS.UseVisualStyleBackColor = False
-        Me.BOT_CARGARTRABAJOS.Visible = False
-        '
-        'NRONODOSBindingSource
-        '
-        Me.NRONODOSBindingSource.DataMember = "NRONODOS"
-        Me.NRONODOSBindingSource.DataSource = Me.BASEFUENTESDataSet
-        '
-        'BASEFUENTESDataSet
-        '
-        Me.BASEFUENTESDataSet.DataSetName = "BASEFUENTESDataSet"
-        Me.BASEFUENTESDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'BOT_EDITAR
         '
@@ -335,7 +288,7 @@ Partial Class FUENTES
         Me.BUSC_FUENTE.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BUSC_FUENTE.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BUSC_FUENTE.ForeColor = System.Drawing.Color.White
-        Me.BUSC_FUENTE.Location = New System.Drawing.Point(690, 34)
+        Me.BUSC_FUENTE.Location = New System.Drawing.Point(624, 34)
         Me.BUSC_FUENTE.Name = "BUSC_FUENTE"
         Me.BUSC_FUENTE.Size = New System.Drawing.Size(57, 24)
         Me.BUSC_FUENTE.TabIndex = 126
@@ -385,25 +338,25 @@ Partial Class FUENTES
         Me.INSTALACIONDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.INSTALACIONDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.INSTALACIONDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DarkOrange
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.INSTALACIONDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.DarkOrange
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.INSTALACIONDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle15
         Me.INSTALACIONDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.INSTALACIONDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDFUENTEDataGridViewTextBoxColumn, Me.INSTALACIONRUSDataGridViewTextBoxColumn, Me.INSTALACIONDataGridViewTextBoxColumn, Me.NODODataGridViewTextBoxColumn, Me.ZONADataGridViewTextBoxColumn, Me.CALLEDataGridViewTextBoxColumn, Me.PUERTADataGridViewTextBoxColumn, Me.ESQUINADataGridViewTextBoxColumn, Me.MODFUENTEDataGridViewTextBoxColumn, Me.MODBATERIADataGridViewTextBoxColumn, Me.CANTBATDataGridViewTextBoxColumn, Me.FECHABATDataGridViewTextBoxColumn, Me.RXDataGridViewTextBoxColumn, Me.TRDataGridViewTextBoxColumn, Me.BRDataGridViewTextBoxColumn, Me.LEXDataGridViewTextBoxColumn, Me.AUTONOMIADataGridViewTextBoxColumn, Me.ITOTALDataGridViewTextBoxColumn, Me.CARGAREALDataGridViewTextBoxColumn, Me.IPMODEMDataGridViewTextBoxColumn, Me.MAPEODataGridViewTextBoxColumn, Me.ID2DataGridViewTextBoxColumn, Me.MACDataGridViewTextBoxColumn, Me.IMEIDataGridViewTextBoxColumn, Me.PINDataGridViewTextBoxColumn, Me.PUKDataGridViewTextBoxColumn, Me.VPN1DataGridViewTextBoxColumn, Me.VPN2DataGridViewTextBoxColumn, Me.GABINETEDataGridViewTextBoxColumn, Me.FECHADataGridViewTextBoxColumn})
+        Me.INSTALACIONDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn14, Me.DataGridViewTextBoxColumn29, Me.INSTALACIONDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn16, Me.DataGridViewTextBoxColumn17, Me.DataGridViewTextBoxColumn18, Me.DataGridViewTextBoxColumn19, Me.DataGridViewTextBoxColumn20, Me.DataGridViewTextBoxColumn21, Me.DataGridViewTextBoxColumn22, Me.DataGridViewTextBoxColumn23, Me.FECHABATDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn24, Me.DataGridViewTextBoxColumn26, Me.DataGridViewTextBoxColumn27, Me.DataGridViewTextBoxColumn28, Me.CARGAREALDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn15})
         Me.INSTALACIONDataGridView.DataSource = Me.FUENTEBindingSource
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkOrange
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.INSTALACIONDataGridView.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.DarkOrange
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.INSTALACIONDataGridView.DefaultCellStyle = DataGridViewCellStyle18
         Me.INSTALACIONDataGridView.EnableHeadersVisualStyles = False
         Me.INSTALACIONDataGridView.GridColor = System.Drawing.Color.DarkGray
         Me.INSTALACIONDataGridView.Location = New System.Drawing.Point(31, 59)
@@ -411,14 +364,14 @@ Partial Class FUENTES
         Me.INSTALACIONDataGridView.Name = "INSTALACIONDataGridView"
         Me.INSTALACIONDataGridView.ReadOnly = True
         Me.INSTALACIONDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.BurlyWood
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FloralWhite
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FloralWhite
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.SandyBrown
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.INSTALACIONDataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle19.BackColor = System.Drawing.Color.BurlyWood
+        DataGridViewCellStyle19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle19.ForeColor = System.Drawing.Color.FloralWhite
+        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FloralWhite
+        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.SandyBrown
+        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.INSTALACIONDataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle19
         Me.INSTALACIONDataGridView.RowHeadersVisible = False
         Me.INSTALACIONDataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.INSTALACIONDataGridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White
@@ -433,10 +386,10 @@ Partial Class FUENTES
         Me.FUENTEBindingSource.DataMember = "FUENTE"
         Me.FUENTEBindingSource.DataSource = Me.BASEFUENTESDataSet
         '
-        'INSTALACIONBindingSource
+        'BASEFUENTESDataSet
         '
-        Me.INSTALACIONBindingSource.DataMember = "INSTALACION"
-        Me.INSTALACIONBindingSource.DataSource = Me.BASEFUENTESDataSet
+        Me.BASEFUENTESDataSet.DataSetName = "BASEFUENTESDataSet"
+        Me.BASEFUENTESDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'AFECTACIONBindingSource
         '
@@ -579,25 +532,25 @@ Partial Class FUENTES
         Me.ORDENESDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ORDENESDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.ORDENESDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.MidnightBlue
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ORDENESDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle20.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.MidnightBlue
+        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ORDENESDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle20
         Me.ORDENESDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ORDENESDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.STATUS, Me.DataGridViewTextBoxColumn8, Me.FECHAAGEND, Me.DataGridViewTextBoxColumn25, Me.DataGridViewTextBoxColumn42, Me.MOTIVOCIERRE, Me.CAUSACIERRE})
         Me.ORDENESDataGridView.DataSource = Me.ORDENESBindingSource
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DarkRed
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.ORDENESDataGridView.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle23.BackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle23.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle23.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.DarkRed
+        DataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.ORDENESDataGridView.DefaultCellStyle = DataGridViewCellStyle23
         Me.ORDENESDataGridView.EnableHeadersVisualStyles = False
         Me.ORDENESDataGridView.Location = New System.Drawing.Point(29, 375)
         Me.ORDENESDataGridView.Name = "ORDENESDataGridView"
@@ -645,9 +598,9 @@ Partial Class FUENTES
         'FECHAAGEND
         '
         Me.FECHAAGEND.DataPropertyName = "FECHAAGEND"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.Format = "d"
-        Me.FECHAAGEND.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle21.Format = "d"
+        Me.FECHAAGEND.DefaultCellStyle = DataGridViewCellStyle21
         Me.FECHAAGEND.FillWeight = 75.0!
         Me.FECHAAGEND.HeaderText = "F AGENDA"
         Me.FECHAAGEND.Name = "FECHAAGEND"
@@ -657,10 +610,10 @@ Partial Class FUENTES
         'DataGridViewTextBoxColumn25
         '
         Me.DataGridViewTextBoxColumn25.DataPropertyName = "FECHAFIN"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.Format = "d"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.DataGridViewTextBoxColumn25.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle22.Format = "d"
+        DataGridViewCellStyle22.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn25.DefaultCellStyle = DataGridViewCellStyle22
         Me.DataGridViewTextBoxColumn25.HeaderText = "F FIN"
         Me.DataGridViewTextBoxColumn25.Name = "DataGridViewTextBoxColumn25"
         Me.DataGridViewTextBoxColumn25.ReadOnly = True
@@ -777,25 +730,25 @@ Partial Class FUENTES
         Me.DGVAdjuntos.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.DGVAdjuntos.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.DGVAdjuntos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.MidnightBlue
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGVAdjuntos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle24.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.MidnightBlue
+        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGVAdjuntos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle24
         Me.DGVAdjuntos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVAdjuntos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.RUTAADJUNTODataGridViewTextBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.IDGESTIONDataGridViewTextBoxColumn, Me.IDTRABAJODataGridViewTextBoxColumn, Me.IDORDENDataGridViewTextBoxColumn, Me.NOMARCHIVODataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn3})
         Me.DGVAdjuntos.DataSource = Me.ADJUNTOSBindingSource
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DarkRed
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGVAdjuntos.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle25.BackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle25.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle25.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.DarkRed
+        DataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVAdjuntos.DefaultCellStyle = DataGridViewCellStyle25
         Me.DGVAdjuntos.EnableHeadersVisualStyles = False
         Me.DGVAdjuntos.Location = New System.Drawing.Point(1149, 491)
         Me.DGVAdjuntos.Name = "DGVAdjuntos"
@@ -887,96 +840,17 @@ Partial Class FUENTES
         '
         Me.INDICE_CALLESTableAdapter.ClearBeforeFill = True
         '
-        'TableAdapterManager2
-        '
-        Me.TableAdapterManager2.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager2.CLIMATableAdapter = Nothing
-        Me.TableAdapterManager2.GUARDIASTableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_CALLESTableAdapter = Me.INDICE_CALLESTableAdapter
-        Me.TableAdapterManager2.INDICE_CAUSASTableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_DIAGNOSTICOTableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_FALLASTableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_FRECUENCIASTableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_MEDIDORTableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_PUNTOMEDIDATableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_TIPOMEDIDATableAdapter = Nothing
-        Me.TableAdapterManager2.MAT_ACTIVOSTableAdapter = Nothing
-        Me.TableAdapterManager2.MAT_CONSOLIDADOTableAdapter = Nothing
-        Me.TableAdapterManager2.MAT_CONSUMOSXMESTableAdapter = Nothing
-        Me.TableAdapterManager2.MAT_INFORMETableAdapter = Nothing
-        Me.TableAdapterManager2.MAT_STOCKTableAdapter = Nothing
-        Me.TableAdapterManager2.MAT_TRANSITOTableAdapter = Nothing
-        Me.TableAdapterManager2.ORDINALESTableAdapter = Nothing
-        Me.TableAdapterManager2.PLANOSTableAdapter = Nothing
-        Me.TableAdapterManager2.TecnicosTableAdapter = Nothing
-        Me.TableAdapterManager2.UpdateOrder = REDES.INDICESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
         'HISTORICOBindingSource
         '
         Me.HISTORICOBindingSource.DataMember = "HISTORICO"
-        Me.HISTORICOBindingSource.DataSource = Me.BASEFUENTESDataSet
         '
         'TRABAJOSBindingSource
         '
         Me.TRABAJOSBindingSource.DataMember = "TRABAJOS"
-        Me.TRABAJOSBindingSource.DataSource = Me.BASEFUENTESDataSet
         '
         'ANTIGUEDADBATBindingSource
         '
         Me.ANTIGUEDADBATBindingSource.DataMember = "ANTIGUEDADBAT"
-        Me.ANTIGUEDADBATBindingSource.DataSource = Me.BASEFUENTESDataSet
-        '
-        'ANTIGUEDADBATTableAdapter
-        '
-        Me.ANTIGUEDADBATTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.ANTIGUEDADBATTableAdapter = Me.ANTIGUEDADBATTableAdapter
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.baseTableAdapter = Me.BaseTableAdapter
-        Me.TableAdapterManager.FUENTETableAdapter = Nothing
-        Me.TableAdapterManager.GENERADOR_MANTENIMIENTOTableAdapter = Nothing
-        Me.TableAdapterManager.GENERADORESTableAdapter = Nothing
-        Me.TableAdapterManager.GRAFANTIGUEDADTableAdapter = Nothing
-        Me.TableAdapterManager.GRAFAUTONOMIATableAdapter = Nothing
-        Me.TableAdapterManager.GRAFTIPOFUENTETableAdapter = Nothing
-        Me.TableAdapterManager.HISTORICOTableAdapter = Me.HISTORICOTableAdapter
-        Me.TableAdapterManager.Hoja1TableAdapter = Nothing
-        Me.TableAdapterManager.INSTALACIONTableAdapter = Me.INSTALACIONTableAdapter
-        Me.TableAdapterManager.NRONODOSTableAdapter = Me.NRONODOSTableAdapter
-        Me.TableAdapterManager.TRABAJOSTableAdapter = Me.TRABAJOSTableAdapter
-        Me.TableAdapterManager.UpdateOrder = REDES.BASEFUENTESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'BaseTableAdapter
-        '
-        Me.BaseTableAdapter.ClearBeforeFill = True
-        '
-        'HISTORICOTableAdapter
-        '
-        Me.HISTORICOTableAdapter.ClearBeforeFill = True
-        '
-        'INSTALACIONTableAdapter
-        '
-        Me.INSTALACIONTableAdapter.ClearBeforeFill = True
-        '
-        'NRONODOSTableAdapter
-        '
-        Me.NRONODOSTableAdapter.ClearBeforeFill = True
-        '
-        'TRABAJOSTableAdapter
-        '
-        Me.TRABAJOSTableAdapter.ClearBeforeFill = True
-        '
-        'BaseBindingSource
-        '
-        Me.BaseBindingSource.DataMember = "base"
-        Me.BaseBindingSource.DataSource = Me.BASEFUENTESDataSet
-        '
-        'BasefuentesDataSet1
-        '
-        Me.BasefuentesDataSet1.DataSetName = "BASEFUENTESDataSet"
-        Me.BasefuentesDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'BTN_REPORTE
         '
@@ -984,52 +858,16 @@ Partial Class FUENTES
         Me.BTN_REPORTE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BTN_REPORTE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray
         Me.BTN_REPORTE.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_REPORTE.Location = New System.Drawing.Point(1201, 37)
+        Me.BTN_REPORTE.Location = New System.Drawing.Point(1201, 39)
         Me.BTN_REPORTE.Name = "BTN_REPORTE"
         Me.BTN_REPORTE.Size = New System.Drawing.Size(87, 24)
         Me.BTN_REPORTE.TabIndex = 310
         Me.BTN_REPORTE.Text = "Reporte"
         Me.BTN_REPORTE.UseVisualStyleBackColor = False
-        Me.BTN_REPORTE.Visible = False
         '
         'AFECTACIONTableAdapter
         '
         Me.AFECTACIONTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager1
-        '
-        Me.TableAdapterManager1.ACTIVIDADESSTDTableAdapter = Nothing
-        Me.TableAdapterManager1.ADJUNTOSTableAdapter = Nothing
-        Me.TableAdapterManager1.AFECTACIONTableAdapter = Me.AFECTACIONTableAdapter
-        Me.TableAdapterManager1.AREASTableAdapter = Nothing
-        Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager1.CAUSASTableAdapter = Nothing
-        Me.TableAdapterManager1.COMBOSTableAdapter = Nothing
-        Me.TableAdapterManager1.CREAR_ORDTableAdapter = Nothing
-        Me.TableAdapterManager1.FALLASTableAdapter = Nothing
-        Me.TableAdapterManager1.FUNCIONARIOSTableAdapter = Nothing
-        Me.TableAdapterManager1.GESTIONES_TIPOTableAdapter = Nothing
-        Me.TableAdapterManager1.GESTIONTableAdapter = Nothing
-        Me.TableAdapterManager1.GRAF_ORDINALESTableAdapter = Nothing
-        Me.TableAdapterManager1.GRAF_REDESTableAdapter = Nothing
-        Me.TableAdapterManager1.HISTORICOTableAdapter = Nothing
-        Me.TableAdapterManager1.INFORMMEMDU_PERMISORTableAdapter = Nothing
-        Me.TableAdapterManager1.MENSAJERIA_OLDTableAdapter = Nothing
-        Me.TableAdapterManager1.MENSAJERIATableAdapter = Nothing
-        Me.TableAdapterManager1.OBESERVACIONESTableAdapter = Nothing
-        Me.TableAdapterManager1.ORDENESTableAdapter = Nothing
-        Me.TableAdapterManager1.PRESUPUESTOTableAdapter = Nothing
-        Me.TableAdapterManager1.RELACION_FALLAACTIVIDADTableAdapter = Nothing
-        Me.TableAdapterManager1.REPORTEORDINALESTableAdapter = Nothing
-        Me.TableAdapterManager1.SECTORESTableAdapter = Nothing
-        Me.TableAdapterManager1.SECTORFALLATableAdapter = Nothing
-        Me.TableAdapterManager1.STANDARDTableAdapter = Nothing
-        Me.TableAdapterManager1.STATUSTableAdapter = Nothing
-        Me.TableAdapterManager1.TAREASSTDTableAdapter = Nothing
-        Me.TableAdapterManager1.TAREASTableAdapter = Nothing
-        Me.TableAdapterManager1.TIPOTableAdapter = Nothing
-        Me.TableAdapterManager1.TRABAJOSTableAdapter = Nothing
-        Me.TableAdapterManager1.UpdateOrder = REDES.ORDENESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'ORDENESTableAdapter
         '
@@ -1056,10 +894,6 @@ Partial Class FUENTES
         'TAREASTableAdapter
         '
         Me.TAREASTableAdapter.ClearBeforeFill = True
-        '
-        'FUENTETableAdapter
-        '
-        Me.FUENTETableAdapter.ClearBeforeFill = True
         '
         'BUSCA_INST
         '
@@ -1133,37 +967,37 @@ Partial Class FUENTES
         Me.AFECTACIONDataGridView.AutoGenerateColumns = False
         Me.AFECTACIONDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.AFECTACIONDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.DarkOrange
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.AFECTACIONDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle26.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle26.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.DarkOrange
+        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AFECTACIONDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle26
         Me.AFECTACIONDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.AFECTACIONDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NODODataGridViewTextBoxColumn1, Me.ZONADataGridViewTextBoxColumn1, Me.Id})
         Me.AFECTACIONDataGridView.DataSource = Me.AFECTACIONBindingSource
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.DarkRed
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.AFECTACIONDataGridView.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle27.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle27.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.DarkRed
+        DataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.AFECTACIONDataGridView.DefaultCellStyle = DataGridViewCellStyle27
         Me.AFECTACIONDataGridView.EnableHeadersVisualStyles = False
         Me.AFECTACIONDataGridView.Location = New System.Drawing.Point(6, 17)
         Me.AFECTACIONDataGridView.Name = "AFECTACIONDataGridView"
         Me.AFECTACIONDataGridView.ReadOnly = True
         Me.AFECTACIONDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.AFECTACIONDataGridView.RowHeadersVisible = False
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.DarkOrange
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White
-        Me.AFECTACIONDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle28.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.DarkOrange
+        DataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.White
+        Me.AFECTACIONDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle28
         Me.AFECTACIONDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.AFECTACIONDataGridView.Size = New System.Drawing.Size(104, 286)
         Me.AFECTACIONDataGridView.TabIndex = 237
@@ -1286,7 +1120,7 @@ Partial Class FUENTES
         Me.FILTRO_TIPO_BATERIA.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.FILTRO_TIPO_BATERIA.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FILTRO_TIPO_BATERIA.ForeColor = System.Drawing.Color.White
-        Me.FILTRO_TIPO_BATERIA.Location = New System.Drawing.Point(747, 34)
+        Me.FILTRO_TIPO_BATERIA.Location = New System.Drawing.Point(681, 34)
         Me.FILTRO_TIPO_BATERIA.Name = "FILTRO_TIPO_BATERIA"
         Me.FILTRO_TIPO_BATERIA.Size = New System.Drawing.Size(61, 24)
         Me.FILTRO_TIPO_BATERIA.TabIndex = 315
@@ -1322,7 +1156,7 @@ Partial Class FUENTES
         Me.BUSCA_FECHA_BAT.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BUSCA_FECHA_BAT.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BUSCA_FECHA_BAT.ForeColor = System.Drawing.Color.White
-        Me.BUSCA_FECHA_BAT.Location = New System.Drawing.Point(848, 34)
+        Me.BUSCA_FECHA_BAT.Location = New System.Drawing.Point(782, 34)
         Me.BUSCA_FECHA_BAT.Name = "BUSCA_FECHA_BAT"
         Me.BUSCA_FECHA_BAT.Size = New System.Drawing.Size(73, 24)
         Me.BUSCA_FECHA_BAT.TabIndex = 319
@@ -1333,254 +1167,165 @@ Partial Class FUENTES
         Me.BUSCA_CANT_BAT.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.BUSCA_CANT_BAT.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BUSCA_CANT_BAT.ForeColor = System.Drawing.Color.White
-        Me.BUSCA_CANT_BAT.Location = New System.Drawing.Point(808, 34)
+        Me.BUSCA_CANT_BAT.Location = New System.Drawing.Point(742, 34)
         Me.BUSCA_CANT_BAT.Name = "BUSCA_CANT_BAT"
         Me.BUSCA_CANT_BAT.Size = New System.Drawing.Size(40, 24)
         Me.BUSCA_CANT_BAT.TabIndex = 318
         Me.BUSCA_CANT_BAT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'IDFUENTEDataGridViewTextBoxColumn
+        'FUENTETableAdapter
         '
-        Me.IDFUENTEDataGridViewTextBoxColumn.DataPropertyName = "ID_FUENTE"
-        Me.IDFUENTEDataGridViewTextBoxColumn.HeaderText = "ID"
-        Me.IDFUENTEDataGridViewTextBoxColumn.Name = "IDFUENTEDataGridViewTextBoxColumn"
-        Me.IDFUENTEDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IDFUENTEDataGridViewTextBoxColumn.Width = 35
+        Me.FUENTETableAdapter.ClearBeforeFill = True
         '
-        'INSTALACIONRUSDataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn14
         '
-        Me.INSTALACIONRUSDataGridViewTextBoxColumn.DataPropertyName = "INSTALACION_RUS"
-        Me.INSTALACIONRUSDataGridViewTextBoxColumn.HeaderText = "Instalacion"
-        Me.INSTALACIONRUSDataGridViewTextBoxColumn.Name = "INSTALACIONRUSDataGridViewTextBoxColumn"
-        Me.INSTALACIONRUSDataGridViewTextBoxColumn.ReadOnly = True
-        Me.INSTALACIONRUSDataGridViewTextBoxColumn.Width = 60
+        Me.DataGridViewTextBoxColumn14.DataPropertyName = "ID_FUENTE"
+        Me.DataGridViewTextBoxColumn14.HeaderText = "ID_FUENTE"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        Me.DataGridViewTextBoxColumn14.ReadOnly = True
+        Me.DataGridViewTextBoxColumn14.Width = 45
+        '
+        'DataGridViewTextBoxColumn29
+        '
+        Me.DataGridViewTextBoxColumn29.DataPropertyName = "INSTALACION_RUS"
+        Me.DataGridViewTextBoxColumn29.HeaderText = "RUS"
+        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
+        Me.DataGridViewTextBoxColumn29.ReadOnly = True
+        Me.DataGridViewTextBoxColumn29.Width = 55
         '
         'INSTALACIONDataGridViewTextBoxColumn
         '
         Me.INSTALACIONDataGridViewTextBoxColumn.DataPropertyName = "INSTALACION"
-        Me.INSTALACIONDataGridViewTextBoxColumn.HeaderText = "Codigo"
+        Me.INSTALACIONDataGridViewTextBoxColumn.HeaderText = "INSTALACION"
         Me.INSTALACIONDataGridViewTextBoxColumn.Name = "INSTALACIONDataGridViewTextBoxColumn"
         Me.INSTALACIONDataGridViewTextBoxColumn.ReadOnly = True
-        Me.INSTALACIONDataGridViewTextBoxColumn.Width = 70
+        Me.INSTALACIONDataGridViewTextBoxColumn.Width = 55
         '
-        'NODODataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn16
         '
-        Me.NODODataGridViewTextBoxColumn.DataPropertyName = "NODO"
-        Me.NODODataGridViewTextBoxColumn.HeaderText = "Nodo"
-        Me.NODODataGridViewTextBoxColumn.Name = "NODODataGridViewTextBoxColumn"
-        Me.NODODataGridViewTextBoxColumn.ReadOnly = True
-        Me.NODODataGridViewTextBoxColumn.Width = 30
+        Me.DataGridViewTextBoxColumn16.DataPropertyName = "NODO"
+        Me.DataGridViewTextBoxColumn16.HeaderText = "NODO"
+        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
+        Me.DataGridViewTextBoxColumn16.ReadOnly = True
+        Me.DataGridViewTextBoxColumn16.Width = 35
         '
-        'ZONADataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn17
         '
-        Me.ZONADataGridViewTextBoxColumn.DataPropertyName = "ZONA"
-        Me.ZONADataGridViewTextBoxColumn.HeaderText = "Zona"
-        Me.ZONADataGridViewTextBoxColumn.Name = "ZONADataGridViewTextBoxColumn"
-        Me.ZONADataGridViewTextBoxColumn.ReadOnly = True
-        Me.ZONADataGridViewTextBoxColumn.Width = 30
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "ZONA"
+        Me.DataGridViewTextBoxColumn17.HeaderText = "ZONA"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        Me.DataGridViewTextBoxColumn17.ReadOnly = True
+        Me.DataGridViewTextBoxColumn17.Width = 35
         '
-        'CALLEDataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn18
         '
-        Me.CALLEDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CALLEDataGridViewTextBoxColumn.DataPropertyName = "CALLE"
-        Me.CALLEDataGridViewTextBoxColumn.HeaderText = "Calle"
-        Me.CALLEDataGridViewTextBoxColumn.Name = "CALLEDataGridViewTextBoxColumn"
-        Me.CALLEDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "CALLE"
+        Me.DataGridViewTextBoxColumn18.HeaderText = "CALLE"
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        Me.DataGridViewTextBoxColumn18.ReadOnly = True
         '
-        'PUERTADataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn19
         '
-        Me.PUERTADataGridViewTextBoxColumn.DataPropertyName = "PUERTA"
-        Me.PUERTADataGridViewTextBoxColumn.HeaderText = "Nro"
-        Me.PUERTADataGridViewTextBoxColumn.Name = "PUERTADataGridViewTextBoxColumn"
-        Me.PUERTADataGridViewTextBoxColumn.ReadOnly = True
-        Me.PUERTADataGridViewTextBoxColumn.Width = 40
+        Me.DataGridViewTextBoxColumn19.DataPropertyName = "PUERTA"
+        Me.DataGridViewTextBoxColumn19.HeaderText = "PUERTA"
+        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
+        Me.DataGridViewTextBoxColumn19.ReadOnly = True
+        Me.DataGridViewTextBoxColumn19.Width = 50
         '
-        'ESQUINADataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn20
         '
-        Me.ESQUINADataGridViewTextBoxColumn.DataPropertyName = "ESQUINA"
-        Me.ESQUINADataGridViewTextBoxColumn.HeaderText = "Esquina"
-        Me.ESQUINADataGridViewTextBoxColumn.Name = "ESQUINADataGridViewTextBoxColumn"
-        Me.ESQUINADataGridViewTextBoxColumn.ReadOnly = True
+        Me.DataGridViewTextBoxColumn20.DataPropertyName = "ESQUINA"
+        Me.DataGridViewTextBoxColumn20.HeaderText = "ESQUINA"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
+        Me.DataGridViewTextBoxColumn20.ReadOnly = True
+        Me.DataGridViewTextBoxColumn20.Width = 120
         '
-        'MODFUENTEDataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn21
         '
-        Me.MODFUENTEDataGridViewTextBoxColumn.DataPropertyName = "MODFUENTE"
-        Me.MODFUENTEDataGridViewTextBoxColumn.HeaderText = "Fuente"
-        Me.MODFUENTEDataGridViewTextBoxColumn.Name = "MODFUENTEDataGridViewTextBoxColumn"
-        Me.MODFUENTEDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MODFUENTEDataGridViewTextBoxColumn.Width = 55
+        Me.DataGridViewTextBoxColumn21.DataPropertyName = "MODFUENTE"
+        Me.DataGridViewTextBoxColumn21.HeaderText = "MODFUENTE"
+        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
+        Me.DataGridViewTextBoxColumn21.ReadOnly = True
+        Me.DataGridViewTextBoxColumn21.Width = 50
         '
-        'MODBATERIADataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn22
         '
-        Me.MODBATERIADataGridViewTextBoxColumn.DataPropertyName = "MODBATERIA"
-        Me.MODBATERIADataGridViewTextBoxColumn.HeaderText = "Bateria"
-        Me.MODBATERIADataGridViewTextBoxColumn.Name = "MODBATERIADataGridViewTextBoxColumn"
-        Me.MODBATERIADataGridViewTextBoxColumn.ReadOnly = True
-        Me.MODBATERIADataGridViewTextBoxColumn.Width = 60
+        Me.DataGridViewTextBoxColumn22.DataPropertyName = "MODBATERIA"
+        Me.DataGridViewTextBoxColumn22.HeaderText = "MODBATERIA"
+        Me.DataGridViewTextBoxColumn22.Name = "DataGridViewTextBoxColumn22"
+        Me.DataGridViewTextBoxColumn22.ReadOnly = True
+        Me.DataGridViewTextBoxColumn22.Width = 50
         '
-        'CANTBATDataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn23
         '
-        Me.CANTBATDataGridViewTextBoxColumn.DataPropertyName = "CANT_BAT"
-        Me.CANTBATDataGridViewTextBoxColumn.HeaderText = "C Bat"
-        Me.CANTBATDataGridViewTextBoxColumn.Name = "CANTBATDataGridViewTextBoxColumn"
-        Me.CANTBATDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CANTBATDataGridViewTextBoxColumn.Width = 40
+        Me.DataGridViewTextBoxColumn23.DataPropertyName = "CANT_BAT"
+        Me.DataGridViewTextBoxColumn23.HeaderText = "CANT_BAT"
+        Me.DataGridViewTextBoxColumn23.Name = "DataGridViewTextBoxColumn23"
+        Me.DataGridViewTextBoxColumn23.ReadOnly = True
+        Me.DataGridViewTextBoxColumn23.Width = 25
         '
         'FECHABATDataGridViewTextBoxColumn
         '
         Me.FECHABATDataGridViewTextBoxColumn.DataPropertyName = "FECHA_BAT"
-        Me.FECHABATDataGridViewTextBoxColumn.HeaderText = "Fab Bat"
+        DataGridViewCellStyle16.Format = "d"
+        DataGridViewCellStyle16.NullValue = Nothing
+        Me.FECHABATDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle16
+        Me.FECHABATDataGridViewTextBoxColumn.HeaderText = "FECHA_BAT"
         Me.FECHABATDataGridViewTextBoxColumn.Name = "FECHABATDataGridViewTextBoxColumn"
         Me.FECHABATDataGridViewTextBoxColumn.ReadOnly = True
         Me.FECHABATDataGridViewTextBoxColumn.Width = 75
         '
-        'RXDataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn24
         '
-        Me.RXDataGridViewTextBoxColumn.DataPropertyName = "RX"
-        Me.RXDataGridViewTextBoxColumn.HeaderText = "RX"
-        Me.RXDataGridViewTextBoxColumn.Name = "RXDataGridViewTextBoxColumn"
-        Me.RXDataGridViewTextBoxColumn.ReadOnly = True
-        Me.RXDataGridViewTextBoxColumn.Width = 20
+        Me.DataGridViewTextBoxColumn24.DataPropertyName = "RX"
+        Me.DataGridViewTextBoxColumn24.HeaderText = "RX"
+        Me.DataGridViewTextBoxColumn24.Name = "DataGridViewTextBoxColumn24"
+        Me.DataGridViewTextBoxColumn24.ReadOnly = True
+        Me.DataGridViewTextBoxColumn24.Width = 20
         '
-        'TRDataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn26
         '
-        Me.TRDataGridViewTextBoxColumn.DataPropertyName = "TR"
-        Me.TRDataGridViewTextBoxColumn.HeaderText = "TR"
-        Me.TRDataGridViewTextBoxColumn.Name = "TRDataGridViewTextBoxColumn"
-        Me.TRDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TRDataGridViewTextBoxColumn.Width = 20
+        Me.DataGridViewTextBoxColumn26.DataPropertyName = "TR"
+        Me.DataGridViewTextBoxColumn26.HeaderText = "TR"
+        Me.DataGridViewTextBoxColumn26.Name = "DataGridViewTextBoxColumn26"
+        Me.DataGridViewTextBoxColumn26.ReadOnly = True
+        Me.DataGridViewTextBoxColumn26.Width = 20
         '
-        'BRDataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn27
         '
-        Me.BRDataGridViewTextBoxColumn.DataPropertyName = "BR"
-        Me.BRDataGridViewTextBoxColumn.HeaderText = "MB"
-        Me.BRDataGridViewTextBoxColumn.Name = "BRDataGridViewTextBoxColumn"
-        Me.BRDataGridViewTextBoxColumn.ReadOnly = True
-        Me.BRDataGridViewTextBoxColumn.Width = 20
+        Me.DataGridViewTextBoxColumn27.DataPropertyName = "BR"
+        Me.DataGridViewTextBoxColumn27.HeaderText = "BR"
+        Me.DataGridViewTextBoxColumn27.Name = "DataGridViewTextBoxColumn27"
+        Me.DataGridViewTextBoxColumn27.ReadOnly = True
+        Me.DataGridViewTextBoxColumn27.Width = 20
         '
-        'LEXDataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn28
         '
-        Me.LEXDataGridViewTextBoxColumn.DataPropertyName = "LEX"
-        Me.LEXDataGridViewTextBoxColumn.HeaderText = "LX"
-        Me.LEXDataGridViewTextBoxColumn.Name = "LEXDataGridViewTextBoxColumn"
-        Me.LEXDataGridViewTextBoxColumn.ReadOnly = True
-        Me.LEXDataGridViewTextBoxColumn.Width = 20
-        '
-        'AUTONOMIADataGridViewTextBoxColumn
-        '
-        Me.AUTONOMIADataGridViewTextBoxColumn.DataPropertyName = "AUTONOMIA"
-        Me.AUTONOMIADataGridViewTextBoxColumn.HeaderText = "AUTO"
-        Me.AUTONOMIADataGridViewTextBoxColumn.Name = "AUTONOMIADataGridViewTextBoxColumn"
-        Me.AUTONOMIADataGridViewTextBoxColumn.ReadOnly = True
-        Me.AUTONOMIADataGridViewTextBoxColumn.Visible = False
-        Me.AUTONOMIADataGridViewTextBoxColumn.Width = 30
-        '
-        'ITOTALDataGridViewTextBoxColumn
-        '
-        Me.ITOTALDataGridViewTextBoxColumn.DataPropertyName = "ITOTAL"
-        Me.ITOTALDataGridViewTextBoxColumn.HeaderText = "A"
-        Me.ITOTALDataGridViewTextBoxColumn.Name = "ITOTALDataGridViewTextBoxColumn"
-        Me.ITOTALDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ITOTALDataGridViewTextBoxColumn.Visible = False
-        Me.ITOTALDataGridViewTextBoxColumn.Width = 30
+        Me.DataGridViewTextBoxColumn28.DataPropertyName = "LEX"
+        Me.DataGridViewTextBoxColumn28.HeaderText = "LEX"
+        Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
+        Me.DataGridViewTextBoxColumn28.ReadOnly = True
+        Me.DataGridViewTextBoxColumn28.Width = 25
         '
         'CARGAREALDataGridViewTextBoxColumn
         '
         Me.CARGAREALDataGridViewTextBoxColumn.DataPropertyName = "CARGA_REAL"
-        Me.CARGAREALDataGridViewTextBoxColumn.HeaderText = "C/R"
+        Me.CARGAREALDataGridViewTextBoxColumn.HeaderText = "CARGA_REAL"
         Me.CARGAREALDataGridViewTextBoxColumn.Name = "CARGAREALDataGridViewTextBoxColumn"
         Me.CARGAREALDataGridViewTextBoxColumn.ReadOnly = True
         Me.CARGAREALDataGridViewTextBoxColumn.Width = 30
         '
-        'IPMODEMDataGridViewTextBoxColumn
+        'DataGridViewTextBoxColumn15
         '
-        Me.IPMODEMDataGridViewTextBoxColumn.DataPropertyName = "IPMODEM"
-        Me.IPMODEMDataGridViewTextBoxColumn.HeaderText = "IPMODEM"
-        Me.IPMODEMDataGridViewTextBoxColumn.Name = "IPMODEMDataGridViewTextBoxColumn"
-        Me.IPMODEMDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IPMODEMDataGridViewTextBoxColumn.Visible = False
-        '
-        'MAPEODataGridViewTextBoxColumn
-        '
-        Me.MAPEODataGridViewTextBoxColumn.DataPropertyName = "MAPEO"
-        Me.MAPEODataGridViewTextBoxColumn.HeaderText = "MAPEO"
-        Me.MAPEODataGridViewTextBoxColumn.Name = "MAPEODataGridViewTextBoxColumn"
-        Me.MAPEODataGridViewTextBoxColumn.ReadOnly = True
-        Me.MAPEODataGridViewTextBoxColumn.Visible = False
-        '
-        'ID2DataGridViewTextBoxColumn
-        '
-        Me.ID2DataGridViewTextBoxColumn.DataPropertyName = "ID2"
-        Me.ID2DataGridViewTextBoxColumn.HeaderText = "ID2"
-        Me.ID2DataGridViewTextBoxColumn.Name = "ID2DataGridViewTextBoxColumn"
-        Me.ID2DataGridViewTextBoxColumn.ReadOnly = True
-        Me.ID2DataGridViewTextBoxColumn.Visible = False
-        '
-        'MACDataGridViewTextBoxColumn
-        '
-        Me.MACDataGridViewTextBoxColumn.DataPropertyName = "MAC"
-        Me.MACDataGridViewTextBoxColumn.HeaderText = "MAC"
-        Me.MACDataGridViewTextBoxColumn.Name = "MACDataGridViewTextBoxColumn"
-        Me.MACDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MACDataGridViewTextBoxColumn.Visible = False
-        '
-        'IMEIDataGridViewTextBoxColumn
-        '
-        Me.IMEIDataGridViewTextBoxColumn.DataPropertyName = "IMEI"
-        Me.IMEIDataGridViewTextBoxColumn.HeaderText = "IMEI"
-        Me.IMEIDataGridViewTextBoxColumn.Name = "IMEIDataGridViewTextBoxColumn"
-        Me.IMEIDataGridViewTextBoxColumn.ReadOnly = True
-        Me.IMEIDataGridViewTextBoxColumn.Visible = False
-        '
-        'PINDataGridViewTextBoxColumn
-        '
-        Me.PINDataGridViewTextBoxColumn.DataPropertyName = "PIN"
-        Me.PINDataGridViewTextBoxColumn.HeaderText = "PIN"
-        Me.PINDataGridViewTextBoxColumn.Name = "PINDataGridViewTextBoxColumn"
-        Me.PINDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PINDataGridViewTextBoxColumn.Visible = False
-        '
-        'PUKDataGridViewTextBoxColumn
-        '
-        Me.PUKDataGridViewTextBoxColumn.DataPropertyName = "PUK"
-        Me.PUKDataGridViewTextBoxColumn.HeaderText = "PUK"
-        Me.PUKDataGridViewTextBoxColumn.Name = "PUKDataGridViewTextBoxColumn"
-        Me.PUKDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PUKDataGridViewTextBoxColumn.Visible = False
-        '
-        'VPN1DataGridViewTextBoxColumn
-        '
-        Me.VPN1DataGridViewTextBoxColumn.DataPropertyName = "VPN1"
-        Me.VPN1DataGridViewTextBoxColumn.HeaderText = "VPN1"
-        Me.VPN1DataGridViewTextBoxColumn.Name = "VPN1DataGridViewTextBoxColumn"
-        Me.VPN1DataGridViewTextBoxColumn.ReadOnly = True
-        Me.VPN1DataGridViewTextBoxColumn.Visible = False
-        '
-        'VPN2DataGridViewTextBoxColumn
-        '
-        Me.VPN2DataGridViewTextBoxColumn.DataPropertyName = "VPN2"
-        Me.VPN2DataGridViewTextBoxColumn.HeaderText = "VPN2"
-        Me.VPN2DataGridViewTextBoxColumn.Name = "VPN2DataGridViewTextBoxColumn"
-        Me.VPN2DataGridViewTextBoxColumn.ReadOnly = True
-        Me.VPN2DataGridViewTextBoxColumn.Visible = False
-        '
-        'GABINETEDataGridViewTextBoxColumn
-        '
-        Me.GABINETEDataGridViewTextBoxColumn.DataPropertyName = "GABINETE"
-        Me.GABINETEDataGridViewTextBoxColumn.HeaderText = "GABINETE"
-        Me.GABINETEDataGridViewTextBoxColumn.Name = "GABINETEDataGridViewTextBoxColumn"
-        Me.GABINETEDataGridViewTextBoxColumn.ReadOnly = True
-        Me.GABINETEDataGridViewTextBoxColumn.Visible = False
-        '
-        'FECHADataGridViewTextBoxColumn
-        '
-        Me.FECHADataGridViewTextBoxColumn.DataPropertyName = "FECHA"
-        DataGridViewCellStyle2.Format = "D"
-        Me.FECHADataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
-        Me.FECHADataGridViewTextBoxColumn.HeaderText = "Ult Reg"
-        Me.FECHADataGridViewTextBoxColumn.Name = "FECHADataGridViewTextBoxColumn"
-        Me.FECHADataGridViewTextBoxColumn.ReadOnly = True
-        Me.FECHADataGridViewTextBoxColumn.Width = 70
+        Me.DataGridViewTextBoxColumn15.DataPropertyName = "FECHA"
+        DataGridViewCellStyle17.Format = "d"
+        DataGridViewCellStyle17.NullValue = Nothing
+        Me.DataGridViewTextBoxColumn15.DefaultCellStyle = DataGridViewCellStyle17
+        Me.DataGridViewTextBoxColumn15.HeaderText = "FECHA"
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        Me.DataGridViewTextBoxColumn15.ReadOnly = True
+        Me.DataGridViewTextBoxColumn15.Width = 75
         '
         'FUENTES
         '
@@ -1619,7 +1364,6 @@ Partial Class FUENTES
         Me.Controls.Add(Me.OBS_CIERRE)
         Me.Controls.Add(Me.DGVAdjuntos)
         Me.Controls.Add(Me.LBL_ADJUNTOS)
-        Me.Controls.Add(Me.BOT_CARGARTRABAJOS)
         Me.Controls.Add(Me.ORDENESDataGridView)
         Me.Controls.Add(Me.OBS_ORIGEN)
         Me.DoubleBuffered = True
@@ -1629,9 +1373,9 @@ Partial Class FUENTES
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GENERAL"
         CType(Me.NRONODOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BASEFUENTESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INSTALACIONDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FUENTEBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BASEFUENTESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INSTALACIONBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AFECTACIONBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1647,7 +1391,6 @@ Partial Class FUENTES
         CType(Me.TRABAJOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ANTIGUEDADBATBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BaseBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BasefuentesDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OBESERVACIONESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TAREASBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1660,21 +1403,20 @@ Partial Class FUENTES
 
     End Sub
 
-    Friend WithEvents BASEFUENTESDataSet As BASEFUENTESDataSet
+    '  Friend WithEvents BASEFUENTESDataSet As BASEFUENTESDataSet
     Friend WithEvents ANTIGUEDADBATBindingSource As BindingSource
-    Friend WithEvents ANTIGUEDADBATTableAdapter As BASEFUENTESDataSetTableAdapters.ANTIGUEDADBATTableAdapter
-    Friend WithEvents TableAdapterManager As BASEFUENTESDataSetTableAdapters.TableAdapterManager
-    Friend WithEvents BaseTableAdapter As BASEFUENTESDataSetTableAdapters.baseTableAdapter
+    '  Friend WithEvents ANTIGUEDADBATTableAdapter As BASEFUENTESDataSetTableAdapters.ANTIGUEDADBATTableAdapter
+    '  Friend WithEvents TableAdapterManager As BASEFUENTESDataSetTableAdapters.TableAdapterManager
+    '   Friend WithEvents BaseTableAdapter As BASEFUENTESDataSetTableAdapters.baseTableAdapter
     Friend WithEvents BaseBindingSource As BindingSource
-    Friend WithEvents HISTORICOTableAdapter As BASEFUENTESDataSetTableAdapters.HISTORICOTableAdapter
+    '  Friend WithEvents HISTORICOTableAdapter As BASEFUENTESDataSetTableAdapters.HISTORICOTableAdapter
     Friend WithEvents HISTORICOBindingSource As BindingSource
-    Friend WithEvents INSTALACIONTableAdapter As BASEFUENTESDataSetTableAdapters.INSTALACIONTableAdapter
+    '  Friend WithEvents INSTALACIONTableAdapter As BASEFUENTESDataSetTableAdapters.INSTALACIONTableAdapter
     Friend WithEvents INSTALACIONBindingSource As BindingSource
-    Friend WithEvents NRONODOSTableAdapter As BASEFUENTESDataSetTableAdapters.NRONODOSTableAdapter
+    ' Friend WithEvents NRONODOSTableAdapter As BASEFUENTESDataSetTableAdapters.NRONODOSTableAdapter
     Friend WithEvents NRONODOSBindingSource As BindingSource
-    Friend WithEvents TRABAJOSTableAdapter As BASEFUENTESDataSetTableAdapters.TRABAJOSTableAdapter
+    ' Friend WithEvents TRABAJOSTableAdapter As BASEFUENTESDataSetTableAdapters.TRABAJOSTableAdapter
     Friend WithEvents TRABAJOSBindingSource As BindingSource
-    Friend WithEvents BOT_CARGARTRABAJOS As Button
     Friend WithEvents BOT_CANCELAR As Button
     Friend WithEvents BOT_EDITAR As Button
     Friend WithEvents BOT_NUEVO As Button
@@ -1691,7 +1433,6 @@ Partial Class FUENTES
     Friend WithEvents ORDENESDataSet As ORDENESDataSet
     Friend WithEvents AFECTACIONBindingSource As BindingSource
     Friend WithEvents AFECTACIONTableAdapter As ORDENESDataSetTableAdapters.AFECTACIONTableAdapter
-    Friend WithEvents TableAdapterManager1 As ORDENESDataSetTableAdapters.TableAdapterManager
     Friend WithEvents MENU_INSTALACION As ContextMenuStrip
     Friend WithEvents CREAR_TRABAJO As ToolStripMenuItem
     Friend WithEvents MANT_PROG As ToolStripMenuItem
@@ -1712,7 +1453,7 @@ Partial Class FUENTES
     Friend WithEvents ORDENESBindingSource As BindingSource
     Friend WithEvents ORDENESTableAdapter As ORDENESDataSetTableAdapters.ORDENESTableAdapter
     Friend WithEvents ORDENESDataGridView As DataGridView
-    Friend WithEvents BasefuentesDataSet1 As BASEFUENTESDataSet
+    '   Friend WithEvents BasefuentesDataSet1 As BASEFUENTESDataSet
     Friend WithEvents PROCESOS As Label
     Friend WithEvents OBESERVACIONESBindingSource As BindingSource
     Friend WithEvents OBESERVACIONESTableAdapter As ORDENESDataSetTableAdapters.OBESERVACIONESTableAdapter
@@ -1735,12 +1476,10 @@ Partial Class FUENTES
     Friend WithEvents INDICESDataSet As INDICESDataSet
     Friend WithEvents INDICE_CALLESBindingSource As BindingSource
     Friend WithEvents INDICE_CALLESTableAdapter As INDICESDataSetTableAdapters.INDICE_CALLESTableAdapter
-    Friend WithEvents TableAdapterManager2 As INDICESDataSetTableAdapters.TableAdapterManager
     Friend WithEvents BTN_REPORTE As Button
     Friend WithEvents TAREASBindingSource As BindingSource
     Friend WithEvents TAREASTableAdapter As ORDENESDataSetTableAdapters.TAREASTableAdapter
-    Friend WithEvents FUENTEBindingSource As BindingSource
-    Friend WithEvents FUENTETableAdapter As BASEFUENTESDataSetTableAdapters.FUENTETableAdapter
+    ' Friend WithEvents FUENTETableAdapter As BASEFUENTESDataSetTableAdapters.FUENTETableAdapter
     Friend WithEvents BUSCA_INST As TextBox
     Friend WithEvents OBS_ORIGEN As TextBox
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
@@ -1770,34 +1509,61 @@ Partial Class FUENTES
     Friend WithEvents TOTAL_BATERIAS As Label
     Friend WithEvents BUSCA_FECHA_BAT As TextBox
     Friend WithEvents BUSCA_CANT_BAT As TextBox
+    ' Friend WithEvents FUENTES_MODTableAdapter As BASEFUENTESDataSetTableAdapters.FUENTES_MODTableAdapter
     Friend WithEvents IDFUENTEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents INSTALACIONRUSDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents INSTALACIONDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NODODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ZONADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CALLEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents PUERTADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ESQUINADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents MODFUENTEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MODBATERIADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CANTBATDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FECHABATDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CALLEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents ESQUINADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents PUERTADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TIPODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents Expr1009DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    '   Friend WithEvents FUENTETableAdapter As BD_FUENTESDataSetTableAdapters.FUENTETableAdapter
+    '   Friend WithEvents TableAdapterManager As BD_FUENTESDataSetTableAdapters.TableAdapterManager
+    Friend WithEvents DataGridViewTextBoxColumn12 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents FECHADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
     Friend WithEvents RXDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TRDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents BRDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents LEXDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents AUTONOMIADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ITOTALDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents CARGAREALDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
     Friend WithEvents IPMODEMDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents MAPEODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents ID2DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents MACDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents IMEIDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PINDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents PUKDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents VPN1DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents VPN2DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents GABINETEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents FECHADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
+    Friend WithEvents CANTBATDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn13 As DataGridViewTextBoxColumn
+    Friend WithEvents MODBATERIADataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents BASEFUENTESDataSet As BASEFUENTESDataSet
+    Friend WithEvents FUENTETableAdapter As BASEFUENTESDataSetTableAdapters.FUENTETableAdapter
+    Friend WithEvents FUENTEBindingSource As BindingSource
+    Friend WithEvents DataGridViewTextBoxColumn14 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
+    Friend WithEvents INSTALACIONDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn16 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn18 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn21 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn22 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn23 As DataGridViewTextBoxColumn
+    Friend WithEvents FECHABATDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn24 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn26 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn27 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn28 As DataGridViewTextBoxColumn
+    Friend WithEvents CARGAREALDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn15 As DataGridViewTextBoxColumn
 End Class

@@ -1,5 +1,6 @@
 ﻿Public Class ORDEN
     Dim CONTAR As Integer
+    Dim DT As DataTable
     Private Sub BTN_BUSCAR_Click(sender As Object, e As EventArgs) Handles BTN_BUSCAR.Click
         Cursor = Cursors.WaitCursor
         If NRO_ORDEN.Text <> "" Then
@@ -41,5 +42,28 @@
 
     Private Sub BTN_GUARDAR_Click(sender As Object, e As EventArgs) Handles BTN_GUARDAR.Click
         ORDENESTableAdapter.Update(ORDENESDataSet.ORDENES)
+    End Sub
+
+    Private Sub BTN_CONSULTA_Click(sender As Object, e As EventArgs) Handles BTN_CONSULTA.Click
+        Cursor = Cursors.WaitCursor
+        ORDENESDataGridView.DataSource = Nothing
+
+        Try
+            If TXT_SQL.Text = "" Then Throw New Exception("STRING INCORRECTO")
+            If TXT_BD.Text = "" Then Throw New Exception("SIN BASE DE DATOS")
+            Dim RESPUESTA = ExecuteQuery(TXT_BD.Text, TXT_SQL.Text)
+            DT = New DataTable
+            DT.Load(RESPUESTA)
+            ORDENESDataGridView.DataSource = DT
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub BTN_EXPORT_Click(sender As Object, e As EventArgs) Handles BTN_EXPORT.Click
+        Cursor = Cursors.WaitCursor
+        ExportarExcel(DT, "FECHA " & Today.ToShortDateString())
+        Cursor = Cursors.Default
     End Sub
 End Class

@@ -10,8 +10,6 @@ Public Class INICIO
 
     Private Sub INICIO_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
-
         MDUTableAdapter.FillByDISCT_NODO(EDIFICIODataSet.MDU)
         CBNODO.Items.Clear()
         For Each MDU In EDIFICIODataSet.MDU
@@ -166,6 +164,8 @@ Public Class INICIO
                 AVANCERow.VER_DUCTOS_FECHADA = True
             Case "SUBTERRANEO"
                 AVANCERow.VER_SUBTERRANEO = True
+            Case "CERTIFICAR"
+                AVANCERow.CERTIFICAR = True
         End Select
         AVANCETableAdapter.Update(AVANCERow)
         AVANCETableAdapter.Fill(EDIFICIODataSet.AVANCE)
@@ -332,10 +332,8 @@ Public Class INICIO
 
 
     Private Sub AdministrarSubMenuItem_Click(sender As Object, e As EventArgs) Handles AdministrarSubMenuItem.Click
-        If MDU.Visible Then
-            MDU.BringToFront()
-        End If
-        MDU.Show()
+        If MDU.Visible Then MDU.BringToFront()
+        MDU.Show(Me)
     End Sub
 
     Private Sub AgregarPorExcelCertEdificioSubMenuItem_Click(sender As Object, e As EventArgs) Handles AgregarPorExcelCertEdificioSubMenuItem.Click
@@ -382,5 +380,10 @@ Public Class INICIO
         End If
     End Sub
 
-
+    Private Sub INSTALACIONESToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles INSTALACIONESToolStripMenuItem.Click
+        Cursor = Cursors.WaitCursor
+        ReporteNapsTableAdapter.FillByNODO(EDIFICIODataSet.ReporteNaps, CBNODO.Text)
+        ExportarExcel(EDIFICIODataSet.ReporteNaps, "NAP EN EDIFICIOS EN NODO " & CBNODO.Text)
+        Cursor = Cursors.Default
+    End Sub
 End Class

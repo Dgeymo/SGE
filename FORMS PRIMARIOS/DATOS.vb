@@ -19,7 +19,6 @@ Public Class DATOS
     Public COMBORow As ORDENESDataSet.COMBOSRow
     Public DATOS_TRABAJORow As ORDENESDataSet.TRABAJOSRow
     Public DATOS_ORDENESRow As ORDENESDataSet.ORDENESRow
-    Public DATOS_ORDENAAGENDARRow As DataRow
     Dim NewTAREASRow As ORDENESDataSet.TAREASRow
     Dim TAREASRow As ORDENESDataSet.TAREASRow
     Dim NEWORDENRow As ORDENESDataSet.ORDENESRow
@@ -135,8 +134,9 @@ Public Class DATOS
     Public DATOS_MJE_DESTINOSECTOR As String
     Public DATOS_MJE_MENSAJE As String
     Public DATOS_MJE_NROORDENASOC As String
-    Dim ENCABEZADO As PdfPTable
+
     Private Sub DATOS_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Cursor = Cursors.WaitCursor
         Select Case SECTOR
             Case "PLANIFICACION TECNICA"
                 If FULLNOMBRE = "DIEGO GEYMONAT" Then
@@ -275,6 +275,7 @@ Public Class DATOS
             '  TRABAJOSDataGridView.Columns(11).Visible = True
             ' TRABAJOSDataGridView.BackgroundColor = Color.White
         End If
+        Cursor = Cursors.Default
     End Sub
     Private Sub DATOS_Shown(sender As Object, e As EventArgs) Handles Me.Shown
 
@@ -308,8 +309,7 @@ Public Class DATOS
                                 DIRECCION_GEST.Text = DIRECCION_MDU & " " & NUMERO_MDU
                                 DIRECCION_GEO = DIRECCION_GEST.Text
                                 LLENA_CAMPOSGESTION()
-                                LLENA_TRABAJOS()
-
+                                LLENA_TRABAJOS_DESDE_GESTION()
                             Case "CARPETA"
                                 EdificiosTableAdapter.FillByCARPETA(MDUDataSet.Edificios, BUSCA_PRIM, BUSCA_PRIM)
                                 DATOS_EDIFICIORow = MDUDataSet.Edificios.Rows(0)
@@ -327,8 +327,7 @@ Public Class DATOS
                                     If IsDBNull(DATOS_GESTIONRow("NUMERO")) = False Then NUMERO_MDU = DATOS_GESTIONRow("NUMERO")
 
                                     LLENA_CAMPOSGESTION()
-                                    LLENA_TRABAJOS()
-
+                                    LLENA_TRABAJOS_DESDE_GESTION()
                                 End If
                         End Select
 
@@ -348,17 +347,15 @@ Public Class DATOS
                             Select Case ACCESO_TIPO
                                 Case "GESTION"
                                     TRABAJOSTableAdapter.FillByIDGESTION(ORDENESDataSet.TRABAJOS, ACCESO_GESTION)
-                                    LLENA_TRABAJOS()
+                                    LLENA_TRABAJOS_DESDE_GESTION()
                                 Case "TRABAJO"
                                     TRABAJOSTableAdapter.FillByID_TRABAJO(ORDENESDataSet.TRABAJOS, ACCESO_TRABAJO)
-                                    LLENA_TRABAJOS()
+                                    LLENA_TRABAJOS_DESDE_GESTION()
                                 Case "ORDEN"
                                     TRABAJOSTableAdapter.FillByID_TRABAJO(ORDENESDataSet.TRABAJOS, ACCESO_TRABAJO)
                                     ORDENESTableAdapter.FillByIDORDENINT(ORDENESDataSet.ORDENES, NROORDENINT)
-                                    DATOS_TRABAJORow = ORDENESDataSet.TRABAJOS.Rows(0)
-                                    DATOS_ORDENESRow = ORDENESDataSet.ORDENES.Rows(0)
-                                    CARGA_TRABAJOS()
-                                    CARGA_VALORESORDENES()
+                                    CARGA_TRABAJOS(ORDENESDataSet.TRABAJOS.Rows(0))
+                                    CARGA_VALORESORDENES(ORDENESDataSet.ORDENES.Rows(0))
                             End Select
                             'CARGA EDIFICIO SELECCIONADO
                             'EdificiosTableAdapter.FillByCARPETA(MDUDataSet.Edificios, DATOS_GESTIONRow("CARPETA"), DATOS_GESTIONRow(""))
@@ -392,18 +389,17 @@ Public Class DATOS
                             Select Case ACCESO_TIPO
                                 Case "GESTION"
                                     TRABAJOSTableAdapter.FillByIDGESTION(ORDENESDataSet.TRABAJOS, ACCESO_GESTION)
-                                    LLENA_TRABAJOS()
+                                    LLENA_TRABAJOS_DESDE_GESTION()
                                 Case "TRABAJO"
                                     TRABAJOSTableAdapter.FillByID_TRABAJO(ORDENESDataSet.TRABAJOS, ACCESO_TRABAJO)
                                     ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, ACCESO_TRABAJO)
-                                    LLENA_TRABAJOS()
+                                    CARGA_TRABAJOS(ORDENESDataSet.TRABAJOS.Rows(0))
+                                   ' LLENA_TRABAJOS_DESDE_GESTION()
                                 Case "ORDEN"
                                     TRABAJOSTableAdapter.FillByID_TRABAJO(ORDENESDataSet.TRABAJOS, ACCESO_TRABAJO)
                                     ORDENESTableAdapter.FillByIDORDENINT(ORDENESDataSet.ORDENES, NROORDENINT)
-                                    DATOS_TRABAJORow = ORDENESDataSet.TRABAJOS.Rows.Find(ACCESO_TRABAJO)
-                                    DATOS_ORDENESRow = ORDENESDataSet.ORDENES.Rows.Find(NROORDENINT)
-                                    CARGA_TRABAJOS()
-                                    CARGA_VALORESORDENES()
+                                    CARGA_TRABAJOS(ORDENESDataSet.TRABAJOS.Rows.Find(ACCESO_TRABAJO))
+                                    CARGA_VALORESORDENES(ORDENESDataSet.ORDENES.Rows.Find(NROORDENINT))
                             End Select
 
                         End If
@@ -430,61 +426,100 @@ Public Class DATOS
             If e.Button = Windows.Forms.MouseButtons.Left Then
                 NROGESTION = GESTIONDataGridView.CurrentRow.Cells.Item(0).Value
                 DATOS_GESTIONRow = ORDENESDataSet.GESTION.Rows.Find(NROGESTION)
-                If DATOS_GESTIONRow("COMPLETO") = False Then
-                    GEST_COMPLETO_TOOLSTRIP.Text = "Marcar COMPLETO"
-                Else
-                    GEST_COMPLETO_TOOLSTRIP.Text = "Quitar COMPLETO"
-                End If
-                GEST_NEWTRABAJO_TOOLSTRIP.Visible = True
-                GEST_EDITAR_TOOLSTRIP.Visible = True
-                GEST_STATUS_TOOLSTRIP.Visible = True
-                GEST_RESPONSABLE_ToolStrip.Visible = True
-
-                GEST_INICIAR_ToolStrip.Visible = False
-                GEST_DEMORAR_ToolStrip.Visible = False
-                GEST_REINICIAR_ToolStrip.Visible = False
-                GEST_FINALIZAR_ToolStrip.Visible = False
-                GEST_CANCELAR_ToolStrip.Visible = False
-                GEST_COMPLETO_TOOLSTRIP.Visible = True
-                GEST_Separator1.Visible = True
-                If DATOS_GESTIONRow("COMPLETO") = True Then
-                    GEST_COMPLETO_TOOLSTRIP.Text = "Quitar COMPLETO"
-                Else
-                    GEST_COMPLETO_TOOLSTRIP.Text = "Marcar COMPLETO"
-                End If
-
-                GEST_GRAFICAR_ToolStrip.Visible = True
-                Select Case DATOS_GESTIONRow("STATUS")
-                    Case "INGRESADO"
-                        GEST_INICIAR_ToolStrip.Visible = True
-                        GEST_CANCELAR_ToolStrip.Visible = True
-                    Case "INICIADO"
-                        GEST_DEMORAR_ToolStrip.Visible = True
-                        GEST_FINALIZAR_ToolStrip.Visible = True
-                        GEST_CANCELAR_ToolStrip.Visible = True
-                    Case "DEMORADO"
-                        GEST_REINICIAR_ToolStrip.Visible = True
-                        GEST_CANCELAR_ToolStrip.Visible = True
-                    Case "FINALIZADO"
-                        GEST_NEWTRABAJO_TOOLSTRIP.Visible = False
-                        GEST_EDITAR_TOOLSTRIP.Visible = False
-                        GEST_STATUS_TOOLSTRIP.Visible = False
-                        GEST_RESPONSABLE_ToolStrip.Visible = False
-                        GEST_COMPLETO_TOOLSTRIP.Visible = False
-                        GEST_Separator1.Visible = False
-                End Select
-                CARGA_COMBOSTRA()
-                GESTIONDataGridView.ContextMenuStrip = MENU_GESTION
+                CARGA_COMBOSGEST()
                 LLENA_CAMPOSGESTION()
-                TRABAJOSTableAdapter.FillByIDGESTION(ORDENESDataSet.TRABAJOS, DATOS_GESTIONRow("ID_GESTION"))
-                LLENA_TRABAJOS()
+                LLENA_TRABAJOS_DESDE_GESTION()
             End If
         End If
         Cursor = DefaultCursor
     End Sub
+    Private Sub CARGA_COMBOSGEST()
+        If DATOS_GESTIONRow("COMPLETO") = False Then
+            GEST_COMPLETO_TOOLSTRIP.Text = "Marcar COMPLETO"
+        Else
+            GEST_COMPLETO_TOOLSTRIP.Text = "Quitar COMPLETO"
+        End If
+        GEST_NEWTRABAJO_TOOLSTRIP.Visible = True
+        GEST_EDITAR_TOOLSTRIP.Visible = True
+        GEST_STATUS_TOOLSTRIP.Visible = True
+        GEST_RESPONSABLE_ToolStrip.Visible = True
+
+        GEST_INICIAR_ToolStrip.Visible = False
+        GEST_DEMORAR_ToolStrip.Visible = False
+        GEST_REINICIAR_ToolStrip.Visible = False
+        GEST_FINALIZAR_ToolStrip.Visible = False
+        GEST_CANCELAR_ToolStrip.Visible = False
+        GEST_COMPLETO_TOOLSTRIP.Visible = True
+        GEST_Separator1.Visible = True
+        If DATOS_GESTIONRow("COMPLETO") = True Then
+            GEST_COMPLETO_TOOLSTRIP.Text = "Quitar COMPLETO"
+        Else
+            GEST_COMPLETO_TOOLSTRIP.Text = "Marcar COMPLETO"
+        End If
+
+        GEST_GRAFICAR_ToolStrip.Visible = True
+        Select Case DATOS_GESTIONRow("STATUS")
+            Case "INGRESADO"
+                GEST_INICIAR_ToolStrip.Visible = True
+                GEST_CANCELAR_ToolStrip.Visible = True
+            Case "INICIADO"
+                GEST_DEMORAR_ToolStrip.Visible = True
+                GEST_FINALIZAR_ToolStrip.Visible = True
+                GEST_CANCELAR_ToolStrip.Visible = True
+            Case "DEMORADO"
+                GEST_REINICIAR_ToolStrip.Visible = True
+                GEST_CANCELAR_ToolStrip.Visible = True
+            Case "FINALIZADO"
+                GEST_NEWTRABAJO_TOOLSTRIP.Visible = False
+                GEST_EDITAR_TOOLSTRIP.Visible = False
+                GEST_STATUS_TOOLSTRIP.Visible = False
+                GEST_RESPONSABLE_ToolStrip.Visible = False
+                GEST_COMPLETO_TOOLSTRIP.Visible = False
+                GEST_Separator1.Visible = False
+        End Select
+
+        'BORRA LOS ITEMS DE LOS COMBOS A CREAR
+        GEST_TRAB1_TOOLS.Visible = False
+        GEST_TRAB2_TOOLS.Visible = False
+        GEST_TRAB3_TOOLS.Visible = False
+        GEST_TRAB4_TOOLS.Visible = False
+        GEST_TRAB5_TOOLS.Visible = False
+        GEST_TRAB6_TOOLS.Visible = False
+        GESTIONES_TIPOTableAdapter.FillByTIPO_GESTION(ORDENESDataSet.GESTIONES_TIPO, DATOS_GESTIONRow.TIPOGESTION)
+        COMBOSTableAdapter.FillByTIPO_GESTION(ORDENESDataSet.COMBOS, CInt(ORDENESDataSet.GESTIONES_TIPO.Rows(0).Item("GRUPO_GESTION")))
+        Dim CUENTA = 0
+        For X = 0 To ORDENESDataSet.COMBOS.Rows.Count - 1
+            COMBORow = ORDENESDataSet.COMBOS.Rows(X)
+            If COMBORow.DESDE = "GESTION" Then
+                Select Case CUENTA
+                    Case 0
+                        GEST_TRAB1_TOOLS.Visible = True
+                        GEST_TRAB1_TOOLS.Text = COMBORow.TIPO_TRABAJO
+                    Case 1
+                        GEST_TRAB2_TOOLS.Visible = True
+                        GEST_TRAB2_TOOLS.Text = COMBORow.TIPO_TRABAJO
+                    Case 2
+                        GEST_TRAB3_TOOLS.Visible = True
+                        GEST_TRAB3_TOOLS.Text = COMBORow.TIPO_TRABAJO
+                    Case 3
+                        GEST_TRAB4_TOOLS.Visible = True
+                        GEST_TRAB4_TOOLS.Text = COMBORow.TIPO_TRABAJO
+                    Case 4
+                        GEST_TRAB5_TOOLS.Visible = True
+                        GEST_TRAB5_TOOLS.Text = COMBORow.TIPO_TRABAJO
+                    Case 5
+                        GEST_TRAB6_TOOLS.Visible = True
+                        GEST_TRAB6_TOOLS.Text = COMBORow.TIPO_TRABAJO
+                End Select
+                CUENTA += 1
+            End If
+        Next
+
+
+        GESTIONDataGridView.ContextMenuStrip = MENU_GESTION
+    End Sub
     Private Sub GESTIONDataGridView_SelectionChanged(sender As Object, e As EventArgs) Handles GESTIONDataGridView.SelectionChanged
-        'LLENA_CAMPOSGESTION()
-        If VER_HISTGESTION.Checked = True Then
+        If VER_HISTGESTION.Checked Then
             If ORDENESDataSet.GESTION.Rows.Count > 0 Then
                 Me.HISTORICOTableAdapter.FillByIDGESTION(OrdenesDataSet1.HISTORICO, DATOS_GESTIONRow("ID_GESTION"))
                 Me.HISTORICOBindingSource1.MoveLast()
@@ -493,6 +528,7 @@ Public Class DATOS
         End If   'CARGA HISTORICO
     End Sub
     Public Sub LLENA_CAMPOSGESTION()
+        Cursor = Cursors.WaitCursor
         If ORDENESDataSet.GESTION.Count > 0 Then
             GEST_DESCRIPCION.Visible = True
             GESTIONDataGridView.Visible = True
@@ -615,147 +651,95 @@ Public Class DATOS
 
 
             If IsDBNull(DATOS_GESTIONRow("FECHAINICESTIMADA")) = False Then
-                    VARGEST_INIEST = DATOS_GESTIONRow("FECHAINICESTIMADA").ToString
-                Else
-                    VARGEST_INIEST = ""
-                End If
-                If IsDBNull(DATOS_GESTIONRow("TIEMPOEST")) = False Then
-                    VARGEST_TESTIM = DATOS_GESTIONRow("TIEMPOEST")
-                Else
-                    VARGEST_TESTIM = 0
-                End If
-                If IsDBNull(DATOS_GESTIONRow("NUMERO")) = False Then
-                    VARGEST_PUERTA = DATOS_GESTIONRow("NUMERO")
-                Else
-                    VARGEST_PUERTA = ""
-                End If
-                If IsDBNull(DATOS_GESTIONRow("CALLE")) = False Then
-                    VARGEST_CALLE = DATOS_GESTIONRow("CALLE")
+                VARGEST_INIEST = DATOS_GESTIONRow("FECHAINICESTIMADA").ToString
+            Else
+                VARGEST_INIEST = ""
+            End If
+            If IsDBNull(DATOS_GESTIONRow("TIEMPOEST")) = False Then
+                VARGEST_TESTIM = DATOS_GESTIONRow("TIEMPOEST")
+            Else
+                VARGEST_TESTIM = 0
+            End If
+            If IsDBNull(DATOS_GESTIONRow("NUMERO")) = False Then
+                VARGEST_PUERTA = DATOS_GESTIONRow("NUMERO")
+            Else
+                VARGEST_PUERTA = ""
+            End If
+            If IsDBNull(DATOS_GESTIONRow("CALLE")) = False Then
+                VARGEST_CALLE = DATOS_GESTIONRow("CALLE")
 
-                    If DATOS_GESTIONRow("CALLE") <> "" Then
-                        DIRECCION_GEST.Visible = True
-                        DIRECCION_GEST.Text = VARGEST_CALLE & "  " & VARGEST_PUERTA
-                        BTN_VER_GOOGLE.Visible = True
-                    Else
-                        DIRECCION_GEST.Visible = False
-                        BTN_VER_GOOGLE.Visible = False
-                    End If
+                If DATOS_GESTIONRow("CALLE") <> "" Then
+                    DIRECCION_GEST.Visible = True
+                    DIRECCION_GEST.Text = VARGEST_CALLE & "  " & VARGEST_PUERTA
+                    BTN_VER_GOOGLE.Visible = True
                 Else
                     DIRECCION_GEST.Visible = False
-                End If
-                If IsDBNull(DATOS_GESTIONRow("MANZANA")) = False Then
-                    VARGEST_SSM = DATOS_GESTIONRow("MANZANA")
-                Else
-                    VARGEST_SSM = ""
-                End If
-                If IsDBNull(DATOS_GESTIONRow("ZONA")) = False Then
-                    VARGEST_ZONA = DATOS_GESTIONRow("ZONA")
-                Else
-                    VARGEST_ZONA = ""
+                    BTN_VER_GOOGLE.Visible = False
                 End If
             Else
-                BORRA_ETIQUETAS_GEST()
+                DIRECCION_GEST.Visible = False
+            End If
+            If IsDBNull(DATOS_GESTIONRow("MANZANA")) = False Then
+                VARGEST_SSM = DATOS_GESTIONRow("MANZANA")
+            Else
+                VARGEST_SSM = ""
+            End If
+            If IsDBNull(DATOS_GESTIONRow("ZONA")) = False Then
+                VARGEST_ZONA = DATOS_GESTIONRow("ZONA")
+            Else
+                VARGEST_ZONA = ""
+            End If
+        Else
+            BORRA_ETIQUETAS_GEST()
         End If
+        Cursor = Cursors.Default
     End Sub
-    Private Sub TRABAJOSDataGridView_Click(sender As Object, e As MouseEventArgs) Handles TRABAJOSDataGridView.Click
+    Private Sub TRABAJOSDataGridView_Click(sender As Object, e As MouseEventArgs) Handles TRABAJOSDataGridView.MouseDown, TRABAJOSDataGridView.Click
+        Cursor = Cursors.WaitCursor
+
         If ORDENESDataSet.TRABAJOS.Rows.Count > 0 Then
             NROTRABAJO = TRABAJOSDataGridView.CurrentRow.Cells.Item(1).Value
             DATOS_TRABAJORow = ORDENESDataSet.TRABAJOS.Rows.Find(NROTRABAJO)
-            If e.Button = Windows.Forms.MouseButtons.Left Then
-                'CARGA EL DATAROW DE TRABAJOS
-                If DATOS_TRABAJORow("COMPLETO") = False Then
-                    TRAB_COMPLETO_ToolStrip.Text = "Marcar COMPLETO"
-                Else
-                    TRAB_COMPLETO_ToolStrip.Text = "Quitar COMPLETO"
-                End If
-                TRAB_NUEVOTRAB_ToolStrip.Visible = True
-                TRAB_STATUS_ToolStrip.Visible = True
-                TRAB_CANCELAR_ToolStrip.Visible = True
-                TRAB_INICIAR_ToolStrip.Visible = True
-                TRAB_DEMORAR_ToolStrip.Visible = True
-                TRAB_FINALIZAR_ToolStrip.Visible = True
-                TRAB_EDITAR_ToolStrip.Visible = True
-                TRAB_COMPLETO_ToolStrip.Visible = True
-                TRAB_CREARORDEN_ToolStrip.Visible = True
-                TRAB_REINICIAR_ToolStrip.Visible = True
-                TRAB_RESPONSABLE_ToolStrip.Visible = True
-                TRAB_Separator1.Visible = True
-                TRAB_Separator2.Visible = True
-                TRAB_Separator3.Visible = True
-                TRAB_HABILITA_ToolStrip.Visible = False
-                Select Case SECTOR
-                    Case "GERENCIA", "PLANIFICACION TECNICA", "SUPERVISION"
-                        If DATOS_TRABAJORow("STATUS") <> "FINALIZADO" Then
-                            TRAB_HABILITA_ToolStrip.Visible = True
-                            If DATOS_TRABAJORow("HABILITADO") Then
-                                TRAB_HABILITA_ToolStrip.Text = "DESHABILITAR TRABAJO"
-                            Else
-                                TRAB_HABILITA_ToolStrip.Text = "HABILITAR TRABAJO"
-                            End If
-                        End If
-                End Select
-                Select Case DATOS_TRABAJORow("STATUS")
-                    Case "INGRESADO"
-                        TRAB_FINALIZAR_ToolStrip.Visible = False
-                        TRAB_DEMORAR_ToolStrip.Visible = False
-                        TRAB_REINICIAR_ToolStrip.Visible = False
-                    Case "INICIADO"
-                        TRAB_INICIAR_ToolStrip.Visible = False
-                        TRAB_REINICIAR_ToolStrip.Visible = False
-                    Case "DEMORADO"
-                        TRAB_INICIAR_ToolStrip.Visible = False
-                        TRAB_FINALIZAR_ToolStrip.Visible = False
-                        TRAB_DEMORAR_ToolStrip.Visible = False
-                    Case "FINALIZADO", "CANCELADO"
-                        If DATOS_GESTIONRow("STATUS") = "FINALIZADO" Then
-                            TRAB_NUEVOTRAB_ToolStrip.Visible = False
-                        End If
-                        TRAB_STATUS_ToolStrip.Visible = False
-                        TRAB_EDITAR_ToolStrip.Visible = False
-                        TRAB_COMPLETO_ToolStrip.Visible = False
-                        TRAB_CREARORDEN_ToolStrip.Visible = False
-                        TRAB_RESPONSABLE_ToolStrip.Visible = False
-                        TRAB_Separator1.Visible = False
-                        TRAB_Separator2.Visible = False
-                End Select
-                TRABAJOSDataGridView.ContextMenuStrip = MENU_TRABAJO
-                'CARGA LAS ORDENES RELACIONADAS CON EL TRABAJO
-                CARGA_TRABAJOS()
-                ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, DATOS_TRABAJORow("ID_TRABAJO"))
-                CARGA_VALORESORDENES()
-            End If
 
-            If INGRESO_AREA = "MDU" Then
-                If TRABAJOSDataGridView.CurrentRow.Cells.Item(2).Value = "RELEVAMIENTO" Or TRABAJOSDataGridView.CurrentRow.Cells.Item(2).Value = "Relevamiento" Then
-                    BOT_CARGAREL.Visible = True
-                Else
-                    BOT_CARGAREL.Visible = False
+            If e.Button = Windows.Forms.MouseButtons.Left Then
+                'CARGA LAS ORDENES RELACIONADAS CON EL TRABAJO
+                ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, DATOS_TRABAJORow.Id_TRABAJO)
+                If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
+                    CARGA_VALORESORDENES(ORDENESDataSet.ORDENES.Rows(0))
                 End If
+                If INGRESO_AREA = "MDU" Then
+                    If TRABAJOSDataGridView.CurrentRow.Cells.Item(2).Value = "RELEVAMIENTO" Or TRABAJOSDataGridView.CurrentRow.Cells.Item(2).Value = "Relevamiento" Then
+                        BOT_CARGAREL.Visible = True
+                    Else
+                        BOT_CARGAREL.Visible = False
+                    End If
+                End If
+                CARGA_TRABAJOS(DATOS_TRABAJORow)
             End If
-            CARGA_COMBOSTRA()
+            If e.Button = Windows.Forms.MouseButtons.Right Then
+                TRABAJOSDataGridView.ContextMenuStrip = MENU_TRABAJO
+            End If
         End If
+        Cursor = Cursors.Default
     End Sub
     Private Sub ORDENESDataGridView_MouseClick(sender As Object, e As MouseEventArgs) Handles ORDENESDataGridView.MouseClick
+        clickBotonOrden(e)
+    End Sub
+    Private Sub clickBotonOrden(ByVal e As MouseEventArgs)
         If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
             NROORDENINT = ORDENESDataGridView.CurrentRow.Cells.Item(3).Value
-            DATOS_ORDENESRow = ORDENESDataSet.TRABAJOS.Rows.Find(NROORDENINT)
-            CARGA_VALORESORDENES()
-        End If
-    End Sub
-    Private Sub ORDENESDataGridView_MouseDown(sender As Object, e As MouseEventArgs) Handles ORDENESDataGridView.MouseDown
-        If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
-            'SI SE SELECCIONA UNA ROW DE LA TABLA ORDENES
-
+            DATOS_ORDENESRow = ORDENESDataSet.ORDENES.Rows.Find(NROORDENINT)
+            CARGA_VALORESORDENES(DATOS_ORDENESRow)
 
             If e.Button = MouseButtons.Right Then
-                With ORDENESDataGridView
-                    Dim hti As DataGridView.HitTestInfo = .HitTest(e.X, e.Y)
-                    ' Obtenemos la parte del control a las que
-                    ' pertenecen las coordenadas.
-                    If hti.Type = DataGridViewHitTestType.Cell Then
-                        .CurrentCell = .Rows(hti.RowIndex).Cells(hti.ColumnIndex)
-                    End If
-                End With
+                'With ORDENESDataGridView
+                '    Dim hti As DataGridView.HitTestInfo = .HitTest(e.X, e.Y)
+                '    ' Obtenemos la parte del control a las que
+                '    ' pertenecen las coordenadas.
+                '    If hti.Type = DataGridViewHitTestType.Cell Then
+                '        .CurrentCell = .Rows(hti.RowIndex).Cells(hti.ColumnIndex)
+                '    End If
+                'End With
 
                 '    'HABILITA AL BOTON SECUNDADRIO DE LA TABLA A ABRIR UN MENU
                 ORD_IMPRIMIR_ToolStrip.Visible = True
@@ -871,8 +855,7 @@ Public Class DATOS
                 End Select
                 ORDENESDataGridView.ContextMenuStrip = MENU_ORDEN
             End If
-        End If
-        If ORDENESDataGridView.Rows.Count > 0 Then
+
             Dim ORDEN_SEL As Integer = ORDENESDataGridView.CurrentRow.Cells(3).Value
             Dim ORDEN_DEPEND As Integer
 
@@ -885,12 +868,18 @@ Public Class DATOS
                     End If
                 End If
             Next
+
         End If
+    End Sub
+
+    Private Sub ORDENESDataGridView_MouseDown(sender As Object, e As MouseEventArgs) Handles ORDENESDataGridView.MouseDown
+        clickBotonOrden(e)
     End Sub
     Private Sub ORDENESDataGridView_DoubleClick(sender As Object, e As EventArgs) Handles ORDENESDataGridView.DoubleClick
         EDITAR_ORDEN()
     End Sub
-    Public Sub LLENA_TRABAJOS()
+    Public Sub LLENA_TRABAJOS_DESDE_GESTION()
+        Cursor = Cursors.WaitCursor
         Dim CARGA_NUEVOTRABAJOFUENTEDIFERENTE As Boolean = True
         If ORDENESDataSet.GESTION.Rows.Count > 0 Then
             Select Case ACCESO_DESDE
@@ -900,6 +889,7 @@ Public Class DATOS
                         Case 0
                             CARGA_NUEVOTRABAJOFUENTES()
                         Case Else
+                            DATOS_TRABAJORow = ORDENESDataSet.TRABAJOS.Rows(0)
                             For X = 0 To ORDENESDataSet.TRABAJOS.Rows.Count - 1
                                 If FUENTE_TRABAJO = ORDENESDataSet.TRABAJOS.Rows(X).Item("TIPOTRABAJO") And ORDENESDataSet.TRABAJOS.Rows(X).Item("STATUS") <> "FINALIZADO" Then
                                     CARGA_NUEVOTRABAJOFUENTEDIFERENTE = False
@@ -911,10 +901,11 @@ Public Class DATOS
                                     CARGA_NUEVOTRABAJOFUENTES()
                                 End If
                             Else
-                                DATOS_TRABAJORow = ORDENESDataSet.TRABAJOS.Rows(TRABAJOSBindingSource.Position)
-                                CARGA_TRABAJOS()
+                                CARGA_TRABAJOS(ORDENESDataSet.TRABAJOS.Rows(TRABAJOSBindingSource.Position))
                                 ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, DATOS_TRABAJORow("ID_TRABAJO"))
-                                CARGA_VALORESORDENES()
+                                If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
+                                    CARGA_VALORESORDENES(ORDENESDataSet.ORDENES.Rows(0))
+                                End If
                             End If
                             For I = 0 To ORDENESDataSet.TRABAJOS.Rows.Count - 1
                                 Select Case TRABAJOSDataGridView.Item(9, I).Value
@@ -927,10 +918,13 @@ Public Class DATOS
                     If ORDENESDataSet.TRABAJOS.Rows.Count > 0 Then
                         NROTRABAJO = TRABAJOSDataGridView.CurrentRow.Cells.Item(1).Value
                         DATOS_TRABAJORow = ORDENESDataSet.TRABAJOS.Rows.Find(NROTRABAJO)
+                        CARGA_TRABAJOS(DATOS_TRABAJORow)
+                        ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, DATOS_TRABAJORow.Id_TRABAJO)
 
-                        CARGA_TRABAJOS()
-                        ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, DATOS_TRABAJORow("ID_TRABAJO"))
-                        CARGA_VALORESORDENES()
+                        If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
+                            DATOS_ORDENESRow = ORDENESDataSet.ORDENES.Rows(0)
+                            CARGA_VALORESORDENES(DATOS_ORDENESRow)
+                        End If
                         If ORDENESDataSet.ORDENES.Rows.Count < 1 Then
                             ORDENESDataSet.ORDENES.Clear()
                         End If
@@ -938,40 +932,33 @@ Public Class DATOS
                         BORRA_ETIQUETAS()
                     End If
                 Case Else
+                    ORDENESDataSet.TRABAJOS.Clear()
                     TRABAJOSTableAdapter.FillByIDGESTION(ORDENESDataSet.TRABAJOS, DATOS_GESTIONRow("ID_GESTION"))
                     TRABAJOSBindingSource.MoveLast()
                     If TRABAJOSBindingSource.Count > 0 Then
                         'CARGA TRABAJOS ASOCIADOS
-                        DATOS_TRABAJORow = ORDENESDataSet.TRABAJOS.Rows(TRABAJOSBindingSource.Position)
-
-                        CARGA_TRABAJOS()
+                        DATOS_TRABAJORow = ORDENESDataSet.TRABAJOS.Rows(ORDENESDataSet.TRABAJOS.Rows.Count - 1)
+                        CARGA_TRABAJOS(DATOS_TRABAJORow)
                         'PINTA LOS TRABAJOS FINALIZADOS
-
-                        NROTRABAJO = DATOS_TRABAJORow("ID_TRABAJO")
+                        ' NROTRABAJO = DATOS_TRABAJORow("ID_TRABAJO")
+                        ORDENESDataSet.ORDENES.Clear()
                         ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, NROTRABAJO)
-                        CARGA_VALORESORDENES()
-                        If ORDENESDataSet.ORDENES.Rows.Count < 1 Then
-                            ORDENESDataSet.ORDENES.Clear()
+                        If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
+                            CARGA_VALORESORDENES(ORDENESDataSet.ORDENES.Rows(0))
+                        Else
+                            BORRA_ETIQUETAS_ORDEN()
                         End If
-                    Else
 
+                    Else
                         BORRA_ETIQUETAS()
                     End If
             End Select
-
-            If VER_HISTTRABAJOS.Checked = True Then
-                If DATOS_TRABAJORow.RowState = DataRowState.Unchanged Then
-                    Me.HISTORICOTableAdapter.FillByIDTRABAJO(ORDENESDataSet.HISTORICO, DATOS_TRABAJORow("ID_TRABAJO"))
-                    Me.HISTORICOBindingSource.MoveLast()
-                    LLENA_HISTORICOTRABAJOS()
-                End If
-            End If
-
         Else
             BORRA_ETIQUETAS_GEST()
             BORRA_ETIQUETAS()
             BORRA_ETIQUETAS_ORDEN()
         End If
+        Cursor = Cursors.Default
     End Sub
     Private Sub BORRA_ETIQUETAS()
         'BORRA TODOS LAS ETIQUETAS SI NO HAY TRABAJOS
@@ -990,7 +977,6 @@ Public Class DATOS
         'ETI_TRABASIGNADOA.Text = "Asignado a"
         LBL_ADJUNTOS.Visible = False
         BTN_AGREGAR_ZONA.Visible = False
-        BTN_VER_PLANOS.Visible = False
         BTN_AGREGAR.Visible = False
         BTN_BORRAR.Visible = False
         ETI_TRABGENERADOX.Visible = False
@@ -1118,167 +1104,152 @@ Public Class DATOS
         Cursor = DefaultCursor
         FILTROZONA = ""
         GESTIONDataGridView.Focus()
-        LLENA_TRABAJOS()
+        LLENA_TRABAJOS_DESDE_GESTION()
     End Sub
-    Public Sub CARGA_VALORESORDENES()
-        If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
-            ORDENESDataGridView.Visible = True
-            LBL_ORDEN_DATOS.Visible = True
-            VER_HISTORDENES.Visible = True
-            LBL_ORD_NODO.Visible = True
-            TXT_OBS.Visible = True
-            CK_DATOS_SEL_UNITARIA.Visible = True
-            ' PINTA_ORDENES()
-            ORDENESDataGridView.Refresh()
-            'For C = 0 To ORDENESDataGridView.Rows.Count - 1
-            '    ORDENESDataGridView.Rows(C).Height = 30
-            'Next
-            'ORDENESDataGridView.CurrentRow.Height = 40
+    Public Sub CARGA_VALORESORDENES(ORDENRow As ORDENESDataSet.ORDENESRow)
+        'If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
+        ORDENESDataGridView.Visible = True
+        LBL_ORDEN_DATOS.Visible = True
+        VER_HISTORDENES.Visible = True
+        LBL_ORD_NODO.Visible = True
+        TXT_OBS.Visible = True
+        CK_DATOS_SEL_UNITARIA.Visible = True
 
-            NROORDENINT = ORDENESDataGridView.CurrentRow.Cells.Item(3).Value
-            DATOS_ORDENESRow = ORDENESDataSet.ORDENES.Rows.Find(NROORDENINT)
+        ORDENESDataGridView.Refresh()
+        NROORDENINT = ORDENESDataGridView.CurrentRow.Cells.Item(3).Value
+        ' DATOS_ORDENESRow = ORDENESDataSet.ORDENES.Rows.Find(NROORDENINT)
 
-            STATUSORD = DATOS_ORDENESRow("STATUS")
-            NROORDENINT = DATOS_ORDENESRow("NRO_ORDENINT")
-            NROORDINAL = DATOS_ORDENESRow("NRO_ORDINAL")
+        STATUSORD = ORDENRow("STATUS")
+        NROORDENINT = ORDENRow("NRO_ORDENINT")
+        NROORDINAL = ORDENRow("NRO_ORDINAL")
 
-            'FIJA EL ROW DE LA ORDEN SELECCIONADA
-            DATOS_ORDENAAGENDARRow = ORDENESDataSet.ORDENES.Rows.Find(NROORDENINT)
+        'FIJA EL ROW DE LA ORDEN SELECCIONADA
+        ' DATOS_ORDENAAGENDARRow = ORDENESDataSet.ORDENES.Rows.Find(NROORDENINT)
 
-            If VER_HISTORDENES.Checked = True Then
-                Me.Cursor = Cursors.WaitCursor
-                'CARGA DATOS HISTORICO
-                Me.HISTORICOTableAdapter.FillByORDENINT(OrdenesDataSet2.HISTORICO, NROORDENINT)
-                LLENA_HISTORICOORDENES()
-                Me.Cursor = DefaultCursor
-            End If
-            If IsDBNull(DATOS_ORDENESRow("TIPODEP")) = False Then
-                ORDEN_TIPODEPENDENCIA = DATOS_ORDENESRow("TIPODEP")
-            Else
-                MsgBox("La Orden seleccionada no tiene CLASE DE DEPENDENCIA, se le cargara 'IND' por default ")
-                ORDEN_TIPODEPENDENCIA = "IND"
-                DATOS_ORDENESRow("TIPODEP") = "IND"
-                DATOS_ORDENESRow("CLASEDEP") = "IND"
-                ORDENESTableAdapter.Update(DATOS_ORDENESRow)
-                Exit Sub
-            End If
-            ORDTIPO = DATOS_ORDENESRow("TIPO")
-            ORDNODO = DATOS_ORDENESRow("NODO")
-            ORDZONA = DATOS_ORDENESRow("ZONA")
-            ORDFALLAORIG = DATOS_ORDENESRow("MOTIVOORIGEN")
-            ORDCAUSAING = DATOS_ORDENESRow("CAUSARIGEN")
-            ORDGENERADO = DATOS_ORDENESRow("GENERADOR")
-            ORDPRIORIDAD = DATOS_ORDENESRow("PRIORIDAD")
-            ORDSECTOROPE = DATOS_ORDENESRow("SECTOROPE")
-            STATUSORD = DATOS_ORDENESRow("STATUS")
-
-            'ING_NODO.Text = ORDNODO
-            'ING_ZONA.Text = ORDZONA
-            ING_TIPO.Text = ORDTIPO
-            LBL_ORD_NODO.Text = "Nodo: " & ORDNODO & "  Zona: " & ORDZONA
-            LBL_ORDEN_DATOS.Text = "Generada por: " & DATOS_ORDENESRow("GENERADOR")
-            If IsDBNull(DATOS_ORDENESRow("CLASEDEP")) = False Then
-                If DATOS_ORDENESRow("CLASEDEP") <> "" Then
-                    LBL_ORDEN_DATOS.Text += "  | Dependencia: Clase: " & DATOS_ORDENESRow("CLASEDEP") & " - Tipo: " & DATOS_ORDENESRow("TIPODEP")
-                End If
-                ORDEN_CLASEDEP.Text = DATOS_ORDENESRow("CLASEDEP")
-            End If
-            If IsDBNull(DATOS_ORDENESRow("DEPENDENCIA")) = False Then
-                If DATOS_ORDENESRow("DEPENDENCIA") <> 0 Then
-                    LBL_ORDEN_DATOS.Text += " | Orden origen: " & DATOS_ORDENESRow("ORDORIGEN") & " - Depende de: " & DATOS_ORDENESRow("DEPENDENCIA")
-                End If
-                ORDEN_DEPENDENCIA.Text = DATOS_ORDENESRow("DEPENDENCIA")
-            End If
-            If IsDBNull(DATOS_ORDENESRow("FECHA_ASIGNADA")) = False Then
-                If IsDate(DATOS_ORDENESRow("FECHA_ASIGNADA")) Then LBL_ORDEN_DATOS.Text += " | Asignado desde: " & DATOS_ORDENESRow("FECHA_ASIGNADA")
-
-            End If
-
-            If IsDBNull(DATOS_ORDENESRow("ORDENDEP")) = False Then
-                ORDEN_ORDENDEP.Text = DATOS_ORDENESRow("DEPENDENCIA")
-            End If
-            If IsDBNull(DATOS_ORDENESRow("TIPODEP")) = False Then
-                ORDEN_TIPODEP.Text = DATOS_ORDENESRow("TIPODEP")
-            End If
-            If IsDBNull(DATOS_ORDENESRow("ORDORIGEN")) = False Then
-                If DATOS_ORDENESRow("ORDORIGEN").ToString <> "" Then
-                    SEL_ORDENORIG = DATOS_ORDENESRow("ORDORIGEN")
-                    SEL_ORDENSELEC = DATOS_ORDENESRow("ORDORIGEN")
-                End If
-                Select Case DATOS_ORDENESRow("CLASEDEP")
-                    Case "EST", "DIN"
-                        ING_ORDORIGEN = DATOS_ORDENESRow("ORDORIGEN")
-                    Case "IND"
-                        ING_ORDORIGEN = NROORDENINT
-                End Select
-            End If
-
-            ORDEN_GENERADOX.Text = DATOS_ORDENESRow("GENERADOR")
-            ORDEN_TIEMPOPREVISTO.Text = DATOS_ORDENESRow("TPREVISTO") & " %"
-            If IsDBNull(DATOS_ORDENESRow("TPREVISTO")) = False Then
-                TIEMPO_AGENDA = CInt(DATOS_ORDENESRow("TPREVISTO") * CAPACIDAD_DIA / 100)
-            Else
-                TIEMPO_AGENDA = 0
-            End If
-            If IsDBNull(DATOS_ORDENESRow("CUADRILLA")) = False Then
-                ORDASIGNADO = DATOS_ORDENESRow("CUADRILLA")
-            Else
-                ORDASIGNADO = ""
-            End If
-            If DATOS_ORDENESRow("STATUS") = "FINALIZADO" Then
-                ORDFALLACIERRE = DATOS_ORDENESRow("MOTIVOCIERRE")
-                ORDCAUSACIERRE = DATOS_ORDENESRow("CAUSACIERRE")
-            Else
-                ORDFALLACIERRE = ""
-                ORDCAUSACIERRE = ""
-            End If
-            OBESERVACIONESTableAdapter.FillByNROORDENINT(ORDENESDataSet.OBESERVACIONES, DATOS_ORDENESRow("NRO_ORDENINT"))
-            If ORDENESDataSet.OBESERVACIONES.Rows.Count > 0 Then
-                ORDOBSERVACION = ORDENESDataSet.OBESERVACIONES.Rows(0).Item("OBSORIGEN")
-                TXT_OBS.Text = ORDOBSERVACION
-            Else
-                OBESERVACIONESTableAdapter.FillByNROORDINAL(ORDENESDataSet.OBESERVACIONES, DATOS_ORDENESRow.NRO_ORDINAL)
-                If ORDENESDataSet.OBESERVACIONES.Rows.Count > 0 Then
-                    TXT_OBS.Text = ORDENESDataSet.OBESERVACIONES.Rows(0).Item("OBSORIGEN")
-                Else
-                    ' MsgBox("OOOPS!!!" & vbNewLine & "LA ORDEN QUEDÓ MAL GENERADA, INGRESE A MODIFICAR LA ORDEN PARA CARGAR LAS OBSERVACIONES")
-                    TXT_OBS.Text = ""
-                End If
-            End If
-            'VARIALBLES PARA UTILIZAR EN AGENDA
-            'If ORDEN_ORDENORIG.Text <> "" Then
-            '    SEL_ORDENORIG = ORDEN_ORDENORIG.Text
-            '    SEL_ORDENSELEC = ORDEN_ORDENORIG.Text
-            'End If
-            SEL_SECTOROPERATIVO = ORDSECTOROPE
-            SEL_PRIORIDAD = ORDPRIORIDAD
-
-            If DATOS_ORDENESRow.IsSECTORGENNull = False Then
-                SEL_SECTORGENERADOR = DATOS_ORDENESRow.SECTORGEN
-            Else
-                NOTIFICACION("SYS", "La orden seleccionada no tiene definido SECTOR GENERADOR, se le cargara segun su trabajo dependiente")
-                Select Case DATOS_TRABAJORow("SECTORASIG")
-                    Case "PLANIFICACION TECNICA", "GERENCIA", "JEFATURA"
-                        DATOS_ORDENESRow.SECTORGEN = "PT"
-                    Case "SUPERVISION"
-                        DATOS_ORDENESRow.SECTORGEN = "SU"
-                    Case "OBRA CIVIL"
-                        DATOS_ORDENESRow.SECTORGEN = "OC"
-                    Case Else
-                        DATOS_ORDENESRow.SECTORGEN = "SC"
-                End Select
-                ORDENESTableAdapter.Update(DATOS_ORDENESRow)
-                Exit Sub
-            End If
-
-            If DATOS_ORDENESRow.IsFECHAAGENDNull Then
-                SEL_FECHAORDEN = ""
-            Else
-                SEL_FECHAORDEN = DATOS_ORDENESRow.FECHAAGEND
-            End If
-        Else
-            BORRA_ETIQUETAS_ORDEN()
+        If VER_HISTORDENES.Checked Then
+            Me.Cursor = Cursors.WaitCursor
+            'CARGA DATOS HISTORICO
+            Me.HISTORICOTableAdapter.FillByORDENINT(OrdenesDataSet2.HISTORICO, NROORDENINT)
+            LLENA_HISTORICOORDENES()
+            Me.Cursor = DefaultCursor
         End If
+        If IsDBNull(ORDENRow("TIPODEP")) = False Then
+            ORDEN_TIPODEPENDENCIA = ORDENRow("TIPODEP")
+        Else
+            MsgBox("La Orden seleccionada no tiene CLASE DE DEPENDENCIA, se le cargara 'IND' por default ")
+            ORDEN_TIPODEPENDENCIA = "IND"
+            ORDENRow("TIPODEP") = "IND"
+            ORDENRow("CLASEDEP") = "IND"
+            ORDENESTableAdapter.Update(ORDENRow)
+            Exit Sub
+        End If
+        ORDTIPO = ORDENRow("TIPO")
+        ORDNODO = ORDENRow("NODO")
+        ORDZONA = ORDENRow("ZONA")
+        ORDFALLAORIG = ORDENRow("MOTIVOORIGEN")
+        ORDCAUSAING = ORDENRow("CAUSARIGEN")
+        ORDGENERADO = ORDENRow("GENERADOR")
+        ORDPRIORIDAD = ORDENRow("PRIORIDAD")
+        ORDSECTOROPE = ORDENRow("SECTOROPE")
+        STATUSORD = ORDENRow("STATUS")
+
+        ING_TIPO.Text = ORDTIPO
+        LBL_ORD_NODO.Text = "Nodo: " & ORDNODO & "  Zona: " & ORDZONA
+        LBL_ORDEN_DATOS.Text = "Generada por: " & ORDENRow("GENERADOR")
+        If IsDBNull(ORDENRow("CLASEDEP")) = False Then
+            If ORDENRow("CLASEDEP") <> "" Then
+                LBL_ORDEN_DATOS.Text += "  | Dependencia: Clase: " & ORDENRow("CLASEDEP") & " - Tipo: " & ORDENRow("TIPODEP")
+            End If
+            ORDEN_CLASEDEP.Text = ORDENRow("CLASEDEP")
+        End If
+        If IsDBNull(ORDENRow("DEPENDENCIA")) = False Then
+            If ORDENRow("DEPENDENCIA") <> 0 Then
+                LBL_ORDEN_DATOS.Text += " | Orden origen: " & ORDENRow("ORDORIGEN") & " - Depende de: " & ORDENRow("DEPENDENCIA")
+            End If
+            ORDEN_DEPENDENCIA.Text = ORDENRow("DEPENDENCIA")
+        End If
+        If IsDBNull(ORDENRow("FECHA_ASIGNADA")) = False Then
+            If IsDate(ORDENRow("FECHA_ASIGNADA")) Then LBL_ORDEN_DATOS.Text += " | Asignado desde: " & ORDENRow("FECHA_ASIGNADA")
+        End If
+        If IsDBNull(ORDENRow("ORDENDEP")) = False Then
+            ORDEN_ORDENDEP.Text = ORDENRow("DEPENDENCIA")
+        End If
+        If IsDBNull(ORDENRow("TIPODEP")) = False Then
+            ORDEN_TIPODEP.Text = ORDENRow("TIPODEP")
+        End If
+        If IsDBNull(ORDENRow("ORDORIGEN")) = False Then
+            If ORDENRow("ORDORIGEN").ToString <> "" Then
+                SEL_ORDENORIG = ORDENRow("ORDORIGEN")
+                SEL_ORDENSELEC = ORDENRow("ORDORIGEN")
+            End If
+            Select Case ORDENRow("CLASEDEP")
+                Case "EST", "DIN"
+                    ING_ORDORIGEN = ORDENRow("ORDORIGEN")
+                Case "IND"
+                    ING_ORDORIGEN = NROORDENINT
+            End Select
+        End If
+
+        ORDEN_GENERADOX.Text = ORDENRow("GENERADOR")
+        ORDEN_TIEMPOPREVISTO.Text = ORDENRow("TPREVISTO") & " %"
+        If IsDBNull(ORDENRow("TPREVISTO")) = False Then
+            TIEMPO_AGENDA = CInt(ORDENRow("TPREVISTO") * CAPACIDAD_DIA / 100)
+        Else
+            TIEMPO_AGENDA = 0
+        End If
+        If IsDBNull(ORDENRow("CUADRILLA")) = False Then
+            ORDASIGNADO = ORDENRow("CUADRILLA")
+        Else
+            ORDASIGNADO = ""
+        End If
+        If ORDENRow("STATUS") = "FINALIZADO" Then
+            ORDFALLACIERRE = ORDENRow("MOTIVOCIERRE")
+            ORDCAUSACIERRE = ORDENRow("CAUSACIERRE")
+        Else
+            ORDFALLACIERRE = ""
+            ORDCAUSACIERRE = ""
+        End If
+        OBESERVACIONESTableAdapter.FillByNROORDENINT(ORDENESDataSet.OBESERVACIONES, ORDENRow("NRO_ORDENINT"))
+        If ORDENESDataSet.OBESERVACIONES.Rows.Count > 0 Then
+            ORDOBSERVACION = ORDENESDataSet.OBESERVACIONES.Rows(0).Item("OBSORIGEN")
+            TXT_OBS.Text = ORDOBSERVACION
+        Else
+            OBESERVACIONESTableAdapter.FillByNROORDINAL(ORDENESDataSet.OBESERVACIONES, ORDENRow.NRO_ORDINAL)
+            If ORDENESDataSet.OBESERVACIONES.Rows.Count > 0 Then
+                TXT_OBS.Text = ORDENESDataSet.OBESERVACIONES.Rows(0).Item("OBSORIGEN")
+            Else
+                TXT_OBS.Text = ""
+            End If
+        End If
+
+        SEL_SECTOROPERATIVO = ORDSECTOROPE
+        SEL_PRIORIDAD = ORDPRIORIDAD
+
+        If ORDENRow.IsSECTORGENNull = False Then
+            SEL_SECTORGENERADOR = ORDENRow.SECTORGEN
+        Else
+            NOTIFICACION("SYS", "La orden seleccionada no tiene definido SECTOR GENERADOR, se le cargara segun su trabajo dependiente")
+            Select Case DATOS_TRABAJORow("SECTORASIG")
+                Case "PLANIFICACION TECNICA", "GERENCIA", "JEFATURA"
+                    ORDENRow.SECTORGEN = "PT"
+                Case "SUPERVISION"
+                    ORDENRow.SECTORGEN = "SU"
+                Case "OBRA CIVIL"
+                    ORDENRow.SECTORGEN = "OC"
+                Case Else
+                    ORDENRow.SECTORGEN = "SC"
+            End Select
+            ORDENESTableAdapter.Update(ORDENRow)
+            Exit Sub
+        End If
+
+        If ORDENRow.IsFECHAAGENDNull Then
+            SEL_FECHAORDEN = ""
+        Else
+            SEL_FECHAORDEN = ORDENRow.FECHAAGEND
+        End If
+
+        'End If
 
     End Sub
     Public Sub CARGA_HISTORICO() 'RUTINA PARA LOS CAMBIOS DE STATUS
@@ -1372,14 +1343,8 @@ Public Class DATOS
 
         End Select
     End Sub
-    Private Sub CARGA_COMBOSTRA()
+    Private Sub CARGA_COMBOSTRA(TRABAJORow As ORDENESDataSet.TRABAJOSRow)
         'BORRA LOS ITEMS DE COMBOS
-        GEST_TRAB1_TOOLS.Visible = False
-        GEST_TRAB2_TOOLS.Visible = False
-        GEST_TRAB3_TOOLS.Visible = False
-        GEST_TRAB4_TOOLS.Visible = False
-        GEST_TRAB5_TOOLS.Visible = False
-        GEST_TRAB6_TOOLS.Visible = False
 
         TRAB_ITEM1_ToolStrip.Visible = False
         TRAB_ITEM2_ToolStrip.Visible = False
@@ -1393,164 +1358,106 @@ Public Class DATOS
         TRAB_ITEM10_ToolStrip.Visible = False
         TRAB_ITEM11_ToolStrip.Visible = False
 
-        If GESTIONBindingSource.Count > 0 Then
-            GESTIONES_TIPOTableAdapter.FillByTIPO_GESTION(ORDENESDataSet.GESTIONES_TIPO, DATOS_GESTIONRow.TIPOGESTION)
-            COMBOSTableAdapter.FillByTIPO_GESTION(ORDENESDataSet.COMBOS, CInt(ORDENESDataSet.GESTIONES_TIPO.Rows(0).Item("GRUPO_GESTION")))
-            Dim CUENTA = 0
-            For X = 0 To ORDENESDataSet.COMBOS.Rows.Count - 1
-                COMBORow = ORDENESDataSet.COMBOS.Rows(X)
-                Select Case COMBORow.DESDE
-                    Case "GESTION"
-                        Select Case CUENTA
-                            Case 0
-                                GEST_TRAB1_TOOLS.Visible = True
-                                GEST_TRAB1_TOOLS.Text = COMBORow.TIPO_TRABAJO
-                            Case 1
-                                GEST_TRAB2_TOOLS.Visible = True
-                                GEST_TRAB2_TOOLS.Text = COMBORow.TIPO_TRABAJO
-                            Case 2
-                                GEST_TRAB3_TOOLS.Visible = True
-                                GEST_TRAB3_TOOLS.Text = COMBORow.TIPO_TRABAJO
-                            Case 3
-                                GEST_TRAB4_TOOLS.Visible = True
-                                GEST_TRAB4_TOOLS.Text = COMBORow.TIPO_TRABAJO
-                            Case 4
-                                GEST_TRAB5_TOOLS.Visible = True
-                                GEST_TRAB5_TOOLS.Text = COMBORow.TIPO_TRABAJO
-                            Case 5
-                                GEST_TRAB6_TOOLS.Visible = True
-                                GEST_TRAB6_TOOLS.Text = COMBORow.TIPO_TRABAJO
-                        End Select
-                        CUENTA += 1
-                    Case "TRABAJO"
-                        Select Case X
-                            Case 0
-                                TRAB_ITEM1_ToolStrip.Visible = True
-                                TRAB_ITEM1_ToolStrip.Text = COMBORow.TIPO_TRABAJO
-                            Case 1
-                                TRAB_ITEM2_ToolStrip.Visible = True
-                                TRAB_ITEM2_ToolStrip.Text = COMBORow.TIPO_TRABAJO
-                            Case 2
-                                TRAB_ITEM3_ToolStrip.Visible = True
-                                TRAB_ITEM3_ToolStrip.Text = COMBORow.TIPO_TRABAJO
-                            Case 3
-                                TRAB_ITEM4_ToolStrip.Visible = True
-                                TRAB_ITEM4_ToolStrip.Text = COMBORow.TIPO_TRABAJO
-                            Case 4
-                                TRAB_ITEM5_ToolStrip.Visible = True
-                                TRAB_ITEM5_ToolStrip.Text = COMBORow.TIPO_TRABAJO
-                            Case 5
-                                TRAB_ITEM6_ToolStrip.Visible = True
-                                TRAB_ITEM6_ToolStrip.Text = COMBORow.TIPO_TRABAJO
-                            Case 6
-                                TRAB_ITEM7_ToolStrip.Visible = True
-                                TRAB_ITEM7_ToolStrip.Text = COMBORow.TIPO_TRABAJO
-                            Case 7
-                                TRAB_ITEM8_ToolStrip.Visible = True
-                                TRAB_ITEM8_ToolStrip.Text = COMBORow.TIPO_TRABAJO
-                            Case 8
-                                TRAB_ITEM9_ToolStrip.Visible = True
-                                TRAB_ITEM9_ToolStrip.Text = COMBORow.TIPO_TRABAJO
-                            Case 9
-                                TRAB_ITEM10_ToolStrip.Visible = True
-                                TRAB_ITEM10_ToolStrip.Text = COMBORow.TIPO_TRABAJO
-                            Case 10
-                                TRAB_ITEM11_ToolStrip.Visible = True
-                                TRAB_ITEM11_ToolStrip.Text = COMBORow.TIPO_TRABAJO
-                        End Select
-                End Select
-            Next
+
+        'CARGA EL DATAROW DE TRABAJOS
+        If TRABAJORow("COMPLETO") = False Then
+            TRAB_COMPLETO_ToolStrip.Text = "Marcar COMPLETO"
+        Else
+            TRAB_COMPLETO_ToolStrip.Text = "Quitar COMPLETO"
         End If
-        '    Select Case INGRESO_AREA
-        '        Case "RED"
-        '            'FILL CON  DESDE = "GESTION" & INGRESO_AREA="RED"
-        '            Select Case VARGEST_TIPO
-        '                Case "MANT DISTRIBUCION", "MANT TRONCALES", "MANT FIBRA", "MODIF DE RED", "CONST DE RED", "MANT SOPORTES DE RED", "PREVENTIVO PUNTUAL", "MANT DISTRIBUCION - CRUCES"
-        '                                                                           'FILL CON DESDE="TRABAJO" & INGRESO_AREA = "RED"
-        '                Case "RELEVAMIENTO PRE GESTION"   'FILL CON DESDE="GESTION" & TIPO_GESTION = "9"
-        '                    GEST_TRAB1_TOOLS.Visible = True
-        '                    GEST_TRAB1_TOOLS.Text = "RELEVAMIENTO"
+        TRAB_NUEVOTRAB_ToolStrip.Visible = True
+        TRAB_STATUS_ToolStrip.Visible = True
+        TRAB_CANCELAR_ToolStrip.Visible = True
+        TRAB_INICIAR_ToolStrip.Visible = True
+        TRAB_DEMORAR_ToolStrip.Visible = True
+        TRAB_FINALIZAR_ToolStrip.Visible = True
+        TRAB_EDITAR_ToolStrip.Visible = True
+        TRAB_COMPLETO_ToolStrip.Visible = True
+        TRAB_CREARORDEN_ToolStrip.Visible = True
+        TRAB_REINICIAR_ToolStrip.Visible = True
+        TRAB_RESPONSABLE_ToolStrip.Visible = True
+        TRAB_Separator1.Visible = True
+        TRAB_Separator2.Visible = True
+        TRAB_Separator3.Visible = True
+        TRAB_HABILITA_ToolStrip.Visible = False
+        Select Case SECTOR
+            Case "GERENCIA", "PLANIFICACION TECNICA", "SUPERVISION"
+                If TRABAJORow("STATUS") <> "FINALIZADO" Then
+                    TRAB_HABILITA_ToolStrip.Visible = True
+                    If TRABAJORow("HABILITADO") Then
+                        TRAB_HABILITA_ToolStrip.Text = "DESHABILITAR TRABAJO"
+                    Else
+                        TRAB_HABILITA_ToolStrip.Text = "HABILITAR TRABAJO"
+                    End If
+                End If
+        End Select
+        Select Case TRABAJORow("STATUS")
+            Case "INGRESADO"
+                TRAB_FINALIZAR_ToolStrip.Visible = False
+                TRAB_DEMORAR_ToolStrip.Visible = False
+                TRAB_REINICIAR_ToolStrip.Visible = False
+            Case "INICIADO"
+                TRAB_INICIAR_ToolStrip.Visible = False
+                TRAB_REINICIAR_ToolStrip.Visible = False
+            Case "DEMORADO"
+                TRAB_INICIAR_ToolStrip.Visible = False
+                TRAB_FINALIZAR_ToolStrip.Visible = False
+                TRAB_DEMORAR_ToolStrip.Visible = False
+            Case "FINALIZADO", "CANCELADO"
+                If DATOS_GESTIONRow("STATUS") = "FINALIZADO" Then
+                    TRAB_NUEVOTRAB_ToolStrip.Visible = False
+                End If
+                TRAB_STATUS_ToolStrip.Visible = False
+                TRAB_EDITAR_ToolStrip.Visible = False
+                TRAB_COMPLETO_ToolStrip.Visible = False
+                TRAB_CREARORDEN_ToolStrip.Visible = False
+                TRAB_RESPONSABLE_ToolStrip.Visible = False
+                TRAB_Separator1.Visible = False
+                TRAB_Separator2.Visible = False
+        End Select
 
-        '            End Select
-        '        Case "FUENTES"
-        '            Select Case DATOS_GESTIONRow("TIPOGESTION")
-
-        '                Case "MANTENIMIENTO PROGRAMADO DE FUENTES"
-        '                    GEST_TRAB1_TOOLS.Visible = True
-        '                    GEST_TRAB1_TOOLS.Text = FUENTE_TRABAJO
-
-        '                Case "MANTENIMIENTO PREVENTIVO DE FUENTES"
-        '                    GEST_TRAB1_TOOLS.Visible = True
-        '                    GEST_TRAB1_TOOLS.Text = FUENTE_TRABAJO
-
-        '                    'FILL CON TIPO_GESTION = "11"
-
-        '                    TRAB_ITEM1_ToolStrip.Visible = True
-        '                    TRAB_ITEM1_ToolStrip.Text = "RELEVAMIENTO"
-        '                    TRAB_ITEM2_ToolStrip.Visible = True
-        '                    TRAB_ITEM2_ToolStrip.Text = "REEMPLAZO DE FUENTE"
-        '                    TRAB_ITEM3_ToolStrip.Visible = True
-        '                    TRAB_ITEM3_ToolStrip.Text = "MANTENIMIENTO PREVENTIVO DE FUENTES"
-        '                    TRAB_ITEM4_ToolStrip.Visible = True
-        '                    TRAB_ITEM4_ToolStrip.Text = "REPARACION DE FUENTE"
-        '                    TRAB_ITEM5_ToolStrip.Visible = True
-        '                    TRAB_ITEM5_ToolStrip.Text = "CAMBIO DE UBICACION"
-        '                    TRAB_ITEM6_ToolStrip.Visible = True
-        '                    TRAB_ITEM6_ToolStrip.Text = "TRABAJOS DE RED"
-        '                    TRAB_ITEM7_ToolStrip.Visible = True
-        '                    TRAB_ITEM7_ToolStrip.Text = "ACTUALIZACION PLANOS"
-
-        '                Case "INSTALACION / RETIRO DE FUENTE X OBRA"
-        '                    GEST_TRAB1_TOOLS.Visible = True
-        '                    GEST_TRAB1_TOOLS.Text = FUENTE_TRABAJO
-
-        '                    'FILL CON TIPO_GESTION = "12"
-        '                    TRAB_ITEM1_ToolStrip.Visible = True
-        '                    TRAB_ITEM1_ToolStrip.Text = "INSTALACION DE FUENTE X OBRA"
-        '                    TRAB_ITEM2_ToolStrip.Visible = True
-        '                    TRAB_ITEM2_ToolStrip.Text = "RETIRO DE FUENTE X OBRA"
-        '                    TRAB_ITEM3_ToolStrip.Visible = True
-        '                    TRAB_ITEM3_ToolStrip.Text = "ACTUALIZACION PLANOS"
-        '                Case "TRABAJOS DE LABORATORIO"
-        '                    GEST_TRAB1_TOOLS.Visible = True
-        '                    GEST_TRAB1_TOOLS.Text = FUENTE_TRABAJO
-        '            End Select
-
-        '        Case "MDU"
-        '            GEST_TRAB1_TOOLS.Visible = True
-        '            GEST_TRAB1_TOOLS.Text = "RELEVAMIENTO"
-        '            GEST_TRAB2_TOOLS.Visible = True
-        '            GEST_TRAB2_TOOLS.Text = "ADMINISTRATIVO"
-        '            GEST_TRAB3_TOOLS.Visible = True
-        '            GEST_TRAB3_TOOLS.Text = "DISEÑO"
-        '            GEST_TRAB4_TOOLS.Visible = True
-        '            GEST_TRAB4_TOOLS.Text = "PREDICTIVO"
-        '            GEST_TRAB5_TOOLS.Visible = True
-        '            GEST_TRAB5_TOOLS.Text = "PREVENTIVO"
-        '            GEST_TRAB6_TOOLS.Visible = True
-        '            GEST_TRAB6_TOOLS.Text = "EJECUCION"
-
-        '            TRAB_ITEM1_ToolStrip.Visible = True
-        '            TRAB_ITEM1_ToolStrip.Text = "RELEVAMIENTO"
-        '            TRAB_ITEM2_ToolStrip.Visible = True
-        '            TRAB_ITEM2_ToolStrip.Text = "ADMINISTRATIVO"
-        '            TRAB_ITEM3_ToolStrip.Visible = True
-        '            TRAB_ITEM3_ToolStrip.Text = "DISEÑO"
-        '            TRAB_ITEM4_ToolStrip.Visible = True
-        '            TRAB_ITEM4_ToolStrip.Text = "PRESUPUESTO"
-        '            TRAB_ITEM5_ToolStrip.Visible = True
-        '            TRAB_ITEM5_ToolStrip.Text = "APROBACION PERMISOS"
-        '            TRAB_ITEM6_ToolStrip.Visible = True
-        '            TRAB_ITEM6_ToolStrip.Text = "APROBACION IMM"
-        '            TRAB_ITEM7_ToolStrip.Visible = True
-        '            TRAB_ITEM7_ToolStrip.Text = "AUTORIZACION CABLEADO"
-        '            TRAB_ITEM8_ToolStrip.Visible = True
-        '            TRAB_ITEM8_ToolStrip.Text = "OBRA CIVIL"
+        For X = 0 To ORDENESDataSet.COMBOS.Rows.Count - 1
+            COMBORow = ORDENESDataSet.COMBOS.Rows(X)
+            If COMBORow.DESDE = "TRABAJO" Then
+                Select Case X
+                    Case 0
+                        TRAB_ITEM1_ToolStrip.Visible = True
+                        TRAB_ITEM1_ToolStrip.Text = COMBORow.TIPO_TRABAJO
+                    Case 1
+                        TRAB_ITEM2_ToolStrip.Visible = True
+                        TRAB_ITEM2_ToolStrip.Text = COMBORow.TIPO_TRABAJO
+                    Case 2
+                        TRAB_ITEM3_ToolStrip.Visible = True
+                        TRAB_ITEM3_ToolStrip.Text = COMBORow.TIPO_TRABAJO
+                    Case 3
+                        TRAB_ITEM4_ToolStrip.Visible = True
+                        TRAB_ITEM4_ToolStrip.Text = COMBORow.TIPO_TRABAJO
+                    Case 4
+                        TRAB_ITEM5_ToolStrip.Visible = True
+                        TRAB_ITEM5_ToolStrip.Text = COMBORow.TIPO_TRABAJO
+                    Case 5
+                        TRAB_ITEM6_ToolStrip.Visible = True
+                        TRAB_ITEM6_ToolStrip.Text = COMBORow.TIPO_TRABAJO
+                    Case 6
+                        TRAB_ITEM7_ToolStrip.Visible = True
+                        TRAB_ITEM7_ToolStrip.Text = COMBORow.TIPO_TRABAJO
+                    Case 7
+                        TRAB_ITEM8_ToolStrip.Visible = True
+                        TRAB_ITEM8_ToolStrip.Text = COMBORow.TIPO_TRABAJO
+                    Case 8
+                        TRAB_ITEM9_ToolStrip.Visible = True
+                        TRAB_ITEM9_ToolStrip.Text = COMBORow.TIPO_TRABAJO
+                    Case 9
+                        TRAB_ITEM10_ToolStrip.Visible = True
+                        TRAB_ITEM10_ToolStrip.Text = COMBORow.TIPO_TRABAJO
+                    Case 10
+                        TRAB_ITEM11_ToolStrip.Visible = True
+                        TRAB_ITEM11_ToolStrip.Text = COMBORow.TIPO_TRABAJO
+                End Select
+            End If
+        Next
 
 
-
-        '    End Select
-        'End If
     End Sub
     Private Sub LLENA_HISTORICOGESTION()
         If OrdenesDataSet1.HISTORICO.Rows.Count > 0 Then
@@ -1635,8 +1542,9 @@ Public Class DATOS
         RELEVAMIENTOMDUTableAdapter.Update(NewRELEVAMIENTO)
 
     End Sub
-    Public Sub CARGA_TRABAJOS()
+    Public Sub CARGA_TRABAJOS(TRABAJORow As ORDENESDataSet.TRABAJOSRow)
         If ORDENESDataSet.TRABAJOS.Rows.Count > 0 Then
+            CARGA_COMBOSTRA(TRABAJORow)
             'CARGA EN VARIABLES LOS DATOS DEL TRABAJO SELECCIONADO
             BTN_AGREGAR.Enabled = True
             TRABAJOSDataGridView.Visible = True
@@ -1648,155 +1556,135 @@ Public Class DATOS
             ETI_TRABDESCRIPCION.Visible = True
             VER_HISTTRABAJOS.Visible = True
 
-            If IsDBNull(DATOS_TRABAJORow("NODO")) = False Then VARTRAB_NODO = DATOS_TRABAJORow("NODO")
-            If IsDBNull(DATOS_TRABAJORow("ZONA")) = False Then VARTRAB_ZONA = DATOS_TRABAJORow("ZONA")
+            If IsDBNull(TRABAJORow("NODO")) = False Then VARTRAB_NODO = TRABAJORow("NODO")
+            If IsDBNull(TRABAJORow("ZONA")) = False Then VARTRAB_ZONA = TRABAJORow("ZONA")
 
-            VARTRAB_GENERADOPOR = DATOS_TRABAJORow("GENERADOX")
-            If IsDBNull(DATOS_TRABAJORow("ASIGNADOA")) = False Then
-                If DATOS_TRABAJORow("ASIGNADOA") <> "" Then
-                    VARTRAB_ASIGNADOA = DATOS_TRABAJORow("ASIGNADOA")
+            VARTRAB_GENERADOPOR = TRABAJORow("GENERADOX")
+            If IsDBNull(TRABAJORow("ASIGNADOA")) = False Then
+                If TRABAJORow("ASIGNADOA") <> "" Then
+                    VARTRAB_ASIGNADOA = TRABAJORow("ASIGNADOA")
                 Else
                     VARTRAB_ASIGNADOA = "Sin asignar"
                 End If
             Else
                 VARTRAB_ASIGNADOA = "Sin asignar"
             End If
-            VARTRAB_TIPO = DATOS_TRABAJORow(("TIPOTRABAJO"))
-            If DATOS_TRABAJORow.IsPROYECTO_ORDINALESNull = False Then LBL_PROYECTO.Text = DATOS_TRABAJORow.PROYECTO_ORDINALES Else LBL_PROYECTO.Text = ""
-            If IsDBNull(DATOS_TRABAJORow("FECHAINICESTIMADO")) = False Then VARTRAB_INIEST = CDate(DATOS_TRABAJORow("FECHAINICESTIMADO")).ToShortDateString.ToString
-            If IsDBNull(DATOS_TRABAJORow("TIEMPOESTIMADO")) = False Then VARTRAB_TIEMEST = DATOS_TRABAJORow("TIEMPOESTIMADO")
-                If IsDBNull(DATOS_TRABAJORow("DESCRIPCION")) = False Then VARTRAB_DESCRIPCION = DATOS_TRABAJORow("DESCRIPCION")
-                If IsDBNull(DATOS_TRABAJORow("ZONA")) = False Then VARTRAB_ZONA = DATOS_TRABAJORow("ZONA")
-                If IsDBNull(DATOS_TRABAJORow("MANZANA")) = False Then VARTRAB_MZNA = DATOS_TRABAJORow("MANZANA")
-                If IsDBNull(DATOS_TRABAJORow("CALLE")) = False Then VARTRAB_CALLE = DATOS_TRABAJORow("CALLE")
-                If IsDBNull(DATOS_TRABAJORow("NRO")) = False Then VARTRAB_NRO = DATOS_TRABAJORow("NRO")
-                If IsDBNull(DATOS_TRABAJORow("TIPODEP")) = False Then VARTRAB_TIPODEP = DATOS_TRABAJORow("TIPODEP") Else VARTRAB_TIPODEP = ""
-                If IsDBNull(DATOS_TRABAJORow("DEPENDENCIA")) = False Then VARTRAB_DEP = DATOS_TRABAJORow("DEPENDENCIA") Else VARTRAB_DEP = ""
-            If IsDBNull(DATOS_TRABAJORow("ATRIBUTO")) = False Then
-                If DATOS_TRABAJORow("ATRIBUTO") = "" Then
+            VARTRAB_TIPO = TRABAJORow(("TIPOTRABAJO"))
+            If TRABAJORow.IsPROYECTO_ORDINALESNull = False Then LBL_PROYECTO.Text = TRABAJORow.PROYECTO_ORDINALES Else LBL_PROYECTO.Text = ""
+            If IsDBNull(TRABAJORow("FECHAINICESTIMADO")) = False Then VARTRAB_INIEST = CDate(TRABAJORow("FECHAINICESTIMADO")).ToShortDateString.ToString
+            If IsDBNull(TRABAJORow("TIEMPOESTIMADO")) = False Then VARTRAB_TIEMEST = TRABAJORow("TIEMPOESTIMADO")
+            If IsDBNull(TRABAJORow("DESCRIPCION")) = False Then VARTRAB_DESCRIPCION = TRABAJORow("DESCRIPCION")
+            If IsDBNull(TRABAJORow("ZONA")) = False Then VARTRAB_ZONA = TRABAJORow("ZONA")
+            If IsDBNull(TRABAJORow("MANZANA")) = False Then VARTRAB_MZNA = TRABAJORow("MANZANA")
+            If IsDBNull(TRABAJORow("CALLE")) = False Then VARTRAB_CALLE = TRABAJORow("CALLE")
+            If IsDBNull(TRABAJORow("NRO")) = False Then VARTRAB_NRO = TRABAJORow("NRO")
+            If IsDBNull(TRABAJORow("TIPODEP")) = False Then VARTRAB_TIPODEP = TRABAJORow("TIPODEP") Else VARTRAB_TIPODEP = ""
+            If IsDBNull(TRABAJORow("DEPENDENCIA")) = False Then VARTRAB_DEP = TRABAJORow("DEPENDENCIA") Else VARTRAB_DEP = ""
+            If IsDBNull(TRABAJORow("ATRIBUTO")) = False Then
+                If TRABAJORow("ATRIBUTO") = "" Then
                     VARTRAB_ATRIBUTO = "HFC"
                 Else
-                    VARTRAB_ATRIBUTO = DATOS_TRABAJORow("ATRIBUTO")
+                    VARTRAB_ATRIBUTO = TRABAJORow("ATRIBUTO")
                 End If
             Else
                 VARTRAB_ATRIBUTO = "HFC"
             End If
-            'If DATOS_TRABAJORow.GENERADOX <> DATOS_TRABAJORow.ASIGNADOA Then
-            '    HISTORICOTableAdapter.FillByIDTRABAJO(OrdenesDataSet4.HISTORICO, DATOS_TRABAJORow.Id_TRABAJO)
-            '    If OrdenesDataSet4.HISTORICO.Rows.Count > 0 Then
 
-
-            '    End If
-            'End If
             'CARGA LAS ETIQUETAS DE LECTURA DE LA PANTALLA DATOS
             ETI_TRABTIPO.Text = "Trabajo tipo: " & VARTRAB_TIPO
-                'If VARTRAB_ZONA = "" Then ETI_TRABZONA.Visible = False Else ETI_TRABZONA.Visible = True
-                'If VARTRAB_MZNA = "" Then ETI_TRABMZNA.Visible = False Else ETI_TRABMZNA.Visible = True
-                If VARTRAB_NODO <> "" Then
-                    ETI_TRABNODO.Text = VARTRAB_NODO
-                    If VARTRAB_ZONA <> "" Then
-                        ETI_TRABNODO.Text += VARTRAB_ZONA
-                    End If
+            If VARTRAB_NODO <> "" Then
+                ETI_TRABNODO.Text = VARTRAB_NODO
+                If VARTRAB_ZONA <> "" Then
+                    ETI_TRABNODO.Text += VARTRAB_ZONA
+                End If
 
-                End If
-                If VARTRAB_MZNA <> "" Then
-                    ETI_TRABMZNA.Text = VARTRAB_MZNA
-                    ETI_TRABMZNA.Visible = True
-                End If
-            '  ETI_TRABNODO.Text = "Nodo: " & VARTRAB_NODO & "   Zona: " & VARTRAB_ZONA & "   Mzna: " & VARTRAB_MZNA
-            'ETI_TRABZONA.Text =
-            'ETI_TRABMZNA.Text =
+            End If
+            If VARTRAB_MZNA <> "" Then
+                ETI_TRABMZNA.Text = VARTRAB_MZNA
+                ETI_TRABMZNA.Visible = True
+            End If
             ETI_TRABGENERADOX.Text = "Generado por: " & VARTRAB_GENERADOPOR & "   |   Responsable: " & VARTRAB_ASIGNADOA & "   |   Inicio Estimado: " & VARTRAB_INIEST & "   |   Tiempo estimado: " & VARTRAB_TIEMEST & " Días"
 
-            'ETI_TRABINIEST.Text = "Inicio Estimado: " & DateValue(VARTRAB_INIEST).ToShortDateString.ToString
-            'ETI_TRABTESTIM.Text = "Tiempo estimado: " & VARTRAB_TIEMEST & " Dias"
             If VARTRAB_CALLE = "" And VARTRAB_NRO = "" Then ETI_TRABCALLEYNRO.Visible = False Else ETI_TRABCALLEYNRO.Visible = True
-                ETI_TRABCALLEYNRO.Text = VARTRAB_CALLE & " " & VARTRAB_NRO
-                ETI_TRABTIPODEP.Text = "Tipo Dependencia: " & VARTRAB_TIPODEP
-                ETI_TRABDEP.Text = "Dependencia " & VARTRAB_DEP
-                ETI_TRABDESCRIPCION.Text = VARTRAB_DESCRIPCION
-                'CARGA EL HISTORICO DEL TRABAJO
-                If VER_HISTTRABAJOS.Checked = True Then
-                    HISTORICOTableAdapter.FillByIDTRABAJO(ORDENESDataSet.HISTORICO, DATOS_TRABAJORow("ID_TRABAJO"))
-                    HISTORICOBindingSource.MoveLast()
-                End If
-                'CARGA LOS ADJUNTOS DEL TRABAJO
-                ADJUNTOSTableAdapter.FillByORDEN(ORDENESDataSet.ADJUNTOS, DATOS_TRABAJORow("ID_TRABAJO"))
-                If ORDENESDataSet.ADJUNTOS.Rows.Count > 0 Then
-                    ADJUNTOSDataGridView.Visible = True
-                    BTN_BORRAR.Visible = True
-                    ' BTN_BORRAR.Enabled = True
-                    LBL_ADJUNTOS.Visible = True
-                Else
-                    BTN_BORRAR.Visible = False
-                    LBL_ADJUNTOS.Visible = False
-                    ADJUNTOSDataGridView.Visible = False
-                End If
-                'CARGA LA RUTA PARA VER LOS PLANOS DESDE LA APLICACION
-                PLANOSTableAdapter.FillByNODOZONA(INDICESDataSet.PLANOS, DATOS_TRABAJORow.NODO, CInt(DATOS_TRABAJORow.ZONA))
-                If INDICESDataSet.PLANOS.Rows.Count > 0 Then
-                    BTN_AGREGAR_ZONA.Visible = False
-                    BTN_VER_PLANOS.Visible = True
-                Else
-                    BTN_AGREGAR_ZONA.Visible = True
-                    BTN_VER_PLANOS.Visible = False
-                End If
-                'FORMATEA LAS CELDAS DEL DATAGRID SEGUN SU STATUS Y CONDICION
-
-                If THEME_BLACK Then
-                    For C = 0 To TRABAJOSDataGridView.Rows.Count - 1
-                        TRABAJOSDataGridView.Rows(C).Height = 21
-                        TRABAJOSDataGridView.Rows(C).DefaultCellStyle.ForeColor = Color.White
-                        If TRABAJOSDataGridView.Rows(C).Cells(9).Value <> "FINALIZADO" Then
-                            If TRABAJOSDataGridView.Rows(C).Cells(11).Value = True Then
-                                TRABAJOSDataGridView.Rows(C).DefaultCellStyle.BackColor = Color.DarkGreen
-                            Else
-                                TRABAJOSDataGridView.Rows(C).DefaultCellStyle.BackColor = Color.FromArgb(64, 64, 64)
-                            End If
-                            'Select Case TRABAJOSDataGridView.Rows(C).Cells(2).Value
-                            '    Case "OBRA CIVIL", "GESTION OC"
-                            '        If TRABAJOSDataGridView.Rows(C).Cells(11).Value = False Then
-                            '            TRABAJOSDataGridView.Rows(C).DefaultCellStyle.BackColor = Color.IndianRed
-                            '        End If
-                            'End Select
-                        Else
-                            TRABAJOSDataGridView.Rows(C).DefaultCellStyle.ForeColor = Color.DimGray
-                        End If
-                    Next
-                    'FORMATEA LA CELDA SELECCIONADA SEGUN EL STATUS Y CONDICION
-                    If TRABAJOSDataGridView.CurrentRow.Cells(9).Value <> "FINALIZADO" Then
-                        'If TRABAJOSDataGridView.CurrentRow.Cells(11).Value = False Then
-                        'Select Case TRABAJOSDataGridView.CurrentRow.Cells(2).Value
-                        '    Case "OBRA CIVIL", "GESTION OC"
-                        '        TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.IndianRed
-                        '        TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.FromArgb(25, 25, 25)
-                        '    Case Else
-                        TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.FromArgb(25, 25, 25)
-                        TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 118, 51)
-                        '    End Select
-                        'Else
-                        '    TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.DarkOliveGreen
-                        '    TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Orange
-                        'End If
-                    End If
-                Else 'SI EL TEMA ES BLANCO
-                    For C = 0 To TRABAJOSDataGridView.Rows.Count - 1
-                        TRABAJOSDataGridView.Rows(C).Height = 25
-                        TRABAJOSDataGridView.Rows(C).DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64)
-                        TRABAJOSDataGridView.Rows(C).DefaultCellStyle.BackColor = Color.FromArgb(221, 221, 221)
-                        If TRABAJOSDataGridView.Rows(C).Cells(9).Value = "FINALIZADO" Then
-                            TRABAJOSDataGridView.Rows(C).DefaultCellStyle.ForeColor = C_TRABAJO
-                        End If
-                    Next
-                    ' If TRABAJOSDataGridView.CurrentRow.Cells(9).Value <> "FINALIZADO" Then
-                    TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.FromArgb(70, 70, 70)
-                    TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionForeColor = C_TRABAJO
-                    ' End If
-                End If
+            ETI_TRABCALLEYNRO.Text = VARTRAB_CALLE & " " & VARTRAB_NRO
+            ETI_TRABTIPODEP.Text = "Tipo Dependencia: " & VARTRAB_TIPODEP
+            ETI_TRABDEP.Text = "Dependencia " & VARTRAB_DEP
+            ETI_TRABDESCRIPCION.Text = VARTRAB_DESCRIPCION
+            'CARGA EL HISTORICO DEL TRABAJO
+            If VER_HISTTRABAJOS.Checked Then
+                HISTORICOTableAdapter.FillByIDTRABAJO(ORDENESDataSet.HISTORICO, TRABAJORow("ID_TRABAJO"))
+                HISTORICOBindingSource.MoveLast()
             End If
-            TRABAJOSDataGridView.CurrentRow.Height = 40
+            ''CARGA LOS ADJUNTOS DEL TRABAJO
+            ORDENESDataSet.ADJUNTOS.Clear()
+            ADJUNTOSTableAdapter.FillByORDEN(ORDENESDataSet.ADJUNTOS, TRABAJORow("ID_TRABAJO"))
+            If ORDENESDataSet.ADJUNTOS.Rows.Count > 0 Then
+                ADJUNTOSDataGridView.Visible = True
+                BTN_BORRAR.Visible = True
+                LBL_ADJUNTOS.Visible = True
+            Else
+                BTN_BORRAR.Visible = False
+                LBL_ADJUNTOS.Visible = False
+                ADJUNTOSDataGridView.Visible = False
+            End If
+
+            'FORMATEA LAS CELDAS DEL DATAGRID SEGUN SU STATUS Y CONDICION
+
+            If THEME_BLACK Then
+                For C = 0 To TRABAJOSDataGridView.Rows.Count - 1
+                    TRABAJOSDataGridView.Rows(C).Height = 21
+                    TRABAJOSDataGridView.Rows(C).DefaultCellStyle.ForeColor = Color.White
+                    If TRABAJOSDataGridView.Rows(C).Cells(9).Value <> "FINALIZADO" Then
+                        If TRABAJOSDataGridView.Rows(C).Cells(11).Value = True Then
+                            TRABAJOSDataGridView.Rows(C).DefaultCellStyle.BackColor = Color.DarkGreen
+                        Else
+                            TRABAJOSDataGridView.Rows(C).DefaultCellStyle.BackColor = Color.FromArgb(64, 64, 64)
+                        End If
+                        'Select Case TRABAJOSDataGridView.Rows(C).Cells(2).Value
+                        '    Case "OBRA CIVIL", "GESTION OC"
+                        '        If TRABAJOSDataGridView.Rows(C).Cells(11).Value = False Then
+                        '            TRABAJOSDataGridView.Rows(C).DefaultCellStyle.BackColor = Color.IndianRed
+                        '        End If
+                        'End Select
+                    Else
+                        TRABAJOSDataGridView.Rows(C).DefaultCellStyle.ForeColor = Color.DimGray
+                    End If
+                Next
+                'FORMATEA LA CELDA SELECCIONADA SEGUN EL STATUS Y CONDICION
+                If TRABAJOSDataGridView.CurrentRow.Cells(9).Value <> "FINALIZADO" Then
+                    'If TRABAJOSDataGridView.CurrentRow.Cells(11).Value = False Then
+                    'Select Case TRABAJOSDataGridView.CurrentRow.Cells(2).Value
+                    '    Case "OBRA CIVIL", "GESTION OC"
+                    '        TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.IndianRed
+                    '        TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.FromArgb(25, 25, 25)
+                    '    Case Else
+                    TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.FromArgb(25, 25, 25)
+                    TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 118, 51)
+                    '    End Select
+                    'Else
+                    '    TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.DarkOliveGreen
+                    '    TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Orange
+                    'End If
+                End If
+            Else 'SI EL TEMA ES BLANCO
+                For C = 0 To TRABAJOSDataGridView.Rows.Count - 1
+                    TRABAJOSDataGridView.Rows(C).Height = 25
+                    TRABAJOSDataGridView.Rows(C).DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64)
+                    TRABAJOSDataGridView.Rows(C).DefaultCellStyle.BackColor = Color.FromArgb(221, 221, 221)
+                    If TRABAJOSDataGridView.Rows(C).Cells(9).Value = "FINALIZADO" Then
+                        TRABAJOSDataGridView.Rows(C).DefaultCellStyle.ForeColor = C_TRABAJO
+                    End If
+                Next
+                ' If TRABAJOSDataGridView.CurrentRow.Cells(9).Value <> "FINALIZADO" Then
+                TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.FromArgb(70, 70, 70)
+                TRABAJOSDataGridView.CurrentRow.DefaultCellStyle.SelectionForeColor = C_TRABAJO
+                ' End If
+            End If
+        End If
+        'TRABAJOSDataGridView.CurrentRow.Height = 40
     End Sub
     Private Sub BOT_FILTRAZONA_Click(sender As Object, e As EventArgs) Handles BOT_FILTRAZONA.Click
+        Cursor = Cursors.WaitCursor
         Dim ID_GESTION As Integer
         ID_GESTION = ORDENESDataSet.GESTION.Rows(GESTIONBindingSource.Position).Item("Id_GESTION")
         If FILTRO_ZONA.Text = "" Then
@@ -1804,6 +1692,7 @@ Public Class DATOS
         Else
             TRABAJOSTableAdapter.FillByIDGESTIONZONA(ORDENESDataSet.TRABAJOS, ID_GESTION, CInt(FILTRO_ZONA.Text))
         End If
+        Cursor = DefaultCursor
     End Sub
     Private Sub CREA_COPIAORDEN() 'aun sin usar
 
@@ -2259,7 +2148,7 @@ Public Class DATOS
                             End Select
                         End If
                     End If
-                        DATOS_GESTIONRow("DESCRIPCION") += "  ++  GESTION CANCELADA EL " & Today & ":   "
+                    DATOS_GESTIONRow("DESCRIPCION") += "  ++  GESTION CANCELADA EL " & Today & ":   "
                     DATOS_HIS_STATUSACTUAL = "CANCELADO"
                     DATOS_HIS_CAUSA = "CANCELACION MANUAL"
                     DATOS_HIS_DETALLE = "CAMBIO DE STATUS MANUAL"
@@ -2614,7 +2503,7 @@ Public Class DATOS
         DATOS_HIS_STATUSACTUAL = DATOS_TRABAJORow("STATUS")
 
         CARGA_HISTORICO()
-        CARGA_TRABAJOS()
+        'CARGA_TRABAJOS()
     End Sub
     Private Sub TRAB_RESPONSABLE()
         Cursor = Cursors.WaitCursor
@@ -2841,9 +2730,10 @@ Public Class DATOS
 
             ORDENESTableAdapter.Update(DATOS_ORDENESRow)
             ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, DATOS_TRABAJORow("ID_TRABAJO"))
-            CARGA_VALORESORDENES()
+            CARGA_VALORESORDENES(ORDENESDataSet.ORDENES.Rows(ORDENESBindingSource.Position))
             NOTIFICACION("SYS", "ORDEN " & NROORDENINT & " INICIADA")
         Catch EX As Exception
+            MsgBox(EX.Message)
             NOTIFICACION("SYS", "OPSS! No se pudo EMITIR la orden " & DATOS_ORDENESRow.NRO_ORDENINT)
         End Try
     End Sub
@@ -2872,6 +2762,7 @@ Public Class DATOS
         VISTAORDINAL.Show(Me)
     End Sub
     Private Sub ORD_IMPRIMIR_ToolStrip_Click(sender As Object, e As EventArgs) Handles ORD_IMPRIMIR_ToolStrip.Click
+        Dim ENCABEZADO As PdfPTable
         'CREAMOS EL PDF PARA LUEGO IMPRIMIRLO
         Dim FUENTETITULOCOTI As Font = FontFactory.GetFont("arial", 30, 1)
         Dim FUENTE As Font = FontFactory.GetFont("arial", 10, 1)
@@ -3894,6 +3785,7 @@ Public Class DATOS
         EDITAR_ORDEN()
     End Sub
     Private Sub EDITAR_ORDEN()
+        Me.Cursor = Cursors.WaitCursor
         ACCION_ORDEN = "EDITAR"
         'EDITA UNA ORDEN DE TRABAJO
 
@@ -3908,7 +3800,7 @@ Public Class DATOS
                 ORDEN_TIEMPORESTANTE = CAPACIDAD_DIA
             Case "EST"  'LA ORDEN DE QUIEN DEPENDE TAMBIES ES ESTRICTA
                 'BUSCA LA ORDEN DE DEPENDENCIA DE LA ORDEN SELECCIONADA
-                Me.Cursor = Cursors.WaitCursor
+
                 ORDENESTableAdapter.FillByORDORIGEN(OrdenesDataSet4.ORDENES, ING_ORDORIGEN, ING_ORDORIGEN)
 
                 For I = 0 To OrdenesDataSet4.ORDENES.Rows.Count - 1
@@ -4279,9 +4171,16 @@ Public Class DATOS
         End If
     End Sub
     Private Sub BTN_VER_PLANOS_Click(sender As Object, e As EventArgs) Handles BTN_VER_PLANOS.Click
-        If INDICESDataSet.PLANOS.Rows.Count > 0 Then
-            Dim PATH As String = INDICESDataSet.PLANOS.Rows(0).Item("PATH")
-            Process.Start(PATH)
+        'CARGA LA RUTA PARA VER LOS PLANOS DESDE LA APLICACION
+        If DATOS_TRABAJORow IsNot Nothing Then
+            PLANOSTableAdapter.FillByNODOZONA(INDICESDataSet.PLANOS, DATOS_TRABAJORow.NODO, CInt(DATOS_TRABAJORow.ZONA))
+            If INDICESDataSet.PLANOS.Rows.Count > 0 Then
+                Dim PATH As String = INDICESDataSet.PLANOS.Rows(0).Item("PATH")
+                Process.Start(PATH)
+                BTN_AGREGAR_ZONA.Visible = False
+            Else
+                BTN_AGREGAR_ZONA.Visible = True
+            End If
         End If
     End Sub
     Private Sub BTN_AGREGAR_ZONA_Click(sender As Object, e As EventArgs) Handles BTN_AGREGAR_ZONA.Click
@@ -4324,9 +4223,7 @@ Public Class DATOS
     Private Sub TRABAJOSDataGridView_Click(sender As Object, e As EventArgs) Handles TRABAJOSDataGridView.Click
 
     End Sub
-    Private Sub GESTIONDataGridView_Click(sender As Object, e As EventArgs) Handles GESTIONDataGridView.Click
 
-    End Sub
     Private Sub BTN_VER_GOOGLE_Click(sender As Object, e As EventArgs) Handles BTN_VER_GOOGLE.Click
         DIRECCION_GEO = DIRECCION_GEST.Text
         If GEO.Visible Then
@@ -4513,8 +4410,8 @@ Public Class DATOS
         ORDENESTableAdapter.Update(DATOS_ORDENESRow)
     End Sub
     Private Sub CARGA_ORDENDUPLICADA()
-        NewORDENRow = ORDENESDataSet.ORDENES.NewORDENESRow
-        NewORDENRow("NRO_ORDINAL") = 0
+        NEWORDENRow = ORDENESDataSet.ORDENES.NewORDENESRow
+        NEWORDENRow("NRO_ORDINAL") = 0
         NEWORDENRow("ID_GESTION") = DATOS_ORDENESRow.ID_GESTION
         NEWORDENRow("ID_TRABAJO") = DATOS_ORDENESRow.ID_TRABAJO
         NEWORDENRow("TIPO") = DATOS_ORDENESRow.TIPO
@@ -4570,6 +4467,8 @@ Public Class DATOS
 
 
     End Sub
+
+
 End Class
 
 

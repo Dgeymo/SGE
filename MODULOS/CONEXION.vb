@@ -2,21 +2,31 @@
 Module CONEXION
     Dim ConnectEDIFICIO As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\OPERACIONES\BD_FTTHMDU\EDIFICIO.accdb"
     Dim ConnectORDENES As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\OPERACIONES\BD_ORDENES\ORDENES.accdb"
+    Dim ConnectFUENTES As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\OPERACIONES\BD_FUENTES\BASEFUENTES.accdb"
+    Dim ConnectFUENTESmod As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\OPERACIONES\BD_FUENTES\BD_FUENTES.accdb"
     Public connE As New OleDbConnection(ConnectEDIFICIO)
     Public connO As New OleDbConnection(ConnectORDENES)
+    Public connF As New OleDbConnection(ConnectFUENTES)
+    Public connFmod As New OleDbConnection(ConnectFUENTESmod)
     Dim CONNECT As OleDbConnection
 
     Function TipoConexion(ByVal conn As String) As OleDbConnection
         Dim thisConnect As OleDbConnection
-        If conn.ToLower = "ordenes" Then
-            thisConnect = connO
-            Return thisConnect
-        End If
+        Select Case conn.ToLower
+            Case "ordenes"
+                thisConnect = connO
+                Return thisConnect
+            Case "edificio"
+                thisConnect = connE
+                Return thisConnect
+            Case "fuentes"
+                thisConnect = connF
+                Return thisConnect
+            Case "fuentesmod"
+                thisConnect = connFmod
+                Return thisConnect
+        End Select
 
-        If conn.ToLower = "edificio" Then
-            thisConnect = connE
-            Return thisConnect
-        End If
     End Function
     Function ExecuteQuery(conn As String, query As String) As OleDbDataReader
         Try

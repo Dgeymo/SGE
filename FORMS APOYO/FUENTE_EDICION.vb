@@ -1,7 +1,8 @@
 ﻿Public Class FUENTE_EDICION
     Dim NEWFUENTERow As BASEFUENTESDataSet.FUENTERow
     Dim NewINSTALACION As BASEFUENTESDataSet.INSTALACIONRow
-    Dim FUENTE_MOD As BASEFUENTESDataSet.FUENTERow
+    Dim FUENTERow As BASEFUENTESDataSet.FUENTERow
+    Dim RESPBAT
     Dim CampoCalle(5)
     Dim ExpreCalle(5)
     Dim FiltrCalle(5)
@@ -23,42 +24,61 @@
     Dim LE As Integer
     Private Sub BTN_CERRAR_Click(sender As Object, e As EventArgs) Handles BTN_CERRAR.Click
         FUENTES.Enabled = True
-        Me.Close()
+        Close()
     End Sub
     Private Sub FUENTE_EDICION_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        CARGARCOMBOBAT()
         INDICE_CALLESTableAdapter.Fill(INDICESDataSet.INDICE_CALLES)
         If FUENTES.ACCION_FUENTE = "EDITAR" Then
             FUENTETableAdapter.FillByID(BASEFUENTESDataSet.FUENTE, FUENTE_ID)
-            FUENTE_MOD = BASEFUENTESDataSet.FUENTE.Rows(0)
-            C_MODFUENTE.Text = FUENTE_MOD.MODFUENTE
-            C_CALLE.Text = FUENTE_MOD.CALLE
-            C_CANTBAT.Text = FUENTE_MOD.CANT_BAT
-            C_NRO.Text = FUENTE_MOD.PUERTA
-            C_ESQUINA.Text = FUENTE_MOD.ESQUINA
-            C_NODO.Text = FUENTE_MOD.NODO
-            C_ZONAG.Text = FUENTE_MOD.ZONA
-            INSTALACION.Text = FUENTE_MOD.INSTALACION_RUS
+            FUENTERow = BASEFUENTESDataSet.FUENTE.Rows(0)
 
-            If FUENTE_MOD.IsID2Null = False AndAlso FUENTE_MOD.ID2 <> "" Then C_ID2.Text = FUENTE_MOD.ID2 Else C_ID2.Text = "-"
-            If FUENTE_MOD.IsIMEINull = False AndAlso FUENTE_MOD.IMEI <> "" Then C_IMEI.Text = FUENTE_MOD.IMEI Else C_IMEI.Text = "-"
-            If FUENTE_MOD.IsIPMODEMNull = False AndAlso FUENTE_MOD.IPMODEM <> "" Then C_IP.Text = FUENTE_MOD.IPMODEM Else C_IP.Text = "-"
-            If FUENTE_MOD.IsPINNull = False AndAlso FUENTE_MOD.PIN <> "" Then C_PIN.Text = FUENTE_MOD.PIN Else C_PIN.Text = "-"
-            If FUENTE_MOD.IsPUKNull = False AndAlso FUENTE_MOD.PUK <> "" Then C_PUK.Text = FUENTE_MOD.PUK Else C_PUK.Text = "-"
-            If FUENTE_MOD.IsVPN1Null = False AndAlso FUENTE_MOD.VPN1 <> "" Then C_VPN1.Text = FUENTE_MOD.VPN1 Else C_VPN1.Text = "-"
-            If FUENTE_MOD.IsVPN2Null = False AndAlso FUENTE_MOD.VPN2 <> "" Then C_VPN2.Text = FUENTE_MOD.VPN2 Else C_VPN2.Text = "-"
-            If FUENTE_MOD.IsMACNull = False AndAlso FUENTE_MOD.MAC <> "" Then C_MAC.Text = FUENTE_MOD.MAC Else C_MAC.Text = "-"
+            C_MODFUENTE.Text = FUENTERow("MODFUENTE")
+            C_CALLE.Text = FUENTERow("CALLE")
+            C_CANTBAT.Text = FUENTERow("CANT_BAT")
+            C_NRO.Text = FUENTERow("PUERTA")
+            C_ESQUINA.Text = FUENTERow("ESQUINA")
+            C_NODO.Text = FUENTERow("NODO")
+            C_ZONAG.Text = FUENTERow("ZONA")
+            INSTALACION.Text = FUENTERow("INSTALACION_RUS")
 
-            If FUENTE_MOD.IsLEXNull = False AndAlso FUENTE_MOD.LEX <> "" Then C_LEX.Text = FUENTE_MOD.LEX Else C_LEX.Text = 0
-            If FUENTE_MOD.IsBRNull = False AndAlso FUENTE_MOD.BR <> "" Then C_MB.Text = FUENTE_MOD.BR Else C_MB.Text = 0
-            If FUENTE_MOD.IsRXNull = False AndAlso FUENTE_MOD.RX <> "" Then C_RX.Text = FUENTE_MOD.RX Else C_RX.Text = 0
-            If FUENTE_MOD.IsTRNull = False AndAlso FUENTE_MOD.TR <> "" Then C_TR.Text = FUENTE_MOD.TR Else C_TR.Text = 0
+            If IsDBNull(FUENTERow("ID2")) = False AndAlso FUENTERow("ID2") <> "" Then C_ID2.Text = FUENTERow("ID2") Else C_ID2.Text = "-"
+            If IsDBNull(FUENTERow("IMEI")) = False AndAlso FUENTERow("IMEI") <> "" Then C_IMEI.Text = FUENTERow("IMEI") Else C_IMEI.Text = "-"
+            If IsDBNull(FUENTERow("IPMODEM")) = False AndAlso FUENTERow("IPMODEM") <> "" Then C_IP.Text = FUENTERow("IPMODEM") Else C_IP.Text = "-"
+            If IsDBNull(FUENTERow("PIN")) = False AndAlso FUENTERow("PIN") <> "" Then C_PIN.Text = FUENTERow("PIN") Else C_PIN.Text = "-"
+            If IsDBNull(FUENTERow("PUK")) = False AndAlso FUENTERow("PUK") <> "" Then C_PUK.Text = FUENTERow("PUK") Else C_PUK.Text = "-"
+            If IsDBNull(FUENTERow("VPN1")) = False AndAlso FUENTERow("VPN1") <> "" Then C_VPN1.Text = FUENTERow("VPN1") Else C_VPN1.Text = "-"
+            If IsDBNull(FUENTERow("VPN2")) = False AndAlso FUENTERow("VPN2") <> "" Then C_VPN2.Text = FUENTERow("VPN2") Else C_VPN2.Text = "-"
+            If IsDBNull(FUENTERow("MAC")) = False AndAlso FUENTERow("MAC") <> "" Then C_MAC.Text = FUENTERow("MAC") Else C_MAC.Text = "-"
 
-            If FUENTE_MOD.IsMODBATERIANull = False Then C_MODBAT.Text = FUENTE_MOD.MODBATERIA Else C_MODBAT.Text = "N/A"
-            If FUENTE_MOD.IsGABINETENull = False Then C_MODGAB.Text = FUENTE_MOD.GABINETE Else C_MODGAB.Text = "N/A"
-            If FUENTE_MOD.IsFECHA_BATNull = False Then FECHAFAB.Text = FUENTE_MOD.FECHA_BAT Else FECHAFAB.Text = "N/A"
-            If FUENTE_MOD.IsCARGA_REALNull = False Then TXT_CARGA_REAL.Text = FUENTE_MOD.CARGA_REAL
+            If IsDBNull(FUENTERow("LEX")) = False AndAlso FUENTERow("LEX") <> "" Then C_LEX.Text = FUENTERow("LEX") Else C_LEX.Text = 0
+            If IsDBNull(FUENTERow("BR")) = False AndAlso FUENTERow("BR") <> "" Then C_MB.Text = FUENTERow("BR") Else C_MB.Text = 0
+            If IsDBNull(FUENTERow("RX")) = False AndAlso FUENTERow("RX") <> "" Then C_RX.Text = FUENTERow("RX") Else C_RX.Text = 0
+            If IsDBNull(FUENTERow("TR")) = False AndAlso FUENTERow("TR") <> "" Then C_TR.Text = FUENTERow("TR") Else C_TR.Text = 0
 
-            End If
+            If IsDBNull(FUENTERow("MODBATERIA")) = False Then CB_BAT.Text = FUENTERow("MODBATERIA") & " - " & Month(FUENTERow("FECHA_BAT")) & "/" & Year(FUENTERow("FECHA_BAT")) Else CB_BAT.Text = "N/A"
+            If IsDBNull(FUENTERow("GABINETE")) = False Then C_MODGAB.Text = FUENTERow("GABINETE") Else C_MODGAB.Text = "N/A"
+
+            If IsDBNull(FUENTERow("CARGA_REAL")) = False Then TXT_CARGA_REAL.Text = FUENTERow("CARGA_REAL")
+
+        End If
+    End Sub
+    Private Sub CARGARCOMBOBAT()
+        Try
+            Dim SQL = "SELECT
+                    FB.FECHA as [FECHA],
+                    TB.TIPO AS [TIPO]
+                    FROM (FECHA_BATERIA FB
+                    INNER JOIN TIPO_BATERIA TB ON FB.TIPO_BATERIA = TB.Id)"
+            RESPBAT = ExecuteQuery("FUENTES", SQL)
+            CB_BAT.Items.Clear()
+            For Each UNABAT In RESPBAT
+                CB_BAT.Items.Add(UNABAT("TIPO") & " - " & UNABAT("FECHA"))
+            Next
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
     Private Sub INDICE_CALLESDataGridView_KeyDown(sender As Object, e As KeyEventArgs) Handles INDICE_CALLESDataGridView.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -85,18 +105,15 @@
         If e.KeyCode = Keys.Enter Then
             If INDICE_CALLESDataGridView.Rows.Count = 1 Then
                 C_CALLE.Text = Trim(Me.INDICE_CALLESDataGridView.CurrentRow.Cells.Item(2).Value)
-                'IND_CALLE.Text = Me.INDICE_CALLESDataGridView.CurrentRow.Cells.Item(0).Value
                 INDICE_CALLESDataGridView.Visible = False
                 C_NRO.Focus()
             Else
                 C_CALLE.Text = ""
-                'IND_CALLE.Text = "0"
                 INDICE_CALLESDataGridView.Visible = False
                 C_NRO.Focus()
             End If
         ElseIf e.KeyCode = Keys.Delete Then
             C_CALLE.Text = ""
-            'IND_CALLE.Text = "0"
             INDICE_CALLESDataGridView.Visible = False
             C_NRO.Focus()
 
@@ -105,13 +122,12 @@
         End If
         If e.KeyCode = Keys.Escape Then
             INDICE_CALLESDataGridView.Visible = False
-            'IND_CALLE.Text = 0
             C_CALLE.Text = ""
         End If
     End Sub
     Private Sub C_CALLE_TextChanged(sender As Object, e As EventArgs) Handles C_CALLE.TextChanged
         VISTACALLE = INDICESDataSet.INDICE_CALLES.AsDataView
-        ' Dim VISTACALLE As DataView = INDICESDataSet.INDICE_CALLES.AsDataView
+
         CampoCalle(0) = "NOMBRE_CALLE"
         ExpreCalle(0) = C_CALLE.Text
         FiltrCalle(0) = "[" & CampoCalle(0) & "] like '*" & ExpreCalle(0) & "*'"
@@ -144,8 +160,8 @@
         C_IP.Text = ""
         C_MAC.BackColor = Color.DarkRed
         C_MAC.Text = ""
-        C_MODBAT.BackColor = Color.DarkRed
-        C_MODBAT.Text = ""
+        '  C_MODBAT.BackColor = Color.DarkRed
+        '  C_MODBAT.Text = "SELECCIONE"
         C_PIN.BackColor = Color.DarkRed
         C_PIN.Text = ""
         C_PUK.BackColor = Color.DarkRed
@@ -154,8 +170,8 @@
         C_VPN1.Text = ""
         C_VPN2.BackColor = Color.DarkRed
         C_VPN2.Text = ""
-        FECHAFAB.BackColor = Color.DarkRed
-        FECHAFAB.Text = ""
+        CB_BAT.BackColor = Color.DarkRed
+        CB_BAT.Text = "SELECCIONE"
         LBLAUTONOMIA_REAL.Visible = False
         LBLAUTONOMIA_TEORICA.Visible = False
         LBLHRSAUTONOMIATEORICA.Visible = False
@@ -169,29 +185,25 @@
         C_IMEI.BackColor = Color.DarkSlateBlue
         C_IP.BackColor = Color.DarkSlateBlue
         C_MAC.BackColor = Color.DarkSlateBlue
-        C_MODBAT.BackColor = Color.DarkSlateBlue
+        CB_BAT.BackColor = Color.DarkSlateBlue
         C_PIN.BackColor = Color.DarkSlateBlue
         C_PUK.BackColor = Color.DarkSlateBlue
         C_VPN1.BackColor = Color.DarkSlateBlue
         C_VPN2.BackColor = Color.DarkSlateBlue
-        FECHAFAB.BackColor = Color.DarkSlateBlue
+        ' CB_BAT.BackColor = Color.DarkSlateBlue
     End Sub 'OK
 
 
     Private Sub BOT_ACEPTAR_Click(sender As Object, e As EventArgs) Handles BOT_ACEPTAR.Click
         If FUENTES.ACCION_FUENTE = "NUEVO" Then
-            Me.Cursor = Cursors.WaitCursor
+            Cursor = Cursors.WaitCursor
+            NEWFUENTERow = BASEFUENTESDataSet.FUENTE.NewFUENTERow()
             If C_MODFUENTE.Text <> "COM" Then
-                If C_CANTBAT.Text = "" Then
-                    MsgBox("Debe ingresar la Cant de Baterias")
-                    Exit Sub
-                End If
-                If C_MODBAT.Text = "" Then
+                If CB_BAT.Text = "" Then
                     MsgBox("Debe ingresar el Modelo de Bateria")
                     Exit Sub
                 End If
             End If
-            NEWFUENTERow = BASEFUENTESDataSet.FUENTE.NewFUENTERow
             NEWFUENTERow.NODO = C_NODO.Text
             If C_ZONAG.Text = "" Then
                 MsgBox("INGRESE UNA ZONA")
@@ -211,7 +223,6 @@
             If C_ESQUINA.Text <> "" Then NEWFUENTERow.ESQUINA = C_ESQUINA.Text
             If C_MODFUENTE.Text <> "" Then NEWFUENTERow.MODFUENTE = C_MODFUENTE.Text
             If C_MODGAB.Text <> "" Then NEWFUENTERow.GABINETE = C_MODGAB.Text
-            If C_MODBAT.Text <> "" Then NEWFUENTERow.MODBATERIA = C_MODBAT.Text
             If C_CANTBAT.Text <> "" Then NEWFUENTERow.CANT_BAT = C_CANTBAT.Text Else NEWFUENTERow.CANT_BAT = 0
             If C_RX.Text <> "" Then NEWFUENTERow.RX = C_RX.Text
             If C_TR.Text <> "" Then NEWFUENTERow.TR = C_TR.Text
@@ -221,7 +232,8 @@
             NEWFUENTERow.ITOTAL = ""
             NEWFUENTERow.AUTONOMIA = ""
             If INSTALACION.Text <> "" Then NEWFUENTERow.INSTALACION_RUS = INSTALACION.Text
-            If FECHAFAB.Text <> "" Then NEWFUENTERow.FECHA_BAT = FECHAFAB.Text
+            If CB_BAT.Text <> "" Then NEWFUENTERow.FECHA_BAT = Trim(Split(CB_BAT.Text, "-")(0))
+            If CB_BAT.Text <> "" Then NEWFUENTERow.MODBATERIA = Trim(Split(CB_BAT.Text, "-")(1))
             If C_IP.Text <> "" Then NEWFUENTERow.IPMODEM = C_IP.Text Else NEWFUENTERow.IPMODEM = "-"
             If C_ID2.Text <> "" Then NEWFUENTERow.ID2 = C_ID2.Text Else NEWFUENTERow.ID2 = "-"
             If C_MAC.Text <> "" Then NEWFUENTERow.MAC = C_MAC.Text Else NEWFUENTERow.MAC = "-"
@@ -283,171 +295,175 @@
                     CARGA = "R"
             End Select
             CODIGOFUENTE = TIPOFUENTE & "-" & CARGA & " [" & C_NODO.Text & "-" & C_ZONAG.Text & "]"
-            NEWFUENTERow.INSTALACION = CODIGOFUENTE
+            'NEWFUENTERow.INSTALACION = CODIGOFUENTE
 
-            CALCULADORA_CARGA()
+            'CALCULADORA_CARGA()
 
-            NEWFUENTERow.ITOTAL = Format(CARGATOTAL, "##.#")
+            'NEWFUENTERow.ITOTAL = Format(CARGATOTAL, "##.#")
             NEWFUENTERow.FECHA = Today.ToShortDateString
             Try
-                BASEFUENTESDataSet.FUENTE.Rows.Add(NEWFUENTERow)
+                BASEFUENTESDataSet.FUENTE.AddFUENTERow(NEWFUENTERow)
                 FUENTETableAdapter.Update(NEWFUENTERow)
             Catch EX As Exception
                 MsgBox(EX.Message)
             End Try
 
-
-            FUENTETableAdapter.Fill(BASEFUENTESDataSet.FUENTE)
-            FUENTE_MOD = BASEFUENTESDataSet.FUENTE.Rows(BASEFUENTESDataSet.FUENTE.Rows.Count - 1)
+            '   FUENTETableAdapter.Fill(BASEFUENTESDataSet.FUENTE)
+            '    FUENTE_MOD = BASEFUENTESDataSet.FUENTE.Rows(BASEFUENTESDataSet.FUENTE.Rows.Count - 1)
             NUEVA_INSTALACION()
             Me.Cursor = DefaultCursor
         End If
         If FUENTES.ACCION_FUENTE = "EDITAR" Then
             Me.Cursor = Cursors.WaitCursor
             NUEVA_INSTALACION()
-            If INSTALACION.Text <> FUENTE_MOD.INSTALACION_RUS Then FUENTE_MOD.INSTALACION_RUS = INSTALACION.Text
-            If C_CALLE.Text <> FUENTE_MOD.CALLE Then FUENTE_MOD.CALLE = C_CALLE.Text
-            If C_NRO.Text <> FUENTE_MOD.PUERTA Then FUENTE_MOD.PUERTA = C_NRO.Text
-            If C_ESQUINA.Text <> FUENTE_MOD.ESQUINA Then FUENTE_MOD.ESQUINA = C_ESQUINA.Text
-            If C_NODO.Text <> FUENTE_MOD.NODO Then FUENTE_MOD.NODO = C_NODO.Text
-            If C_ZONAG.Text <> FUENTE_MOD.ZONA Then FUENTE_MOD.ZONA = C_ZONAG.Text
-            If FUENTE_MOD.MODFUENTE <> C_MODFUENTE.Text Then FUENTE_MOD.MODFUENTE = C_MODFUENTE.Text
-            If FUENTE_MOD.IsCARGA_REALNull = False Then
-                If TXT_CARGA_REAL.Text <> FUENTE_MOD.CARGA_REAL Then FUENTE_MOD.CARGA_REAL = TXT_CARGA_REAL.Text
+            If INSTALACION.Text <> FUENTERow.INSTALACION_RUS Then FUENTERow.INSTALACION_RUS = INSTALACION.Text
+            If C_CALLE.Text <> FUENTERow.CALLE Then FUENTERow.CALLE = C_CALLE.Text
+            If C_NRO.Text <> FUENTERow.PUERTA Then FUENTERow.PUERTA = C_NRO.Text
+            If C_ESQUINA.Text <> FUENTERow.ESQUINA Then FUENTERow.ESQUINA = C_ESQUINA.Text
+            If C_NODO.Text <> FUENTERow.NODO Then FUENTERow.NODO = C_NODO.Text
+            If C_ZONAG.Text <> FUENTERow.ZONA Then FUENTERow.ZONA = C_ZONAG.Text
+            If FUENTERow.MODFUENTE <> C_MODFUENTE.Text Then FUENTERow.MODFUENTE = C_MODFUENTE.Text
+            If FUENTERow.IsCARGA_REALNull = False Then
+                If TXT_CARGA_REAL.Text <> FUENTERow.CARGA_REAL Then FUENTERow.CARGA_REAL = TXT_CARGA_REAL.Text
             Else
-                FUENTE_MOD.CARGA_REAL = TXT_CARGA_REAL.Text
+                FUENTERow.CARGA_REAL = TXT_CARGA_REAL.Text
             End If
 
-            If FUENTE_MOD.IsLEXNull = False AndAlso C_LEX.Text <> FUENTE_MOD.LEX Then FUENTE_MOD.LEX = C_LEX.Text
-            If FUENTE_MOD.IsBRNull = False AndAlso C_MB.Text <> FUENTE_MOD.BR Then FUENTE_MOD.BR = C_MB.Text
-            If FUENTE_MOD.IsRXNull = False AndAlso C_RX.Text <> FUENTE_MOD.RX Then FUENTE_MOD.RX = C_RX.Text
-            If FUENTE_MOD.IsTRNull = False AndAlso C_TR.Text <> FUENTE_MOD.TR Then FUENTE_MOD.TR = C_TR.Text
+            If FUENTERow.IsLEXNull = False AndAlso C_LEX.Text <> FUENTERow.LEX Then FUENTERow.LEX = C_LEX.Text
+            If FUENTERow.IsBRNull = False AndAlso C_MB.Text <> FUENTERow.BR Then FUENTERow.BR = C_MB.Text
+            If FUENTERow.IsRXNull = False AndAlso C_RX.Text <> FUENTERow.RX Then FUENTERow.RX = C_RX.Text
+            If FUENTERow.IsTRNull = False AndAlso C_TR.Text <> FUENTERow.TR Then FUENTERow.TR = C_TR.Text
 
             If C_MODFUENTE.Text = "COM" Then
-                FUENTE_MOD.CANT_BAT = 0
-                FUENTE_MOD.ID2 = "-"
-                FUENTE_MOD.IMEI = "-"
-                FUENTE_MOD.IPMODEM = "-"
-                FUENTE_MOD.PIN = "-"
-                FUENTE_MOD.PUK = "-"
-                FUENTE_MOD.VPN1 = "-"
-                FUENTE_MOD.VPN2 = "-"
-                FUENTE_MOD.MAC = "-"
-                FUENTE_MOD.MODBATERIA = ""
-                FUENTE_MOD.GABINETE = ""
-                FUENTE_MOD.FECHA_BAT = ""
+                FUENTERow.CANT_BAT = 0
+                FUENTERow.ID2 = "-"
+                FUENTERow.IMEI = "-"
+                FUENTERow.IPMODEM = "-"
+                FUENTERow.PIN = "-"
+                FUENTERow.PUK = "-"
+                FUENTERow.VPN1 = "-"
+                FUENTERow.VPN2 = "-"
+                FUENTERow.MAC = "-"
+                FUENTERow.MODBATERIA = ""
+                FUENTERow.GABINETE = ""
+                ' FUENTERow.FECHA_BAT = ""
             Else
-                FUENTE_MOD.CANT_BAT = C_CANTBAT.Text
-                FUENTE_MOD.ID2 = C_ID2.Text
-                FUENTE_MOD.IMEI = C_IMEI.Text
-                FUENTE_MOD.IPMODEM = C_IP.Text
-                FUENTE_MOD.PIN = C_PIN.Text
-                FUENTE_MOD.PUK = C_PUK.Text
-                FUENTE_MOD.VPN1 = C_VPN1.Text
-                FUENTE_MOD.VPN2 = C_VPN2.Text
-                FUENTE_MOD.MAC = C_MAC.Text
-                FUENTE_MOD.MODBATERIA = C_MODBAT.Text
-                FUENTE_MOD.GABINETE = C_MODGAB.Text
-                FUENTE_MOD.FECHA_BAT = FECHAFAB.Text
+                FUENTERow.CANT_BAT = C_CANTBAT.Text
+                FUENTERow.ID2 = C_ID2.Text
+                FUENTERow.IMEI = C_IMEI.Text
+                FUENTERow.IPMODEM = C_IP.Text
+                FUENTERow.PIN = C_PIN.Text
+                FUENTERow.PUK = C_PUK.Text
+                FUENTERow.VPN1 = C_VPN1.Text
+                FUENTERow.VPN2 = C_VPN2.Text
+                FUENTERow.MAC = C_MAC.Text
+                FUENTERow.FECHA_BAT = Trim(Split(CB_BAT.Text, "-")(1))
+                FUENTERow.MODBATERIA = Trim(Split(CB_BAT.Text, "-")(0))
+                FUENTERow.GABINETE = C_MODGAB.Text
             End If
 
-            FUENTE_MOD.FECHA = Today.ToShortDateString
-            FUENTETableAdapter.Update(FUENTE_MOD)
+            FUENTERow.FECHA = Today.ToShortDateString
+            FUENTETableAdapter.Update(FUENTERow)
             Me.Cursor = DefaultCursor
         End If
 
-        FUENTES.FUENTETableAdapter.FillByFUENTES(FUENTES.BASEFUENTESDataSet.FUENTE)
+        FUENTES.FUENTETableAdapter.FillByACTIVA(FUENTES.BASEFUENTESDataSet.FUENTE)
         FUENTES.Enabled = True
         Me.Close()
     End Sub
+    Private Function FBAT(FBATERIA As String) As Integer
+        For Each UNABAT In RESPBAT
+            If UNABAT("TIPO") & " - " & UNABAT("FECHA") = FBATERIA Then Return UNABAT.Id
+        Next
+        Return Nothing
+    End Function
     Private Sub NUEVA_INSTALACION()
         NewINSTALACION = BASEFUENTESDataSet.INSTALACION.NewINSTALACIONRow
         NewINSTALACION.FECHA_HIST = Today.ToShortDateString
-        NewINSTALACION.NODO = FUENTE_MOD.NODO
-        NewINSTALACION.ZONAG = FUENTE_MOD.ZONA
-        NewINSTALACION.CALLE = FUENTE_MOD.CALLE
-        NewINSTALACION.NRO = FUENTE_MOD.PUERTA
-        NewINSTALACION.IDFUENTE = FUENTE_MOD.ID_FUENTE
-        If FUENTE_MOD.IsESQUINANull = False Then NewINSTALACION.ESQUINA = FUENTE_MOD.ESQUINA
-        If FUENTE_MOD.IsMODFUENTENull = False Then NewINSTALACION.MODFUENTE = FUENTE_MOD.MODFUENTE
-        If FUENTE_MOD.IsGABINETENull = False Then NewINSTALACION.MODGABINETE = FUENTE_MOD.GABINETE
-        If FUENTE_MOD.IsMODBATERIANull = False Then NewINSTALACION.MODBATERIA = FUENTE_MOD.MODBATERIA
-        If FUENTE_MOD.IsCANT_BATNull = False Then NewINSTALACION.CANTBATERIA = FUENTE_MOD.CANT_BAT
+        NewINSTALACION.NODO = FUENTERow.NODO
+        NewINSTALACION.ZONAG = FUENTERow.ZONA
+        NewINSTALACION.CALLE = FUENTERow.CALLE
+        NewINSTALACION.NRO = FUENTERow.PUERTA
+        NewINSTALACION.IDFUENTE = FUENTERow.ID_FUENTE
+        If FUENTERow.IsESQUINANull = False Then NewINSTALACION.ESQUINA = FUENTERow.ESQUINA
+        If FUENTERow.IsMODFUENTENull = False Then NewINSTALACION.MODFUENTE = FUENTERow.MODFUENTE
+        If FUENTERow.IsGABINETENull = False Then NewINSTALACION.MODGABINETE = FUENTERow.GABINETE
+        If FUENTERow.IsMODBATERIANull = False Then NewINSTALACION.MODBATERIA = FUENTERow.MODBATERIA
+        If FUENTERow.IsCANT_BATNull = False Then NewINSTALACION.CANTBATERIA = FUENTERow.CANT_BAT
 
-        If FUENTE_MOD.IsRXNull = False Then NewINSTALACION.RX = FUENTE_MOD.RX
-        If FUENTE_MOD.IsTRNull = False Then NewINSTALACION.TR = FUENTE_MOD.TR
-        If FUENTE_MOD.IsBRNull = False Then NewINSTALACION.BR = FUENTE_MOD.BR
-        If FUENTE_MOD.IsLEXNull = False Then NewINSTALACION.LE = FUENTE_MOD.LEX
-        If FUENTE_MOD.IsITOTALNull = False Then NewINSTALACION.ITOTAL = FUENTE_MOD.ITOTAL
-        If FUENTE_MOD.IsAUTONOMIANull = False Then NewINSTALACION.MODFUENTE = FUENTE_MOD.MODFUENTE
-        If IsNumeric(FUENTE_MOD.AUTONOMIA) Then NewINSTALACION.AUTONOMIA_REAL = FUENTE_MOD.AUTONOMIA
-        If FUENTE_MOD.IsINSTALACION_RUSNull = False Then NewINSTALACION.CODORD = FUENTE_MOD.INSTALACION_RUS
-        If FUENTE_MOD.IsINSTALACIONNull = False Then NewINSTALACION.CODIGO = FUENTE_MOD.INSTALACION
+        If FUENTERow.IsRXNull = False Then NewINSTALACION.RX = FUENTERow.RX
+        If FUENTERow.IsTRNull = False Then NewINSTALACION.TR = FUENTERow.TR
+        If FUENTERow.IsBRNull = False Then NewINSTALACION.BR = FUENTERow.BR
+        If FUENTERow.IsLEXNull = False Then NewINSTALACION.LE = FUENTERow.LEX
+        If FUENTERow.IsITOTALNull = False Then NewINSTALACION.ITOTAL = FUENTERow.ITOTAL
+        If FUENTERow.IsAUTONOMIANull = False Then NewINSTALACION.MODFUENTE = FUENTERow.MODFUENTE
+        If IsNumeric(FUENTERow.AUTONOMIA) Then NewINSTALACION.AUTONOMIA_REAL = FUENTERow.AUTONOMIA
+        If FUENTERow.IsINSTALACION_RUSNull = False Then NewINSTALACION.CODORD = FUENTERow.INSTALACION_RUS
+        If FUENTERow.IsINSTALACIONNull = False Then NewINSTALACION.CODIGO = FUENTERow.INSTALACION
 
-        If FUENTE_MOD.IsFECHA_BATNull = False Then
-            If FUENTE_MOD.FECHA_BAT.ToString <> "" Then NewINSTALACION.FECHAFAB_BAT = FUENTE_MOD.FECHA_BAT
+        If FUENTERow.IsFECHA_BATNull = False Then
+            If FUENTERow.FECHA_BAT.ToString <> "" Then NewINSTALACION.FECHAFAB_BAT = FUENTERow.FECHA_BAT
         End If
-        If FUENTE_MOD.IsIPMODEMNull = False Then NewINSTALACION.IPMODEM = FUENTE_MOD.IPMODEM
-        If FUENTE_MOD.IsID2Null = False Then NewINSTALACION.ID2 = FUENTE_MOD.ID2
-        If FUENTE_MOD.IsMACNull = False Then NewINSTALACION.MAC = FUENTE_MOD.MAC
-        If FUENTE_MOD.IsIMEINull = False Then NewINSTALACION.IMEI = FUENTE_MOD.IMEI
-        If FUENTE_MOD.IsPINNull = False Then NewINSTALACION.PIN = FUENTE_MOD.PIN
-        If FUENTE_MOD.IsPUKNull = False Then NewINSTALACION.PUK = FUENTE_MOD.PUK
-        If FUENTE_MOD.IsVPN1Null = False Then NewINSTALACION.VPN1 = FUENTE_MOD.VPN1
-        If FUENTE_MOD.IsVPN2Null = False Then NewINSTALACION.VPN2 = FUENTE_MOD.VPN2
+        If FUENTERow.IsIPMODEMNull = False Then NewINSTALACION.IPMODEM = FUENTERow.IPMODEM
+        If FUENTERow.IsID2Null = False Then NewINSTALACION.ID2 = FUENTERow.ID2
+        If FUENTERow.IsMACNull = False Then NewINSTALACION.MAC = FUENTERow.MAC
+        If FUENTERow.IsIMEINull = False Then NewINSTALACION.IMEI = FUENTERow.IMEI
+        If FUENTERow.IsPINNull = False Then NewINSTALACION.PIN = FUENTERow.PIN
+        If FUENTERow.IsPUKNull = False Then NewINSTALACION.PUK = FUENTERow.PUK
+        If FUENTERow.IsVPN1Null = False Then NewINSTALACION.VPN1 = FUENTERow.VPN1
+        If FUENTERow.IsVPN2Null = False Then NewINSTALACION.VPN2 = FUENTERow.VPN2
 
         ''DETERMINA MODELO DE FUENTE
-        If FUENTE_MOD.IsMODFUENTENull = False AndAlso FUENTE_MOD.MODFUENTE <> "N/A" Then
-            Select Case FUENTE_MOD.MODFUENTE
+        If FUENTERow.IsMODFUENTENull = False AndAlso FUENTERow.MODFUENTE <> "N/A" Then
+            Select Case FUENTERow.MODFUENTE
                 Case "COM"
                     TIPOFUENTE = "FC"
                 Case Else
                     TIPOFUENTE = "FS"
             End Select
         End If
-        If FUENTE_MOD.IsRXNull = False AndAlso FUENTE_MOD.RX <> "" Then
-            RX = FUENTE_MOD.RX
+        If FUENTERow.IsRXNull = False AndAlso FUENTERow.RX <> "" Then
+            RX = FUENTERow.RX
         Else
             RX = 0
         End If
-        If FUENTE_MOD.IsTRNull = False AndAlso FUENTE_MOD.TR <> "" Then
-            TR = FUENTE_MOD.TR
+        If FUENTERow.IsTRNull = False AndAlso FUENTERow.TR <> "" Then
+            TR = FUENTERow.TR
         Else
             TR = 0
         End If
-        If FUENTE_MOD.IsBRNull = False AndAlso FUENTE_MOD.BR <> "" Then
-            BR = FUENTE_MOD.BR
+        If FUENTERow.IsBRNull = False AndAlso FUENTERow.BR <> "" Then
+            BR = FUENTERow.BR
         Else
             BR = 0
         End If
-        If FUENTE_MOD.IsLEXNull = False AndAlso FUENTE_MOD.LEX <> "" Then
-            LE = FUENTE_MOD.LEX
+        If FUENTERow.IsLEXNull = False AndAlso FUENTERow.LEX <> "" Then
+            LE = FUENTERow.LEX
         Else
             LE = 0
         End If
         'CALCULA CARGA
         CALCULADORA_CARGA()
 
-        If FUENTE_MOD.MODFUENTE <> "COM" Then
+        If FUENTERow.MODFUENTE <> "COM" Then
             'CALCULA AUTONOMIA
-            Select Case FUENTE_MOD.MODBATERIA
+            Select Case FUENTERow.MODBATERIA
                 Case "150 XTV"
-                    POTBAT = CInt(80 * 12 * FUENTE_MOD.CANT_BAT)
+                    POTBAT = CInt(80 * 12 * FUENTERow.CANT_BAT)
                     AUTONOMIAFUENTE = POTBAT * 0.85 / (CARGATOTAL * 60)
 
                 Case "165 GXL"
-                    POTBAT = CInt(86 * 12 * FUENTE_MOD.CANT_BAT)
+                    POTBAT = CInt(86 * 12 * FUENTERow.CANT_BAT)
                     AUTONOMIAFUENTE = POTBAT * 0.85 / (CARGATOTAL * 60)
 
                 Case "195 XTV"
-                    POTBAT = CInt(90 * 12 * FUENTE_MOD.CANT_BAT)
+                    POTBAT = CInt(90 * 12 * FUENTERow.CANT_BAT)
                     AUTONOMIAFUENTE = POTBAT * 0.85 / (CARGATOTAL * 60)
             End Select
             NewINSTALACION.AUTONOMIA = Format(AUTONOMIAFUENTE, "##.#")
         Else
             NewINSTALACION.AUTONOMIA = 0
         End If
-
         'AGREGA UNA FILA A LA TABLA INSTALACION
         BASEFUENTESDataSet.INSTALACION.Rows.Add(NewINSTALACION)
         INSTALACIONTableAdapter.Update(NewINSTALACION)
@@ -461,7 +477,7 @@
         C_CARGA.Text = CARGATOTAL
 
         If C_CANTBAT.Text <> "" Then
-            Select Case C_MODBAT.Text
+            Select Case Mid(CB_BAT.Text, 1, 7)
                 Case "150 XTV"
                     POTBAT = CInt(80 * 12 * C_CANTBAT.Text)
                     AUTONOMIAFUENTE = POTBAT * 0.85 / (CARGATOTAL * 60)

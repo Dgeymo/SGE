@@ -15,7 +15,6 @@ Module EXPORTAR_EXCEL
     Sub ExportarExcel(ByVal DtReport As DataTable, ByVal Titulo As String, Optional ByVal pgbar As ProgressBar = Nothing, Optional ByVal lbl As Label = Nothing)
         Try
             Dim Iprogres As Double = 0
-
             Dim objLibroExcel As Excel.Workbook
             Dim objHojaExcel As Excel.Worksheet
             Dim m_Excel = New Excel.Application
@@ -33,7 +32,6 @@ Module EXPORTAR_EXCEL
                 objCelda.Value = DtReport.Columns(Jx).Caption
             Next
 
-
             Dim i As Integer = 2
             Dim acu As Double = 0
 
@@ -44,25 +42,12 @@ Module EXPORTAR_EXCEL
 
             For Ix As Integer = 0 To DtReport.Rows.Count - 1
                 For Jx As Integer = 0 To DtReport.Columns.Count - 1
-                    'Select Case Jx
-                    '    Case 5
-                    '        ' objHojaExcel.Cells(i, RetornaLetra(Jx + 1)).NumberFormat = "dd/mm/yyyy"
-                    '        objHojaExcel.Cells(i, RetornaLetra(Jx + 1)) = CDate(DtReport.Rows(Ix).Item(Jx))
-                    '''    Case Else
-                    'If IsDate(DtReport.Rows(Ix).Item(Jx)) Then
-                    '    objHojaExcel.Cells(i, RetornaLetra(Jx + 1)) = Format(CDate(DtReport.Rows(Ix).Item(Jx)), "MM/dd/yyyy")
-                    'Else
                     Try
-                        If IsDBNull(DtReport.Rows(Ix).Item(Jx)) = False AndAlso DtReport.Rows(Ix).Item(Jx) = "SIN AGENDAMIENTO" Then
-                            objHojaExcel.Cells(i, RetornaLetra(Jx + 1)).Font.Color = Color.Green
-                        End If
+                        If IsDBNull(DtReport.Rows(Ix).Item(Jx)) = False AndAlso DtReport.Rows(Ix).Item(Jx) = "SIN AGENDAMIENTO" Then objHojaExcel.Cells(i, RetornaLetra(Jx + 1)).Font.Color = Color.Green
                     Catch ex As Exception
 
                     End Try
                     objHojaExcel.Cells(i, RetornaLetra(Jx + 1)) = DtReport.Rows(Ix).Item(Jx).ToString
-                    '  End If
-
-                    ' End Select
                 Next
                 i += 1
 
@@ -79,18 +64,13 @@ Module EXPORTAR_EXCEL
             Next
 
             Dim objRango As Excel.Range = objHojaExcel.Range("A1:" & RetornaLetra(DtReport.Columns.Count) & DtReport.Rows.Count + 1)
-            '  objRango.Columns.Hidden(objRango.Range("A1", "A" & DtReport.Rows.Count + 1))
             objRango.Select()
             objRango.Columns.AutoFit()
             objRango.AutoFilter(1, , VisibleDropDown:=True)
-            'objRango.Columns("A1:A" & DtReport.Rows.Count + 1).Width = 0
             objRango.Font.Name = "TAHOMA"
             objRango.Font.Size = 10
             objRango.HorizontalAlignment = HorizontalAlignment.Center
             objRango.Borders.LineStyle = 0
-            ' Crear un total general
-            ' objHojaExcel.Cells(DtReport.Rows.Count + 2, 1) = "Total Filas: "
-            ' objHojaExcel.Cells(DtReport.Rows.Count + 2, 2) = (DtReport.Rows.Count)
             objHojaExcel = Nothing
             objLibroExcel = Nothing
 
@@ -100,7 +80,4 @@ Module EXPORTAR_EXCEL
         End Try
 
     End Sub
-
-
-
 End Module

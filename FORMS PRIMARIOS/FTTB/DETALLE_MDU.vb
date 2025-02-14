@@ -101,6 +101,7 @@ Public Class DETALLE_MDU
 
 
             L_FTTB.Items.Clear()
+            L_FTTB.BorderStyle = BorderStyle.FixedSingle
             Dim ACOMETIDA As String
             Dim DISTRO As String
             Dim CAJA As String
@@ -150,6 +151,7 @@ Public Class DETALLE_MDU
                             STR = "NAP" & NAP & "-A" & ACOMETIDA & "-" & ACT_MDURow.NODO & ZONA & vbTab & "DESDE: " & ITEMS.TIPO_CONEXION_DESDE & CAJA & "-D" & DISTRO & "-" & ACT_MDURow.NODO & ZONA & vbTab & "BOCAS: " & CANT_BOCAS & vbTab & "UBICACION: " & ITEMS.OBS_TEC
                         End If
                         L_FTTB.Items.Add(STR)
+
                     End If
                 End If
             Next
@@ -244,7 +246,1080 @@ Public Class DETALLE_MDU
             Me.Close()
         End If
     End Sub
+    Private Sub IMPRIMIR()
+        Cursor = Cursors.WaitCursor
+#Region "CREAR ARCHIVO"
+        Dim FUENTETITULOCOTI As Font = FontFactory.GetFont("arial", 30, 1)
+        Dim FUENTE As Font = FontFactory.GetFont("arial", 10, 1)
+        Dim barra As New BaseColor(84, 84, 84)
+        Dim BORRAR As New BaseColor(255, 255, 255)
+        Dim P As Process
+        Dim CANT_NAPS4 As Integer
+        Dim CANT_NAPS8 As Integer
+        Dim CANT_NAPS16 As Integer
+        Dim STR_ZONA As String
+        Dim STR_NRO_NAP As String
+        Dim STR_ACOMETIDA As String
+        Dim STR_NOMBRES_NAP(20) As String
+        Dim VALORANTERIOR As Integer
+        Dim CANT_NAP As Integer
+        Dim NAP_TEXT As String
+        Dim NAP_TEXT_NRO As String
+        Dim CAJA_NUMERO As String
+        Dim STR_CAJA_DISTRIBUCION As String
+        Dim UBICACION As String = ""
+        Dim valorAcometida As Integer = 0
+        For Each P In Process.GetProcesses()
+            If (P IsNot Nothing) And (P.ProcessName = "AcroRD32") Then
+                P.Kill()
+            End If
+        Next
+        If Directory.Exists("C:\DOCUMENTOS\ARCHIVOS") = False Then
+            Directory.CreateDirectory("C:\DOCUMENTOS\ARCHIVOS")
+        End If
+        Dim RUTA As String = "C:\DOCUMENTOS\ARCHIVOS\IMPRIMIR.PDF"
+        If File.Exists("C:\DOCUMENTOS\ARCHIVOS\IMPRIMIR.PDF") = True Then
+            Try
+                File.Delete("C:\DOCUMENTOS\ARCHIVOS\IMPRIMIR.PDF")
+            Catch ex As Exception
+                Dim archivos = My.Computer.FileSystem.GetFiles("C:\DOCUMENTOS\ARCHIVOS\")
+                If archivos.Count >= 1 Then
+                    For X = 1 To archivos.Count
+                        Try
+                            If File.Exists(Path.GetFullPath(archivos(X))) = True Then
+                                File.Delete(Path.GetFullPath(archivos(X)))
+                            End If
+                        Catch eM As Exception
+
+                        End Try
+                    Next
+                    archivos = My.Computer.FileSystem.GetFiles("C:\DOCUMENTOS\ARCHIVOS\")
+                    If archivos.Count >= 1 Then
+                        RUTA = "C:\DOCUMENTOS\ARCHIVOS\IMPRIMIR(" & archivos.Count & ").PDF"
+                    Else
+                        RUTA = "C:\DOCUMENTOS\ARCHIVOS\IMPRIMIR.PDF"
+                    End If
+
+                End If
+            End Try
+        End If
+
+        'ARMADO DEL DOCUMENTO PDF
+        Dim DOCUMENTO As New Document(PageSize.A4, 3, 3, 15, 15)
+        Dim writer As PdfWriter = PdfWriter.GetInstance(DOCUMENTO, New FileStream(RUTA, FileMode.Create))
+        DOCUMENTO.Open()
+
+        Dim CeldaVACIA As New PdfPCell(New Phrase("")) With {
+           .Border = 0,
+           .Padding = 7
+        }
+        Dim CeldaVACIALeft As New PdfPCell(New Phrase("")) With {
+           .Border = 0,
+           .BorderWidthLeft = 1,
+           .Padding = 7
+        }
+        Dim CeldaVACIARight As New PdfPCell(New Phrase("")) With {
+           .Border = 0,
+           .BorderWidthRight = 1,
+           .Padding = 7
+        }
+        Dim CeldaCANTvacias As New PdfPCell(New Phrase("")) With {
+            .BorderWidth = 0,
+            .BorderWidthBottom = 1,
+            .Colspan = 1
+            }
+        Dim CeldaCANTvaciasRight As New PdfPCell(New Phrase("")) With {
+            .BorderWidth = 0,
+            .BorderWidthBottom = 1,
+            .BorderWidthRight = 1,
+            .Colspan = 1
+            }
+        Dim CeldaCANTvaciasLeft As New PdfPCell(New Phrase("")) With {
+            .BorderWidth = 0,
+            .BorderWidthBottom = 1,
+            .BorderWidthLeft = 1,
+            .Colspan = 1
+            }
+        'NUEVA LINEA (12 COLUMNAS)
+        ENCABEZADO = New PdfPTable(12) With {
+            .WidthPercentage = 95
+            }
+
+        'CARGADO DE DATOS
+        Dim GIF As Image = Image.GetInstance(My.Resources.equital, Imaging.ImageFormat.Png)
+        GIF.ScalePercent(28)
+        Dim CeldaLOGO As New PdfPCell(GIF) With {
+            .Border = 0,
+            .Colspan = 4,
+            .VerticalAlignment = Element.ALIGN_TOP
+        }
+        ENCABEZADO.AddCell(CeldaLOGO)
+        Dim celdaORDENTRABAJO As New PdfPCell(New Phrase("FTTH EN EDIFICIOS", FontFactory.GetFont("Helvetica", 16, 1))) With {
+            .Border = 0,
+            .Colspan = 8,
+            .HorizontalAlignment = Element.ALIGN_CENTER,
+            .VerticalAlignment = Element.ALIGN_BOTTOM
+        }
+        ENCABEZADO.AddCell(celdaORDENTRABAJO)
+
+#End Region
+
+        IMPRIMIRTableAdapter.FillByIMPRIMIR(EdificioDataSetBACKUP.IMPRIMIR, CInt(MDUDataGridView.CurrentRow.Cells(12).Value), MDUDataGridView.CurrentRow.Cells(5).Value, CInt(MDUDataGridView.CurrentRow.Cells(6).Value))
+        Dim MDU As EDIFICIODataSet.IMPRIMIRRow
+        Dim MDU_SIGUIENTE As EDIFICIODataSet.IMPRIMIRRow
+        Dim cantTorres As Integer = 0
+        Dim NroAcometida As Integer = 0
+        Dim acometidas As String = ""
+        Dim fibrasConectadas As Integer = 0
+        Dim id_edificio As Integer = 0
+        Dim CONTADOR_ENCABEZADR As Integer = 1
+        Dim CONTADOR_CUERPO As Integer = 1
+        Dim ULTIMO As Boolean = False
+        For X = 1 To 12
+            ENCABEZADO.AddCell(CeldaVACIA)
+        Next
+        CUENTA4 = 0
+        CUENTA8 = 0
+        CUENTA16 = 0
+        For G = 0 To EdificioDataSetBACKUP.IMPRIMIR.Rows.Count - 1
+            MDU = EdificioDataSetBACKUP.IMPRIMIR.Rows(G)
+#Region "ENCABEZADO"
+            If CONTADOR_ENCABEZADR = 1 Then
+                MDUTableAdapter.FillByACOMETIDA(EdificioDataSetBACKUP.MDU, MDU.ACOMETIDA, MDU.NODO, MDU.ZONA)
+                For Each TORRES In EdificioDataSetBACKUP.MDU
+                    cantTorres += TORRES.TORRE
+                Next
+
+                For Each FTTBS In EdificioDataSetBACKUP.IMPRIMIR
+                    Select Case Mid(FTTBS.NAP, 4)
+                        Case 16
+                            CUENTA16 += 1
+                        Case 8
+                            CUENTA8 += 1
+                        Case 4
+                            CUENTA4 += 1
+                    End Select
+
+                    If FTTBS.ACOMETIDA <> NroAcometida Then
+                        If fibrasConectadas < 1 Then
+                            If FTTBS.ACOMETIDA < 10 Then
+                                acometidas += "0" & FTTBS.ACOMETIDA
+                            Else
+                                acometidas += CStr(FTTBS.ACOMETIDA)
+                            End If
+                        Else
+                            If FTTBS.ACOMETIDA < 10 Then
+                                acometidas += ", A0" & FTTBS.ACOMETIDA
+                            Else
+                                acometidas += ", A" & FTTBS.ACOMETIDA
+                            End If
+                        End If
+                    End If
+                    fibrasConectadas += 1
+                    NroAcometida = FTTBS.ACOMETIDA
+                Next
+                'NUEVA LIENA
+                Dim CeldaACOMETIDA As New PdfPCell(New Phrase("Acometida A" & acometidas, FontFactory.GetFont("ARIAL", 12, 1))) With {
+                    .BorderWidth = 1,
+                    .Colspan = 5,
+                    .Padding = 5,
+                    .HorizontalAlignment = Element.ALIGN_MIDDLE,
+                     .VerticalAlignment = Element.ALIGN_CENTER
+                    }
+                ENCABEZADO.AddCell(CeldaACOMETIDA)
+                Dim CeldaEDIFICIO As New PdfPCell(New Phrase("Edificios " & cantTorres, FontFactory.GetFont("ARIAL", 12, 1))) With {
+                    .BorderWidth = 1,
+                    .Colspan = 4,
+                    .Padding = 5,
+                    .HorizontalAlignment = Element.ALIGN_LEFT,
+                    .VerticalAlignment = Element.ALIGN_CENTER
+                    }
+                ENCABEZADO.AddCell(CeldaEDIFICIO)
+                Dim CeldaNAP16 As New PdfPCell(New Phrase("NAP16: " & CUENTA16 / 2, FontFactory.GetFont("ARIAL", 9, 1))) With {
+                    .BorderWidth = 1,
+                    .Colspan = 1,
+                    .HorizontalAlignment = Element.ALIGN_LEFT,
+                     .VerticalAlignment = Element.ALIGN_MIDDLE
+                    }
+                ENCABEZADO.AddCell(CeldaNAP16)
+                Dim CeldaNAP8 As New PdfPCell(New Phrase("NAP8: " & CUENTA8, FontFactory.GetFont("ARIAL", 9, 1))) With {
+                    .BorderWidth = 1,
+                    .Colspan = 1,
+                    .HorizontalAlignment = Element.ALIGN_LEFT,
+                     .VerticalAlignment = Element.ALIGN_MIDDLE
+                    }
+                ENCABEZADO.AddCell(CeldaNAP8)
+                Dim CeldaNAP4 As New PdfPCell(New Phrase("NAP4: " & CUENTA4, FontFactory.GetFont("ARIAL", 9, 1))) With {
+                    .BorderWidth = 1,
+                    .Colspan = 1,
+                    .HorizontalAlignment = Element.ALIGN_LEFT,
+                     .VerticalAlignment = Element.ALIGN_MIDDLE
+                    }
+                ENCABEZADO.AddCell(CeldaNAP4)
+
+                For X = 1 To 12
+                    ENCABEZADO.AddCell(CeldaVACIA)
+                Next
+                CONTADOR_ENCABEZADR = 2
+            End If
+#End Region
+#Region "AGENDA"
+            If CONTADOR_CUERPO = 1 Then
+                AGENDATableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.AGENDA, CInt(MDU.ID_EDIFICIO))
+                If EDIFICIODataSet.AGENDA.Rows.Count > 0 Then
+
+                    AGENDARow = EDIFICIODataSet.AGENDA.Rows(EDIFICIODataSet.AGENDA.Rows.Count - 1)
+                    TECNICOSTableAdapter.FillByidTEC(EDIFICIODataSet.TECNICOS, AGENDARow.ID_TECNICO)
+                    TECNICORow = EDIFICIODataSet.TECNICOS.Rows(0)
+                    TURNOSTableAdapter.FillByIDTURNO(EDIFICIODataSet.TURNOS, AGENDARow.ID_TURNO)
+                    TURNORow = EDIFICIODataSet.TURNOS.Rows(0)
+
+                    'NUEVA LINEA DATOS DEL TECNICO Y AGENDA
+                    Dim CeldaNOMBRETEC As New PdfPCell(New Phrase("TECNICO:", FontFactory.GetFont("ARIAL", 8, 0))) With {
+            .BorderWidth = 0,
+            .BorderWidthLeft = 1,
+            .BorderWidthTop = 1,
+            .Colspan = 1,
+            .HorizontalAlignment = Element.ALIGN_RIGHT,
+             .VerticalAlignment = Element.ALIGN_BOTTOM
+            }
+                    ENCABEZADO.AddCell(CeldaNOMBRETEC)
+                    Dim CeldaNOMBRETECValue As New PdfPCell(New Phrase(TECNICORow.NOMBRE, FontFactory.GetFont("ARIAL", 12, 1))) With {
+            .BorderWidth = 0,
+            .Colspan = 4,
+            .BorderWidthTop = 1,
+            .HorizontalAlignment = Element.ALIGN_LEFT,
+             .VerticalAlignment = Element.ALIGN_BOTTOM
+            }
+                    ENCABEZADO.AddCell(CeldaNOMBRETECValue)
+                    Dim CeldaDIAAGENDA As New PdfPCell(New Phrase("DIA AGENDADO:", FontFactory.GetFont("ARIAL", 9, 0))) With {
+           .BorderWidth = 0,
+           .BorderWidthTop = 1,
+           .Colspan = 2,
+           .HorizontalAlignment = Element.ALIGN_RIGHT,
+             .VerticalAlignment = Element.ALIGN_BOTTOM
+            }
+                    ENCABEZADO.AddCell(CeldaDIAAGENDA)
+                    Dim CeldaDIAAGENDAValue As New PdfPCell(New Phrase(AGENDARow.DIA_AGENDA, FontFactory.GetFont("ARIAL", 9, 1))) With {
+            .BorderWidth = 0,
+            .BorderWidthTop = 1,
+            .Colspan = 2,
+             .HorizontalAlignment = Element.ALIGN_LEFT,
+             .VerticalAlignment = Element.ALIGN_BOTTOM
+            }
+                    ENCABEZADO.AddCell(CeldaDIAAGENDAValue)
+                    Dim CeldaTURNO As New PdfPCell(New Phrase("TURNO:", FontFactory.GetFont("ARIAL", 9, 0))) With {
+             .BorderWidth = 0,
+             .BorderWidthTop = 1,
+             .Colspan = 1,
+             .HorizontalAlignment = Element.ALIGN_RIGHT,
+             .VerticalAlignment = Element.ALIGN_BOTTOM
+              }
+                    ENCABEZADO.AddCell(CeldaTURNO)
+                    Dim CeldaTURNOValue As New PdfPCell(New Phrase(TURNORow.HORARIO, FontFactory.GetFont("ARIAL", 9, 1))) With {
+            .BorderWidth = 0,
+            .BorderWidthTop = 1,
+            .BorderWidthRight = 1,
+            .Colspan = 2,
+             .HorizontalAlignment = Element.ALIGN_LEFT,
+             .VerticalAlignment = Element.ALIGN_BOTTOM
+            }
+                    ENCABEZADO.AddCell(CeldaTURNOValue)
+                End If
+            End If
+#End Region
+#Region "DATOS DEL EDIFICIO"
+            If CONTADOR_CUERPO = 1 Then
+                'PRIMERA FILA
+                Dim CeldaDIRECCION As New PdfPCell(New Phrase("DIRECCION:", FontFactory.GetFont("Arial", 12, 0))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthLeft = 1,
+                    .BorderWidthTop = 1,
+                    .BorderWidthBottom = 1,
+                    .PaddingBottom = 5,
+                    .Colspan = 2,
+                    .HorizontalAlignment = Element.ALIGN_RIGHT,
+                    .VerticalAlignment = Element.ALIGN_BOTTOM
+                    }
+                ENCABEZADO.AddCell(CeldaDIRECCION)
+                Dim CeldaDIRECCIONValor As New PdfPCell(New Phrase(MDU.CALLE & "  " & MDU.PUERTA, FontFactory.GetFont("Arial", 15, 1))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthBottom = 1,
+                    .BorderWidthTop = 1,
+                    .Colspan = 6,
+                    .PaddingBottom = 7,
+                    .HorizontalAlignment = Element.ALIGN_CENTER,
+                    .VerticalAlignment = Element.ALIGN_BOTTOM
+                    }
+                ENCABEZADO.AddCell(CeldaDIRECCIONValor)
+                Dim CeldaNODO As New PdfPCell(New Phrase("NODO:", FontFactory.GetFont("Arial", 12, 0))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthBottom = 1,
+                    .BorderWidthTop = 1,
+                    .Colspan = 1,
+                    .PaddingBottom = 5,
+                    .HorizontalAlignment = Element.ALIGN_RIGHT,
+                    .VerticalAlignment = Element.ALIGN_BOTTOM
+                    }
+                ENCABEZADO.AddCell(CeldaNODO)
+                Dim CeldaNODOValor As New PdfPCell(New Phrase(MDU.NODO, FontFactory.GetFont("Arial", 12, 1))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthBottom = 1,
+                    .BorderWidthTop = 1,
+                    .Colspan = 1,
+                    .PaddingBottom = 5,
+                    .HorizontalAlignment = Element.ALIGN_LEFT,
+                    .VerticalAlignment = Element.ALIGN_BOTTOM
+                    }
+                ENCABEZADO.AddCell(CeldaNODOValor)
+                Dim CeldaZONA As New PdfPCell(New Phrase("ZONA:", FontFactory.GetFont("Arial", 12, 0))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthBottom = 1,
+                    .BorderWidthTop = 1,
+                    .PaddingBottom = 5,
+                    .HorizontalAlignment = Element.ALIGN_RIGHT,
+                    .VerticalAlignment = Element.ALIGN_BOTTOM
+                    }
+                ENCABEZADO.AddCell(CeldaZONA)
+                STR_ZONA = MDU("ZONA")
+                If MDU("ZONA") < 10 Then STR_ZONA = "0" & MDU.ZONA
+                Dim CeldaZONAValor As New PdfPCell(New Phrase(STR_ZONA, FontFactory.GetFont("Arial", 12, 1))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthBottom = 1,
+                    .BorderWidthRight = 1,
+                    .BorderWidthTop = 1,
+                    .PaddingBottom = 5,
+                    .HorizontalAlignment = Element.ALIGN_LEFT,
+                     .VerticalAlignment = Element.ALIGN_BOTTOM
+                    }
+                ENCABEZADO.AddCell(CeldaZONAValor)
+
+
+                'NUEVA LINEA - CANT APTOS Y PISOS Y CANT NAP
+                Dim CeldaCANTIDAD As New PdfPCell(New Phrase("", FontFactory.GetFont("Arial", 12, 0))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthBottom = 0,
+                    .BorderWidthLeft = 1,
+                    .Colspan = 2,
+                    .PaddingBottom = 7,
+                    .HorizontalAlignment = Element.ALIGN_LEFT
+                    }
+                ENCABEZADO.AddCell(CeldaCANTIDAD)
+                Dim CeldaPISOS As New PdfPCell(New Phrase("PISOS:", FontFactory.GetFont("Arial", 9, 0))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthBottom = 0,
+                    .Colspan = 1,
+                    .PaddingBottom = 7,
+                    .HorizontalAlignment = Element.ALIGN_RIGHT,
+                    .VerticalAlignment = Element.ALIGN_BOTTOM
+                    }
+                ENCABEZADO.AddCell(CeldaPISOS)
+                Dim CeldaPISOSValor As New PdfPCell(New Phrase(Trim(MDU.PISOS), FontFactory.GetFont("Arial", 12, 1))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthBottom = 0,
+                    .Colspan = 1,
+                    .PaddingBottom = 7,
+                    .HorizontalAlignment = Element.ALIGN_LEFT,
+                    .VerticalAlignment = Element.ALIGN_BOTTOM
+                    }
+                ENCABEZADO.AddCell(CeldaPISOSValor)
+                Dim CeldaAPTOS As New PdfPCell(New Phrase("APTOS:", FontFactory.GetFont("Arial", 9, 0))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthBottom = 0,
+                    .Colspan = 1,
+                    .PaddingBottom = 7,
+                    .HorizontalAlignment = Element.ALIGN_RIGHT,
+                    .VerticalAlignment = Element.ALIGN_BOTTOM
+                    }
+                ENCABEZADO.AddCell(CeldaAPTOS)
+                Dim CeldaAPTOSValor As New PdfPCell(New Phrase(MDU.APTOS, FontFactory.GetFont("Arial", 12, 1))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthBottom = 0,
+                    .Colspan = 1,
+                    .PaddingBottom = 7,
+                    .HorizontalAlignment = Element.ALIGN_LEFT,
+                    .VerticalAlignment = Element.ALIGN_BOTTOM
+                    }
+                ENCABEZADO.AddCell(CeldaAPTOSValor)
+                Dim CeldaTORRES As New PdfPCell(New Phrase("TORRES:", FontFactory.GetFont("Arial", 9, 0))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthBottom = 0,
+                    .Colspan = 1,
+                    .PaddingBottom = 7,
+                    .HorizontalAlignment = Element.ALIGN_RIGHT,
+                    .VerticalAlignment = Element.ALIGN_BOTTOM
+                    }
+                ENCABEZADO.AddCell(CeldaTORRES)
+                Dim CeldaTORRESValor As New PdfPCell(New Phrase(MDU.TORRE, FontFactory.GetFont("Arial", 12, 1))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthBottom = 0,
+                    .Colspan = 1,
+                    .PaddingBottom = 7,
+                    .HorizontalAlignment = Element.ALIGN_LEFT,
+                    .VerticalAlignment = Element.ALIGN_BOTTOM
+                    }
+                ENCABEZADO.AddCell(CeldaTORRESValor)
+
+
+                If CUENTA16 > 0 Then CANT_NAPS16 = CUENTA16 Else CANT_NAPS16 = 0
+                If CUENTA8 > 0 Then CANT_NAPS8 = 1 Else CANT_NAPS8 = 0
+                If CUENTA4 > 0 Then CANT_NAPS4 = 1 Else CANT_NAPS4 = 0
+                If CANT_NAPS16 > 0 Then
+                    Dim CeldaNAPS16 As New PdfPCell(New Phrase("NAPS-16:", FontFactory.GetFont("Arial", 9, 0))) With {
+                        .BorderWidth = 0,
+                        .BorderWidthBottom = 0,
+                        .Colspan = 1,
+                        .PaddingBottom = 7,
+                        .HorizontalAlignment = Element.ALIGN_RIGHT,
+                        .VerticalAlignment = Element.ALIGN_BOTTOM
+                        }
+                    ENCABEZADO.AddCell(CeldaNAPS16)
+                    Dim CeldaNAPSValor16 As New PdfPCell(New Phrase(CANT_NAPS16, FontFactory.GetFont("Arial", 12, 1))) With {
+                        .BorderWidth = 0,
+                        .BorderWidthBottom = 0,
+                        .Colspan = 1,
+                        .PaddingBottom = 7,
+                        .HorizontalAlignment = Element.ALIGN_LEFT,
+                        .VerticalAlignment = Element.ALIGN_BOTTOM
+                        }
+                    ENCABEZADO.AddCell(CeldaNAPSValor16)
+                End If
+                If CANT_NAPS8 >= 1 Then
+                    Dim CeldaNAPS8 As New PdfPCell(New Phrase("NAPS-8:", FontFactory.GetFont("Arial", 9, 0))) With {
+                        .BorderWidth = 0,
+                        .BorderWidthBottom = 0,
+                        .Colspan = 1,
+                        .PaddingBottom = 7,
+                        .HorizontalAlignment = Element.ALIGN_RIGHT,
+                        .VerticalAlignment = Element.ALIGN_BOTTOM
+                        }
+                    ENCABEZADO.AddCell(CeldaNAPS8)
+                    Dim CeldaNAPSValor8 As New PdfPCell(New Phrase(CANT_NAPS8, FontFactory.GetFont("Arial", 12, 1))) With {
+                        .BorderWidth = 0,
+                        .BorderWidthBottom = 0,
+                        .BorderWidthRight = 1,
+                        .Colspan = 1,
+                        .PaddingBottom = 7,
+                        .HorizontalAlignment = Element.ALIGN_LEFT,
+                        .VerticalAlignment = Element.ALIGN_BOTTOM
+                        }
+                    ENCABEZADO.AddCell(CeldaNAPSValor8)
+                End If
+                If CANT_NAPS4 >= 1 Then
+                    Dim CeldaNAPS4 As New PdfPCell(New Phrase("NAPS-4:", FontFactory.GetFont("Arial", 9, 0))) With {
+                        .BorderWidth = 0,
+                        .BorderWidthBottom = 0,
+                        .Colspan = 1,
+                        .PaddingBottom = 7,
+                        .HorizontalAlignment = Element.ALIGN_RIGHT,
+                        .VerticalAlignment = Element.ALIGN_BOTTOM
+                        }
+                    ENCABEZADO.AddCell(CeldaNAPS4)
+                    Dim CeldaNAPSValor4 As New PdfPCell(New Phrase(CANT_NAPS4, FontFactory.GetFont("Arial", 12, 1))) With {
+                        .BorderWidth = 0,
+                        .BorderWidthBottom = 0,
+                        .Colspan = 1,
+                        .PaddingBottom = 7,
+                        .HorizontalAlignment = Element.ALIGN_LEFT,
+                        .VerticalAlignment = Element.ALIGN_BOTTOM
+                        }
+                    ENCABEZADO.AddCell(CeldaNAPSValor4)
+                End If
+                If CANT_NAPS16 = 0 Then
+                    If CANT_NAPS4 > 0 Then
+                        ENCABEZADO.AddCell(CeldaVACIA)
+                    Else
+                        ENCABEZADO.AddCell(CeldaVACIA)
+                        ENCABEZADO.AddCell(CeldaVACIARight)
+                    End If
+                End If
+                If CANT_NAPS8 = 0 Then
+                    If CANT_NAPS4 > 0 Then
+                        ENCABEZADO.AddCell(CeldaVACIA)
+                    Else
+                        ENCABEZADO.AddCell(CeldaVACIA)
+                        ENCABEZADO.AddCell(CeldaVACIARight)
+                    End If
+                End If
+            End If
+#End Region
+            CONTADOR_CUERPO = 2
+            If G < EdificioDataSetBACKUP.IMPRIMIR.Rows.Count - 1 Then
+                MDU_SIGUIENTE = EdificioDataSetBACKUP.IMPRIMIR.Rows(G + 1)
+                If MDU.CALLE <> MDU_SIGUIENTE.CALLE Or MDU.PUERTA <> MDU_SIGUIENTE.PUERTA Then
+                    CONTADOR_CUERPO = 1
+                    ULTIMO = True
+                End If
+            End If
+
+            'NUEVAS LINEAS - RECORREMOS CADA NAP CON LA INFORMACION
+            Dim CeldaNRONAP(15) As PdfPCell
+            Dim CeldaDATOS(15) As PdfPCell
+            Dim CeldaDATOS_AMPL(15) As PdfPCell
+
+            Dim CAB_CAJA_NRO(15) As PdfPCell
+            Dim CAB_CAJA_TIPO(15) As PdfPCell
+            Dim CAB_ACOMETIDA(15) As PdfPCell
+            Dim CAB_NAP_TUBO(15) As PdfPCell
+            Dim CAB_NAP_PELO(15) As PdfPCell
+            Dim CAB_NAP_SPL(15) As PdfPCell
+
+            Dim CAJA_NRO(15) As PdfPCell
+            Dim CAJA_TIPO(15) As PdfPCell
+            Dim ACOMETIDA(15) As PdfPCell
+            Dim NAP_TUBO(15) As PdfPCell
+            Dim NAP_PELO(15) As PdfPCell
+            Dim NAP_SPL(15) As PdfPCell
+
+            If MDU.ACOMETIDA <> valorAcometida Then
+                CANT_NAP = 1
+            Else
+                CANT_NAP += 1
+            End If
+            'VERIFICAMOS SI EL NRO DE NAP ES EL MISMO O NO.(16 O 8)
+            If VALORANTERIOR <> MDU.NAP_NRO Or MDU.ACOMETIDA <> valorAcometida Then
+                'INFORMACION DE LA CABECERA
+                'CALCULANDO EL NOMBRE DE LA NAP PARA ALMACENARLA
+                NAP_TEXT_NRO = MDU.NAP_NRO
+                If MDU.NAP_NRO < 10 Then NAP_TEXT_NRO = "0" & MDU.NAP_NRO
+
+                STR_ACOMETIDA = MDU.ACOMETIDA
+                If MDU.ACOMETIDA < 10 Then STR_ACOMETIDA = "0" & MDU.ACOMETIDA
+
+                STR_NOMBRES_NAP(CANT_NAP) = "NAP" & NAP_TEXT_NRO & "-A" & STR_ACOMETIDA & "-" & MDUDataGridView.CurrentRow.Cells(5).Value & STR_ZONA
+                CeldaNRONAP(CANT_NAP) = New PdfPCell(New Phrase(STR_NOMBRES_NAP(CANT_NAP), FontFactory.GetFont("Arial", 10, 1))) With {
+                .BorderWidth = 0,
+                .BorderWidthTop = 1,
+                .BorderWidthLeft = 1,
+                .Padding = 2,
+                .Colspan = 3,
+                .Rowspan = 3,
+                .HorizontalAlignment = Element.ALIGN_CENTER,
+                .VerticalAlignment = Element.ALIGN_MIDDLE
+                }
+
+                ENCABEZADO.AddCell(CeldaNRONAP(CANT_NAP))
+                If MDU.IsOBS_TECNull = False AndAlso MDU.OBS_TEC <> "" Then
+                    UBICACION = "Ubicación sugerida: " & MDU.OBS_TEC
+                Else
+                    UBICACION = ""
+                End If
+                CeldaDATOS_AMPL(CANT_NAP) = New PdfPCell(New Phrase(UBICACION, FontFactory.GetFont("Arial", 10, 0))) With {
+                .BorderWidth = 0,
+                .BorderWidthTop = 1,
+                .BorderWidthLeft = 0.5,
+                .BorderWidthBottom = 0.5,
+                .BorderWidthRight = 1,
+                .Padding = 2,
+                .Colspan = 9,
+                .Rowspan = 1,
+                .HorizontalAlignment = Element.ALIGN_LEFT
+                }
+                ENCABEZADO.AddCell(CeldaDATOS_AMPL(CANT_NAP))
+
+                'nueva linea
+                CeldaDATOS_AMPL(CANT_NAP) = New PdfPCell(New Phrase("Ubicación definitiva:", FontFactory.GetFont("Arial", 10, 0))) With {
+                .BorderWidth = 0,
+                .BorderWidthLeft = 0.5,
+                .BorderWidthRight = 1,
+                .Colspan = 9,
+                .Rowspan = 2,
+                .PaddingBottom = 20,
+                .HorizontalAlignment = Element.ALIGN_LEFT,
+                .VerticalAlignment = Element.ALIGN_TOP
+                }
+                ENCABEZADO.AddCell(CeldaDATOS_AMPL(CANT_NAP))
+                'ENCABEZADOS DE CADA NAP
+                'CAJA TIPO
+                CAB_CAJA_TIPO(CANT_NAP) = New PdfPCell(New Phrase("CONEXION DESDE", FontFactory.GetFont("Arial", 8, 1))) With {
+                .BorderWidth = 0,
+                .BorderWidthBottom = 0.5,
+                .BorderWidthTop = 0.5,
+                .BorderWidthLeft = 1,
+                .Colspan = 2,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                ENCABEZADO.AddCell(CAB_CAJA_TIPO(CANT_NAP))
+                'ACOMETIDA
+                CAB_ACOMETIDA(CANT_NAP) = New PdfPCell(New Phrase("TIPO CABLE", FontFactory.GetFont("Arial", 8, 1))) With {
+                .BorderWidth = 0,
+                .BorderWidthBottom = 0.5,
+                .BorderWidthTop = 0.5,
+                .Colspan = 7,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                ENCABEZADO.AddCell(CAB_ACOMETIDA(CANT_NAP))
+                'NAP TUBO
+                CAB_NAP_TUBO(CANT_NAP) = New PdfPCell(New Phrase("NAP TUBO", FontFactory.GetFont("Arial", 8, 1))) With {
+                .BorderWidth = 0,
+                .BorderWidthBottom = 0.5,
+                .BorderWidthTop = 0.5,
+                .Colspan = 1,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                ENCABEZADO.AddCell(CAB_NAP_TUBO(CANT_NAP))
+                'NAP PELO
+                CAB_NAP_PELO(CANT_NAP) = New PdfPCell(New Phrase("NAP PELO", FontFactory.GetFont("Arial", 8, 1))) With {
+                .BorderWidth = 0,
+                .BorderWidthBottom = 0.5,
+                .BorderWidthTop = 0.5,
+                .Colspan = 1,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                ENCABEZADO.AddCell(CAB_NAP_PELO(CANT_NAP))
+                'NAP SPL
+                CAB_NAP_SPL(CANT_NAP) = New PdfPCell(New Phrase("SPL NAP", FontFactory.GetFont("Arial", 8, 1))) With {
+                .BorderWidth = 0,
+                .BorderWidthBottom = 0.5,
+                .BorderWidthTop = 0.5,
+                .BorderWidthRight = 1,
+                .Colspan = 1,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                ENCABEZADO.AddCell(CAB_NAP_SPL(CANT_NAP))
+
+                'dato de conexionados
+                If CANT_NAP > 1 Then
+                    If MDU.NAP_NRO - 1 < 10 Then
+                        NAP_TEXT_NRO = "0" & MDU.NAP_NRO - 1
+                    Else
+                        NAP_TEXT_NRO = MDU.NAP_NRO - 1
+                    End If
+                    If MDUDataGridView.CurrentRow.Cells(12).Value < 10 Then
+                        STR_ACOMETIDA = "0" & MDUDataGridView.CurrentRow.Cells(12).Value
+                    Else
+                        STR_ACOMETIDA = MDUDataGridView.CurrentRow.Cells(12).Value
+                    End If
+                    NAP_TEXT = "NAP" & NAP_TEXT_NRO & "-A" & STR_ACOMETIDA & "-" & MDUDataGridView.CurrentRow.Cells(5).Value & STR_ZONA
+                Else
+                    If MDU.IsCONEXION_DESDENull Then
+                        CAJA_NUMERO = "(S/D)"
+                    Else
+                        If MDU.CONEXION_DESDE < 10 Then
+                            CAJA_NUMERO = "0" & MDU.CONEXION_DESDE
+                        Else
+                            CAJA_NUMERO = MDU.CONEXION_DESDE
+                        End If
+                    End If
+                    If MDU.IsCAJA_DISTRIBUCIONNull Then
+                        STR_CAJA_DISTRIBUCION = "(S/D)"
+                    Else
+                        If MDU.CAJA_DISTRIBUCION < 10 Then
+                            STR_CAJA_DISTRIBUCION = "0" & MDU.CAJA_DISTRIBUCION
+                        Else
+                            STR_CAJA_DISTRIBUCION = MDU.CAJA_DISTRIBUCION
+                        End If
+                    End If
+                    'EVALUAMOS SI EL NUMERO DE NAP ES MAYOR QUE 1 SIGNIFICA QUE ESTA NAP NO DEBE DE TOMAR DE LA CED O FDH
+                    If MDU.NAP_NRO > 1 Then
+                        If MDU.NAP_NRO - 1 < 10 Then
+                            NAP_TEXT_NRO = "0" & MDU.NAP_NRO - 1
+                        Else
+                            NAP_TEXT_NRO = MDU.NAP_NRO - 1
+                        End If
+                        NAP_TEXT = "NAP" & NAP_TEXT_NRO & "-A" & STR_ACOMETIDA & "-" & MDUDataGridView.CurrentRow.Cells(5).Value & STR_ZONA
+                    Else
+                        If MDU.TIPO_CONEXION_DESDE = "FDH" Then
+                            NAP_TEXT = MDU.TIPO_CONEXION_DESDE & CAJA_NUMERO & "-" & MDUDataGridView.CurrentRow.Cells(5).Value & STR_ZONA
+                        Else
+                            NAP_TEXT = MDU.TIPO_CONEXION_DESDE & CAJA_NUMERO & "-D" & STR_CAJA_DISTRIBUCION & "-" & MDUDataGridView.CurrentRow.Cells(5).Value & STR_ZONA
+
+                        End If
+                    End If
+                End If
+                'CAJA TIPO
+                CAJA_TIPO(CANT_NAP) = New PdfPCell(New Phrase(NAP_TEXT, FontFactory.GetFont("Arial", 8, 0))) With {
+                    .BorderWidth = 0,
+                    .BorderWidthLeft = 1,
+                    .Colspan = 2,
+                    .HorizontalAlignment = Element.ALIGN_CENTER
+                    }
+                ENCABEZADO.AddCell(CAJA_TIPO(CANT_NAP))
+                'ACOMETIDA
+                ACOMETIDA(CANT_NAP) = New PdfPCell(New Phrase(MDU.CABLE, FontFactory.GetFont("Arial", 8, 0))) With {
+                            .BorderWidth = 0,
+                            .Colspan = 7,
+                            .HorizontalAlignment = Element.ALIGN_CENTER
+                            }
+                ENCABEZADO.AddCell(ACOMETIDA(CANT_NAP))
+                'NAP TUBO
+                NAP_TUBO(CANT_NAP) = New PdfPCell(New Phrase(MDU.TUBO, FontFactory.GetFont("Arial", 8, 0))) With {
+                            .BorderWidth = 0,
+                            .Colspan = 1,
+                            .HorizontalAlignment = Element.ALIGN_CENTER
+                            }
+                ENCABEZADO.AddCell(NAP_TUBO(CANT_NAP))
+                'NAP PELO
+                NAP_PELO(CANT_NAP) = New PdfPCell(New Phrase(MDU.PELO, FontFactory.GetFont("Arial", 8, 0))) With {
+                            .BorderWidth = 0,
+                            .Colspan = 1,
+                            .HorizontalAlignment = Element.ALIGN_CENTER
+                            }
+                ENCABEZADO.AddCell(NAP_PELO(CANT_NAP))
+                'NAP SPL
+                NAP_SPL(CANT_NAP) = New PdfPCell(New Phrase(MDU.SPL_NRO, FontFactory.GetFont("Arial", 8, 0))) With {
+                            .BorderWidth = 0,
+                            .Colspan = 1,
+                            .BorderWidthRight = 1,
+                            .HorizontalAlignment = Element.ALIGN_CENTER
+                            }
+                ENCABEZADO.AddCell(NAP_SPL(CANT_NAP))
+
+            Else 'CUANDO NO ES LA PRIMERA LINEA
+
+                If CANT_NAP <= 2 Then '<=
+                    If Mid(MDU.NAP, 4) = 16 Then
+                        If MDU.IsCONEXION_DESDENull Then
+                            CAJA_NUMERO = "(S/D)"
+                        Else
+                            If MDU.CONEXION_DESDE < 10 Then
+                                CAJA_NUMERO = "0" & MDU.CONEXION_DESDE
+                            Else
+                                CAJA_NUMERO = MDU.CONEXION_DESDE
+                            End If
+                        End If
+                        If MDU.IsCAJA_DISTRIBUCIONNull Then
+                            STR_CAJA_DISTRIBUCION = "(S/D)"
+                        Else
+                            If MDU.CAJA_DISTRIBUCION < 10 Then
+                                STR_CAJA_DISTRIBUCION = "0" & MDU.CAJA_DISTRIBUCION
+                            Else
+                                STR_CAJA_DISTRIBUCION = MDU.CAJA_DISTRIBUCION
+                            End If
+                        End If
+                        If MDU.TIPO_CONEXION_DESDE = "FDH" Then
+                            NAP_TEXT = MDU.TIPO_CONEXION_DESDE & CAJA_NUMERO & "-" & MDUDataGridView.CurrentRow.Cells(5).Value & STR_ZONA
+                        Else
+                            NAP_TEXT = MDU.TIPO_CONEXION_DESDE & CAJA_NUMERO & "-D" & STR_CAJA_DISTRIBUCION & "-" & MDUDataGridView.CurrentRow.Cells(5).Value & STR_ZONA
+                        End If
+                    End If
+                Else
+                    '  If VALOR.NAP = 16 Then
+                    If VALORANTERIOR - 1 < 10 Then
+                        NAP_TEXT_NRO = "0" & VALORANTERIOR - 1
+                    Else
+                        NAP_TEXT_NRO = VALORANTERIOR - 1
+                    End If
+                    If MDUDataGridView.CurrentRow.Cells(12).Value < 10 Then
+                        STR_ACOMETIDA = "0" & MDUDataGridView.CurrentRow.Cells(12).Value
+                    Else
+                        STR_ACOMETIDA = MDUDataGridView.CurrentRow.Cells(12).Value
+                    End If
+                    NAP_TEXT = "NAP" & NAP_TEXT_NRO & "-A" & STR_ACOMETIDA & "-" & MDUDataGridView.CurrentRow.Cells(5).Value & STR_ZONA
+                    '  End If
+                End If
+
+                CAJA_TIPO(CANT_NAP) = New PdfPCell(New Phrase(NAP_TEXT, FontFactory.GetFont("Arial", 8, 0))) With {
+                .BorderWidth = 0,
+                .Colspan = 2,
+                .BorderWidthLeft = 1,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                ENCABEZADO.AddCell(CAJA_TIPO(CANT_NAP))
+                'ACOMETIDA
+                ACOMETIDA(CANT_NAP) = New PdfPCell(New Phrase(MDU.CABLE, FontFactory.GetFont("Arial", 8, 0))) With {
+                    .BorderWidth = 0,
+                    .Colspan = 7,
+                    .HorizontalAlignment = Element.ALIGN_CENTER
+                    }
+                ENCABEZADO.AddCell(ACOMETIDA(CANT_NAP))
+                'NAP TUBO
+                NAP_TUBO(CANT_NAP) = New PdfPCell(New Phrase(MDU.TUBO, FontFactory.GetFont("Arial", 8, 0))) With {
+                    .BorderWidth = 0,
+                    .Colspan = 1,
+                    .HorizontalAlignment = Element.ALIGN_CENTER
+                    }
+                ENCABEZADO.AddCell(NAP_TUBO(CANT_NAP))
+                'NAP PELO
+                NAP_PELO(CANT_NAP) = New PdfPCell(New Phrase(MDU.PELO, FontFactory.GetFont("Arial", 8, 0))) With {
+                    .BorderWidth = 0,
+                    .Colspan = 1,
+                    .HorizontalAlignment = Element.ALIGN_CENTER
+                    }
+                ENCABEZADO.AddCell(NAP_PELO(CANT_NAP))
+                NAP_SPL(CANT_NAP) = New PdfPCell(New Phrase(MDU.SPL_NRO, FontFactory.GetFont("Arial", 8, 0))) With {
+                    .BorderWidth = 0,
+                    .Colspan = 1,
+                    .BorderWidthRight = 1,
+                    .HorizontalAlignment = Element.ALIGN_CENTER
+                    }
+                ENCABEZADO.AddCell(NAP_SPL(CANT_NAP))
+
+                STR_NOMBRES_NAP(CANT_NAP) = ""
+            End If
+
+            VALORANTERIOR = MDU.NAP_NRO
+            valorAcometida = MDU.ACOMETIDA
+#Region "INFORMACION DE CONTACTO"
+            If ULTIMO Or G = EdificioDataSetBACKUP.IMPRIMIR.Rows.Count - 1 Then
+                BITACORATableAdapter.FillByEDIF_ACTIVO(EdificioDataSetBACKUP.BITACORA, CInt(MDU.ID_EDIFICIO))
+                If EdificioDataSetBACKUP.BITACORA.Rows.Count > 0 Then
+
+                    Dim email As String
+                    If IsDBNull(EdificioDataSetBACKUP.BITACORA.Rows(0).Item("EMAIL_CTTO")) = False AndAlso EdificioDataSetBACKUP.BITACORA.Rows(0).Item("EMAIL_CTTO") <> "" Then
+                        email = EdificioDataSetBACKUP.BITACORA.Rows(0).Item("EMAIL_CTTO")
+                    Else
+                        email = ""
+                    End If
+                    'ENCABEZADOS DE CONTACTO
+                    '1
+                    Dim CeldaAPTO As New PdfPCell(New Phrase("CONTACTO", FontFactory.GetFont("Arial", 10, 0))) With {
+                .Colspan = 3,
+                .BorderWidthTop = 1,
+                .BorderWidth = 0,
+                .BorderWidthLeft = 1,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                    ENCABEZADO.AddCell(CeldaAPTO)
+                    '2
+                    Dim CeldaCONTACTO As New PdfPCell(New Phrase("NOMBRE", FontFactory.GetFont("Arial", 10, 0))) With {
+                .Border = 0,
+                 .BorderWidthTop = 1,
+                .Colspan = 3,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                    ENCABEZADO.AddCell(CeldaCONTACTO)
+                    '3
+                    Dim CeldaTELEFONO As New PdfPCell(New Phrase("TELEFONO", FontFactory.GetFont("Arial", 10, 0))) With {
+                .Border = 0,
+                 .BorderWidthTop = 1,
+                .Colspan = 3,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                    ENCABEZADO.AddCell(CeldaTELEFONO)
+                    '4
+                    Dim CeldaEMAIL As New PdfPCell(New Phrase("EMAIL", FontFactory.GetFont("Arial", 10, 0))) With {
+                .BorderWidth = 0,
+                 .BorderWidthTop = 1,
+                .Colspan = 3,
+                .BorderWidthRight = 1,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                    ENCABEZADO.AddCell(CeldaEMAIL)
+                    'NUEVA LIENA
+                    'VALORES DE LOS ENCABEZADOS
+                    Dim CeldaAPTOValor As New PdfPCell(New Phrase(EdificioDataSetBACKUP.BITACORA.Rows(0).Item("APTO_CTTO"), FontFactory.GetFont("Arial", 10, 1))) With {
+                .Colspan = 3,
+                .BorderWidth = 0,
+                .BorderWidthLeft = 1,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                    ENCABEZADO.AddCell(CeldaAPTOValor)
+                    Dim CeldaCONTACTOValor As New PdfPCell(New Phrase(EdificioDataSetBACKUP.BITACORA.Rows(0).Item("NOMBRE_CTTO"), FontFactory.GetFont("Arial", 10, 1))) With {
+                .Border = 0,
+                .Colspan = 3,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                    ENCABEZADO.AddCell(CeldaCONTACTOValor)
+
+                    Dim CeldaTELEFONOValor As New PdfPCell(New Phrase(EdificioDataSetBACKUP.BITACORA.Rows(0).Item("TELEFONO_CTTO"), FontFactory.GetFont("Arial", 10, 1))) With {
+                .Border = 0,
+                .Colspan = 3,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                    ENCABEZADO.AddCell(CeldaTELEFONOValor)
+
+                    Dim CeldaEMAILValor As New PdfPCell(New Phrase(email, FontFactory.GetFont("Arial", 10, 1))) With {
+                .BorderWidth = 0,
+                .Colspan = 3,
+                .BorderWidthRight = 1,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+                    ENCABEZADO.AddCell(CeldaEMAILValor)
+
+                    'NUEVA LIENA OBSERVACIONES DE CONTACTO
+                    Dim observa As String
+                    If IsDBNull(EdificioDataSetBACKUP.BITACORA.Rows(0).Item("OBSERVACIONES")) Then
+                        observa = ""
+                    Else
+                        observa = Trim(EdificioDataSetBACKUP.BITACORA.Rows(0).Item("OBSERVACIONES"))
+                    End If
+                    Dim CeldaOBSCONTACTOValor As New PdfPCell(New Phrase(observa, FontFactory.GetFont("Arial", 10, 0))) With {
+                .HorizontalAlignment = Element.ALIGN_LEFT,
+                .BorderWidth = 0,
+                .BorderWidthBottom = 1,
+                .BorderWidthRight = 1,
+                .BorderWidthLeft = 1,
+                .PaddingBottom = 7,
+                .Colspan = 12
+                }
+                    ENCABEZADO.AddCell(CeldaOBSCONTACTOValor)
+                End If
+            End If
+#End Region
+        Next
+
+#Region "INFORMACION PARA QUE CARGUE EL TECNICO"
+        Dim TEMPLATE As PdfTemplate = writer.DirectContent().CreateTemplate(40, 18)
+        TEMPLATE.SetColorStroke(barra)
+        TEMPLATE.SetColorFill(BORRAR)
+        TEMPLATE.SetLineWidth(1.5F)
+        TEMPLATE.Circle(20, 8, 7)
+        TEMPLATE.FillStroke()
+        writer.ReleaseTemplate(TEMPLATE)
+        Dim CeldaC1 As New PdfPCell(Image.GetInstance(TEMPLATE)) With {
+            .HorizontalAlignment = Element.ALIGN_CENTER,
+            .VerticalAlignment = Element.ALIGN_MIDDLE,
+            .BorderWidth = 0.5,
+            .Colspan = 1
+        }
+        Dim CeldaC2 As New PdfPCell(New Phrase("", FontFactory.GetFont("Arial", 9, 0))) With {
+       .BorderWidth = 0.5,
+           .Colspan = 2,
+           .Padding = 10,
+           .PaddingLeft = 6,
+           .HorizontalAlignment = Element.ALIGN_LEFT
+       }
+        Dim CeldaC3 As New PdfPCell(New Phrase("", FontFactory.GetFont("Arial", 9, 0))) With {
+            .BorderWidth = 0.5,
+            .Colspan = 3,
+            .Padding = 10
+        }
+        Dim CeldaC4 As New PdfPCell(New Phrase("", FontFactory.GetFont("Arial", 9, 0))) With {
+            .BorderWidth = 0.5,
+            .Colspan = 4,
+            .Padding = 10
+        }
+        'NUEVA FILA PARA INGRESAR EL DATO CODIGO DE BOBINA - HORA INICIO Y HORA FIN
+        Dim CeldaC2Bold As New PdfPCell(New Phrase("", FontFactory.GetFont("Arial", 9, 0))) With {
+           .BorderWidth = 1.5,
+           .Colspan = 2,
+           .Padding = 10
+       }
+        Dim CeldaCODBobina As New PdfPCell(New Phrase("Codigo BOBINA", FontFactory.GetFont("Arial", 10, 1))) With {
+                .BorderWidth = 1.5,
+                .Colspan = 2,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+        ENCABEZADO.AddCell(CeldaCODBobina)
+        ENCABEZADO.AddCell(CeldaC2Bold)
+        Dim CeldaHoraInicio As New PdfPCell(New Phrase("Hora Inicio", FontFactory.GetFont("Arial", 10, 1))) With {
+                .BorderWidth = 1.5,
+                .Colspan = 2,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+        ENCABEZADO.AddCell(CeldaHoraInicio)
+        ENCABEZADO.AddCell(CeldaC2Bold)
+        Dim CeldaHoraFin As New PdfPCell(New Phrase("Hora Fin", FontFactory.GetFont("Arial", 10, 1))) With {
+                .BorderWidth = 1.5,
+                .Colspan = 2,
+                .HorizontalAlignment = Element.ALIGN_CENTER
+                }
+        ENCABEZADO.AddCell(CeldaHoraFin)
+        ENCABEZADO.AddCell(CeldaC2Bold)
+
+        'NUEVA LIENA DATOS PARA INGRESAR POR TECNICO
+        Dim CeldaTITULOValor As New PdfPCell(New Phrase("REGISTRO DE RECORRIDO PARA ACOMETIDA DEL EDIFICIO", FontFactory.GetFont("Arial", 12, 0))) With {
+            .HorizontalAlignment = Element.ALIGN_CENTER,
+            .BorderWidth = 0,
+            .PaddingTop = 10,
+            .PaddingBottom = 2,
+            .Colspan = 12
+            }
+        ENCABEZADO.AddCell(CeldaTITULOValor)
+
+        'NUEVA FILA CUADROS
+        Dim CeldaPuntoTitulo As New PdfPCell(New Phrase("Registro", FontFactory.GetFont("Arial", 9, 0))) With {
+            .BorderWidth = 0.5,
+            .Colspan = 2,
+            .Rowspan = 2,
+            .Padding = 2,
+            .HorizontalAlignment = Element.ALIGN_CENTER,
+            .VerticalAlignment = Element.ALIGN_CENTER
+        }
+        ENCABEZADO.AddCell(CeldaPuntoTitulo)
+        Dim CeldaNMetrajeFibra As New PdfPCell(New Phrase("Nº marca fibra", FontFactory.GetFont("Arial", 9, 0))) With {
+            .BorderWidth = 0.5,
+            .Colspan = 6,
+            .Rowspan = 1,
+            .Padding = 2,
+            .HorizontalAlignment = Element.ALIGN_CENTER,
+            .VerticalAlignment = Element.ALIGN_CENTER
+        }
+        ENCABEZADO.AddCell(CeldaNMetrajeFibra)
+        Dim CeldaNMetrajeInicial As New PdfPCell(New Phrase("Recorrido", FontFactory.GetFont("Arial", 9, 0))) With {
+            .BorderWidth = 0.5,
+            .Colspan = 4,
+            .Padding = 2,
+            .HorizontalAlignment = Element.ALIGN_CENTER,
+            .VerticalAlignment = Element.ALIGN_CENTER
+        }
+        ENCABEZADO.AddCell(CeldaNMetrajeInicial)
+        Dim CeldaNMetrajeFinal As New PdfPCell(New Phrase("Inicial", FontFactory.GetFont("Arial", 9, 0))) With {
+            .BorderWidth = 0.5,
+            .Colspan = 3,
+            .Padding = 2,
+            .HorizontalAlignment = Element.ALIGN_CENTER,
+            .VerticalAlignment = Element.ALIGN_CENTER
+        }
+        ENCABEZADO.AddCell(CeldaNMetrajeFinal)
+        Dim CeldaSoporte As New PdfPCell(New Phrase("Final", FontFactory.GetFont("Arial", 9, 0))) With {
+            .BorderWidth = 0.5,
+            .Colspan = 3,
+            .Padding = 2,
+            .HorizontalAlignment = Element.ALIGN_CENTER,
+            .VerticalAlignment = Element.ALIGN_CENTER
+        }
+        ENCABEZADO.AddCell(CeldaSoporte)
+        Dim CeldaAereo As New PdfPCell(New Phrase("Aéreo", FontFactory.GetFont("Arial", 9, 0))) With {
+            .BorderWidth = 0.5,
+            .Colspan = 1,
+            .Padding = 2,
+            .HorizontalAlignment = Element.ALIGN_CENTER,
+            .VerticalAlignment = Element.ALIGN_CENTER
+        }
+        ENCABEZADO.AddCell(CeldaAereo)
+        Dim CeldaSubterraneo As New PdfPCell(New Phrase("Subte", FontFactory.GetFont("Arial", 9, 0))) With {
+            .BorderWidth = 0.5,
+            .Colspan = 1,
+            .HorizontalAlignment = Element.ALIGN_CENTER,
+            .VerticalAlignment = Element.ALIGN_CENTER
+        }
+        ENCABEZADO.AddCell(CeldaSubterraneo)
+        Dim CeldaOculto As New PdfPCell(New Phrase("Oculto", FontFactory.GetFont("Arial", 9, 0))) With {
+            .BorderWidth = 0.5,
+            .Colspan = 1,
+            .Padding = 2,
+            .HorizontalAlignment = Element.ALIGN_CENTER,
+            .VerticalAlignment = Element.ALIGN_CENTER
+        }
+        ENCABEZADO.AddCell(CeldaOculto)
+        Dim CeldaInterna As New PdfPCell(New Phrase("Interna", FontFactory.GetFont("Arial", 9, 0))) With {
+            .BorderWidth = 0.5,
+            .Colspan = 1,
+            .Padding = 2,
+            .HorizontalAlignment = Element.ALIGN_CENTER,
+            .VerticalAlignment = Element.ALIGN_CENTER
+        }
+        ENCABEZADO.AddCell(CeldaInterna)
+
+
+        For X = 1 To 15
+            ENCABEZADO.AddCell(CeldaC2)
+            ENCABEZADO.AddCell(CeldaC3)
+            ENCABEZADO.AddCell(CeldaC3)
+
+            ENCABEZADO.AddCell(CeldaC1)
+            ENCABEZADO.AddCell(CeldaC1)
+            ENCABEZADO.AddCell(CeldaC1)
+            ENCABEZADO.AddCell(CeldaC1)
+        Next
+#End Region
+
+        DOCUMENTO.Add(ENCABEZADO)
+        DOCUMENTO.Close()
+
+        Process.Start(RUTA)
+
+        Cursor = Cursors.Default
+    End Sub
     Private Sub BTN_IMPRIMIR_ORDTEC_Click(sender As Object, e As EventArgs) Handles BTN_IMPRIMIR_ORDTEC.Click
+        IMPRIMIR()
+        ' IMPRIMIR_BASIC() '
+
+        'IMPRIMIR_ORDEN.Show()
+    End Sub
+    Private Sub IMPRIMIR_BASIC()
         Dim FUENTETITULOCOTI As Font = FontFactory.GetFont("arial", 30, 1)
         Dim FUENTE As Font = FontFactory.GetFont("arial", 10, 1)
         Dim barra As New BaseColor(84, 84, 84)
@@ -358,6 +1433,7 @@ Public Class DETALLE_MDU
         }
         ENCABEZADO.AddCell(celdaORDENTRABAJO)
         MDUTableAdapter.FillByACOMETIDA(EdificioDataSetBACKUP.MDU, MDUDataGridView.CurrentRow.Cells(12).Value, MDUDataGridView.CurrentRow.Cells(5).Value, MDUDataGridView.CurrentRow.Cells(6).Value)
+
         Dim cantTorres As Integer = 0
         Dim NroAcometida As Integer = 0
         Dim acometidas As String = ""
@@ -1303,8 +2379,6 @@ Public Class DETALLE_MDU
         DOCUMENTO.Close()
 
         Process.Start(RUTA)
-
-        'IMPRIMIR_ORDEN.Show()
     End Sub
     Private Sub BTN_ACTUALIZAR_sTATUS_Click(sender As Object, e As EventArgs) Handles BTN_ACTUALIZAR_sTATUS.Click
         STATUSTableAdapter.FillByNOMBRE(EdificioDataSetACTUALIZAR.STATUS, CB_STATUS.Text)
@@ -1331,6 +2405,4 @@ Public Class DETALLE_MDU
             TORRES.Show()
         End If
     End Sub
-
-
 End Class

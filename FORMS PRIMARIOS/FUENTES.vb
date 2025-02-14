@@ -4,7 +4,7 @@ Public Class FUENTES
 
     'Dim NewTRABAJOS As BASEFUENTESDataSet.TRABAJOSRow
     Dim NewAFECTACION As ORDENESDataSet.AFECTACIONRow
-    Dim NewHISTORICO As BASEFUENTESDataSet.HISTORICORow
+    '  Dim NewHISTORICO As BD_FUENTESDataSet.HISTORICORow
     Dim AFECTACIONRow As DataRow
     Dim OBSERVACIONESRow As DataRow
     Dim ActBASE As DataRow
@@ -39,12 +39,69 @@ Public Class FUENTES
     Dim HIST_ORDENINT As Integer
     Dim HIST_FECHA As Date
     Private Sub GENERAL_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        VIEJA_BD()
+
         'BIENVENIDOS!!!!
     End Sub
     Private Sub FUENTES_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        FUENTETableAdapter.FillByFUENTES(BASEFUENTESDataSet.FUENTE)
+        ''        Try
+        'Dim SQL = "SELECT 
+        'F.ID_FUENTE, 
+        'F.NODO, 
+        'F.ZONA, 
+        'F.INSTALACION_RUS, 
+        'F.MODFUENTE, 
+        'F.CALLE, 
+        'F.ESQUINA, 
+        'F.PUERTA, 
+        'F.IMEI, 
+        'F.IPMODEM, 
+        'F.PIN, 
+        'F.PUK, 
+        'F.VPN1, 
+        'F.VPN2, 
+        'F.MAC,
+        'F.LEX, 
+        'F.BR, 
+        'F.RX, 
+        'F.TR, 
+        'T.TIPO, 
+        'FB.FECHA
+        'FROM FUENTE F,  FECHA_BATERIA FB , TIPO_BATERIA T
+        'WHERE F.MODBATERIA = FB.Id AND FB.TIPO_BATERIA = T.ID"
+
+        '            Dim RESPUESTA As OleDb.OleDbDataReader = ExecuteQuery("FUENTES", SQL)
+        '            Dim DTFUENTE As New DataTable
+        '            DTFUENTE.Load(RESPUESTA)
+        '            INSTALACIONDataGridView.DataSource = DTFUENTE
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+        ' FUENTES_MODTableAdapter.Fil
+        ' l(BASEFUENTESDataSet.FUENTES_MOD)
         INFORMACION_GRAL()
+
+
+
+
+
+
     End Sub
+
+
+    Private Sub VIEJA_BD()
+        FUENTETableAdapter.FillByACTIVA(BASEFUENTESDataSet.FUENTE)
+        FORMATO_DGV()
+        SELECCIONA_FUENTE()
+    End Sub
+    Private Sub FORMATO_DGV()
+        If INSTALACIONDataGridView.Rows.Count > 0 Then
+            'INSTALACIONDataGridView.Columns(0).Visible = False
+
+        End If
+    End Sub
+
     Private Sub INFORMACION_GRAL()
         TOTAL_BAT = 0
         CANTIDADFUE = INSTALACIONDataGridView.Rows.Count
@@ -65,7 +122,6 @@ Public Class FUENTES
         End If
     End Sub
     Private Sub ORDENESDataGridView_Click(sender As Object, e As MouseEventArgs) Handles ORDENESDataGridView.Click
-
         If e.Button = Windows.Forms.MouseButtons.Left Then
             PROCESOS.Text = "BUSCANDO OBSERVACIONES"
             PROCESOS.Refresh()
@@ -112,8 +168,6 @@ Public Class FUENTES
         PROCESOS.Refresh()
         AFECTACIONTableAdapter.FillByINSTALACION(ORDENESDataSet.AFECTACION, FUENTE_ID)
 
-        'MODIFICA EL ESTADO DE LOS BOTONES DE ACCION
-        BOT_CARGARTRABAJOS.Enabled = True
 
         'PRCEDIMIENTO PARA CARGAR LA VARIABLE DE AFECTACION EN LAS ORDENES Y/O ORDINALES
         If ORDENESDataSet.AFECTACION.Rows.Count = 0 Then
@@ -251,64 +305,6 @@ Public Class FUENTES
 
 
     'End Sub
-    Private Sub REG_BATERIAS()
-
-        'CARGA DATOS DE BATERIAS DE ACUERDO A LA CANTIDAD
-        Select Case ActBASE("CANTB")
-            Case 2
-                NewHISTORICO("BAT1MARCA") = "ALPHA"
-                NewHISTORICO("BAT1MOD") = ActBASE("MODBAT")
-                NewHISTORICO("BAT1SERIE") = ""
-                NewHISTORICO("BAT1FECHAFAB") = ActBASE("FECHAFABBAT")
-                NewHISTORICO("BAT2MARCA") = "ALPHA"
-                NewHISTORICO("BAT2MOD") = ActBASE("MODBAT")
-                NewHISTORICO("BAT2SERIE") = ""
-                NewHISTORICO("BAT2FECHAFAB") = ActBASE("FECHAFABBAT")
-                NewHISTORICO("BAT3MARCA") = ""
-                NewHISTORICO("BAT3MOD") = ""
-                NewHISTORICO("BAT3SERIE") = ""
-                'NewHISTORICO("BAT3FECHAFAB") = ""
-                NewHISTORICO("BAT4MARCA") = ""
-                NewHISTORICO("BAT4MOD") = ""
-                NewHISTORICO("BAT4SERIE") = ""
-                'NewHISTORICO("BAT4FECHAFAB") = ""
-            Case 3
-                NewHISTORICO("BAT1MARCA") = "ALPHA"
-                NewHISTORICO("BAT1MOD") = ActBASE("MODBAT")
-                NewHISTORICO("BAT1SERIE") = ""
-                NewHISTORICO("BAT1FECHAFAB") = ActBASE("FECHAFABBAT")
-                NewHISTORICO("BAT2MARCA") = "ALPHA"
-                NewHISTORICO("BAT2MOD") = ActBASE("MODBAT")
-                NewHISTORICO("BAT2SERIE") = ""
-                NewHISTORICO("BAT2FECHAFAB") = ActBASE("FECHAFABBAT")
-                NewHISTORICO("BAT3MARCA") = "ALPHA"
-                NewHISTORICO("BAT3MOD") = ActBASE("MODBAT")
-                NewHISTORICO("BAT3SERIE") = ""
-                NewHISTORICO("BAT3FECHAFAB") = ActBASE("FECHAFABBAT")
-                NewHISTORICO("BAT4MARCA") = ""
-                NewHISTORICO("BAT4MOD") = ""
-                NewHISTORICO("BAT4SERIE") = ""
-                'NewHISTORICO("BAT4FECHAFAB") = ""
-            Case 4
-                NewHISTORICO("BAT1MARCA") = "ALPHA"
-                NewHISTORICO("BAT1MOD") = ActBASE("MODBAT")
-                NewHISTORICO("BAT1SERIE") = ""
-                NewHISTORICO("BAT1FECHAFAB") = ActBASE("FECHAFABBAT")
-                NewHISTORICO("BAT2MARCA") = "ALPHA"
-                NewHISTORICO("BAT2MOD") = ActBASE("MODBAT")
-                NewHISTORICO("BAT2SERIE") = ""
-                NewHISTORICO("BAT2FECHAFAB") = ActBASE("FECHAFABBAT")
-                NewHISTORICO("BAT3MARCA") = "ALPHA"
-                NewHISTORICO("BAT3MOD") = ActBASE("MODBAT")
-                NewHISTORICO("BAT3SERIE") = ""
-                NewHISTORICO("BAT3FECHAFAB") = ActBASE("FECHAFABBAT")
-                NewHISTORICO("BAT4MARCA") = "ALPHA"
-                NewHISTORICO("BAT4MOD") = ActBASE("MODBAT")
-                NewHISTORICO("BAT4SERIE") = ""
-                NewHISTORICO("BAT4FECHAFAB") = ActBASE("FECHAFABBAT")
-
-        End Select
-    End Sub
     Private Sub FILTRA_FUENTE()
         Dim VISTAFUENTE As DataView = BASEFUENTESDataSet.FUENTE.AsDataView
         CAMPO(0) = ("INSTALACION")
@@ -370,9 +366,13 @@ Public Class FUENTES
         If Len(BUSCA_FECHA_BAT.Text) < 4 Then
             FILTRO(8) = ""
         Else
-            CAMPO(8) = ("FECHA_BAT")
-            DATO(8) = BUSCA_FECHA_BAT.Text
-            FILTRO(8) = " AND  [" & CAMPO(8) & "] like '*" & DATO(8) & "*'"
+            If IsNumeric(BUSCA_FECHA_BAT.Text) Then
+                CAMPO(8) = ("FECHA_BAT")
+                DATO(8) = BUSCA_FECHA_BAT.Text
+                FILTRO(8) = " AND  [" & CAMPO(8) & "] like '*" & DATO(8) & "*'"
+            Else
+                NOTIFICACION("SYS", "INGRESE SÓLO NUMEROS")
+            End If
         End If
         'CAMPO(9) = ("ACTUAL")
         'DATO(9) = BUSC_ACTUAL.Checked
@@ -383,8 +383,8 @@ Public Class FUENTES
         'Else
         VISTAFUENTE.RowFilter = FILTRO(0) & FILTRO(1) & FILTRO(2) & FILTRO(3) & FILTRO(4) & FILTRO(5) & FILTRO(6) & FILTRO(7) & FILTRO(8)
 
-        FUENTEBindingSource.DataSource = VISTAFUENTE
-        INFORMACION_GRAL()
+            FUENTEBindingSource.DataSource = VISTAFUENTE
+            INFORMACION_GRAL()
     End Sub
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
         BUSC_CODIGO.Text = ""
@@ -539,10 +539,6 @@ Public Class FUENTES
         End If
 
     End Sub 'OK
-    Private Sub BOT_CARGARTRABAJOS_Click(sender As Object, e As EventArgs) Handles BOT_CARGARTRABAJOS.Click
-        TRABAJOS.Show()
-    End Sub
-
     Private Sub ABRE_DATOS()
         INSTALACIONDataGridView.ContextMenuStrip = Nothing
         If DATOS.Visible = True Then
@@ -648,73 +644,73 @@ Public Class FUENTES
         End If
     End Sub 'OK
     Private Sub BTN_REPORTE_Click(sender As Object, e As EventArgs) Handles BTN_REPORTE.Click
-        Dim NEW_FUENTE_ROW As DataRow
-        Dim FUENTE As BASEFUENTESDataSet.FUENTERow
-        Dim ORDEN As ORDENESDataSet.ORDENESRow
-        Dim TAREA As ORDENESDataSet.TAREASRow
-        VER_INFORME_FUENTES.INFORME_FUENTESDataSet.Clear()
-        FUENTETableAdapter.FillByFUENTES(BASEFUENTESDataSet.FUENTE)
-        For X = 0 To BASEFUENTESDataSet.FUENTE.Rows.Count - 1
-            FUENTE = BASEFUENTESDataSet.FUENTE.Rows(X)
-            PROCESOS.Text = X & " - PROCESANDO FUENTE: " & FUENTE.INSTALACION_RUS
-            PROCESOS.Refresh()
+        'Dim NEW_FUENTE_ROW As DataRow
+        'Dim FUENTE As BASEFUENTESDataSet.FUENTERow
+        'Dim ORDEN As ORDENESDataSet.ORDENESRow
+        'Dim TAREA As ORDENESDataSet.TAREASRow
+        'VER_INFORME_FUENTES.INFORME_FUENTESDataSet.Clear()
+        'FUENTETableAdapter.FillByFUENTES(BASEFUENTESDataSet.FUENTE)
+        'For X = 0 To BASEFUENTESDataSet.FUENTE.Rows.Count - 1
+        '    FUENTE = BASEFUENTESDataSet.FUENTE.Rows(X)
+        '    PROCESOS.Text = X & " - PROCESANDO FUENTE: " & FUENTE.INSTALACION_RUS
+        '    PROCESOS.Refresh()
 
-            ORDENESTableAdapter.FillByINSTALACIONRUS(ORDENESDataSet.ORDENES, FUENTE.ID_FUENTE)
-            If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
-                For O = 0 To ORDENESDataSet.ORDENES.Rows.Count - 1
-                    ORDEN = ORDENESDataSet.ORDENES.Rows(O)
-                    PROCESOS.Text = X & "  " & O & " - INTENTANDO ORDEN: " & ORDEN.NRO_ORDENINT
-                    PROCESOS.Refresh()
-                    If DateDiff(DateInterval.Day, ORDEN.FECHAFIN, Today) < 366 And ORDEN.NRO_ORDINAL <> 0 Then
-                        PROCESOS.Text = X & "  " & O & " - ALIZANDO ORDEN: " & ORDEN.NRO_ORDENINT
-                        PROCESOS.Refresh()
-                        TAREASTableAdapter.FillByORDINAL(ORDENESDataSet.TAREAS, ORDEN.NRO_ORDINAL)
-                        If ORDENESDataSet.TAREAS.Rows.Count > O Then
-                            For T = 0 To ORDENESDataSet.TAREAS.Rows.Count - 1
-                                TAREA = ORDENESDataSet.TAREAS.Rows(T)
-                                PROCESOS.Text = X & "  " & ORDEN.NRO_ORDENINT & " - ALIZANDO TRABAJO: " & TAREA.ORDINAL
-                                PROCESOS.Refresh()
-                                NEW_FUENTE_ROW = VER_INFORME_FUENTES.INFORME_FUENTESDataSet.__INFORME.New__INFORMERow()
-                                NEW_FUENTE_ROW("CODRUS_FUENTE") = FUENTE.INSTALACION_RUS
-                                NEW_FUENTE_ROW("CALLE_FUENTE") = FUENTE.CALLE
-                                NEW_FUENTE_ROW("PUERTA_FUENTE") = FUENTE.PUERTA
-                                NEW_FUENTE_ROW("NODO_FUENTE") = FUENTE.NODO
-                                NEW_FUENTE_ROW("ZONA_FUENTE") = FUENTE.ZONA
-                                NEW_FUENTE_ROW("ORDENINT_FUENTE") = ORDEN.NRO_ORDENINT
-                                NEW_FUENTE_ROW("ORDINAL_FUENTE") = ORDEN.NRO_ORDINAL
-                                NEW_FUENTE_ROW("CUADRILLA_FUENTE") = ORDEN.CUADRILLA
-                                If ORDEN.IsFECHAINICIONull Then
-                                    If ORDEN.IsFECHAFINNull Then
-                                        NEW_FUENTE_ROW("FECHAINI_FUENTE") = ""
-                                    Else
-                                        NEW_FUENTE_ROW("FECHAINI_FUENTE") = ORDEN.FECHAFIN
-                                    End If
-                                Else
-                                    NEW_FUENTE_ROW("FECHAINI_FUENTE") = ORDEN.FECHAINICIO
-                                End If
-                                If ORDEN.IsFECHAFINNull Then
-                                    NEW_FUENTE_ROW("FECHAFIN_FUENTE") = ""
-                                Else
-                                    NEW_FUENTE_ROW("FECHAFIN_FUENTE") = ORDEN.FECHAFIN
-                                End If
-                                NEW_FUENTE_ROW("MOTIVOORIGEN_FUENTE") = ORDEN.MOTIVOORIGEN
-                                NEW_FUENTE_ROW("CAUSAORIGEN_FUENTE") = ORDEN.CAUSARIGEN
-                                If TAREA.IsACTIVIDADDESCNull = False Then NEW_FUENTE_ROW("ACTIVIDAD_FUENTE") = TAREA.ACTIVIDADDESC
-                                If TAREA.IsTAREADESCNull = False Then NEW_FUENTE_ROW("TAREADESC_FUENTE") = TAREA.TAREADESC
-                                If TAREA.IsCANTREALNull = False Then NEW_FUENTE_ROW("CANT_REAL_FUENTE") = TAREA.CANTREAL
-                                If TAREA.IsCANTSTDNull = False Then NEW_FUENTE_ROW("CANTSTD_FUENTE") = TAREA.CANTSTD
-                                NEW_FUENTE_ROW("MODFUENTE_FUENTE") = FUENTE.MODFUENTE
-                                NEW_FUENTE_ROW("CANT_BATERIA_FUENTE") = FUENTE.CANT_BAT
-                                NEW_FUENTE_ROW("MOD_BATERIA_FUENTE") = FUENTE.MODBATERIA
-                                NEW_FUENTE_ROW("FECHAFAB_BAT_FUENTE") = CDate(FUENTE.FECHA_BAT).ToShortDateString
-                                VER_INFORME_FUENTES.INFORME_FUENTESDataSet.__INFORME.Add__INFORMERow(NEW_FUENTE_ROW)
-                            Next
-                        End If
-                    End If
-                Next
-            End If
-        Next
-        VER_INFORME_FUENTES.Show(Me)
+        '    ORDENESTableAdapter.FillByINSTALACIONRUS(ORDENESDataSet.ORDENES, FUENTE.ID_FUENTE)
+        '    If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
+        '        For O = 0 To ORDENESDataSet.ORDENES.Rows.Count - 1
+        '            ORDEN = ORDENESDataSet.ORDENES.Rows(O)
+        '            PROCESOS.Text = X & "  " & O & " - INTENTANDO ORDEN: " & ORDEN.NRO_ORDENINT
+        '            PROCESOS.Refresh()
+        '            If DateDiff(DateInterval.Day, ORDEN.FECHAFIN, Today) < 366 And ORDEN.NRO_ORDINAL <> 0 Then
+        '                PROCESOS.Text = X & "  " & O & " - ALIZANDO ORDEN: " & ORDEN.NRO_ORDENINT
+        '                PROCESOS.Refresh()
+        '                TAREASTableAdapter.FillByORDINAL(ORDENESDataSet.TAREAS, ORDEN.NRO_ORDINAL)
+        '                If ORDENESDataSet.TAREAS.Rows.Count > O Then
+        '                    For T = 0 To ORDENESDataSet.TAREAS.Rows.Count - 1
+        '                        TAREA = ORDENESDataSet.TAREAS.Rows(T)
+        '                        PROCESOS.Text = X & "  " & ORDEN.NRO_ORDENINT & " - ALIZANDO TRABAJO: " & TAREA.ORDINAL
+        '                        PROCESOS.Refresh()
+        '                        NEW_FUENTE_ROW = VER_INFORME_FUENTES.INFORME_FUENTESDataSet.__INFORME.New__INFORMERow()
+        '                        NEW_FUENTE_ROW("CODRUS_FUENTE") = FUENTE.INSTALACION_RUS
+        '                        NEW_FUENTE_ROW("CALLE_FUENTE") = FUENTE.CALLE
+        '                        NEW_FUENTE_ROW("PUERTA_FUENTE") = FUENTE.PUERTA
+        '                        NEW_FUENTE_ROW("NODO_FUENTE") = FUENTE.NODO
+        '                        NEW_FUENTE_ROW("ZONA_FUENTE") = FUENTE.ZONA
+        '                        NEW_FUENTE_ROW("ORDENINT_FUENTE") = ORDEN.NRO_ORDENINT
+        '                        NEW_FUENTE_ROW("ORDINAL_FUENTE") = ORDEN.NRO_ORDINAL
+        '                        NEW_FUENTE_ROW("CUADRILLA_FUENTE") = ORDEN.CUADRILLA
+        '                        If ORDEN.IsFECHAINICIONull Then
+        '                            If ORDEN.IsFECHAFINNull Then
+        '                                NEW_FUENTE_ROW("FECHAINI_FUENTE") = ""
+        '                            Else
+        '                                NEW_FUENTE_ROW("FECHAINI_FUENTE") = ORDEN.FECHAFIN
+        '                            End If
+        '                        Else
+        '                            NEW_FUENTE_ROW("FECHAINI_FUENTE") = ORDEN.FECHAINICIO
+        '                        End If
+        '                        If ORDEN.IsFECHAFINNull Then
+        '                            NEW_FUENTE_ROW("FECHAFIN_FUENTE") = ""
+        '                        Else
+        '                            NEW_FUENTE_ROW("FECHAFIN_FUENTE") = ORDEN.FECHAFIN
+        '                        End If
+        '                        NEW_FUENTE_ROW("MOTIVOORIGEN_FUENTE") = ORDEN.MOTIVOORIGEN
+        '                        NEW_FUENTE_ROW("CAUSAORIGEN_FUENTE") = ORDEN.CAUSARIGEN
+        '                        If TAREA.IsACTIVIDADDESCNull = False Then NEW_FUENTE_ROW("ACTIVIDAD_FUENTE") = TAREA.ACTIVIDADDESC
+        '                        If TAREA.IsTAREADESCNull = False Then NEW_FUENTE_ROW("TAREADESC_FUENTE") = TAREA.TAREADESC
+        '                        If TAREA.IsCANTREALNull = False Then NEW_FUENTE_ROW("CANT_REAL_FUENTE") = TAREA.CANTREAL
+        '                        If TAREA.IsCANTSTDNull = False Then NEW_FUENTE_ROW("CANTSTD_FUENTE") = TAREA.CANTSTD
+        '                        NEW_FUENTE_ROW("MODFUENTE_FUENTE") = FUENTE.MODFUENTE
+        '                        NEW_FUENTE_ROW("CANT_BATERIA_FUENTE") = FUENTE.CANT_BAT
+        '                        NEW_FUENTE_ROW("MOD_BATERIA_FUENTE") = FUENTE.MODBATERIA
+        '                        NEW_FUENTE_ROW("FECHAFAB_BAT_FUENTE") = CDate(FUENTE.FECHA_BAT).ToShortDateString
+        '                        VER_INFORME_FUENTES.INFORME_FUENTESDataSet.__INFORME.Add__INFORMERow(NEW_FUENTE_ROW)
+        '                    Next
+        '                End If
+        '            End If
+        '        Next
+        '    End If
+        'Next
+        'VER_INFORME_FUENTES.Show(Me)
     End Sub 'OK
     Private Sub INSTALACIONDataGridView_SelectionChanged(sender As Object, e As EventArgs) Handles INSTALACIONDataGridView.SelectionChanged
         'If INSTALACIONDataGridView.Rows.Count > 0 Then

@@ -63,6 +63,8 @@ Partial Class ORDEN
         Dim Label7 As System.Windows.Forms.Label
         Dim Label8 As System.Windows.Forms.Label
         Dim Label9 As System.Windows.Forms.Label
+        Dim Label5 As System.Windows.Forms.Label
+        Dim Label10 As System.Windows.Forms.Label
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.NRO_ORDEN = New System.Windows.Forms.TextBox()
         Me.ORDINAL = New System.Windows.Forms.TextBox()
@@ -73,6 +75,8 @@ Partial Class ORDEN
         Me.INSTALACION_RUS = New System.Windows.Forms.TextBox()
         Me.CALLE = New System.Windows.Forms.TextBox()
         Me.ORDENESDataGridView = New System.Windows.Forms.DataGridView()
+        Me.ORDENESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ORDENESDataSet = New REDES.ORDENESDataSet()
         Me.NRO_ORDENINTTextBox = New System.Windows.Forms.TextBox()
         Me.NRO_ORDINALTextBox = New System.Windows.Forms.TextBox()
         Me.ID_GESTIONTextBox = New System.Windows.Forms.TextBox()
@@ -108,77 +112,81 @@ Partial Class ORDEN
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.ORDENESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ORDENESDataSet = New REDES.ORDENESDataSet()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn41 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn42 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn43 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn44 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn46 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn47 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn48 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn49 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn51 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn53 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn3 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn56 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn59 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn60 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn61 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn62 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn63 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn5 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn6 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn66 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn67 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn68 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ORDENESTableAdapter = New REDES.ORDENESDataSetTableAdapters.ORDENESTableAdapter()
         Me.TableAdapterManager = New REDES.ORDENESDataSetTableAdapters.TableAdapterManager()
+        Me.TXT_SQL = New System.Windows.Forms.TextBox()
+        Me.BTN_CONSULTA = New System.Windows.Forms.Button()
+        Me.TXT_BD = New System.Windows.Forms.TextBox()
+        Me.BTN_EXPORT = New System.Windows.Forms.Button()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.DataGridViewTextBoxColumn68 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn67 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn66 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn65 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn6 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn64 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn5 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn63 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn62 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn61 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn60 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn59 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn56 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn55 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn3 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn54 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn53 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn52 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn51 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn50 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn49 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn48 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn47 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn46 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn45 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn44 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn43 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn42 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn41 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn21 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn20 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn19 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn18 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         NRO_ORDENINTLabel = New System.Windows.Forms.Label()
         NRO_ORDINALLabel = New System.Windows.Forms.Label()
         ID_GESTIONLabel = New System.Windows.Forms.Label()
@@ -219,6 +227,8 @@ Partial Class ORDEN
         Label7 = New System.Windows.Forms.Label()
         Label8 = New System.Windows.Forms.Label()
         Label9 = New System.Windows.Forms.Label()
+        Label5 = New System.Windows.Forms.Label()
+        Label10 = New System.Windows.Forms.Label()
         CType(Me.ORDENESDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ORDENESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -590,6 +600,24 @@ Partial Class ORDEN
         Label9.TabIndex = 82
         Label9.Text = "CALLE"
         '
+        'Label5
+        '
+        Label5.AutoSize = True
+        Label5.Location = New System.Drawing.Point(271, 501)
+        Label5.Name = "Label5"
+        Label5.Size = New System.Drawing.Size(31, 13)
+        Label5.TabIndex = 94
+        Label5.Text = "SQL:"
+        '
+        'Label10
+        '
+        Label10.AutoSize = True
+        Label10.Location = New System.Drawing.Point(745, 476)
+        Label10.Name = "Label10"
+        Label10.Size = New System.Drawing.Size(96, 13)
+        Label10.TabIndex = 96
+        Label10.Text = "BASE DE DATOS:"
+        '
         'NRO_ORDEN
         '
         Me.NRO_ORDEN.Location = New System.Drawing.Point(12, 23)
@@ -656,6 +684,16 @@ Partial Class ORDEN
         Me.ORDENESDataGridView.Name = "ORDENESDataGridView"
         Me.ORDENESDataGridView.Size = New System.Drawing.Size(1229, 205)
         Me.ORDENESDataGridView.TabIndex = 10
+        '
+        'ORDENESBindingSource
+        '
+        Me.ORDENESBindingSource.DataMember = "ORDENES"
+        Me.ORDENESBindingSource.DataSource = Me.ORDENESDataSet
+        '
+        'ORDENESDataSet
+        '
+        Me.ORDENESDataSet.DataSetName = "ORDENESDataSet"
+        Me.ORDENESDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'NRO_ORDENINTTextBox
         '
@@ -876,7 +914,7 @@ Partial Class ORDEN
         '
         'BTN_CERRAR
         '
-        Me.BTN_CERRAR.Location = New System.Drawing.Point(1264, 4)
+        Me.BTN_CERRAR.Location = New System.Drawing.Point(1141, -1)
         Me.BTN_CERRAR.Name = "BTN_CERRAR"
         Me.BTN_CERRAR.Size = New System.Drawing.Size(100, 23)
         Me.BTN_CERRAR.TabIndex = 84
@@ -940,418 +978,6 @@ Partial Class ORDEN
         Me.TextBox6.Size = New System.Drawing.Size(100, 20)
         Me.TextBox6.TabIndex = 91
         '
-        'ORDENESBindingSource
-        '
-        Me.ORDENESBindingSource.DataMember = "ORDENES"
-        Me.ORDENESBindingSource.DataSource = Me.ORDENESDataSet
-        '
-        'ORDENESDataSet
-        '
-        Me.ORDENESDataSet.DataSetName = "ORDENESDataSet"
-        Me.ORDENESDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "NRO_ORDENINT"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "NRO_ORDENINT"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "NRO_ORDINAL"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "NRO_ORDINAL"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ID_GESTION"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "ID_GESTION"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "ID_TRABAJO"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "ID_TRABAJO"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "TIPO"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "TIPO"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "SECTOROPE"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "SECTOROPE"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "SECTORDESTINO"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "SECTORDESTINO"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "FECHASOL"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "FECHASOL"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "FECHAINGRESO"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "FECHAINGRESO"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "FECHAINICIO"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "FECHAINICIO"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "FECHAFIN"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "FECHAFIN"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.DataPropertyName = "PRIORIDAD"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "PRIORIDAD"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        '
-        'DataGridViewTextBoxColumn14
-        '
-        Me.DataGridViewTextBoxColumn14.DataPropertyName = "STATUS"
-        Me.DataGridViewTextBoxColumn14.HeaderText = "STATUS"
-        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
-        '
-        'DataGridViewTextBoxColumn15
-        '
-        Me.DataGridViewTextBoxColumn15.DataPropertyName = "GENERADOR"
-        Me.DataGridViewTextBoxColumn15.HeaderText = "GENERADOR"
-        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
-        '
-        'DataGridViewTextBoxColumn16
-        '
-        Me.DataGridViewTextBoxColumn16.DataPropertyName = "SOLICITANTE"
-        Me.DataGridViewTextBoxColumn16.HeaderText = "SOLICITANTE"
-        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
-        '
-        'DataGridViewTextBoxColumn17
-        '
-        Me.DataGridViewTextBoxColumn17.DataPropertyName = "CUADRILLA"
-        Me.DataGridViewTextBoxColumn17.HeaderText = "CUADRILLA"
-        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
-        '
-        'DataGridViewTextBoxColumn18
-        '
-        Me.DataGridViewTextBoxColumn18.DataPropertyName = "NODO"
-        Me.DataGridViewTextBoxColumn18.HeaderText = "NODO"
-        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
-        '
-        'DataGridViewTextBoxColumn19
-        '
-        Me.DataGridViewTextBoxColumn19.DataPropertyName = "ZONA"
-        Me.DataGridViewTextBoxColumn19.HeaderText = "ZONA"
-        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
-        '
-        'DataGridViewTextBoxColumn20
-        '
-        Me.DataGridViewTextBoxColumn20.DataPropertyName = "CALLE"
-        Me.DataGridViewTextBoxColumn20.HeaderText = "CALLE"
-        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
-        '
-        'DataGridViewTextBoxColumn21
-        '
-        Me.DataGridViewTextBoxColumn21.DataPropertyName = "NRO"
-        Me.DataGridViewTextBoxColumn21.HeaderText = "NRO"
-        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
-        '
-        'DataGridViewTextBoxColumn28
-        '
-        Me.DataGridViewTextBoxColumn28.DataPropertyName = "MOTIVOORIGEN"
-        Me.DataGridViewTextBoxColumn28.HeaderText = "MOTIVOORIGEN"
-        Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
-        '
-        'DataGridViewTextBoxColumn29
-        '
-        Me.DataGridViewTextBoxColumn29.DataPropertyName = "CAUSARIGEN"
-        Me.DataGridViewTextBoxColumn29.HeaderText = "CAUSARIGEN"
-        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
-        '
-        'DataGridViewTextBoxColumn30
-        '
-        Me.DataGridViewTextBoxColumn30.DataPropertyName = "MOTIVOCIERRE"
-        Me.DataGridViewTextBoxColumn30.HeaderText = "MOTIVOCIERRE"
-        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
-        '
-        'DataGridViewTextBoxColumn31
-        '
-        Me.DataGridViewTextBoxColumn31.DataPropertyName = "ACTIVIDAD"
-        Me.DataGridViewTextBoxColumn31.HeaderText = "ACTIVIDAD"
-        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
-        '
-        'DataGridViewTextBoxColumn32
-        '
-        Me.DataGridViewTextBoxColumn32.DataPropertyName = "CAUSACIERRE"
-        Me.DataGridViewTextBoxColumn32.HeaderText = "CAUSACIERRE"
-        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
-        '
-        'DataGridViewTextBoxColumn33
-        '
-        Me.DataGridViewTextBoxColumn33.DataPropertyName = "INSTALACION"
-        Me.DataGridViewTextBoxColumn33.HeaderText = "INSTALACION"
-        Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
-        '
-        'DataGridViewTextBoxColumn34
-        '
-        Me.DataGridViewTextBoxColumn34.DataPropertyName = "CARPETA"
-        Me.DataGridViewTextBoxColumn34.HeaderText = "CARPETA"
-        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
-        '
-        'DataGridViewTextBoxColumn35
-        '
-        Me.DataGridViewTextBoxColumn35.DataPropertyName = "NOMBREMDU"
-        Me.DataGridViewTextBoxColumn35.HeaderText = "NOMBREMDU"
-        Me.DataGridViewTextBoxColumn35.Name = "DataGridViewTextBoxColumn35"
-        '
-        'DataGridViewTextBoxColumn36
-        '
-        Me.DataGridViewTextBoxColumn36.DataPropertyName = "ORDPRINCIPAL"
-        Me.DataGridViewTextBoxColumn36.HeaderText = "ORDPRINCIPAL"
-        Me.DataGridViewTextBoxColumn36.Name = "DataGridViewTextBoxColumn36"
-        '
-        'DataGridViewTextBoxColumn37
-        '
-        Me.DataGridViewTextBoxColumn37.DataPropertyName = "ORDAPOYADO"
-        Me.DataGridViewTextBoxColumn37.HeaderText = "ORDAPOYADO"
-        Me.DataGridViewTextBoxColumn37.Name = "DataGridViewTextBoxColumn37"
-        '
-        'DataGridViewTextBoxColumn38
-        '
-        Me.DataGridViewTextBoxColumn38.DataPropertyName = "ORDPADRE"
-        Me.DataGridViewTextBoxColumn38.HeaderText = "ORDPADRE"
-        Me.DataGridViewTextBoxColumn38.Name = "DataGridViewTextBoxColumn38"
-        '
-        'DataGridViewTextBoxColumn39
-        '
-        Me.DataGridViewTextBoxColumn39.DataPropertyName = "RECLAMOSRED"
-        Me.DataGridViewTextBoxColumn39.HeaderText = "RECLAMOSRED"
-        Me.DataGridViewTextBoxColumn39.Name = "DataGridViewTextBoxColumn39"
-        '
-        'DataGridViewTextBoxColumn40
-        '
-        Me.DataGridViewTextBoxColumn40.DataPropertyName = "RECLAMOSMDU"
-        Me.DataGridViewTextBoxColumn40.HeaderText = "RECLAMOSMDU"
-        Me.DataGridViewTextBoxColumn40.Name = "DataGridViewTextBoxColumn40"
-        '
-        'DataGridViewTextBoxColumn41
-        '
-        Me.DataGridViewTextBoxColumn41.DataPropertyName = "RECLAMOSTOT"
-        Me.DataGridViewTextBoxColumn41.HeaderText = "RECLAMOSTOT"
-        Me.DataGridViewTextBoxColumn41.Name = "DataGridViewTextBoxColumn41"
-        '
-        'DataGridViewTextBoxColumn42
-        '
-        Me.DataGridViewTextBoxColumn42.DataPropertyName = "TPREVISTO"
-        Me.DataGridViewTextBoxColumn42.HeaderText = "TPREVISTO"
-        Me.DataGridViewTextBoxColumn42.Name = "DataGridViewTextBoxColumn42"
-        '
-        'DataGridViewTextBoxColumn43
-        '
-        Me.DataGridViewTextBoxColumn43.DataPropertyName = "TREALIZADO"
-        Me.DataGridViewTextBoxColumn43.HeaderText = "TREALIZADO"
-        Me.DataGridViewTextBoxColumn43.Name = "DataGridViewTextBoxColumn43"
-        '
-        'DataGridViewTextBoxColumn44
-        '
-        Me.DataGridViewTextBoxColumn44.DataPropertyName = "TIEMPOTRABAJO"
-        Me.DataGridViewTextBoxColumn44.HeaderText = "TIEMPOTRABAJO"
-        Me.DataGridViewTextBoxColumn44.Name = "DataGridViewTextBoxColumn44"
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "CREARORDINAL"
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "CREARORDINAL"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        '
-        'DataGridViewCheckBoxColumn2
-        '
-        Me.DataGridViewCheckBoxColumn2.DataPropertyName = "COORDINAR"
-        Me.DataGridViewCheckBoxColumn2.HeaderText = "COORDINAR"
-        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
-        '
-        'DataGridViewTextBoxColumn45
-        '
-        Me.DataGridViewTextBoxColumn45.DataPropertyName = "MANZANA"
-        Me.DataGridViewTextBoxColumn45.HeaderText = "MANZANA"
-        Me.DataGridViewTextBoxColumn45.Name = "DataGridViewTextBoxColumn45"
-        '
-        'DataGridViewTextBoxColumn46
-        '
-        Me.DataGridViewTextBoxColumn46.DataPropertyName = "TURNOAGEND"
-        Me.DataGridViewTextBoxColumn46.HeaderText = "TURNOAGEND"
-        Me.DataGridViewTextBoxColumn46.Name = "DataGridViewTextBoxColumn46"
-        '
-        'DataGridViewTextBoxColumn47
-        '
-        Me.DataGridViewTextBoxColumn47.DataPropertyName = "DEPENDENCIA"
-        Me.DataGridViewTextBoxColumn47.HeaderText = "DEPENDENCIA"
-        Me.DataGridViewTextBoxColumn47.Name = "DataGridViewTextBoxColumn47"
-        '
-        'DataGridViewTextBoxColumn48
-        '
-        Me.DataGridViewTextBoxColumn48.DataPropertyName = "TIPODEP"
-        Me.DataGridViewTextBoxColumn48.HeaderText = "TIPODEP"
-        Me.DataGridViewTextBoxColumn48.Name = "DataGridViewTextBoxColumn48"
-        '
-        'DataGridViewTextBoxColumn49
-        '
-        Me.DataGridViewTextBoxColumn49.DataPropertyName = "FECHAAGEND"
-        Me.DataGridViewTextBoxColumn49.HeaderText = "FECHAAGEND"
-        Me.DataGridViewTextBoxColumn49.Name = "DataGridViewTextBoxColumn49"
-        '
-        'DataGridViewTextBoxColumn50
-        '
-        Me.DataGridViewTextBoxColumn50.DataPropertyName = "ORDENDEP"
-        Me.DataGridViewTextBoxColumn50.HeaderText = "ORDENDEP"
-        Me.DataGridViewTextBoxColumn50.Name = "DataGridViewTextBoxColumn50"
-        '
-        'DataGridViewTextBoxColumn51
-        '
-        Me.DataGridViewTextBoxColumn51.DataPropertyName = "DUPLICADADE"
-        Me.DataGridViewTextBoxColumn51.HeaderText = "DUPLICADADE"
-        Me.DataGridViewTextBoxColumn51.Name = "DataGridViewTextBoxColumn51"
-        '
-        'DataGridViewTextBoxColumn52
-        '
-        Me.DataGridViewTextBoxColumn52.DataPropertyName = "DUPLICADAA"
-        Me.DataGridViewTextBoxColumn52.HeaderText = "DUPLICADAA"
-        Me.DataGridViewTextBoxColumn52.Name = "DataGridViewTextBoxColumn52"
-        '
-        'DataGridViewTextBoxColumn53
-        '
-        Me.DataGridViewTextBoxColumn53.DataPropertyName = "FECHAINICESTIMADO"
-        Me.DataGridViewTextBoxColumn53.HeaderText = "FECHAINICESTIMADO"
-        Me.DataGridViewTextBoxColumn53.Name = "DataGridViewTextBoxColumn53"
-        '
-        'DataGridViewTextBoxColumn54
-        '
-        Me.DataGridViewTextBoxColumn54.DataPropertyName = "TESTIMADO"
-        Me.DataGridViewTextBoxColumn54.HeaderText = "TESTIMADO"
-        Me.DataGridViewTextBoxColumn54.Name = "DataGridViewTextBoxColumn54"
-        '
-        'DataGridViewCheckBoxColumn3
-        '
-        Me.DataGridViewCheckBoxColumn3.DataPropertyName = "AGENDAR"
-        Me.DataGridViewCheckBoxColumn3.HeaderText = "AGENDAR"
-        Me.DataGridViewCheckBoxColumn3.Name = "DataGridViewCheckBoxColumn3"
-        '
-        'DataGridViewTextBoxColumn55
-        '
-        Me.DataGridViewTextBoxColumn55.DataPropertyName = "CLASEDEP"
-        Me.DataGridViewTextBoxColumn55.HeaderText = "CLASEDEP"
-        Me.DataGridViewTextBoxColumn55.Name = "DataGridViewTextBoxColumn55"
-        '
-        'DataGridViewTextBoxColumn56
-        '
-        Me.DataGridViewTextBoxColumn56.DataPropertyName = "ORDORIGEN"
-        Me.DataGridViewTextBoxColumn56.HeaderText = "ORDORIGEN"
-        Me.DataGridViewTextBoxColumn56.Name = "DataGridViewTextBoxColumn56"
-        '
-        'DataGridViewTextBoxColumn57
-        '
-        Me.DataGridViewTextBoxColumn57.DataPropertyName = "SECTORGEN"
-        Me.DataGridViewTextBoxColumn57.HeaderText = "SECTORGEN"
-        Me.DataGridViewTextBoxColumn57.Name = "DataGridViewTextBoxColumn57"
-        '
-        'DataGridViewTextBoxColumn58
-        '
-        Me.DataGridViewTextBoxColumn58.DataPropertyName = "INSTALACIONRUS"
-        Me.DataGridViewTextBoxColumn58.HeaderText = "INSTALACIONRUS"
-        Me.DataGridViewTextBoxColumn58.Name = "DataGridViewTextBoxColumn58"
-        '
-        'DataGridViewTextBoxColumn59
-        '
-        Me.DataGridViewTextBoxColumn59.DataPropertyName = "TPREVISTO_UT"
-        Me.DataGridViewTextBoxColumn59.HeaderText = "TPREVISTO_UT"
-        Me.DataGridViewTextBoxColumn59.Name = "DataGridViewTextBoxColumn59"
-        '
-        'DataGridViewTextBoxColumn60
-        '
-        Me.DataGridViewTextBoxColumn60.DataPropertyName = "AFECTACION"
-        Me.DataGridViewTextBoxColumn60.HeaderText = "AFECTACION"
-        Me.DataGridViewTextBoxColumn60.Name = "DataGridViewTextBoxColumn60"
-        '
-        'DataGridViewTextBoxColumn61
-        '
-        Me.DataGridViewTextBoxColumn61.DataPropertyName = "RECURSO"
-        Me.DataGridViewTextBoxColumn61.HeaderText = "RECURSO"
-        Me.DataGridViewTextBoxColumn61.Name = "DataGridViewTextBoxColumn61"
-        '
-        'DataGridViewTextBoxColumn62
-        '
-        Me.DataGridViewTextBoxColumn62.DataPropertyName = "ID_CALLE"
-        Me.DataGridViewTextBoxColumn62.HeaderText = "ID_CALLE"
-        Me.DataGridViewTextBoxColumn62.Name = "DataGridViewTextBoxColumn62"
-        '
-        'DataGridViewCheckBoxColumn4
-        '
-        Me.DataGridViewCheckBoxColumn4.DataPropertyName = "DESAGENDAR"
-        Me.DataGridViewCheckBoxColumn4.HeaderText = "DESAGENDAR"
-        Me.DataGridViewCheckBoxColumn4.Name = "DataGridViewCheckBoxColumn4"
-        '
-        'DataGridViewTextBoxColumn63
-        '
-        Me.DataGridViewTextBoxColumn63.DataPropertyName = "ATRIBUTO"
-        Me.DataGridViewTextBoxColumn63.HeaderText = "ATRIBUTO"
-        Me.DataGridViewTextBoxColumn63.Name = "DataGridViewTextBoxColumn63"
-        '
-        'DataGridViewCheckBoxColumn5
-        '
-        Me.DataGridViewCheckBoxColumn5.DataPropertyName = "NOTIF"
-        Me.DataGridViewCheckBoxColumn5.HeaderText = "NOTIF"
-        Me.DataGridViewCheckBoxColumn5.Name = "DataGridViewCheckBoxColumn5"
-        '
-        'DataGridViewTextBoxColumn64
-        '
-        Me.DataGridViewTextBoxColumn64.DataPropertyName = "ORDEN_OC"
-        Me.DataGridViewTextBoxColumn64.HeaderText = "ORDEN_OC"
-        Me.DataGridViewTextBoxColumn64.Name = "DataGridViewTextBoxColumn64"
-        '
-        'DataGridViewCheckBoxColumn6
-        '
-        Me.DataGridViewCheckBoxColumn6.DataPropertyName = "DOCUMENTO_FISICO"
-        Me.DataGridViewCheckBoxColumn6.HeaderText = "DOCUMENTO_FISICO"
-        Me.DataGridViewCheckBoxColumn6.Name = "DataGridViewCheckBoxColumn6"
-        '
-        'DataGridViewTextBoxColumn65
-        '
-        Me.DataGridViewTextBoxColumn65.DataPropertyName = "FECHA_ASIGNADA"
-        Me.DataGridViewTextBoxColumn65.HeaderText = "FECHA_ASIGNADA"
-        Me.DataGridViewTextBoxColumn65.Name = "DataGridViewTextBoxColumn65"
-        '
-        'DataGridViewTextBoxColumn66
-        '
-        Me.DataGridViewTextBoxColumn66.DataPropertyName = "CANTIDAD_SERVICIOS"
-        Me.DataGridViewTextBoxColumn66.HeaderText = "CANTIDAD_SERVICIOS"
-        Me.DataGridViewTextBoxColumn66.Name = "DataGridViewTextBoxColumn66"
-        '
-        'DataGridViewTextBoxColumn67
-        '
-        Me.DataGridViewTextBoxColumn67.DataPropertyName = "GEST_SOLICITADO"
-        Me.DataGridViewTextBoxColumn67.HeaderText = "GEST_SOLICITADO"
-        Me.DataGridViewTextBoxColumn67.Name = "DataGridViewTextBoxColumn67"
-        '
-        'DataGridViewTextBoxColumn68
-        '
-        Me.DataGridViewTextBoxColumn68.DataPropertyName = "PROYECTO_ORDINAL"
-        Me.DataGridViewTextBoxColumn68.HeaderText = "PROYECTO_ORDINAL"
-        Me.DataGridViewTextBoxColumn68.Name = "DataGridViewTextBoxColumn68"
-        '
         'ORDENESTableAdapter
         '
         Me.ORDENESTableAdapter.ClearBeforeFill = True
@@ -1378,6 +1004,7 @@ Partial Class ORDEN
         Me.TableAdapterManager.MENSAJERIATableAdapter = Nothing
         Me.TableAdapterManager.OBESERVACIONESTableAdapter = Nothing
         Me.TableAdapterManager.ORDENESTableAdapter = Me.ORDENESTableAdapter
+        Me.TableAdapterManager.PRESUPUESTOTableAdapter = Nothing
         Me.TableAdapterManager.RELACION_FALLAACTIVIDADTableAdapter = Nothing
         Me.TableAdapterManager.REPORTEORDINALESTableAdapter = Nothing
         Me.TableAdapterManager.SECTORESTableAdapter = Nothing
@@ -1390,13 +1017,476 @@ Partial Class ORDEN
         Me.TableAdapterManager.TRABAJOSTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = REDES.ORDENESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
+        'TXT_SQL
+        '
+        Me.TXT_SQL.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ORDENESBindingSource, "CAUSACIERRE", True))
+        Me.TXT_SQL.Location = New System.Drawing.Point(303, 498)
+        Me.TXT_SQL.Multiline = True
+        Me.TXT_SQL.Name = "TXT_SQL"
+        Me.TXT_SQL.Size = New System.Drawing.Size(721, 79)
+        Me.TXT_SQL.TabIndex = 92
+        '
+        'BTN_CONSULTA
+        '
+        Me.BTN_CONSULTA.Location = New System.Drawing.Point(1030, 472)
+        Me.BTN_CONSULTA.Name = "BTN_CONSULTA"
+        Me.BTN_CONSULTA.Size = New System.Drawing.Size(179, 39)
+        Me.BTN_CONSULTA.TabIndex = 93
+        Me.BTN_CONSULTA.Text = "Realizar Consulta"
+        Me.BTN_CONSULTA.UseVisualStyleBackColor = True
+        '
+        'TXT_BD
+        '
+        Me.TXT_BD.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ORDENESBindingSource, "PROYECTO_ORDINAL", True))
+        Me.TXT_BD.Location = New System.Drawing.Point(843, 472)
+        Me.TXT_BD.Name = "TXT_BD"
+        Me.TXT_BD.Size = New System.Drawing.Size(181, 20)
+        Me.TXT_BD.TabIndex = 95
+        '
+        'BTN_EXPORT
+        '
+        Me.BTN_EXPORT.Location = New System.Drawing.Point(1030, 525)
+        Me.BTN_EXPORT.Name = "BTN_EXPORT"
+        Me.BTN_EXPORT.Size = New System.Drawing.Size(179, 52)
+        Me.BTN_EXPORT.TabIndex = 97
+        Me.BTN_EXPORT.Text = "EXPORTAR EXCEL"
+        Me.BTN_EXPORT.UseVisualStyleBackColor = True
+        '
+        'TextBox7
+        '
+        Me.TextBox7.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ORDENESBindingSource, "CAUSACIERRE", True))
+        Me.TextBox7.Location = New System.Drawing.Point(303, 583)
+        Me.TextBox7.Multiline = True
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(721, 79)
+        Me.TextBox7.TabIndex = 98
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(1030, 583)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(179, 39)
+        Me.Button1.TabIndex = 99
+        Me.Button1.Text = "Realizar ACCION"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'DataGridViewTextBoxColumn68
+        '
+        Me.DataGridViewTextBoxColumn68.DataPropertyName = "PROYECTO_ORDINAL"
+        Me.DataGridViewTextBoxColumn68.HeaderText = "PROYECTO_ORDINAL"
+        Me.DataGridViewTextBoxColumn68.Name = "DataGridViewTextBoxColumn68"
+        '
+        'DataGridViewTextBoxColumn67
+        '
+        Me.DataGridViewTextBoxColumn67.DataPropertyName = "GEST_SOLICITADO"
+        Me.DataGridViewTextBoxColumn67.HeaderText = "GEST_SOLICITADO"
+        Me.DataGridViewTextBoxColumn67.Name = "DataGridViewTextBoxColumn67"
+        '
+        'DataGridViewTextBoxColumn66
+        '
+        Me.DataGridViewTextBoxColumn66.DataPropertyName = "CANTIDAD_SERVICIOS"
+        Me.DataGridViewTextBoxColumn66.HeaderText = "CANTIDAD_SERVICIOS"
+        Me.DataGridViewTextBoxColumn66.Name = "DataGridViewTextBoxColumn66"
+        '
+        'DataGridViewTextBoxColumn65
+        '
+        Me.DataGridViewTextBoxColumn65.DataPropertyName = "FECHA_ASIGNADA"
+        Me.DataGridViewTextBoxColumn65.HeaderText = "FECHA_ASIGNADA"
+        Me.DataGridViewTextBoxColumn65.Name = "DataGridViewTextBoxColumn65"
+        '
+        'DataGridViewCheckBoxColumn6
+        '
+        Me.DataGridViewCheckBoxColumn6.DataPropertyName = "DOCUMENTO_FISICO"
+        Me.DataGridViewCheckBoxColumn6.HeaderText = "DOCUMENTO_FISICO"
+        Me.DataGridViewCheckBoxColumn6.Name = "DataGridViewCheckBoxColumn6"
+        '
+        'DataGridViewTextBoxColumn64
+        '
+        Me.DataGridViewTextBoxColumn64.DataPropertyName = "ORDEN_OC"
+        Me.DataGridViewTextBoxColumn64.HeaderText = "ORDEN_OC"
+        Me.DataGridViewTextBoxColumn64.Name = "DataGridViewTextBoxColumn64"
+        '
+        'DataGridViewCheckBoxColumn5
+        '
+        Me.DataGridViewCheckBoxColumn5.DataPropertyName = "NOTIF"
+        Me.DataGridViewCheckBoxColumn5.HeaderText = "NOTIF"
+        Me.DataGridViewCheckBoxColumn5.Name = "DataGridViewCheckBoxColumn5"
+        '
+        'DataGridViewTextBoxColumn63
+        '
+        Me.DataGridViewTextBoxColumn63.DataPropertyName = "ATRIBUTO"
+        Me.DataGridViewTextBoxColumn63.HeaderText = "ATRIBUTO"
+        Me.DataGridViewTextBoxColumn63.Name = "DataGridViewTextBoxColumn63"
+        '
+        'DataGridViewCheckBoxColumn4
+        '
+        Me.DataGridViewCheckBoxColumn4.DataPropertyName = "DESAGENDAR"
+        Me.DataGridViewCheckBoxColumn4.HeaderText = "DESAGENDAR"
+        Me.DataGridViewCheckBoxColumn4.Name = "DataGridViewCheckBoxColumn4"
+        '
+        'DataGridViewTextBoxColumn62
+        '
+        Me.DataGridViewTextBoxColumn62.DataPropertyName = "ID_CALLE"
+        Me.DataGridViewTextBoxColumn62.HeaderText = "ID_CALLE"
+        Me.DataGridViewTextBoxColumn62.Name = "DataGridViewTextBoxColumn62"
+        '
+        'DataGridViewTextBoxColumn61
+        '
+        Me.DataGridViewTextBoxColumn61.DataPropertyName = "RECURSO"
+        Me.DataGridViewTextBoxColumn61.HeaderText = "RECURSO"
+        Me.DataGridViewTextBoxColumn61.Name = "DataGridViewTextBoxColumn61"
+        '
+        'DataGridViewTextBoxColumn60
+        '
+        Me.DataGridViewTextBoxColumn60.DataPropertyName = "AFECTACION"
+        Me.DataGridViewTextBoxColumn60.HeaderText = "AFECTACION"
+        Me.DataGridViewTextBoxColumn60.Name = "DataGridViewTextBoxColumn60"
+        '
+        'DataGridViewTextBoxColumn59
+        '
+        Me.DataGridViewTextBoxColumn59.DataPropertyName = "TPREVISTO_UT"
+        Me.DataGridViewTextBoxColumn59.HeaderText = "TPREVISTO_UT"
+        Me.DataGridViewTextBoxColumn59.Name = "DataGridViewTextBoxColumn59"
+        '
+        'DataGridViewTextBoxColumn58
+        '
+        Me.DataGridViewTextBoxColumn58.DataPropertyName = "INSTALACIONRUS"
+        Me.DataGridViewTextBoxColumn58.HeaderText = "INSTALACIONRUS"
+        Me.DataGridViewTextBoxColumn58.Name = "DataGridViewTextBoxColumn58"
+        '
+        'DataGridViewTextBoxColumn57
+        '
+        Me.DataGridViewTextBoxColumn57.DataPropertyName = "SECTORGEN"
+        Me.DataGridViewTextBoxColumn57.HeaderText = "SECTORGEN"
+        Me.DataGridViewTextBoxColumn57.Name = "DataGridViewTextBoxColumn57"
+        '
+        'DataGridViewTextBoxColumn56
+        '
+        Me.DataGridViewTextBoxColumn56.DataPropertyName = "ORDORIGEN"
+        Me.DataGridViewTextBoxColumn56.HeaderText = "ORDORIGEN"
+        Me.DataGridViewTextBoxColumn56.Name = "DataGridViewTextBoxColumn56"
+        '
+        'DataGridViewTextBoxColumn55
+        '
+        Me.DataGridViewTextBoxColumn55.DataPropertyName = "CLASEDEP"
+        Me.DataGridViewTextBoxColumn55.HeaderText = "CLASEDEP"
+        Me.DataGridViewTextBoxColumn55.Name = "DataGridViewTextBoxColumn55"
+        '
+        'DataGridViewCheckBoxColumn3
+        '
+        Me.DataGridViewCheckBoxColumn3.DataPropertyName = "AGENDAR"
+        Me.DataGridViewCheckBoxColumn3.HeaderText = "AGENDAR"
+        Me.DataGridViewCheckBoxColumn3.Name = "DataGridViewCheckBoxColumn3"
+        '
+        'DataGridViewTextBoxColumn54
+        '
+        Me.DataGridViewTextBoxColumn54.DataPropertyName = "TESTIMADO"
+        Me.DataGridViewTextBoxColumn54.HeaderText = "TESTIMADO"
+        Me.DataGridViewTextBoxColumn54.Name = "DataGridViewTextBoxColumn54"
+        '
+        'DataGridViewTextBoxColumn53
+        '
+        Me.DataGridViewTextBoxColumn53.DataPropertyName = "FECHAINICESTIMADO"
+        Me.DataGridViewTextBoxColumn53.HeaderText = "FECHAINICESTIMADO"
+        Me.DataGridViewTextBoxColumn53.Name = "DataGridViewTextBoxColumn53"
+        '
+        'DataGridViewTextBoxColumn52
+        '
+        Me.DataGridViewTextBoxColumn52.DataPropertyName = "DUPLICADAA"
+        Me.DataGridViewTextBoxColumn52.HeaderText = "DUPLICADAA"
+        Me.DataGridViewTextBoxColumn52.Name = "DataGridViewTextBoxColumn52"
+        '
+        'DataGridViewTextBoxColumn51
+        '
+        Me.DataGridViewTextBoxColumn51.DataPropertyName = "DUPLICADADE"
+        Me.DataGridViewTextBoxColumn51.HeaderText = "DUPLICADADE"
+        Me.DataGridViewTextBoxColumn51.Name = "DataGridViewTextBoxColumn51"
+        '
+        'DataGridViewTextBoxColumn50
+        '
+        Me.DataGridViewTextBoxColumn50.DataPropertyName = "ORDENDEP"
+        Me.DataGridViewTextBoxColumn50.HeaderText = "ORDENDEP"
+        Me.DataGridViewTextBoxColumn50.Name = "DataGridViewTextBoxColumn50"
+        '
+        'DataGridViewTextBoxColumn49
+        '
+        Me.DataGridViewTextBoxColumn49.DataPropertyName = "FECHAAGEND"
+        Me.DataGridViewTextBoxColumn49.HeaderText = "FECHAAGEND"
+        Me.DataGridViewTextBoxColumn49.Name = "DataGridViewTextBoxColumn49"
+        '
+        'DataGridViewTextBoxColumn48
+        '
+        Me.DataGridViewTextBoxColumn48.DataPropertyName = "TIPODEP"
+        Me.DataGridViewTextBoxColumn48.HeaderText = "TIPODEP"
+        Me.DataGridViewTextBoxColumn48.Name = "DataGridViewTextBoxColumn48"
+        '
+        'DataGridViewTextBoxColumn47
+        '
+        Me.DataGridViewTextBoxColumn47.DataPropertyName = "DEPENDENCIA"
+        Me.DataGridViewTextBoxColumn47.HeaderText = "DEPENDENCIA"
+        Me.DataGridViewTextBoxColumn47.Name = "DataGridViewTextBoxColumn47"
+        '
+        'DataGridViewTextBoxColumn46
+        '
+        Me.DataGridViewTextBoxColumn46.DataPropertyName = "TURNOAGEND"
+        Me.DataGridViewTextBoxColumn46.HeaderText = "TURNOAGEND"
+        Me.DataGridViewTextBoxColumn46.Name = "DataGridViewTextBoxColumn46"
+        '
+        'DataGridViewTextBoxColumn45
+        '
+        Me.DataGridViewTextBoxColumn45.DataPropertyName = "MANZANA"
+        Me.DataGridViewTextBoxColumn45.HeaderText = "MANZANA"
+        Me.DataGridViewTextBoxColumn45.Name = "DataGridViewTextBoxColumn45"
+        '
+        'DataGridViewCheckBoxColumn2
+        '
+        Me.DataGridViewCheckBoxColumn2.DataPropertyName = "COORDINAR"
+        Me.DataGridViewCheckBoxColumn2.HeaderText = "COORDINAR"
+        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "CREARORDINAL"
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "CREARORDINAL"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        '
+        'DataGridViewTextBoxColumn44
+        '
+        Me.DataGridViewTextBoxColumn44.DataPropertyName = "TIEMPOTRABAJO"
+        Me.DataGridViewTextBoxColumn44.HeaderText = "TIEMPOTRABAJO"
+        Me.DataGridViewTextBoxColumn44.Name = "DataGridViewTextBoxColumn44"
+        '
+        'DataGridViewTextBoxColumn43
+        '
+        Me.DataGridViewTextBoxColumn43.DataPropertyName = "TREALIZADO"
+        Me.DataGridViewTextBoxColumn43.HeaderText = "TREALIZADO"
+        Me.DataGridViewTextBoxColumn43.Name = "DataGridViewTextBoxColumn43"
+        '
+        'DataGridViewTextBoxColumn42
+        '
+        Me.DataGridViewTextBoxColumn42.DataPropertyName = "TPREVISTO"
+        Me.DataGridViewTextBoxColumn42.HeaderText = "TPREVISTO"
+        Me.DataGridViewTextBoxColumn42.Name = "DataGridViewTextBoxColumn42"
+        '
+        'DataGridViewTextBoxColumn41
+        '
+        Me.DataGridViewTextBoxColumn41.DataPropertyName = "RECLAMOSTOT"
+        Me.DataGridViewTextBoxColumn41.HeaderText = "RECLAMOSTOT"
+        Me.DataGridViewTextBoxColumn41.Name = "DataGridViewTextBoxColumn41"
+        '
+        'DataGridViewTextBoxColumn40
+        '
+        Me.DataGridViewTextBoxColumn40.DataPropertyName = "RECLAMOSMDU"
+        Me.DataGridViewTextBoxColumn40.HeaderText = "RECLAMOSMDU"
+        Me.DataGridViewTextBoxColumn40.Name = "DataGridViewTextBoxColumn40"
+        '
+        'DataGridViewTextBoxColumn39
+        '
+        Me.DataGridViewTextBoxColumn39.DataPropertyName = "RECLAMOSRED"
+        Me.DataGridViewTextBoxColumn39.HeaderText = "RECLAMOSRED"
+        Me.DataGridViewTextBoxColumn39.Name = "DataGridViewTextBoxColumn39"
+        '
+        'DataGridViewTextBoxColumn38
+        '
+        Me.DataGridViewTextBoxColumn38.DataPropertyName = "ORDPADRE"
+        Me.DataGridViewTextBoxColumn38.HeaderText = "ORDPADRE"
+        Me.DataGridViewTextBoxColumn38.Name = "DataGridViewTextBoxColumn38"
+        '
+        'DataGridViewTextBoxColumn37
+        '
+        Me.DataGridViewTextBoxColumn37.DataPropertyName = "ORDAPOYADO"
+        Me.DataGridViewTextBoxColumn37.HeaderText = "ORDAPOYADO"
+        Me.DataGridViewTextBoxColumn37.Name = "DataGridViewTextBoxColumn37"
+        '
+        'DataGridViewTextBoxColumn36
+        '
+        Me.DataGridViewTextBoxColumn36.DataPropertyName = "ORDPRINCIPAL"
+        Me.DataGridViewTextBoxColumn36.HeaderText = "ORDPRINCIPAL"
+        Me.DataGridViewTextBoxColumn36.Name = "DataGridViewTextBoxColumn36"
+        '
+        'DataGridViewTextBoxColumn35
+        '
+        Me.DataGridViewTextBoxColumn35.DataPropertyName = "NOMBREMDU"
+        Me.DataGridViewTextBoxColumn35.HeaderText = "NOMBREMDU"
+        Me.DataGridViewTextBoxColumn35.Name = "DataGridViewTextBoxColumn35"
+        '
+        'DataGridViewTextBoxColumn34
+        '
+        Me.DataGridViewTextBoxColumn34.DataPropertyName = "CARPETA"
+        Me.DataGridViewTextBoxColumn34.HeaderText = "CARPETA"
+        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
+        '
+        'DataGridViewTextBoxColumn33
+        '
+        Me.DataGridViewTextBoxColumn33.DataPropertyName = "INSTALACION"
+        Me.DataGridViewTextBoxColumn33.HeaderText = "INSTALACION"
+        Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
+        '
+        'DataGridViewTextBoxColumn32
+        '
+        Me.DataGridViewTextBoxColumn32.DataPropertyName = "CAUSACIERRE"
+        Me.DataGridViewTextBoxColumn32.HeaderText = "CAUSACIERRE"
+        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
+        '
+        'DataGridViewTextBoxColumn31
+        '
+        Me.DataGridViewTextBoxColumn31.DataPropertyName = "ACTIVIDAD"
+        Me.DataGridViewTextBoxColumn31.HeaderText = "ACTIVIDAD"
+        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
+        '
+        'DataGridViewTextBoxColumn30
+        '
+        Me.DataGridViewTextBoxColumn30.DataPropertyName = "MOTIVOCIERRE"
+        Me.DataGridViewTextBoxColumn30.HeaderText = "MOTIVOCIERRE"
+        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
+        '
+        'DataGridViewTextBoxColumn29
+        '
+        Me.DataGridViewTextBoxColumn29.DataPropertyName = "CAUSARIGEN"
+        Me.DataGridViewTextBoxColumn29.HeaderText = "CAUSARIGEN"
+        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
+        '
+        'DataGridViewTextBoxColumn28
+        '
+        Me.DataGridViewTextBoxColumn28.DataPropertyName = "MOTIVOORIGEN"
+        Me.DataGridViewTextBoxColumn28.HeaderText = "MOTIVOORIGEN"
+        Me.DataGridViewTextBoxColumn28.Name = "DataGridViewTextBoxColumn28"
+        '
+        'DataGridViewTextBoxColumn21
+        '
+        Me.DataGridViewTextBoxColumn21.DataPropertyName = "NRO"
+        Me.DataGridViewTextBoxColumn21.HeaderText = "NRO"
+        Me.DataGridViewTextBoxColumn21.Name = "DataGridViewTextBoxColumn21"
+        '
+        'DataGridViewTextBoxColumn20
+        '
+        Me.DataGridViewTextBoxColumn20.DataPropertyName = "CALLE"
+        Me.DataGridViewTextBoxColumn20.HeaderText = "CALLE"
+        Me.DataGridViewTextBoxColumn20.Name = "DataGridViewTextBoxColumn20"
+        '
+        'DataGridViewTextBoxColumn19
+        '
+        Me.DataGridViewTextBoxColumn19.DataPropertyName = "ZONA"
+        Me.DataGridViewTextBoxColumn19.HeaderText = "ZONA"
+        Me.DataGridViewTextBoxColumn19.Name = "DataGridViewTextBoxColumn19"
+        '
+        'DataGridViewTextBoxColumn18
+        '
+        Me.DataGridViewTextBoxColumn18.DataPropertyName = "NODO"
+        Me.DataGridViewTextBoxColumn18.HeaderText = "NODO"
+        Me.DataGridViewTextBoxColumn18.Name = "DataGridViewTextBoxColumn18"
+        '
+        'DataGridViewTextBoxColumn17
+        '
+        Me.DataGridViewTextBoxColumn17.DataPropertyName = "CUADRILLA"
+        Me.DataGridViewTextBoxColumn17.HeaderText = "CUADRILLA"
+        Me.DataGridViewTextBoxColumn17.Name = "DataGridViewTextBoxColumn17"
+        '
+        'DataGridViewTextBoxColumn16
+        '
+        Me.DataGridViewTextBoxColumn16.DataPropertyName = "SOLICITANTE"
+        Me.DataGridViewTextBoxColumn16.HeaderText = "SOLICITANTE"
+        Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
+        '
+        'DataGridViewTextBoxColumn15
+        '
+        Me.DataGridViewTextBoxColumn15.DataPropertyName = "GENERADOR"
+        Me.DataGridViewTextBoxColumn15.HeaderText = "GENERADOR"
+        Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
+        '
+        'DataGridViewTextBoxColumn14
+        '
+        Me.DataGridViewTextBoxColumn14.DataPropertyName = "STATUS"
+        Me.DataGridViewTextBoxColumn14.HeaderText = "STATUS"
+        Me.DataGridViewTextBoxColumn14.Name = "DataGridViewTextBoxColumn14"
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "PRIORIDAD"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "PRIORIDAD"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "FECHAFIN"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "FECHAFIN"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "FECHAINICIO"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "FECHAINICIO"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "FECHAINGRESO"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "FECHAINGRESO"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "FECHASOL"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "FECHASOL"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "SECTORDESTINO"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "SECTORDESTINO"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "SECTOROPE"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "SECTOROPE"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "TIPO"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "TIPO"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "ID_TRABAJO"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "ID_TRABAJO"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ID_GESTION"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "ID_GESTION"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "NRO_ORDINAL"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "NRO_ORDINAL"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "NRO_ORDENINT"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "NRO_ORDENINT"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        '
         'ORDEN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1366, 671)
+        Me.ClientSize = New System.Drawing.Size(1256, 671)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.TextBox7)
+        Me.Controls.Add(Me.BTN_EXPORT)
+        Me.Controls.Add(Label10)
+        Me.Controls.Add(Me.TXT_BD)
+        Me.Controls.Add(Label5)
+        Me.Controls.Add(Me.BTN_CONSULTA)
+        Me.Controls.Add(Me.TXT_SQL)
         Me.Controls.Add(Me.TextBox6)
         Me.Controls.Add(Me.TextBox5)
         Me.Controls.Add(Me.TextBox4)
@@ -1510,6 +1600,47 @@ Partial Class ORDEN
     Friend WithEvents ORDENESTableAdapter As ORDENESDataSetTableAdapters.ORDENESTableAdapter
     Friend WithEvents TableAdapterManager As ORDENESDataSetTableAdapters.TableAdapterManager
     Friend WithEvents ORDENESDataGridView As DataGridView
+    Friend WithEvents NRO_ORDENINTTextBox As TextBox
+    Friend WithEvents NRO_ORDINALTextBox As TextBox
+    Friend WithEvents ID_GESTIONTextBox As TextBox
+    Friend WithEvents ID_TRABAJOTextBox As TextBox
+    Friend WithEvents TIPOTextBox As TextBox
+    Friend WithEvents SECTOROPETextBox As TextBox
+    Friend WithEvents SECTORDESTINOTextBox As TextBox
+    Friend WithEvents PRIORIDADTextBox As TextBox
+    Friend WithEvents STATUSTextBox As TextBox
+    Friend WithEvents GENERADORTextBox As TextBox
+    Friend WithEvents SOLICITANTETextBox As TextBox
+    Friend WithEvents CUADRILLATextBox As TextBox
+    Friend WithEvents NODOTextBox As TextBox
+    Friend WithEvents ZONATextBox As TextBox
+    Friend WithEvents CALLETextBox As TextBox
+    Friend WithEvents NROTextBox As TextBox
+    Friend WithEvents MOTIVOORIGENTextBox As TextBox
+    Friend WithEvents CAUSARIGENTextBox As TextBox
+    Friend WithEvents MOTIVOCIERRETextBox As TextBox
+    Friend WithEvents CAUSACIERRETextBox As TextBox
+    Friend WithEvents INSTALACIONTextBox As TextBox
+    Friend WithEvents INSTALACIONRUSTextBox As TextBox
+    Friend WithEvents MANZANATextBox As TextBox
+    Friend WithEvents PROYECTO_ORDINALTextBox As TextBox
+    Friend WithEvents GEST_SOLICITADOTextBox As TextBox
+    Friend WithEvents ATRIBUTOTextBox As TextBox
+    Friend WithEvents BTN_BUSCAR As Button
+    Friend WithEvents BTN_CERRAR As Button
+    Friend WithEvents BTN_GUARDAR As Button
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents TXT_SQL As TextBox
+    Friend WithEvents BTN_CONSULTA As Button
+    Friend WithEvents TXT_BD As TextBox
+    Friend WithEvents BTN_EXPORT As Button
+    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents Button1 As Button
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
@@ -1577,39 +1708,4 @@ Partial Class ORDEN
     Friend WithEvents DataGridViewTextBoxColumn66 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn67 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn68 As DataGridViewTextBoxColumn
-    Friend WithEvents NRO_ORDENINTTextBox As TextBox
-    Friend WithEvents NRO_ORDINALTextBox As TextBox
-    Friend WithEvents ID_GESTIONTextBox As TextBox
-    Friend WithEvents ID_TRABAJOTextBox As TextBox
-    Friend WithEvents TIPOTextBox As TextBox
-    Friend WithEvents SECTOROPETextBox As TextBox
-    Friend WithEvents SECTORDESTINOTextBox As TextBox
-    Friend WithEvents PRIORIDADTextBox As TextBox
-    Friend WithEvents STATUSTextBox As TextBox
-    Friend WithEvents GENERADORTextBox As TextBox
-    Friend WithEvents SOLICITANTETextBox As TextBox
-    Friend WithEvents CUADRILLATextBox As TextBox
-    Friend WithEvents NODOTextBox As TextBox
-    Friend WithEvents ZONATextBox As TextBox
-    Friend WithEvents CALLETextBox As TextBox
-    Friend WithEvents NROTextBox As TextBox
-    Friend WithEvents MOTIVOORIGENTextBox As TextBox
-    Friend WithEvents CAUSARIGENTextBox As TextBox
-    Friend WithEvents MOTIVOCIERRETextBox As TextBox
-    Friend WithEvents CAUSACIERRETextBox As TextBox
-    Friend WithEvents INSTALACIONTextBox As TextBox
-    Friend WithEvents INSTALACIONRUSTextBox As TextBox
-    Friend WithEvents MANZANATextBox As TextBox
-    Friend WithEvents PROYECTO_ORDINALTextBox As TextBox
-    Friend WithEvents GEST_SOLICITADOTextBox As TextBox
-    Friend WithEvents ATRIBUTOTextBox As TextBox
-    Friend WithEvents BTN_BUSCAR As Button
-    Friend WithEvents BTN_CERRAR As Button
-    Friend WithEvents BTN_GUARDAR As Button
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents TextBox6 As TextBox
 End Class

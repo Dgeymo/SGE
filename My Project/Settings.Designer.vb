@@ -137,17 +137,6 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\OPERACIONES\BD_FUENTES\BASEFUENT"& _ 
-            "ES.accdb")>  _
-        Public ReadOnly Property BASEFUENTESConnectionString() As String
-            Get
-                Return CType(Me("BASEFUENTESConnectionString"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\OPERACIONES\BD_CREAR_ORDINAL\IND"& _ 
             "ICES.accdb")>  _
         Public ReadOnly Property INDICESConnectionString() As String
@@ -166,17 +155,6 @@ Namespace My
             Set
                 Me("NotasVersion") = value
             End Set
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\OPERACIONES\BD_INDICE\Indices.ac"& _ 
-            "cdb")>  _
-        Public ReadOnly Property INFORME_INIDICESConnectionString() As String
-            Get
-                Return CType(Me("INFORME_INIDICESConnectionString"),String)
-            End Get
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
@@ -222,6 +200,17 @@ Namespace My
         Public ReadOnly Property FIBRAConnectionString() As String
             Get
                 Return CType(Me("FIBRAConnectionString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=G:\OPERACIONES\BD_FUENTES\BASEFUENT"& _ 
+            "ES.accdb")>  _
+        Public ReadOnly Property BASEFUENTESConnectionString() As String
+            Get
+                Return CType(Me("BASEFUENTESConnectionString"),String)
             End Get
         End Property
     End Class

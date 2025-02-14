@@ -25,23 +25,23 @@ Public Class PROCESOS
     Dim TRABAJOSRow As ORDENESDataSet.TRABAJOSRow
     Dim ORDENESRow As ORDENESDataSet.ORDENESRow
     Dim EdificiosRow As DataRow
-    Dim TECNICO_ROW As INFORME_INDICEDataSet.TecnicosRow
+    '   Dim TECNICO_ROW As INFORME_INDICEDataSet.TecnicosRow
     Dim FECHALIMITE As Date
 
     Dim NEWSERVICIORow As ORDENESDataSet.INFORME_SERVICIOSRow
     Dim NewHISTORICORow As ORDENESDataSet.HISTORICORow
     Dim NewMENSAJE As ORDENESDataSet.MENSAJERIARow
-    Dim BASECALCULORow As INFORME_INDICEDataSet.BaseCalculoRow
+    '   Dim BASECALCULORow As INFORME_INDICEDataSet.BaseCalculoRow
 
     Dim SERVICIO As ORDENESDataSet.ORDENESRow
     Dim HISTORICO As ORDENESDataSet.HISTORICORow
     Dim HISTORICO_1 As ORDENESDataSet.HISTORICORow
     'INDICES
 
-    Public INFORMERow As INFORME_INDICEDataSet.InformesRow
-    Dim TABLAWEBRow As INFORME_INDICEDataSet.TablaWEBRow
-    Dim REPOIndiceROW As INFORME_INDICEDataSet.RepoIndicesRow
-    Dim newRecPermRow As INFORME_INDICEDataSet.BasePermisoresRow
+    'Public INFORMERow As INFORME_INDICEDataSet.InformesRow
+    'Dim TABLAWEBRow As INFORME_INDICEDataSet.TablaWEBRow
+    'Dim REPOIndiceROW As INFORME_INDICEDataSet.RepoIndicesRow
+    'Dim newRecPermRow As INFORME_INDICEDataSet.BasePermisoresRow
 
     Public ULTIMO_INDICE As Integer
     Dim ORDEN_INT As Integer = 0
@@ -98,14 +98,6 @@ Public Class PROCESOS
 
     '    LBL_INFORME_TITULO.Text = "ULTIMO INFORME CREADO: " & ULTIMO_INDICE & " - " & INFORMERow("MesNombre") & "  " & INFORMERow("Año")
     'End Sub
-    Private Sub BTN_CREAR_Click(sender As Object, e As EventArgs) Handles BTN_CREAR.Click
-        NUEVO_INDICE.Show(Me)
-        BTN_CREAR.Enabled = False
-        NUEVO_INDICE.lbl_mes.Visible = True
-        NUEVO_INDICE.lbl_año.Visible = True
-        NUEVO_INDICE.CB_ANIO.Visible = True
-        NUEVO_INDICE.CB_FECHA.Visible = True
-    End Sub
     Private Sub INICIA_TRABAJOS()
         For I = 1 To 100
             MENSAJE_GEST(I) = ""
@@ -248,22 +240,22 @@ Public Class PROCESOS
                     'CAMBIA EL STATUS DE LA ORDEN
 
                     TOTAL_DUPLI = TOTAL_DUPLI + 1
-                        ORDENESRow("STATUS") = "ADUPLICAR"
-                        MENSAJE_DUPLI(TOTAL_DUPLI) = "Orden Nro " & ORDENESRow("NRO_ORDENINT") & "  -- NODO  " & ORDENESRow("NODO") & " ZONA  " & ORDENESRow("ZONA") & " CALLE  " & ORDENESRow("CALLE") & " NRO " & ORDENESRow("NRO") & " -- Ordinal Correspondiente NRO " & ORDENESRow("NRO_ORDINAL") & " Con Motivo de Origen " & ORDENESRow("MOTIVOORIGEN")
-                        Try
-                            ORDENESTableAdapter.Update(ORDENESRow)
-                            If ORDENESRow.IsGENERADORNull = False And ORDENESRow.GENERADOR <> "Manual" Then
-                                MJE_ASUNTO = "ORDENES A DUPLICAR"
-                                MJE_DESTINONOMBRE = ORDENESRow.GENERADOR
-                                MJE_DESTINOSECTOR = ""
-                                MJE_MENSAJE = "La orden " & ORDENESRow.NRO_ORDENINT & " se ha marcado ADUPLICAR"
-                                MJE_NROORDENASOC = 0
-                                ENVIA_MENSAJE()
-                                NOTIFICACION("SYS", "ORDEN " & ORDENESRow.NRO_ORDENINT & " DUPLICADA")
-                            End If
-                        Catch ex As Exception
-                            MsgBox("Ha ocurrido un error en la carga del status de la orden ADUPLICAR: " & TRABAJOSRow("Id_TRABAJO") & "  " & ex.ToString)
-                        End Try
+                    ORDENESRow("STATUS") = "ADUPLICAR"
+                    MENSAJE_DUPLI(TOTAL_DUPLI) = "Orden Nro " & ORDENESRow("NRO_ORDENINT") & "  -- NODO  " & ORDENESRow("NODO") & " ZONA  " & ORDENESRow("ZONA") & " CALLE  " & ORDENESRow("CALLE") & " NRO " & ORDENESRow("NRO") & " -- Ordinal Correspondiente NRO " & ORDENESRow("NRO_ORDINAL") & " Con Motivo de Origen " & ORDENESRow("MOTIVOORIGEN")
+                    Try
+                        ORDENESTableAdapter.Update(ORDENESRow)
+                        If ORDENESRow.IsGENERADORNull = False And ORDENESRow.GENERADOR <> "Manual" Then
+                            MJE_ASUNTO = "ORDENES A DUPLICAR"
+                            MJE_DESTINONOMBRE = ORDENESRow.GENERADOR
+                            MJE_DESTINOSECTOR = ""
+                            MJE_MENSAJE = "La orden " & ORDENESRow.NRO_ORDENINT & " se ha marcado ADUPLICAR"
+                            MJE_NROORDENASOC = 0
+                            ENVIA_MENSAJE()
+                            NOTIFICACION("SYS", "ORDEN " & ORDENESRow.NRO_ORDENINT & " DUPLICADA")
+                        End If
+                    Catch ex As Exception
+                        MsgBox("Ha ocurrido un error en la carga del status de la orden ADUPLICAR: " & TRABAJOSRow("Id_TRABAJO") & "  " & ex.ToString)
+                    End Try
 
                     'End Select
                 Else
@@ -937,250 +929,7 @@ Public Class PROCESOS
 
 
 
-    'INDICES________________________________________________________________________________________________________________________________________________________
-    Private Sub CARGA_BASEPERMISORES()
-        Dim VALOR_MES As String
-        BasePermisoresTableAdapter.FillByID_INFORME(INFORME_INDICEDataSet.BasePermisores, INFORMERow.Id)
-        If INFORME_INDICEDataSet.BasePermisores.Rows.Count > 0 Then
-            MsgBox("CARGAN REGISTROS EXISTENTES")
 
-        Else
-            If INFORMERow("MES") < 10 Then
-                VALOR_MES = "0" & INFORMERow("MES")
-            Else
-                VALOR_MES = INFORMERow("MES")
-            End If
-            TablaWEBTableAdapter.FillByAÑOMES(INFORME_INDICEDataSet.TablaWEB, INFORMERow("AÑO"), VALOR_MES)
-            ' BaseCalculoTableAdapter.FillByINFORME(INFORME_INDICEDataSet.BaseCalculo, INFORMERow.Id)
-
-            For CONTADOR = 0 To INFORME_INDICEDataSet.TablaWEB.Rows.Count - 1
-                'Inicilaiza la fila como una nueva
-                TABLAWEBRow = INFORME_INDICEDataSet.TablaWEB.Rows(CONTADOR)
-                BASECALCULORow = INFORME_INDICEDataSet.BaseCalculo.FindByidReclamo(TABLAWEBRow.ID_RECLAMO)
-                'BaseCalculoTableAdapter.FillByID_RECLAMO(INFORME_INDICEDataSet.BaseCalculo, TABLAWEBRow.ID_RECLAMO)
-                'If INFORME_INDICEDataSet.BaseCalculo.Rows.Count = 1 Then
-                '    BASECALCULORow = INFORME_INDICEDataSet.BaseCalculo.Rows(0)
-                'Else
-                '    BASECALCULORow = Nothing
-                'End If
-                'Carga datos en tabla permisores
-
-                newRecPermRow = INFORME_INDICEDataSet.BasePermisores.NewBasePermisoresRow
-                newRecPermRow("IDReclamoEQUITAL") = TABLAWEBRow.ID_RECLAMO
-                newRecPermRow("IDReclamoPERMISOR") = TABLAWEBRow.ID_RECLAMO_PERMISOR
-                newRecPermRow("DESCFallaOrigen") = TABLAWEBRow.DESCRIPCION_DE_FALLA_ORI_REC
-                newRecPermRow("TipoSolucion") = TABLAWEBRow.TIPO_DE_SOLUCION
-                newRecPermRow("Permisor") = TABLAWEBRow.PERMISOR
-                newRecPermRow("FechaIngSolREC") = DateValue(TABLAWEBRow.FECHA_ING_RECLAMO).ToShortDateString
-                newRecPermRow("HoraIngreso") = TimeValue(TABLAWEBRow.FECHA_ING_RECLAMO).ToShortTimeString
-
-                If BASECALCULORow IsNot Nothing Then
-                    'If BASECALCULORow.FechaCierreCalculo.ToString <> "" Then
-                    newRecPermRow("FechaCumpREC") = CDate(BASECALCULORow.FechaCierreCalculo).ToShortDateString
-                    newRecPermRow("HoraCumpREC") = CDate(BASECALCULORow.FechaCierreCalculo).ToShortTimeString
-                    'Else
-                    '    newRecPermRow("FechaCumpREC") = ""
-                    '    newRecPermRow("HoraCumpREC") = ""
-                    'End If
-                    'If IsDate(BASECALCULORow.FechaCierreCalculo) Then
-                    newRecPermRow("FechaFinOrdinal") = DateValue(BASECALCULORow.FechaCierreCalculo).ToShortDateString
-                    newRecPermRow("HoraFinOrdinal") = TimeValue(BASECALCULORow.FechaCierreCalculo).ToShortTimeString
-                    'Else
-                    '    newRecPermRow("FechaFinOrdinal") = ""
-                    '    newRecPermRow("HoraFinOrdinal") = ""
-                    'End If
-                    newRecPermRow("DescFallaCierre") = BASECALCULORow.DescFallaCierre
-                    newRecPermRow("DescCausaCierre") = BASECALCULORow.DescCausaCierre
-
-                End If
-
-                newRecPermRow("Ordinal") = TABLAWEBRow.ORDINAL
-                If IsDate(TABLAWEBRow.HORA_ING_ORDINAL) Then
-                    newRecPermRow("FechaIngOrdinal") = DateValue(TABLAWEBRow.HORA_ING_ORDINAL).ToShortDateString
-                    newRecPermRow("HoraIngOrdinal") = TimeValue(TABLAWEBRow.HORA_ING_ORDINAL).ToShortTimeString
-                Else
-                    newRecPermRow("FechaIngOrdinal") = ""
-                    newRecPermRow("HoraIngOrdinal") = ""
-                End If
-
-                newRecPermRow("TipoOrdinal") = TABLAWEBRow.TIPO_ORDINAL
-                newRecPermRow("SectorOrdinal") = TABLAWEBRow.SECTOR_ORDINAL
-                newRecPermRow("Tecnico") = TABLAWEBRow.TECNICO_EJECUTANTE
-                TECNICO_ROW = INFORME_INDICEDataSet.Tecnicos.FindByTECNICO(TABLAWEBRow.TECNICO_EJECUTANTE)
-                If IsNothing(TECNICO_ROW) Then
-                    MsgBox("EL TECNICO " & TABLAWEBRow.TECNICO_EJECUTANTE & " NO SE ENCUENTRA DEFINIDO EN LA BASE DE DATOS")
-                    newRecPermRow("NombreTecnico") = "TECNICO NO INGRESADO A BASE"
-                Else
-                    newRecPermRow("NombreTecnico") = TECNICO_ROW.NOMBRE_DE_TECNICO
-                End If
-                newRecPermRow("ValidoIND") = TABLAWEBRow.VALIDO_INDICE
-
-
-                If Not TABLAWEBRow.IsMOTIVONull Then
-                    If TABLAWEBRow.MOTIVO <> "" Then
-                        newRecPermRow("Motivo") = TABLAWEBRow.MOTIVO
-                    End If
-                End If
-
-
-                newRecPermRow("InformeNRO") = INFORMERow.Id
-                'agrega una nueva fila
-                INFORME_INDICEDataSet.BasePermisores.Rows.Add(newRecPermRow)
-                '     PROGRESS_BAR("PROCESANDO BASE PERMISORES", INFORME_INDICEDataSet.TablaWEB.Rows.Count, CONTADOR + 1)
-
-
-            Next
-            '  PROGRESS_BAR("GRABANDO BASE PERMISORES", INFORME_INDICEDataSet.TablaWEB.Rows.Count, CONTADOR)
-            BasePermisoresTableAdapter.Update(INFORME_INDICEDataSet.BasePermisores)
-            'PROGRESS_BAR("GRABANDO BASE PERMISORES", INFORME_INDICEDataSet.TablaWEB.Rows.Count, CONTADOR)
-            'BasePermisoresTableAdapter.Update(INFORME_INDICEDataSet.BasePermisores)
-            '   PROGRESS_BAR("PROCESO TERMINADO", 0, 0)
-
-        End If
-    End Sub
-    Private Sub BTN_CARGA_PERMISORES_Click(sender As Object, e As EventArgs) Handles BTN_CARGA_PERMISORES.Click
-        CARGA_BASEPERMISORES()
-    End Sub
-    ' Private Sub BTN_EXPORTAR_Click(sender As Object, e As EventArgs) Handles BTN_EXPORTAR.Click
-    '  P_BAR.Visible = True
-    '  LBL_CANT_REGISTROS.Visible = True
-    '   P_BAR.Refresh()
-    '  LBL_CANT_REGISTROS.Refresh()
-    '   PROGRESS_BAR("EXPORTANDO BASE CALCULO", 100, 0)
-    '  LBL_TOTAL.Text = INFORME_INDICEDataSet.BasePermisores.Rows.Count
-    ' ExportarExcel(INFORME_INDICEDataSet.BasePermisores, "", P_BAR, LBL_CANT_REGISTROS)
-    '  End Sub
-    'Private Sub BTN_BORRAR_BPERMISORES_Click(sender As Object, e As EventArgs) Handles BTN_BORRAR_BPERMISORES.Click
-    '    BTN_BORRAR_BPERMISORES.Enabled = False
-    '    If INFORME_INDICEDataSet.BasePermisores.Rows.Count > 0 Then
-    '        For X = 0 To INFORME_INDICEDataSet.BasePermisores.Rows.Count - 1
-    '            INFORME_INDICEDataSet.BasePermisores.Rows(X).Delete()
-    '            PROGRESS_BAR("BORRANDO BASE PERMISORES", INFORME_INDICEDataSet.BasePermisores.Rows.Count, X + 1)
-    '        Next
-    '        PROGRESS_BAR("GRABANDO BASE PERMISORES", INFORME_INDICEDataSet.BasePermisores.Rows.Count, INFORME_INDICEDataSet.BasePermisores.Rows.Count)
-    '        BasePermisoresTableAdapter.Update(INFORME_INDICEDataSet.BasePermisores)
-    '        PROGRESS_BAR("PROCESO TERMINADO", 0, 0)
-    '        BTN_BORRAR_BPERMISORES.Enabled = True
-    '    End If
-    'End Sub
-    Private Sub BTN_SELECCIONAR_Click(sender As Object, e As EventArgs) Handles BTN_SELECCIONAR.Click
-        GB_INFORME1.Visible = True
-        InformesTableAdapter.FillByNOMBREINFORME(INFORME_INDICEDataSet.Informes, CB_INFORMES.Text)
-        INFORMERow = INFORME_INDICEDataSet.Informes.Rows(0)
-        RepoIndicesTableAdapter.FillByInformeID(INFORME_INDICEDataSet.RepoIndices, INFORMERow.Id)
-        If INFORME_INDICEDataSet.RepoIndices.Rows.Count > 0 Then
-            For INDICE = 0 To INFORME_INDICEDataSet.RepoIndices.Rows.Count - 1
-                REPOIndiceROW = INFORME_INDICEDataSet.RepoIndices.Rows(INDICE)
-                If Not REPOIndiceROW.IsValorIndiceNull Then
-                    Select Case REPOIndiceROW.Indice
-                        Case 1
-                            TextBox1.Text = REPOIndiceROW.ValorIndice
-                        Case 2
-                            TextBox2.Text = REPOIndiceROW.ValorIndice
-                        Case 3
-                            TextBox3.Text = REPOIndiceROW.ValorIndice
-                        Case 4
-                            TextBox6.Text = REPOIndiceROW.ValorIndice
-                        Case 5
-                            TextBox7.Text = REPOIndiceROW.ValorIndice
-                        Case 6
-                            TextBox4.Text = REPOIndiceROW.ValorIndice
-                        Case 7
-                            TextBox5.Text = REPOIndiceROW.ValorIndice
-                        Case 8
-                            TextBox37.Text = REPOIndiceROW.ValorIndice
-                        Case 9
-                            TextBox39.Text = REPOIndiceROW.ValorIndice
-                        Case 10
-                            TextBox40.Text = REPOIndiceROW.ValorIndice
-                        Case 11
-                            TextBox42.Text = REPOIndiceROW.ValorIndice
-                        Case 12
-                            TextBox43.Text = REPOIndiceROW.ValorIndice
-                        Case 13
-                            TextBox17.Text = REPOIndiceROW.ValorIndice
-                        Case 14
-                            TextBox16.Text = REPOIndiceROW.ValorIndice
-                        Case 15
-                            TextBox19.Text = REPOIndiceROW.ValorIndice
-                        Case 16
-                            TextBox18.Text = REPOIndiceROW.ValorIndice
-
-                        Case 17 'Cantidad de Reclamos SIN SEÑAL (Excluidos Corte x Mantenimiento) TAREAS/RED
-                            TextBox21.Text = REPOIndiceROW.ValorIndice
-                        Case 18 'Cantidad de Reclamos SIN SEÑAL (Excluidos Corte x Mantenimiento) CORRECTIVO/RED
-                            TextBox20.Text = REPOIndiceROW.ValorIndice
-                        Case 19 'Cantidad de Reclamos SIN SEÑAL (Excluidos Corte x Mantenimiento) TAREAS/MDU
-                            TextBox23.Text = REPOIndiceROW.ValorIndice
-                        Case 20 'Cantidad de Reclamos SIN SEÑAL (Excluidos Corte x Mantenimiento) CORRECTIVO/RED
-                            TextBox22.Text = REPOIndiceROW.ValorIndice
-
-                        Case 21 'Cantidad de Reclamos SIN SEÑAL X MANTENIMIENTO TAREA/RED
-                            TextBox33.Text = REPOIndiceROW.ValorIndice
-                        Case 22 'Tiempo de corte en reclamos SIN SEÑAL x MANTENIMIENTO TAREA/RED
-                            TextBox27.Text = REPOIndiceROW.ValorIndice
-                        Case 23 'Tiempo de corte en reclamos SIN SEÑAL x MANTENIMIENTO CORRECTIVO/RED
-                            TextBox20.Text = REPOIndiceROW.ValorIndice
-                        Case 24 'Tiempo de corte en reclamos SIN SEÑAL x MANTENIMIENTO          
-                            TextBox21.Text = REPOIndiceROW.ValorIndice
-                        Case 25 ''Porcentaje de tiempo de corte x mantenimiento Vs corte por otras causas
-
-                        Case 26 'Cantidad de Reclamos SIN SEÑAL X MANTENIMIENTO TAREA/MDU
-                            TextBox35.Text = REPOIndiceROW.ValorIndice
-                        Case 27
-                            TextBox25.Text = REPOIndiceROW.ValorIndice
-                        Case 28 'Cantidad de Reclamos SIN SEÑAL X MANTENIMIENTO CORRECTIVO/MDU
-                            TextBox34.Text = REPOIndiceROW.ValorIndice
-                        Case 29
-
-                        Case 30
-                            TextBox28.Text = REPOIndiceROW.ValorIndice
-                        Case 31
-                        Case 32 'Tiempo de corte (Excluido Corte x Mantenimiento  RED
-                            TextBox24.Text = REPOIndiceROW.ValorIndice
-                        Case 33 'Tiempo de corte (Excluido Corte x Mantenimiento  MDU
-                            TextBox30.Text = REPOIndiceROW.ValorIndice
-                        Case 34
-                        Case 35
-                        Case 36 'TOTAL RECLAMOS SS ATENDIDOS
-                            Label16.Text = REPOIndiceROW.ValorIndice
-                        Case 37 'TOTAL DE RECLAMOS SS ATENDIDOS EN EL DIA O AL SIGUIENTE
-                            Label19.Text = REPOIndiceROW.ValorIndice
-                        Case 38 'TOTAL DE RECLAMOS SS SOLUCIONADOS DENTRO DEL TIEMPO ACEPTABLE
-                            Label31.Text = REPOIndiceROW.ValorIndice
-                        Case 39 'Cantidad de Reclamos SS solucionados despues del Tiempo ACEPTABLE pero antes que el Tiempo ADMISIBLE
-                            Label33.Text = REPOIndiceROW.ValorIndice
-                        Case 40 'Cantidad de reclamos SS solucionados en tiempo mayor que el tiempo ADMISIBLE
-                            Label39.Text = REPOIndiceROW.ValorIndice
-                        Case 41 'TOTAL RECLAMOS ATENDIDOS
-                            Label17.Text = REPOIndiceROW.ValorIndice
-                        Case 42 'TOTAL DE RECLAMOS ATENDIDOS EN EL DIA O AL SIGUIENTE
-                            Label21.Text = REPOIndiceROW.ValorIndice
-                        Case 43 'TOTAL DE RECLAMOS SOLUCIONADOS DENTRO DEL TIEMPO ACEPTABLE
-                            Label35.Text = REPOIndiceROW.ValorIndice
-                        Case 44 'Cantidad de Reclamos SS solucionados despues del Tiempo ACEPTABLE pero antes que el Tiempo ADMISIBLE
-                            Label37.Text = REPOIndiceROW.ValorIndice
-                        Case 45 'Cantidad de reclamos SS solucionados en tiempo mayor que el tiempo ADMISIBLE
-                            Label42.Text = REPOIndiceROW.ValorIndice
-
-                    End Select
-                End If
-            Next
-        Else
-            GB_INFORME1.Visible = False
-
-        End If
-
-    End Sub
-    Private Sub BTN_REPORTE_Click(sender As Object, e As EventArgs) Handles BTN_REPORTE.Click
-        'TODO: esta línea de código carga datos en la tabla 'INFORME_INDICEDataSet.HistoIndices' Puede moverla o quitarla según sea necesario.
-        '  VER_INFORME_INDICE.HistoIndicesTableAdapter.Fill(VER_INFORME_INDICE.histo.HistoIndices)
-
-        VER_INFORME_INDICE.RepoIndicesTableAdapter.FillByInformeID(VER_INFORME_INDICE.INFORME_INDICEDataSet.RepoIndices, INFORMERow.Id)
-        'VER_INFORME_INDICE.HistoIndicesTableAdapter.FillByInformeNRO(VER_INFORME_INDICE.INFORME_INDICEDataSet.HistoIndices, ULTIMO_INDICE)
-
-        VER_INFORME_INDICE.Show(Me)
-    End Sub
     Private Sub BTN_MATERIALES_Click(sender As Object, e As EventArgs) Handles BTN_MATERIALES.Click
         MATERIALES.TopLevel = False
         MATERIALES.Parent = DASHBOARD.PanelTrabajo
@@ -1530,88 +1279,4 @@ Public Class PROCESOS
             ORDEN.BringToFront()
         End If
     End Sub
-
-
-
-
-
-    'Private Sub TextBox6_TextChanged(sender As Object, e As EventArgs) Handles TextBox6.TextChanged
-    '    If Int(TextBox6.Text) <= Int((TIE_MAX_OPT_97Label1.Text)) Then
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(4) = "SI"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(4) = "SI"
-    '        TextBox6.BackColor = Color.LightGreen
-    '    ElseIf Int(TextBox6.Text) > Int((TIE_MAX_OPT_97Label1.Text)) And Int(TextBox6.Text) <= Int((TIE_MAX_MAX_97Label1.Text)) Then
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(4) = "NO"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(4) = "SI"
-    '        TextBox6.BackColor = Color.Gold
-    '    Else
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(4) = "NO"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(4) = "NO"
-    '        TextBox6.BackColor = Color.LightCoral
-    '    End If
-    'End Sub
-    'Private Sub TextBox7_TextChanged(sender As Object, e As EventArgs) Handles TextBox7.TextChanged
-    '    'Evalua el cumplimiento del tiempo máximo para reclamos de Cualquier Tipo
-    '    If Int(TextBox7.Text) <= Int((TIE_MAX_OPT_ALLLabel1.Text)) Then
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(5) = "SI"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(5) = "SI"
-    '        TextBox7.BackColor = Color.LightGreen
-    '    ElseIf Int(TextBox7.Text) > Int((TIE_MAX_OPT_97Label1.Text)) And Int(TextBox7.Text) <= Int((TIE_MAX_MAX_ALLLabel1.Text)) Then
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(5) = "NO"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(5) = "SI"
-    '        TextBox7.BackColor = Color.Gold
-    '    Else
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(5) = "NO"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(5) = "NO"
-    '        TextBox7.BackColor = Color.LightCoral
-    '    End If
-    'End Sub
-    'Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-    '    'Evalua el cumplimiento del indice Nro 1 (Porcentaje de Sin Señal en el dia o al otro dia)
-    '    If Val(TextBox1.Text) >= Val(PER_97_OPTLabel1.Text) Then
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(1) = "SI"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(1) = "SI"
-    '        TextBox1.BackColor = Color.LightGreen
-    '    ElseIf Val(TextBox1.Text) < Val(PER_97_OPTLabel1.Text) And Val(TextBox1.Text) >= Val(PER_97_MINLabel1.Text) Then
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(1) = "NO"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(1) = "SI"
-    '        TextBox1.BackColor = Color.Gold
-    '    Else
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(1) = "NO"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(1) = "NO"
-    '        TextBox1.BackColor = Color.LightCoral
-    '    End If
-    'End Sub
-    'Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
-    '    'Evalua el cumplimiento del indice Nro 1 (Porcentaje de RECLAMOS DE CUALQUIER TIPO en el dia o al otro dia)
-    '    If Val(TextBox2.Text) >= Val(PER_ALL_OPTLabel1.Text) Then
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(2) = "SI"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(2) = "SI"
-    '        TextBox2.BackColor = Color.LightGreen
-    '    ElseIf Val(TextBox2.Text) < Val(PER_ALL_OPTLabel1.Text) And Val(TextBox2.Text) >= Val(PER_ALL_MINLabel1.Text) Then
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(2) = "NO"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(2) = "SI"
-    '        TextBox2.BackColor = Color.Gold
-    '    Else
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(2) = "NO"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(2) = "NO"
-    '        TextBox2.BackColor = Color.LightCoral
-    '    End If
-    'End Sub
-    'Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
-    '    'Evalua el cumplimiento del tiempo promedio de solucion de los reclamos del tipo sin señal
-    '    If TimeValue(TextBox3.Text) <= TimeValue(TIE_PROM_OPT_97Label1.Text) Then
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(3) = "SI"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(3) = "SI"
-    '        TextBox3.BackColor = Color.LightGreen
-    '    ElseIf TimeValue(TextBox3.Text) > TimeValue(TIE_PROM_OPT_97Label1.Text) And TimeValue(TextBox3.Text) <= TimeValue(TIE_PROM_MAX_97Label1.Text) Then
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(3) = "NO"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(3) = "SI"
-    '        TextBox2.BackColor = Color.Gold
-    '    Else
-    '        NUEVO_INDICE.CUMPLE_IND_OPT(3) = "NO"
-    '        NUEVO_INDICE.CUMPLE_IND_ACEP(3) = "NO"
-    '        TextBox2.BackColor = Color.LightCoral
-    '    End If
-    'End Sub
 End Class

@@ -462,8 +462,6 @@ Partial Public Class FIBRADataSet
         
         Private columnNOMBRE As Global.System.Data.DataColumn
         
-        Private columnIMG As Global.System.Data.DataColumn
-        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -516,14 +514,6 @@ Partial Public Class FIBRADataSet
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property IMGColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnIMG
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -560,9 +550,9 @@ Partial Public Class FIBRADataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddARTICULORow(ByVal NOMBRE As String, ByVal IMG As String) As ARTICULORow
+        Public Overloads Function AddARTICULORow(ByVal NOMBRE As String) As ARTICULORow
             Dim rowARTICULORow As ARTICULORow = CType(Me.NewRow,ARTICULORow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, NOMBRE, IMG}
+            Dim columnValuesArray() As Object = New Object() {Nothing, NOMBRE}
             rowARTICULORow.ItemArray = columnValuesArray
             Me.Rows.Add(rowARTICULORow)
             Return rowARTICULORow
@@ -593,7 +583,6 @@ Partial Public Class FIBRADataSet
         Friend Sub InitVars()
             Me.columnID_ARTICULO = MyBase.Columns("ID_ARTICULO")
             Me.columnNOMBRE = MyBase.Columns("NOMBRE")
-            Me.columnIMG = MyBase.Columns("IMG")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -603,8 +592,6 @@ Partial Public Class FIBRADataSet
             MyBase.Columns.Add(Me.columnID_ARTICULO)
             Me.columnNOMBRE = New Global.System.Data.DataColumn("NOMBRE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnNOMBRE)
-            Me.columnIMG = New Global.System.Data.DataColumn("IMG", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnIMG)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID_ARTICULO}, true))
             Me.columnID_ARTICULO.AutoIncrement = true
             Me.columnID_ARTICULO.AutoIncrementSeed = -1
@@ -612,7 +599,6 @@ Partial Public Class FIBRADataSet
             Me.columnID_ARTICULO.AllowDBNull = false
             Me.columnID_ARTICULO.Unique = true
             Me.columnNOMBRE.MaxLength = 255
-            Me.columnIMG.MaxLength = 536870910
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -760,7 +746,7 @@ Partial Public Class FIBRADataSet
         
         Private columnCARACTERISTICA As Global.System.Data.DataColumn
         
-        Private columnCODIGO As Global.System.Data.DataColumn
+        Private columnATENUACION As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -839,9 +825,9 @@ Partial Public Class FIBRADataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property CODIGOColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property ATENUACIONColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnCODIGO
+                Return Me.columnATENUACION
             End Get
         End Property
         
@@ -882,9 +868,9 @@ Partial Public Class FIBRADataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddCABLESRow(ByVal MARCA As String, ByVal MODELO As String, ByVal PELOS As String, ByVal CARACTERISTICA As String, ByVal CODIGO As Integer) As CABLESRow
+        Public Overloads Function AddCABLESRow(ByVal MARCA As String, ByVal MODELO As String, ByVal PELOS As String, ByVal CARACTERISTICA As String, ByVal ATENUACION As Decimal) As CABLESRow
             Dim rowCABLESRow As CABLESRow = CType(Me.NewRow,CABLESRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, MARCA, MODELO, PELOS, CARACTERISTICA, CODIGO}
+            Dim columnValuesArray() As Object = New Object() {Nothing, MARCA, MODELO, PELOS, CARACTERISTICA, ATENUACION}
             rowCABLESRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCABLESRow)
             Return rowCABLESRow
@@ -918,7 +904,7 @@ Partial Public Class FIBRADataSet
             Me.columnMODELO = MyBase.Columns("MODELO")
             Me.columnPELOS = MyBase.Columns("PELOS")
             Me.columnCARACTERISTICA = MyBase.Columns("CARACTERISTICA")
-            Me.columnCODIGO = MyBase.Columns("CODIGO")
+            Me.columnATENUACION = MyBase.Columns("ATENUACION")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -934,8 +920,8 @@ Partial Public Class FIBRADataSet
             MyBase.Columns.Add(Me.columnPELOS)
             Me.columnCARACTERISTICA = New Global.System.Data.DataColumn("CARACTERISTICA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCARACTERISTICA)
-            Me.columnCODIGO = New Global.System.Data.DataColumn("CODIGO", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCODIGO)
+            Me.columnATENUACION = New Global.System.Data.DataColumn("ATENUACION", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnATENUACION)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID_CABLE}, true))
             Me.columnID_CABLE.AutoIncrement = true
             Me.columnID_CABLE.AutoIncrementSeed = -1
@@ -1377,6 +1363,10 @@ Partial Public Class FIBRADataSet
         
         Private columnID As Global.System.Data.DataColumn
         
+        Private columnNODO As Global.System.Data.DataColumn
+        
+        Private columnZONA As Global.System.Data.DataColumn
+        
         Private columnOLT As Global.System.Data.DataColumn
         
         Private columnPLACA_OLT As Global.System.Data.DataColumn
@@ -1407,6 +1397,8 @@ Partial Public Class FIBRADataSet
         
         Private columnLONGITUD_PRIMERA As Global.System.Data.DataColumn
         
+        Private columnCAJA_CED_NAP As Global.System.Data.DataColumn
+        
         Private columnCAJA_SEGUNDA As Global.System.Data.DataColumn
         
         Private columnSALIDA_SEGUNDA As Global.System.Data.DataColumn
@@ -1417,49 +1409,11 @@ Partial Public Class FIBRADataSet
         
         Private columnLONGITUD_SEGUNDA As Global.System.Data.DataColumn
         
-        Private columnB1 As Global.System.Data.DataColumn
-        
-        Private columnB2 As Global.System.Data.DataColumn
-        
-        Private columnB3 As Global.System.Data.DataColumn
-        
-        Private columnB4 As Global.System.Data.DataColumn
-        
-        Private columnB5 As Global.System.Data.DataColumn
-        
-        Private columnB6 As Global.System.Data.DataColumn
-        
-        Private columnB7 As Global.System.Data.DataColumn
-        
-        Private columnB8 As Global.System.Data.DataColumn
-        
-        Private columnB9 As Global.System.Data.DataColumn
-        
-        Private columnB10 As Global.System.Data.DataColumn
-        
-        Private columnB11 As Global.System.Data.DataColumn
-        
-        Private columnB12 As Global.System.Data.DataColumn
-        
-        Private columnB13 As Global.System.Data.DataColumn
-        
-        Private columnB14 As Global.System.Data.DataColumn
-        
-        Private columnB15 As Global.System.Data.DataColumn
-        
-        Private columnB16 As Global.System.Data.DataColumn
-        
         Private columnCERTIFICACION_FDH As Global.System.Data.DataColumn
         
         Private columnCERTIFICACION_NAP As Global.System.Data.DataColumn
         
         Private columnCARPETA_MDU As Global.System.Data.DataColumn
-        
-        Private columnNODO As Global.System.Data.DataColumn
-        
-        Private columnZONA As Global.System.Data.DataColumn
-        
-        Private columnCAJA_CED_NAP As Global.System.Data.DataColumn
         
         Private columnID_MDU As Global.System.Data.DataColumn
         
@@ -1503,6 +1457,22 @@ Partial Public Class FIBRADataSet
         Public ReadOnly Property IDColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property NODOColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNODO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property ZONAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnZONA
             End Get
         End Property
         
@@ -1628,6 +1598,14 @@ Partial Public Class FIBRADataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property CAJA_CED_NAPColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCAJA_CED_NAP
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property CAJA_SEGUNDAColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnCAJA_SEGUNDA
@@ -1668,134 +1646,6 @@ Partial Public Class FIBRADataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B1Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB1
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B2Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB2
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B3Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB3
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B4Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB4
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B5Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB5
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B6Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB6
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B7Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB7
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B8Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB8
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B9Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB9
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B10Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB10
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B11Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB11
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B12Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB12
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B13Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB13
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B14Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB14
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B15Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB15
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property B16Column() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnB16
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public ReadOnly Property CERTIFICACION_FDHColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnCERTIFICACION_FDH
@@ -1815,30 +1665,6 @@ Partial Public Class FIBRADataSet
         Public ReadOnly Property CARPETA_MDUColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnCARPETA_MDU
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property NODOColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnNODO
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property ZONAColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnZONA
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public ReadOnly Property CAJA_CED_NAPColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCAJA_CED_NAP
             End Get
         End Property
         
@@ -1889,6 +1715,8 @@ Partial Public Class FIBRADataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Overloads Function AddTRONCALESRow( _
                     ByVal ID As Integer,  _
+                    ByVal NODO As String,  _
+                    ByVal ZONA As Integer,  _
                     ByVal OLT As String,  _
                     ByVal PLACA_OLT As Integer,  _
                     ByVal PUERTO_OLT As Integer,  _
@@ -1904,36 +1732,18 @@ Partial Public Class FIBRADataSet
                     ByVal GEOP_PRIMERA As String,  _
                     ByVal LATITUD_PRIMERA As String,  _
                     ByVal LONGITUD_PRIMERA As String,  _
+                    ByVal CAJA_CED_NAP As String,  _
                     ByVal CAJA_SEGUNDA As String,  _
                     ByVal SALIDA_SEGUNDA As String,  _
                     ByVal GEOP_SEGUNDA As String,  _
                     ByVal LATITUD_SEGUNDA As String,  _
                     ByVal LONGITUD_SEGUNDA As String,  _
-                    ByVal B1 As String,  _
-                    ByVal B2 As String,  _
-                    ByVal B3 As String,  _
-                    ByVal B4 As String,  _
-                    ByVal B5 As String,  _
-                    ByVal B6 As String,  _
-                    ByVal B7 As String,  _
-                    ByVal B8 As String,  _
-                    ByVal B9 As String,  _
-                    ByVal B10 As String,  _
-                    ByVal B11 As String,  _
-                    ByVal B12 As String,  _
-                    ByVal B13 As String,  _
-                    ByVal B14 As String,  _
-                    ByVal B15 As String,  _
-                    ByVal B16 As String,  _
                     ByVal CERTIFICACION_FDH As String,  _
                     ByVal CERTIFICACION_NAP As String,  _
-                    ByVal CARPETA_MDU As String,  _
-                    ByVal NODO As String,  _
-                    ByVal ZONA As Integer,  _
-                    ByVal CAJA_CED_NAP As String,  _
+                    ByVal CARPETA_MDU As Integer,  _
                     ByVal ID_MDU As Integer) As TRONCALESRow
             Dim rowTRONCALESRow As TRONCALESRow = CType(Me.NewRow,TRONCALESRow)
-            Dim columnValuesArray() As Object = New Object() {ID, OLT, PLACA_OLT, PUERTO_OLT, ODF, BANDEJA_ODF, PUERTO_ODF, FIBRA_TRONCALHUB, CABLE_TRONCALHUB, CAJA_PRIMERA, SPLITTER_PRIMERA, SALIDAS_PRIMERA, NOMBRE_SPL_PRIMERA, GEOP_PRIMERA, LATITUD_PRIMERA, LONGITUD_PRIMERA, CAJA_SEGUNDA, SALIDA_SEGUNDA, GEOP_SEGUNDA, LATITUD_SEGUNDA, LONGITUD_SEGUNDA, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13, B14, B15, B16, CERTIFICACION_FDH, CERTIFICACION_NAP, CARPETA_MDU, NODO, ZONA, CAJA_CED_NAP, ID_MDU}
+            Dim columnValuesArray() As Object = New Object() {ID, NODO, ZONA, OLT, PLACA_OLT, PUERTO_OLT, ODF, BANDEJA_ODF, PUERTO_ODF, FIBRA_TRONCALHUB, CABLE_TRONCALHUB, CAJA_PRIMERA, SPLITTER_PRIMERA, SALIDAS_PRIMERA, NOMBRE_SPL_PRIMERA, GEOP_PRIMERA, LATITUD_PRIMERA, LONGITUD_PRIMERA, CAJA_CED_NAP, CAJA_SEGUNDA, SALIDA_SEGUNDA, GEOP_SEGUNDA, LATITUD_SEGUNDA, LONGITUD_SEGUNDA, CERTIFICACION_FDH, CERTIFICACION_NAP, CARPETA_MDU, ID_MDU}
             rowTRONCALESRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowTRONCALESRow)
             Return rowTRONCALESRow
@@ -1963,6 +1773,8 @@ Partial Public Class FIBRADataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnID = MyBase.Columns("ID")
+            Me.columnNODO = MyBase.Columns("NODO")
+            Me.columnZONA = MyBase.Columns("ZONA")
             Me.columnOLT = MyBase.Columns("OLT")
             Me.columnPLACA_OLT = MyBase.Columns("PLACA_OLT")
             Me.columnPUERTO_OLT = MyBase.Columns("PUERTO_OLT")
@@ -1978,33 +1790,15 @@ Partial Public Class FIBRADataSet
             Me.columnGEOP_PRIMERA = MyBase.Columns("GEOP_PRIMERA")
             Me.columnLATITUD_PRIMERA = MyBase.Columns("LATITUD_PRIMERA")
             Me.columnLONGITUD_PRIMERA = MyBase.Columns("LONGITUD_PRIMERA")
+            Me.columnCAJA_CED_NAP = MyBase.Columns("CAJA_CED_NAP")
             Me.columnCAJA_SEGUNDA = MyBase.Columns("CAJA_SEGUNDA")
             Me.columnSALIDA_SEGUNDA = MyBase.Columns("SALIDA_SEGUNDA")
             Me.columnGEOP_SEGUNDA = MyBase.Columns("GEOP_SEGUNDA")
             Me.columnLATITUD_SEGUNDA = MyBase.Columns("LATITUD_SEGUNDA")
             Me.columnLONGITUD_SEGUNDA = MyBase.Columns("LONGITUD_SEGUNDA")
-            Me.columnB1 = MyBase.Columns("B1")
-            Me.columnB2 = MyBase.Columns("B2")
-            Me.columnB3 = MyBase.Columns("B3")
-            Me.columnB4 = MyBase.Columns("B4")
-            Me.columnB5 = MyBase.Columns("B5")
-            Me.columnB6 = MyBase.Columns("B6")
-            Me.columnB7 = MyBase.Columns("B7")
-            Me.columnB8 = MyBase.Columns("B8")
-            Me.columnB9 = MyBase.Columns("B9")
-            Me.columnB10 = MyBase.Columns("B10")
-            Me.columnB11 = MyBase.Columns("B11")
-            Me.columnB12 = MyBase.Columns("B12")
-            Me.columnB13 = MyBase.Columns("B13")
-            Me.columnB14 = MyBase.Columns("B14")
-            Me.columnB15 = MyBase.Columns("B15")
-            Me.columnB16 = MyBase.Columns("B16")
             Me.columnCERTIFICACION_FDH = MyBase.Columns("CERTIFICACION_FDH")
             Me.columnCERTIFICACION_NAP = MyBase.Columns("CERTIFICACION_NAP")
             Me.columnCARPETA_MDU = MyBase.Columns("CARPETA_MDU")
-            Me.columnNODO = MyBase.Columns("NODO")
-            Me.columnZONA = MyBase.Columns("ZONA")
-            Me.columnCAJA_CED_NAP = MyBase.Columns("CAJA_CED_NAP")
             Me.columnID_MDU = MyBase.Columns("ID_MDU")
         End Sub
         
@@ -2013,6 +1807,10 @@ Partial Public Class FIBRADataSet
         Private Sub InitClass()
             Me.columnID = New Global.System.Data.DataColumn("ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnID)
+            Me.columnNODO = New Global.System.Data.DataColumn("NODO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNODO)
+            Me.columnZONA = New Global.System.Data.DataColumn("ZONA", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnZONA)
             Me.columnOLT = New Global.System.Data.DataColumn("OLT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOLT)
             Me.columnPLACA_OLT = New Global.System.Data.DataColumn("PLACA_OLT", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
@@ -2043,6 +1841,8 @@ Partial Public Class FIBRADataSet
             MyBase.Columns.Add(Me.columnLATITUD_PRIMERA)
             Me.columnLONGITUD_PRIMERA = New Global.System.Data.DataColumn("LONGITUD_PRIMERA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnLONGITUD_PRIMERA)
+            Me.columnCAJA_CED_NAP = New Global.System.Data.DataColumn("CAJA_CED_NAP", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCAJA_CED_NAP)
             Me.columnCAJA_SEGUNDA = New Global.System.Data.DataColumn("CAJA_SEGUNDA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCAJA_SEGUNDA)
             Me.columnSALIDA_SEGUNDA = New Global.System.Data.DataColumn("SALIDA_SEGUNDA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -2053,55 +1853,18 @@ Partial Public Class FIBRADataSet
             MyBase.Columns.Add(Me.columnLATITUD_SEGUNDA)
             Me.columnLONGITUD_SEGUNDA = New Global.System.Data.DataColumn("LONGITUD_SEGUNDA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnLONGITUD_SEGUNDA)
-            Me.columnB1 = New Global.System.Data.DataColumn("B1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB1)
-            Me.columnB2 = New Global.System.Data.DataColumn("B2", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB2)
-            Me.columnB3 = New Global.System.Data.DataColumn("B3", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB3)
-            Me.columnB4 = New Global.System.Data.DataColumn("B4", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB4)
-            Me.columnB5 = New Global.System.Data.DataColumn("B5", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB5)
-            Me.columnB6 = New Global.System.Data.DataColumn("B6", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB6)
-            Me.columnB7 = New Global.System.Data.DataColumn("B7", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB7)
-            Me.columnB8 = New Global.System.Data.DataColumn("B8", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB8)
-            Me.columnB9 = New Global.System.Data.DataColumn("B9", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB9)
-            Me.columnB10 = New Global.System.Data.DataColumn("B10", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB10)
-            Me.columnB11 = New Global.System.Data.DataColumn("B11", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB11)
-            Me.columnB12 = New Global.System.Data.DataColumn("B12", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB12)
-            Me.columnB13 = New Global.System.Data.DataColumn("B13", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB13)
-            Me.columnB14 = New Global.System.Data.DataColumn("B14", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB14)
-            Me.columnB15 = New Global.System.Data.DataColumn("B15", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB15)
-            Me.columnB16 = New Global.System.Data.DataColumn("B16", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnB16)
             Me.columnCERTIFICACION_FDH = New Global.System.Data.DataColumn("CERTIFICACION_FDH", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCERTIFICACION_FDH)
             Me.columnCERTIFICACION_NAP = New Global.System.Data.DataColumn("CERTIFICACION_NAP", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCERTIFICACION_NAP)
-            Me.columnCARPETA_MDU = New Global.System.Data.DataColumn("CARPETA_MDU", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me.columnCARPETA_MDU = New Global.System.Data.DataColumn("CARPETA_MDU", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCARPETA_MDU)
-            Me.columnNODO = New Global.System.Data.DataColumn("NODO", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnNODO)
-            Me.columnZONA = New Global.System.Data.DataColumn("ZONA", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnZONA)
-            Me.columnCAJA_CED_NAP = New Global.System.Data.DataColumn("CAJA_CED_NAP", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCAJA_CED_NAP)
             Me.columnID_MDU = New Global.System.Data.DataColumn("ID_MDU", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnID_MDU)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
             Me.columnID.AllowDBNull = false
             Me.columnID.Unique = true
+            Me.columnNODO.MaxLength = 255
             Me.columnOLT.MaxLength = 255
             Me.columnODF.MaxLength = 255
             Me.columnFIBRA_TRONCALHUB.MaxLength = 255
@@ -2112,32 +1875,14 @@ Partial Public Class FIBRADataSet
             Me.columnGEOP_PRIMERA.MaxLength = 255
             Me.columnLATITUD_PRIMERA.MaxLength = 255
             Me.columnLONGITUD_PRIMERA.MaxLength = 255
+            Me.columnCAJA_CED_NAP.MaxLength = 255
             Me.columnCAJA_SEGUNDA.MaxLength = 255
             Me.columnSALIDA_SEGUNDA.MaxLength = 255
             Me.columnGEOP_SEGUNDA.MaxLength = 255
             Me.columnLATITUD_SEGUNDA.MaxLength = 255
             Me.columnLONGITUD_SEGUNDA.MaxLength = 255
-            Me.columnB1.MaxLength = 255
-            Me.columnB2.MaxLength = 255
-            Me.columnB3.MaxLength = 255
-            Me.columnB4.MaxLength = 255
-            Me.columnB5.MaxLength = 255
-            Me.columnB6.MaxLength = 255
-            Me.columnB7.MaxLength = 255
-            Me.columnB8.MaxLength = 255
-            Me.columnB9.MaxLength = 255
-            Me.columnB10.MaxLength = 255
-            Me.columnB11.MaxLength = 255
-            Me.columnB12.MaxLength = 255
-            Me.columnB13.MaxLength = 255
-            Me.columnB14.MaxLength = 255
-            Me.columnB15.MaxLength = 255
-            Me.columnB16.MaxLength = 255
             Me.columnCERTIFICACION_FDH.MaxLength = 255
             Me.columnCERTIFICACION_NAP.MaxLength = 255
-            Me.columnCARPETA_MDU.MaxLength = 255
-            Me.columnNODO.MaxLength = 255
-            Me.columnCAJA_CED_NAP.MaxLength = 255
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2931,21 +2676,6 @@ Partial Public Class FIBRADataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property IMG() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableARTICULO.IMGColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'IMG' de la tabla 'ARTICULO' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableARTICULO.IMGColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsNOMBRENull() As Boolean
             Return Me.IsNull(Me.tableARTICULO.NOMBREColumn)
         End Function
@@ -2954,18 +2684,6 @@ Partial Public Class FIBRADataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetNOMBRENull()
             Me(Me.tableARTICULO.NOMBREColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsIMGNull() As Boolean
-            Return Me.IsNull(Me.tableARTICULO.IMGColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetIMGNull()
-            Me(Me.tableARTICULO.IMGColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -3057,16 +2775,16 @@ Partial Public Class FIBRADataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property CODIGO() As Integer
+        Public Property ATENUACION() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableCABLES.CODIGOColumn),Integer)
+                    Return CType(Me(Me.tableCABLES.ATENUACIONColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CODIGO' de la tabla 'CABLES' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ATENUACION' de la tabla 'CABLES' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableCABLES.CODIGOColumn) = value
+                Me(Me.tableCABLES.ATENUACIONColumn) = value
             End Set
         End Property
         
@@ -3120,14 +2838,14 @@ Partial Public Class FIBRADataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsCODIGONull() As Boolean
-            Return Me.IsNull(Me.tableCABLES.CODIGOColumn)
+        Public Function IsATENUACIONNull() As Boolean
+            Return Me.IsNull(Me.tableCABLES.ATENUACIONColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetCODIGONull()
-            Me(Me.tableCABLES.CODIGOColumn) = Global.System.Convert.DBNull
+        Public Sub SetATENUACIONNull()
+            Me(Me.tableCABLES.ATENUACIONColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -3235,6 +2953,36 @@ Partial Public Class FIBRADataSet
             End Get
             Set
                 Me(Me.tableTRONCALES.IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property NODO() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableTRONCALES.NODOColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NODO' de la tabla 'TRONCALES' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTRONCALES.NODOColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ZONA() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableTRONCALES.ZONAColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ZONA' de la tabla 'TRONCALES' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTRONCALES.ZONAColumn) = value
             End Set
         End Property
         
@@ -3465,6 +3213,21 @@ Partial Public Class FIBRADataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property CAJA_CED_NAP() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableTRONCALES.CAJA_CED_NAPColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CAJA_CED_NAP' de la tabla 'TRONCALES' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableTRONCALES.CAJA_CED_NAPColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property CAJA_SEGUNDA() As String
             Get
                 Try 
@@ -3540,246 +3303,6 @@ Partial Public Class FIBRADataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B1() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B1Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B1' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B1Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B2() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B2Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B2' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B2Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B3() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B3Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B3' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B3Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B4() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B4Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B4' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B4Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B5() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B5Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B5' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B5Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B6() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B6Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B6' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B6Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B7() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B7Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B7' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B7Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B8() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B8Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B8' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B8Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B9() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B9Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B9' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B9Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B10() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B10Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B10' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B10Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B11() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B11Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B11' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B11Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B12() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B12Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B12' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B12Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B13() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B13Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B13' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B13Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B14() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B14Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B14' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B14Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B15() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B15Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B15' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B15Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property B16() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.B16Column),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'B16' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.B16Column) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Property CERTIFICACION_FDH() As String
             Get
                 Try 
@@ -3810,61 +3333,16 @@ Partial Public Class FIBRADataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property CARPETA_MDU() As String
+        Public Property CARPETA_MDU() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableTRONCALES.CARPETA_MDUColumn),String)
+                    Return CType(Me(Me.tableTRONCALES.CARPETA_MDUColumn),Integer)
                 Catch e As Global.System.InvalidCastException
                     Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CARPETA_MDU' de la tabla 'TRONCALES' es DBNull.", e)
                 End Try
             End Get
             Set
                 Me(Me.tableTRONCALES.CARPETA_MDUColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property NODO() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.NODOColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'NODO' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.NODOColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property ZONA() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.ZONAColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ZONA' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.ZONAColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Property CAJA_CED_NAP() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableTRONCALES.CAJA_CED_NAPColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CAJA_CED_NAP' de la tabla 'TRONCALES' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableTRONCALES.CAJA_CED_NAPColumn) = value
             End Set
         End Property
         
@@ -3882,6 +3360,30 @@ Partial Public Class FIBRADataSet
                 Me(Me.tableTRONCALES.ID_MDUColumn) = value
             End Set
         End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsNODONull() As Boolean
+            Return Me.IsNull(Me.tableTRONCALES.NODOColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetNODONull()
+            Me(Me.tableTRONCALES.NODOColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsZONANull() As Boolean
+            Return Me.IsNull(Me.tableTRONCALES.ZONAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetZONANull()
+            Me(Me.tableTRONCALES.ZONAColumn) = Global.System.Convert.DBNull
+        End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
@@ -4065,6 +3567,18 @@ Partial Public Class FIBRADataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsCAJA_CED_NAPNull() As Boolean
+            Return Me.IsNull(Me.tableTRONCALES.CAJA_CED_NAPColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetCAJA_CED_NAPNull()
+            Me(Me.tableTRONCALES.CAJA_CED_NAPColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsCAJA_SEGUNDANull() As Boolean
             Return Me.IsNull(Me.tableTRONCALES.CAJA_SEGUNDAColumn)
         End Function
@@ -4125,198 +3639,6 @@ Partial Public Class FIBRADataSet
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB1Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B1Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB1Null()
-            Me(Me.tableTRONCALES.B1Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB2Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B2Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB2Null()
-            Me(Me.tableTRONCALES.B2Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB3Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B3Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB3Null()
-            Me(Me.tableTRONCALES.B3Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB4Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B4Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB4Null()
-            Me(Me.tableTRONCALES.B4Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB5Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B5Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB5Null()
-            Me(Me.tableTRONCALES.B5Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB6Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B6Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB6Null()
-            Me(Me.tableTRONCALES.B6Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB7Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B7Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB7Null()
-            Me(Me.tableTRONCALES.B7Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB8Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B8Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB8Null()
-            Me(Me.tableTRONCALES.B8Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB9Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B9Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB9Null()
-            Me(Me.tableTRONCALES.B9Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB10Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B10Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB10Null()
-            Me(Me.tableTRONCALES.B10Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB11Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B11Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB11Null()
-            Me(Me.tableTRONCALES.B11Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB12Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B12Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB12Null()
-            Me(Me.tableTRONCALES.B12Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB13Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B13Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB13Null()
-            Me(Me.tableTRONCALES.B13Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB14Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B14Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB14Null()
-            Me(Me.tableTRONCALES.B14Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB15Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B15Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB15Null()
-            Me(Me.tableTRONCALES.B15Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsB16Null() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.B16Column)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetB16Null()
-            Me(Me.tableTRONCALES.B16Column) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsCERTIFICACION_FDHNull() As Boolean
             Return Me.IsNull(Me.tableTRONCALES.CERTIFICACION_FDHColumn)
         End Function
@@ -4349,42 +3671,6 @@ Partial Public Class FIBRADataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetCARPETA_MDUNull()
             Me(Me.tableTRONCALES.CARPETA_MDUColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsNODONull() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.NODOColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetNODONull()
-            Me(Me.tableTRONCALES.NODOColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsZONANull() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.ZONAColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetZONANull()
-            Me(Me.tableTRONCALES.ZONAColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Function IsCAJA_CED_NAPNull() As Boolean
-            Return Me.IsNull(Me.tableTRONCALES.CAJA_CED_NAPColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Sub SetCAJA_CED_NAPNull()
-            Me(Me.tableTRONCALES.CAJA_CED_NAPColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5077,7 +4363,6 @@ Namespace FIBRADataSetTableAdapters
             tableMapping.DataSetTable = "ARTICULO"
             tableMapping.ColumnMappings.Add("ID_ARTICULO", "ID_ARTICULO")
             tableMapping.ColumnMappings.Add("NOMBRE", "NOMBRE")
-            tableMapping.ColumnMappings.Add("IMG", "IMG")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -5089,17 +4374,17 @@ Namespace FIBRADataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_NOMBRE", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NOMBRE", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.InsertCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `ARTICULO` (`NOMBRE`, `IMG`) VALUES (?, ?)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `ARTICULO` (`ID_ARTICULO`, `NOMBRE`) VALUES (?, ?)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_ARTICULO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_ARTICULO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NOMBRE", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NOMBRE", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IMG", Global.System.Data.OleDb.OleDbType.LongVarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "IMG", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE `ARTICULO` SET `NOMBRE` = ?, `IMG` = ? WHERE ((`ID_ARTICULO` = ?) AND ((? "& _ 
-                "= 1 AND `NOMBRE` IS NULL) OR (`NOMBRE` = ?)))"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE `ARTICULO` SET `ID_ARTICULO` = ?, `NOMBRE` = ? WHERE ((`ID_ARTICULO` = ?) "& _ 
+                "AND ((? = 1 AND `NOMBRE` IS NULL) OR (`NOMBRE` = ?)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_ARTICULO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_ARTICULO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NOMBRE", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NOMBRE", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IMG", Global.System.Data.OleDb.OleDbType.LongVarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "IMG", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID_ARTICULO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_ARTICULO", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_NOMBRE", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NOMBRE", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_NOMBRE", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NOMBRE", Global.System.Data.DataRowVersion.Original, false, Nothing))
@@ -5118,7 +4403,7 @@ Namespace FIBRADataSetTableAdapters
             Me._commandCollection = New Global.System.Data.OleDb.OleDbCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID_ARTICULO, NOMBRE, IMG FROM ARTICULO"
+            Me._commandCollection(0).CommandText = "SELECT ID_ARTICULO, NOMBRE FROM ARTICULO"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -5206,16 +4491,12 @@ Namespace FIBRADataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal NOMBRE As String, ByVal IMG As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal ID_ARTICULO As Integer, ByVal NOMBRE As String) As Integer
+            Me.Adapter.InsertCommand.Parameters(0).Value = CType(ID_ARTICULO,Integer)
             If (NOMBRE Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(0).Value = CType(NOMBRE,String)
-            End If
-            If (IMG Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(IMG,String)
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(NOMBRE,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -5236,16 +4517,12 @@ Namespace FIBRADataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal NOMBRE As String, ByVal IMG As String, ByVal Original_ID_ARTICULO As Integer, ByVal Original_NOMBRE As String) As Integer
+        Public Overloads Overridable Function Update(ByVal ID_ARTICULO As Integer, ByVal NOMBRE As String, ByVal Original_ID_ARTICULO As Integer, ByVal Original_NOMBRE As String) As Integer
+            Me.Adapter.UpdateCommand.Parameters(0).Value = CType(ID_ARTICULO,Integer)
             If (NOMBRE Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(NOMBRE,String)
-            End If
-            If (IMG Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(IMG,String)
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(NOMBRE,String)
             End If
             Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Original_ID_ARTICULO,Integer)
             If (Original_NOMBRE Is Nothing) Then
@@ -5268,6 +4545,14 @@ Namespace FIBRADataSetTableAdapters
                     Me.Adapter.UpdateCommand.Connection.Close
                 End If
             End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal NOMBRE As String, ByVal Original_ID_ARTICULO As Integer, ByVal Original_NOMBRE As String) As Integer
+            Return Me.Update(Original_ID_ARTICULO, NOMBRE, Original_ID_ARTICULO, Original_NOMBRE)
         End Function
     End Class
     
@@ -5403,15 +4688,15 @@ Namespace FIBRADataSetTableAdapters
             tableMapping.ColumnMappings.Add("MODELO", "MODELO")
             tableMapping.ColumnMappings.Add("PELOS", "PELOS")
             tableMapping.ColumnMappings.Add("CARACTERISTICA", "CARACTERISTICA")
-            tableMapping.ColumnMappings.Add("CODIGO", "CODIGO")
+            tableMapping.ColumnMappings.Add("ATENUACION", "ATENUACION")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
             Me._adapter.DeleteCommand.CommandText = "DELETE FROM `CABLES` WHERE ((`ID_CABLE` = ?) AND ((? = 1 AND `MARCA` IS NULL) OR "& _ 
                 "(`MARCA` = ?)) AND ((? = 1 AND `MODELO` IS NULL) OR (`MODELO` = ?)) AND ((? = 1 "& _ 
                 "AND `PELOS` IS NULL) OR (`PELOS` = ?)) AND ((? = 1 AND `CARACTERISTICA` IS NULL)"& _ 
-                " OR (`CARACTERISTICA` = ?)) AND ((? = 1 AND `CODIGO` IS NULL) OR (`CODIGO` = ?))"& _ 
-                ")"
+                " OR (`CARACTERISTICA` = ?)) AND ((? = 1 AND `ATENUACION` IS NULL) OR (`ATENUACIO"& _ 
+                "N` = ?)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID_CABLE", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_CABLE", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_MARCA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MARCA", Global.System.Data.DataRowVersion.Original, true, Nothing))
@@ -5422,31 +4707,32 @@ Namespace FIBRADataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_PELOS", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PELOS", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CARACTERISTICA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CARACTERISTICA", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CARACTERISTICA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CARACTERISTICA", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CODIGO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CODIGO", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CODIGO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CODIGO", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ATENUACION", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ATENUACION", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ATENUACION", Global.System.Data.OleDb.OleDbType.Numeric, 0, Global.System.Data.ParameterDirection.Input, CType(5,Byte), CType(5,Byte), "ATENUACION", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.InsertCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `CABLES` (`MARCA`, `MODELO`, `PELOS`, `CARACTERISTICA`, `CODIGO`) VAL"& _ 
-                "UES (?, ?, ?, ?, ?)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `CABLES` (`MARCA`, `MODELO`, `PELOS`, `CARACTERISTICA`, `ATENUACION`)"& _ 
+                " VALUES (?, ?, ?, ?, ?)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MARCA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MARCA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MODELO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MODELO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("PELOS", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PELOS", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CARACTERISTICA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CARACTERISTICA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CODIGO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CODIGO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ATENUACION", Global.System.Data.OleDb.OleDbType.Numeric, 0, Global.System.Data.ParameterDirection.Input, CType(5,Byte), CType(5,Byte), "ATENUACION", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE `CABLES` SET `MARCA` = ?, `MODELO` = ?, `PELOS` = ?, `CARACTERISTICA` = ?,"& _ 
-                " `CODIGO` = ? WHERE ((`ID_CABLE` = ?) AND ((? = 1 AND `MARCA` IS NULL) OR (`MARC"& _ 
-                "A` = ?)) AND ((? = 1 AND `MODELO` IS NULL) OR (`MODELO` = ?)) AND ((? = 1 AND `P"& _ 
-                "ELOS` IS NULL) OR (`PELOS` = ?)) AND ((? = 1 AND `CARACTERISTICA` IS NULL) OR (`"& _ 
-                "CARACTERISTICA` = ?)) AND ((? = 1 AND `CODIGO` IS NULL) OR (`CODIGO` = ?)))"
+                " `ATENUACION` = ? WHERE ((`ID_CABLE` = ?) AND ((? = 1 AND `MARCA` IS NULL) OR (`"& _ 
+                "MARCA` = ?)) AND ((? = 1 AND `MODELO` IS NULL) OR (`MODELO` = ?)) AND ((? = 1 AN"& _ 
+                "D `PELOS` IS NULL) OR (`PELOS` = ?)) AND ((? = 1 AND `CARACTERISTICA` IS NULL) O"& _ 
+                "R (`CARACTERISTICA` = ?)) AND ((? = 1 AND `ATENUACION` IS NULL) OR (`ATENUACION`"& _ 
+                " = ?)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MARCA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MARCA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("MODELO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MODELO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("PELOS", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PELOS", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CARACTERISTICA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CARACTERISTICA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CODIGO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CODIGO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ATENUACION", Global.System.Data.OleDb.OleDbType.Numeric, 0, Global.System.Data.ParameterDirection.Input, CType(5,Byte), CType(5,Byte), "ATENUACION", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID_CABLE", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_CABLE", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_MARCA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MARCA", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_MARCA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "MARCA", Global.System.Data.DataRowVersion.Original, false, Nothing))
@@ -5456,8 +4742,8 @@ Namespace FIBRADataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_PELOS", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PELOS", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CARACTERISTICA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CARACTERISTICA", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CARACTERISTICA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CARACTERISTICA", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CODIGO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CODIGO", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CODIGO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CODIGO", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ATENUACION", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ATENUACION", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ATENUACION", Global.System.Data.OleDb.OleDbType.Numeric, 0, Global.System.Data.ParameterDirection.Input, CType(5,Byte), CType(5,Byte), "ATENUACION", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5473,7 +4759,7 @@ Namespace FIBRADataSetTableAdapters
             Me._commandCollection = New Global.System.Data.OleDb.OleDbCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID_CABLE, MARCA, MODELO, PELOS, CARACTERISTICA, CODIGO FROM CABLES"
+            Me._commandCollection(0).CommandText = "SELECT ID_CABLE, MARCA, MODELO, PELOS, CARACTERISTICA, ATENUACION FROM CABLES"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -5533,7 +4819,7 @@ Namespace FIBRADataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_ID_CABLE As Integer, ByVal Original_MARCA As String, ByVal Original_MODELO As String, ByVal Original_PELOS As String, ByVal Original_CARACTERISTICA As String, ByVal Original_CODIGO As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_ID_CABLE As Integer, ByVal Original_MARCA As String, ByVal Original_MODELO As String, ByVal Original_PELOS As String, ByVal Original_CARACTERISTICA As String, ByVal Original_ATENUACION As Global.System.Nullable(Of Decimal)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID_CABLE,Integer)
             If (Original_MARCA Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -5563,9 +4849,9 @@ Namespace FIBRADataSetTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_CARACTERISTICA,String)
             End If
-            If (Original_CODIGO.HasValue = true) Then
+            If (Original_ATENUACION.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_CODIGO.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_ATENUACION.Value,Decimal)
             Else
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
@@ -5589,7 +4875,7 @@ Namespace FIBRADataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal MARCA As String, ByVal MODELO As String, ByVal PELOS As String, ByVal CARACTERISTICA As String, ByVal CODIGO As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Insert(ByVal MARCA As String, ByVal MODELO As String, ByVal PELOS As String, ByVal CARACTERISTICA As String, ByVal ATENUACION As Global.System.Nullable(Of Decimal)) As Integer
             If (MARCA Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -5610,8 +4896,8 @@ Namespace FIBRADataSetTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(3).Value = CType(CARACTERISTICA,String)
             End If
-            If (CODIGO.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(CODIGO.Value,Integer)
+            If (ATENUACION.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(ATENUACION.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
@@ -5634,7 +4920,7 @@ Namespace FIBRADataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal MARCA As String, ByVal MODELO As String, ByVal PELOS As String, ByVal CARACTERISTICA As String, ByVal CODIGO As Global.System.Nullable(Of Integer), ByVal Original_ID_CABLE As Integer, ByVal Original_MARCA As String, ByVal Original_MODELO As String, ByVal Original_PELOS As String, ByVal Original_CARACTERISTICA As String, ByVal Original_CODIGO As Global.System.Nullable(Of Integer)) As Integer
+        Public Overloads Overridable Function Update(ByVal MARCA As String, ByVal MODELO As String, ByVal PELOS As String, ByVal CARACTERISTICA As String, ByVal ATENUACION As Global.System.Nullable(Of Decimal), ByVal Original_ID_CABLE As Integer, ByVal Original_MARCA As String, ByVal Original_MODELO As String, ByVal Original_PELOS As String, ByVal Original_CARACTERISTICA As String, ByVal Original_ATENUACION As Global.System.Nullable(Of Decimal)) As Integer
             If (MARCA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -5655,8 +4941,8 @@ Namespace FIBRADataSetTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(3).Value = CType(CARACTERISTICA,String)
             End If
-            If (CODIGO.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(CODIGO.Value,Integer)
+            If (ATENUACION.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(ATENUACION.Value,Decimal)
             Else
                 Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
@@ -5689,9 +4975,9 @@ Namespace FIBRADataSetTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
                 Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_CARACTERISTICA,String)
             End If
-            If (Original_CODIGO.HasValue = true) Then
+            If (Original_ATENUACION.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_CODIGO.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_ATENUACION.Value,Decimal)
             Else
                 Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
@@ -6182,6 +5468,8 @@ Namespace FIBRADataSetTableAdapters
             tableMapping.SourceTable = "Table"
             tableMapping.DataSetTable = "TRONCALES"
             tableMapping.ColumnMappings.Add("ID", "ID")
+            tableMapping.ColumnMappings.Add("NODO", "NODO")
+            tableMapping.ColumnMappings.Add("ZONA", "ZONA")
             tableMapping.ColumnMappings.Add("OLT", "OLT")
             tableMapping.ColumnMappings.Add("PLACA_OLT", "PLACA_OLT")
             tableMapping.ColumnMappings.Add("PUERTO_OLT", "PUERTO_OLT")
@@ -6197,71 +5485,48 @@ Namespace FIBRADataSetTableAdapters
             tableMapping.ColumnMappings.Add("GEOP_PRIMERA", "GEOP_PRIMERA")
             tableMapping.ColumnMappings.Add("LATITUD_PRIMERA", "LATITUD_PRIMERA")
             tableMapping.ColumnMappings.Add("LONGITUD_PRIMERA", "LONGITUD_PRIMERA")
+            tableMapping.ColumnMappings.Add("CAJA_CED_NAP", "CAJA_CED_NAP")
             tableMapping.ColumnMappings.Add("CAJA_SEGUNDA", "CAJA_SEGUNDA")
             tableMapping.ColumnMappings.Add("SALIDA_SEGUNDA", "SALIDA_SEGUNDA")
             tableMapping.ColumnMappings.Add("GEOP_SEGUNDA", "GEOP_SEGUNDA")
             tableMapping.ColumnMappings.Add("LATITUD_SEGUNDA", "LATITUD_SEGUNDA")
             tableMapping.ColumnMappings.Add("LONGITUD_SEGUNDA", "LONGITUD_SEGUNDA")
-            tableMapping.ColumnMappings.Add("B1", "B1")
-            tableMapping.ColumnMappings.Add("B2", "B2")
-            tableMapping.ColumnMappings.Add("B3", "B3")
-            tableMapping.ColumnMappings.Add("B4", "B4")
-            tableMapping.ColumnMappings.Add("B5", "B5")
-            tableMapping.ColumnMappings.Add("B6", "B6")
-            tableMapping.ColumnMappings.Add("B7", "B7")
-            tableMapping.ColumnMappings.Add("B8", "B8")
-            tableMapping.ColumnMappings.Add("B9", "B9")
-            tableMapping.ColumnMappings.Add("B10", "B10")
-            tableMapping.ColumnMappings.Add("B11", "B11")
-            tableMapping.ColumnMappings.Add("B12", "B12")
-            tableMapping.ColumnMappings.Add("B13", "B13")
-            tableMapping.ColumnMappings.Add("B14", "B14")
-            tableMapping.ColumnMappings.Add("B15", "B15")
-            tableMapping.ColumnMappings.Add("B16", "B16")
             tableMapping.ColumnMappings.Add("CERTIFICACION_FDH", "CERTIFICACION_FDH")
             tableMapping.ColumnMappings.Add("CERTIFICACION_NAP", "CERTIFICACION_NAP")
             tableMapping.ColumnMappings.Add("CARPETA_MDU", "CARPETA_MDU")
-            tableMapping.ColumnMappings.Add("NODO", "NODO")
-            tableMapping.ColumnMappings.Add("ZONA", "ZONA")
-            tableMapping.ColumnMappings.Add("CAJA_CED_NAP", "CAJA_CED_NAP")
             tableMapping.ColumnMappings.Add("ID_MDU", "ID_MDU")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM `TRONCALES` WHERE ((`ID` = ?) AND ((? = 1 AND `OLT` IS NULL) OR (`OLT"& _ 
-                "` = ?)) AND ((? = 1 AND `PLACA_OLT` IS NULL) OR (`PLACA_OLT` = ?)) AND ((? = 1 A"& _ 
-                "ND `PUERTO_OLT` IS NULL) OR (`PUERTO_OLT` = ?)) AND ((? = 1 AND `ODF` IS NULL) O"& _ 
-                "R (`ODF` = ?)) AND ((? = 1 AND `BANDEJA_ODF` IS NULL) OR (`BANDEJA_ODF` = ?)) AN"& _ 
-                "D ((? = 1 AND `PUERTO_ODF` IS NULL) OR (`PUERTO_ODF` = ?)) AND ((? = 1 AND `FIBR"& _ 
-                "A_TRONCALHUB` IS NULL) OR (`FIBRA_TRONCALHUB` = ?)) AND ((? = 1 AND `CABLE_TRONC"& _ 
-                "ALHUB` IS NULL) OR (`CABLE_TRONCALHUB` = ?)) AND ((? = 1 AND `CAJA_PRIMERA` IS N"& _ 
-                "ULL) OR (`CAJA_PRIMERA` = ?)) AND ((? = 1 AND `SPLITTER_PRIMERA` IS NULL) OR (`S"& _ 
-                "PLITTER_PRIMERA` = ?)) AND ((? = 1 AND `SALIDAS_PRIMERA` IS NULL) OR (`SALIDAS_P"& _ 
-                "RIMERA` = ?)) AND ((? = 1 AND `NOMBRE_SPL_PRIMERA` IS NULL) OR (`NOMBRE_SPL_PRIM"& _ 
-                "ERA` = ?)) AND ((? = 1 AND `GEOP_PRIMERA` IS NULL) OR (`GEOP_PRIMERA` = ?)) AND "& _ 
-                "((? = 1 AND `LATITUD_PRIMERA` IS NULL) OR (`LATITUD_PRIMERA` = ?)) AND ((? = 1 A"& _ 
-                "ND `LONGITUD_PRIMERA` IS NULL) OR (`LONGITUD_PRIMERA` = ?)) AND ((? = 1 AND `CAJ"& _ 
-                "A_SEGUNDA` IS NULL) OR (`CAJA_SEGUNDA` = ?)) AND ((? = 1 AND `SALIDA_SEGUNDA` IS"& _ 
-                " NULL) OR (`SALIDA_SEGUNDA` = ?)) AND ((? = 1 AND `GEOP_SEGUNDA` IS NULL) OR (`G"& _ 
-                "EOP_SEGUNDA` = ?)) AND ((? = 1 AND `LATITUD_SEGUNDA` IS NULL) OR (`LATITUD_SEGUN"& _ 
-                "DA` = ?)) AND ((? = 1 AND `LONGITUD_SEGUNDA` IS NULL) OR (`LONGITUD_SEGUNDA` = ?"& _ 
-                ")) AND ((? = 1 AND `B1` IS NULL) OR (`B1` = ?)) AND ((? = 1 AND `B2` IS NULL) OR"& _ 
-                " (`B2` = ?)) AND ((? = 1 AND `B3` IS NULL) OR (`B3` = ?)) AND ((? = 1 AND `B4` I"& _ 
-                "S NULL) OR (`B4` = ?)) AND ((? = 1 AND `B5` IS NULL) OR (`B5` = ?)) AND ((? = 1 "& _ 
-                "AND `B6` IS NULL) OR (`B6` = ?)) AND ((? = 1 AND `B7` IS NULL) OR (`B7` = ?)) AN"& _ 
-                "D ((? = 1 AND `B8` IS NULL) OR (`B8` = ?)) AND ((? = 1 AND `B9` IS NULL) OR (`B9"& _ 
-                "` = ?)) AND ((? = 1 AND `B10` IS NULL) OR (`B10` = ?)) AND ((? = 1 AND `B11` IS "& _ 
-                "NULL) OR (`B11` = ?)) AND ((? = 1 AND `B12` IS NULL) OR (`B12` = ?)) AND ((? = 1"& _ 
-                " AND `B13` IS NULL) OR (`B13` = ?)) AND ((? = 1 AND `B14` IS NULL) OR (`B14` = ?"& _ 
-                ")) AND ((? = 1 AND `B15` IS NULL) OR (`B15` = ?)) AND ((? = 1 AND `B16` IS NULL)"& _ 
-                " OR (`B16` = ?)) AND ((? = 1 AND `CERTIFICACION_FDH` IS NULL) OR (`CERTIFICACION"& _ 
-                "_FDH` = ?)) AND ((? = 1 AND `CERTIFICACION_NAP` IS NULL) OR (`CERTIFICACION_NAP`"& _ 
-                " = ?)) AND ((? = 1 AND `CARPETA_MDU` IS NULL) OR (`CARPETA_MDU` = ?)) AND ((? = "& _ 
-                "1 AND `NODO` IS NULL) OR (`NODO` = ?)) AND ((? = 1 AND `ZONA` IS NULL) OR (`ZONA"& _ 
-                "` = ?)) AND ((? = 1 AND `CAJA_CED_NAP` IS NULL) OR (`CAJA_CED_NAP` = ?)) AND ((?"& _ 
-                " = 1 AND `ID_MDU` IS NULL) OR (`ID_MDU` = ?)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM `TRONCALES` WHERE ((`ID` = ?) AND ((? = 1 AND `NODO` IS NULL) OR (`NO"& _ 
+                "DO` = ?)) AND ((? = 1 AND `ZONA` IS NULL) OR (`ZONA` = ?)) AND ((? = 1 AND `OLT`"& _ 
+                " IS NULL) OR (`OLT` = ?)) AND ((? = 1 AND `PLACA_OLT` IS NULL) OR (`PLACA_OLT` ="& _ 
+                " ?)) AND ((? = 1 AND `PUERTO_OLT` IS NULL) OR (`PUERTO_OLT` = ?)) AND ((? = 1 AN"& _ 
+                "D `ODF` IS NULL) OR (`ODF` = ?)) AND ((? = 1 AND `BANDEJA_ODF` IS NULL) OR (`BAN"& _ 
+                "DEJA_ODF` = ?)) AND ((? = 1 AND `PUERTO_ODF` IS NULL) OR (`PUERTO_ODF` = ?)) AND"& _ 
+                " ((? = 1 AND `FIBRA_TRONCALHUB` IS NULL) OR (`FIBRA_TRONCALHUB` = ?)) AND ((? = "& _ 
+                "1 AND `CABLE_TRONCALHUB` IS NULL) OR (`CABLE_TRONCALHUB` = ?)) AND ((? = 1 AND `"& _ 
+                "CAJA_PRIMERA` IS NULL) OR (`CAJA_PRIMERA` = ?)) AND ((? = 1 AND `SPLITTER_PRIMER"& _ 
+                "A` IS NULL) OR (`SPLITTER_PRIMERA` = ?)) AND ((? = 1 AND `SALIDAS_PRIMERA` IS NU"& _ 
+                "LL) OR (`SALIDAS_PRIMERA` = ?)) AND ((? = 1 AND `NOMBRE_SPL_PRIMERA` IS NULL) OR"& _ 
+                " (`NOMBRE_SPL_PRIMERA` = ?)) AND ((? = 1 AND `GEOP_PRIMERA` IS NULL) OR (`GEOP_P"& _ 
+                "RIMERA` = ?)) AND ((? = 1 AND `LATITUD_PRIMERA` IS NULL) OR (`LATITUD_PRIMERA` ="& _ 
+                " ?)) AND ((? = 1 AND `LONGITUD_PRIMERA` IS NULL) OR (`LONGITUD_PRIMERA` = ?)) AN"& _ 
+                "D ((? = 1 AND `CAJA_CED_NAP` IS NULL) OR (`CAJA_CED_NAP` = ?)) AND ((? = 1 AND `"& _ 
+                "CAJA_SEGUNDA` IS NULL) OR (`CAJA_SEGUNDA` = ?)) AND ((? = 1 AND `SALIDA_SEGUNDA`"& _ 
+                " IS NULL) OR (`SALIDA_SEGUNDA` = ?)) AND ((? = 1 AND `GEOP_SEGUNDA` IS NULL) OR "& _ 
+                "(`GEOP_SEGUNDA` = ?)) AND ((? = 1 AND `LATITUD_SEGUNDA` IS NULL) OR (`LATITUD_SE"& _ 
+                "GUNDA` = ?)) AND ((? = 1 AND `LONGITUD_SEGUNDA` IS NULL) OR (`LONGITUD_SEGUNDA` "& _ 
+                "= ?)) AND ((? = 1 AND `CERTIFICACION_FDH` IS NULL) OR (`CERTIFICACION_FDH` = ?))"& _ 
+                " AND ((? = 1 AND `CERTIFICACION_NAP` IS NULL) OR (`CERTIFICACION_NAP` = ?)) AND "& _ 
+                "((? = 1 AND `CARPETA_MDU` IS NULL) OR (`CARPETA_MDU` = ?)) AND ((? = 1 AND `ID_M"& _ 
+                "DU` IS NULL) OR (`ID_MDU` = ?)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_NODO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_NODO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ZONA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ZONA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_OLT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "OLT", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_OLT", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "OLT", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_PLACA_OLT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PLACA_OLT", Global.System.Data.DataRowVersion.Original, true, Nothing))
@@ -6292,6 +5557,8 @@ Namespace FIBRADataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_LATITUD_PRIMERA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LATITUD_PRIMERA", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_LONGITUD_PRIMERA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LONGITUD_PRIMERA", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_LONGITUD_PRIMERA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LONGITUD_PRIMERA", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CAJA_CED_NAP", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_CED_NAP", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CAJA_CED_NAP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_CED_NAP", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CAJA_SEGUNDA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_SEGUNDA", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CAJA_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_SEGUNDA", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_SALIDA_SEGUNDA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SALIDA_SEGUNDA", Global.System.Data.DataRowVersion.Original, true, Nothing))
@@ -6302,65 +5569,27 @@ Namespace FIBRADataSetTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_LATITUD_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LATITUD_SEGUNDA", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_LONGITUD_SEGUNDA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LONGITUD_SEGUNDA", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_LONGITUD_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LONGITUD_SEGUNDA", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B1", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B1", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B1", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B1", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B2", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B2", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B2", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B2", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B3", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B3", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B3", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B3", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B4", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B4", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B4", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B4", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B5", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B5", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B5", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B5", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B6", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B6", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B6", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B6", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B7", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B7", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B7", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B7", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B8", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B8", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B8", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B8", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B9", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B9", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B9", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B9", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B10", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B10", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B10", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B10", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B11", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B11", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B11", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B11", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B12", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B12", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B12", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B12", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B13", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B13", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B13", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B13", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B14", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B14", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B14", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B14", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B15", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B15", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B15", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B15", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B16", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B16", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B16", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B16", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CERTIFICACION_FDH", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CERTIFICACION_FDH", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CERTIFICACION_FDH", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CERTIFICACION_FDH", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CERTIFICACION_NAP", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CERTIFICACION_NAP", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CERTIFICACION_NAP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CERTIFICACION_NAP", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CARPETA_MDU", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CARPETA_MDU", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CARPETA_MDU", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CARPETA_MDU", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_NODO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_NODO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ZONA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ZONA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CAJA_CED_NAP", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_CED_NAP", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CAJA_CED_NAP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_CED_NAP", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ID_MDU", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_MDU", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID_MDU", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_MDU", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.InsertCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO `TRONCALES` (`ID`, `OLT`, `PLACA_OLT`, `PUERTO_OLT`, `ODF`, `BANDEJA_"& _ 
-                "ODF`, `PUERTO_ODF`, `FIBRA_TRONCALHUB`, `CABLE_TRONCALHUB`, `CAJA_PRIMERA`, `SPL"& _ 
-                "ITTER_PRIMERA`, `SALIDAS_PRIMERA`, `NOMBRE_SPL_PRIMERA`, `GEOP_PRIMERA`, `LATITU"& _ 
-                "D_PRIMERA`, `LONGITUD_PRIMERA`, `CAJA_SEGUNDA`, `SALIDA_SEGUNDA`, `GEOP_SEGUNDA`"& _ 
-                ", `LATITUD_SEGUNDA`, `LONGITUD_SEGUNDA`, `B1`, `B2`, `B3`, `B4`, `B5`, `B6`, `B7"& _ 
-                "`, `B8`, `B9`, `B10`, `B11`, `B12`, `B13`, `B14`, `B15`, `B16`, `CERTIFICACION_F"& _ 
-                "DH`, `CERTIFICACION_NAP`, `CARPETA_MDU`, `NODO`, `ZONA`, `CAJA_CED_NAP`, `ID_MDU"& _ 
-                "`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "& _ 
-                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO `TRONCALES` (`ID`, `NODO`, `ZONA`, `OLT`, `PLACA_OLT`, `PUERTO_OLT`, "& _ 
+                "`ODF`, `BANDEJA_ODF`, `PUERTO_ODF`, `FIBRA_TRONCALHUB`, `CABLE_TRONCALHUB`, `CAJ"& _ 
+                "A_PRIMERA`, `SPLITTER_PRIMERA`, `SALIDAS_PRIMERA`, `NOMBRE_SPL_PRIMERA`, `GEOP_P"& _ 
+                "RIMERA`, `LATITUD_PRIMERA`, `LONGITUD_PRIMERA`, `CAJA_CED_NAP`, `CAJA_SEGUNDA`, "& _ 
+                "`SALIDA_SEGUNDA`, `GEOP_SEGUNDA`, `LATITUD_SEGUNDA`, `LONGITUD_SEGUNDA`, `CERTIF"& _ 
+                "ICACION_FDH`, `CERTIFICACION_NAP`, `CARPETA_MDU`, `ID_MDU`) VALUES (?, ?, ?, ?, "& _ 
+                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("OLT", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "OLT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("PLACA_OLT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PLACA_OLT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("PUERTO_OLT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PUERTO_OLT", Global.System.Data.DataRowVersion.Current, false, Nothing))
@@ -6376,79 +5605,52 @@ Namespace FIBRADataSetTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("GEOP_PRIMERA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "GEOP_PRIMERA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("LATITUD_PRIMERA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LATITUD_PRIMERA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("LONGITUD_PRIMERA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LONGITUD_PRIMERA", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CAJA_CED_NAP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_CED_NAP", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CAJA_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_SEGUNDA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SALIDA_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SALIDA_SEGUNDA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("GEOP_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "GEOP_SEGUNDA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("LATITUD_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LATITUD_SEGUNDA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("LONGITUD_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LONGITUD_SEGUNDA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B1", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B1", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B2", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B2", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B3", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B3", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B4", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B4", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B5", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B5", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B6", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B6", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B7", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B7", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B8", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B8", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B9", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B9", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B10", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B10", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B11", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B11", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B12", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B12", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B13", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B13", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B14", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B14", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B15", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B15", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B16", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B16", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CERTIFICACION_FDH", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CERTIFICACION_FDH", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CERTIFICACION_NAP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CERTIFICACION_NAP", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CARPETA_MDU", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CARPETA_MDU", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CAJA_CED_NAP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_CED_NAP", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_MDU", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_MDU", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE `TRONCALES` SET `ID` = ?, `OLT` = ?, `PLACA_OLT` = ?, `PUERTO_OLT` = ?, `O"& _ 
-                "DF` = ?, `BANDEJA_ODF` = ?, `PUERTO_ODF` = ?, `FIBRA_TRONCALHUB` = ?, `CABLE_TRO"& _ 
-                "NCALHUB` = ?, `CAJA_PRIMERA` = ?, `SPLITTER_PRIMERA` = ?, `SALIDAS_PRIMERA` = ?,"& _ 
-                " `NOMBRE_SPL_PRIMERA` = ?, `GEOP_PRIMERA` = ?, `LATITUD_PRIMERA` = ?, `LONGITUD_"& _ 
-                "PRIMERA` = ?, `CAJA_SEGUNDA` = ?, `SALIDA_SEGUNDA` = ?, `GEOP_SEGUNDA` = ?, `LAT"& _ 
-                "ITUD_SEGUNDA` = ?, `LONGITUD_SEGUNDA` = ?, `B1` = ?, `B2` = ?, `B3` = ?, `B4` = "& _ 
-                "?, `B5` = ?, `B6` = ?, `B7` = ?, `B8` = ?, `B9` = ?, `B10` = ?, `B11` = ?, `B12`"& _ 
-                " = ?, `B13` = ?, `B14` = ?, `B15` = ?, `B16` = ?, `CERTIFICACION_FDH` = ?, `CERT"& _ 
-                "IFICACION_NAP` = ?, `CARPETA_MDU` = ?, `NODO` = ?, `ZONA` = ?, `CAJA_CED_NAP` = "& _ 
-                "?, `ID_MDU` = ? WHERE ((`ID` = ?) AND ((? = 1 AND `OLT` IS NULL) OR (`OLT` = ?))"& _ 
-                " AND ((? = 1 AND `PLACA_OLT` IS NULL) OR (`PLACA_OLT` = ?)) AND ((? = 1 AND `PUE"& _ 
-                "RTO_OLT` IS NULL) OR (`PUERTO_OLT` = ?)) AND ((? = 1 AND `ODF` IS NULL) OR (`ODF"& _ 
-                "` = ?)) AND ((? = 1 AND `BANDEJA_ODF` IS NULL) OR (`BANDEJA_ODF` = ?)) AND ((? ="& _ 
-                " 1 AND `PUERTO_ODF` IS NULL) OR (`PUERTO_ODF` = ?)) AND ((? = 1 AND `FIBRA_TRONC"& _ 
-                "ALHUB` IS NULL) OR (`FIBRA_TRONCALHUB` = ?)) AND ((? = 1 AND `CABLE_TRONCALHUB` "& _ 
-                "IS NULL) OR (`CABLE_TRONCALHUB` = ?)) AND ((? = 1 AND `CAJA_PRIMERA` IS NULL) OR"& _ 
-                " (`CAJA_PRIMERA` = ?)) AND ((? = 1 AND `SPLITTER_PRIMERA` IS NULL) OR (`SPLITTER"& _ 
-                "_PRIMERA` = ?)) AND ((? = 1 AND `SALIDAS_PRIMERA` IS NULL) OR (`SALIDAS_PRIMERA`"& _ 
-                " = ?)) AND ((? = 1 AND `NOMBRE_SPL_PRIMERA` IS NULL) OR (`NOMBRE_SPL_PRIMERA` = "& _ 
-                "?)) AND ((? = 1 AND `GEOP_PRIMERA` IS NULL) OR (`GEOP_PRIMERA` = ?)) AND ((? = 1"& _ 
-                " AND `LATITUD_PRIMERA` IS NULL) OR (`LATITUD_PRIMERA` = ?)) AND ((? = 1 AND `LON"& _ 
-                "GITUD_PRIMERA` IS NULL) OR (`LONGITUD_PRIMERA` = ?)) AND ((? = 1 AND `CAJA_SEGUN"& _ 
-                "DA` IS NULL) OR (`CAJA_SEGUNDA` = ?)) AND ((? = 1 AND `SALIDA_SEGUNDA` IS NULL) "& _ 
-                "OR (`SALIDA_SEGUNDA` = ?)) AND ((? = 1 AND `GEOP_SEGUNDA` IS NULL) OR (`GEOP_SEG"& _ 
-                "UNDA` = ?)) AND ((? = 1 AND `LATITUD_SEGUNDA` IS NULL) OR (`LATITUD_SEGUNDA` = ?"& _ 
-                ")) AND ((? = 1 AND `LONGITUD_SEGUNDA` IS NULL) OR (`LONGITUD_SEGUNDA` = ?)) AND "& _ 
-                "((? = 1 AND `B1` IS NULL) OR (`B1` = ?)) AND ((? = 1 AND `B2` IS NULL) OR (`B2` "& _ 
-                "= ?)) AND ((? = 1 AND `B3` IS NULL) OR (`B3` = ?)) AND ((? = 1 AND `B4` IS NULL)"& _ 
-                " OR (`B4` = ?)) AND ((? = 1 AND `B5` IS NULL) OR (`B5` = ?)) AND ((? = 1 AND `B6"& _ 
-                "` IS NULL) OR (`B6` = ?)) AND ((? = 1 AND `B7` IS NULL) OR (`B7` = ?)) AND ((? ="& _ 
-                " 1 AND `B8` IS NULL) OR (`B8` = ?)) AND ((? = 1 AND `B9` IS NULL) OR (`B9` = ?))"& _ 
-                " AND ((? = 1 AND `B10` IS NULL) OR (`B10` = ?)) AND ((? = 1 AND `B11` IS NULL) O"& _ 
-                "R (`B11` = ?)) AND ((? = 1 AND `B12` IS NULL) OR (`B12` = ?)) AND ((? = 1 AND `B"& _ 
-                "13` IS NULL) OR (`B13` = ?)) AND ((? = 1 AND `B14` IS NULL) OR (`B14` = ?)) AND "& _ 
-                "((? = 1 AND `B15` IS NULL) OR (`B15` = ?)) AND ((? = 1 AND `B16` IS NULL) OR (`B"& _ 
-                "16` = ?)) AND ((? = 1 AND `CERTIFICACION_FDH` IS NULL) OR (`CERTIFICACION_FDH` ="& _ 
-                " ?)) AND ((? = 1 AND `CERTIFICACION_NAP` IS NULL) OR (`CERTIFICACION_NAP` = ?)) "& _ 
-                "AND ((? = 1 AND `CARPETA_MDU` IS NULL) OR (`CARPETA_MDU` = ?)) AND ((? = 1 AND `"& _ 
-                "NODO` IS NULL) OR (`NODO` = ?)) AND ((? = 1 AND `ZONA` IS NULL) OR (`ZONA` = ?))"& _ 
-                " AND ((? = 1 AND `CAJA_CED_NAP` IS NULL) OR (`CAJA_CED_NAP` = ?)) AND ((? = 1 AN"& _ 
-                "D `ID_MDU` IS NULL) OR (`ID_MDU` = ?)))"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE `TRONCALES` SET `ID` = ?, `NODO` = ?, `ZONA` = ?, `OLT` = ?, `PLACA_OLT` ="& _ 
+                " ?, `PUERTO_OLT` = ?, `ODF` = ?, `BANDEJA_ODF` = ?, `PUERTO_ODF` = ?, `FIBRA_TRO"& _ 
+                "NCALHUB` = ?, `CABLE_TRONCALHUB` = ?, `CAJA_PRIMERA` = ?, `SPLITTER_PRIMERA` = ?"& _ 
+                ", `SALIDAS_PRIMERA` = ?, `NOMBRE_SPL_PRIMERA` = ?, `GEOP_PRIMERA` = ?, `LATITUD_"& _ 
+                "PRIMERA` = ?, `LONGITUD_PRIMERA` = ?, `CAJA_CED_NAP` = ?, `CAJA_SEGUNDA` = ?, `S"& _ 
+                "ALIDA_SEGUNDA` = ?, `GEOP_SEGUNDA` = ?, `LATITUD_SEGUNDA` = ?, `LONGITUD_SEGUNDA"& _ 
+                "` = ?, `CERTIFICACION_FDH` = ?, `CERTIFICACION_NAP` = ?, `CARPETA_MDU` = ?, `ID_"& _ 
+                "MDU` = ? WHERE ((`ID` = ?) AND ((? = 1 AND `NODO` IS NULL) OR (`NODO` = ?)) AND "& _ 
+                "((? = 1 AND `ZONA` IS NULL) OR (`ZONA` = ?)) AND ((? = 1 AND `OLT` IS NULL) OR ("& _ 
+                "`OLT` = ?)) AND ((? = 1 AND `PLACA_OLT` IS NULL) OR (`PLACA_OLT` = ?)) AND ((? ="& _ 
+                " 1 AND `PUERTO_OLT` IS NULL) OR (`PUERTO_OLT` = ?)) AND ((? = 1 AND `ODF` IS NUL"& _ 
+                "L) OR (`ODF` = ?)) AND ((? = 1 AND `BANDEJA_ODF` IS NULL) OR (`BANDEJA_ODF` = ?)"& _ 
+                ") AND ((? = 1 AND `PUERTO_ODF` IS NULL) OR (`PUERTO_ODF` = ?)) AND ((? = 1 AND `"& _ 
+                "FIBRA_TRONCALHUB` IS NULL) OR (`FIBRA_TRONCALHUB` = ?)) AND ((? = 1 AND `CABLE_T"& _ 
+                "RONCALHUB` IS NULL) OR (`CABLE_TRONCALHUB` = ?)) AND ((? = 1 AND `CAJA_PRIMERA` "& _ 
+                "IS NULL) OR (`CAJA_PRIMERA` = ?)) AND ((? = 1 AND `SPLITTER_PRIMERA` IS NULL) OR"& _ 
+                " (`SPLITTER_PRIMERA` = ?)) AND ((? = 1 AND `SALIDAS_PRIMERA` IS NULL) OR (`SALID"& _ 
+                "AS_PRIMERA` = ?)) AND ((? = 1 AND `NOMBRE_SPL_PRIMERA` IS NULL) OR (`NOMBRE_SPL_"& _ 
+                "PRIMERA` = ?)) AND ((? = 1 AND `GEOP_PRIMERA` IS NULL) OR (`GEOP_PRIMERA` = ?)) "& _ 
+                "AND ((? = 1 AND `LATITUD_PRIMERA` IS NULL) OR (`LATITUD_PRIMERA` = ?)) AND ((? ="& _ 
+                " 1 AND `LONGITUD_PRIMERA` IS NULL) OR (`LONGITUD_PRIMERA` = ?)) AND ((? = 1 AND "& _ 
+                "`CAJA_CED_NAP` IS NULL) OR (`CAJA_CED_NAP` = ?)) AND ((? = 1 AND `CAJA_SEGUNDA` "& _ 
+                "IS NULL) OR (`CAJA_SEGUNDA` = ?)) AND ((? = 1 AND `SALIDA_SEGUNDA` IS NULL) OR ("& _ 
+                "`SALIDA_SEGUNDA` = ?)) AND ((? = 1 AND `GEOP_SEGUNDA` IS NULL) OR (`GEOP_SEGUNDA"& _ 
+                "` = ?)) AND ((? = 1 AND `LATITUD_SEGUNDA` IS NULL) OR (`LATITUD_SEGUNDA` = ?)) A"& _ 
+                "ND ((? = 1 AND `LONGITUD_SEGUNDA` IS NULL) OR (`LONGITUD_SEGUNDA` = ?)) AND ((? "& _ 
+                "= 1 AND `CERTIFICACION_FDH` IS NULL) OR (`CERTIFICACION_FDH` = ?)) AND ((? = 1 A"& _ 
+                "ND `CERTIFICACION_NAP` IS NULL) OR (`CERTIFICACION_NAP` = ?)) AND ((? = 1 AND `C"& _ 
+                "ARPETA_MDU` IS NULL) OR (`CARPETA_MDU` = ?)) AND ((? = 1 AND `ID_MDU` IS NULL) O"& _ 
+                "R (`ID_MDU` = ?)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("OLT", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "OLT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("PLACA_OLT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PLACA_OLT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("PUERTO_OLT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PUERTO_OLT", Global.System.Data.DataRowVersion.Current, false, Nothing))
@@ -6464,35 +5666,21 @@ Namespace FIBRADataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("GEOP_PRIMERA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "GEOP_PRIMERA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("LATITUD_PRIMERA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LATITUD_PRIMERA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("LONGITUD_PRIMERA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LONGITUD_PRIMERA", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CAJA_CED_NAP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_CED_NAP", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CAJA_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_SEGUNDA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("SALIDA_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SALIDA_SEGUNDA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("GEOP_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "GEOP_SEGUNDA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("LATITUD_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LATITUD_SEGUNDA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("LONGITUD_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LONGITUD_SEGUNDA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B1", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B1", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B2", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B2", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B3", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B3", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B4", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B4", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B5", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B5", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B6", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B6", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B7", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B7", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B8", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B8", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B9", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B9", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B10", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B10", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B11", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B11", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B12", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B12", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B13", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B13", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B14", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B14", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B15", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B15", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("B16", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B16", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CERTIFICACION_FDH", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CERTIFICACION_FDH", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CERTIFICACION_NAP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CERTIFICACION_NAP", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CARPETA_MDU", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CARPETA_MDU", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ZONA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CAJA_CED_NAP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_CED_NAP", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID_MDU", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_MDU", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_NODO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_NODO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ZONA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ZONA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_OLT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "OLT", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_OLT", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "OLT", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_PLACA_OLT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PLACA_OLT", Global.System.Data.DataRowVersion.Original, true, Nothing))
@@ -6523,6 +5711,8 @@ Namespace FIBRADataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_LATITUD_PRIMERA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LATITUD_PRIMERA", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_LONGITUD_PRIMERA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LONGITUD_PRIMERA", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_LONGITUD_PRIMERA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LONGITUD_PRIMERA", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CAJA_CED_NAP", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_CED_NAP", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CAJA_CED_NAP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_CED_NAP", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CAJA_SEGUNDA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_SEGUNDA", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CAJA_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_SEGUNDA", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_SALIDA_SEGUNDA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "SALIDA_SEGUNDA", Global.System.Data.DataRowVersion.Original, true, Nothing))
@@ -6533,50 +5723,12 @@ Namespace FIBRADataSetTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_LATITUD_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LATITUD_SEGUNDA", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_LONGITUD_SEGUNDA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LONGITUD_SEGUNDA", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_LONGITUD_SEGUNDA", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "LONGITUD_SEGUNDA", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B1", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B1", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B1", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B1", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B2", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B2", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B2", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B2", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B3", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B3", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B3", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B3", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B4", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B4", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B4", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B4", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B5", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B5", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B5", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B5", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B6", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B6", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B6", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B6", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B7", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B7", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B7", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B7", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B8", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B8", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B8", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B8", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B9", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B9", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B9", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B9", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B10", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B10", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B10", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B10", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B11", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B11", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B11", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B11", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B12", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B12", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B12", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B12", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B13", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B13", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B13", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B13", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B14", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B14", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B14", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B14", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B15", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B15", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B15", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B15", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_B16", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B16", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_B16", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "B16", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CERTIFICACION_FDH", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CERTIFICACION_FDH", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CERTIFICACION_FDH", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CERTIFICACION_FDH", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CERTIFICACION_NAP", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CERTIFICACION_NAP", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CERTIFICACION_NAP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CERTIFICACION_NAP", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CARPETA_MDU", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CARPETA_MDU", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CARPETA_MDU", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CARPETA_MDU", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_NODO", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_NODO", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ZONA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ZONA", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ZONA", Global.System.Data.DataRowVersion.Original, false, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_CAJA_CED_NAP", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_CED_NAP", Global.System.Data.DataRowVersion.Original, true, Nothing))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CAJA_CED_NAP", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_CED_NAP", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_ID_MDU", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_MDU", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_ID_MDU", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID_MDU", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
@@ -6594,75 +5746,45 @@ Namespace FIBRADataSetTableAdapters
             Me._commandCollection = New Global.System.Data.OleDb.OleDbCommand(6) {}
             Me._commandCollection(0) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, OLT, PLACA_OLT, PUERTO_OLT, ODF, BANDEJA_ODF, PUERTO_ODF, FIBRA_TRONCA"& _ 
-                "LHUB, CABLE_TRONCALHUB, CAJA_PRIMERA, SPLITTER_PRIMERA, SALIDAS_PRIMERA, NOMBRE_"& _ 
-                "SPL_PRIMERA, GEOP_PRIMERA, LATITUD_PRIMERA, LONGITUD_PRIMERA, CAJA_SEGUNDA, SALI"& _ 
-                "DA_SEGUNDA, GEOP_SEGUNDA, LATITUD_SEGUNDA, LONGITUD_SEGUNDA, B1, B2, B3, B4, B5,"& _ 
-                " B6, B7, B8, B9, B10, B11, B12, B13, B14, B15, B16, CERTIFICACION_FDH, CERTIFICA"& _ 
-                "CION_NAP, CARPETA_MDU, NODO, ZONA, CAJA_CED_NAP, ID_MDU FROM TRONCALES"
+            Me._commandCollection(0).CommandText = "SELECT ID, NODO, ZONA, OLT, PLACA_OLT, PUERTO_OLT, ODF, BANDEJA_ODF, PUERTO_ODF, "& _ 
+                "FIBRA_TRONCALHUB, CABLE_TRONCALHUB, CAJA_PRIMERA, SPLITTER_PRIMERA, SALIDAS_PRIM"& _ 
+                "ERA, NOMBRE_SPL_PRIMERA, GEOP_PRIMERA, LATITUD_PRIMERA, LONGITUD_PRIMERA, CAJA_C"& _ 
+                "ED_NAP, CAJA_SEGUNDA, SALIDA_SEGUNDA, GEOP_SEGUNDA, LATITUD_SEGUNDA, LONGITUD_SE"& _ 
+                "GUNDA, CERTIFICACION_FDH, CERTIFICACION_NAP, CARPETA_MDU, ID_MDU FROM TRONCALES"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT ID, OLT, PLACA_OLT, PUERTO_OLT, ODF, BANDEJA_ODF, PUERTO_ODF, FIBRA_TRONCA"& _ 
-                "LHUB, CABLE_TRONCALHUB, CAJA_PRIMERA, SPLITTER_PRIMERA, SALIDAS_PRIMERA, NOMBRE_"& _ 
-                "SPL_PRIMERA, GEOP_PRIMERA, LATITUD_PRIMERA, LONGITUD_PRIMERA, CAJA_SEGUNDA, SALI"& _ 
-                "DA_SEGUNDA, GEOP_SEGUNDA, LATITUD_SEGUNDA, LONGITUD_SEGUNDA, B1, B2, B3, B4, B5,"& _ 
-                " B6, B7, B8, B9, B10, B11, B12, B13, B14, B15, B16, CERTIFICACION_FDH, CERTIFICA"& _ 
-                "CION_NAP, CARPETA_MDU, NODO, ZONA, CAJA_CED_NAP, ID_MDU FROM TRONCALES WHERE (CA"& _ 
-                "JA_PRIMERA = ?)"
+            Me._commandCollection(1).CommandText = "SELECT * FROM TRONCALES WHERE (CAJA_PRIMERA = ?)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CAJA_PRIMERA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_PRIMERA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(2) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(2).Connection = Me.Connection
-            Me._commandCollection(2).CommandText = "SELECT ID, OLT, PLACA_OLT, PUERTO_OLT, ODF, BANDEJA_ODF, PUERTO_ODF, FIBRA_TRONCA"& _ 
-                "LHUB, CABLE_TRONCALHUB, CAJA_PRIMERA, SPLITTER_PRIMERA, SALIDAS_PRIMERA, NOMBRE_"& _ 
-                "SPL_PRIMERA, GEOP_PRIMERA, LATITUD_PRIMERA, LONGITUD_PRIMERA, CAJA_SEGUNDA, SALI"& _ 
-                "DA_SEGUNDA, GEOP_SEGUNDA, LATITUD_SEGUNDA, LONGITUD_SEGUNDA, B1, B2, B3, B4, B5,"& _ 
-                " B6, B7, B8, B9, B10, B11, B12, B13, B14, B15, B16, CERTIFICACION_FDH, CERTIFICA"& _ 
-                "CION_NAP, CARPETA_MDU, NODO, ZONA, CAJA_CED_NAP, ID_MDU FROM TRONCALES WHERE (CA"& _ 
-                "JA_SEGUNDA = ?)"
+            Me._commandCollection(2).CommandText = "SELECT * FROM TRONCALES WHERE (CAJA_SEGUNDA = ?)"
             Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(2).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CAJA_SEGUNDA", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CAJA_SEGUNDA", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(3) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(3).Connection = Me.Connection
-            Me._commandCollection(3).CommandText = "SELECT ID, OLT, PLACA_OLT, PUERTO_OLT, ODF, BANDEJA_ODF, PUERTO_ODF, FIBRA_TRONCA"& _ 
-                "LHUB, CABLE_TRONCALHUB, CAJA_PRIMERA, SPLITTER_PRIMERA, SALIDAS_PRIMERA, NOMBRE_"& _ 
-                "SPL_PRIMERA, GEOP_PRIMERA, LATITUD_PRIMERA, LONGITUD_PRIMERA, CAJA_SEGUNDA, SALI"& _ 
-                "DA_SEGUNDA, GEOP_SEGUNDA, LATITUD_SEGUNDA, LONGITUD_SEGUNDA, B1, B2, B3, B4, B5,"& _ 
-                " B6, B7, B8, B9, B10, B11, B12, B13, B14, B15, B16, CERTIFICACION_FDH, CERTIFICA"& _ 
-                "CION_NAP, CARPETA_MDU, NODO, ZONA, CAJA_CED_NAP, ID_MDU FROM TRONCALES WHERE (NO"& _ 
-                "DO = ?)"
+            Me._commandCollection(3).CommandText = "SELECT * FROM TRONCALES WHERE (NODO = ?)"
             Me._commandCollection(3).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(3).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("NODO", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NODO", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(4) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(4).Connection = Me.Connection
-            Me._commandCollection(4).CommandText = "SELECT ID, OLT, PLACA_OLT, PUERTO_OLT, ODF, BANDEJA_ODF, PUERTO_ODF, FIBRA_TRONCA"& _ 
-                "LHUB, CABLE_TRONCALHUB, CAJA_PRIMERA, SPLITTER_PRIMERA, SALIDAS_PRIMERA, NOMBRE_"& _ 
-                "SPL_PRIMERA, GEOP_PRIMERA, LATITUD_PRIMERA, LONGITUD_PRIMERA, CAJA_SEGUNDA, SALI"& _ 
-                "DA_SEGUNDA, GEOP_SEGUNDA, LATITUD_SEGUNDA, LONGITUD_SEGUNDA, B1, B2, B3, B4, B5,"& _ 
-                " B6, B7, B8, B9, B10, B11, B12, B13, B14, B15, B16, CERTIFICACION_FDH, CERTIFICA"& _ 
-                "CION_NAP, CARPETA_MDU, NODO, ZONA, CAJA_CED_NAP, ID_MDU FROM TRONCALES WHERE (OD"& _ 
-                "F = ?) AND (BANDEJA_ODF = ?) AND (PUERTO_ODF = ?)"
+            Me._commandCollection(4).CommandText = "SELECT * FROM TRONCALES WHERE (ODF = ?) AND (BANDEJA_ODF = ?) AND (PUERTO_ODF = ?"& _ 
+                ")"
             Me._commandCollection(4).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ODF", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ODF", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("BANDEJA_ODF", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "BANDEJA_ODF", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(4).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("PUERTO_ODF", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PUERTO_ODF", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(5) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(5).Connection = Me.Connection
-            Me._commandCollection(5).CommandText = "SELECT ID, NODO, ZONA, OLT, PLACA_OLT, PUERTO_OLT, ODF, BANDEJA_ODF, PUERTO_ODF, "& _ 
-                "FIBRA_TRONCALHUB, CABLE_TRONCALHUB, CAJA_PRIMERA, SPLITTER_PRIMERA, SALIDAS_PRIM"& _ 
-                "ERA, NOMBRE_SPL_PRIMERA, GEOP_PRIMERA, LATITUD_PRIMERA, LONGITUD_PRIMERA, CAJA_C"& _ 
-                "ED_NAP, CAJA_SEGUNDA, SALIDA_SEGUNDA, GEOP_SEGUNDA, LATITUD_SEGUNDA, LONGITUD_SE"& _ 
-                "GUNDA, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13, B14, B15, B16, CE"& _ 
-                "RTIFICACION_FDH, CERTIFICACION_NAP, CARPETA_MDU, ID_MDU FROM TRONCALES WHERE (OL"& _ 
-                "T = ?) AND (PLACA_OLT = ?) AND (PUERTO_OLT = ?)"
+            Me._commandCollection(5).CommandText = "SELECT * FROM TRONCALES WHERE (OLT = ?) AND (PLACA_OLT = ?) AND (PUERTO_OLT = ?)"
             Me._commandCollection(5).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("OLT", Global.System.Data.OleDb.OleDbType.WChar, 255, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "OLT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("PLACA_OLT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PLACA_OLT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(5).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("PUERTO_OLT", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "PUERTO_OLT", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(6) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(6).Connection = Me.Connection
-            Me._commandCollection(6).CommandText = "SELECT COUNT (*) FROM TRONCALES"
+            Me._commandCollection(6).CommandText = "SELECT MAX(ID) FROM TRONCALES"
             Me._commandCollection(6).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -6712,7 +5834,7 @@ Namespace FIBRADataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy2(ByVal CAJA_PRIMERA As String) As FIBRADataSet.TRONCALESDataTable
+        Public Overloads Overridable Function GetDataBy1(ByVal CAJA_PRIMERA As String) As FIBRADataSet.TRONCALESDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
             If (CAJA_PRIMERA Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -6780,7 +5902,7 @@ Namespace FIBRADataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy3(ByVal NODO As String) As FIBRADataSet.TRONCALESDataTable
+        Public Overloads Overridable Function GetDataBy2(ByVal NODO As String) As FIBRADataSet.TRONCALESDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(3)
             If (NODO Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -6824,7 +5946,7 @@ Namespace FIBRADataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy5(ByVal ODF As String, ByVal BANDEJA_ODF As Global.System.Nullable(Of Integer), ByVal PUERTO_ODF As Global.System.Nullable(Of Integer)) As FIBRADataSet.TRONCALESDataTable
+        Public Overloads Overridable Function GetDataBy3(ByVal ODF As String, ByVal BANDEJA_ODF As Global.System.Nullable(Of Integer), ByVal PUERTO_ODF As Global.System.Nullable(Of Integer)) As FIBRADataSet.TRONCALESDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(4)
             If (ODF Is Nothing) Then
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
@@ -6934,6 +6056,8 @@ Namespace FIBRADataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
         Public Overloads Overridable Function Delete( _
                     ByVal Original_ID As Integer,  _
+                    ByVal Original_NODO As String,  _
+                    ByVal Original_ZONA As Global.System.Nullable(Of Integer),  _
                     ByVal Original_OLT As String,  _
                     ByVal Original_PLACA_OLT As Global.System.Nullable(Of Integer),  _
                     ByVal Original_PUERTO_OLT As Global.System.Nullable(Of Integer),  _
@@ -6949,335 +6073,205 @@ Namespace FIBRADataSetTableAdapters
                     ByVal Original_GEOP_PRIMERA As String,  _
                     ByVal Original_LATITUD_PRIMERA As String,  _
                     ByVal Original_LONGITUD_PRIMERA As String,  _
+                    ByVal Original_CAJA_CED_NAP As String,  _
                     ByVal Original_CAJA_SEGUNDA As String,  _
                     ByVal Original_SALIDA_SEGUNDA As String,  _
                     ByVal Original_GEOP_SEGUNDA As String,  _
                     ByVal Original_LATITUD_SEGUNDA As String,  _
                     ByVal Original_LONGITUD_SEGUNDA As String,  _
-                    ByVal Original_B1 As String,  _
-                    ByVal Original_B2 As String,  _
-                    ByVal Original_B3 As String,  _
-                    ByVal Original_B4 As String,  _
-                    ByVal Original_B5 As String,  _
-                    ByVal Original_B6 As String,  _
-                    ByVal Original_B7 As String,  _
-                    ByVal Original_B8 As String,  _
-                    ByVal Original_B9 As String,  _
-                    ByVal Original_B10 As String,  _
-                    ByVal Original_B11 As String,  _
-                    ByVal Original_B12 As String,  _
-                    ByVal Original_B13 As String,  _
-                    ByVal Original_B14 As String,  _
-                    ByVal Original_B15 As String,  _
-                    ByVal Original_B16 As String,  _
                     ByVal Original_CERTIFICACION_FDH As String,  _
                     ByVal Original_CERTIFICACION_NAP As String,  _
                     ByVal Original_CARPETA_MDU As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_NODO As String,  _
-                    ByVal Original_ZONA As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_CAJA_CED_NAP As String,  _
                     ByVal Original_ID_MDU As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
-            If (Original_OLT Is Nothing) Then
+            If (Original_NODO Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_OLT,String)
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_NODO,String)
             End If
-            If (Original_PLACA_OLT.HasValue = true) Then
+            If (Original_ZONA.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(3).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_PLACA_OLT.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(4).Value = CType(Original_ZONA.Value,Integer)
             Else
                 Me.Adapter.DeleteCommand.Parameters(3).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
-            If (Original_PUERTO_OLT.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_PUERTO_OLT.Value,Integer)
-            Else
+            If (Original_OLT Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_OLT,String)
             End If
-            If (Original_ODF Is Nothing) Then
+            If (Original_PLACA_OLT.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_PLACA_OLT.Value,Integer)
+            Else
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_ODF,String)
             End If
-            If (Original_BANDEJA_ODF.HasValue = true) Then
+            If (Original_PUERTO_OLT.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_BANDEJA_ODF.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_PUERTO_OLT.Value,Integer)
             Else
                 Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
             End If
-            If (Original_PUERTO_ODF.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_PUERTO_ODF.Value,Integer)
-            Else
+            If (Original_ODF Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_ODF,String)
             End If
-            If (Original_FIBRA_TRONCALHUB Is Nothing) Then
+            If (Original_BANDEJA_ODF.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_BANDEJA_ODF.Value,Integer)
+            Else
                 Me.Adapter.DeleteCommand.Parameters(13).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(14).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(14).Value = CType(Original_FIBRA_TRONCALHUB,String)
             End If
-            If (Original_CABLE_TRONCALHUB Is Nothing) Then
+            If (Original_PUERTO_ODF.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_PUERTO_ODF.Value,Integer)
+            Else
                 Me.Adapter.DeleteCommand.Parameters(15).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(16).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(16).Value = CType(Original_CABLE_TRONCALHUB,String)
             End If
-            If (Original_CAJA_PRIMERA Is Nothing) Then
+            If (Original_FIBRA_TRONCALHUB Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(17).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(18).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_CAJA_PRIMERA,String)
+                Me.Adapter.DeleteCommand.Parameters(18).Value = CType(Original_FIBRA_TRONCALHUB,String)
             End If
-            If (Original_SPLITTER_PRIMERA Is Nothing) Then
+            If (Original_CABLE_TRONCALHUB Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(19).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(20).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_SPLITTER_PRIMERA,String)
+                Me.Adapter.DeleteCommand.Parameters(20).Value = CType(Original_CABLE_TRONCALHUB,String)
             End If
-            If (Original_SALIDAS_PRIMERA.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_SALIDAS_PRIMERA.Value,Integer)
-            Else
+            If (Original_CAJA_PRIMERA Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(21).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(22).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(21).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(22).Value = CType(Original_CAJA_PRIMERA,String)
             End If
-            If (Original_NOMBRE_SPL_PRIMERA Is Nothing) Then
+            If (Original_SPLITTER_PRIMERA Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(23).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(24).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_NOMBRE_SPL_PRIMERA,String)
+                Me.Adapter.DeleteCommand.Parameters(24).Value = CType(Original_SPLITTER_PRIMERA,String)
             End If
-            If (Original_GEOP_PRIMERA Is Nothing) Then
+            If (Original_SALIDAS_PRIMERA.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_SALIDAS_PRIMERA.Value,Integer)
+            Else
                 Me.Adapter.DeleteCommand.Parameters(25).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(26).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(26).Value = CType(Original_GEOP_PRIMERA,String)
             End If
-            If (Original_LATITUD_PRIMERA Is Nothing) Then
+            If (Original_NOMBRE_SPL_PRIMERA Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(27).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(28).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_LATITUD_PRIMERA,String)
+                Me.Adapter.DeleteCommand.Parameters(28).Value = CType(Original_NOMBRE_SPL_PRIMERA,String)
             End If
-            If (Original_LONGITUD_PRIMERA Is Nothing) Then
+            If (Original_GEOP_PRIMERA Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(29).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(30).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_LONGITUD_PRIMERA,String)
+                Me.Adapter.DeleteCommand.Parameters(30).Value = CType(Original_GEOP_PRIMERA,String)
             End If
-            If (Original_CAJA_SEGUNDA Is Nothing) Then
+            If (Original_LATITUD_PRIMERA Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(31).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(32).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_CAJA_SEGUNDA,String)
+                Me.Adapter.DeleteCommand.Parameters(32).Value = CType(Original_LATITUD_PRIMERA,String)
             End If
-            If (Original_SALIDA_SEGUNDA Is Nothing) Then
+            If (Original_LONGITUD_PRIMERA Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(33).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(34).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_SALIDA_SEGUNDA,String)
+                Me.Adapter.DeleteCommand.Parameters(34).Value = CType(Original_LONGITUD_PRIMERA,String)
             End If
-            If (Original_GEOP_SEGUNDA Is Nothing) Then
+            If (Original_CAJA_CED_NAP Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(35).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(36).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_GEOP_SEGUNDA,String)
+                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(Original_CAJA_CED_NAP,String)
             End If
-            If (Original_LATITUD_SEGUNDA Is Nothing) Then
+            If (Original_CAJA_SEGUNDA Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(37).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(38).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(37).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_LATITUD_SEGUNDA,String)
+                Me.Adapter.DeleteCommand.Parameters(38).Value = CType(Original_CAJA_SEGUNDA,String)
             End If
-            If (Original_LONGITUD_SEGUNDA Is Nothing) Then
+            If (Original_SALIDA_SEGUNDA Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(39).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(40).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(39).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(40).Value = CType(Original_LONGITUD_SEGUNDA,String)
+                Me.Adapter.DeleteCommand.Parameters(40).Value = CType(Original_SALIDA_SEGUNDA,String)
             End If
-            If (Original_B1 Is Nothing) Then
+            If (Original_GEOP_SEGUNDA Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(41).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(42).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(41).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(42).Value = CType(Original_B1,String)
+                Me.Adapter.DeleteCommand.Parameters(42).Value = CType(Original_GEOP_SEGUNDA,String)
             End If
-            If (Original_B2 Is Nothing) Then
+            If (Original_LATITUD_SEGUNDA Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(43).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(44).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(43).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(44).Value = CType(Original_B2,String)
+                Me.Adapter.DeleteCommand.Parameters(44).Value = CType(Original_LATITUD_SEGUNDA,String)
             End If
-            If (Original_B3 Is Nothing) Then
+            If (Original_LONGITUD_SEGUNDA Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(45).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(46).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(45).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(46).Value = CType(Original_B3,String)
+                Me.Adapter.DeleteCommand.Parameters(46).Value = CType(Original_LONGITUD_SEGUNDA,String)
             End If
-            If (Original_B4 Is Nothing) Then
+            If (Original_CERTIFICACION_FDH Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(47).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(48).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(47).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(48).Value = CType(Original_B4,String)
+                Me.Adapter.DeleteCommand.Parameters(48).Value = CType(Original_CERTIFICACION_FDH,String)
             End If
-            If (Original_B5 Is Nothing) Then
+            If (Original_CERTIFICACION_NAP Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(49).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(50).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.DeleteCommand.Parameters(49).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(50).Value = CType(Original_B5,String)
-            End If
-            If (Original_B6 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(51).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(52).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(51).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(52).Value = CType(Original_B6,String)
-            End If
-            If (Original_B7 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(53).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(54).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(53).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(54).Value = CType(Original_B7,String)
-            End If
-            If (Original_B8 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(55).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(56).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(55).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(56).Value = CType(Original_B8,String)
-            End If
-            If (Original_B9 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(57).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(58).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(57).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(58).Value = CType(Original_B9,String)
-            End If
-            If (Original_B10 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(59).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(60).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(59).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(60).Value = CType(Original_B10,String)
-            End If
-            If (Original_B11 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(61).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(62).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(61).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(62).Value = CType(Original_B11,String)
-            End If
-            If (Original_B12 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(63).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(64).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(63).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(64).Value = CType(Original_B12,String)
-            End If
-            If (Original_B13 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(65).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(66).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(65).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(66).Value = CType(Original_B13,String)
-            End If
-            If (Original_B14 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(67).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(68).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(67).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(68).Value = CType(Original_B14,String)
-            End If
-            If (Original_B15 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(69).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(70).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(69).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(70).Value = CType(Original_B15,String)
-            End If
-            If (Original_B16 Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(71).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(72).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(71).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(72).Value = CType(Original_B16,String)
-            End If
-            If (Original_CERTIFICACION_FDH Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(73).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(74).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(73).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(74).Value = CType(Original_CERTIFICACION_FDH,String)
-            End If
-            If (Original_CERTIFICACION_NAP Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(75).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(76).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(75).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(76).Value = CType(Original_CERTIFICACION_NAP,String)
+                Me.Adapter.DeleteCommand.Parameters(50).Value = CType(Original_CERTIFICACION_NAP,String)
             End If
             If (Original_CARPETA_MDU.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(77).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(78).Value = CType(Original_CARPETA_MDU.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(51).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(52).Value = CType(Original_CARPETA_MDU.Value,Integer)
             Else
-                Me.Adapter.DeleteCommand.Parameters(77).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(78).Value = Global.System.DBNull.Value
-            End If
-            If (Original_NODO Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(79).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(80).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(79).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(80).Value = CType(Original_NODO,String)
-            End If
-            If (Original_ZONA.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(81).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(82).Value = CType(Original_ZONA.Value,Integer)
-            Else
-                Me.Adapter.DeleteCommand.Parameters(81).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(82).Value = Global.System.DBNull.Value
-            End If
-            If (Original_CAJA_CED_NAP Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(83).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(84).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.DeleteCommand.Parameters(83).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(84).Value = CType(Original_CAJA_CED_NAP,String)
+                Me.Adapter.DeleteCommand.Parameters(51).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(52).Value = Global.System.DBNull.Value
             End If
             If (Original_ID_MDU.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(85).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(86).Value = CType(Original_ID_MDU.Value,Integer)
+                Me.Adapter.DeleteCommand.Parameters(53).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(54).Value = CType(Original_ID_MDU.Value,Integer)
             Else
-                Me.Adapter.DeleteCommand.Parameters(85).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(86).Value = Global.System.DBNull.Value
+                Me.Adapter.DeleteCommand.Parameters(53).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(54).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -7300,6 +6294,8 @@ Namespace FIBRADataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
         Public Overloads Overridable Function Insert( _
                     ByVal ID As Integer,  _
+                    ByVal NODO As String,  _
+                    ByVal ZONA As Global.System.Nullable(Of Integer),  _
                     ByVal OLT As String,  _
                     ByVal PLACA_OLT As Global.System.Nullable(Of Integer),  _
                     ByVal PUERTO_OLT As Global.System.Nullable(Of Integer),  _
@@ -7315,249 +6311,151 @@ Namespace FIBRADataSetTableAdapters
                     ByVal GEOP_PRIMERA As String,  _
                     ByVal LATITUD_PRIMERA As String,  _
                     ByVal LONGITUD_PRIMERA As String,  _
+                    ByVal CAJA_CED_NAP As String,  _
                     ByVal CAJA_SEGUNDA As String,  _
                     ByVal SALIDA_SEGUNDA As String,  _
                     ByVal GEOP_SEGUNDA As String,  _
                     ByVal LATITUD_SEGUNDA As String,  _
                     ByVal LONGITUD_SEGUNDA As String,  _
-                    ByVal B1 As String,  _
-                    ByVal B2 As String,  _
-                    ByVal B3 As String,  _
-                    ByVal B4 As String,  _
-                    ByVal B5 As String,  _
-                    ByVal B6 As String,  _
-                    ByVal B7 As String,  _
-                    ByVal B8 As String,  _
-                    ByVal B9 As String,  _
-                    ByVal B10 As String,  _
-                    ByVal B11 As String,  _
-                    ByVal B12 As String,  _
-                    ByVal B13 As String,  _
-                    ByVal B14 As String,  _
-                    ByVal B15 As String,  _
-                    ByVal B16 As String,  _
                     ByVal CERTIFICACION_FDH As String,  _
                     ByVal CERTIFICACION_NAP As String,  _
                     ByVal CARPETA_MDU As Global.System.Nullable(Of Integer),  _
-                    ByVal NODO As String,  _
-                    ByVal ZONA As Global.System.Nullable(Of Integer),  _
-                    ByVal CAJA_CED_NAP As String,  _
                     ByVal ID_MDU As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(ID,Integer)
-            If (OLT Is Nothing) Then
+            If (NODO Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(1).Value = CType(OLT,String)
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(NODO,String)
             End If
-            If (PLACA_OLT.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(2).Value = CType(PLACA_OLT.Value,Integer)
+            If (ZONA.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(2).Value = CType(ZONA.Value,Integer)
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (PUERTO_OLT.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(PUERTO_OLT.Value,Integer)
-            Else
+            If (OLT Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (ODF Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(ODF,String)
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(OLT,String)
             End If
-            If (BANDEJA_ODF.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(BANDEJA_ODF.Value,Integer)
+            If (PLACA_OLT.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(PLACA_OLT.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (PUERTO_OLT.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(PUERTO_OLT.Value,Integer)
             Else
                 Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (PUERTO_ODF.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(PUERTO_ODF.Value,Integer)
-            Else
+            If (ODF Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(ODF,String)
+            End If
+            If (BANDEJA_ODF.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(7).Value = CType(BANDEJA_ODF.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (PUERTO_ODF.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(PUERTO_ODF.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
             If (FIBRA_TRONCALHUB Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(7).Value = CType(FIBRA_TRONCALHUB,String)
-            End If
-            If (CABLE_TRONCALHUB Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(8).Value = CType(CABLE_TRONCALHUB,String)
-            End If
-            If (CAJA_PRIMERA Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(9).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(9).Value = CType(CAJA_PRIMERA,String)
+                Me.Adapter.InsertCommand.Parameters(9).Value = CType(FIBRA_TRONCALHUB,String)
             End If
-            If (SPLITTER_PRIMERA Is Nothing) Then
+            If (CABLE_TRONCALHUB Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(10).Value = CType(SPLITTER_PRIMERA,String)
+                Me.Adapter.InsertCommand.Parameters(10).Value = CType(CABLE_TRONCALHUB,String)
             End If
-            If (SALIDAS_PRIMERA.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(11).Value = CType(SALIDAS_PRIMERA.Value,Integer)
-            Else
+            If (CAJA_PRIMERA Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(11).Value = CType(CAJA_PRIMERA,String)
             End If
-            If (NOMBRE_SPL_PRIMERA Is Nothing) Then
+            If (SPLITTER_PRIMERA Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(12).Value = CType(NOMBRE_SPL_PRIMERA,String)
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(SPLITTER_PRIMERA,String)
             End If
-            If (GEOP_PRIMERA Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
+            If (SALIDAS_PRIMERA.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(13).Value = CType(SALIDAS_PRIMERA.Value,Integer)
             Else
-                Me.Adapter.InsertCommand.Parameters(13).Value = CType(GEOP_PRIMERA,String)
+                Me.Adapter.InsertCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
-            If (LATITUD_PRIMERA Is Nothing) Then
+            If (NOMBRE_SPL_PRIMERA Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(14).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(14).Value = CType(LATITUD_PRIMERA,String)
+                Me.Adapter.InsertCommand.Parameters(14).Value = CType(NOMBRE_SPL_PRIMERA,String)
             End If
-            If (LONGITUD_PRIMERA Is Nothing) Then
+            If (GEOP_PRIMERA Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(15).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(15).Value = CType(LONGITUD_PRIMERA,String)
+                Me.Adapter.InsertCommand.Parameters(15).Value = CType(GEOP_PRIMERA,String)
             End If
-            If (CAJA_SEGUNDA Is Nothing) Then
+            If (LATITUD_PRIMERA Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(16).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(16).Value = CType(CAJA_SEGUNDA,String)
+                Me.Adapter.InsertCommand.Parameters(16).Value = CType(LATITUD_PRIMERA,String)
             End If
-            If (SALIDA_SEGUNDA Is Nothing) Then
+            If (LONGITUD_PRIMERA Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(17).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(17).Value = CType(SALIDA_SEGUNDA,String)
-            End If
-            If (GEOP_SEGUNDA Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(18).Value = CType(GEOP_SEGUNDA,String)
-            End If
-            If (LATITUD_SEGUNDA Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(19).Value = CType(LATITUD_SEGUNDA,String)
-            End If
-            If (LONGITUD_SEGUNDA Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(20).Value = CType(LONGITUD_SEGUNDA,String)
-            End If
-            If (B1 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(21).Value = CType(B1,String)
-            End If
-            If (B2 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(22).Value = CType(B2,String)
-            End If
-            If (B3 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(23).Value = CType(B3,String)
-            End If
-            If (B4 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(24).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(24).Value = CType(B4,String)
-            End If
-            If (B5 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(25).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(25).Value = CType(B5,String)
-            End If
-            If (B6 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(26).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(26).Value = CType(B6,String)
-            End If
-            If (B7 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(27).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(27).Value = CType(B7,String)
-            End If
-            If (B8 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(28).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(28).Value = CType(B8,String)
-            End If
-            If (B9 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(29).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(29).Value = CType(B9,String)
-            End If
-            If (B10 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(30).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(30).Value = CType(B10,String)
-            End If
-            If (B11 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(31).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(31).Value = CType(B11,String)
-            End If
-            If (B12 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(32).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(32).Value = CType(B12,String)
-            End If
-            If (B13 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(33).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(33).Value = CType(B13,String)
-            End If
-            If (B14 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(34).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(34).Value = CType(B14,String)
-            End If
-            If (B15 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(35).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(35).Value = CType(B15,String)
-            End If
-            If (B16 Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(36).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(36).Value = CType(B16,String)
-            End If
-            If (CERTIFICACION_FDH Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(37).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(37).Value = CType(CERTIFICACION_FDH,String)
-            End If
-            If (CERTIFICACION_NAP Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(38).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(38).Value = CType(CERTIFICACION_NAP,String)
-            End If
-            If (CARPETA_MDU.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(39).Value = CType(CARPETA_MDU.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(39).Value = Global.System.DBNull.Value
-            End If
-            If (NODO Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(40).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.InsertCommand.Parameters(40).Value = CType(NODO,String)
-            End If
-            If (ZONA.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(41).Value = CType(ZONA.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(41).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(17).Value = CType(LONGITUD_PRIMERA,String)
             End If
             If (CAJA_CED_NAP Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(42).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(18).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(42).Value = CType(CAJA_CED_NAP,String)
+                Me.Adapter.InsertCommand.Parameters(18).Value = CType(CAJA_CED_NAP,String)
+            End If
+            If (CAJA_SEGUNDA Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(19).Value = CType(CAJA_SEGUNDA,String)
+            End If
+            If (SALIDA_SEGUNDA Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(20).Value = CType(SALIDA_SEGUNDA,String)
+            End If
+            If (GEOP_SEGUNDA Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(21).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(21).Value = CType(GEOP_SEGUNDA,String)
+            End If
+            If (LATITUD_SEGUNDA Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(22).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(22).Value = CType(LATITUD_SEGUNDA,String)
+            End If
+            If (LONGITUD_SEGUNDA Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(23).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(23).Value = CType(LONGITUD_SEGUNDA,String)
+            End If
+            If (CERTIFICACION_FDH Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(24).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(24).Value = CType(CERTIFICACION_FDH,String)
+            End If
+            If (CERTIFICACION_NAP Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(25).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(25).Value = CType(CERTIFICACION_NAP,String)
+            End If
+            If (CARPETA_MDU.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(26).Value = CType(CARPETA_MDU.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(26).Value = Global.System.DBNull.Value
             End If
             If (ID_MDU.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(43).Value = CType(ID_MDU.Value,Integer)
+                Me.Adapter.InsertCommand.Parameters(27).Value = CType(ID_MDU.Value,Integer)
             Else
-                Me.Adapter.InsertCommand.Parameters(43).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(27).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -7580,6 +6478,8 @@ Namespace FIBRADataSetTableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
         Public Overloads Overridable Function Update( _
                     ByVal ID As Integer,  _
+                    ByVal NODO As String,  _
+                    ByVal ZONA As Global.System.Nullable(Of Integer),  _
                     ByVal OLT As String,  _
                     ByVal PLACA_OLT As Global.System.Nullable(Of Integer),  _
                     ByVal PUERTO_OLT As Global.System.Nullable(Of Integer),  _
@@ -7595,35 +6495,19 @@ Namespace FIBRADataSetTableAdapters
                     ByVal GEOP_PRIMERA As String,  _
                     ByVal LATITUD_PRIMERA As String,  _
                     ByVal LONGITUD_PRIMERA As String,  _
+                    ByVal CAJA_CED_NAP As String,  _
                     ByVal CAJA_SEGUNDA As String,  _
                     ByVal SALIDA_SEGUNDA As String,  _
                     ByVal GEOP_SEGUNDA As String,  _
                     ByVal LATITUD_SEGUNDA As String,  _
                     ByVal LONGITUD_SEGUNDA As String,  _
-                    ByVal B1 As String,  _
-                    ByVal B2 As String,  _
-                    ByVal B3 As String,  _
-                    ByVal B4 As String,  _
-                    ByVal B5 As String,  _
-                    ByVal B6 As String,  _
-                    ByVal B7 As String,  _
-                    ByVal B8 As String,  _
-                    ByVal B9 As String,  _
-                    ByVal B10 As String,  _
-                    ByVal B11 As String,  _
-                    ByVal B12 As String,  _
-                    ByVal B13 As String,  _
-                    ByVal B14 As String,  _
-                    ByVal B15 As String,  _
-                    ByVal B16 As String,  _
                     ByVal CERTIFICACION_FDH As String,  _
                     ByVal CERTIFICACION_NAP As String,  _
                     ByVal CARPETA_MDU As Global.System.Nullable(Of Integer),  _
-                    ByVal NODO As String,  _
-                    ByVal ZONA As Global.System.Nullable(Of Integer),  _
-                    ByVal CAJA_CED_NAP As String,  _
                     ByVal ID_MDU As Global.System.Nullable(Of Integer),  _
                     ByVal Original_ID As Integer,  _
+                    ByVal Original_NODO As String,  _
+                    ByVal Original_ZONA As Global.System.Nullable(Of Integer),  _
                     ByVal Original_OLT As String,  _
                     ByVal Original_PLACA_OLT As Global.System.Nullable(Of Integer),  _
                     ByVal Original_PUERTO_OLT As Global.System.Nullable(Of Integer),  _
@@ -7639,551 +6523,341 @@ Namespace FIBRADataSetTableAdapters
                     ByVal Original_GEOP_PRIMERA As String,  _
                     ByVal Original_LATITUD_PRIMERA As String,  _
                     ByVal Original_LONGITUD_PRIMERA As String,  _
+                    ByVal Original_CAJA_CED_NAP As String,  _
                     ByVal Original_CAJA_SEGUNDA As String,  _
                     ByVal Original_SALIDA_SEGUNDA As String,  _
                     ByVal Original_GEOP_SEGUNDA As String,  _
                     ByVal Original_LATITUD_SEGUNDA As String,  _
                     ByVal Original_LONGITUD_SEGUNDA As String,  _
-                    ByVal Original_B1 As String,  _
-                    ByVal Original_B2 As String,  _
-                    ByVal Original_B3 As String,  _
-                    ByVal Original_B4 As String,  _
-                    ByVal Original_B5 As String,  _
-                    ByVal Original_B6 As String,  _
-                    ByVal Original_B7 As String,  _
-                    ByVal Original_B8 As String,  _
-                    ByVal Original_B9 As String,  _
-                    ByVal Original_B10 As String,  _
-                    ByVal Original_B11 As String,  _
-                    ByVal Original_B12 As String,  _
-                    ByVal Original_B13 As String,  _
-                    ByVal Original_B14 As String,  _
-                    ByVal Original_B15 As String,  _
-                    ByVal Original_B16 As String,  _
                     ByVal Original_CERTIFICACION_FDH As String,  _
                     ByVal Original_CERTIFICACION_NAP As String,  _
                     ByVal Original_CARPETA_MDU As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_NODO As String,  _
-                    ByVal Original_ZONA As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_CAJA_CED_NAP As String,  _
                     ByVal Original_ID_MDU As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.UpdateCommand.Parameters(0).Value = CType(ID,Integer)
-            If (OLT Is Nothing) Then
+            If (NODO Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(1).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(OLT,String)
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(NODO,String)
             End If
-            If (PLACA_OLT.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(PLACA_OLT.Value,Integer)
+            If (ZONA.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(2).Value = CType(ZONA.Value,Integer)
             Else
                 Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (PUERTO_OLT.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(PUERTO_OLT.Value,Integer)
-            Else
+            If (OLT Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
-            If (ODF Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(ODF,String)
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(OLT,String)
             End If
-            If (BANDEJA_ODF.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(BANDEJA_ODF.Value,Integer)
+            If (PLACA_OLT.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(PLACA_OLT.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+            End If
+            If (PUERTO_OLT.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(PUERTO_OLT.Value,Integer)
             Else
                 Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            If (PUERTO_ODF.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(PUERTO_ODF.Value,Integer)
-            Else
+            If (ODF Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(ODF,String)
+            End If
+            If (BANDEJA_ODF.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(BANDEJA_ODF.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+            End If
+            If (PUERTO_ODF.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(PUERTO_ODF.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
             If (FIBRA_TRONCALHUB Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(FIBRA_TRONCALHUB,String)
-            End If
-            If (CABLE_TRONCALHUB Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(CABLE_TRONCALHUB,String)
-            End If
-            If (CAJA_PRIMERA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(CAJA_PRIMERA,String)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(FIBRA_TRONCALHUB,String)
             End If
-            If (SPLITTER_PRIMERA Is Nothing) Then
+            If (CABLE_TRONCALHUB Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(SPLITTER_PRIMERA,String)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(CABLE_TRONCALHUB,String)
             End If
-            If (SALIDAS_PRIMERA.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(SALIDAS_PRIMERA.Value,Integer)
-            Else
+            If (CAJA_PRIMERA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(CAJA_PRIMERA,String)
             End If
-            If (NOMBRE_SPL_PRIMERA Is Nothing) Then
+            If (SPLITTER_PRIMERA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(NOMBRE_SPL_PRIMERA,String)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(SPLITTER_PRIMERA,String)
             End If
-            If (GEOP_PRIMERA Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+            If (SALIDAS_PRIMERA.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(SALIDAS_PRIMERA.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(GEOP_PRIMERA,String)
+                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
-            If (LATITUD_PRIMERA Is Nothing) Then
+            If (NOMBRE_SPL_PRIMERA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(LATITUD_PRIMERA,String)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(NOMBRE_SPL_PRIMERA,String)
             End If
-            If (LONGITUD_PRIMERA Is Nothing) Then
+            If (GEOP_PRIMERA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(LONGITUD_PRIMERA,String)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(GEOP_PRIMERA,String)
             End If
-            If (CAJA_SEGUNDA Is Nothing) Then
+            If (LATITUD_PRIMERA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(CAJA_SEGUNDA,String)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(LATITUD_PRIMERA,String)
             End If
-            If (SALIDA_SEGUNDA Is Nothing) Then
+            If (LONGITUD_PRIMERA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(SALIDA_SEGUNDA,String)
-            End If
-            If (GEOP_SEGUNDA Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(GEOP_SEGUNDA,String)
-            End If
-            If (LATITUD_SEGUNDA Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(LATITUD_SEGUNDA,String)
-            End If
-            If (LONGITUD_SEGUNDA Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(LONGITUD_SEGUNDA,String)
-            End If
-            If (B1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(B1,String)
-            End If
-            If (B2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(B2,String)
-            End If
-            If (B3 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(B3,String)
-            End If
-            If (B4 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(B4,String)
-            End If
-            If (B5 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(B5,String)
-            End If
-            If (B6 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(B6,String)
-            End If
-            If (B7 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(B7,String)
-            End If
-            If (B8 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(B8,String)
-            End If
-            If (B9 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(B9,String)
-            End If
-            If (B10 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(B10,String)
-            End If
-            If (B11 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(B11,String)
-            End If
-            If (B12 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(B12,String)
-            End If
-            If (B13 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(B13,String)
-            End If
-            If (B14 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(B14,String)
-            End If
-            If (B15 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(B15,String)
-            End If
-            If (B16 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(B16,String)
-            End If
-            If (CERTIFICACION_FDH Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(CERTIFICACION_FDH,String)
-            End If
-            If (CERTIFICACION_NAP Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(CERTIFICACION_NAP,String)
-            End If
-            If (CARPETA_MDU.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(CARPETA_MDU.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = Global.System.DBNull.Value
-            End If
-            If (NODO Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(NODO,String)
-            End If
-            If (ZONA.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(ZONA.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(LONGITUD_PRIMERA,String)
             End If
             If (CAJA_CED_NAP Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(CAJA_CED_NAP,String)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(CAJA_CED_NAP,String)
+            End If
+            If (CAJA_SEGUNDA Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(CAJA_SEGUNDA,String)
+            End If
+            If (SALIDA_SEGUNDA Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(SALIDA_SEGUNDA,String)
+            End If
+            If (GEOP_SEGUNDA Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(GEOP_SEGUNDA,String)
+            End If
+            If (LATITUD_SEGUNDA Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(LATITUD_SEGUNDA,String)
+            End If
+            If (LONGITUD_SEGUNDA Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(LONGITUD_SEGUNDA,String)
+            End If
+            If (CERTIFICACION_FDH Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(CERTIFICACION_FDH,String)
+            End If
+            If (CERTIFICACION_NAP Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(CERTIFICACION_NAP,String)
+            End If
+            If (CARPETA_MDU.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(CARPETA_MDU.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
             End If
             If (ID_MDU.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(ID_MDU.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(ID_MDU.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(43).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_ID,Integer)
+            Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_ID,Integer)
+            If (Original_NODO Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_NODO,String)
+            End If
+            If (Original_ZONA.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_ZONA.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+            End If
             If (Original_OLT Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_OLT,String)
+            End If
+            If (Original_PLACA_OLT.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_PLACA_OLT.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PUERTO_OLT.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_PUERTO_OLT.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
+            End If
+            If (Original_ODF Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_ODF,String)
+            End If
+            If (Original_BANDEJA_ODF.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_BANDEJA_ODF.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = Global.System.DBNull.Value
+            End If
+            If (Original_PUERTO_ODF.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_PUERTO_ODF.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = Global.System.DBNull.Value
+            End If
+            If (Original_FIBRA_TRONCALHUB Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(45).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(46).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(45).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_OLT,String)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_FIBRA_TRONCALHUB,String)
             End If
-            If (Original_PLACA_OLT.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_PLACA_OLT.Value,Integer)
-            Else
+            If (Original_CABLE_TRONCALHUB Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(47).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(48).Value = Global.System.DBNull.Value
-            End If
-            If (Original_PUERTO_OLT.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_PUERTO_OLT.Value,Integer)
             Else
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_CABLE_TRONCALHUB,String)
+            End If
+            If (Original_CAJA_PRIMERA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(49).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(50).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_CAJA_PRIMERA,String)
             End If
-            If (Original_ODF Is Nothing) Then
+            If (Original_SPLITTER_PRIMERA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(51).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(52).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(51).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_ODF,String)
+                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_SPLITTER_PRIMERA,String)
             End If
-            If (Original_BANDEJA_ODF.HasValue = true) Then
+            If (Original_SALIDAS_PRIMERA.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(53).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_BANDEJA_ODF.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_SALIDAS_PRIMERA.Value,Integer)
             Else
                 Me.Adapter.UpdateCommand.Parameters(53).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(54).Value = Global.System.DBNull.Value
             End If
-            If (Original_PUERTO_ODF.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_PUERTO_ODF.Value,Integer)
-            Else
+            If (Original_NOMBRE_SPL_PRIMERA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(55).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(56).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_NOMBRE_SPL_PRIMERA,String)
             End If
-            If (Original_FIBRA_TRONCALHUB Is Nothing) Then
+            If (Original_GEOP_PRIMERA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(57).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(58).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(57).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_FIBRA_TRONCALHUB,String)
+                Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_GEOP_PRIMERA,String)
             End If
-            If (Original_CABLE_TRONCALHUB Is Nothing) Then
+            If (Original_LATITUD_PRIMERA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(59).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(60).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(59).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_CABLE_TRONCALHUB,String)
+                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_LATITUD_PRIMERA,String)
             End If
-            If (Original_CAJA_PRIMERA Is Nothing) Then
+            If (Original_LONGITUD_PRIMERA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(61).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(62).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(61).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_CAJA_PRIMERA,String)
+                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_LONGITUD_PRIMERA,String)
             End If
-            If (Original_SPLITTER_PRIMERA Is Nothing) Then
+            If (Original_CAJA_CED_NAP Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(63).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(63).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_SPLITTER_PRIMERA,String)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_CAJA_CED_NAP,String)
             End If
-            If (Original_SALIDAS_PRIMERA.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_SALIDAS_PRIMERA.Value,Integer)
-            Else
+            If (Original_CAJA_SEGUNDA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(65).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_CAJA_SEGUNDA,String)
             End If
-            If (Original_NOMBRE_SPL_PRIMERA Is Nothing) Then
+            If (Original_SALIDA_SEGUNDA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(67).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(68).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(67).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_NOMBRE_SPL_PRIMERA,String)
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_SALIDA_SEGUNDA,String)
             End If
-            If (Original_GEOP_PRIMERA Is Nothing) Then
+            If (Original_GEOP_SEGUNDA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(69).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(70).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(69).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_GEOP_PRIMERA,String)
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_GEOP_SEGUNDA,String)
             End If
-            If (Original_LATITUD_PRIMERA Is Nothing) Then
+            If (Original_LATITUD_SEGUNDA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(71).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(72).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(71).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_LATITUD_PRIMERA,String)
+                Me.Adapter.UpdateCommand.Parameters(72).Value = CType(Original_LATITUD_SEGUNDA,String)
             End If
-            If (Original_LONGITUD_PRIMERA Is Nothing) Then
+            If (Original_LONGITUD_SEGUNDA Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(73).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(74).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(73).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Original_LONGITUD_PRIMERA,String)
+                Me.Adapter.UpdateCommand.Parameters(74).Value = CType(Original_LONGITUD_SEGUNDA,String)
             End If
-            If (Original_CAJA_SEGUNDA Is Nothing) Then
+            If (Original_CERTIFICACION_FDH Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(75).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(76).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(75).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Original_CAJA_SEGUNDA,String)
+                Me.Adapter.UpdateCommand.Parameters(76).Value = CType(Original_CERTIFICACION_FDH,String)
             End If
-            If (Original_SALIDA_SEGUNDA Is Nothing) Then
+            If (Original_CERTIFICACION_NAP Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(77).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(78).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.UpdateCommand.Parameters(77).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_SALIDA_SEGUNDA,String)
-            End If
-            If (Original_GEOP_SEGUNDA Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_GEOP_SEGUNDA,String)
-            End If
-            If (Original_LATITUD_SEGUNDA Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_LATITUD_SEGUNDA,String)
-            End If
-            If (Original_LONGITUD_SEGUNDA Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(84).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(83).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(84).Value = CType(Original_LONGITUD_SEGUNDA,String)
-            End If
-            If (Original_B1 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(86).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(85).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(86).Value = CType(Original_B1,String)
-            End If
-            If (Original_B2 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(88).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(87).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(88).Value = CType(Original_B2,String)
-            End If
-            If (Original_B3 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(90).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(89).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(90).Value = CType(Original_B3,String)
-            End If
-            If (Original_B4 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(92).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(91).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(92).Value = CType(Original_B4,String)
-            End If
-            If (Original_B5 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(93).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(94).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(93).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(94).Value = CType(Original_B5,String)
-            End If
-            If (Original_B6 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(95).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(96).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(95).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(96).Value = CType(Original_B6,String)
-            End If
-            If (Original_B7 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(97).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(98).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(97).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(98).Value = CType(Original_B7,String)
-            End If
-            If (Original_B8 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(99).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(100).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(99).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(100).Value = CType(Original_B8,String)
-            End If
-            If (Original_B9 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(101).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(102).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(101).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(102).Value = CType(Original_B9,String)
-            End If
-            If (Original_B10 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(103).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(104).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(103).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(104).Value = CType(Original_B10,String)
-            End If
-            If (Original_B11 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(105).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(106).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(105).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(106).Value = CType(Original_B11,String)
-            End If
-            If (Original_B12 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(107).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(108).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(107).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(108).Value = CType(Original_B12,String)
-            End If
-            If (Original_B13 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(109).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(110).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(109).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(110).Value = CType(Original_B13,String)
-            End If
-            If (Original_B14 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(111).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(112).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(111).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(112).Value = CType(Original_B14,String)
-            End If
-            If (Original_B15 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(113).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(114).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(113).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(114).Value = CType(Original_B15,String)
-            End If
-            If (Original_B16 Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(115).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(116).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(115).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(116).Value = CType(Original_B16,String)
-            End If
-            If (Original_CERTIFICACION_FDH Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(117).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(118).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(117).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(118).Value = CType(Original_CERTIFICACION_FDH,String)
-            End If
-            If (Original_CERTIFICACION_NAP Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(119).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(120).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(119).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(120).Value = CType(Original_CERTIFICACION_NAP,String)
+                Me.Adapter.UpdateCommand.Parameters(78).Value = CType(Original_CERTIFICACION_NAP,String)
             End If
             If (Original_CARPETA_MDU.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(121).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(122).Value = CType(Original_CARPETA_MDU.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(80).Value = CType(Original_CARPETA_MDU.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(121).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(122).Value = Global.System.DBNull.Value
-            End If
-            If (Original_NODO Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(123).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(124).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(123).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(124).Value = CType(Original_NODO,String)
-            End If
-            If (Original_ZONA.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(125).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(126).Value = CType(Original_ZONA.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(125).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(126).Value = Global.System.DBNull.Value
-            End If
-            If (Original_CAJA_CED_NAP Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(127).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(128).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.UpdateCommand.Parameters(127).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(128).Value = CType(Original_CAJA_CED_NAP,String)
+                Me.Adapter.UpdateCommand.Parameters(79).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(80).Value = Global.System.DBNull.Value
             End If
             If (Original_ID_MDU.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(129).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(130).Value = CType(Original_ID_MDU.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(82).Value = CType(Original_ID_MDU.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(129).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(130).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(81).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(82).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -8205,6 +6879,8 @@ Namespace FIBRADataSetTableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
         Public Overloads Overridable Function Update( _
+                    ByVal NODO As String,  _
+                    ByVal ZONA As Global.System.Nullable(Of Integer),  _
                     ByVal OLT As String,  _
                     ByVal PLACA_OLT As Global.System.Nullable(Of Integer),  _
                     ByVal PUERTO_OLT As Global.System.Nullable(Of Integer),  _
@@ -8220,35 +6896,19 @@ Namespace FIBRADataSetTableAdapters
                     ByVal GEOP_PRIMERA As String,  _
                     ByVal LATITUD_PRIMERA As String,  _
                     ByVal LONGITUD_PRIMERA As String,  _
+                    ByVal CAJA_CED_NAP As String,  _
                     ByVal CAJA_SEGUNDA As String,  _
                     ByVal SALIDA_SEGUNDA As String,  _
                     ByVal GEOP_SEGUNDA As String,  _
                     ByVal LATITUD_SEGUNDA As String,  _
                     ByVal LONGITUD_SEGUNDA As String,  _
-                    ByVal B1 As String,  _
-                    ByVal B2 As String,  _
-                    ByVal B3 As String,  _
-                    ByVal B4 As String,  _
-                    ByVal B5 As String,  _
-                    ByVal B6 As String,  _
-                    ByVal B7 As String,  _
-                    ByVal B8 As String,  _
-                    ByVal B9 As String,  _
-                    ByVal B10 As String,  _
-                    ByVal B11 As String,  _
-                    ByVal B12 As String,  _
-                    ByVal B13 As String,  _
-                    ByVal B14 As String,  _
-                    ByVal B15 As String,  _
-                    ByVal B16 As String,  _
                     ByVal CERTIFICACION_FDH As String,  _
                     ByVal CERTIFICACION_NAP As String,  _
                     ByVal CARPETA_MDU As Global.System.Nullable(Of Integer),  _
-                    ByVal NODO As String,  _
-                    ByVal ZONA As Global.System.Nullable(Of Integer),  _
-                    ByVal CAJA_CED_NAP As String,  _
                     ByVal ID_MDU As Global.System.Nullable(Of Integer),  _
                     ByVal Original_ID As Integer,  _
+                    ByVal Original_NODO As String,  _
+                    ByVal Original_ZONA As Global.System.Nullable(Of Integer),  _
                     ByVal Original_OLT As String,  _
                     ByVal Original_PLACA_OLT As Global.System.Nullable(Of Integer),  _
                     ByVal Original_PUERTO_OLT As Global.System.Nullable(Of Integer),  _
@@ -8264,35 +6924,17 @@ Namespace FIBRADataSetTableAdapters
                     ByVal Original_GEOP_PRIMERA As String,  _
                     ByVal Original_LATITUD_PRIMERA As String,  _
                     ByVal Original_LONGITUD_PRIMERA As String,  _
+                    ByVal Original_CAJA_CED_NAP As String,  _
                     ByVal Original_CAJA_SEGUNDA As String,  _
                     ByVal Original_SALIDA_SEGUNDA As String,  _
                     ByVal Original_GEOP_SEGUNDA As String,  _
                     ByVal Original_LATITUD_SEGUNDA As String,  _
                     ByVal Original_LONGITUD_SEGUNDA As String,  _
-                    ByVal Original_B1 As String,  _
-                    ByVal Original_B2 As String,  _
-                    ByVal Original_B3 As String,  _
-                    ByVal Original_B4 As String,  _
-                    ByVal Original_B5 As String,  _
-                    ByVal Original_B6 As String,  _
-                    ByVal Original_B7 As String,  _
-                    ByVal Original_B8 As String,  _
-                    ByVal Original_B9 As String,  _
-                    ByVal Original_B10 As String,  _
-                    ByVal Original_B11 As String,  _
-                    ByVal Original_B12 As String,  _
-                    ByVal Original_B13 As String,  _
-                    ByVal Original_B14 As String,  _
-                    ByVal Original_B15 As String,  _
-                    ByVal Original_B16 As String,  _
                     ByVal Original_CERTIFICACION_FDH As String,  _
                     ByVal Original_CERTIFICACION_NAP As String,  _
                     ByVal Original_CARPETA_MDU As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_NODO As String,  _
-                    ByVal Original_ZONA As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_CAJA_CED_NAP As String,  _
                     ByVal Original_ID_MDU As Global.System.Nullable(Of Integer)) As Integer
-            Return Me.Update(Original_ID, OLT, PLACA_OLT, PUERTO_OLT, ODF, BANDEJA_ODF, PUERTO_ODF, FIBRA_TRONCALHUB, CABLE_TRONCALHUB, CAJA_PRIMERA, SPLITTER_PRIMERA, SALIDAS_PRIMERA, NOMBRE_SPL_PRIMERA, GEOP_PRIMERA, LATITUD_PRIMERA, LONGITUD_PRIMERA, CAJA_SEGUNDA, SALIDA_SEGUNDA, GEOP_SEGUNDA, LATITUD_SEGUNDA, LONGITUD_SEGUNDA, B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, B13, B14, B15, B16, CERTIFICACION_FDH, CERTIFICACION_NAP, CARPETA_MDU, NODO, ZONA, CAJA_CED_NAP, ID_MDU, Original_ID, Original_OLT, Original_PLACA_OLT, Original_PUERTO_OLT, Original_ODF, Original_BANDEJA_ODF, Original_PUERTO_ODF, Original_FIBRA_TRONCALHUB, Original_CABLE_TRONCALHUB, Original_CAJA_PRIMERA, Original_SPLITTER_PRIMERA, Original_SALIDAS_PRIMERA, Original_NOMBRE_SPL_PRIMERA, Original_GEOP_PRIMERA, Original_LATITUD_PRIMERA, Original_LONGITUD_PRIMERA, Original_CAJA_SEGUNDA, Original_SALIDA_SEGUNDA, Original_GEOP_SEGUNDA, Original_LATITUD_SEGUNDA, Original_LONGITUD_SEGUNDA, Original_B1, Original_B2, Original_B3, Original_B4, Original_B5, Original_B6, Original_B7, Original_B8, Original_B9, Original_B10, Original_B11, Original_B12, Original_B13, Original_B14, Original_B15, Original_B16, Original_CERTIFICACION_FDH, Original_CERTIFICACION_NAP, Original_CARPETA_MDU, Original_NODO, Original_ZONA, Original_CAJA_CED_NAP, Original_ID_MDU)
+            Return Me.Update(Original_ID, NODO, ZONA, OLT, PLACA_OLT, PUERTO_OLT, ODF, BANDEJA_ODF, PUERTO_ODF, FIBRA_TRONCALHUB, CABLE_TRONCALHUB, CAJA_PRIMERA, SPLITTER_PRIMERA, SALIDAS_PRIMERA, NOMBRE_SPL_PRIMERA, GEOP_PRIMERA, LATITUD_PRIMERA, LONGITUD_PRIMERA, CAJA_CED_NAP, CAJA_SEGUNDA, SALIDA_SEGUNDA, GEOP_SEGUNDA, LATITUD_SEGUNDA, LONGITUD_SEGUNDA, CERTIFICACION_FDH, CERTIFICACION_NAP, CARPETA_MDU, ID_MDU, Original_ID, Original_NODO, Original_ZONA, Original_OLT, Original_PLACA_OLT, Original_PUERTO_OLT, Original_ODF, Original_BANDEJA_ODF, Original_PUERTO_ODF, Original_FIBRA_TRONCALHUB, Original_CABLE_TRONCALHUB, Original_CAJA_PRIMERA, Original_SPLITTER_PRIMERA, Original_SALIDAS_PRIMERA, Original_NOMBRE_SPL_PRIMERA, Original_GEOP_PRIMERA, Original_LATITUD_PRIMERA, Original_LONGITUD_PRIMERA, Original_CAJA_CED_NAP, Original_CAJA_SEGUNDA, Original_SALIDA_SEGUNDA, Original_GEOP_SEGUNDA, Original_LATITUD_SEGUNDA, Original_LONGITUD_SEGUNDA, Original_CERTIFICACION_FDH, Original_CERTIFICACION_NAP, Original_CARPETA_MDU, Original_ID_MDU)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

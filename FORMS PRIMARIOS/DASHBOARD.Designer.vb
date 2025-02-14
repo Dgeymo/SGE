@@ -27,7 +27,7 @@ Partial Class DASHBOARD
         Me.PanelTrabajo = New System.Windows.Forms.Panel()
         Me.DGVRESULT = New System.Windows.Forms.DataGridView()
         Me.BTN_MODIFICA = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.LBLCUENTA2 = New System.Windows.Forms.Label()
         Me.lblcuentas = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BTN_PASAR = New System.Windows.Forms.Button()
@@ -82,24 +82,17 @@ Partial Class DASHBOARD
         Me.BtnCerrar = New System.Windows.Forms.Button()
         Me.FechaAhora = New System.Windows.Forms.Label()
         Me.HoraAhora = New System.Windows.Forms.Label()
+        Me.USUARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.OPERACIONES_LOGDataSet = New REDES.OPERACIONES_LOGDataSet()
         Me.USUARIOSTableAdapter = New REDES.OPERACIONES_LOGDataSetTableAdapters.USUARIOSTableAdapter()
-        Me.TableAdapterManager = New REDES.OPERACIONES_LOGDataSetTableAdapters.TableAdapterManager()
         Me.INDICESDataSet = New REDES.INDICESDataSet()
         Me.CLIMABindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CLIMATableAdapter = New REDES.INDICESDataSetTableAdapters.CLIMATableAdapter()
-        Me.TableAdapterManager2 = New REDES.INDICESDataSetTableAdapters.TableAdapterManager()
-        Me.RELOJ_SEG = New System.Windows.Forms.Timer(Me.components)
-        Me.USUARIOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EDIFICIODataSet = New REDES.EDIFICIODataSet()
-        Me.FTTBTableAdapter = New REDES.EDIFICIODataSetTableAdapters.FTTBTableAdapter()
-        Me.TableAdapterManager3 = New REDES.EDIFICIODataSetTableAdapters.TableAdapterManager()
         Me.ORDENESDataSet = New REDES.ORDENESDataSet()
         Me.MENSAJERIATableAdapter = New REDES.ORDENESDataSetTableAdapters.MENSAJERIATableAdapter()
         Me.TRABAJOSTableAdapter = New REDES.ORDENESDataSetTableAdapters.TRABAJOSTableAdapter()
         Me.ORDENESTableAdapter = New REDES.ORDENESDataSetTableAdapters.ORDENESTableAdapter()
         Me.GESTIONTableAdapter = New REDES.ORDENESDataSetTableAdapters.GESTIONTableAdapter()
-        Me.TableAdapterManager1 = New REDES.ORDENESDataSetTableAdapters.TableAdapterManager()
         Me.HISTORICOTableAdapter = New REDES.ORDENESDataSetTableAdapters.HISTORICOTableAdapter()
         Me.OrdenesDataSet1 = New REDES.ORDENESDataSet()
         Me.MENSAJERIABindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -107,6 +100,21 @@ Partial Class DASHBOARD
         Me.ORDENESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GESTIONBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.HISTORICOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.INDICE_CALLESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BASEFUENTESDataSet = New REDES.BASEFUENTESDataSet()
+        Me.FUENTEBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FUENTETableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.FUENTETableAdapter()
+        Me.TableAdapterManager = New REDES.BASEFUENTESDataSetTableAdapters.TableAdapterManager()
+        Me.FECHA_BATERIATableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.FECHA_BATERIATableAdapter()
+        Me.TIPO_BATERIATableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.TIPO_BATERIATableAdapter()
+        Me.TIPO_FUENTETableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.TIPO_FUENTETableAdapter()
+        Me.TIPO_BATERIABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TIPO_FUENTEBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FECHA_BATERIABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.INDICE_CALLESBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.INDICE_CALLESTableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.INDICE_CALLESTableAdapter()
+        Me.EDIFICIODataSet = New REDES.EDIFICIODataSet()
+        Me.FTTBTableAdapter = New REDES.EDIFICIODataSetTableAdapters.FTTBTableAdapter()
         Me.FTTBBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MDUBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.MDUTableAdapter()
@@ -116,11 +124,10 @@ Partial Class DASHBOARD
         Me.PanelSuperior.SuspendLayout()
         Me.PanelSUPInterior.SuspendLayout()
         CType(Me.PIC_CLIMA, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.USUARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OPERACIONES_LOGDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INDICESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CLIMABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.USUARIOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OrdenesDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MENSAJERIABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -128,6 +135,14 @@ Partial Class DASHBOARD
         CType(Me.ORDENESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GESTIONBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.HISTORICOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.INDICE_CALLESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BASEFUENTESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FUENTEBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TIPO_BATERIABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TIPO_FUENTEBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FECHA_BATERIABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.INDICE_CALLESBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -138,7 +153,7 @@ Partial Class DASHBOARD
         Me.PanelTrabajo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PanelTrabajo.Controls.Add(Me.DGVRESULT)
         Me.PanelTrabajo.Controls.Add(Me.BTN_MODIFICA)
-        Me.PanelTrabajo.Controls.Add(Me.Label2)
+        Me.PanelTrabajo.Controls.Add(Me.LBLCUENTA2)
         Me.PanelTrabajo.Controls.Add(Me.lblcuentas)
         Me.PanelTrabajo.Controls.Add(Me.Label1)
         Me.PanelTrabajo.Controls.Add(Me.BTN_PASAR)
@@ -147,7 +162,7 @@ Partial Class DASHBOARD
         Me.PanelTrabajo.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelTrabajo.Location = New System.Drawing.Point(0, 27)
         Me.PanelTrabajo.Name = "PanelTrabajo"
-        Me.PanelTrabajo.Size = New System.Drawing.Size(1423, 694)
+        Me.PanelTrabajo.Size = New System.Drawing.Size(1950, 761)
         Me.PanelTrabajo.TabIndex = 4
         '
         'DGVRESULT
@@ -169,30 +184,30 @@ Partial Class DASHBOARD
         Me.BTN_MODIFICA.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_MODIFICA.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_MODIFICA.ForeColor = System.Drawing.Color.White
-        Me.BTN_MODIFICA.Location = New System.Drawing.Point(647, 501)
+        Me.BTN_MODIFICA.Location = New System.Drawing.Point(769, 559)
         Me.BTN_MODIFICA.Name = "BTN_MODIFICA"
         Me.BTN_MODIFICA.Size = New System.Drawing.Size(118, 46)
         Me.BTN_MODIFICA.TabIndex = 19
-        Me.BTN_MODIFICA.Text = "GEST"
+        Me.BTN_MODIFICA.Text = "FUENTE"
         Me.BTN_MODIFICA.UseVisualStyleBackColor = False
         Me.BTN_MODIFICA.Visible = False
         '
-        'Label2
+        'LBLCUENTA2
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.ForeColor = System.Drawing.Color.DarkGray
-        Me.Label2.Location = New System.Drawing.Point(660, 441)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(39, 13)
-        Me.Label2.TabIndex = 18
-        Me.Label2.Text = "Label2"
-        Me.Label2.Visible = False
+        Me.LBLCUENTA2.AutoSize = True
+        Me.LBLCUENTA2.ForeColor = System.Drawing.Color.DarkGray
+        Me.LBLCUENTA2.Location = New System.Drawing.Point(636, 468)
+        Me.LBLCUENTA2.Name = "LBLCUENTA2"
+        Me.LBLCUENTA2.Size = New System.Drawing.Size(39, 13)
+        Me.LBLCUENTA2.TabIndex = 18
+        Me.LBLCUENTA2.Text = "Label2"
+        Me.LBLCUENTA2.Visible = False
         '
         'lblcuentas
         '
         Me.lblcuentas.AutoSize = True
         Me.lblcuentas.ForeColor = System.Drawing.Color.DarkGray
-        Me.lblcuentas.Location = New System.Drawing.Point(519, 425)
+        Me.lblcuentas.Location = New System.Drawing.Point(636, 426)
         Me.lblcuentas.Name = "lblcuentas"
         Me.lblcuentas.Size = New System.Drawing.Size(39, 13)
         Me.lblcuentas.TabIndex = 17
@@ -206,11 +221,11 @@ Partial Class DASHBOARD
         Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(1297, 628)
+        Me.Label1.Location = New System.Drawing.Point(1824, 695)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(65, 13)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "VER: 3.7.15"
+        Me.Label1.Text = "VER: 3.7.25"
         '
         'BTN_PASAR
         '
@@ -222,7 +237,7 @@ Partial Class DASHBOARD
         Me.BTN_PASAR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_PASAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_PASAR.ForeColor = System.Drawing.Color.White
-        Me.BTN_PASAR.Location = New System.Drawing.Point(494, 501)
+        Me.BTN_PASAR.Location = New System.Drawing.Point(345, 568)
         Me.BTN_PASAR.Name = "BTN_PASAR"
         Me.BTN_PASAR.Size = New System.Drawing.Size(118, 46)
         Me.BTN_PASAR.TabIndex = 16
@@ -252,9 +267,9 @@ Partial Class DASHBOARD
         Me.PanelInferior.Controls.Add(Me.BTN_MDU)
         Me.PanelInferior.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.PanelInferior.ForeColor = System.Drawing.Color.White
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 654)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 721)
         Me.PanelInferior.Name = "PanelInferior"
-        Me.PanelInferior.Size = New System.Drawing.Size(1423, 40)
+        Me.PanelInferior.Size = New System.Drawing.Size(1950, 40)
         Me.PanelInferior.TabIndex = 1
         '
         'BTN_DATABASE
@@ -267,7 +282,7 @@ Partial Class DASHBOARD
         Me.BTN_DATABASE.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
         Me.BTN_DATABASE.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_DATABASE.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_DATABASE.Location = New System.Drawing.Point(1400, 1)
+        Me.BTN_DATABASE.Location = New System.Drawing.Point(1927, 1)
         Me.BTN_DATABASE.Name = "BTN_DATABASE"
         Me.BTN_DATABASE.Size = New System.Drawing.Size(20, 20)
         Me.BTN_DATABASE.TabIndex = 14
@@ -285,7 +300,7 @@ Partial Class DASHBOARD
         Me.BTN_BUSCADOR.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_BUSCADOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_BUSCADOR.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.BTN_BUSCADOR.Location = New System.Drawing.Point(823, 3)
+        Me.BTN_BUSCADOR.Location = New System.Drawing.Point(1087, 3)
         Me.BTN_BUSCADOR.Name = "BTN_BUSCADOR"
         Me.BTN_BUSCADOR.Size = New System.Drawing.Size(100, 33)
         Me.BTN_BUSCADOR.TabIndex = 15
@@ -303,7 +318,7 @@ Partial Class DASHBOARD
         Me.BTN_OBRAS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_OBRAS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_OBRAS.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.BTN_OBRAS.Location = New System.Drawing.Point(923, 3)
+        Me.BTN_OBRAS.Location = New System.Drawing.Point(1187, 3)
         Me.BTN_OBRAS.Name = "BTN_OBRAS"
         Me.BTN_OBRAS.Size = New System.Drawing.Size(100, 33)
         Me.BTN_OBRAS.TabIndex = 2
@@ -322,7 +337,7 @@ Partial Class DASHBOARD
         Me.BTN_BOT.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
         Me.BTN_BOT.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_BOT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_BOT.Location = New System.Drawing.Point(1269, 7)
+        Me.BTN_BOT.Location = New System.Drawing.Point(1533, 7)
         Me.BTN_BOT.Name = "BTN_BOT"
         Me.BTN_BOT.Size = New System.Drawing.Size(25, 25)
         Me.BTN_BOT.TabIndex = 14
@@ -375,7 +390,7 @@ Partial Class DASHBOARD
         Me.BTN_FTTB.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_FTTB.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_FTTB.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.BTN_FTTB.Location = New System.Drawing.Point(623, 3)
+        Me.BTN_FTTB.Location = New System.Drawing.Point(887, 3)
         Me.BTN_FTTB.Name = "BTN_FTTB"
         Me.BTN_FTTB.Size = New System.Drawing.Size(100, 33)
         Me.BTN_FTTB.TabIndex = 11
@@ -393,7 +408,7 @@ Partial Class DASHBOARD
         Me.BTN_Proceso.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
         Me.BTN_Proceso.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_Proceso.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_Proceso.Location = New System.Drawing.Point(1333, 7)
+        Me.BTN_Proceso.Location = New System.Drawing.Point(1597, 7)
         Me.BTN_Proceso.Name = "BTN_Proceso"
         Me.BTN_Proceso.Size = New System.Drawing.Size(25, 25)
         Me.BTN_Proceso.TabIndex = 8
@@ -410,7 +425,7 @@ Partial Class DASHBOARD
         Me.BTN_Usuario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
         Me.BTN_Usuario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_Usuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_Usuario.Location = New System.Drawing.Point(1364, 7)
+        Me.BTN_Usuario.Location = New System.Drawing.Point(1628, 7)
         Me.BTN_Usuario.Name = "BTN_Usuario"
         Me.BTN_Usuario.Size = New System.Drawing.Size(25, 25)
         Me.BTN_Usuario.TabIndex = 7
@@ -427,7 +442,7 @@ Partial Class DASHBOARD
         Me.BTN_AGENDA.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_AGENDA.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_AGENDA.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.BTN_AGENDA.Location = New System.Drawing.Point(40, 3)
+        Me.BTN_AGENDA.Location = New System.Drawing.Point(304, 3)
         Me.BTN_AGENDA.Name = "BTN_AGENDA"
         Me.BTN_AGENDA.Size = New System.Drawing.Size(100, 33)
         Me.BTN_AGENDA.TabIndex = 6
@@ -446,7 +461,7 @@ Partial Class DASHBOARD
         Me.BTN_ADMIN.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_ADMIN.ForeColor = System.Drawing.Color.White
         Me.BTN_ADMIN.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BTN_ADMIN.Location = New System.Drawing.Point(223, 3)
+        Me.BTN_ADMIN.Location = New System.Drawing.Point(487, 3)
         Me.BTN_ADMIN.Name = "BTN_ADMIN"
         Me.BTN_ADMIN.Size = New System.Drawing.Size(100, 33)
         Me.BTN_ADMIN.TabIndex = 12
@@ -464,7 +479,7 @@ Partial Class DASHBOARD
         Me.BTN_FUENTES.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_FUENTES.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_FUENTES.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.BTN_FUENTES.Location = New System.Drawing.Point(523, 3)
+        Me.BTN_FUENTES.Location = New System.Drawing.Point(787, 3)
         Me.BTN_FUENTES.Name = "BTN_FUENTES"
         Me.BTN_FUENTES.Size = New System.Drawing.Size(100, 33)
         Me.BTN_FUENTES.TabIndex = 9
@@ -482,7 +497,7 @@ Partial Class DASHBOARD
         Me.BtnPropiedades.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
         Me.BtnPropiedades.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BtnPropiedades.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnPropiedades.Location = New System.Drawing.Point(1300, 7)
+        Me.BtnPropiedades.Location = New System.Drawing.Point(1564, 7)
         Me.BtnPropiedades.Name = "BtnPropiedades"
         Me.BtnPropiedades.Size = New System.Drawing.Size(25, 25)
         Me.BtnPropiedades.TabIndex = 4
@@ -500,7 +515,7 @@ Partial Class DASHBOARD
         Me.BTN_DESPACHO.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_DESPACHO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_DESPACHO.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.BTN_DESPACHO.Location = New System.Drawing.Point(723, 3)
+        Me.BTN_DESPACHO.Location = New System.Drawing.Point(987, 3)
         Me.BTN_DESPACHO.Name = "BTN_DESPACHO"
         Me.BTN_DESPACHO.Size = New System.Drawing.Size(100, 33)
         Me.BTN_DESPACHO.TabIndex = 5
@@ -519,7 +534,7 @@ Partial Class DASHBOARD
         Me.BTN_RED.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_RED.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_RED.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.BTN_RED.Location = New System.Drawing.Point(423, 3)
+        Me.BTN_RED.Location = New System.Drawing.Point(687, 3)
         Me.BTN_RED.Name = "BTN_RED"
         Me.BTN_RED.Size = New System.Drawing.Size(100, 33)
         Me.BTN_RED.TabIndex = 3
@@ -537,7 +552,7 @@ Partial Class DASHBOARD
         Me.BTN_MDU.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_MDU.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_MDU.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.BTN_MDU.Location = New System.Drawing.Point(323, 3)
+        Me.BTN_MDU.Location = New System.Drawing.Point(587, 3)
         Me.BTN_MDU.Name = "BTN_MDU"
         Me.BTN_MDU.Size = New System.Drawing.Size(100, 33)
         Me.BTN_MDU.TabIndex = 4
@@ -554,7 +569,7 @@ Partial Class DASHBOARD
         Me.BTN_Directorio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
         Me.BTN_Directorio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.BTN_Directorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BTN_Directorio.Location = New System.Drawing.Point(1386, 586)
+        Me.BTN_Directorio.Location = New System.Drawing.Point(1913, 619)
         Me.BTN_Directorio.Name = "BTN_Directorio"
         Me.BTN_Directorio.Size = New System.Drawing.Size(36, 25)
         Me.BTN_Directorio.TabIndex = 13
@@ -564,7 +579,7 @@ Partial Class DASHBOARD
         '
         'RELOJ
         '
-        Me.RELOJ.Interval = 60000
+        Me.RELOJ.Interval = 3600000
         '
         'OpenFileDialogINGRESO
         '
@@ -585,7 +600,7 @@ Partial Class DASHBOARD
         Me.PanelSuperior.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelSuperior.Location = New System.Drawing.Point(0, 0)
         Me.PanelSuperior.Name = "PanelSuperior"
-        Me.PanelSuperior.Size = New System.Drawing.Size(1423, 27)
+        Me.PanelSuperior.Size = New System.Drawing.Size(1950, 27)
         Me.PanelSuperior.TabIndex = 3
         '
         'PanelSUPInterior
@@ -1043,7 +1058,7 @@ Partial Class DASHBOARD
         Me.BTN_HAND.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_HAND.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTN_HAND.ForeColor = System.Drawing.Color.White
-        Me.BTN_HAND.Location = New System.Drawing.Point(1300, 2)
+        Me.BTN_HAND.Location = New System.Drawing.Point(1827, 2)
         Me.BTN_HAND.Name = "BTN_HAND"
         Me.BTN_HAND.Size = New System.Drawing.Size(23, 23)
         Me.BTN_HAND.TabIndex = 15
@@ -1066,7 +1081,7 @@ Partial Class DASHBOARD
         Me.LBL_TEMP.BackColor = System.Drawing.Color.Transparent
         Me.LBL_TEMP.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LBL_TEMP.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.LBL_TEMP.Location = New System.Drawing.Point(1016, 4)
+        Me.LBL_TEMP.Location = New System.Drawing.Point(1543, 4)
         Me.LBL_TEMP.Name = "LBL_TEMP"
         Me.LBL_TEMP.Size = New System.Drawing.Size(0, 17)
         Me.LBL_TEMP.TabIndex = 13
@@ -1084,7 +1099,7 @@ Partial Class DASHBOARD
         Me.BtnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnMinimizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnMinimizar.ForeColor = System.Drawing.Color.White
-        Me.BtnMinimizar.Location = New System.Drawing.Point(1333, 2)
+        Me.BtnMinimizar.Location = New System.Drawing.Point(1860, 2)
         Me.BtnMinimizar.Name = "BtnMinimizar"
         Me.BtnMinimizar.Size = New System.Drawing.Size(23, 23)
         Me.BtnMinimizar.TabIndex = 8
@@ -1103,7 +1118,7 @@ Partial Class DASHBOARD
         Me.BtnFull.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnFull.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnFull.ForeColor = System.Drawing.Color.White
-        Me.BtnFull.Location = New System.Drawing.Point(1363, 2)
+        Me.BtnFull.Location = New System.Drawing.Point(1890, 2)
         Me.BtnFull.Name = "BtnFull"
         Me.BtnFull.Size = New System.Drawing.Size(23, 23)
         Me.BtnFull.TabIndex = 7
@@ -1122,7 +1137,7 @@ Partial Class DASHBOARD
         Me.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnCerrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnCerrar.ForeColor = System.Drawing.Color.White
-        Me.BtnCerrar.Location = New System.Drawing.Point(1394, 2)
+        Me.BtnCerrar.Location = New System.Drawing.Point(1921, 2)
         Me.BtnCerrar.Name = "BtnCerrar"
         Me.BtnCerrar.Size = New System.Drawing.Size(23, 23)
         Me.BtnCerrar.TabIndex = 0
@@ -1135,7 +1150,7 @@ Partial Class DASHBOARD
         Me.FechaAhora.BackColor = System.Drawing.Color.Transparent
         Me.FechaAhora.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FechaAhora.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.FechaAhora.Location = New System.Drawing.Point(1237, 4)
+        Me.FechaAhora.Location = New System.Drawing.Point(1764, 4)
         Me.FechaAhora.Name = "FechaAhora"
         Me.FechaAhora.Size = New System.Drawing.Size(17, 17)
         Me.FechaAhora.TabIndex = 6
@@ -1148,11 +1163,15 @@ Partial Class DASHBOARD
         Me.HoraAhora.BackColor = System.Drawing.Color.Transparent
         Me.HoraAhora.Font = New System.Drawing.Font("Verdana", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.HoraAhora.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.HoraAhora.Location = New System.Drawing.Point(1172, 4)
+        Me.HoraAhora.Location = New System.Drawing.Point(1699, 4)
         Me.HoraAhora.Name = "HoraAhora"
         Me.HoraAhora.Size = New System.Drawing.Size(17, 17)
         Me.HoraAhora.TabIndex = 5
         Me.HoraAhora.Text = "*"
+        '
+        'USUARIOSBindingSource
+        '
+        Me.USUARIOSBindingSource.DataMember = "USUARIOS"
         '
         'OPERACIONES_LOGDataSet
         '
@@ -1162,12 +1181,6 @@ Partial Class DASHBOARD
         'USUARIOSTableAdapter
         '
         Me.USUARIOSTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.UpdateOrder = REDES.OPERACIONES_LOGDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        Me.TableAdapterManager.USUARIOSTableAdapter = Me.USUARIOSTableAdapter
         '
         'INDICESDataSet
         '
@@ -1182,66 +1195,6 @@ Partial Class DASHBOARD
         'CLIMATableAdapter
         '
         Me.CLIMATableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager2
-        '
-        Me.TableAdapterManager2.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager2.CLIMATableAdapter = Nothing
-        Me.TableAdapterManager2.Connection = Nothing
-        Me.TableAdapterManager2.GUARDIASTableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_CALLESTableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_CAUSASTableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_DIAGNOSTICOTableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_FALLASTableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_FRECUENCIASTableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_MEDIDORTableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_PUNTOMEDIDATableAdapter = Nothing
-        Me.TableAdapterManager2.INDICE_TIPOMEDIDATableAdapter = Nothing
-        Me.TableAdapterManager2.MAT_ACTIVOSTableAdapter = Nothing
-        Me.TableAdapterManager2.MAT_CONSOLIDADOTableAdapter = Nothing
-        Me.TableAdapterManager2.MAT_CONSUMOSXMESTableAdapter = Nothing
-        Me.TableAdapterManager2.MAT_INFORMETableAdapter = Nothing
-        Me.TableAdapterManager2.MAT_STOCKTableAdapter = Nothing
-        Me.TableAdapterManager2.MAT_TRANSITOTableAdapter = Nothing
-        Me.TableAdapterManager2.ORDINALESTableAdapter = Nothing
-        Me.TableAdapterManager2.PLANOSTableAdapter = Nothing
-        Me.TableAdapterManager2.TecnicosTableAdapter = Nothing
-        Me.TableAdapterManager2.UpdateOrder = REDES.INDICESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'USUARIOSBindingSource
-        '
-        Me.USUARIOSBindingSource.DataMember = "USUARIOS"
-        '
-        'EDIFICIODataSet
-        '
-        Me.EDIFICIODataSet.DataSetName = "EDIFICIODataSet"
-        Me.EDIFICIODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'FTTBTableAdapter
-        '
-        Me.FTTBTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager3
-        '
-        Me.TableAdapterManager3.AGENDATableAdapter = Nothing
-        Me.TableAdapterManager3.ARTICULOTableAdapter = Nothing
-        Me.TableAdapterManager3.AVANCETableAdapter = Nothing
-        Me.TableAdapterManager3.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager3.BITACORATableAdapter = Nothing
-        Me.TableAdapterManager3.CABLESTableAdapter = Nothing
-        Me.TableAdapterManager3.CALLESTableAdapter = Nothing
-        Me.TableAdapterManager3.CERTIFICACIONESTableAdapter = Nothing
-        Me.TableAdapterManager3.COLORESTableAdapter = Nothing
-        Me.TableAdapterManager3.Connection = Nothing
-        Me.TableAdapterManager3.FTTBTableAdapter = Nothing
-        Me.TableAdapterManager3.INGRESOTableAdapter = Nothing
-        Me.TableAdapterManager3.MDUTableAdapter = Nothing
-        Me.TableAdapterManager3.OBS_MDUTableAdapter = Nothing
-        Me.TableAdapterManager3.STATUSTableAdapter = Nothing
-        Me.TableAdapterManager3.TECNICOSTableAdapter = Nothing
-        Me.TableAdapterManager3.TRONCALESTableAdapter = Nothing
-        Me.TableAdapterManager3.TURNOSTableAdapter = Nothing
-        Me.TableAdapterManager3.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'ORDENESDataSet
         '
@@ -1263,42 +1216,6 @@ Partial Class DASHBOARD
         'GESTIONTableAdapter
         '
         Me.GESTIONTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager1
-        '
-        Me.TableAdapterManager1.ACTIVIDADESSTDTableAdapter = Nothing
-        Me.TableAdapterManager1.ADJUNTOSTableAdapter = Nothing
-        Me.TableAdapterManager1.AFECTACIONTableAdapter = Nothing
-        Me.TableAdapterManager1.AREASTableAdapter = Nothing
-        Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager1.CAUSASTableAdapter = Nothing
-        Me.TableAdapterManager1.COMBOSTableAdapter = Nothing
-        Me.TableAdapterManager1.Connection = Nothing
-        Me.TableAdapterManager1.CREAR_ORDTableAdapter = Nothing
-        Me.TableAdapterManager1.FALLASTableAdapter = Nothing
-        Me.TableAdapterManager1.FUNCIONARIOSTableAdapter = Nothing
-        Me.TableAdapterManager1.GESTIONES_TIPOTableAdapter = Nothing
-        Me.TableAdapterManager1.GESTIONTableAdapter = Nothing
-        Me.TableAdapterManager1.GRAF_ORDINALESTableAdapter = Nothing
-        Me.TableAdapterManager1.GRAF_REDESTableAdapter = Nothing
-        Me.TableAdapterManager1.HISTORICOTableAdapter = Nothing
-        Me.TableAdapterManager1.INFORMMEMDU_PERMISORTableAdapter = Nothing
-        Me.TableAdapterManager1.MENSAJERIA_OLDTableAdapter = Nothing
-        Me.TableAdapterManager1.MENSAJERIATableAdapter = Nothing
-        Me.TableAdapterManager1.OBESERVACIONESTableAdapter = Nothing
-        Me.TableAdapterManager1.ORDENESTableAdapter = Nothing
-        Me.TableAdapterManager1.PRESUPUESTOTableAdapter = Nothing
-        Me.TableAdapterManager1.RELACION_FALLAACTIVIDADTableAdapter = Nothing
-        Me.TableAdapterManager1.REPORTEORDINALESTableAdapter = Nothing
-        Me.TableAdapterManager1.SECTORESTableAdapter = Nothing
-        Me.TableAdapterManager1.SECTORFALLATableAdapter = Nothing
-        Me.TableAdapterManager1.STANDARDTableAdapter = Nothing
-        Me.TableAdapterManager1.STATUSTableAdapter = Nothing
-        Me.TableAdapterManager1.TAREASSTDTableAdapter = Nothing
-        Me.TableAdapterManager1.TAREASTableAdapter = Nothing
-        Me.TableAdapterManager1.TIPOTableAdapter = Nothing
-        Me.TableAdapterManager1.TRABAJOSTableAdapter = Nothing
-        Me.TableAdapterManager1.UpdateOrder = REDES.ORDENESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'HISTORICOTableAdapter
         '
@@ -1334,6 +1251,77 @@ Partial Class DASHBOARD
         Me.HISTORICOBindingSource.DataMember = "HISTORICO"
         Me.HISTORICOBindingSource.DataSource = Me.ORDENESDataSet
         '
+        'BASEFUENTESDataSet
+        '
+        Me.BASEFUENTESDataSet.DataSetName = "BASEFUENTESDataSet"
+        Me.BASEFUENTESDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'FUENTEBindingSource
+        '
+        Me.FUENTEBindingSource.DataMember = "FUENTE"
+        Me.FUENTEBindingSource.DataSource = Me.BASEFUENTESDataSet
+        '
+        'FUENTETableAdapter
+        '
+        Me.FUENTETableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.FECHA_BATERIATableAdapter = Me.FECHA_BATERIATableAdapter
+        Me.TableAdapterManager.FUENTETableAdapter = Me.FUENTETableAdapter
+        Me.TableAdapterManager.INDICE_CALLESTableAdapter = Nothing
+        Me.TableAdapterManager.INSTALACIONTableAdapter = Nothing
+        Me.TableAdapterManager.NRONODOSTableAdapter = Nothing
+        Me.TableAdapterManager.TIPO_BATERIATableAdapter = Me.TIPO_BATERIATableAdapter
+        Me.TableAdapterManager.TIPO_FUENTETableAdapter = Me.TIPO_FUENTETableAdapter
+        Me.TableAdapterManager.UpdateOrder = REDES.BASEFUENTESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'FECHA_BATERIATableAdapter
+        '
+        Me.FECHA_BATERIATableAdapter.ClearBeforeFill = True
+        '
+        'TIPO_BATERIATableAdapter
+        '
+        Me.TIPO_BATERIATableAdapter.ClearBeforeFill = True
+        '
+        'TIPO_FUENTETableAdapter
+        '
+        Me.TIPO_FUENTETableAdapter.ClearBeforeFill = True
+        '
+        'TIPO_BATERIABindingSource
+        '
+        Me.TIPO_BATERIABindingSource.DataMember = "TIPO_BATERIA"
+        Me.TIPO_BATERIABindingSource.DataSource = Me.BASEFUENTESDataSet
+        '
+        'TIPO_FUENTEBindingSource
+        '
+        Me.TIPO_FUENTEBindingSource.DataMember = "TIPO_FUENTE"
+        Me.TIPO_FUENTEBindingSource.DataSource = Me.BASEFUENTESDataSet
+        '
+        'FECHA_BATERIABindingSource
+        '
+        Me.FECHA_BATERIABindingSource.DataMember = "FECHA_BATERIA"
+        Me.FECHA_BATERIABindingSource.DataSource = Me.BASEFUENTESDataSet
+        '
+        'INDICE_CALLESBindingSource1
+        '
+        Me.INDICE_CALLESBindingSource1.DataMember = "INDICE_CALLES"
+        Me.INDICE_CALLESBindingSource1.DataSource = Me.BASEFUENTESDataSet
+        '
+        'INDICE_CALLESTableAdapter
+        '
+        Me.INDICE_CALLESTableAdapter.ClearBeforeFill = True
+        '
+        'EDIFICIODataSet
+        '
+        Me.EDIFICIODataSet.DataSetName = "EDIFICIODataSet"
+        Me.EDIFICIODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'FTTBTableAdapter
+        '
+        Me.FTTBTableAdapter.ClearBeforeFill = True
+        '
         'FTTBBindingSource
         '
         Me.FTTBBindingSource.DataMember = "FTTB"
@@ -1352,9 +1340,10 @@ Partial Class DASHBOARD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.Black
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(1423, 721)
+        Me.ClientSize = New System.Drawing.Size(1950, 788)
         Me.ControlBox = False
         Me.Controls.Add(Me.PanelTrabajo)
         Me.Controls.Add(Me.PanelSuperior)
@@ -1373,11 +1362,10 @@ Partial Class DASHBOARD
         Me.PanelSuperior.PerformLayout()
         Me.PanelSUPInterior.ResumeLayout(False)
         CType(Me.PIC_CLIMA, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.USUARIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OPERACIONES_LOGDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INDICESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CLIMABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.USUARIOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OrdenesDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MENSAJERIABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1385,6 +1373,14 @@ Partial Class DASHBOARD
         CType(Me.ORDENESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GESTIONBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.HISTORICOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.INDICE_CALLESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BASEFUENTESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FUENTEBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TIPO_BATERIABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TIPO_FUENTEBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FECHA_BATERIABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.INDICE_CALLESBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -1436,11 +1432,9 @@ Partial Class DASHBOARD
     Friend WithEvents PanelSuperior As Panel
     Friend WithEvents OPERACIONES_LOGDataSet As OPERACIONES_LOGDataSet
     Friend WithEvents USUARIOSTableAdapter As OPERACIONES_LOGDataSetTableAdapters.USUARIOSTableAdapter
-    Friend WithEvents TableAdapterManager As OPERACIONES_LOGDataSetTableAdapters.TableAdapterManager
     Friend WithEvents ORDENESDataSet As ORDENESDataSet
     Friend WithEvents MENSAJERIABindingSource As BindingSource
     Friend WithEvents MENSAJERIATableAdapter As ORDENESDataSetTableAdapters.MENSAJERIATableAdapter
-    Friend WithEvents TableAdapterManager1 As ORDENESDataSetTableAdapters.TableAdapterManager
     Friend WithEvents TRABAJOSBindingSource As BindingSource
     Friend WithEvents TRABAJOSTableAdapter As ORDENESDataSetTableAdapters.TRABAJOSTableAdapter
     Friend WithEvents ORDENESBindingSource As BindingSource
@@ -1451,7 +1445,6 @@ Partial Class DASHBOARD
     Friend WithEvents INDICESDataSet As INDICESDataSet
     Friend WithEvents CLIMABindingSource As BindingSource
     Friend WithEvents CLIMATableAdapter As INDICESDataSetTableAdapters.CLIMATableAdapter
-    Friend WithEvents TableAdapterManager2 As INDICESDataSetTableAdapters.TableAdapterManager
     Friend WithEvents LBL_TEMP As Label
     Friend WithEvents BTN_MISGestiones As Button
     Friend WithEvents FolderBrowserDialogINGRESO As FolderBrowserDialog
@@ -1460,21 +1453,33 @@ Partial Class DASHBOARD
     Friend WithEvents Label1 As Label
     Friend WithEvents BTN_BUSCADOR As Button
     Friend WithEvents BTN_DATABASE As Button
-    Friend WithEvents RELOJ_SEG As Timer
     Friend WithEvents PIC_CLIMA As PictureBox
     Friend WithEvents BTN_HAND As Button
     Friend WithEvents BTN_PASAR As Button
     Friend WithEvents EDIFICIODataSet As EDIFICIODataSet
     Friend WithEvents FTTBBindingSource As BindingSource
     Friend WithEvents FTTBTableAdapter As EDIFICIODataSetTableAdapters.FTTBTableAdapter
-    Friend WithEvents TableAdapterManager3 As EDIFICIODataSetTableAdapters.TableAdapterManager
     Friend WithEvents MDUBindingSource As BindingSource
     Friend WithEvents lblcuentas As Label
     Friend WithEvents HISTORICOBindingSource As BindingSource
     Friend WithEvents HISTORICOTableAdapter As ORDENESDataSetTableAdapters.HISTORICOTableAdapter
     Friend WithEvents OrdenesDataSet1 As ORDENESDataSet
-    Friend WithEvents Label2 As Label
+    Friend WithEvents LBLCUENTA2 As Label
     Friend WithEvents BTN_MODIFICA As Button
     Friend WithEvents DGVRESULT As DataGridView
     Friend WithEvents MDUTableAdapter As EDIFICIODataSetTableAdapters.MDUTableAdapter
+    '  Friend WithEvents INDICE_CALLESTableAdapter As BD_FUENTESDataSetTableAdapters.INDICE_CALLESTableAdapter
+    Friend WithEvents INDICE_CALLESBindingSource As BindingSource
+    Friend WithEvents BASEFUENTESDataSet As BASEFUENTESDataSet
+    Friend WithEvents FUENTEBindingSource As BindingSource
+    Friend WithEvents FUENTETableAdapter As BASEFUENTESDataSetTableAdapters.FUENTETableAdapter
+    Friend WithEvents TableAdapterManager As BASEFUENTESDataSetTableAdapters.TableAdapterManager
+    Friend WithEvents TIPO_BATERIATableAdapter As BASEFUENTESDataSetTableAdapters.TIPO_BATERIATableAdapter
+    Friend WithEvents TIPO_BATERIABindingSource As BindingSource
+    Friend WithEvents TIPO_FUENTETableAdapter As BASEFUENTESDataSetTableAdapters.TIPO_FUENTETableAdapter
+    Friend WithEvents TIPO_FUENTEBindingSource As BindingSource
+    Friend WithEvents FECHA_BATERIATableAdapter As BASEFUENTESDataSetTableAdapters.FECHA_BATERIATableAdapter
+    Friend WithEvents FECHA_BATERIABindingSource As BindingSource
+    Friend WithEvents INDICE_CALLESBindingSource1 As BindingSource
+    Friend WithEvents INDICE_CALLESTableAdapter As BASEFUENTESDataSetTableAdapters.INDICE_CALLESTableAdapter
 End Class

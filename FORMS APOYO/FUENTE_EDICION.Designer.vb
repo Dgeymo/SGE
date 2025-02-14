@@ -24,9 +24,9 @@ Partial Class FUENTE_EDICION
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim CAUSACIERRELabel As System.Windows.Forms.Label
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.BTN_CERRAR = New System.Windows.Forms.Button()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Label25 = New System.Windows.Forms.Label()
@@ -69,15 +69,13 @@ Partial Class FUENTE_EDICION
         Me.INSTALACION = New System.Windows.Forms.TextBox()
         Me.Label29 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.CB_BAT = New System.Windows.Forms.ComboBox()
         Me.C_MODFUENTE = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.C_MODGAB = New System.Windows.Forms.ComboBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.C_MODBAT = New System.Windows.Forms.ComboBox()
-        Me.Label13 = New System.Windows.Forms.Label()
         Me.C_CANTBAT = New System.Windows.Forms.ComboBox()
         Me.Label34 = New System.Windows.Forms.Label()
-        Me.FECHAFAB = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.INDICE_CALLESDataGridView = New System.Windows.Forms.DataGridView()
         Me.ID_CALLE = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -101,18 +99,18 @@ Partial Class FUENTE_EDICION
         Me.C_ZONAG = New System.Windows.Forms.TextBox()
         Me.C_NODO = New System.Windows.Forms.ComboBox()
         Me.INDICE_CALLESTableAdapter = New REDES.INDICESDataSetTableAdapters.INDICE_CALLESTableAdapter()
-        Me.TableAdapterManager = New REDES.INDICESDataSetTableAdapters.TableAdapterManager()
         Me.BOT_ACEPTAR = New System.Windows.Forms.Button()
         Me.BTN_CANCELAR = New System.Windows.Forms.Button()
-        Me.BASEFUENTESDataSet = New REDES.BASEFUENTESDataSet()
-        Me.FUENTETableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.FUENTETableAdapter()
         Me.FUENTEBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TableAdapterManager1 = New REDES.BASEFUENTESDataSetTableAdapters.TableAdapterManager()
         Me.ORDENESDataSet = New REDES.ORDENESDataSet()
         Me.AFECTACIONBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AFECTACIONTableAdapter = New REDES.ORDENESDataSetTableAdapters.AFECTACIONTableAdapter()
-        Me.TableAdapterManager2 = New REDES.ORDENESDataSetTableAdapters.TableAdapterManager()
         Me.INSTALACIONBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BASEFUENTESDataSet = New REDES.BASEFUENTESDataSet()
+        Me.FUENTEBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FUENTETableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.FUENTETableAdapter()
+        Me.TableAdapterManager = New REDES.BASEFUENTESDataSetTableAdapters.TableAdapterManager()
+        Me.INSTALACIONBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.INSTALACIONTableAdapter = New REDES.BASEFUENTESDataSetTableAdapters.INSTALACIONTableAdapter()
         CAUSACIERRELabel = New System.Windows.Forms.Label()
         Me.GroupBox5.SuspendLayout()
@@ -122,11 +120,13 @@ Partial Class FUENTE_EDICION
         CType(Me.INDICE_CALLESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INDICESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.BASEFUENTESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FUENTEBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AFECTACIONBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.INSTALACIONBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BASEFUENTESDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FUENTEBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.INSTALACIONBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CAUSACIERRELabel
@@ -444,7 +444,7 @@ Partial Class FUENTE_EDICION
         Me.GroupBox2.Controls.Add(Me.INSTALACION)
         Me.GroupBox2.Controls.Add(Me.Label29)
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
-        Me.GroupBox2.Location = New System.Drawing.Point(381, 88)
+        Me.GroupBox2.Location = New System.Drawing.Point(381, 83)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(213, 232)
         Me.GroupBox2.TabIndex = 264
@@ -678,23 +678,35 @@ Partial Class FUENTE_EDICION
         'GroupBox4
         '
         Me.GroupBox4.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.GroupBox4.Controls.Add(Me.CB_BAT)
         Me.GroupBox4.Controls.Add(Me.C_MODFUENTE)
         Me.GroupBox4.Controls.Add(Me.Label11)
         Me.GroupBox4.Controls.Add(Me.C_MODGAB)
         Me.GroupBox4.Controls.Add(Me.Label12)
-        Me.GroupBox4.Controls.Add(Me.C_MODBAT)
-        Me.GroupBox4.Controls.Add(Me.Label13)
         Me.GroupBox4.Controls.Add(Me.C_CANTBAT)
         Me.GroupBox4.Controls.Add(Me.Label34)
-        Me.GroupBox4.Controls.Add(Me.FECHAFAB)
         Me.GroupBox4.Controls.Add(Me.Label14)
         Me.GroupBox4.ForeColor = System.Drawing.Color.White
-        Me.GroupBox4.Location = New System.Drawing.Point(20, 88)
+        Me.GroupBox4.Location = New System.Drawing.Point(20, 80)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(355, 95)
+        Me.GroupBox4.Size = New System.Drawing.Size(355, 108)
         Me.GroupBox4.TabIndex = 266
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "COMPONENTES"
+        '
+        'CB_BAT
+        '
+        Me.CB_BAT.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.CB_BAT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CB_BAT.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CB_BAT.ForeColor = System.Drawing.Color.DarkOrange
+        Me.CB_BAT.FormattingEnabled = True
+        Me.CB_BAT.Items.AddRange(New Object() {"Grande", "Chico", "Pedestal"})
+        Me.CB_BAT.Location = New System.Drawing.Point(7, 77)
+        Me.CB_BAT.MaxLength = 20
+        Me.CB_BAT.Name = "CB_BAT"
+        Me.CB_BAT.Size = New System.Drawing.Size(166, 21)
+        Me.CB_BAT.TabIndex = 247
         '
         'C_MODFUENTE
         '
@@ -704,21 +716,21 @@ Partial Class FUENTE_EDICION
         Me.C_MODFUENTE.ForeColor = System.Drawing.Color.DarkOrange
         Me.C_MODFUENTE.FormattingEnabled = True
         Me.C_MODFUENTE.Items.AddRange(New Object() {"COM", "EM", "VMX", "XM2", "XM3.1"})
-        Me.C_MODFUENTE.Location = New System.Drawing.Point(78, 19)
+        Me.C_MODFUENTE.Location = New System.Drawing.Point(7, 32)
         Me.C_MODFUENTE.MaxLength = 20
         Me.C_MODFUENTE.Name = "C_MODFUENTE"
-        Me.C_MODFUENTE.Size = New System.Drawing.Size(100, 21)
+        Me.C_MODFUENTE.Size = New System.Drawing.Size(170, 21)
         Me.C_MODFUENTE.TabIndex = 150
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(13, 23)
+        Me.Label11.Location = New System.Drawing.Point(6, 16)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(64, 13)
+        Me.Label11.Size = New System.Drawing.Size(53, 13)
         Me.Label11.TabIndex = 151
-        Me.Label11.Text = "Mod Fuente"
+        Me.Label11.Text = "MODELO"
         Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'C_MODGAB
@@ -729,47 +741,22 @@ Partial Class FUENTE_EDICION
         Me.C_MODGAB.ForeColor = System.Drawing.Color.DarkOrange
         Me.C_MODGAB.FormattingEnabled = True
         Me.C_MODGAB.Items.AddRange(New Object() {"Grande", "Chico", "Pedestal"})
-        Me.C_MODGAB.Location = New System.Drawing.Point(78, 41)
+        Me.C_MODGAB.Location = New System.Drawing.Point(196, 32)
         Me.C_MODGAB.MaxLength = 20
         Me.C_MODGAB.Name = "C_MODGAB"
-        Me.C_MODGAB.Size = New System.Drawing.Size(100, 21)
+        Me.C_MODGAB.Size = New System.Drawing.Size(153, 21)
         Me.C_MODGAB.TabIndex = 152
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.ForeColor = System.Drawing.Color.White
-        Me.Label12.Location = New System.Drawing.Point(3, 45)
+        Me.Label12.Location = New System.Drawing.Point(197, 16)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(74, 13)
+        Me.Label12.Size = New System.Drawing.Size(61, 13)
         Me.Label12.TabIndex = 153
-        Me.Label12.Text = "Mod Gabinete"
+        Me.Label12.Text = "GABINETE"
         Me.Label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'C_MODBAT
-        '
-        Me.C_MODBAT.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.C_MODBAT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.C_MODBAT.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.C_MODBAT.ForeColor = System.Drawing.Color.DarkOrange
-        Me.C_MODBAT.FormattingEnabled = True
-        Me.C_MODBAT.Items.AddRange(New Object() {"150 XTV", "165 GXL", "195 XTV"})
-        Me.C_MODBAT.Location = New System.Drawing.Point(261, 19)
-        Me.C_MODBAT.MaxLength = 20
-        Me.C_MODBAT.Name = "C_MODBAT"
-        Me.C_MODBAT.Size = New System.Drawing.Size(83, 21)
-        Me.C_MODBAT.TabIndex = 154
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.ForeColor = System.Drawing.Color.White
-        Me.Label13.Location = New System.Drawing.Point(197, 23)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(64, 13)
-        Me.Label13.TabIndex = 155
-        Me.Label13.Text = "Mod Bateria"
-        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'C_CANTBAT
         '
@@ -779,43 +766,32 @@ Partial Class FUENTE_EDICION
         Me.C_CANTBAT.ForeColor = System.Drawing.Color.DarkOrange
         Me.C_CANTBAT.FormattingEnabled = True
         Me.C_CANTBAT.Items.AddRange(New Object() {"2", "3", "4"})
-        Me.C_CANTBAT.Location = New System.Drawing.Point(261, 43)
+        Me.C_CANTBAT.Location = New System.Drawing.Point(196, 77)
         Me.C_CANTBAT.MaxLength = 20
         Me.C_CANTBAT.Name = "C_CANTBAT"
-        Me.C_CANTBAT.Size = New System.Drawing.Size(50, 21)
+        Me.C_CANTBAT.Size = New System.Drawing.Size(77, 21)
         Me.C_CANTBAT.TabIndex = 156
         '
         'Label34
         '
         Me.Label34.AutoSize = True
         Me.Label34.ForeColor = System.Drawing.Color.White
-        Me.Label34.Location = New System.Drawing.Point(155, 70)
+        Me.Label34.Location = New System.Drawing.Point(7, 62)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(94, 13)
+        Me.Label34.Size = New System.Drawing.Size(53, 13)
         Me.Label34.TabIndex = 246
-        Me.Label34.Text = "Fecha Fab Bateria"
+        Me.Label34.Text = "BATERIA"
         Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'FECHAFAB
-        '
-        Me.FECHAFAB.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.FECHAFAB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.FECHAFAB.ForeColor = System.Drawing.Color.DarkOrange
-        Me.FECHAFAB.Location = New System.Drawing.Point(255, 70)
-        Me.FECHAFAB.Name = "FECHAFAB"
-        Me.FECHAFAB.Size = New System.Drawing.Size(89, 20)
-        Me.FECHAFAB.TabIndex = 247
-        Me.FECHAFAB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label14
         '
         Me.Label14.AutoSize = True
         Me.Label14.ForeColor = System.Drawing.Color.White
-        Me.Label14.Location = New System.Drawing.Point(212, 47)
+        Me.Label14.Location = New System.Drawing.Point(193, 62)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(49, 13)
+        Me.Label14.Size = New System.Drawing.Size(62, 13)
         Me.Label14.TabIndex = 157
-        Me.Label14.Text = "Cantidad"
+        Me.Label14.Text = "CANTIDAD"
         Me.Label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'INDICE_CALLESDataGridView
@@ -827,25 +803,25 @@ Partial Class FUENTE_EDICION
         Me.INDICE_CALLESDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.INDICE_CALLESDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.INDICE_CALLESDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.INDICE_CALLESDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.INDICE_CALLESDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.INDICE_CALLESDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.INDICE_CALLESDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ID_CALLE, Me.TIPO, Me.NOMBRE_CALLE, Me.IdDataGridViewTextBoxColumn, Me.IDCALLEDataGridViewTextBoxColumn, Me.TIPODataGridViewTextBoxColumn, Me.NOMBRECALLEDataGridViewTextBoxColumn})
         Me.INDICE_CALLESDataGridView.DataSource = Me.INDICE_CALLESBindingSource
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.INDICE_CALLESDataGridView.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.INDICE_CALLESDataGridView.DefaultCellStyle = DataGridViewCellStyle5
         Me.INDICE_CALLESDataGridView.EnableHeadersVisualStyles = False
         Me.INDICE_CALLESDataGridView.GridColor = System.Drawing.Color.DarkOrange
         Me.INDICE_CALLESDataGridView.Location = New System.Drawing.Point(20, 236)
@@ -853,12 +829,12 @@ Partial Class FUENTE_EDICION
         Me.INDICE_CALLESDataGridView.ReadOnly = True
         Me.INDICE_CALLESDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.INDICE_CALLESDataGridView.RowHeadersVisible = False
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Red
-        Me.INDICE_CALLESDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Red
+        Me.INDICE_CALLESDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.INDICE_CALLESDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.INDICE_CALLESDataGridView.Size = New System.Drawing.Size(369, 190)
         Me.INDICE_CALLESDataGridView.TabIndex = 312
@@ -1065,29 +1041,6 @@ Partial Class FUENTE_EDICION
         '
         Me.INDICE_CALLESTableAdapter.ClearBeforeFill = True
         '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.CLIMATableAdapter = Nothing
-        Me.TableAdapterManager.GUARDIASTableAdapter = Nothing
-        Me.TableAdapterManager.INDICE_CALLESTableAdapter = Me.INDICE_CALLESTableAdapter
-        Me.TableAdapterManager.INDICE_CAUSASTableAdapter = Nothing
-        Me.TableAdapterManager.INDICE_DIAGNOSTICOTableAdapter = Nothing
-        Me.TableAdapterManager.INDICE_FALLASTableAdapter = Nothing
-        Me.TableAdapterManager.INDICE_FRECUENCIASTableAdapter = Nothing
-        Me.TableAdapterManager.INDICE_MEDIDORTableAdapter = Nothing
-        Me.TableAdapterManager.INDICE_PUNTOMEDIDATableAdapter = Nothing
-        Me.TableAdapterManager.INDICE_TIPOMEDIDATableAdapter = Nothing
-        Me.TableAdapterManager.MAT_ACTIVOSTableAdapter = Nothing
-        Me.TableAdapterManager.MAT_CONSOLIDADOTableAdapter = Nothing
-        Me.TableAdapterManager.MAT_CONSUMOSXMESTableAdapter = Nothing
-        Me.TableAdapterManager.MAT_INFORMETableAdapter = Nothing
-        Me.TableAdapterManager.MAT_STOCKTableAdapter = Nothing
-        Me.TableAdapterManager.MAT_TRANSITOTableAdapter = Nothing
-        Me.TableAdapterManager.ORDINALESTableAdapter = Nothing
-        Me.TableAdapterManager.PLANOSTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = REDES.INDICESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
         'BOT_ACEPTAR
         '
         Me.BOT_ACEPTAR.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -1114,39 +1067,6 @@ Partial Class FUENTE_EDICION
         Me.BTN_CANCELAR.Text = "CANCELAR"
         Me.BTN_CANCELAR.UseVisualStyleBackColor = False
         '
-        'BASEFUENTESDataSet
-        '
-        Me.BASEFUENTESDataSet.DataSetName = "BASEFUENTESDataSet"
-        Me.BASEFUENTESDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'FUENTETableAdapter
-        '
-        Me.FUENTETableAdapter.ClearBeforeFill = True
-        '
-        'FUENTEBindingSource
-        '
-        Me.FUENTEBindingSource.DataMember = "FUENTE"
-        Me.FUENTEBindingSource.DataSource = Me.BASEFUENTESDataSet
-        '
-        'TableAdapterManager1
-        '
-        Me.TableAdapterManager1.ANTIGUEDADBATTableAdapter = Nothing
-        Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager1.baseTableAdapter = Nothing
-        Me.TableAdapterManager1.Connection = Nothing
-        Me.TableAdapterManager1.FUENTETableAdapter = Nothing
-        Me.TableAdapterManager1.GENERADOR_MANTENIMIENTOTableAdapter = Nothing
-        Me.TableAdapterManager1.GENERADORESTableAdapter = Nothing
-        Me.TableAdapterManager1.GRAFANTIGUEDADTableAdapter = Nothing
-        Me.TableAdapterManager1.GRAFAUTONOMIATableAdapter = Nothing
-        Me.TableAdapterManager1.GRAFTIPOFUENTETableAdapter = Nothing
-        Me.TableAdapterManager1.HISTORICOTableAdapter = Nothing
-        Me.TableAdapterManager1.Hoja1TableAdapter = Nothing
-        Me.TableAdapterManager1.INSTALACIONTableAdapter = Nothing
-        Me.TableAdapterManager1.NRONODOSTableAdapter = Nothing
-        Me.TableAdapterManager1.TRABAJOSTableAdapter = Nothing
-        Me.TableAdapterManager1.UpdateOrder = REDES.BASEFUENTESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
         'ORDENESDataSet
         '
         Me.ORDENESDataSet.DataSetName = "ORDENESDataSet"
@@ -1161,44 +1081,36 @@ Partial Class FUENTE_EDICION
         '
         Me.AFECTACIONTableAdapter.ClearBeforeFill = True
         '
-        'TableAdapterManager2
+        'BASEFUENTESDataSet
         '
-        Me.TableAdapterManager2.ACTIVIDADESSTDTableAdapter = Nothing
-        Me.TableAdapterManager2.ADJUNTOSTableAdapter = Nothing
-        Me.TableAdapterManager2.AFECTACIONTableAdapter = Me.AFECTACIONTableAdapter
-        Me.TableAdapterManager2.AREASTableAdapter = Nothing
-        Me.TableAdapterManager2.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager2.CAUSASTableAdapter = Nothing
-        Me.TableAdapterManager2.COMBOSTableAdapter = Nothing
-        Me.TableAdapterManager2.CREAR_ORDTableAdapter = Nothing
-        Me.TableAdapterManager2.FALLASTableAdapter = Nothing
-        Me.TableAdapterManager2.FUNCIONARIOSTableAdapter = Nothing
-        Me.TableAdapterManager2.GESTIONES_TIPOTableAdapter = Nothing
-        Me.TableAdapterManager2.GESTIONTableAdapter = Nothing
-        Me.TableAdapterManager2.GRAF_ORDINALESTableAdapter = Nothing
-        Me.TableAdapterManager2.GRAF_REDESTableAdapter = Nothing
-        Me.TableAdapterManager2.HISTORICOTableAdapter = Nothing
-        Me.TableAdapterManager2.INFORMMEMDU_PERMISORTableAdapter = Nothing
-        Me.TableAdapterManager2.MENSAJERIA_OLDTableAdapter = Nothing
-        Me.TableAdapterManager2.MENSAJERIATableAdapter = Nothing
-        Me.TableAdapterManager2.OBESERVACIONESTableAdapter = Nothing
-        Me.TableAdapterManager2.ORDENESTableAdapter = Nothing
-        Me.TableAdapterManager2.RELACION_FALLAACTIVIDADTableAdapter = Nothing
-        Me.TableAdapterManager2.REPORTEORDINALESTableAdapter = Nothing
-        Me.TableAdapterManager2.SECTORESTableAdapter = Nothing
-        Me.TableAdapterManager2.SECTORFALLATableAdapter = Nothing
-        Me.TableAdapterManager2.STANDARDTableAdapter = Nothing
-        Me.TableAdapterManager2.STATUSTableAdapter = Nothing
-        Me.TableAdapterManager2.TAREASSTDTableAdapter = Nothing
-        Me.TableAdapterManager2.TAREASTableAdapter = Nothing
-        Me.TableAdapterManager2.TIPOTableAdapter = Nothing
-        Me.TableAdapterManager2.TRABAJOSTableAdapter = Nothing
-        Me.TableAdapterManager2.UpdateOrder = REDES.ORDENESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.BASEFUENTESDataSet.DataSetName = "BASEFUENTESDataSet"
+        Me.BASEFUENTESDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'INSTALACIONBindingSource
+        'FUENTEBindingSource1
         '
-        Me.INSTALACIONBindingSource.DataMember = "INSTALACION"
-        Me.INSTALACIONBindingSource.DataSource = Me.BASEFUENTESDataSet
+        Me.FUENTEBindingSource1.DataMember = "FUENTE"
+        Me.FUENTEBindingSource1.DataSource = Me.BASEFUENTESDataSet
+        '
+        'FUENTETableAdapter
+        '
+        Me.FUENTETableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.FECHA_BATERIATableAdapter = Nothing
+        Me.TableAdapterManager.FUENTETableAdapter = Me.FUENTETableAdapter
+        Me.TableAdapterManager.INDICE_CALLESTableAdapter = Nothing
+        Me.TableAdapterManager.INSTALACIONTableAdapter = Nothing
+        Me.TableAdapterManager.NRONODOSTableAdapter = Nothing
+        Me.TableAdapterManager.TIPO_BATERIATableAdapter = Nothing
+        Me.TableAdapterManager.TIPO_FUENTETableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = REDES.BASEFUENTESDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'INSTALACIONBindingSource1
+        '
+        Me.INSTALACIONBindingSource1.DataMember = "INSTALACION"
+        Me.INSTALACIONBindingSource1.DataSource = Me.BASEFUENTESDataSet
         '
         'INSTALACIONTableAdapter
         '
@@ -1209,7 +1121,7 @@ Partial Class FUENTE_EDICION
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Gray
-        Me.ClientSize = New System.Drawing.Size(639, 463)
+        Me.ClientSize = New System.Drawing.Size(648, 501)
         Me.Controls.Add(Me.BTN_CANCELAR)
         Me.Controls.Add(Me.BOT_ACEPTAR)
         Me.Controls.Add(Me.INDICE_CALLESDataGridView)
@@ -1237,11 +1149,13 @@ Partial Class FUENTE_EDICION
         CType(Me.INDICESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        CType(Me.BASEFUENTESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FUENTEBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ORDENESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AFECTACIONBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.INSTALACIONBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BASEFUENTESDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FUENTEBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.INSTALACIONBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1293,11 +1207,8 @@ Partial Class FUENTE_EDICION
     Friend WithEvents Label11 As Label
     Friend WithEvents C_MODGAB As ComboBox
     Friend WithEvents Label12 As Label
-    Friend WithEvents C_MODBAT As ComboBox
-    Friend WithEvents Label13 As Label
     Friend WithEvents C_CANTBAT As ComboBox
     Friend WithEvents Label34 As Label
-    Friend WithEvents FECHAFAB As TextBox
     Friend WithEvents Label14 As Label
     Friend WithEvents INDICE_CALLESDataGridView As DataGridView
     Friend WithEvents GroupBox3 As GroupBox
@@ -1314,19 +1225,16 @@ Partial Class FUENTE_EDICION
     Friend WithEvents INDICESDataSet As INDICESDataSet
     Friend WithEvents INDICE_CALLESBindingSource As BindingSource
     Friend WithEvents INDICE_CALLESTableAdapter As INDICESDataSetTableAdapters.INDICE_CALLESTableAdapter
-    Friend WithEvents TableAdapterManager As INDICESDataSetTableAdapters.TableAdapterManager
     Friend WithEvents BOT_ACEPTAR As Button
     Friend WithEvents BTN_CANCELAR As Button
-    Friend WithEvents BASEFUENTESDataSet As BASEFUENTESDataSet
+    '   Friend WithEvents BD_FUENTESDataSet As BD_FUENTESDataSet
     Friend WithEvents FUENTEBindingSource As BindingSource
-    Friend WithEvents FUENTETableAdapter As BASEFUENTESDataSetTableAdapters.FUENTETableAdapter
-    Friend WithEvents TableAdapterManager1 As BASEFUENTESDataSetTableAdapters.TableAdapterManager
+    '  Friend WithEvents FUENTETableAdapter As BASEFUENTESDataSetTableAdapters.FUENTETableAdapter
     Friend WithEvents ORDENESDataSet As ORDENESDataSet
     Friend WithEvents AFECTACIONBindingSource As BindingSource
     Friend WithEvents AFECTACIONTableAdapter As ORDENESDataSetTableAdapters.AFECTACIONTableAdapter
-    Friend WithEvents TableAdapterManager2 As ORDENESDataSetTableAdapters.TableAdapterManager
     Friend WithEvents INSTALACIONBindingSource As BindingSource
-    Friend WithEvents INSTALACIONTableAdapter As BASEFUENTESDataSetTableAdapters.INSTALACIONTableAdapter
+    '    Friend WithEvents INSTALACIONTableAdapter As BASEFUENTESDataSetTableAdapters.INSTALACIONTableAdapter
     Friend WithEvents ID_CALLE As DataGridViewTextBoxColumn
     Friend WithEvents TIPO As DataGridViewTextBoxColumn
     Friend WithEvents NOMBRE_CALLE As DataGridViewTextBoxColumn
@@ -1334,4 +1242,13 @@ Partial Class FUENTE_EDICION
     Friend WithEvents IDCALLEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TIPODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents NOMBRECALLEDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents CB_BAT As ComboBox
+    Friend WithEvents BASEFUENTESDataSet As BASEFUENTESDataSet
+    Friend WithEvents FUENTEBindingSource1 As BindingSource
+    Friend WithEvents FUENTETableAdapter As BASEFUENTESDataSetTableAdapters.FUENTETableAdapter
+    Friend WithEvents TableAdapterManager As BASEFUENTESDataSetTableAdapters.TableAdapterManager
+    Friend WithEvents INSTALACIONBindingSource1 As BindingSource
+    Friend WithEvents INSTALACIONTableAdapter As BASEFUENTESDataSetTableAdapters.INSTALACIONTableAdapter
+    ' Friend WithEvents FECHA_BATERIATableAdapter As BASEFUENTESDataSetTableAdapters.FECHA_BATERIATableAdapter
+    '  Friend WithEvents TableAdapterManager As BASEFUENTESDataSetTableAdapters.TableAdapterManager
 End Class

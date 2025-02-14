@@ -1,37 +1,41 @@
 ﻿Imports Microsoft.Office.Interop
+Imports System.Data.OleDb
 Module FUNCIONES
     Public ACCION_AGENDA As String
     Dim MDURow As EDIFICIODataSet.MDURow
     Dim FTTBRow As EDIFICIODataSet.FTTBRow
     Dim CERTRow As EDIFICIODataSet.CERTIFICACIONESRow
+    Dim DT As DataTable
 
     Public Sub ACTUALIZAR_INFO_MDU(NODO As String, Optional TODOS As String = Nothing)
         INICIO.EDIFICIODataSet.EDIF_VISTA.Clear()
-        INICIO.MDUTableAdapter.FillBynodo(INICIO.EDIFICIODataSet.MDU, Trim(NODO))
-
+        Dim RESULTADO As OleDbDataReader = ExecuteQuery("EDIFICIO", EDIFICIO_NODO & Trim(NODO) & "'")
+        DT = New DataTable
+        DT.Load(RESULTADO)
         INICIO.lbl_nodo.Text = NODO.ToUpper
         If TODOS IsNot Nothing Then
-            For Each MDURow In INICIO.EDIFICIODataSet.MDU
-                AGREGAR()
+            For Each Row In DT.Rows
+                AGREGAR(Row)
             Next
         Else
             INICIO.AVANCETableAdapter.FillByHABILITADOS(INICIO.EDIFICIODataSet.AVANCE, Trim(NODO))
             INICIO.EDIFICIODataSet.EDIF_VISTA.Clear()
 
-            For Each MDURow In INICIO.EDIFICIODataSet.MDU
+            For Each Row In DT.Rows
                 For Each AVANCE In INICIO.EDIFICIODataSet.AVANCE
-                    If AVANCE.ZONA = MDURow.ZONA And MDURow.IsINGRESONull = False Then
-                        If AVANCE.VER_SUBTERRANEO And MDURow.INGRESO = "SUBTERRANEO" Then
-                            AGREGAR()
-                        ElseIf AVANCE.VER_DUCTOS_FECHADA And MDURow.INGRESO = "DUCTO" Then
-                            AGREGAR()
-                        ElseIf AVANCE.VER_AEREOS And MDURow.INGRESO = "AEREO" Then
-                            AGREGAR()
+                    ' MsgBox(AVANCE.NODO)
+                    If AVANCE.ZONA = CInt(Row("ZONA")) And IsDBNull(Row("INGRESO")) = False Then
+                        If AVANCE.VER_SUBTERRANEO And Row("INGRESO") = "SUBTERRANEO" Then
+                            AGREGAR(Row)
+                        ElseIf AVANCE.VER_DUCTOS_FECHADA And Row("INGRESO") = "DUCTO" Then
+                            AGREGAR(Row)
+                        ElseIf AVANCE.VER_AEREOS And Row("INGRESO") = "AEREO" Then
+                            AGREGAR(Row)
                         End If
                     End If
                 Next
-                If MDURow.IsINGRESONull And SECTOR = "PLANIFICACION TECNICA" Then
-                    AGREGAR()
+                If IsDBNull(Row("INGRESO")) And SECTOR = "PLANIFICACION TECNICA" Then
+                    AGREGAR(Row)
                 End If
             Next
         End If
@@ -90,18 +94,18 @@ Module FUNCIONES
 
         Return EQUIPO
     End Function
-    Private Sub AGREGAR()
+    Private Sub AGREGAR(ByVal dataRow As DataRow)
         INICIO.VER_EDIFICIO = INICIO.EDIFICIODataSet.EDIF_VISTA.NewEDIF_VISTARow()
-        INICIO.VER_EDIFICIO.ID_EDIFICIO = MDURow.ID_MDU
-        INICIO.VER_EDIFICIO.NODO = MDURow.NODO
-        INICIO.VER_EDIFICIO.ZONA = MDURow.ZONA
-        INICIO.VER_EDIFICIO.CALLE = MDURow.CALLE
-        INICIO.VER_EDIFICIO.PUERTA = MDURow.PUERTA
-        If MDURow.IsINGRESONull Then INICIO.VER_EDIFICIO.INGRESO = "N/A" Else INICIO.VER_EDIFICIO.INGRESO = MDURow.INGRESO
-        If MDURow.IsACOMETIDANull Then INICIO.VER_EDIFICIO.ACOMETIDA = "N/A" Else INICIO.VER_EDIFICIO.ACOMETIDA = MDURow.ACOMETIDA
-        INICIO.VER_EDIFICIO.STATUS = MDURow("STATUS")
-        If MDURow.ID_STATUS = 2 Or MDURow.ID_STATUS = 5 Then
-            INICIO.AGENDATableAdapter.FillByID_EDIFICIO(INICIO.EDIFICIODataSet.AGENDA, MDURow.ID_MDU)
+        INICIO.VER_EDIFICIO.ID_EDIFICIO = dataRow("ID_MDU")
+        INICIO.VER_EDIFICIO.NODO = dataRow("NODO")
+        INICIO.VER_EDIFICIO.ZONA = dataRow("ZONA")
+        INICIO.VER_EDIFICIO.CALLE = dataRow("CALLE")
+        INICIO.VER_EDIFICIO.PUERTA = dataRow("PUERTA")
+        If IsDBNull(dataRow("INGRESO")) Then INICIO.VER_EDIFICIO.INGRESO = "N/A" Else INICIO.VER_EDIFICIO.INGRESO = dataRow("INGRESO")
+        If IsDBNull(dataRow("ACOMETIDA")) Then INICIO.VER_EDIFICIO.ACOMETIDA = "N/A" Else INICIO.VER_EDIFICIO.ACOMETIDA = dataRow("ACOMETIDA")
+        INICIO.VER_EDIFICIO.STATUS = dataRow("STATUS")
+        If dataRow("ID_STATUS") = 2 Or dataRow("ID_STATUS") = 5 Then
+            INICIO.AGENDATableAdapter.FillByID_EDIFICIO(INICIO.EDIFICIODataSet.AGENDA, CInt(dataRow("ID_MDU")))
             If INICIO.EDIFICIODataSet.AGENDA.Rows.Count > 0 Then
                 INICIO.VER_EDIFICIO.AGENDADO = INICIO.EDIFICIODataSet.AGENDA.Rows(INICIO.EDIFICIODataSet.AGENDA.Rows.Count - 1).Item("DIA_AGENDA")
             End If
@@ -136,38 +140,42 @@ Module FUNCIONES
         Dim NEWFTTBRow As EDIFICIODataSet.FTTBRow
         While CALLE <> ""
             REGISTRO += 1
-            ZONA = oHoja.Cells(REGISTRO, 3).value
+            ZONA = oHoja.Cells(REGISTRO, 3).text
+            CALLE = Trim(oHoja.Cells(REGISTRO, 5).value)
+            PUERTA = oHoja.Cells(REGISTRO, 6).value
+            CARPETA = Trim(oHoja.Cells(REGISTRO, 1).value)
             If ZONA < 15 Then
-                CALLE = oHoja.Cells(REGISTRO, 5).value
-                PUERTA = oHoja.Cells(REGISTRO, 6).value
-                CARPETA = oHoja.Cells(REGISTRO, 1).value
+
                 INICIO.MDUTableAdapter.FillByCARPETA(INICIO.EDIFICIODataSet.MDU, CARPETA)
 
-                If INICIO.EDIFICIODataSet.MDU.Rows.Count = 0 Then
-                    INICIO.MDUTableAdapter.FillByNOMBRECALLEyPUERTA(INICIO.EDIFICIODataSet.MDU, CALLE, PUERTA)
-                End If
-                If INICIO.EDIFICIODataSet.MDU.Rows.Count = 0 Then
-                    Try
-                        CALLE = CALLE(0)
-                        PUERTA = CALLE(1)
-                        INICIO.MDUTableAdapter.FillByNOMBRECALLEyPUERTA(INICIO.EDIFICIODataSet.MDU, CALLE, PUERTA)
-                    Catch ex As Exception
-                    End Try
-                End If
+                'If INICIO.EDIFICIODataSet.MDU.Rows.Count = 0 Then
+                '    INICIO.MDUTableAdapter.FillByNOMBRECALLEyPUERTA(INICIO.EDIFICIODataSet.MDU, CALLE, PUERTA)
+                'End If
+                'If INICIO.EDIFICIODataSet.MDU.Rows.Count = 0 Then
+                '    Try
+                '        CALLE = CALLE(0)
+                '        PUERTA = CALLE(1)
+                '        INICIO.MDUTableAdapter.FillByNOMBRECALLEyPUERTA(INICIO.EDIFICIODataSet.MDU, CALLE, PUERTA)
+                '    Catch ex As Exception
+                '    End Try
+                'End If
                 ACOMETIDA = CInt(oHoja.Cells(REGISTRO, 26).value)
+                INICIO.LBL_CANT_ROWS.Text = "TRABAJANDO EN.. " & REGISTRO & " - " & CALLE & " " & PUERTA
+                INICIO.LBL_CANT_ROWS.Refresh()
+
                 If INICIO.EDIFICIODataSet.MDU.Rows.Count > 0 And ACOMETIDA <> 0 Then
                     MDURow = INICIO.EDIFICIODataSet.MDU.Rows(0)
-                    APTOS = oHoja.Cells(REGISTRO, 8).value
-                    PISOS = oHoja.Cells(REGISTRO, 9).value
-                    If oHoja.Cells(REGISTRO, 13).value = "SI" Then INGRESO = "AEREO"
-                    If oHoja.Cells(REGISTRO, 14).value = "SI" Then INGRESO = "SUBTERRANEO"
-                    If oHoja.Cells(REGISTRO, 15).value = "SI" Then INGRESO = "DUCTO"
-                    Try
-                        TORRE = oHoja.Cells(REGISTRO, 10).value
-                        If TORRE = 0 Then TORRE = 1
-                    Catch ex As Exception
-                        TORRE = 1
-                    End Try
+                    'APTOS = oHoja.Cells(REGISTRO, 8).value
+                    'PISOS = oHoja.Cells(REGISTRO, 9).value
+                    'If oHoja.Cells(REGISTRO, 13).value = "SI" Then INGRESO = "AEREO"
+                    'If oHoja.Cells(REGISTRO, 14).value = "SI" Then INGRESO = "SUBTERRANEO"
+                    'If oHoja.Cells(REGISTRO, 15).value = "SI" Then INGRESO = "DUCTO"
+                    'Try
+                    '    TORRE = oHoja.Cells(REGISTRO, 10).value
+                    '    If TORRE = 0 Then TORRE = 1
+                    'Catch ex As Exception
+                    '    TORRE = 1
+                    'End Try
                     TUBO = Trim(oHoja.Cells(REGISTRO, 22).value)
                     PELO = Trim(oHoja.Cells(REGISTRO, 23).value)
                     For Each TUBOS In INICIO.EDIFICIODataSet.COLORES
@@ -183,67 +191,82 @@ Module FUNCIONES
                         End If
                     Next
                     INICIO.FTTBTableAdapter.FillByEDIFICIO_TUBO_PELO(INICIO.EDIFICIODataSet.FTTB, MDURow.ID_MDU, TUBO, PELO)
-                    If INICIO.EDIFICIODataSet.FTTB.Rows.Count = 0 Then
-                        NEWFTTBRow = INICIO.EDIFICIODataSet.FTTB.NewFTTBRow
-                        NEWFTTBRow.ID_EDIFICIO = MDURow.ID_MDU
-                        NEWFTTBRow.ACOMETIDA = ACOMETIDA
-                        NEWFTTBRow.CABLE = 1
-                        For Each CAJAS In INICIO.EDIFICIODataSet.ARTICULO
-                            If CAJAS.NOMBRE = Trim(oHoja.Cells(REGISTRO, 16).value) Then
-                                NEWFTTBRow.TIPO_CONEXION_DESDE = CAJAS.ID_ARTICULO
-                                Exit For
-                            End If
-                        Next
 
-                        NEWFTTBRow.CONEXION_DESDE = oHoja.Cells(REGISTRO, 17).value
+                    If INICIO.EDIFICIODataSet.FTTB.Rows.Count > 0 Then
+                        FTTBRow = INICIO.EDIFICIODataSet.FTTB.Rows(0)
 
-                        If NEWFTTBRow.TIPO_CONEXION_DESDE <> 2 Then
-                            If oHoja.Cells(REGISTRO, 19).value Is Nothing Then Continue While
-                            NEWFTTBRow.CAJA_DISTRIBUCION = oHoja.Cells(REGISTRO, 19).value
+                        If FTTBRow.IsCAJA_DISTRIBUCIONNull And FTTBRow.TIPO_CONEXION_DESDE <> 2 Then
+
+                            FTTBRow.CAJA_DISTRIBUCION = oHoja.Cells(REGISTRO, 20).value
+                            INICIO.FTTBTableAdapter.Update(FTTBRow)
+
                         End If
+                        'If INICIO.EDIFICIODataSet.FTTB.Rows.Count = 0 Then
+                        '    NEWFTTBRow = INICIO.EDIFICIODataSet.FTTB.NewFTTBRow
+                        '    NEWFTTBRow.ID_EDIFICIO = MDURow.ID_MDU
+                        '    NEWFTTBRow.ACOMETIDA = ACOMETIDA
+                        '    NEWFTTBRow.CABLE = 1
+                        '    For Each CAJAS In INICIO.EDIFICIODataSet.ARTICULO
+                        '        If CAJAS.NOMBRE = Trim(oHoja.Cells(REGISTRO, 16).value) Then
+                        '            NEWFTTBRow.TIPO_CONEXION_DESDE = CAJAS.ID_ARTICULO
+                        '            Exit For
+                        '        End If
+                        '    Next
 
-                        NEWFTTBRow.TUBO = TUBO
-                        NEWFTTBRow.PELO = PELO
-                        NEWFTTBRow.SPL_NRO = 1
-                        NEWFTTBRow.NAP_NRO = oHoja.Cells(REGISTRO, 24).value
-                        NAP = oHoja.Cells(REGISTRO, 25).value
-                        Select Case NAP
-                            Case 8
-                                NEWFTTBRow.NAP = 4
-                            Case 16
-                                NEWFTTBRow.NAP = 3
-                            Case 4
-                                NEWFTTBRow.NAP = 5
-                        End Select
-                        NEWFTTBRow.OBS_TEC = oHoja.Cells(REGISTRO, 32).value
-                        If TUBO = 1 And PELO = 2 Then
-                            If NEWFTTBRow.NAP_NRO = 2 Then
-                                NEWFTTBRow.SPL_NRO = 1
-                            Else
-                                NEWFTTBRow.SPL_NRO = 2
-                            End If
-                        End If
-                        Try
-                            INICIO.EDIFICIODataSet.FTTB.AddFTTBRow(NEWFTTBRow)
-                            INICIO.FTTBTableAdapter.Update(NEWFTTBRow)
-                            MsgBox("AGREGUE FTTB " & MDURow.CALLE & " " & MDURow.PUERTA)
-                        Catch ex As Exception
-                            MsgBox(ex.Message)
-                        End Try
+                        '    NEWFTTBRow.CONEXION_DESDE = oHoja.Cells(REGISTRO, 17).value
 
-                    End If
-                    If APTOS <> Nothing And PISOS <> Nothing Then
+                        '    If NEWFTTBRow.TIPO_CONEXION_DESDE <> 2 Then
+                        '        If oHoja.Cells(REGISTRO, 19).value Is Nothing Then
+                        '        Else
+                        '            NEWFTTBRow.CAJA_DISTRIBUCION = oHoja.Cells(REGISTRO, 19).value
+                        '        End If
+                        '    End If
 
-                        Dim SQL As String = "UPDATE MDU SET 
-                                            APTOS = " & APTOS & ",
-                                            PISOS = " & PISOS & ",
-                                            TORRE = " & TORRE & ",
-                                            INGRESO = '" & INGRESO & "',
-                                            ACOMETIDA = " & ACOMETIDA & " 
-                                            WHERE ID_MDU = " & MDURow.ID_MDU
-                        ExecuteNonQuery("EDIFICIO", SQL)
-                    Else
-                        ' MsgBox("NO ACTUALICE EL MDU APTOS: " & APTOS & " PISOS: " & PISOS & ", APTOS: " & APTOS & " ES IGUAL A " & MDURow.APTOS & " PISOS: " & PISOS & " ES IGUAL A " & MDURow.PISOS & " TORRES: " & TORRE & " ES IGUAL A " & MDURow.TORRE)
+                        '    NEWFTTBRow.TUBO = TUBO
+                        '    NEWFTTBRow.PELO = PELO
+                        '    NEWFTTBRow.SPL_NRO = 1
+                        '    NEWFTTBRow.NAP_NRO = oHoja.Cells(REGISTRO, 24).value
+                        '    NAP = oHoja.Cells(REGISTRO, 25).value
+                        '    Select Case NAP
+                        '        Case 8
+                        '            NEWFTTBRow.NAP = 4
+                        '        Case 16
+                        '            NEWFTTBRow.NAP = 3
+                        '        Case 4
+                        '            NEWFTTBRow.NAP = 5
+                        '    End Select
+                        '    NEWFTTBRow.OBS_TEC = oHoja.Cells(REGISTRO, 32).value
+                        '    If TUBO = 1 And PELO = 2 Then
+                        '        If NEWFTTBRow.NAP_NRO = 2 Then
+                        '            NEWFTTBRow.SPL_NRO = 1
+                        '        Else
+                        '            NEWFTTBRow.SPL_NRO = 2
+                        '        End If
+                        '    End If
+                        '    Try
+                        '        INICIO.EDIFICIODataSet.FTTB.AddFTTBRow(NEWFTTBRow)
+                        '        INICIO.FTTBTableAdapter.Update(NEWFTTBRow)
+                        '        ' MsgBox("AGREGUE FTTB " & MDURow.CALLE & " " & MDURow.PUERTA)
+                        '    Catch ex As Exception
+                        '        MsgBox(ex.Message)
+                        '    End Try
+
+                        'End If
+                        'If APTOS <> Nothing And PISOS <> Nothing And TORRE <> Nothing And INGRESO <> Nothing And ACOMETIDA <> Nothing And MDURow.IsACOMETIDANull Then
+
+                        'Dim SQL As String = "UPDATE MDU SET 
+                        '                    APTOS = " & APTOS & ",
+                        '                    PISOS = " & PISOS & ",
+                        '                    TORRE = " & TORRE & ",
+                        '                    INGRESO = '" & INGRESO & "',
+                        '                    ACOMETIDA = " & ACOMETIDA & " 
+                        '                    WHERE ID_MDU = " & MDURow.ID_MDU
+                        'Try
+                        '    ExecuteNonQuery("EDIFICIO", SQL)
+                        '    'MsgBox("MODIFICQUE " & MDURow.ACOMETIDA)
+                        'Catch ex As Exception
+                        '    MsgBox(SQL)
+                        'End Try
                     End If
                 Else
                     '    MsgBox("NO SE ECONTRO: " & CALLE & " " & PUERTA)
@@ -388,7 +411,12 @@ Module FUNCIONES
                         FIBRARow = INICIO.FIBRADataSet.TRONCALES.Rows(0)
                         If SPLSEGUNDA = "Splitter 2" And FIBRARow.SALIDA_SEGUNDA = 8 Then
                             FIBRARow.SALIDA_SEGUNDA = 16
-                            INICIO.TRONCALESTableAdapter.Update(FIBRARow)
+                            Try
+                                INICIO.TRONCALESTableAdapter.Update(FIBRARow)
+                            Catch ex As DBConcurrencyException
+                                INICIO.TRONCALESTableAdapter.Update(FIBRARow)
+                            End Try
+
                         End If
 
                     Else 'si no hay nap, la crea
@@ -601,14 +629,17 @@ Module FUNCIONES
         Dim oLibro As Excel.Workbook
         Dim oHoja As Excel.Worksheet
         oLibro = oExcel.Workbooks.Open(fileName)
-
-        INICIO.MDUTableAdapter.FillBynodo(INICIO.EdificioDataSetBackUp.MDU, INICIO.CBNODO.Text)
+        If INICIO.TXT_ZONA.Text <> "" Then
+            INICIO.MDUTableAdapter.FillByNODOYZONA(INICIO.EdificioDataSetBackUp.MDU, INICIO.CBNODO.Text, INICIO.TXT_ZONA.Text)
+        Else
+            INICIO.MDUTableAdapter.FillBynodo(INICIO.EdificioDataSetBackUp.MDU, INICIO.CBNODO.Text)
+        End If
 
         Dim nroZona As String
         Dim nodo As String
         Dim CARPETA As Integer
-        For X = 0 To INICIO.EdificioDataSetBackUp.MDU.Rows.Count - 1
-            MDURow = INICIO.EdificioDataSetBackUp.MDU.Rows(X)
+        For Each MDURow In INICIO.EdificioDataSetBackUp.MDU
+            ' MDURow = INICIO.EdificioDataSetBackUp.MDU.Rows(X)
             INICIO.LBL_CANT_ROWS.Text = MDURow.ID_MDU
             INICIO.LBL_CANT_ROWS.Refresh()
             nodo = MDURow.NODO
@@ -617,7 +648,6 @@ Module FUNCIONES
             Dim HOJA As String = nodo & nroZona
             Dim ENCONTRADO = False
             Dim SUBTERRANEO As String
-
             For H = 1 To 35
                 Try
                     If oLibro.Sheets(H).NAME = HOJA Then
@@ -681,59 +711,8 @@ Module FUNCIONES
 
         Next
 
-
         oLibro.Close()
         oExcel.Quit()
         INICIO.Cursor = Cursors.Default
     End Sub
-    'Public Async Function getMDU(ByVal id_mdu As Integer) As Task
-
-    '    '        Dim jsonData As String = "{""token"":""c2d48b214091ac25583e68ef92b04c89"",
-    '    '""id_mdu"":""" & id_mdu & """,
-    '    '""id_status"":""" & id_status & """,
-    '    '""id_calle"":""" & id_calle & """,
-    '    '""calle"":""" & calle & """,
-    '    '""puerta"":""" & puerta & """,
-    '    '""aptos"":""" & aptos & """,
-    '    '""pisos"":""" & pisos & """,
-    '    '""nodo"":""" & nodo & """,
-    '    '""zona"":""" & zona & """,
-    '    '""ingreso"":""" & ingreso & """,
-    '    '""torre"":""" & torre & """}"
-    '    ' Dim url As String = "http://localhost/api/mdu.php"
-
-    '    ' MsgBox(jsonData) 'Format(AGENDA_DIA, "yyyy-MM-dd")
-    '    Dim url As String = "http://obra.webcindario.com/mdu.php?id_mdu=" & id_mdu
-    '    Dim request As HttpWebRequest = DirectCast(WebRequest.Create(url), HttpWebRequest)
-    '    request.Method = WebRequestMethods.Http.Get
-    '    'request.Method = "POST"
-    '    ' request.ContentType = "application/json"
-    '    'Dim dataBytes As Byte() = Encoding.UTF8.GetBytes(jsonData)
-    '    'request.ContentLength = dataBytes.Length
-    '    Dim response = Await request.GetResponseAsync()
-    '    'Using stream As Stream = request.GetRequestStream()
-    '    '    stream.Write(dataBytes, 0, dataBytes.Length)
-    '    'End Using
-    '    MsgBox(response.ToString())
-    '    ' Dim response As HttpWebResponse = DirectCast(request.GetResponse(), HttpWebResponse)
-
-    '    ' Using reader As StreamReader = New StreamReader(response.GetResponseStream())
-    '    '  MsgBox(reader.ToString())
-    '    '  End Using
-
-    '    'metodo get
-    '    ' Dim client As HttpWebRequest
-    '    'Try
-    '    '    Dim response As HttpResponseMessage = Await client.GetAsync(url)
-    '    '    response.EnsureSuccessStatusCode()
-    '    '    Dim responseBody As String = Await response.Content.ReadAsStringAsync()
-
-    '    '    Console.WriteLine(responseBody)
-    '    'Catch ex As Exception
-
-    '    'End Try
-    'End Function
-    'Public Async Function InsertMDU(ByVal id_mdu As Integer, ByVal id_status As Integer, ByVal id_calle As Integer, ByVal calle As String, ByVal puerta As String, ByVal aptos As Integer, ByVal pisos As String, ByVal nodo As String, ByVal zona As Integer, ByVal ingreso As String, ByVal torre As Integer) As Task
-
-    'End Function
 End Module

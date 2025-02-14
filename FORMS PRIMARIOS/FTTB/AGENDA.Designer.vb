@@ -178,7 +178,7 @@ Partial Class AGENDA
         Me.TableAdapterManager1.CALLESTableAdapter = Nothing
         Me.TableAdapterManager1.Connection = Nothing
         Me.TableAdapterManager1.FTTBTableAdapter = Nothing
-        Me.TableAdapterManager1.MDUTableAdapter = Nothing
+        '  Me.TableAdapterManager1.MDUTableAdapter = Nothing
         Me.TableAdapterManager1.STATUSTableAdapter = Nothing
         Me.TableAdapterManager1.TECNICOSTableAdapter = Nothing
         Me.TableAdapterManager1.TURNOSTableAdapter = Nothing

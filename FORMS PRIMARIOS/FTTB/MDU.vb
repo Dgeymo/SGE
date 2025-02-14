@@ -13,16 +13,19 @@ Public Class MDU
     Dim DATO(5) As String
     Dim FILTRO(5) As String
     Dim VISTAEDIFICIO As DataView
+    Dim CABLEint As Integer
+    Dim NAPint As Integer
+    Dim TUBOint As Integer
+    Dim PELOint As Integer
+    Dim TIPOCONDESDE As Integer
     Private Sub MDU_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: esta línea de código carga datos en la tabla 'EDIFICIODataSet.CABLES' Puede moverla o quitarla según sea necesario.
-        Me.CABLESTableAdapter.Fill(Me.EDIFICIODataSet.CABLES)
+        CABLESTableAdapter.Fill(EDIFICIODataSet.CABLES)
         CB_CABLE.Items.Clear()
         For Each CABLES In EDIFICIODataSet.CABLES
             CB_CABLE.Items.Add(CABLES.MODELO)
         Next
 
-        'TODO: esta línea de código carga datos en la tabla 'EDIFICIODataSet.ARTICULO' Puede moverla o quitarla según sea necesario.
-        Me.ARTICULOTableAdapter.Fill(Me.EDIFICIODataSet.ARTICULO)
+        ARTICULOTableAdapter.Fill(EDIFICIODataSet.ARTICULO)
         CB_TIPO_NAP.Items.Clear()
         For Each naps In EDIFICIODataSet.ARTICULO
             Select Case naps.NOMBRE
@@ -39,8 +42,7 @@ Public Class MDU
             End Select
         Next
 
-        'TODO: esta línea de código carga datos en la tabla 'EDIFICIODataSet.COLORES' Puede moverla o quitarla según sea necesario.
-        Me.COLORESTableAdapter.Fill(Me.EDIFICIODataSet.COLORES)
+        COLORESTableAdapter.Fill(EDIFICIODataSet.COLORES)
         NAP_TUBO.Items.Clear()
         NAP_PELO.Items.Clear()
         For Each COLORES In EDIFICIODataSet.COLORES
@@ -51,57 +53,69 @@ Public Class MDU
 
         MDUTableAdapter.FillBynodo(EDIFICIODataSet.MDU, INICIO.CBNODO.Text)
         FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, EDIFICIODataSet.MDU.Rows(0).Item("ID_MDU"))
-        ACTUALIZAR_FTTB()
+    End Sub
+    Private Sub BtnGuardarFttb_Click(sender As Object, e As EventArgs) Handles btnGuardarFttb.Click
+        'FTTBRow.CONEXION_DESDE = CInt(TXT_CONEXION_DESDE.Text)
+        'If CAJA_DISTRIBUCIONTextBox.Text <> "" Then FTTBRow.CAJA_DISTRIBUCION = CInt(CAJA_DISTRIBUCIONTextBox.Text)
+        VERIFICACIONES()
+        'FTTBRow.OBS_TEC = OBS_TECTextBox.Text
+        'FTTBRow.ACOMETIDA = CInt(TXT_ACOMETIDA.Text)
+        'FTTBRow.SPL_NRO = CInt(NAP_SPL.Text)
+
+        Dim SQL = "UPDATE FTTB SET CONEXION_DESDE=" & TXT_CONEXION_DESDE.Text & ", CAJA_DISTRIBUCION=" & CAJA_DISTRIBUCIONTextBox.Text & ", CABLE=" & CABLEint & ", NAP=" & NAPint & ",TIPO_CONEXION_DESDE=" & TIPOCONDESDE & ", NAP_NRO=" & NAP_NROTextBox.Text & ", TUBO=" & TUBOint & ", PELO=" & PELOint & ",OBS_TEC='" & OBS_TECTextBox.Text & "', ACOMETIDA=" & TXT_ACOMETIDA.Text & ",SPL_NRO=" & NAP_SPL.Text & " WHERE ID_FTTB=" & FTTBRow.ID_FTTB & ";"
+        'FTTBTableAdapter.Update(FTTBRow)
+        'FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, MDURow.ID_MDU)
+        Try
+            ExecuteNonQuery("EDIFICIO", SQL)
+            NOTIFICACION("SYS", "registro FTTB actualizado")
+            ACTUALIZAR_FTTB()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
 
     End Sub
+    Private Sub VERIFICACIONES()
 
-    Private Sub BtnGuardarFttb_Click(sender As Object, e As EventArgs) Handles btnGuardarFttb.Click
-        FTTBRow.CONEXION_DESDE = TXT_CONEXION_DESDE.Text
-
-        If CAJA_DISTRIBUCIONTextBox.Text <> "" Then FTTBRow.CAJA_DISTRIBUCION = CAJA_DISTRIBUCIONTextBox.Text
         For Each cable In EDIFICIODataSet.CABLES
             If cable.MODELO = CB_CABLE.Text Then
                 FTTBRow.CABLE = cable.ID_CABLE
+                CABLEint = cable.ID_CABLE
                 Exit For
             End If
         Next
         For Each Naps In EDIFICIODataSet.ARTICULO
             If Naps.NOMBRE = CB_TIPO_NAP.Text Then
                 FTTBRow.NAP = Naps.ID_ARTICULO
+                NAPint = Naps.ID_ARTICULO
                 Exit For
             End If
         Next
         For Each UNACAJA In EDIFICIODataSet.ARTICULO
             If UNACAJA.NOMBRE = CB_TIPO.Text Then
-                FTTBRow.TIPO_CONEXION_DESDE = UNACAJA.NOMBRE
+                FTTBRow.TIPO_CONEXION_DESDE = UNACAJA.ID_ARTICULO
+                TIPOCONDESDE = UNACAJA.ID_ARTICULO
             End If
         Next
-        FTTBRow.NAP_NRO = NAP_NROTextBox.Text
-
-        For Each TUBO In EDIFICIODataSet.ARTICULO
-            If TUBO.NOMBRE = NAP_TUBO.Text Then
-                FTTBRow.TUBO = TUBO.NOMBRE
+        For Each TUBO In EDIFICIODataSet.COLORES
+            If TUBO.COLOR = NAP_TUBO.Text Then
+                FTTBRow.TUBO = TUBO.ID_COLOR
+                TUBOint = TUBO.ID_COLOR
                 Exit For
             End If
         Next
-        For Each PELOS In EDIFICIODataSet.ARTICULO
-            If PELOS.NOMBRE = NAP_PELO.Text Then
-                FTTBRow.PELO = PELOS.NOMBRE
+        For Each PELOS In EDIFICIODataSet.COLORES
+            If PELOS.COLOR = NAP_PELO.Text Then
+                FTTBRow.PELO = PELOS.ID_COLOR
+                PELOint = PELOS.ID_COLOR
                 Exit For
             End If
         Next
-        FTTBRow.OBS_TEC = OBS_TECTextBox.Text
-        FTTBRow.ACOMETIDA = TXT_ACOMETIDA.Text
-        FTTBRow.SPL_NRO = NAP_SPL.Text
-        FTTBTableAdapter.Update(FTTBRow)
-        FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, MDURow.ID_MDU)
-        NOTIFICACION("SYS", "registro FTTB actualizado")
-        PintarMDU()
     End Sub
     Private Sub DGV_MDU_Click(sender As Object, e As EventArgs) Handles DGV_MDU.Click
         Cursor = Cursors.WaitCursor
 
         MDURow = EDIFICIODataSet.MDU.FindByID_MDU(DGV_MDU.CurrentRow.Cells(4).Value)
+        NOTIFICACION("SYS", "SELECCION DE " & MDURow.CARPETA)
         FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, MDURow.ID_MDU)
 
         If MDURow.IsID_CALLENull Then ID_CALLETextBox.Text = "" Else ID_CALLETextBox.Text = MDURow("ID_CALLE")
@@ -116,9 +130,12 @@ Public Class MDU
         If MDURow.IsMODIFICADONull Then MODIFICADODateTimePicker.Value = Today Else MODIFICADODateTimePicker.Value = MDURow.MODIFICADO
         If MDURow.IsACOMETIDANull Then
             ACOMETIDATextBox.Text = ""
+            TXT_ACOMETIDA.Text = ""
         Else
             ACOMETIDATextBox.Text = MDURow.ACOMETIDA
+            TXT_ACOMETIDA.Text = MDURow.ACOMETIDA
         End If
+        If MDURow.IsORDENNull Then TXT_ORDEN.Text = "1" Else TXT_ORDEN.Text = MDURow.ORDEN
         If MDURow.IsINGRESONull Then CB_INGRESO.Text = "" Else CB_INGRESO.Text = MDURow.INGRESO
         ACTUALIZAR_FTTB()
         Cursor = Cursors.Default
@@ -209,32 +226,41 @@ Public Class MDU
         PintarMDU()
     End Sub
     Private Sub btnGuardarEdificio_Click(sender As Object, e As EventArgs) Handles btnGuardarEdificio.Click
-        MDURow.ID_CALLE = ID_CALLETextBox.Text
-        MDURow.PUERTA = PUERTATextBox.Text
-        MDURow.APTOS = APTOSTextBox.Text
-        MDURow.PISOS = PISOSTextBox.Text
         Try
-            MDURow.TORRE = TORRETextBox.Text
+            If ID_CALLETextBox.Text = "" Then Throw New Exception("COMPLETE CALLE")
+            If PUERTATextBox.Text = "" Then Throw New Exception("COMPLETE PUERTA")
+            If APTOSTextBox.Text = "" Then Throw New Exception("COMPLETE APTOS")
+            If PISOSTextBox.Text = "" Then Throw New Exception("COMPLETE PISOS")
+            If TORRETextBox.Text = "" Then Throw New Exception("COMPLETE TORRE")
+            If NODOTextBox.Text = "" Then Throw New Exception("COMPLETE NODO")
+            If ZONATextBox.Text = "" Then Throw New Exception("COMPLETE ZONA")
+            If CB_INGRESO.Text = "" Then Throw New Exception("COMPLETE INGRESO")
+            If TXT_ORDEN.Text = "" Then Throw New Exception("COMPLETE EL ORDEN DE EJECUCION DEL EDIFICIO, POR DEFECTO ES 1")
+            If ACOMETIDATextBox.Text = "" Then MsgBox("SE GUARDARA CAMBIOS SIN ACOMETIDA")
         Catch ex As Exception
-            MsgBox("complete la torre")
+            MsgBox(ex.Message, MsgBoxStyle.Information, "SGE")
             Exit Sub
         End Try
-        MDURow.TORRE = TORRETextBox.Text
-        MDURow.NODO = NODOTextBox.Text
-        MDURow.ZONA = ZONATextBox.Text
-        MDURow.INGRESO = CB_INGRESO.Text
+
+        Dim SQL As String
+        If ACOMETIDATextBox.Text = "" Then
+            SQL = "UPDATE MDU SET PUERTA='" & PUERTATextBox.Text & "', APTOS=" & APTOSTextBox.Text & ", PISOS=" & PISOSTextBox.Text & ", TORRE=" & TORRETextBox.Text & ", NODO='" & NODOTextBox.Text & "', ORDEN=" & TXT_ORDEN.Text & ", ZONA=" & ZONATextBox.Text & ", INGRESO='" & CB_INGRESO.Text & "', MODIFICADO='" & MODIFICADODateTimePicker.Value & "' WHERE ID_MDU=" & MDURow.ID_MDU & ";"
+        Else
+            SQL = "UPDATE MDU SET PUERTA='" & PUERTATextBox.Text & "', APTOS=" & APTOSTextBox.Text & ", PISOS=" & PISOSTextBox.Text & ", TORRE=" & TORRETextBox.Text & ", NODO='" & NODOTextBox.Text & "', ORDEN=" & TXT_ORDEN.Text & ", ZONA=" & ZONATextBox.Text & ", ACOMETIDA=" & ACOMETIDATextBox.Text & ", INGRESO='" & CB_INGRESO.Text & "', MODIFICADO='" & MODIFICADODateTimePicker.Value & "' WHERE ID_MDU=" & MDURow.ID_MDU & ";"
+        End If
         Try
-            MDURow.ACOMETIDA = ACOMETIDATextBox.Text
+            ExecuteNonQuery("EDIFICIO", SQL)
+            NOTIFICACION("SYS", "Edificio actualizado")
+            'MDUTableAdapter.FillBynodo(EDIFICIODataSet.MDU, INICIO.CBNODO.Text)
+            'FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, EDIFICIODataSet.MDU.Rows(0).Item("ID_MDU"))
+            PintarMDU()
+            ACTUALIZAR_FTTB()
         Catch ex As Exception
-            MsgBox("SE HA MODIFICADO SIN LA ACOMETIDA")
-
+            MsgBox(ex.Message)
         End Try
-        MDURow.MODIFICADO = MODIFICADODateTimePicker.Value
-        MDUTableAdapter.Update(EdificioDataSetBACK.MDU)
-        NOTIFICACION("SYS", "Edificio actualizado")
-        PintarMDU()
-    End Sub
 
+
+    End Sub
     Private Sub MDU_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         PintarMDU()
     End Sub
@@ -250,53 +276,44 @@ Public Class MDU
         End If
     End Sub
     Private Sub BTN_AGREGAR_MDU_Click(sender As Object, e As EventArgs) Handles BTN_AGREGAR_MDU.Click
-        MDURow = EDIFICIODataSet.MDU.NewMDURow()
-        MDURow.ID_CALLE = ID_CALLETextBox.Text
-        MDURow.PUERTA = PUERTATextBox.Text
-        MDURow.APTOS = APTOSTextBox.Text
-        MDURow.PISOS = PISOSTextBox.Text
+        Dim SQL As String
         Try
-            MDURow.TORRE = TORRETextBox.Text
+            If ID_CALLETextBox.Text = "" Then Throw New Exception("COMPLETE ID CALLE")
+            If PUERTATextBox.Text = "" Then Throw New Exception("COMPLETE EL NUMERO DE PUERTA")
+            If APTOSTextBox.Text = "" Then Throw New Exception("COMPLETE LA CANTIDAD DE APTOS")
+            If PISOSTextBox.Text = "" Then Throw New Exception("COMPLETE LA CANTIDAD DE PISOS")
+            If TORRETextBox.Text = "" Then Throw New Exception("COMPLETE LA CANTIDAD DE TORRES")
+            If NODOTextBox.Text = "" Then Throw New Exception("COMPLETE EL NODO")
+            If ZONATextBox.Text = "" Then Throw New Exception("COMPLETE LA ZONA")
+            If CARPETATextBox.Text = "" Then Throw New Exception("COMPLETE EL NUMERO DE CARPETA")
+            If ACOMETIDATextBox.Text = "" Then Throw New Exception("COMPLETE EL NUMERO DE ACOMETIDA")
+            If CB_INGRESO.Text = "" Then Throw New Exception("COMPLETE EL TIPO DE INGRESO")
+            If TXT_ORDEN.Text = "" Then Throw New Exception("COMPLETE EL ORDEN DE EJECUCION, POR DEFECTO ES 1")
         Catch ex As Exception
-            MsgBox("complete la torre")
+            MsgBox(ex.Message)
             Exit Sub
         End Try
-        MDURow.NODO = NODOTextBox.Text
-        MDURow.ZONA = ZONATextBox.Text
-        MDURow.INGRESO = CB_INGRESO.Text
-        MDURow.ID_STATUS = 1
-        Try
-            MDURow.CARPETA = CARPETATextBox.Text
-        Catch ex As Exception
-            MsgBox("Complete CARPETA")
-            Exit Sub
-        End Try
-        Try
-            MDURow.ACOMETIDA = ACOMETIDATextBox.Text
-        Catch ex As Exception
-        End Try
 
-        MDURow.MODIFICADO = MODIFICADODateTimePicker.Value
+        SQL = "INSERT INTO MDU (CARPETA, ID_CALLE, PUERTA, APTOS, PISOS, TORRE, NODO, ZONA, ACOMETIDA, INGRESO, ID_STATUS, ORDEN, MODIFICADO) VALUES (" & CARPETATextBox.Text & ", " & ID_CALLETextBox.Text & ", '" & PUERTATextBox.Text & "'," & APTOSTextBox.Text & "," & PISOSTextBox.Text & "," & TORRETextBox.Text & ",'" & NODOTextBox.Text & "'," & ZONATextBox.Text & "," & ACOMETIDATextBox.Text & ",'" & CB_INGRESO.Text & "'," & 1 & "," & TXT_ORDEN.Text & ", '" & MODIFICADODateTimePicker.Value & "')"
+        ' EDIFICIODataSet.MDU.AddMDURow(MDURow)
 
-        EDIFICIODataSet.MDU.AddMDURow(MDURow)
-        MDUTableAdapter.Update(MDURow)
+        ExecuteNonQuery("EDIFICIO", SQL)
+        ' MDUTableAdapter.Update(MDURow)
+
+
         NOTIFICACION("SYS", "SE HA INGRESADO EDIFICIO")
     End Sub
 
     Private Sub BTN_AGREGAR_FTTB_Click(sender As Object, e As EventArgs) Handles BTN_AGREGAR_FTTB.Click
         FTTBRow = EDIFICIODataSet.FTTB.NewFTTBRow()
         FTTBRow.ID_EDIFICIO = MDURow.ID_MDU
-        FTTBRow.CONEXION_DESDE = TXT_CONEXION_DESDE.Text
-        FTTBRow.TIPO_CONEXION_DESDE = CB_TIPO.Text
         If CAJA_DISTRIBUCIONTextBox.Text <> "" Then FTTBRow.CAJA_DISTRIBUCION = CAJA_DISTRIBUCIONTextBox.Text
-        FTTBRow.CABLE = CB_CABLE.Text
-        FTTBRow.NAP = CB_TIPO_NAP.Text
+        FTTBRow.CONEXION_DESDE = TXT_CONEXION_DESDE.Text
         FTTBRow.NAP_NRO = NAP_NROTextBox.Text
-        FTTBRow.TUBO = NAP_TUBO.Text
-        FTTBRow.PELO = NAP_PELO.Text
         FTTBRow.OBS_TEC = OBS_TECTextBox.Text
-        FTTBRow.ACOMETIDA = TXT_ACOMETIDA.Text
+        FTTBRow.ACOMETIDA = CInt(TXT_ACOMETIDA.Text)
         FTTBRow.SPL_NRO = NAP_SPL.Text
+        VERIFICACIONES()
         EDIFICIODataSet.FTTB.AddFTTBRow(FTTBRow)
         FTTBTableAdapter.Update(EDIFICIODataSet.FTTB)
         FTTBTableAdapter.FillByID_EDIFICIO(EDIFICIODataSet.FTTB, MDURow.ID_MDU)
@@ -336,7 +353,6 @@ Public Class MDU
                     FTTBDataGridView.Rows(X).Cells(COLUMNA).Style.BackColor = Color.Pink
                 Case "CELESTE"
                     FTTBDataGridView.Rows(X).Cells(COLUMNA).Style.BackColor = Color.LightSkyBlue
-
             End Select
 
         Next

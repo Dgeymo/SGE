@@ -163,11 +163,11 @@ Public Class AGENDA
             TEC_ID = Split(CTRL_AGENDA.Name, "-")(2)
             Try
                 EDI_ID = Split(CTRL_AGENDA.Name, "-")(3)
-                MDUTableAdapter.FillByID(EDIFICIODataSet.MDU, EDI_ID)
-                If EDIFICIODataSet.MDU.Rows.Count > 0 Then
-                    MDURow = EDIFICIODataSet.MDU.Rows(0)
-                    CLICK_DERECHO(e)
-                End If
+                '  MDUTableAdapter.FillByID(EDIFICIODataSet.MDU, EDI_ID)
+                '  If EDIFICIODataSet.MDU.Rows.Count > 0 Then
+                '  MDURow = EDIFICIODataSet.MDU.Rows(0)
+                CLICK_DERECHO(e)
+                '  End If
             Catch ex As Exception
                 EDI_ID = 0
             End Try
@@ -175,30 +175,30 @@ Public Class AGENDA
                 Case "AGENDAR", "AGENDAR CERTIFICADO"
                     'EDITA EL STATUS DEL EDIFICIO
                     If EDI_ID = 0 Then
-                        MDUTableAdapter.FillByID(EDIFICIODataSet.MDU, EDI_ID_AGENDAR)
-                        If EDIFICIODataSet.MDU.Rows.Count > 0 Then
-                            MDURow = EDIFICIODataSet.MDU.Rows(0)
+                        ' MDUTableAdapter.FillByID(EDIFICIODataSet.MDU, EDI_ID_AGENDAR)
+                        ' If EDIFICIODataSet.MDU.Rows.Count > 0 Then
+                        'MDURow = EDIFICIODataSet.MDU.Rows(0)
 
-                            'InsertAgendaAPI()
-                            If ACCION_AGENDA = "AGENDAR" Then
-                                EDITAR_EDIFICIO(2)
-                                AGENDA_INSERT(False)
-                                ACCION_AGENDA = "VER AGENDAMIENTO"
-                            ElseIf ACCION_AGENDA = "AGENDAR CERTIFICADO" Then
-                                EDITAR_EDIFICIO(5)
-                                AGENDA_INSERT(True)
-                                ACCION_AGENDA = "VISTA CERTIFICADOS"
-                            End If
-                            ACCION_AG(ACCION_AGENDA)
-                            NOTIFICACION("SYS", "EDIFICIO AGENDADO")
+                        'InsertAgendaAPI()
+                        If ACCION_AGENDA = "AGENDAR" Then
+                            EDITAR_EDIFICIO(2, EDI_ID_AGENDAR)
+                            AGENDA_INSERT(False)
+                            ACCION_AGENDA = "VER AGENDAMIENTO"
+                        ElseIf ACCION_AGENDA = "AGENDAR CERTIFICADO" Then
+                            EDITAR_EDIFICIO(5, EDI_ID_AGENDAR)
+                            AGENDA_INSERT(True)
+                            ACCION_AGENDA = "VISTA CERTIFICADOS"
                         End If
+                        ACCION_AG(ACCION_AGENDA)
+                        NOTIFICACION("SYS", "EDIFICIO AGENDADO")
+                        'End If
                     Else
                         NOTIFICACION("SYS", "CAPACIDAD YA USADA")
                     End If
                 Case "REAGENDAR", "REAGENDAR CERTIFICADO"
                     'MODIFICA EL REGISTRO DE LA AGENDA
 
-                    AGENDATableAdapter.FillByIDMDU_DIAAGENDA(EDIFICIODataSet.AGENDA, IDMDU_TEMP, AGENDA_DIA_TEMP)
+                    AGENDATableAdapter.FillByIDMDU_DIAAGENDA(EDIFICIODataSet.AGENDA, EDI_ID, AGENDA_DIA_TEMP)
 
                     If EDIFICIODataSet.AGENDA.Rows.Count > 0 Then
                         AGENDARow = EDIFICIODataSet.AGENDA.Rows(0)
@@ -207,16 +207,16 @@ Public Class AGENDA
                         AGENDARow.ID_EDIFICIO = EDI_ID_AGENDAR
                         AGENDARow.ID_TURNO = TURNO_ID
                         AGENDATableAdapter.Update(AGENDARow)
-                        MDUTableAdapter.FillByID(EDIFICIODataSet.MDU, IDMDU_TEMP)
-                        If EDIFICIODataSet.MDU.Rows.Count > 0 Then
-                            MDURow = EDIFICIODataSet.MDU.Rows(0)
-                        End If
+                        ' MDUTableAdapter.FillByID(EDIFICIODataSet.MDU, IDMDU_TEMP)
+                        ' If EDIFICIODataSet.MDU.Rows.Count > 0 Then
+                        'MDURow = EDIFICIODataSet.MDU.Rows(0)
+                        'End If
                         If ACCION_AGENDA = "REAGENDAR" Then
-                            EDITAR_EDIFICIO(2)
+                            EDITAR_EDIFICIO(2, EDI_ID)
                             ACCION_AGENDA = "VER AGENDAMIENTO"
                             ACCION_AG(ACCION_AGENDA)
                         ElseIf ACCION_AGENDA = "REAGENDAR CERTIFICADO" Then
-                            EDITAR_EDIFICIO(5)
+                            EDITAR_EDIFICIO(5, EDI_ID)
                             ACCION_AGENDA = "VER AGENDAMIENTO CERTIFICADO"
                             ACCION_AG(ACCION_AGENDA)
                         End If
@@ -288,9 +288,9 @@ Public Class AGENDA
         End If
         Select Case ACCION_AGENDA
             Case "VER AGENDAMIENTO", "VISTA"
-                EDITAR_EDIFICIO(1)
+                EDITAR_EDIFICIO(1, EDI_ID)
             Case "VISTA CERTIFICADOS"
-                EDITAR_EDIFICIO(4)
+                EDITAR_EDIFICIO(4, EDI_ID)
         End Select
         CARGAR_DATOS(DIA_INI)
     End Sub
@@ -300,12 +300,10 @@ Public Class AGENDA
         BITACORARow.FECHA_ING = Today.ToShortDateString
         If DETALLE_MDU.TXT_NOMBRE.Text <> "" Then BITACORARow.NOMBRE_CTTO = DETALLE_MDU.TXT_NOMBRE.Text
     End Sub
-    Public Sub EDITAR_EDIFICIO(ByVal CODIGO_STATUS As Integer)
-        MDURow.ID_STATUS = CODIGO_STATUS
-        MDURow.MODIFICADO = Today.ToShortDateString
-        'MDUTableAdapter.Update(MDURow)
+    Public Sub EDITAR_EDIFICIO(ByVal CODIGO_STATUS As Integer, ByVal ID_EDIFICIO As Integer)
+        Dim SQL As String = "UPDATE  MDU SET ID_STATUS = " & CODIGO_STATUS & ", MODIFICADO=" & Today.ToShortDateString & " WHERE ID_MDU=" & ID_EDIFICIO
+        ExecuteNonQuery("EDIFICIO", SQL)
         NOTIFICACION("SYS", "EDIFICIO MODIFICADO")
-        '  CARGAR_DATOS(DIA_INI)
         P_MENU.Visible = False
     End Sub
 
@@ -340,6 +338,6 @@ Public Class AGENDA
         ACCION_AGENDA = "REAGENDAR"
         P_MENU.Visible = False
         AGENDA_DIA_TEMP = DIA_AGENDA
-        IDMDU_TEMP = MDURow.ID_MDU
+        'IDMDU_TEMP = MDURow.ID_MDU
     End Sub
 End Class

@@ -193,7 +193,7 @@ Public Class Login
                         NOTIFICACION("SYS", "AGUARDE... realizando respado de BBDD-ORDENES")
                         Directory.CreateDirectory("R:\OPERACIONES\PROGRAMAS\BBDD\" & FECHA)
                         File.Copy("G:\OPERACIONES\BD_ORDENES\ORDENES.accdb", "R:\OPERACIONES\PROGRAMAS\BBDD\" & FECHA & "\ORDENES.accdb")
-                        File.Copy("G:\OPERACIONES\BD_ORDENES\ORDENES.accdb", "R:\OPERACIONES\PROGRAMAS\BBDD\" & FECHA & "\ORDENES_be.accdb")
+                        ' File.Copy("G:\OPERACIONES\BD_ORDENES\ORDENES.accdb", "R:\OPERACIONES\PROGRAMAS\BBDD\" & FECHA & "\ORDENES_be.accdb")
                         NOTIFICACION("SYS", "Respado de BBDD-ORDENES, correcto")
                     End If
                 End If

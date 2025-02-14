@@ -972,8 +972,7 @@ Public Class STANDARD
 
                 'RECARGA LAS ORDENES PARA EL TRABAJO SELECCIONADO
                 DATOS.ORDENESTableAdapter.FillByIDTRABAJO(DATOS.ORDENESDataSet.ORDENES, DATOS.DATOS_TRABAJORow("Id_TRABAJO"))
-                DATOS.ORDENESBindingSource.MoveLast()
-                DATOS.CARGA_VALORESORDENES()
+                DATOS.CARGA_VALORESORDENES(DATOS.ORDENESDataSet.ORDENES.Rows(0))
 
 
 '_____________________________________________________________________________________________
@@ -1154,8 +1153,8 @@ Public Class STANDARD
                 'RECARGA LAS ORDENES PARA EL TRABAJO SELECCIONADO
                 DATOS.ORDENESTableAdapter.FillByIDTRABAJO(DATOS.ORDENESDataSet.ORDENES, DATOS.DATOS_TRABAJORow("Id_TRABAJO"))
                 DATOS.ORDENESBindingSource.MoveLast()
-                DATOS.CARGA_VALORESORDENES()
-
+                DATOS.CARGA_VALORESORDENES(DATOS.ORDENESDataSet.ORDENES.Rows(DATOS.ORDENESDataSet.ORDENES.Rows.Count - 1))
+                DATOS.DATOS_ORDENESRow = DATOS.ORDENESDataSet.ORDENES.Rows(DATOS.ORDENESDataSet.ORDENES.Rows.Count - 1)
                 'CARGA OBSERVACIONES
                 ESTADO.Text = "Ingresando OBSERVACIONES"
                 ESTADO.Refresh()

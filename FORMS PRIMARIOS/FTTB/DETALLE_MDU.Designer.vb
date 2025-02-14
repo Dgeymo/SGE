@@ -101,7 +101,6 @@ Partial Class DETALLE_MDU
         Me.ACOMETIDA = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MDUBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EdificioDataSetBACKUP = New REDES.EDIFICIODataSet()
-        Me.MDUBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.FTTBTableAdapter = New REDES.EDIFICIODataSetTableAdapters.FTTBTableAdapter()
         Me.BITACORATableAdapter = New REDES.EDIFICIODataSetTableAdapters.BITACORATableAdapter()
         Me.STATUSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.STATUSTableAdapter()
@@ -110,12 +109,15 @@ Partial Class DETALLE_MDU
         Me.AGENDATableAdapter = New REDES.EDIFICIODataSetTableAdapters.AGENDATableAdapter()
         Me.TECNICOSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.TECNICOSTableAdapter()
         Me.TURNOSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.TURNOSTableAdapter()
+        Me.MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.MDUTableAdapter()
+        Me.MDUBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.STATUSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AGENDABindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TECNICOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TURNOSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.STATUSBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.MDUTableAdapter()
+        Me.IMPRIMIRBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.IMPRIMIRTableAdapter = New REDES.EDIFICIODataSetTableAdapters.IMPRIMIRTableAdapter()
         CType(Me.BITACORABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -126,13 +128,14 @@ Partial Class DETALLE_MDU
         CType(Me.MDUDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EdificioDataSetBACKUP, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MDUBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EdificioDataSetACTUALIZAR, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MDUBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TECNICOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TURNOSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.STATUSBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IMPRIMIRBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TXT_NOMBRE
@@ -191,9 +194,9 @@ Partial Class DETALLE_MDU
         Me.GroupBox1.Controls.Add(Me.TXT_NOMBRE)
         Me.GroupBox1.Controls.Add(Me.BITACORADataGridView)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 326)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 386)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(760, 339)
+        Me.GroupBox1.Size = New System.Drawing.Size(787, 332)
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "CONTROL"
@@ -262,10 +265,10 @@ Partial Class DETALLE_MDU
         Me.BTN_AGENDAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BTN_AGENDAR.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BTN_AGENDAR.ForeColor = System.Drawing.Color.White
-        Me.BTN_AGENDAR.Location = New System.Drawing.Point(3, 86)
+        Me.BTN_AGENDAR.Location = New System.Drawing.Point(3, 79)
         Me.BTN_AGENDAR.Margin = New System.Windows.Forms.Padding(2)
         Me.BTN_AGENDAR.Name = "BTN_AGENDAR"
-        Me.BTN_AGENDAR.Size = New System.Drawing.Size(754, 36)
+        Me.BTN_AGENDAR.Size = New System.Drawing.Size(781, 36)
         Me.BTN_AGENDAR.TabIndex = 12
         Me.BTN_AGENDAR.Text = "AGENDAR EDIFICIO"
         Me.BTN_AGENDAR.UseVisualStyleBackColor = False
@@ -284,10 +287,10 @@ Partial Class DETALLE_MDU
         Me.TXT_OBS.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TXT_OBS.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BITACORABindingSource, "OBSERVACIONES", True))
         Me.TXT_OBS.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.TXT_OBS.Location = New System.Drawing.Point(3, 122)
+        Me.TXT_OBS.Location = New System.Drawing.Point(3, 115)
         Me.TXT_OBS.Multiline = True
         Me.TXT_OBS.Name = "TXT_OBS"
-        Me.TXT_OBS.Size = New System.Drawing.Size(754, 116)
+        Me.TXT_OBS.Size = New System.Drawing.Size(781, 116)
         Me.TXT_OBS.TabIndex = 3
         '
         'BTN_GUARDAR
@@ -369,7 +372,7 @@ Partial Class DETALLE_MDU
         Me.BITACORADataGridView.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.BITACORADataGridView.EnableHeadersVisualStyles = False
         Me.BITACORADataGridView.GridColor = System.Drawing.Color.LightGray
-        Me.BITACORADataGridView.Location = New System.Drawing.Point(3, 238)
+        Me.BITACORADataGridView.Location = New System.Drawing.Point(3, 231)
         Me.BITACORADataGridView.Name = "BITACORADataGridView"
         Me.BITACORADataGridView.RowHeadersVisible = False
         Me.BITACORADataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -377,7 +380,7 @@ Partial Class DETALLE_MDU
         Me.BITACORADataGridView.ShowCellToolTips = False
         Me.BITACORADataGridView.ShowEditingIcon = False
         Me.BITACORADataGridView.ShowRowErrors = False
-        Me.BITACORADataGridView.Size = New System.Drawing.Size(754, 98)
+        Me.BITACORADataGridView.Size = New System.Drawing.Size(781, 98)
         Me.BITACORADataGridView.TabIndex = 2
         '
         'VALIDO
@@ -456,9 +459,9 @@ Partial Class DETALLE_MDU
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.CB_STATUS)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 72)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 146)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(760, 254)
+        Me.GroupBox2.Size = New System.Drawing.Size(787, 240)
         Me.GroupBox2.TabIndex = 8
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "TECNICA"
@@ -471,7 +474,7 @@ Partial Class DETALLE_MDU
         Me.L_FTTB.ItemHeight = 16
         Me.L_FTTB.Location = New System.Drawing.Point(3, 16)
         Me.L_FTTB.Name = "L_FTTB"
-        Me.L_FTTB.Size = New System.Drawing.Size(754, 116)
+        Me.L_FTTB.Size = New System.Drawing.Size(781, 116)
         Me.L_FTTB.TabIndex = 17
         '
         'BTN_CONFORME_OBRA
@@ -724,7 +727,7 @@ Partial Class DETALLE_MDU
         Me.MDUDataGridView.ShowCellToolTips = False
         Me.MDUDataGridView.ShowEditingIcon = False
         Me.MDUDataGridView.ShowRowErrors = False
-        Me.MDUDataGridView.Size = New System.Drawing.Size(760, 72)
+        Me.MDUDataGridView.Size = New System.Drawing.Size(787, 146)
         Me.MDUDataGridView.TabIndex = 9
         '
         'DataGridViewTextBoxColumn8
@@ -843,11 +846,6 @@ Partial Class DETALLE_MDU
         Me.EdificioDataSetBACKUP.DataSetName = "EDIFICIODataSet"
         Me.EdificioDataSetBACKUP.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'MDUBindingSource1
-        '
-        Me.MDUBindingSource1.DataMember = "MDU"
-        Me.MDUBindingSource1.DataSource = Me.EDIFICIODataSet
-        '
         'FTTBTableAdapter
         '
         Me.FTTBTableAdapter.ClearBeforeFill = True
@@ -863,16 +861,22 @@ Partial Class DETALLE_MDU
         'TableAdapterManager
         '
         Me.TableAdapterManager.AGENDATableAdapter = Nothing
+        Me.TableAdapterManager.ARTICULOTableAdapter = Nothing
         Me.TableAdapterManager.AVANCETableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BITACORATableAdapter = Nothing
+        Me.TableAdapterManager.CABLESTableAdapter = Nothing
         Me.TableAdapterManager.CALLESTableAdapter = Nothing
         Me.TableAdapterManager.CERTIFICACIONESTableAdapter = Nothing
+        Me.TableAdapterManager.COLORESTableAdapter = Nothing
         Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.FTTBTableAdapter = Nothing
-        Me.TableAdapterManager.MDUTableAdapter = Nothing
+        Me.TableAdapterManager.INGRESOTableAdapter = Nothing
+        'Me.TableAdapterManager.MDUTableAdapter = Nothing
+        Me.TableAdapterManager.OBS_MDUTableAdapter = Nothing
         Me.TableAdapterManager.STATUSTableAdapter = Nothing
         Me.TableAdapterManager.TECNICOSTableAdapter = Nothing
+        Me.TableAdapterManager.TRONCALESTableAdapter = Nothing
         Me.TableAdapterManager.TURNOSTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
@@ -892,6 +896,15 @@ Partial Class DETALLE_MDU
         'TURNOSTableAdapter
         '
         Me.TURNOSTableAdapter.ClearBeforeFill = True
+        '
+        'MDUTableAdapter
+        '
+        Me.MDUTableAdapter.ClearBeforeFill = True
+        '
+        'MDUBindingSource1
+        '
+        Me.MDUBindingSource1.DataMember = "MDU"
+        Me.MDUBindingSource1.DataSource = Me.EDIFICIODataSet
         '
         'STATUSBindingSource
         '
@@ -918,9 +931,14 @@ Partial Class DETALLE_MDU
         Me.STATUSBindingSource1.DataMember = "STATUS"
         Me.STATUSBindingSource1.DataSource = Me.EdificioDataSetACTUALIZAR
         '
-        'MDUTableAdapter
+        'IMPRIMIRBindingSource
         '
-        Me.MDUTableAdapter.ClearBeforeFill = True
+        Me.IMPRIMIRBindingSource.DataSource = Me.EDIFICIODataSet
+        Me.IMPRIMIRBindingSource.Position = 0
+        '
+        'IMPRIMIRTableAdapter
+        '
+        Me.IMPRIMIRTableAdapter.ClearBeforeFill = True
         '
         'DETALLE_MDU
         '
@@ -929,7 +947,7 @@ Partial Class DETALLE_MDU
         Me.AutoScroll = True
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(760, 665)
+        Me.ClientSize = New System.Drawing.Size(787, 718)
         Me.Controls.Add(Me.MDUDataGridView)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -951,13 +969,14 @@ Partial Class DETALLE_MDU
         CType(Me.MDUDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EdificioDataSetBACKUP, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MDUBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EdificioDataSetACTUALIZAR, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MDUBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TECNICOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TURNOSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.STATUSBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IMPRIMIRBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1065,4 +1084,6 @@ Partial Class DETALLE_MDU
     Friend WithEvents BTN_CONFORME_OBRA As Button
     Friend WithEvents MDUTableAdapter As EDIFICIODataSetTableAdapters.MDUTableAdapter
     Friend WithEvents L_FTTB As ListBox
+    Friend WithEvents IMPRIMIRBindingSource As BindingSource
+    Friend WithEvents IMPRIMIRTableAdapter As EDIFICIODataSetTableAdapters.IMPRIMIRTableAdapter
 End Class

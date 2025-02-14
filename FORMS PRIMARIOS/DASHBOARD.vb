@@ -16,13 +16,8 @@ Public Class DASHBOARD
     Dim CONTAR As Integer
     Dim HORA As String
     Dim MINUTOS As String
-    Private Sub DASHBOARD_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        'OBTENER_HORA()
-        RELOJ_SEG.Enabled = True
-
-    End Sub
+    Dim DTBATERIA As DataTable
     Private Sub INGRESO_Load(sender As Object, e As EventArgs) Handles Me.Load
-
 
         Try
             USUARIO_ARRAY = Split(Trim(File.ReadAllText("C:\DOCUMENTOS\USUARIO\LOGVBNET.TXT")), ",")
@@ -2070,30 +2065,91 @@ Public Class DASHBOARD
         '    ExecuteNonQuery("ORDENES", SQL)
         'Next
 
+        'TODO: esta línea de código carga datos en la tabla 'BASEFUENTESDataSet.INDICE_CALLES' Puede moverla o quitarla según sea necesario.
+        Me.INDICE_CALLESTableAdapter.Fill(Me.BASEFUENTESDataSet.INDICE_CALLES)
+        'TODO: esta línea de código carga datos en la tabla 'BASEFUENTESDataSet.FECHA_BATERIA' Puede moverla o quitarla según sea necesario.
+        Me.FECHA_BATERIATableAdapter.Fill(Me.BASEFUENTESDataSet.FECHA_BATERIA)
+        'TODO: esta línea de código carga datos en la tabla 'BASEFUENTESDataSet.TIPO_FUENTE' Puede moverla o quitarla según sea necesario.
+        Me.TIPO_FUENTETableAdapter.Fill(Me.BASEFUENTESDataSet.TIPO_FUENTE)
+        'TODO: esta línea de código carga datos en la tabla 'BASEFUENTESDataSet.TIPO_BATERIA' Puede moverla o quitarla según sea necesario.
+        Me.TIPO_BATERIATableAdapter.Fill(Me.BASEFUENTESDataSet.TIPO_BATERIA)
+        'TODO: esta línea de código carga datos en la tabla 'BASEFUENTESDataSet.FUENTE' Puede moverla o quitarla según sea necesario.
+        Me.FUENTETableAdapter.Fill(Me.BASEFUENTESDataSet.FUENTE)
+
+
+
+        For Each UNAF In BASEFUENTESDataSet.FUENTE
+            LBLCUENTA2.Text = UNAF.INSTALACION_RUS
+            LBLCUENTA2.Refresh()
+            If UNAF.IsRXNull Then UNAF.RX = 0
+            If UNAF.IsTRNull Then UNAF.TR = 0
+            If UNAF.IsBRNull Then UNAF.BR = 0
+            If UNAF.IsLEXNull Then UNAF.LEX = 0
+
+
+            'validamos y modificamos el nombre de la calle
+            For Each UNACALLE In BASEFUENTESDataSet.INDICE_CALLES
+                If Trim(UNAF.CALLE) = UNACALLE.NOMBRE_CALLE Then
+                    UNAF.CALLE = UNACALLE.Id
+                    Exit For
+                End If
+            Next
+            'validamos el nombre de la esquina
+            For Each unaCalle In BASEFUENTESDataSet.INDICE_CALLES
+                If UNAF.IsESQUINANull = False AndAlso UNAF.ESQUINA = unaCalle.NOMBRE_CALLE Then
+                    UNAF.ESQUINA = unaCalle.Id
+                    Exit For
+                End If
+            Next
+            'validamos el nombre de la fuente
+            For Each unaFuente In BASEFUENTESDataSet.TIPO_FUENTE
+                If UNAF.IsMODFUENTENull = False AndAlso UNAF.MODFUENTE = unaFuente.TIPO Then
+                    UNAF.MODFUENTE = unaFuente.Id
+                    Exit For
+                End If
+            Next
+            'validamos el nombre de la bateria
+            If UNAF.IsMODFUENTENull = False AndAlso UNAF.MODFUENTE = 7 Then
+                UNAF.CANT_BAT = 0
+                UNAF.MODBATERIA = 4
+            End If
+            For Each unaBateria In BASEFUENTESDataSet.TIPO_BATERIA
+                If UNAF.IsMODBATERIANull = False AndAlso UNAF.MODBATERIA = unaBateria.TIPO Then
+                    UNAF.MODFUENTE = unaBateria.Id
+                    Exit For
+                End If
+            Next
+            Dim SQL = "UPDATE FUENTE SET CALLE =" & UNAF.CALLE & ", ESQUINA=" & UNAF.ESQUINA & ", MODFUENTE=" & UNAF.MODFUENTE & ", MODBATERIA=" & UNAF.MODBATERIA & ", CANT_BAT=" & UNAF.CANT_BAT & ", RX=" & UNAF.RX & ", TR=" & UNAF.TR & ", BR=" & UNAF.BR & ", LEX=" & UNAF.LEX & " WHERE ID_FUENTE =" & UNAF.ID_FUENTE
+
+            ExecuteNonQuery("FUENTES", SQL)
+        Next
+
+
+        'Dim SQL = "SELECT ID_FUENTE, MODBATERIA FROM FUENTE"
+        'Dim RESPUESTA As OleDbDataReader = ExecuteQuery("FUENTES", SQL)
+        'Dim DT2 As New DataTable()
+        'DT2.Load(RESPUESTA)
+        'For Each UNAFUENTE In DT2.AsEnumerable
+        '    If IsDBNull(UNAFUENTE("MODBATERIA")) Then Continue For
+        '    '  If UNAFUENTE("MODBATERIA") <> "" Then
+        '    '  For Each UNABAT In DT1.AsEnumerable
+        '    '  If UNAFUENTE("MODBATERIA") = UNABAT("ID") Then
+        '    Dim SQLINSERT As String = "UPDATE FUENTE SET FECHA_BAT = '" & UNAFUENTE("MODBATERIA") & "' WHERE ID_FUENTE = " & UNAFUENTE("ID_FUENTE")
+        '    Try
+        '        ExecuteNonQuery("FUENTES", SQLINSERT)
+        '    Catch ex As Exception
+        '        MsgBox(ex.Message)
+        '    End Try
+        '    ' End If
+        '    '  Next
+        'Next
+
+
+
+
+
         Cursor = Cursors.Default
     End Sub
-
-
-
-    'Private Sub DASHBOARD_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
-    '    BTN_Directorio.Text = MousePosition.X.ToString
-
-    'End Sub
-
-    'Private Sub RELOJ_SEG_Tick(sender As Object, e As EventArgs) Handles RELOJ_SEG.Tick
-
-    '    HORA = Mid(HoraAhora.Text, 1, 2)
-    '    MINUTOS = Mid(HoraAhora.Text, 4, 2)
-    '    If Mid(HoraAhora.Text, 3, 1) = ":" Then
-    '        HoraAhora.Text = HORA & " " & MINUTOS
-    '    Else
-    '        HoraAhora.Text = HORA & ":" & MINUTOS
-    '    End If
-
-    'End Sub
-
-
-
 
     'Private Sub TimerWAIT_Tick(sender As Object, e As EventArgs) Handles TimerWAIT.Tick
     '    CONTAR += 1

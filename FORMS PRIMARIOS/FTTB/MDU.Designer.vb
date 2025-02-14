@@ -56,7 +56,9 @@ Partial Class MDU
         Dim ID_EDIFICIOLabel As System.Windows.Forms.Label
         Dim ID_TURNOLabel As System.Windows.Forms.Label
         Dim Label1 As System.Windows.Forms.Label
+        Dim Label2 As System.Windows.Forms.Label
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.TXT_ORDEN = New System.Windows.Forms.TextBox()
         Me.CARPETATextBox = New System.Windows.Forms.TextBox()
         Me.TXT_NRO = New System.Windows.Forms.TextBox()
         Me.TXT_CALLE = New System.Windows.Forms.TextBox()
@@ -205,6 +207,7 @@ Partial Class MDU
         ID_EDIFICIOLabel = New System.Windows.Forms.Label()
         ID_TURNOLabel = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
+        Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DGV_MDU, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -528,8 +531,19 @@ Partial Class MDU
         Label1.TabIndex = 36
         Label1.Text = "CARPETA:"
         '
+        'Label2
+        '
+        Label2.AutoSize = True
+        Label2.Location = New System.Drawing.Point(331, 184)
+        Label2.Name = "Label2"
+        Label2.Size = New System.Drawing.Size(49, 13)
+        Label2.TabIndex = 38
+        Label2.Text = "ORDEN:"
+        '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Label2)
+        Me.GroupBox1.Controls.Add(Me.TXT_ORDEN)
         Me.GroupBox1.Controls.Add(Label1)
         Me.GroupBox1.Controls.Add(Me.CARPETATextBox)
         Me.GroupBox1.Controls.Add(Me.TXT_NRO)
@@ -563,10 +577,18 @@ Partial Class MDU
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GroupBox1.Location = New System.Drawing.Point(3, 16)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(667, 306)
+        Me.GroupBox1.Size = New System.Drawing.Size(668, 306)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "EDIFICIO"
+        '
+        'TXT_ORDEN
+        '
+        Me.TXT_ORDEN.Location = New System.Drawing.Point(383, 180)
+        Me.TXT_ORDEN.Name = "TXT_ORDEN"
+        Me.TXT_ORDEN.Size = New System.Drawing.Size(48, 20)
+        Me.TXT_ORDEN.TabIndex = 39
+        Me.TXT_ORDEN.Text = "1"
         '
         'CARPETATextBox
         '
@@ -965,9 +987,9 @@ Partial Class MDU
         Me.GroupBox3.Controls.Add(Me.GroupBox5)
         Me.GroupBox3.Controls.Add(Me.btnGuardarFttb)
         Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox3.Location = New System.Drawing.Point(670, 16)
+        Me.GroupBox3.Location = New System.Drawing.Point(671, 16)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(677, 306)
+        Me.GroupBox3.Size = New System.Drawing.Size(676, 306)
         Me.GroupBox3.TabIndex = 1
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "CONEXIONADO"
@@ -1479,7 +1501,6 @@ Partial Class MDU
         Me.TableAdapterManager.COLORESTableAdapter = Nothing
         Me.TableAdapterManager.FTTBTableAdapter = Me.FTTBTableAdapter
         Me.TableAdapterManager.INGRESOTableAdapter = Nothing
-        Me.TableAdapterManager.MDUTableAdapter = Nothing
         Me.TableAdapterManager.OBS_MDUTableAdapter = Nothing
         Me.TableAdapterManager.STATUSTableAdapter = Me.STATUSTableAdapter
         Me.TableAdapterManager.TECNICOSTableAdapter = Me.TECNICOSTableAdapter
@@ -1716,4 +1737,5 @@ Partial Class MDU
     Friend WithEvents ARTICULOTableAdapter As EDIFICIODataSetTableAdapters.ARTICULOTableAdapter
     Friend WithEvents CABLESBindingSource As BindingSource
     Friend WithEvents CABLESTableAdapter As EDIFICIODataSetTableAdapters.CABLESTableAdapter
+    Friend WithEvents TXT_ORDEN As TextBox
 End Class

@@ -23,14 +23,14 @@ Partial Class INICIO
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.BTN_VER_AGENDA_CERTIFICADO = New System.Windows.Forms.Button()
         Me.BTN_VER_TODOS = New System.Windows.Forms.Button()
@@ -40,15 +40,24 @@ Partial Class INICIO
         Me.BTN_VER_EDIFICIO = New System.Windows.Forms.Button()
         Me.BTN_AGENDAR = New System.Windows.Forms.Button()
         Me.DGV_EDIFICIOS = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AGENDADO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ACOMETIDA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EDIF_VISTABindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.EDIFICIODataSet = New REDES.EDIFICIODataSet()
         Me.TXT_NRO = New System.Windows.Forms.TextBox()
         Me.CB_STATUS = New System.Windows.Forms.ComboBox()
         Me.TXT_CALLE = New System.Windows.Forms.TextBox()
         Me.TXT_ZONA = New System.Windows.Forms.TextBox()
         Me.LBL_CANT_ROWS = New System.Windows.Forms.Label()
         Me.AVANCEDataGridView = New System.Windows.Forms.DataGridView()
-        Me.VER_DUCTOS_FECHADA = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.AVANCEBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BTN_HABILITAR = New System.Windows.Forms.Button()
         Me.CB_INGRESO = New System.Windows.Forms.ComboBox()
@@ -89,23 +98,6 @@ Partial Class INICIO
         Me.TRONCALESBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TRONCALESTableAdapter = New REDES.FIBRADataSetTableAdapters.TRONCALESTableAdapter()
         Me.TableAdapterManager2 = New REDES.FIBRADataSetTableAdapters.TableAdapterManager()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EDIF_VISTABindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.EDIFICIODataSet = New REDES.EDIFICIODataSet()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.AVANCEBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.AVANCETableAdapter = New REDES.EDIFICIODataSetTableAdapters.AVANCETableAdapter()
-        Me.TableAdapterManager1 = New REDES.EDIFICIODataSetTableAdapters.TableAdapterManager()
         Me.STATUSTableAdapter = New REDES.EDIFICIODataSetTableAdapters.STATUSTableAdapter()
         Me.MDUTableAdapter = New REDES.EDIFICIODataSetTableAdapters.MDUTableAdapter()
         Me.MDUBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -125,15 +117,25 @@ Partial Class INICIO
         Me.COLORESTableAdapter = New REDES.EDIFICIODataSetTableAdapters.COLORESTableAdapter()
         Me.ARTICULOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ARTICULOTableAdapter = New REDES.EDIFICIODataSetTableAdapters.ARTICULOTableAdapter()
+        Me.ReporteNapsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ReporteNapsTableAdapter = New REDES.EDIFICIODataSetTableAdapters.ReporteNapsTableAdapter()
+        Me.AVANCETableAdapter = New REDES.EDIFICIODataSetTableAdapters.AVANCETableAdapter()
+        Me.TableAdapterManager1 = New REDES.EDIFICIODataSetTableAdapters.TableAdapterManager()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn4 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.VER_DUCTOS_FECHADA = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DGV_EDIFICIOS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EDIF_VISTABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AVANCEDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AVANCEBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.menuStrip1.SuspendLayout()
         CType(Me.FIBRADataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TRONCALESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EDIF_VISTABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AVANCEBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -144,6 +146,7 @@ Partial Class INICIO
         CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.COLORESBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ARTICULOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ReporteNapsBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -314,25 +317,25 @@ Partial Class INICIO
         Me.DGV_EDIFICIOS.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.DGV_EDIFICIOS.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.DGV_EDIFICIOS.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Black
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.Black
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGV_EDIFICIOS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_EDIFICIOS.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DGV_EDIFICIOS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGV_EDIFICIOS.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.AGENDADO, Me.ACOMETIDA})
         Me.DGV_EDIFICIOS.DataSource = Me.EDIF_VISTABindingSource
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DGV_EDIFICIOS.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGV_EDIFICIOS.DefaultCellStyle = DataGridViewCellStyle2
         Me.DGV_EDIFICIOS.EnableHeadersVisualStyles = False
         Me.DGV_EDIFICIOS.GridColor = System.Drawing.Color.Silver
         Me.DGV_EDIFICIOS.Location = New System.Drawing.Point(6, 41)
@@ -340,22 +343,22 @@ Partial Class INICIO
         Me.DGV_EDIFICIOS.Name = "DGV_EDIFICIOS"
         Me.DGV_EDIFICIOS.ReadOnly = True
         Me.DGV_EDIFICIOS.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DGV_EDIFICIOS.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DGV_EDIFICIOS.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DGV_EDIFICIOS.RowHeadersVisible = False
         Me.DGV_EDIFICIOS.RowHeadersWidth = 51
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
-        Me.DGV_EDIFICIOS.RowsDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        Me.DGV_EDIFICIOS.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.DGV_EDIFICIOS.RowTemplate.Height = 24
         Me.DGV_EDIFICIOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGV_EDIFICIOS.ShowCellErrors = False
@@ -364,6 +367,62 @@ Partial Class INICIO
         Me.DGV_EDIFICIOS.ShowRowErrors = False
         Me.DGV_EDIFICIOS.Size = New System.Drawing.Size(862, 580)
         Me.DGV_EDIFICIOS.TabIndex = 5
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_EDIFICIO"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID_EDIFICIO"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Visible = False
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "NODO"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "NODO"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 40
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ZONA"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "ZONA"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 40
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "CALLE"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "CALLE"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "PUERTA"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "PUERTA"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "INGRESO"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "INGRESO"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "STATUS"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "STATUS"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
         '
         'AGENDADO
         '
@@ -380,6 +439,16 @@ Partial Class INICIO
         Me.ACOMETIDA.Name = "ACOMETIDA"
         Me.ACOMETIDA.ReadOnly = True
         Me.ACOMETIDA.Width = 45
+        '
+        'EDIF_VISTABindingSource
+        '
+        Me.EDIF_VISTABindingSource.DataMember = "EDIF_VISTA"
+        Me.EDIF_VISTABindingSource.DataSource = Me.EDIFICIODataSet
+        '
+        'EDIFICIODataSet
+        '
+        Me.EDIFICIODataSet.DataSetName = "EDIFICIODataSet"
+        Me.EDIFICIODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TXT_NRO
         '
@@ -444,60 +513,57 @@ Partial Class INICIO
         Me.AVANCEDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.AVANCEDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.AVANCEDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.Black
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.Black
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.AVANCEDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AVANCEDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.AVANCEDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.AVANCEDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewCheckBoxColumn4, Me.VER_DUCTOS_FECHADA, Me.DataGridViewCheckBoxColumn2})
         Me.AVANCEDataGridView.DataSource = Me.AVANCEBindingSource
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.AVANCEDataGridView.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.AVANCEDataGridView.DefaultCellStyle = DataGridViewCellStyle6
         Me.AVANCEDataGridView.EnableHeadersVisualStyles = False
         Me.AVANCEDataGridView.GridColor = System.Drawing.Color.Silver
         Me.AVANCEDataGridView.Location = New System.Drawing.Point(1042, 65)
         Me.AVANCEDataGridView.Name = "AVANCEDataGridView"
         Me.AVANCEDataGridView.ReadOnly = True
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.AVANCEDataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AVANCEDataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.AVANCEDataGridView.RowHeadersVisible = False
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle16.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White
-        Me.AVANCEDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White
+        Me.AVANCEDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle8
         Me.AVANCEDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.AVANCEDataGridView.ShowCellErrors = False
         Me.AVANCEDataGridView.ShowCellToolTips = False
         Me.AVANCEDataGridView.ShowEditingIcon = False
         Me.AVANCEDataGridView.ShowRowErrors = False
-        Me.AVANCEDataGridView.Size = New System.Drawing.Size(306, 578)
+        Me.AVANCEDataGridView.Size = New System.Drawing.Size(302, 578)
         Me.AVANCEDataGridView.TabIndex = 7
         '
-        'VER_DUCTOS_FECHADA
+        'AVANCEBindingSource
         '
-        Me.VER_DUCTOS_FECHADA.DataPropertyName = "VER_DUCTOS_FECHADA"
-        Me.VER_DUCTOS_FECHADA.HeaderText = "DUCTOS"
-        Me.VER_DUCTOS_FECHADA.Name = "VER_DUCTOS_FECHADA"
-        Me.VER_DUCTOS_FECHADA.ReadOnly = True
-        Me.VER_DUCTOS_FECHADA.Width = 50
+        Me.AVANCEBindingSource.DataMember = "AVANCE"
+        Me.AVANCEBindingSource.DataSource = Me.EDIFICIODataSet
         '
         'Label1
         '
@@ -790,142 +856,6 @@ Partial Class INICIO
         Me.TableAdapterManager2.TRONCALESTableAdapter = Me.TRONCALESTableAdapter
         Me.TableAdapterManager2.UpdateOrder = REDES.FIBRADataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_EDIFICIO"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID_EDIFICIO"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Visible = False
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "NODO"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "NODO"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 40
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ZONA"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "ZONA"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 40
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "CALLE"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "CALLE"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "PUERTA"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "PUERTA"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "INGRESO"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "INGRESO"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "STATUS"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "STATUS"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        '
-        'EDIF_VISTABindingSource
-        '
-        Me.EDIF_VISTABindingSource.DataMember = "EDIF_VISTA"
-        Me.EDIF_VISTABindingSource.DataSource = Me.EDIFICIODataSet
-        '
-        'EDIFICIODataSet
-        '
-        Me.EDIFICIODataSet.DataSetName = "EDIFICIODataSet"
-        Me.EDIFICIODataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "ID_AVANCE"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "ID_AVANCE"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.ReadOnly = True
-        Me.DataGridViewTextBoxColumn9.Visible = False
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "NODO"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "NODO"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.ReadOnly = True
-        Me.DataGridViewTextBoxColumn10.Width = 50
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "ZONA"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "ZONA"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.ReadOnly = True
-        Me.DataGridViewTextBoxColumn11.Width = 50
-        '
-        'DataGridViewCheckBoxColumn4
-        '
-        Me.DataGridViewCheckBoxColumn4.DataPropertyName = "VER_AEREOS"
-        Me.DataGridViewCheckBoxColumn4.HeaderText = "AEREOS"
-        Me.DataGridViewCheckBoxColumn4.Name = "DataGridViewCheckBoxColumn4"
-        Me.DataGridViewCheckBoxColumn4.ReadOnly = True
-        Me.DataGridViewCheckBoxColumn4.Width = 60
-        '
-        'DataGridViewCheckBoxColumn2
-        '
-        Me.DataGridViewCheckBoxColumn2.DataPropertyName = "VER_SUBTERRANEO"
-        Me.DataGridViewCheckBoxColumn2.HeaderText = "SUBTER"
-        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
-        Me.DataGridViewCheckBoxColumn2.ReadOnly = True
-        Me.DataGridViewCheckBoxColumn2.Width = 60
-        '
-        'AVANCEBindingSource
-        '
-        Me.AVANCEBindingSource.DataMember = "AVANCE"
-        Me.AVANCEBindingSource.DataSource = Me.EDIFICIODataSet
-        '
-        'AVANCETableAdapter
-        '
-        Me.AVANCETableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager1
-        '
-        Me.TableAdapterManager1.AGENDATableAdapter = Nothing
-        Me.TableAdapterManager1.ARTICULOTableAdapter = Nothing
-        Me.TableAdapterManager1.AVANCETableAdapter = Me.AVANCETableAdapter
-        Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager1.BITACORATableAdapter = Nothing
-        Me.TableAdapterManager1.CABLESTableAdapter = Nothing
-        Me.TableAdapterManager1.CALLESTableAdapter = Nothing
-        Me.TableAdapterManager1.CERTIFICACIONESTableAdapter = Nothing
-        Me.TableAdapterManager1.COLORESTableAdapter = Nothing
-        Me.TableAdapterManager1.FTTBTableAdapter = Nothing
-        Me.TableAdapterManager1.INGRESOTableAdapter = Nothing
-        Me.TableAdapterManager1.MDUTableAdapter = Nothing
-        Me.TableAdapterManager1.OBS_MDUTableAdapter = Nothing
-        Me.TableAdapterManager1.STATUSTableAdapter = Me.STATUSTableAdapter
-        Me.TableAdapterManager1.TECNICOSTableAdapter = Nothing
-        Me.TableAdapterManager1.TRONCALESTableAdapter = Nothing
-        Me.TableAdapterManager1.TURNOSTableAdapter = Nothing
-        Me.TableAdapterManager1.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
         'STATUSTableAdapter
         '
         Me.STATUSTableAdapter.ClearBeforeFill = True
@@ -1012,6 +942,87 @@ Partial Class INICIO
         '
         Me.ARTICULOTableAdapter.ClearBeforeFill = True
         '
+        'ReporteNapsBindingSource
+        '
+        Me.ReporteNapsBindingSource.DataSource = Me.EDIFICIODataSet
+        Me.ReporteNapsBindingSource.Position = 0
+        '
+        'ReporteNapsTableAdapter
+        '
+        Me.ReporteNapsTableAdapter.ClearBeforeFill = True
+        '
+        'AVANCETableAdapter
+        '
+        Me.AVANCETableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager1
+        '
+        Me.TableAdapterManager1.AGENDATableAdapter = Nothing
+        Me.TableAdapterManager1.ARTICULOTableAdapter = Nothing
+        Me.TableAdapterManager1.AVANCETableAdapter = Me.AVANCETableAdapter
+        Me.TableAdapterManager1.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager1.BITACORATableAdapter = Nothing
+        Me.TableAdapterManager1.CABLESTableAdapter = Nothing
+        Me.TableAdapterManager1.CALLESTableAdapter = Nothing
+        Me.TableAdapterManager1.CERTIFICACIONESTableAdapter = Nothing
+        Me.TableAdapterManager1.COLORESTableAdapter = Nothing
+        Me.TableAdapterManager1.FTTBTableAdapter = Nothing
+        Me.TableAdapterManager1.INGRESOTableAdapter = Nothing
+        Me.TableAdapterManager1.OBS_MDUTableAdapter = Nothing
+        Me.TableAdapterManager1.STATUSTableAdapter = Nothing
+        Me.TableAdapterManager1.TECNICOSTableAdapter = Nothing
+        Me.TableAdapterManager1.TRONCALESTableAdapter = Nothing
+        Me.TableAdapterManager1.TURNOSTableAdapter = Nothing
+        Me.TableAdapterManager1.UpdateOrder = REDES.EDIFICIODataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "ID_AVANCE"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "ID_AVANCE"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        Me.DataGridViewTextBoxColumn9.Visible = False
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "NODO"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "NODO"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.ReadOnly = True
+        Me.DataGridViewTextBoxColumn10.Width = 50
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "ZONA"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "ZONA"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.ReadOnly = True
+        Me.DataGridViewTextBoxColumn11.Width = 50
+        '
+        'DataGridViewCheckBoxColumn4
+        '
+        Me.DataGridViewCheckBoxColumn4.DataPropertyName = "VER_AEREOS"
+        Me.DataGridViewCheckBoxColumn4.HeaderText = "AEREOS"
+        Me.DataGridViewCheckBoxColumn4.Name = "DataGridViewCheckBoxColumn4"
+        Me.DataGridViewCheckBoxColumn4.ReadOnly = True
+        Me.DataGridViewCheckBoxColumn4.Width = 50
+        '
+        'VER_DUCTOS_FECHADA
+        '
+        Me.VER_DUCTOS_FECHADA.DataPropertyName = "VER_DUCTOS_FECHADA"
+        Me.VER_DUCTOS_FECHADA.HeaderText = "DUCTOS"
+        Me.VER_DUCTOS_FECHADA.Name = "VER_DUCTOS_FECHADA"
+        Me.VER_DUCTOS_FECHADA.ReadOnly = True
+        Me.VER_DUCTOS_FECHADA.Width = 50
+        '
+        'DataGridViewCheckBoxColumn2
+        '
+        Me.DataGridViewCheckBoxColumn2.DataPropertyName = "VER_SUBTERRANEO"
+        Me.DataGridViewCheckBoxColumn2.HeaderText = "SUBTER"
+        Me.DataGridViewCheckBoxColumn2.Name = "DataGridViewCheckBoxColumn2"
+        Me.DataGridViewCheckBoxColumn2.ReadOnly = True
+        Me.DataGridViewCheckBoxColumn2.Width = 50
+        '
         'INICIO
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1038,14 +1049,14 @@ Partial Class INICIO
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DGV_EDIFICIOS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EDIF_VISTABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AVANCEDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AVANCEBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.menuStrip1.ResumeLayout(False)
         Me.menuStrip1.PerformLayout()
         CType(Me.FIBRADataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TRONCALESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EDIF_VISTABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EDIFICIODataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AVANCEBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MDUBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.STATUSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AGENDABindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1056,6 +1067,7 @@ Partial Class INICIO
         CType(Me.FTTBBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.COLORESBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ARTICULOBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ReporteNapsBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1088,8 +1100,6 @@ Partial Class INICIO
     Friend WithEvents MODIFICADODataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents EDIFICIODataSet As EDIFICIODataSet
     Friend WithEvents AVANCEBindingSource As BindingSource
-    Friend WithEvents AVANCETableAdapter As EDIFICIODataSetTableAdapters.AVANCETableAdapter
-    Friend WithEvents TableAdapterManager1 As EDIFICIODataSetTableAdapters.TableAdapterManager
     Friend WithEvents EDIF_VISTABindingSource As BindingSource
     Friend WithEvents MDUTableAdapter As EDIFICIODataSetTableAdapters.MDUTableAdapter
     Friend WithEvents MDUBindingSource As BindingSource
@@ -1104,12 +1114,6 @@ Partial Class INICIO
     Friend WithEvents CB_INGRESO As ComboBox
     Friend WithEvents EdificioDataSetBackUp As EDIFICIODataSet
     Friend WithEvents Button1 As Button
-    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn4 As DataGridViewCheckBoxColumn
-    Friend WithEvents VER_DUCTOS_FECHADA As DataGridViewCheckBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn2 As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
     Friend WithEvents AGENDADO As DataGridViewTextBoxColumn
     Friend WithEvents ACOMETIDA As DataGridViewTextBoxColumn
@@ -1170,4 +1174,14 @@ Partial Class INICIO
     Friend WithEvents COLORESTableAdapter As EDIFICIODataSetTableAdapters.COLORESTableAdapter
     Friend WithEvents ARTICULOBindingSource As BindingSource
     Friend WithEvents ARTICULOTableAdapter As EDIFICIODataSetTableAdapters.ARTICULOTableAdapter
+    Friend WithEvents ReporteNapsBindingSource As BindingSource
+    Friend WithEvents ReporteNapsTableAdapter As EDIFICIODataSetTableAdapters.ReporteNapsTableAdapter
+    Friend WithEvents AVANCETableAdapter As EDIFICIODataSetTableAdapters.AVANCETableAdapter
+    Friend WithEvents TableAdapterManager1 As EDIFICIODataSetTableAdapters.TableAdapterManager
+    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn11 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn4 As DataGridViewCheckBoxColumn
+    Friend WithEvents VER_DUCTOS_FECHADA As DataGridViewCheckBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn2 As DataGridViewCheckBoxColumn
 End Class

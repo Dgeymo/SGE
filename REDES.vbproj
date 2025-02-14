@@ -212,6 +212,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Datasets\BASEFUENTESDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BASEFUENTESDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Datasets\EDIFICIODataSet.vb">
       <DependentUpon>EDIFICIODataSet.xsd</DependentUpon>
     </Compile>
@@ -231,18 +236,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EDIFICIODataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ESCRITORIO.Designer.vb">
-      <DependentUpon>ESCRITORIO.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ESCRITORIO.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FIBRADataSet.Designer.vb">
+    <Compile Include="Datasets\FIBRADataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FIBRADataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="FIBRADataSet.vb">
+    <Compile Include="Datasets\FIBRADataSet.vb">
       <DependentUpon>FIBRADataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="FORMS APOYO\FUENTE_EDICION.Designer.vb">
@@ -330,12 +329,6 @@
     <Compile Include="FORMS REPORTE\VER_INFORME_FUENTES.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORMS REPORTE\VER_INFORME_INDICE.Designer.vb">
-      <DependentUpon>VER_INFORME_INDICE.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FORMS REPORTE\VER_INFORME_INDICE.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FORMS APOYO\VER_ORD_AGENDA.Designer.vb">
       <DependentUpon>VER_ORD_AGENDA.vb</DependentUpon>
     </Compile>
@@ -347,11 +340,6 @@
     </Compile>
     <Compile Include="FORMS PRIMARIOS\BUSQUEDA.vb">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Datasets\INFORME_INDICEDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>INFORME_INDICEDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="FORMS APOYO\MATERIALES.Designer.vb">
       <DependentUpon>MATERIALES.vb</DependentUpon>
@@ -405,11 +393,6 @@
     </Compile>
     <Compile Include="Datasets\ANALISIS_AGDataSet.vb">
       <DependentUpon>ANALISIS_AGDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Datasets\BASEFUENTESDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BASEFUENTESDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="FORMS PRIMARIOS\DATOS.vb">
       <SubType>Form</SubType>
@@ -573,12 +556,6 @@
     <Compile Include="FORMS APOYO\FOpenFileDialog.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FORMS SECUNDARIOS\NUEVO_INDICE.Designer.vb">
-      <DependentUpon>NUEVO_INDICE.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FORMS SECUNDARIOS\NUEVO_INDICE.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FORMS APOYO\RELEVAMIENTO.Designer.vb">
       <DependentUpon>RELEVAMIENTO.vb</DependentUpon>
     </Compile>
@@ -595,12 +572,6 @@
       <DependentUpon>STANDARD.vb</DependentUpon>
     </Compile>
     <Compile Include="FORMS SECUNDARIOS\STANDARD.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FORMS SECUNDARIOS\TRABAJOS.Designer.vb">
-      <DependentUpon>TRABAJOS.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FORMS SECUNDARIOS\TRABAJOS.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FORMS APOYO\USUARIO.Designer.vb">
@@ -628,9 +599,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ESCRITORIO.resx">
-      <DependentUpon>ESCRITORIO.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FORMS APOYO\FUENTE_EDICION.resx">
       <DependentUpon>FUENTE_EDICION.vb</DependentUpon>
     </EmbeddedResource>
@@ -683,11 +651,9 @@
     <EmbeddedResource Include="FORMS REPORTE\VER_INFORME_FUENTES.resx">
       <DependentUpon>VER_INFORME_FUENTES.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORMS REPORTE\VER_INFORME_INDICE.resx">
-      <DependentUpon>VER_INFORME_INDICE.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FORMS PRIMARIOS\FORMAGE.resx">
       <DependentUpon>FORMAGE.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="REPORTES\INFORME_INDICES.rdlc" />
     <EmbeddedResource Include="REPORTES\INFORME_MATERIALES.rdlc" />
@@ -726,9 +692,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS REPORTE\VER_INFORME_MATERIALES.resx">
       <DependentUpon>VER_INFORME_MATERIALES.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FORMS SECUNDARIOS\NUEVO_INDICE.resx">
-      <DependentUpon>NUEVO_INDICE.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORMS APOYO\MATERIALES.resx">
       <DependentUpon>MATERIALES.vb</DependentUpon>
@@ -790,9 +753,6 @@
     <EmbeddedResource Include="FORMS SECUNDARIOS\STANDARD.resx">
       <DependentUpon>STANDARD.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FORMS SECUNDARIOS\TRABAJOS.resx">
-      <DependentUpon>TRABAJOS.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FORMS APOYO\USUARIO.resx">
       <DependentUpon>USUARIO.vb</DependentUpon>
     </EmbeddedResource>
@@ -805,17 +765,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
-    <None Include="Datasets\ANALISIS_AGDataSet.xsc">
-      <DependentUpon>ANALISIS_AGDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Datasets\ANALISIS_AGDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ANALISIS_AGDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Datasets\ANALISIS_AGDataSet.xss">
-      <DependentUpon>ANALISIS_AGDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Datasets\BASEFUENTESDataSet.xsc">
       <DependentUpon>BASEFUENTESDataSet.xsd</DependentUpon>
     </None>
@@ -826,6 +775,17 @@
     </None>
     <None Include="Datasets\BASEFUENTESDataSet.xss">
       <DependentUpon>BASEFUENTESDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\ANALISIS_AGDataSet.xsc">
+      <DependentUpon>ANALISIS_AGDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Datasets\ANALISIS_AGDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ANALISIS_AGDataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Datasets\ANALISIS_AGDataSet.xss">
+      <DependentUpon>ANALISIS_AGDataSet.xsd</DependentUpon>
     </None>
     <None Include="Datasets\INFORME_FUENTESDataSet.xsc">
       <DependentUpon>INFORME_FUENTESDataSet.xsd</DependentUpon>
@@ -849,17 +809,6 @@
     <None Include="Datasets\MDUDataSet.xss">
       <DependentUpon>MDUDataSet.xsd</DependentUpon>
     </None>
-    <None Include="Datasets\INFORME_INDICEDataSet.xsc">
-      <DependentUpon>INFORME_INDICEDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Datasets\INFORME_INDICEDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>INFORME_INDICEDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Datasets\INFORME_INDICEDataSet.xss">
-      <DependentUpon>INFORME_INDICEDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Datasets\INDICESDataSet.xsc">
       <DependentUpon>INDICESDataSet.xsd</DependentUpon>
     </None>
@@ -882,15 +831,15 @@
     <None Include="Datasets\EDIFICIODataSet.xss">
       <DependentUpon>EDIFICIODataSet.xsd</DependentUpon>
     </None>
-    <None Include="FIBRADataSet.xsc">
+    <None Include="Datasets\FIBRADataSet.xsc">
       <DependentUpon>FIBRADataSet.xsd</DependentUpon>
     </None>
-    <None Include="FIBRADataSet.xsd">
+    <None Include="Datasets\FIBRADataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>FIBRADataSet.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="FIBRADataSet.xss">
+    <None Include="Datasets\FIBRADataSet.xss">
       <DependentUpon>FIBRADataSet.xsd</DependentUpon>
     </None>
     <None Include="My Project\app.manifest" />

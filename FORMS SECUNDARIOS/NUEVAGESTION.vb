@@ -256,7 +256,7 @@
                 DATOS.DATOS_GESTIONRow = DATOS.ORDENESDataSet.GESTION.Rows(DATOS.GESTIONBindingSource.Position)
                 DATOS.GESTIONTableAdapter.UpdateATRIBUTO(CB_GEST_ATRIBUTO.Text, DATOS.DATOS_GESTIONRow.Id_GESTION)
 
-                DATOS.LLENA_TRABAJOS()
+                DATOS.LLENA_TRABAJOS_DESDE_GESTION()
                 DATOS.LLENA_CAMPOSGESTION()
 
                 If ACCESO_DESDE = "MDU" Then
@@ -668,7 +668,7 @@
 
                     DATOS.ORDENESDataSet.TRABAJOS.AddTRABAJOSRow(NewTRABAJORow)
                     DATOS.TRABAJOSTableAdapter.Update(NewTRABAJORow)
-                    DATOS.LLENA_TRABAJOS()
+                    DATOS.LLENA_TRABAJOS_DESDE_GESTION()
 
                     'HISTORICO TRABAJO
                     DATOS.DATOS_HIS_STATUSACTUAL = "INGRESADO"

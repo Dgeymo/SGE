@@ -38,6 +38,7 @@ Public Class FUENTES
 
     Dim HIST_ORDENINT As Integer
     Dim HIST_FECHA As Date
+    Dim VISTAFUENTE As DataView
     Private Sub GENERAL_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         VIEJA_BD()
@@ -82,14 +83,7 @@ Public Class FUENTES
         ' l(BASEFUENTESDataSet.FUENTES_MOD)
         INFORMACION_GRAL()
 
-
-
-
-
-
     End Sub
-
-
     Private Sub VIEJA_BD()
         FUENTETableAdapter.FillByACTIVA(BASEFUENTESDataSet.FUENTE)
         FORMATO_DGV()
@@ -101,7 +95,6 @@ Public Class FUENTES
 
         End If
     End Sub
-
     Private Sub INFORMACION_GRAL()
         TOTAL_BAT = 0
         CANTIDADFUE = INSTALACIONDataGridView.Rows.Count
@@ -306,7 +299,7 @@ Public Class FUENTES
 
     'End Sub
     Private Sub FILTRA_FUENTE()
-        Dim VISTAFUENTE As DataView = BASEFUENTESDataSet.FUENTE.AsDataView
+        VISTAFUENTE = BASEFUENTESDataSet.FUENTE.AsDataView
         CAMPO(0) = ("INSTALACION")
         DATO(0) = BUSC_CODIGO.Text
         FILTRO(0) = "[" & CAMPO(0) & "] like '*" & DATO(0) & "*'"
@@ -383,8 +376,8 @@ Public Class FUENTES
         'Else
         VISTAFUENTE.RowFilter = FILTRO(0) & FILTRO(1) & FILTRO(2) & FILTRO(3) & FILTRO(4) & FILTRO(5) & FILTRO(6) & FILTRO(7) & FILTRO(8)
 
-            FUENTEBindingSource.DataSource = VISTAFUENTE
-            INFORMACION_GRAL()
+        FUENTEBindingSource.DataSource = VISTAFUENTE
+        INFORMACION_GRAL()
     End Sub
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
         BUSC_CODIGO.Text = ""
@@ -628,7 +621,6 @@ Public Class FUENTES
         FUENTE_TRABAJO = "RETIRO FUENTE X OBRA"
         ABRE_DATOS()
     End Sub
-
     Private Sub DGVAdjuntos_DoubleClick(sender As Object, e As EventArgs) Handles DGVAdjuntos.DoubleClick
         Dim RUTA_ARCHIVOS As String
         If DGVAdjuntos.Rows.Count > 0 Then
@@ -751,5 +743,13 @@ Public Class FUENTES
         AFECTACIONTableAdapter.Update(ORDENESDataSet.AFECTACION)
         AFECTACIONDataGridView.ContextMenuStrip = Nothing
     End Sub
-
+    Private Sub BTN_TO_EXCEL_Click(sender As Object, e As EventArgs) Handles BTN_TO_EXCEL.Click
+        Cursor = Cursors.WaitCursor
+        If VISTAFUENTE IsNot Nothing Then
+            ExportarExcel(VISTAFUENTE.ToTable(), "FUENTES")
+        Else
+            ExportarExcel(BASEFUENTESDataSet.FUENTE, "FUENTES")
+        End If
+        Cursor = Cursors.Default
+    End Sub
 End Class

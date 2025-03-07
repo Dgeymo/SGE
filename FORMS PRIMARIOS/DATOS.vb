@@ -134,7 +134,6 @@ Public Class DATOS
     Public DATOS_MJE_DESTINOSECTOR As String
     Public DATOS_MJE_MENSAJE As String
     Public DATOS_MJE_NROORDENASOC As String
-
     Private Sub DATOS_Load(sender As Object, e As EventArgs) Handles Me.Load
         Cursor = Cursors.WaitCursor
         Select Case SECTOR
@@ -871,7 +870,6 @@ Public Class DATOS
 
         End If
     End Sub
-
     Private Sub ORDENESDataGridView_MouseDown(sender As Object, e As MouseEventArgs) Handles ORDENESDataGridView.MouseDown
         clickBotonOrden(e)
     End Sub
@@ -915,6 +913,7 @@ Public Class DATOS
                             Next I
                     End Select
                 Case "MISGESTIONES", "BUSCADOR"
+                    TRABAJOSTableAdapter.FillByIDGESTION(ORDENESDataSet.TRABAJOS, DATOS_GESTIONRow.Id_GESTION)
                     If ORDENESDataSet.TRABAJOS.Rows.Count > 0 Then
                         NROTRABAJO = TRABAJOSDataGridView.CurrentRow.Cells.Item(1).Value
                         DATOS_TRABAJORow = ORDENESDataSet.TRABAJOS.Rows.Find(NROTRABAJO)
@@ -940,14 +939,13 @@ Public Class DATOS
                         DATOS_TRABAJORow = ORDENESDataSet.TRABAJOS.Rows(ORDENESDataSet.TRABAJOS.Rows.Count - 1)
                         CARGA_TRABAJOS(DATOS_TRABAJORow)
                         'PINTA LOS TRABAJOS FINALIZADOS
-                        ' NROTRABAJO = DATOS_TRABAJORow("ID_TRABAJO")
                         ORDENESDataSet.ORDENES.Clear()
-                        ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, NROTRABAJO)
-                        If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
-                            CARGA_VALORESORDENES(ORDENESDataSet.ORDENES.Rows(0))
-                        Else
-                            BORRA_ETIQUETAS_ORDEN()
-                        End If
+                        ' ORDENESTableAdapter.FillByIDTRABAJO(ORDENESDataSet.ORDENES, DATOS_TRABAJORow("ID_TRABAJO"))
+                        '  If ORDENESDataSet.ORDENES.Rows.Count > 0 Then
+                        ' CARGA_VALORESORDENES(ORDENESDataSet.ORDENES.Rows(0))
+                        'Else
+                        BORRA_ETIQUETAS_ORDEN()
+                        '    End If
 
                     Else
                         BORRA_ETIQUETAS()
@@ -2049,7 +2047,6 @@ Public Class DATOS
         '    LLENA_HISTORICOTRABAJOS()
         'End If
     End Sub
-
     'GESTION TOOLSTRIP ______________________
     Private Sub GEST_EDITAR_TOOLSTRIP_Click(sender As Object, e As EventArgs) Handles GEST_EDITAR_TOOLSTRIP.Click
         Cursor = Cursors.WaitCursor
@@ -2302,7 +2299,6 @@ Public Class DATOS
         GEST_RESP_NOMBRE = PABLO_ILLIONE.Text
         GEST_RESPONSABLE()
     End Sub
-
     'TRABAJOS TOOLSTRIP ______________________
     Private Sub TRAB_EDITAR_ToolStrip_Click(sender As Object, e As EventArgs) Handles TRAB_EDITAR_ToolStrip.Click
         Cursor = Cursors.WaitCursor
@@ -2714,7 +2710,6 @@ Public Class DATOS
         TRAB_TRAB_TOOLS_VAR = TRAB_ITEM11_ToolStrip.Text
         TRABAJO_TRAB_GENERAR()
     End Sub
-
     'ORDENES TOOLSTRIP ______________________
     Private Sub ORD_EMITIR_ToolStrip_Click(sender As Object, e As EventArgs) Handles ORD_EMITIR_ToolStrip.Click
         Try
@@ -3738,7 +3733,6 @@ Public Class DATOS
 
         Me.Cursor = DefaultCursor
     End Sub
-
     Private Sub ORD_DINAMICA_ToolStrip_Click(sender As Object, e As EventArgs) Handles ORD_DINAMICA_ToolStrip.Click
         DINAMICA()
         ORDENESDataGridView.ContextMenuStrip = Nothing
@@ -3929,7 +3923,6 @@ Public Class DATOS
         End If
     End Sub
     'FIN TOOLSTRIP ______________________________________________________________________________
-
     Private Sub BTN_AGREGAR_Click(sender As Object, e As EventArgs) Handles BTN_AGREGAR.Click
         If My.Computer.Info.OSFullName.Contains(10) Or My.Computer.Info.OSFullName.Contains(11) Then
             Dim RESULTADO As DialogResult = OpenFileDialog1.ShowDialog()
@@ -4223,7 +4216,6 @@ Public Class DATOS
     Private Sub TRABAJOSDataGridView_Click(sender As Object, e As EventArgs) Handles TRABAJOSDataGridView.Click
 
     End Sub
-
     Private Sub BTN_VER_GOOGLE_Click(sender As Object, e As EventArgs) Handles BTN_VER_GOOGLE.Click
         DIRECCION_GEO = DIRECCION_GEST.Text
         If GEO.Visible Then
@@ -4467,11 +4459,7 @@ Public Class DATOS
 
 
     End Sub
-
-
 End Class
-
-
 'Private Sub TRAB_GRAFICAR_ToolStrip_Click(sender As Object, e As EventArgs) Handles TRAB_GRAFICAR_ToolStrip.Click
 '    Dim POS_ORD As Integer = 1
 '    'OBTIENE LOS DATOS DEL TRABAJO SELECCIONADO

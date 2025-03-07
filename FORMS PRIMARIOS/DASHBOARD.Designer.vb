@@ -225,7 +225,7 @@ Partial Class DASHBOARD
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(65, 13)
         Me.Label1.TabIndex = 2
-        Me.Label1.Text = "VER: 3.7.25"
+        Me.Label1.Text = "VER: 3.7.27"
         '
         'BTN_PASAR
         '
